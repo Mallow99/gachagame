@@ -158,6 +158,7 @@ about 180 MB, on first run).
 | `candidates.py` | For each id in `specs.json` (wiki host + page), ranks that page's images and downloads the top 15 into `cand/<id>/` with a contact sheet |
 | `scrape.py` | Pulls og:image / large `<img>` files from arbitrary web pages |
 | `process.py` | Reads `picks.json` (chosen file, crop, cutout yes/no, keep background, combine) → `splash.webp` (≤900 px tall), `battle.webp` (220 px), `icon.webp` (160²). Background removal uses rembg (`isnet-anime` for drawn art, `isnet-general-use` for photos) |
+| `pixiv.py` | Pixiv tag search / artist portfolio → ranked by bookmarks → download (`search`, `artist`, `dl`) |
 | `depth.py` | Depth Anything V2 Small (ONNX) → depth map PNG for parallax |
 
 `picks.json` paths point into `cand/` and `cand2/` download folders that were
@@ -175,6 +176,9 @@ process, review in `assets/characters/gallery.html`.
 |---|---|
 | Fandom / MediaWiki APIs (`*.fandom.com/api.php`, mariowiki.com, bulbapedia, minecraft.wiki, wikirby.com) | ✅ Main source. Use the API; the HTML pages sit behind a Cloudflare challenge. Super Mario Wiki has huge official renders (3000–4000 px). |
 | `static.wikia.nocookie.net` image URLs from the API | ✅ |
+| **Pixiv** (`tools/art/pixiv.py`) | ✅ **Best source for Mario art.** Japanese tag search and artwork details work without login (popularity sort is paywalled; use `マリオ1000users入り`-style tags or rank by `bookmarkCount`). Mining the portfolios of recurring artists (yamari, maribou, platiniridium, ゴンザレス) beats tag search. Images need a pixiv.net Referer. Reviewed finalists: https://claude.ai/artifact/7sH6PVS2LaeniLRkzwykud |
+| yande.re / Konachan / Gelbooru | ⚠️ Reachable, but mostly Pixiv reposts skewed to crossovers/NSFW. Danbooru 403. |
+| Chinese sites (Duitang, Lofter, Bilibili) | ❌ Duitang API works but returns phone wallpapers and AI art; Lofter needs JS; Bilibili blocks. |
 | DeviantArt search RSS `https://backend.deviantart.com/rss.xml?type=deviation&q=...` | ✅ Returns direct image URLs. Good for high-quality fan art. |
 | Pokémon Showdown animated sprites `play.pokemonshowdown.com/sprites/ani/<name>.gif` | ✅ |
 | myinstants.com (voice lines, meme sounds) | ✅ Search page HTML contains `play('/media/sounds/x.mp3')` |
