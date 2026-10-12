@@ -1,0 +1,613 @@
+<title>Mushroom Kingdom Pull</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Press+Start+2P&family=Nunito:wght@600;800&display=swap">
+<style>
+/* Layout: one phone-sized stage centered on a dark field; every screen is a layer inside it. */
+:root {
+  --night: #0b0a1a;
+  --stage: #15123a;
+  --sky-top: #3f8cff;
+  --sky-bottom: #9fd4ff;
+  --gold: #ffd23f;
+  --gold-deep: #f08a00;
+  --red: #e4262c;
+  --ink: #ffffff;
+  --ink-soft: #c9c6ef;
+  --display: "Luckiest Guy", "Arial Black", Impact, sans-serif;
+  --pixel: "Press Start 2P", ui-monospace, monospace;
+  --body: "Nunito", system-ui, sans-serif;
+  color-scheme: dark;
+}
+[hidden] { display: none !important; }
+html, body { height: 100%; }
+body {
+  background: var(--night);
+  color: var(--ink);
+  font-family: var(--body);
+  display: grid;
+  place-items: center;
+  padding-inline: 16px;
+  overflow: hidden;
+}
+.stage {
+  position: relative;
+  width: min(100%, 420px, calc((100dvh - 24px) * 9 / 16));
+  aspect-ratio: 9 / 16;
+  max-width: 100%;
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--stage);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .6), 0 0 0 1px rgba(255, 255, 255, .06);
+  user-select: none;
+  -webkit-user-select: none;
+  container-type: inline-size;
+}
+.layer { position: absolute; inset: 0; }
+
+/* ---------- Banner screen ---------- */
+.banner {
+  display: flex;
+  flex-direction: column;
+  padding: 7cqw 6cqw 6cqw;
+  gap: 3cqw;
+  background:
+    radial-gradient(120% 70% at 70% 30%, rgba(255, 210, 63, .25), transparent 60%),
+    linear-gradient(170deg, #2a2a8a 0%, #1a1650 55%, #120f33 100%);
+}
+.eyebrow { padding-right: 22cqw; line-height: 1.7; font-family: var(--pixel); font-size: 2.6cqw; letter-spacing: .08em; color: var(--gold); }
+.banner h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 11cqw;
+  line-height: .95;
+  margin: 0;
+  text-wrap: balance;
+  text-shadow: 0 .6cqw 0 var(--red), 0 1.4cqw 0 rgba(0, 0, 0, .35);
+}
+.banner-art { position: relative; flex: 1; min-height: 0; }
+.banner-art img.hero {
+  position: absolute; right: -8cqw; bottom: 0; height: 100%; max-width: none;
+  filter: drop-shadow(0 2cqw 3cqw rgba(0, 0, 0, .45));
+  animation: hover 3.2s ease-in-out infinite;
+}
+.banner-art .rate-up {
+  position: absolute; left: 0; top: 4cqw; z-index: 2;
+  font-family: var(--pixel); font-size: 2.4cqw; line-height: 1.8;
+  background: rgba(0, 0, 0, .35); border: 1px solid rgba(255, 255, 255, .15);
+  padding: 2.4cqw 3cqw; border-radius: 2cqw;
+}
+.rate-up b { color: var(--gold); font-weight: 400; font-family: var(--body); font-size: 3.6cqw; letter-spacing: .1em; }
+.pull-btn {
+  font-family: var(--display);
+  font-size: 7.5cqw;
+  letter-spacing: .03em;
+  color: #3a1d00;
+  background: linear-gradient(#ffe36b, var(--gold) 45%, var(--gold-deep));
+  border: 0;
+  border-radius: 999px;
+  padding: 3.4cqw 4cqw 2.6cqw;
+  box-shadow: 0 1.4cqw 0 #a85a00, 0 3cqw 5cqw rgba(0, 0, 0, .45);
+  cursor: pointer;
+  transition: transform .08s, box-shadow .08s;
+}
+.pull-btn:active { transform: translateY(1.2cqw); box-shadow: 0 .2cqw 0 #a85a00, 0 1.5cqw 3cqw rgba(0, 0, 0, .45); }
+.pull-btn:focus-visible, .ghost-btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.fine { font-size: 3cqw; color: var(--ink-soft); text-align: center; margin: 0; }
+
+/* ---------- Pull sequence ---------- */
+.seq { background: #000; cursor: pointer; }
+.tease { display: grid; place-items: center; background: radial-gradient(circle at 50% 45%, #1d1a4a, #050410 70%); }
+.block-wrap { position: relative; width: 34cqw; aspect-ratio: 1; }
+.block-wrap::before {
+  content: ""; position: absolute; inset: -40%; border-radius: 50%;
+  background: radial-gradient(circle, var(--glow, rgba(255, 255, 255, .5)) 0%, transparent 65%);
+  transition: background .3s;
+}
+.block { position: relative; width: 100%; }
+.block.drop { animation: drop .7s cubic-bezier(.3, 1.5, .5, 1) both; }
+.block.bump { animation: bump .28s ease-out; }
+.star-burst { position: absolute; left: 50%; top: 50%; width: 30cqw; margin: -17cqw 0 0 -15cqw; opacity: 0; }
+.star-burst.go { animation: star-out 1s cubic-bezier(.2, .8, .3, 1) forwards; }
+.flash { background: #fff; opacity: 0; pointer-events: none; }
+
+.quote-screen { display: grid; place-items: center; text-align: center; padding: 10cqw; background: #000; }
+.quote { font-family: var(--display); font-size: 13cqw; line-height: 1.05; margin: 0; min-height: 1.1em; }
+.quote .caret { display: inline-block; width: .08em; height: .8em; background: var(--gold); margin-left: .05em; animation: blink .6s steps(1) infinite; }
+.speaker { font-family: var(--pixel); font-size: 2.8cqw; color: var(--gold); margin-top: 5cqw; opacity: 0; transition: opacity .4s; }
+.speaker.on { opacity: 1; }
+
+.reveal { overflow: hidden; background: linear-gradient(var(--sky-top), var(--sky-bottom)); }
+.rays {
+  position: absolute; left: 50%; top: 42%; width: 220cqw; aspect-ratio: 1; translate: -50% -50%;
+  background: repeating-conic-gradient(rgba(255, 255, 255, .22) 0deg 8deg, transparent 8deg 22deg);
+  mask-image: radial-gradient(circle, #000 0%, transparent 60%);
+  -webkit-mask-image: radial-gradient(circle, #000 0%, transparent 60%);
+  animation: spin 30s linear infinite;
+}
+.cloud { position: absolute; background: #fff; border-radius: 999px; opacity: .9; }
+.cloud::before, .cloud::after { content: ""; position: absolute; background: #fff; border-radius: 50%; }
+.cloud.c1 { width: 30cqw; height: 8cqw; left: -6cqw; top: 22%; animation: drift 24s linear infinite; }
+.cloud.c2 { width: 22cqw; height: 6cqw; right: -4cqw; top: 9%; animation: drift 30s linear infinite reverse; }
+.cloud::before { width: 45%; height: 160%; left: 18%; top: -70%; }
+.cloud::after { width: 35%; height: 130%; left: 50%; top: -50%; }
+.ground { position: absolute; left: 0; right: 0; bottom: 0; height: 9%; background: #c85a1a; box-shadow: inset 0 1.4cqw 0 #6fd23a, inset 0 2.6cqw 0 #3e9c1e; }
+.pipe { position: absolute; left: 50%; bottom: 7%; width: 48cqw; translate: -50% 110%; z-index: 3; max-width: none; }
+.pipe.up { transition: translate .45s cubic-bezier(.2, 1.3, .4, 1); translate: -50% 0; }
+/* Mario is clipped at the pipe rim so he appears to come out of it. */
+.mario-clip { position: absolute; left: 0; right: 0; top: 0; bottom: calc(7% + 48cqw * 714 / 520 - 3cqw); overflow: hidden; z-index: 2; }
+.mario-clip.free { overflow: visible; }
+.mario { position: absolute; left: 50%; bottom: 0; width: 70cqw; max-width: none; translate: -46% 105%; }
+.mario.jump { animation: jump-out 1s cubic-bezier(.15, .85, .35, 1) forwards; }
+.mario.idle { translate: -46% -6%; animation: idle 2.6s ease-in-out infinite; }
+.sparkles { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
+
+.rarity { position: absolute; left: 5cqw; top: 5cqw; z-index: 6; display: flex; gap: 1cqw; }
+.rarity span {
+  font-family: var(--display); font-size: 21cqw; line-height: .85;
+  background: linear-gradient(#fff6b8 10%, var(--gold) 45%, var(--gold-deep) 90%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  -webkit-text-stroke: .5cqw #6b2a00;
+  filter: drop-shadow(0 1cqw 0 #6b2a00) drop-shadow(0 0 3cqw rgba(255, 210, 63, .8));
+  opacity: 0; display: inline-block;
+}
+.rarity span.slam { animation: slam .32s cubic-bezier(.2, 1.6, .4, 1) forwards; }
+.rarity span:nth-child(2).slam { rotate: 4deg; }
+.rarity span:nth-child(3).slam { rotate: -5deg; }
+.stars { position: absolute; left: 6cqw; top: 26cqw; z-index: 6; display: flex; gap: 1cqw; font-size: 6cqw; color: var(--gold); text-shadow: 0 .5cqw 0 #6b2a00; }
+.stars i { font-style: normal; opacity: 0; }
+.stars i.on { animation: pop .3s cubic-bezier(.3, 1.8, .5, 1) forwards; }
+.nameplate {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 7;
+  padding: 18cqw 6cqw 6cqw;
+  background: linear-gradient(transparent, rgba(5, 4, 20, .92) 45%);
+  opacity: 0; translate: 0 6cqw; transition: opacity .5s, translate .5s;
+}
+.nameplate.on { opacity: 1; translate: 0 0; }
+.nameplate .title { line-height: 1.7; font-family: var(--pixel); font-size: 2.5cqw; color: var(--gold); letter-spacing: .06em; }
+.nameplate .name { font-family: var(--display); font-size: 15cqw; line-height: 1; margin: 1cqw 0 1.5cqw; text-shadow: 0 .7cqw 0 var(--red); }
+.nameplate .line { font-size: 3.8cqw; color: var(--ink-soft); margin: 0 0 4cqw; font-style: italic; }
+.actions { display: flex; gap: 3cqw; }
+.actions button { flex: 1; font-size: 5.2cqw; padding: 2.6cqw 2cqw 2cqw; }
+.ghost-btn {
+  font-family: var(--display); color: var(--ink); background: rgba(255, 255, 255, .1);
+  border: 2px solid rgba(255, 255, 255, .35); border-radius: 999px; cursor: pointer;
+}
+.skip-hint { position: absolute; right: 4cqw; bottom: 4cqw; z-index: 9; font-family: var(--pixel); font-size: 2.2cqw; color: rgba(255, 255, 255, .55); }
+.mute {
+  position: absolute; right: 4cqw; top: 4cqw; z-index: 20; font-family: var(--pixel); font-size: 2.2cqw;
+  color: var(--ink); background: rgba(0, 0, 0, .4); border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 999px; padding: 1.6cqw 2.6cqw; cursor: pointer;
+}
+
+@keyframes hover { 50% { transform: translateY(-2.5cqw); } }
+@keyframes drop { from { transform: translateY(-120cqw); } }
+@keyframes bump { 40% { transform: translateY(-7cqw) scale(1.04, .96); } 70% { transform: translateY(1cqw) scale(.97, 1.03); } }
+@keyframes star-out {
+  0% { opacity: 0; transform: translateY(10cqw) scale(.3) rotate(-30deg); }
+  30% { opacity: 1; }
+  100% { opacity: 1; transform: translateY(-30cqw) scale(1.4) rotate(360deg); }
+}
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes spin { to { rotate: 360deg; } }
+@keyframes drift { from { transform: translateX(0); } to { transform: translateX(30cqw); } }
+@keyframes jump-out {
+  0% { translate: -46% 105%; }
+  55% { translate: -46% -16%; }
+  100% { translate: -46% -6%; }
+}
+@keyframes idle { 50% { translate: -46% -9%; } }
+@keyframes slam {
+  0% { opacity: 0; transform: scale(3.2); }
+  60% { opacity: 1; transform: scale(.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes pop { 0% { opacity: 0; transform: scale(0); } 100% { opacity: 1; transform: scale(1); } }
+@keyframes shake {
+  20% { transform: translate(-1.6cqw, 1cqw); } 40% { transform: translate(1.4cqw, -1.2cqw); }
+  60% { transform: translate(-1cqw, -.6cqw); } 80% { transform: translate(.8cqw, 1.2cqw); }
+}
+.shake { animation: shake .32s linear; }
+@media (prefers-reduced-motion: reduce) {
+  .rays, .cloud, .banner-art img.hero, .mario.idle { animation: none; }
+  .shake { animation: none; }
+}
+</style>
+
+<div class="stage" id="stage">
+  <button class="mute" id="mute" type="button" aria-pressed="false">SOUND ON</button>
+
+  <section class="layer banner" id="banner">
+    <div class="eyebrow">LIMITED BANNER &#183; FAMILY: MARIO</div>
+    <h1>Mushroom Kingdom</h1>
+    <div class="banner-art">
+      <div class="rate-up">RATE UP<br><b>&#9733;&#9733;&#9733;&#9733;&#9733;</b> MARIO<br>SSR 3% &#183; SR 15%</div>
+      <img class="hero" src="mario.webp" alt="Mario jumping">
+    </div>
+    <button class="pull-btn" id="pull" type="button">Pull &#215;1</button>
+    <p class="fine">Demo pull: this banner always gives the SSR so you can see the full sequence.</p>
+  </section>
+
+  <section class="layer seq" id="seq" hidden>
+    <div class="layer tease" id="tease">
+      <div class="block-wrap" id="blockWrap">
+        <img class="block" id="block" src="block.webp" alt="">
+        <img class="star-burst" id="starBurst" src="star.webp" alt="">
+      </div>
+    </div>
+
+    <div class="layer quote-screen" id="quoteScreen" hidden>
+      <div>
+        <p class="quote" id="quote"></p>
+        <div class="speaker" id="speaker">&#8212; MARIO</div>
+      </div>
+    </div>
+
+    <div class="layer reveal" id="reveal" hidden>
+      <div class="rays"></div>
+      <div class="cloud c1"></div>
+      <div class="cloud c2"></div>
+      <div class="ground"></div>
+      <div class="mario-clip" id="marioClip"><img class="mario" id="mario" src="mario.webp" alt="Mario"></div>
+      <img class="pipe" id="pipe" src="pipe.webp" alt="">
+      <canvas class="sparkles" id="sparkles"></canvas>
+      <div class="rarity" id="rarity"><span>S</span><span>S</span><span>R</span></div>
+      <div class="stars" id="stars"><i>&#9733;</i><i>&#9733;</i><i>&#9733;</i><i>&#9733;</i><i>&#9733;</i></div>
+      <div class="nameplate" id="nameplate">
+        <div class="title">HERO OF THE MUSHROOM KINGDOM &#183; ALL-ROUNDER</div>
+        <div class="name">MARIO</div>
+        <p class="line">&#8220;Let's-a go!&#8221;</p>
+        <div class="actions">
+          <button class="pull-btn" id="again" type="button">Pull again</button>
+          <button class="ghost-btn" id="back" type="button">Banner</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="layer flash" id="flash"></div>
+    <div class="skip-hint" id="skipHint">TAP TO SKIP</div>
+  </section>
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// ---------- Audio ----------
+let ctx = null;
+let master = null;
+let muted = false;
+const buffers = {};
+const raw = {};
+for (const name of ['letsago', 'powerup', 'coin', 'startheme']) {
+  raw[name] = fetch(`${name}.mp3`).then((r) => r.arrayBuffer()).catch(() => null);
+}
+async function audioReady() {
+  if (!ctx) {
+    ctx = new (window.AudioContext || window.webkitAudioContext)();
+    master = ctx.createGain();
+    master.gain.value = muted ? 0 : 1;
+    master.connect(ctx.destination);
+    await Promise.all(Object.keys(raw).map(async (k) => {
+      const data = await raw[k];
+      if (data) {
+        try { buffers[k] = await ctx.decodeAudioData(data.slice(0)); } catch (e) { /* missing clip: stay silent */ }
+      }
+    }));
+  }
+  if (ctx.state === 'suspended') await ctx.resume();
+}
+let ambient = null;
+function playClip(name, { volume = 1, loop = false } = {}) {
+  if (!ctx || !buffers[name]) return null;
+  const src = ctx.createBufferSource();
+  const g = ctx.createGain();
+  src.buffer = buffers[name];
+  src.loop = loop;
+  g.gain.value = volume;
+  src.connect(g).connect(master);
+  src.start();
+  return { src, g };
+}
+function tone(freq, start, dur, { type = 'square', vol = 0.12, slideTo = null } = {}) {
+  const o = ctx.createOscillator();
+  const g = ctx.createGain();
+  o.type = type;
+  o.frequency.setValueAtTime(freq, start);
+  if (slideTo) o.frequency.exponentialRampToValueAtTime(slideTo, start + dur);
+  g.gain.setValueAtTime(0.0001, start);
+  g.gain.linearRampToValueAtTime(vol, start + 0.008);
+  g.gain.setValueAtTime(vol, start + dur * 0.7);
+  g.gain.exponentialRampToValueAtTime(0.0001, start + dur);
+  o.connect(g).connect(musicBus);
+  o.start(start);
+  o.stop(start + dur + 0.02);
+  playing.push(o);
+}
+let musicBus = null;
+let playing = [];
+function stopMusic() {
+  playing.forEach((o) => { try { o.stop(); } catch (e) {} });
+  playing = [];
+  musicBus = null;
+}
+
+// The overworld theme's opening, written out note by note (NES-style square/triangle voices).
+const N = {
+  G2: 98.0, C3: 130.81, D3: 146.83, E3: 164.81, F3: 174.61, 'F#3': 185.0, G3: 196.0,
+  E4: 329.63, 'F#4': 369.99, G4: 392.0, A4: 440.0, 'A#4': 466.16, B4: 493.88,
+  C5: 523.25, D5: 587.33, E5: 659.25, F5: 698.46, G5: 783.99, A5: 880.0,
+};
+const STEP = 0.11;
+const MELODY = [
+  'E5', 'E5', 0, 'E5', 0, 'C5', 'E5', 0, 'G5', 0, 0, 0, 'G4', 0, 0, 0,
+  'C5', 0, 0, 'G4', 0, 0, 'E4', 0, 0, 'A4', 0, 'B4', 0, 'A#4', 'A4', 0,
+];
+const HARMONY = [
+  'F#4', 'F#4', 0, 'F#4', 0, 'F#4', 'F#4', 0, 'B4', 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+];
+const BASS = [
+  'D3', 'D3', 0, 'D3', 0, 'D3', 'D3', 0, 'G3', 0, 0, 0, 'G2', 0, 0, 0,
+  'G3', 0, 0, 'E3', 0, 0, 'C3', 0, 0, 'F3', 0, 'G3', 0, 'F#3', 'F3', 0,
+];
+// Bar 3: triplet G-E-G, then A, F-G, E, C-D-B.
+const TAIL = [
+  ['G4', 4 / 3], ['E5', 4 / 3], ['G5', 4 / 3], ['A5', 2], ['F5', 1], ['G5', 2], ['E5', 2], ['C5', 1], ['D5', 1], ['B4', 3],
+];
+function playTheme(at) {
+  musicBus = ctx.createGain();
+  musicBus.gain.value = 0.9;
+  musicBus.connect(master);
+  const t0 = at;
+  MELODY.forEach((n, i) => n && tone(N[n], t0 + i * STEP, STEP * 0.92, { vol: 0.11 }));
+  HARMONY.forEach((n, i) => n && tone(N[n], t0 + i * STEP, STEP * 0.9, { vol: 0.05 }));
+  BASS.forEach((n, i) => n && tone(N[n], t0 + i * STEP, STEP * 0.95, { type: 'triangle', vol: 0.22 }));
+  let t = t0 + MELODY.length * STEP;
+  for (const [n, len] of TAIL) {
+    tone(N[n], t, STEP * len * 0.92, { vol: 0.11 });
+    t += STEP * len;
+  }
+  return t; // end time
+}
+function duck(to, over = 0.15) {
+  if (!musicBus) return;
+  musicBus.gain.cancelScheduledValues(ctx.currentTime);
+  musicBus.gain.linearRampToValueAtTime(to, ctx.currentTime + over);
+}
+function bumpSfx() {
+  if (!ctx) return;
+  const t = ctx.currentTime;
+  const o = ctx.createOscillator();
+  const g = ctx.createGain();
+  o.type = 'square';
+  o.frequency.setValueAtTime(140, t);
+  o.frequency.exponentialRampToValueAtTime(320, t + 0.09);
+  g.gain.setValueAtTime(0.12, t);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + 0.12);
+  o.connect(g).connect(master);
+  o.start(t);
+  o.stop(t + 0.14);
+}
+
+// ---------- Sparkles ----------
+const canvas = $('sparkles');
+const c2d = canvas.getContext('2d');
+let sparks = [];
+let sparkRun = false;
+function sizeCanvas() {
+  const r = canvas.getBoundingClientRect();
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = Math.max(1, r.width * dpr);
+  canvas.height = Math.max(1, r.height * dpr);
+  c2d.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+function starPath(x, y, r) {
+  c2d.beginPath();
+  for (let k = 0; k < 8; k++) {
+    const a = (k * Math.PI) / 4;
+    const rr = k % 2 ? r * 0.28 : r;
+    c2d.lineTo(x + Math.cos(a) * rr, y + Math.sin(a) * rr);
+  }
+  c2d.closePath();
+}
+function burst(x, y, n, spread = 1) {
+  for (let i = 0; i < n; i++) {
+    const a = Math.random() * Math.PI * 2;
+    const v = (80 + Math.random() * 260) * spread;
+    sparks.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 80, r: 3 + Math.random() * 6, life: 0.8 + Math.random() * 0.8, age: 0, hue: Math.random() < 0.7 ? 48 : 0 });
+  }
+  runSparks();
+}
+function twinkle() {
+  const r = canvas.getBoundingClientRect();
+  sparks.push({ x: Math.random() * r.width, y: Math.random() * r.height * 0.75, vx: 0, vy: -10, r: 2 + Math.random() * 5, life: 1 + Math.random(), age: 0, hue: 48, tw: true });
+  runSparks();
+}
+function runSparks() {
+  if (sparkRun) return;
+  sparkRun = true;
+  let last = performance.now();
+  const frame = (now) => {
+    const dt = Math.min(0.05, (now - last) / 1000);
+    last = now;
+    const r = canvas.getBoundingClientRect();
+    c2d.clearRect(0, 0, r.width, r.height);
+    sparks = sparks.filter((p) => (p.age += dt) < p.life);
+    for (const p of sparks) {
+      if (!p.tw) p.vy += 380 * dt;
+      p.x += p.vx * dt;
+      p.y += p.vy * dt;
+      const k = p.age / p.life;
+      const scale = p.tw ? Math.sin(k * Math.PI) : 1 - k;
+      c2d.globalAlpha = Math.max(0, scale);
+      c2d.fillStyle = p.hue === 48 ? '#fff3a0' : '#ffffff';
+      starPath(p.x, p.y, p.r * (p.tw ? scale : 1));
+      c2d.fill();
+    }
+    c2d.globalAlpha = 1;
+    if (sparks.length) requestAnimationFrame(frame);
+    else sparkRun = false;
+  };
+  requestAnimationFrame(frame);
+}
+
+// ---------- Sequence ----------
+let skipping = false;
+let running = false;
+let twinkleTimer = null;
+const wait = (ms) => (skipping ? Promise.resolve() : sleep(ms));
+function restart(el, cls) { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
+function flash(strength = 1, ms = 380) {
+  const f = $('flash');
+  f.style.transition = 'none';
+  f.style.opacity = strength;
+  void f.offsetWidth;
+  f.style.transition = `opacity ${ms}ms ease-out`;
+  f.style.opacity = 0;
+}
+function fadeToBlack(ms = 450) {
+  const f = $('flash');
+  f.style.background = '#000';
+  f.style.transition = `opacity ${ms}ms ease-in`;
+  f.style.opacity = 1;
+  return sleep(skipping ? 0 : ms).then(() => { f.style.background = '#fff'; f.style.transition = 'none'; f.style.opacity = 0; });
+}
+function resetScenes() {
+  $('tease').hidden = false;
+  $('quoteScreen').hidden = true;
+  $('reveal').hidden = true;
+  $('skipHint').hidden = false;
+  $('quote').textContent = '';
+  $('speaker').classList.remove('on');
+  $('block').className = 'block';
+  $('starBurst').className = 'star-burst';
+  $('blockWrap').style.setProperty('--glow', 'rgba(255,255,255,.5)');
+  $('pipe').classList.remove('up');
+  $('mario').className = 'mario';
+  $('marioClip').classList.remove('free');
+  document.querySelectorAll('#rarity span').forEach((s) => s.classList.remove('slam'));
+  document.querySelectorAll('#stars i').forEach((s) => s.classList.remove('on'));
+  $('nameplate').classList.remove('on');
+  clearInterval(twinkleTimer);
+  sparks = [];
+}
+
+async function runPull() {
+  if (running) return;
+  running = true;
+  skipping = false;
+  await audioReady();
+  stopMusic();
+  if (ambient) { try { ambient.src.stop(); } catch (e) {} ambient = null; }
+  resetScenes();
+  $('banner').hidden = true;
+  $('seq').hidden = false;
+
+  // 1. ? Block drops in and gets bumped; its glow teases the rarity.
+  playClip('coin', { volume: 0.6 });
+  restart($('block'), 'drop');
+  await wait(800);
+  const glows = ['rgba(120,170,255,.75)', 'rgba(200,120,255,.8)', 'rgba(255,214,64,.95)'];
+  for (let i = 0; i < 3; i++) {
+    restart($('block'), 'bump');
+    bumpSfx();
+    $('blockWrap').style.setProperty('--glow', glows[i]);
+    await wait(i === 1 ? 650 : 520);
+  }
+  // 2. A Super Star bursts out: SSR.
+  restart($('starBurst'), 'go');
+  playClip('coin', { volume: 0.8 });
+  if (!skipping) restart($('stage'), 'shake');
+  await wait(900);
+  flash(1, 300);
+  await wait(200);
+  await fadeToBlack(400);
+
+  // 3. Black screen: the theme starts, then the quote types in with the voice line.
+  $('tease').hidden = true;
+  $('quoteScreen').hidden = false;
+  let themeEnd = ctx.currentTime;
+  if (!skipping) themeEnd = playTheme(ctx.currentTime + 0.05);
+  await wait(1700);
+  if (!skipping) {
+    duck(0.35);
+    playClip('letsago', { volume: 1 });
+  }
+  const text = "Let's-a go!";
+  const q = $('quote');
+  for (let i = 1; i <= text.length; i++) {
+    q.innerHTML = `${text.slice(0, i)}<span class="caret"></span>`;
+    await wait(55);
+  }
+  $('speaker').classList.add('on');
+  await wait(900);
+  duck(0.9, 0.3);
+  const remaining = Math.max(0, (themeEnd - ctx.currentTime) * 1000 - 250);
+  await wait(remaining);
+
+  // 4. Flash to the reveal: the pipe rises, Mario jumps out.
+  stopMusic();
+  playClip('powerup', { volume: 0.9 });
+  flash(1, 600);
+  $('quoteScreen').hidden = true;
+  $('reveal').hidden = false;
+  sizeCanvas();
+  await wait(60);
+  $('pipe').classList.add('up');
+  await wait(380);
+  $('mario').classList.add('jump');
+  await wait(520);
+  $('marioClip').classList.add('free');
+  const pr = $('pipe').getBoundingClientRect();
+  const sr = canvas.getBoundingClientRect();
+  burst(pr.left - sr.left + pr.width / 2, pr.top - sr.top + 10, 70, 1.1);
+  await wait(500);
+  $('mario').className = 'mario idle';
+  twinkleTimer = setInterval(twinkle, 140);
+
+  // 5. S, S, R slam in, then the stars and the nameplate.
+  const letters = document.querySelectorAll('#rarity span');
+  for (const l of letters) {
+    skipping ? l.classList.add('slam') : restart(l, 'slam');
+    playClip('coin', { volume: 0.7 });
+    if (!skipping) restart($('stage'), 'shake');
+    const r = l.getBoundingClientRect();
+    burst(r.left - sr.left + r.width / 2, r.top - sr.top + r.height / 2, 14, 0.5);
+    await wait(300);
+  }
+  for (const s of document.querySelectorAll('#stars i')) {
+    s.classList.add('on');
+    await wait(110);
+  }
+  $('nameplate').classList.add('on');
+  $('skipHint').hidden = true;
+  ambient = playClip('startheme', { volume: 0.25, loop: true });
+  running = false;
+}
+
+function finishNow() {
+  // Jump straight to the final card.
+  skipping = true;
+}
+
+$('pull').addEventListener('click', runPull);
+$('again').addEventListener('click', (e) => { e.stopPropagation(); running = false; runPull(); });
+$('back').addEventListener('click', (e) => {
+  e.stopPropagation();
+  stopMusic();
+  if (ambient) { try { ambient.src.stop(); } catch (err) {} ambient = null; }
+  clearInterval(twinkleTimer);
+  $('seq').hidden = true;
+  $('banner').hidden = false;
+});
+$('seq').addEventListener('click', () => { if (running) finishNow(); });
+$('mute').addEventListener('click', (e) => {
+  e.stopPropagation();
+  muted = !muted;
+  if (master) master.gain.value = muted ? 0 : 1;
+  $('mute').textContent = muted ? 'SOUND OFF' : 'SOUND ON';
+  $('mute').setAttribute('aria-pressed', String(muted));
+});
+window.addEventListener('resize', sizeCanvas);
+</script>
