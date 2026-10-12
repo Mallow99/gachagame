@@ -1,0 +1,459 @@
+{
+ "walter": {
+  "host": "breakingbad.fandom.com",
+  "page": "Walter White",
+  "tokens": [
+   "walter",
+   "heisenberg"
+  ]
+ },
+ "jesse": {
+  "host": "breakingbad.fandom.com",
+  "page": "Jesse Pinkman",
+  "tokens": [
+   "jesse",
+   "pinkman"
+  ]
+ },
+ "saul": {
+  "host": "breakingbad.fandom.com",
+  "page": "Saul Goodman",
+  "tokens": [
+   "saul",
+   "goodman",
+   "jimmy"
+  ]
+ },
+ "omniman": {
+  "host": "invincible.fandom.com",
+  "page": "Nolan Grayson",
+  "tokens": [
+   "omni",
+   "nolan"
+  ]
+ },
+ "homelander": {
+  "host": "theboys.fandom.com",
+  "page": "Homelander",
+  "tokens": [
+   "homelander"
+  ]
+ },
+ "steve": {
+  "host": "minecraft.wiki",
+  "page": "Steve",
+  "tokens": [
+   "steve"
+  ]
+ },
+ "dracula": {
+  "host": "hoteltransylvania.fandom.com",
+  "page": "Count Dracula",
+  "tokens": [
+   "drac"
+  ]
+ },
+ "kratts": {
+  "host": "wildkratts.fandom.com",
+  "page": "Martin Kratt",
+  "tokens": [
+   "kratt",
+   "martin",
+   "chris"
+  ],
+  "pages": [
+   "Chris Kratt"
+  ]
+ },
+ "sole": {
+  "host": "fallout.fandom.com",
+  "page": "Sole Survivor",
+  "tokens": [
+   "sole",
+   "survivor",
+   "nate",
+   "fo4"
+  ]
+ },
+ "zuko": {
+  "host": "avatar.fandom.com",
+  "page": "Zuko",
+  "tokens": [
+   "zuko"
+  ]
+ },
+ "cena": {
+  "host": "prowrestling.fandom.com",
+  "page": "John Cena",
+  "tokens": [
+   "cena"
+  ]
+ },
+ "gamatatsu": {
+  "host": "naruto.fandom.com",
+  "page": "Gamatatsu",
+  "tokens": [
+   "gamatatsu"
+  ]
+ },
+ "invcurse": {
+  "host": "jujutsu-kaisen.fandom.com",
+  "page": "Inventory Curse",
+  "tokens": [
+   "inventory",
+   "curse"
+  ]
+ },
+ "toji": {
+  "host": "jujutsu-kaisen.fandom.com",
+  "page": "Toji Fushiguro",
+  "tokens": [
+   "toji"
+  ]
+ },
+ "kirara": {
+  "host": "jujutsu-kaisen.fandom.com",
+  "page": "Kirara Hoshi",
+  "tokens": [
+   "kirara"
+  ]
+ },
+ "ryuk": {
+  "host": "deathnote.fandom.com",
+  "page": "Ryuk",
+  "tokens": [
+   "ryuk"
+  ]
+ },
+ "asuka": {
+  "host": "evangelion.fandom.com",
+  "page": "Asuka Langley Soryu",
+  "tokens": [
+   "asuka"
+  ]
+ },
+ "futaba": {
+  "host": "megamitensei.fandom.com",
+  "page": "Futaba Sakura",
+  "tokens": [
+   "futaba"
+  ]
+ },
+ "aigis": {
+  "host": "megamitensei.fandom.com",
+  "page": "Aigis",
+  "tokens": [
+   "aigis"
+  ]
+ },
+ "teto": {
+  "host": "vocaloid.fandom.com",
+  "page": "Kasane Teto",
+  "tokens": [
+   "teto"
+  ]
+ },
+ "spongebob": {
+  "host": "spongebob.fandom.com",
+  "page": "SpongeBob SquarePants (character)",
+  "tokens": [
+   "spongebob"
+  ]
+ },
+ "finn": {
+  "host": "adventuretime.fandom.com",
+  "page": "Finn",
+  "tokens": [
+   "finn",
+   "fionna",
+   "cake"
+  ]
+ },
+ "caterpillar": {
+  "host": "en.wikipedia.org",
+  "page": "The Very Hungry Caterpillar",
+  "tokens": [
+   "caterpillar"
+  ]
+ },
+ "ropehero": {
+  "host": "en.wikipedia.org",
+  "page": "Rope Hero",
+  "tokens": [
+   "rope"
+  ]
+ },
+ "sahur": {
+  "host": "italianbrainrot.fandom.com",
+  "page": "Tung Tung Tung Sahur",
+  "tokens": [
+   "tung",
+   "sahur"
+  ]
+ },
+ "saheaven": {
+  "host": "italianbrainrot.fandom.com",
+  "page": "Tung Tung Tung Saheaven",
+  "tokens": [
+   "saheaven",
+   "heaven"
+  ]
+ },
+ "ballerina": {
+  "host": "italianbrainrot.fandom.com",
+  "page": "Ballerina Cappuccina",
+  "tokens": [
+   "ballerina",
+   "cappuccina"
+  ]
+ },
+ "obamaec": {
+  "host": "en.wikipedia.org",
+  "page": "Electoral Carnage",
+  "tokens": [
+   "electoral",
+   "carnage",
+   "obama"
+  ]
+ },
+ "obamabaki": {
+  "host": "baki.fandom.com",
+  "page": "Barack Obama",
+  "tokens": [
+   "obama"
+  ]
+ },
+ "yujiro": {
+  "host": "baki.fandom.com",
+  "page": "Yujiro Hanma",
+  "tokens": [
+   "yujiro"
+  ]
+ },
+ "alai": {
+  "host": "baki.fandom.com",
+  "page": "Muhammad Alai Jr.",
+  "tokens": [
+   "alai",
+   "muhammad"
+  ]
+ },
+ "ronald": {
+  "host": "mcdonalds.fandom.com",
+  "page": "Ronald McDonald",
+  "tokens": [
+   "ronald"
+  ]
+ },
+ "grimace": {
+  "host": "mascots.fandom.com",
+  "page": "Grimace",
+  "tokens": [
+   "grimace"
+  ]
+ },
+ "bart": {
+  "host": "simpsons.fandom.com",
+  "page": "Bart Simpson",
+  "tokens": [
+   "bart"
+  ]
+ },
+ "scrubby": {
+  "host": "en.wikipedia.org",
+  "page": "Scrubbing Bubbles",
+  "tokens": [
+   "scrub",
+   "bubble"
+  ]
+ },
+ "mrclean": {
+  "host": "mascots.fandom.com",
+  "page": "Mr. Clean",
+  "tokens": [
+   "clean"
+  ]
+ },
+ "snapcracklepop": {
+  "host": "mascots.fandom.com",
+  "page": "Snap, Crackle and Pop",
+  "tokens": [
+   "snap",
+   "crackle",
+   "pop"
+  ]
+ },
+ "keebler": {
+  "host": "en.wikipedia.org",
+  "page": "Keebler Company",
+  "tokens": [
+   "ernie",
+   "keebler",
+   "elf"
+  ]
+ },
+ "cfacow": {
+  "host": "chickfila.fandom.com",
+  "page": "The Chick-fil-A Cows",
+  "tokens": [
+   "cow"
+  ]
+ },
+ "koolaid": {
+  "host": "mascots.fandom.com",
+  "page": "Kool-Aid Man",
+  "tokens": [
+   "kool"
+  ]
+ },
+ "duo": {
+  "host": "duolingo.fandom.com",
+  "page": "Duo",
+  "tokens": [
+   "duo",
+   "owl"
+  ]
+ },
+ "tyler": {
+  "host": "villains.fandom.com",
+  "page": "Tyler Durden",
+  "tokens": [
+   "tyler",
+   "durden"
+  ]
+ },
+ "bateman": {
+  "host": "villains.fandom.com",
+  "page": "Patrick Bateman",
+  "tokens": [
+   "bateman",
+   "patrick"
+  ]
+ },
+ "profx": {
+  "host": "marvelcinematicuniverse.fandom.com",
+  "page": "Charles Xavier",
+  "tokens": [
+   "xavier",
+   "charles",
+   "professor"
+  ]
+ },
+ "cap": {
+  "host": "marvelcinematicuniverse.fandom.com",
+  "page": "Steve Rogers",
+  "tokens": [
+   "steve",
+   "rogers",
+   "captain"
+  ]
+ },
+ "engine": {
+  "host": "en.wikipedia.org",
+  "page": "The Little Engine That Could",
+  "tokens": [
+   "engine"
+  ]
+ },
+ "sally": {
+  "host": "en.wikipedia.org",
+  "page": "She sells seashells by the seashore",
+  "tokens": [
+   "shell",
+   "sea",
+   "mary",
+   "anning"
+  ]
+ },
+ "jack": {
+  "host": "disney.fandom.com",
+  "page": "Jack Skellington",
+  "tokens": [
+   "jack",
+   "skellington"
+  ]
+ },
+ "am": {
+  "host": "villains.fandom.com",
+  "page": "AM (I Have No Mouth, and I Must Scream)",
+  "tokens": [
+   "am",
+   "allied",
+   "mastercomputer"
+  ]
+ },
+ "shaggy": {
+  "host": "scoobydoo.fandom.com",
+  "page": "Shaggy Rogers",
+  "tokens": [
+   "shaggy"
+  ]
+ },
+ "holden": {
+  "host": "villains.fandom.com",
+  "page": "Judge Holden",
+  "tokens": [
+   "holden",
+   "judge"
+  ]
+ },
+ "chigurh": {
+  "host": "villains.fandom.com",
+  "page": "Anton Chigurh",
+  "tokens": [
+   "anton",
+   "chigurh"
+  ]
+ },
+ "hansen": {
+  "host": "en.wikipedia.org",
+  "page": "Chris Hansen",
+  "tokens": [
+   "hansen"
+  ]
+ },
+ "saitama": {
+  "host": "onepunchman.fandom.com",
+  "page": "Saitama",
+  "tokens": [
+   "saitama"
+  ]
+ },
+ "marshadow": {
+  "host": "bulbapedia.bulbagarden.net",
+  "page": "Marshadow (Pok\u00e9mon)",
+  "tokens": [
+   "marshadow",
+   "802"
+  ]
+ },
+ "kirby": {
+  "host": "wikirby.com",
+  "page": "Kirby",
+  "tokens": [
+   "kirby"
+  ]
+ },
+ "gingy": {
+  "host": "shrek.fandom.com",
+  "page": "Gingerbread Man",
+  "tokens": [
+   "gingy",
+   "gingerbread"
+  ]
+ },
+ "shrek": {
+  "host": "shrek.fandom.com",
+  "page": "Shrek (character)",
+  "tokens": [
+   "shrek"
+  ]
+ },
+ "farquaad": {
+  "host": "shrek.fandom.com",
+  "page": "Lord Farquaad",
+  "tokens": [
+   "farquaad"
+  ]
+ }
+}

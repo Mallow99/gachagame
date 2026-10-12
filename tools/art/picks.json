@@ -1,0 +1,266 @@
+{
+ "omniman": {
+  "splash": "cand/omniman/04.png",
+  "note": "official render, classic suit"
+ },
+ "futaba": {
+  "splash": "cand/futaba/00.png",
+  "alt": "cand/futaba/01.png",
+  "note": "P5 official art"
+ },
+ "aigis": {
+  "splash": "cand/aigis/01.png",
+  "alt": "cand/aigis/07.png",
+  "note": "P3 official art"
+ },
+ "jack": {
+  "splash": "cand/jack/00.png",
+  "note": "small render, may upgrade"
+ },
+ "marshadow": {
+  "splash": "cand/marshadow/06.png",
+  "note": "Sugimori art; try Showdown animated sprite"
+ },
+ "yujiro": {
+  "splash": "cand/yujiro/00.png",
+  "cut": true
+ },
+ "asuka": {
+  "splash": "cand/asuka/04.png",
+  "alt": "cand/asuka/08.png"
+ },
+ "steve": {
+  "splash": "cand/steve/02.png"
+ },
+ "kirby": {
+  "splash": "cand/kirby/02.png"
+ },
+ "spongebob": {
+  "splash": "cand/spongebob/06.png"
+ },
+ "bart": {
+  "splash": "cand/bart/10.jpg",
+  "cut": true,
+  "note": "small; upgrade"
+ },
+ "finn": {
+  "splash": "cand/finn/14.png",
+  "note": "robot-arm Finn; confirm adult F&C look"
+ },
+ "ryuk": {
+  "splash": "cand/ryuk/00.png",
+  "keepbg": true
+ },
+ "kirara": {
+  "splash": "cand/kirara/02.png"
+ },
+ "toji": {
+  "splash": "cand/toji/01.png"
+ },
+ "dracula": {
+  "splash": "cand/dracula/00.png",
+  "note": "small; upgrade"
+ },
+ "cena": {
+  "splash": "cand/cena/00.png"
+ },
+ "gamatatsu": {
+  "splash": "cand/gamatatsu/01.png"
+ },
+ "teto": {
+  "splash": "cand/teto/00.png"
+ },
+ "obamabaki": {
+  "splash": "cand/obamabaki/01.png",
+  "cut": true
+ },
+ "alai": {
+  "splash": "cand/alai/00.png",
+  "cut": true
+ },
+ "ronald": {
+  "splash": "cand/ronald/06.jpg",
+  "cut": true
+ },
+ "tyler": {
+  "splash": "cand/tyler/06.jpg",
+  "cut": true
+ },
+ "bateman": {
+  "splash": "cand/bateman/04.webp",
+  "cut": true
+ },
+ "shaggy": {
+  "splash": "cand/shaggy/02.jpg",
+  "cut": true
+ },
+ "holden": {
+  "splash": "cand/holden/00.png",
+  "note": "painted portrait, keep bg"
+ },
+ "shrek": {
+  "splash": "cand/shrek/00.png"
+ },
+ "farquaad": {
+  "splash": "cand/farquaad/07.png"
+ },
+ "homelander": {
+  "splash": "cand/homelander/04.png"
+ },
+ "gingy": {
+  "splash": "cand/gingy/00.png"
+ },
+ "chigurh": {
+  "splash": "cand/chigurh/02.jpg",
+  "cut": true
+ },
+ "duo": {
+  "splash": "cand/duo/02.png"
+ },
+ "jesse": {
+  "splash": "cand/jesse/01.png",
+  "cut": true
+ },
+ "saul": {
+  "splash": "cand/saul/14.png",
+  "cut": true
+ },
+ "kratts": {
+  "splash": "cand/kratts/00.png",
+  "alt": "cand/kratts/01.png",
+  "cut": true,
+  "note": "combine as duo",
+  "combine": [
+   "cand/kratts/00.png",
+   "cand/kratts/01.png"
+  ]
+ },
+ "saitama": {
+  "splash": "cand/saitama/08.png",
+  "crop": [
+   0.0,
+   0.0,
+   0.36,
+   1.0
+  ],
+  "cut": true
+ },
+ "cap": {
+  "splash": "cand2/cap/captain_america_civil_war_promo_captain_.jpg",
+  "cut": true
+ },
+ "walter": {
+  "splash": "cand2/walter/season_4_heisenberg_jpg.jpg",
+  "cut": true,
+  "alt": "cand2/walter/heisenberg_large_png.png"
+ },
+ "sole": {
+  "splash": "cand2/sole/fo4_vault_111_jumpsuit_male_jpg.jpg",
+  "cut": true
+ },
+ "grimace": {
+  "splash": "cand/grimace/03.jpg",
+  "cut": true
+ },
+ "mrclean": {
+  "splash": "cand/mrclean/00.jpg",
+  "cut": true
+ },
+ "koolaid": {
+  "splash": "cand/koolaid/02.jpg",
+  "keepbg": true,
+  "crop": [
+   0.0,
+   0.2,
+   1.0,
+   0.8
+  ],
+  "note": "comic cover crop"
+ },
+ "snapcracklepop": {
+  "splash": "cand/snapcracklepop/05.jpg",
+  "keepbg": true,
+  "crop": [
+   0.05,
+   0.05,
+   0.95,
+   1.0
+  ]
+ },
+ "hansen": {
+  "splash": "cand/hansen/00.jpg",
+  "cut": true
+ },
+ "sahur": {
+  "splash": "cand/sahur/09.png",
+  "keepbg": true
+ },
+ "keebler": {
+  "splash": "cand/keebler/05.jpg",
+  "crop": [
+   0.55,
+   0.15,
+   0.92,
+   1.0
+  ],
+  "cut": true,
+  "note": "weak; cropped from banner"
+ },
+ "scrubby": {
+  "splash": "cand/scrubby/03.jpg",
+  "crop": [
+   0.0,
+   0.08,
+   1.0,
+   0.62
+  ],
+  "keepbg": true,
+  "note": "vintage ad crop"
+ },
+ "am": {
+  "splash": "cand/am/20.jpg",
+  "keepbg": true,
+  "crop": [
+   0.2,
+   0.0,
+   0.8,
+   1.0
+  ]
+ },
+ "profx": {
+  "splash": "cand/profx/00.png",
+  "keepbg": true,
+  "note": "poster; weak"
+ },
+ "ballerina": {
+  "splash": "cand/ballerina/00.jpg",
+  "crop": [
+   0.333,
+   0.2,
+   0.666,
+   0.955
+  ],
+  "keepbg": true
+ },
+ "cfacow": {
+  "splash": "cand/cfacow/08.jpg",
+  "crop": [
+   0.05,
+   0.0,
+   0.3,
+   0.55
+  ],
+  "keepbg": true,
+  "note": "weak; billboard crop"
+ },
+ "zuko": {
+  "splash": "cand/zuko/10.png",
+  "cut": true,
+  "note": "anime still"
+ },
+ "invcurse": {
+  "splash": "cand/toji/02.png",
+  "keepbg": true,
+  "note": "Toji wearing the curse; weak"
+ }
+}
