@@ -145,11 +145,11 @@ body.mobile-layout .art .art-front { right: 0; max-width: 100%; width: 100%; obj
 .banner-seal::after { inset: 27%; background: rgba(255,255,255,.08); box-shadow: 0 0 3cqw rgba(255,220,110,.38); }
 .banner-seal .crown { position: absolute; inset: 31% 0 auto; text-align: center; font-size: 7cqw; color: var(--gold); filter: drop-shadow(0 .4cqw .7cqw rgba(73,24,0,.55)); }
 .banner-seal .orbit { position: absolute; inset: -8%; border: .2cqw dashed rgba(255,255,255,.34); border-radius: 50%; animation: orbit 24s linear infinite; }
-.banner-copy { width: 48cqw; }
+.banner-copy { width: 48cqw; display: flex; flex-direction: column; align-items: flex-start; gap: .9cqw; }
 .banner-kicker { display: flex; align-items: center; gap: .8cqw; }
 .banner-kicker::before { content: ""; width: 2.4cqw; height: .16cqw; background: var(--gold); box-shadow: 0 0 .8cqw var(--gold); }
 .tag { font-weight: 700; letter-spacing: .32em; font-size: 1.15cqw; color: var(--gold); text-transform: uppercase; }
-.banner-ui h1 { font-family: var(--display); font-weight: 400; font-size: 6.4cqw; line-height: .92; margin: 0; text-shadow: 0 .35cqw 0 var(--red), 0 .9cqw 2cqw rgba(0, 0, 0, .35); }
+.banner-ui h1 { font-family: var(--display); font-weight: 400; font-size: 6.4cqw; line-height: 1.04; margin: 0 0 .6cqw; text-shadow: 0 .35cqw 0 var(--red), 0 .9cqw 2cqw rgba(0, 0, 0, .35); }
 .banner-ui .rate { font-size: 1.6cqw; color: var(--ink-soft); font-weight: 500; }
 .banner-ui .rate b { color: var(--gold); font-weight: 700; }
 .pull {
@@ -174,6 +174,8 @@ body.mobile-layout .art .art-front { right: 0; max-width: 100%; width: 100%; obj
 .pull:active { transform: translateY(.35cqw); box-shadow: 0 .1cqw 0 #9b5200, 0 .6cqw 1.2cqw rgba(0, 0, 0, .4); }
 .pull:focus-visible, .ghost:focus-visible, .sound:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
 .note { font-size: 1.15cqw; color: var(--ink-soft); }
+.banner-copy .pull { margin-top: .8cqw; }
+.banner-copy .note { margin-top: .9cqw; }
 .featured { display: flex; gap: .55cqw; margin-top: .2cqw; }
 .featured span { padding: .25cqw .7cqw; border: 1px solid rgba(255,255,255,.25); background: rgba(4,8,30,.34); border-radius: 999px; font-size: 1cqw; letter-spacing: .12em; color: rgba(255,255,255,.8); text-transform: uppercase; backdrop-filter: blur(6px); }
 
@@ -251,7 +253,7 @@ body.mobile-layout .grade {
 }
 body.mobile-layout .banner-ui { justify-content: flex-end; padding: 0 7cqw 15cqw; gap: 2.3cqw; }
 body.mobile-layout .banner-copy { width: 86cqw; }
-body.mobile-layout .banner-ui h1 { font-size: 13.6cqw; line-height: .84; text-shadow: 0 .7cqw 0 var(--red), 0 1.8cqw 4cqw rgba(0,0,0,.45); }
+body.mobile-layout .banner-ui h1 { font-size: 13.6cqw; line-height: 1.02; text-shadow: 0 .7cqw 0 var(--red), 0 1.8cqw 4cqw rgba(0,0,0,.45); }
 body.mobile-layout .tag { font-size: 2.5cqw; }
 body.mobile-layout .banner-kicker { margin-bottom: 1.3cqw; }
 body.mobile-layout .banner-kicker::before { width: 5cqw; height: .35cqw; }
@@ -259,7 +261,7 @@ body.mobile-layout .banner-ui .rate { margin-top: 2.2cqw; font-size: 3.6cqw; }
 body.mobile-layout .featured { gap: 1cqw; margin-top: .8cqw; }
 body.mobile-layout .featured span { padding: .65cqw 1.5cqw; font-size: 2.1cqw; }
 body.mobile-layout .banner-ui .pull { margin-top: 2.6cqw; width: 100%; padding: 2.6cqw 4cqw 2.2cqw; font-size: 5.2cqw; }
-body.mobile-layout .note { text-align: center; font-size: 2.45cqw; }
+body.mobile-layout .note { align-self: stretch; text-align: center; font-size: 2.45cqw; margin-top: 2cqw; }
 body.mobile-layout .banner-seal { inset: 21% 15cqw auto auto; width: 70cqw; }
 body.mobile-layout .banner-seal .crown { font-size: 18cqw; }
 body.mobile-layout .quote { max-width: 90cqw; font-size: 13cqw; line-height: 1.05; }
@@ -355,27 +357,33 @@ const mobileLayout = requestedLayout === 'mobile';
 document.body.classList.toggle('mobile-layout', mobileLayout);
 document.querySelector('meta[name="viewport"]')?.setAttribute('content', 'width=device-width, initial-scale=1, viewport-fit=cover');
 // Each pull is one hand-drawn piece (sources in SOURCES.md). "Pull again" cycles.
-// tier: 0 = R, 1 = SR, 2 = SSR. wide: landscape art, shown full height and uncapped in width.
+// tier: 0 = R (base Mario), 1 = SR (power-ups), 2 = SSR (overpowered forms).
+// Only SSRs get the quote card, voice line and Starman theme; R and SR are just the pull.
+// wide: landscape art, shown full height and uncapped in width.
 const PULLS = [
-  { art: 'pull-flower.webp', wide: true, tier: 2, name: 'MARIO', title: 'Hero of the Flower Kingdom', quote: "Let's-a go!", chips: ['All-rounder', 'Wonder', 'Family: Mario'] },
-  { art: 'pull-bubble.webp', tier: 1, name: 'BUBBLE MARIO', title: 'Power-up: Bubble Flower', quote: 'Wahoo!', chips: ['Support', 'Bubble', 'Family: Mario'] },
-  { art: 'pull-block.webp', tier: 0, name: 'MARIO', title: 'Plumber from Brooklyn', quote: "It's-a me, Mario!", chips: ['Striker', 'Block-breaker', 'Family: Mario'] },
-  { art: 'pull-wonder.webp', tier: 2, name: 'WONDER MARIO', title: 'Keeper of the Wonder Seed', quote: 'Here we go!', chips: ['Burst', 'Wonder', 'Family: Mario'] },
-  { art: 'pull-fludd.webp', tier: 1, name: 'FLUDD MARIO', title: 'Delfino Island Cleanup', quote: 'Yahoo!', chips: ['Control', 'Water', 'Family: Mario'] },
+  { art: 'pull-superstar.webp', tier: 2, name: 'SUPERSTAR MARIO', title: 'Invincible', quote: "Let's-a go!", voice: 'letsago', chips: ['Burst', 'Invincible', 'Family: Mario'] },
+  { art: 'pull-bubble.webp', tier: 1, name: 'BUBBLE MARIO', title: 'Power-up: Bubble Flower', chips: ['Support', 'Bubble', 'Family: Mario'] },
+  { art: 'pull-flower.webp', wide: true, tier: 0, name: 'MARIO', title: 'Hero of the Flower Kingdom', chips: ['All-rounder', 'Wonder', 'Family: Mario'] },
+  { art: 'pull-fludd.webp', tier: 1, name: 'FLUDD MARIO', title: 'Power-up: F.L.U.D.D.', chips: ['Control', 'Water', 'Family: Mario'] },
+  { art: 'pull-block.webp', tier: 0, name: 'MARIO', title: 'Plumber from Brooklyn', chips: ['Striker', 'Block-breaker', 'Family: Mario'] },
+  { art: 'pull-wonder.webp', tier: 0, name: 'MARIO', title: 'Wonder Wanderer', chips: ['All-rounder', 'Wonder', 'Family: Mario'] },
 ];
 let pullIndex = -1;
 let current = PULLS[0];
+const TIER_COLORS = ['#a9d0ff', '#c084ff', '#ffe06e'];
+function showArt(p) {
+  $('art').classList.toggle('wide', !!p.wide);
+  $('artBack').src = p.art; $('artFront').src = p.art;
+}
 function applyPull(p) {
   current = p;
-  const art = $('art');
-  art.classList.toggle('wide', !!p.wide);
-  $('artBack').src = p.art; $('artFront').src = p.art;
   $('resultUI').dataset.tier = String(p.tier);
   $('rarity').innerHTML = ['R', 'SR', 'SSR'][p.tier].split('').map((c) => `<span>${c}</span>`).join('');
   $('stars').innerHTML = '<i>&#9733;</i>'.repeat(3 + p.tier);
   $('ptitle').textContent = p.title;
   $('pname').textContent = p.name;
-  $('pline').textContent = `\u201c${p.quote}\u201d`;
+  $('pline').textContent = p.quote ? `\u201c${p.quote}\u201d` : '';
+  $('pline').hidden = !p.quote;
   $('pchips').innerHTML = p.chips.map((c) => `<span class="chip">${c}</span>`).join('');
 }
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -558,6 +566,7 @@ let parts = [];
 let starsBg = [];
 let meteor = null;
 let wishTier = 0;
+let sstar = null, starImg = null;
 let mode = 'banner';
 function spawn(p) { parts.push(Object.assign({ age: 0, life: 1, vx: 0, vy: 0, g: 0, r: 3, color: '#fff', kind: 'dot', drag: 0 }, p)); }
 function burst(x, y, n, color = '#ffe27a', speed = 420) {
@@ -606,6 +615,7 @@ function drawFx(dt) {
     }
     fx.globalAlpha = 1;
     if (meteor) drawMeteor(dt, W, H);
+    if (sstar) drawSuperStar(dt, W, H);
   }
   fx.globalCompositeOperation = 'lighter';
   parts = parts.filter((p) => (p.age += dt) < p.life);
@@ -645,37 +655,65 @@ function drawFx(dt) {
   fx.globalAlpha = 1;
   fx.globalCompositeOperation = 'source-over';
 }
+function setSignal(tier) {
+  const signal = $('tierSignal');
+  signal.dataset.tier = String(tier);
+  $('tierCore').textContent = ['R', 'SR', 'SSR'][tier];
+  signal.classList.add('upgrade');
+  setTimeout(() => signal.classList.remove('upgrade'), 360);
+}
+// SSR: the shooting star becomes a Super Star mid-flight, flashing rainbow.
+function drawSuperStar(dt, W, H) {
+  const st = sstar; st.t += skipping ? 1 : dt;
+  const k = expoOut(Math.min(1, st.t / 0.45));
+  const size = Math.min(W, H) * 0.24 * k * (1 + Math.sin(st.t * 9) * 0.05);
+  const x = st.x, y = st.y;
+  const hue = (st.t * 420) % 360;
+  fx.globalCompositeOperation = 'lighter';
+  const g = fx.createRadialGradient(x, y, size * .1, x, y, size * 1.25);
+  g.addColorStop(0, `hsla(${hue},100%,75%,.9)`); g.addColorStop(.5, `hsla(${(hue + 60) % 360},100%,60%,.35)`); g.addColorStop(1, 'hsla(0,0%,0%,0)');
+  fx.fillStyle = g; fx.beginPath(); fx.arc(x, y, size * 1.25, 0, Math.PI * 2); fx.fill();
+  fx.globalCompositeOperation = 'source-over';
+  if (starImg) {
+    fx.save(); fx.translate(x, y); fx.rotate(st.t * 5);
+    fx.drawImage(starImg, -size / 2, -size / 2 * (starImg.height / starImg.width), size, size * (starImg.height / starImg.width));
+    fx.restore();
+  }
+  if (Math.random() < 0.8) {
+    const a = Math.random() * Math.PI * 2, v = 160 + Math.random() * 260;
+    spawn({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, drag: 1.2, r: 2 + Math.random() * 2.5, life: .8 + Math.random() * .6, color: `hsl(${(hue + Math.random() * 120) % 360},100%,70%)`, kind: 'star' });
+  }
+}
 function drawMeteor(dt, W, H) {
   const m = meteor;
   m.t += skipping ? 1 : dt / m.dur;
   const k = clamp(m.t, 0, 1);
-  const nextTier = Math.min(m.maxTier ?? 2, k < .43 ? 0 : k < .76 ? 1 : 2);
+  const nextTier = ({ 0: [], 1: [.55], 2: [.4, .7] }[m.maxTier ?? 0]).filter((st) => k >= st).length;
   const e = easeIn(k) * 0.85 + k * 0.15;
   const x = (m.x0 + (m.x1 - m.x0) * e) * W;
   const y = (m.y0 + (m.y1 - m.y0) * e) * H;
   if (nextTier !== wishTier) {
     wishTier = nextTier;
-    const colors = ['#a9d0ff', '#c084ff', '#ffe06e'];
-    const names = ['R', 'SR', 'SSR'];
-    const signal = $('tierSignal');
-    signal.dataset.tier = String(wishTier);
-    $('tierCore').textContent = names[wishTier];
-    signal.classList.add('upgrade');
-    setTimeout(() => signal.classList.remove('upgrade'), 360);
-    ring(x, y, colors[wishTier]);
-    burst(x, y, wishTier === 2 ? 90 : 48, colors[wishTier], wishTier === 2 ? 520 : 340);
+    setSignal(wishTier);
+    ring(x, y, TIER_COLORS[wishTier]);
+    burst(x, y, wishTier === 2 ? 110 : 48, TIER_COLORS[wishTier], wishTier === 2 ? 560 : 340);
     shake();
-    if (wishTier === 2) clip('powerup', .72);
+    if (wishTier === 2) {
+      sstar = { x, y, t: 0 };
+      void flash(0.75, 40, 20, 380);
+      if (!skipping) { clip('powerup', 0.8); music('mus-starman', 0.6); }
+    }
   }
   m.trail.push({ x, y });
   if (m.trail.length > 26) m.trail.shift();
+  if (sstar) { sstar.x = x; sstar.y = y; }
   const cores = ['190,220,255', '201,142,255', '255,214,90'];
   const core = cores[wishTier];
   fx.globalCompositeOperation = 'lighter';
   for (let i = 1; i < m.trail.length; i++) {
     const a = m.trail[i - 1], b = m.trail[i];
     const w = (i / m.trail.length);
-    fx.strokeStyle = `rgba(${core},${w * 0.8})`;
+    fx.strokeStyle = sstar ? `hsla(${(tScene * 500 + i * 14) % 360},100%,65%,${w * 0.9})` : `rgba(${core},${w * 0.8})`;
     fx.lineWidth = 2 + w * 14;
     fx.lineCap = 'round';
     fx.beginPath(); fx.moveTo(a.x, a.y); fx.lineTo(b.x, b.y); fx.stroke();
@@ -731,7 +769,7 @@ $('screen').addEventListener('pointerleave', () => { pointer.x = 0; pointer.y = 
 /* ================= Audio ================= */
 let actx = null, master = null, muted = false;
 const raw = {}; const buf = {};
-for (const n of ['letsago', 'coin', 'powerup']) raw[n] = fetch(`${n}.mp3`).then((r) => r.arrayBuffer()).catch(() => null);
+for (const n of ['letsago', 'coin', 'powerup', 'mus-starman']) raw[n] = fetch(`${n}.mp3`).then((r) => r.arrayBuffer()).catch(() => null);
 async function audioReady() {
   if (!actx) {
     actx = new (window.AudioContext || window.webkitAudioContext)();
@@ -744,6 +782,12 @@ function clip(n, vol = 1, delay = 0) {
   if (!actx || !buf[n]) return;
   const s = actx.createBufferSource(); const g = actx.createGain();
   s.buffer = buf[n]; g.gain.value = vol; s.connect(g).connect(master); s.start(actx.currentTime + delay);
+  return s;
+}
+function music(n, vol = 0.7) {
+  if (n === 'synth') { theme(); return; }
+  const s = clip(n, vol);
+  if (s) musicNodes.push(s);
 }
 function whoosh(dur = 1.3) {
   if (!actx) return;
@@ -829,6 +873,9 @@ async function pull() {
   applyPull(PULLS[pullIndex]);
   resetResult();
   $('resultUI').hidden = true;
+  $('art').style.transition = 'opacity .18s';
+  $('art').classList.remove('in');
+  $('quote').innerHTML = '';
   $('bannerUI').classList.add('out');
   $('bannerSeal').style.opacity = 0;
   $('bannerSeal').style.transform = 'translateY(-50%) scale(.78)';
@@ -837,9 +884,12 @@ async function pull() {
   clip('coin', 0.5);
   await wait(420);
 
-  // 1. Night sky + meteor
+  // 1. Night sky + meteor. R is quick and stays blue; SR turns purple once;
+  // SSR takes longest, turns purple, then the shooting star becomes a Super
+  // Star and the Starman theme kicks in before it lands.
+  const ssr = current.tier === 2;
   mode = 'wish';
-  wishTier = 0;
+  wishTier = 0; sstar = null;
   parts = [];
   starsBg = Array.from({ length: 140 }, () => ({ x: Math.random(), y: Math.random() * 0.85, r: Math.random() < 0.15 ? 2 : 1, tw: 0.5 + Math.random() * 2, ph: Math.random() * 6 }));
   $('gl').style.opacity = 0;
@@ -847,48 +897,59 @@ async function pull() {
   $('tierSignal').dataset.tier = '0';
   $('tierCore').textContent = 'R';
   $('tierSignal').classList.add('on');
-  await wait(650);
+  await wait(ssr ? 650 : 350);
   let impact;
   const hit = new Promise((r) => { impact = r; });
-  meteor = { x0: 1.08, y0: -0.12, x1: 0.56, y1: 0.52, t: 0, dur: 3.35, maxTier: current.tier, trail: [], onImpact: (x, y) => impact({ x, y }) };
-  whoosh(3.2);
+  const dur = [1.6, 2.2, 3.6][current.tier];
+  meteor = { x0: 1.08, y0: -0.12, x1: 0.56, y1: 0.52, t: 0, dur, maxTier: current.tier, trail: [], onImpact: (x, y) => impact({ x, y }) };
+  whoosh(dur - 0.1);
   if (skipping) { meteor.t = 1; }
   const at = await hit;
-  burst(at.x, at.y, 140, ['#bcd4ff', '#d2a0ff', '#ffd86a'][current.tier], 620);
-  ring(at.x, at.y);
-  shake();
-  clip('powerup', 0.8);
-  meteor = null;
+  meteor = null; sstar = null;
+  const col = TIER_COLORS[current.tier];
+  burst(at.x, at.y, [50, 90, 180][current.tier], col, [340, 460, 760][current.tier]);
+  ring(at.x, at.y, col);
+  if (current.tier) shake();
+  if (ssr) {
+    setTimeout(() => ring(at.x, at.y, 'rgba(255,255,255,1)'), 140);
+    for (let i = 0; i < 60; i++) spawn({ x: at.x, y: at.y, vx: (Math.random() - .5) * 900, vy: (Math.random() - .5) * 900, drag: 1.4, r: 2 + Math.random() * 3, life: 1 + Math.random(), color: `hsl(${Math.random() * 360},100%,70%)`, kind: 'star' });
+  } else if (!skipping) {
+    clip(current.tier ? 'powerup' : 'coin', 0.75);
+  }
   $('tierSignal').classList.remove('on');
-  await flash(1, 120, 260, 10);
-  $('flash').style.opacity = 1;
 
-  // 2. Black: quote + voice line, theme begins
-  mode = 'quote';
-  parts = [];
-  $('quoteCard').hidden = false;
-  $('flash').style.transition = 'opacity 500ms ease-out';
-  $('flash').style.opacity = 0;
-  if (!skipping) theme();
-  await wait(700);
-  const text = current.quote;
-  $('quote').innerHTML = [...text].map((c) => `<span>${c === ' ' ? '&nbsp;' : c}</span>`).join('');
-  if (!skipping) clip('letsago', 1);
-  const spans = $('quote').querySelectorAll('span');
-  for (const s of spans) { s.classList.add('in'); await wait(45); }
-  await wait(1750);
+  if (ssr) {
+    // 2. SSR only: hold on white, then the black quote card with the voice line.
+    await flash(1, 120, 360, 10);
+    $('flash').style.opacity = 1;
+    mode = 'quote';
+    parts = [];
+    $('quoteCard').hidden = false;
+    $('flash').style.transition = 'opacity 500ms ease-out';
+    $('flash').style.opacity = 0;
+    await wait(700);
+    const text = current.quote;
+    $('quote').innerHTML = [...text].map((c) => `<span>${c === ' ' ? '&nbsp;' : c}</span>`).join('');
+    if (!skipping) clip(current.voice, 1);
+    const spans = $('quote').querySelectorAll('span');
+    for (const s of spans) { s.classList.add('in'); await wait(45); }
+    await wait(1750);
+  } else {
+    await wait(current.tier ? 260 : 120);
+  }
 
   // 3. White flash into the living splash: the camera pulls out from Mario
-  await flash(1, 160, 80, 700);
+  await flash(1, ssr ? 160 : 90, ssr ? 80 : 40, ssr ? 700 : 420);
   $('quoteCard').hidden = true;
   mode = 'reveal';
   $('grade').style.opacity = 1;
+  showArt(current);
   $('art').classList.add('in');
   $('art').style.filter = 'blur(10px) brightness(1.34) saturate(1.2)';
   $('art').style.transition = 'opacity .5s, filter .7s cubic-bezier(.16, 1, .3, 1)';
-  speedLines(36);
+  if (ssr) speedLines(36);
   requestAnimationFrame(() => { $('art').style.filter = 'none'; });
-  await tween(1500, (k) => { $('art').style.setProperty('--z', String(1.4 - 0.4 * k)); });
+  await tween(ssr ? 1500 : 800, (k) => { $('art').style.setProperty('--z', String((ssr ? 1.4 : 1.12) - (ssr ? 0.4 : 0.12) * k)); });
   await wait(100);
 
   // 4. Rarity stamp, stars, nameplate
@@ -896,9 +957,9 @@ async function pull() {
   const letters = document.querySelectorAll('#rarity span');
   for (let i = 0; i < letters.length; i++) {
     letters[i].classList.add('in');
-    if (!skipping) { chime(i); shake(); }
+    if (!skipping) { chime(i); if (ssr) shake(); }
     const r = letters[i].getBoundingClientRect(); const s = fxc.getBoundingClientRect();
-    burst(r.left - s.left + r.width / 2, r.top - s.top + r.height / 2, 24, '#ffe27a', 360);
+    burst(r.left - s.left + r.width / 2, r.top - s.top + r.height / 2, 24, TIER_COLORS[current.tier], 360);
     await wait(170);
   }
   for (const s of document.querySelectorAll('#stars i')) { s.classList.add('in'); await wait(80); }
@@ -932,6 +993,7 @@ function backToBanner() {
   $('screen').classList.remove('on');
   $('art').classList.remove('in');
   $('gl').style.opacity = 1;
+  sstar = null;
   charState.alpha = 0;
   cam.zoom = 1.08; cam.focusX = 0; cam.focusY = 0;
   mode = 'banner';
@@ -963,6 +1025,7 @@ function previewState(state) {
     mode = 'reveal';
     if (pullIndex < 0) pullIndex = (Number(new URLSearchParams(location.search).get('pull')) || 0) % PULLS.length;
     applyPull(PULLS[pullIndex]);
+    showArt(current);
     $('art').classList.add('in');
     $('resultUI').hidden = false;
     document.querySelectorAll('#rarity span, #stars i, .fade-up, #pname').forEach((e) => e.classList.add('in'));
@@ -985,6 +1048,8 @@ function previewState(state) {
 (async function init() {
   sizeAll();
   requestAnimationFrame(frame);
+  load('superstar.webp').then((i) => { starImg = i; }).catch(() => {});
+  PULLS.forEach((p) => { new Image().src = p.art; });
   const [bg, ch] = await Promise.all([load('bg.webp'), load('mario.webp')]);
   bgAspect = bg.width / bg.height;
   charAspect = ch.width / ch.height;
