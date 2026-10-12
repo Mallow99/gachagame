@@ -1,10 +1,10 @@
 # Pocket Gacha: handoff
 
-Read this first if you're picking up the project. It covers what exists, how it
-works, what the owner wants, and the next tasks in order.
+**Start with `ROADMAP.md`**: it says what we're building and in what order.
+This file is the history and technical detail behind it.
 
-Repo: `Mallow99/gachagame`, branch `claude/admiring-maxwell-nmj2ha` (also the
-default branch). The owner is a programming beginner who wants the fun result.
+Repo: `Mallow99/gachagame`. Latest work is on branch
+`claude/stoic-archimedes-h3m7qt` (built on `claude/admiring-maxwell-nmj2ha`). The owner is a programming beginner who wants the fun result.
 Explain choices briefly and don't drown them in options.
 
 ---
@@ -46,13 +46,16 @@ assets/characters/gallery.html Visual review page for batch 1
 tools/art/                     Art pipeline scripts (see section 5)
 docs/CHARACTER_SPEC.md         Target pull sequence, asset checklist, kit structure
 demos/mario-pull/              The Mario showcase pull (section 4); open index.html
+demos/strip/                   Desk strip prototype: cut-out puppets auto-battling
+                               along the bottom of a mock desktop
+ROADMAP.md                     What we're building and in what order
 ```
 
 Run the game: `npm install && npm start` (Electron) or `npm run web` (browser).
 Run the Mario demo: serve `demos/mario-pull/` over HTTP, e.g.
 `python3 -m http.server -d demos/mario-pull 8000`. It fetches files, so opening
 it as `file://` won't work. It's also published as a Claude artifact the owner
-views: https://claude.ai/artifact/7aSgKuTJpH6J7pxLpPMRUe (version 3: five Pixiv illustrations as separate pulls, `PULLS` array in index.html).
+views: https://claude.ai/artifact/7aSgKuTJpH6J7pxLpPMRUe (version 4, signed off by the owner: six Pixiv illustrations as separate pulls across R/SR/SSR, `PULLS` array in index.html; only the SSR gets the quote, voice and Starman theme). The strip prototype is at https://claude.ai/artifact/FaXzvANwXa628a8m1A9e1K.
 
 The main game still uses its own simple reveal (`src/views/reveal.js`) and
 placeholder pixel sprites for the original 22-hero test roster in `data.js`.
@@ -220,7 +223,7 @@ for Mario. Expect to re-source the important characters to the new standard
 
 ---
 
-## 8. Recommended next steps (in order)
+## 8. Recommended next steps (superseded by `ROADMAP.md`; kept for history)
 
 1. **Mario demo take 3**, addressing every item in section 3's feedback list:
    - Banner: a different, busier composition (e.g. the *Super Mario Bros.
@@ -242,7 +245,7 @@ for Mario. Expect to re-source the important characters to the new standard
 
 ## 9. Conventions
 
-- Commit to `claude/admiring-maxwell-nmj2ha`; don't open a PR unless asked.
+- Commit to the branch you were given; don't open a PR unless asked.
 - Plain JS, no framework, no build step. Keep `src/game.js` free of DOM.
 - Verify visually (Playwright screenshots) before claiming something works,
   and tell the owner what you couldn't verify (e.g. audio, real-time smoothness).
