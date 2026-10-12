@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
+<meta charset="utf-8">
 <title>Mushroom Kingdom Pull</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>document.documentElement.classList.replace('no-js', 'js');</script>
@@ -114,6 +115,22 @@ html.no-js #cssPull:checked ~ .screen #resultUI .actions { display: none; }
 }
 .grounding.in { opacity: 1; transform: rotate(-5deg) scale(1); }
 .flash { background: #fff; opacity: 0; pointer-events: none; }
+
+/* Full-art reveal: one cohesive illustration per pull. Portrait art sits on the
+   right over a blurred copy of itself; landscape art fills the frame. */
+.art { overflow: hidden; opacity: 0; pointer-events: none; background: #05050c; transform: scale(var(--z, 1)); transform-origin: 64% 45%; transition: opacity .5s; }
+.art.in { opacity: 1; }
+.art img { position: absolute; display: block; }
+.art .art-back { inset: -6%; width: 112%; height: 112%; object-fit: cover; filter: blur(2.2cqw) brightness(.5) saturate(1.25); }
+.art .art-front { top: 0; right: 3%; height: 100%; width: auto; max-width: 64%; object-fit: contain;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 9%); mask-image: linear-gradient(90deg, transparent 0, #000 9%);
+  animation: art-drift 16s ease-in-out infinite alternate; }
+.art.wide .art-front { right: 0; max-width: none; }
+@keyframes art-drift { from { transform: scale(1.03) translate(.6%, .4%); } to { transform: scale(1.07) translate(-.8%, -.6%); } }
+body.mobile-layout .art .art-front { right: 0; max-width: 100%; width: 100%; object-position: 50% 0; -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent); mask-image: linear-gradient(180deg, #000 70%, transparent); }
+#resultUI[data-tier="0"] { --gold: #a9d4ff; --gold-hot: #eef7ff; --gold-deep: #3f7fd8; }
+#resultUI[data-tier="1"] { --gold: #d6a6ff; --gold-hot: #f6eaff; --gold-deep: #8c47e3; }
+@media (prefers-reduced-motion: reduce) { .art .art-front { animation: none; } }
 
 /* Banner UI */
 .banner-ui { display: flex; flex-direction: column; justify-content: center; gap: 1.1cqw; padding-left: 5cqw; pointer-events: none; transition: opacity .5s, transform .5s; }
@@ -276,6 +293,7 @@ body.mobile-layout .fallback-quote { font-size: 12cqw; }
 <div class="screen cinema-bars" id="screen">
   <canvas id="gl"></canvas>
   <div class="fallback-scene" aria-hidden="true"><img class="fallback-bg" src="bg.webp" alt=""><img class="fallback-mario" src="mario.webp" alt=""></div>
+  <div class="art" id="art" aria-hidden="true"><img class="art-back" id="artBack" alt=""><img class="art-front" id="artFront" alt=""></div>
   <div class="grounding" id="grounding"></div>
   <div class="grade" id="grade"></div>
   <canvas id="fx"></canvas>
@@ -336,6 +354,30 @@ const requestedLayout = new URLSearchParams(location.search).get('layout') || do
 const mobileLayout = requestedLayout === 'mobile';
 document.body.classList.toggle('mobile-layout', mobileLayout);
 document.querySelector('meta[name="viewport"]')?.setAttribute('content', 'width=device-width, initial-scale=1, viewport-fit=cover');
+// Each pull is one hand-drawn piece (sources in SOURCES.md). "Pull again" cycles.
+// tier: 0 = R, 1 = SR, 2 = SSR. wide: landscape art, shown full height and uncapped in width.
+const PULLS = [
+  { art: 'pull-flower.webp', wide: true, tier: 2, name: 'MARIO', title: 'Hero of the Flower Kingdom', quote: "Let's-a go!", chips: ['All-rounder', 'Wonder', 'Family: Mario'] },
+  { art: 'pull-bubble.webp', tier: 1, name: 'BUBBLE MARIO', title: 'Power-up: Bubble Flower', quote: 'Wahoo!', chips: ['Support', 'Bubble', 'Family: Mario'] },
+  { art: 'pull-block.webp', tier: 0, name: 'MARIO', title: 'Plumber from Brooklyn', quote: "It's-a me, Mario!", chips: ['Striker', 'Block-breaker', 'Family: Mario'] },
+  { art: 'pull-wonder.webp', tier: 2, name: 'WONDER MARIO', title: 'Keeper of the Wonder Seed', quote: 'Here we go!', chips: ['Burst', 'Wonder', 'Family: Mario'] },
+  { art: 'pull-fludd.webp', tier: 1, name: 'FLUDD MARIO', title: 'Delfino Island Cleanup', quote: 'Yahoo!', chips: ['Control', 'Water', 'Family: Mario'] },
+];
+let pullIndex = -1;
+let current = PULLS[0];
+function applyPull(p) {
+  current = p;
+  const art = $('art');
+  art.classList.toggle('wide', !!p.wide);
+  $('artBack').src = p.art; $('artFront').src = p.art;
+  $('resultUI').dataset.tier = String(p.tier);
+  $('rarity').innerHTML = ['R', 'SR', 'SSR'][p.tier].split('').map((c) => `<span>${c}</span>`).join('');
+  $('stars').innerHTML = '<i>&#9733;</i>'.repeat(3 + p.tier);
+  $('ptitle').textContent = p.title;
+  $('pname').textContent = p.name;
+  $('pline').textContent = `\u201c${p.quote}\u201d`;
+  $('pchips').innerHTML = p.chips.map((c) => `<span class="chip">${c}</span>`).join('');
+}
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 const expoOut = (t) => (t >= 1 ? 1 : 1 - Math.pow(2, -10 * t));
@@ -607,7 +649,7 @@ function drawMeteor(dt, W, H) {
   const m = meteor;
   m.t += skipping ? 1 : dt / m.dur;
   const k = clamp(m.t, 0, 1);
-  const nextTier = k < .43 ? 0 : k < .76 ? 1 : 2;
+  const nextTier = Math.min(m.maxTier ?? 2, k < .43 ? 0 : k < .76 ? 1 : 2);
   const e = easeIn(k) * 0.85 + k * 0.15;
   const x = (m.x0 + (m.x1 - m.x0) * e) * W;
   const y = (m.y0 + (m.y1 - m.y0) * e) * H;
@@ -783,6 +825,8 @@ async function pull() {
   void audioReady().catch((error) => console.warn('Audio unavailable; continuing silently.', error));
   try {
     stopMusic();
+  pullIndex = (pullIndex + 1) % PULLS.length;
+  applyPull(PULLS[pullIndex]);
   resetResult();
   $('resultUI').hidden = true;
   $('bannerUI').classList.add('out');
@@ -806,11 +850,11 @@ async function pull() {
   await wait(650);
   let impact;
   const hit = new Promise((r) => { impact = r; });
-  meteor = { x0: 1.08, y0: -0.12, x1: 0.56, y1: 0.52, t: 0, dur: 3.35, trail: [], onImpact: (x, y) => impact({ x, y }) };
+  meteor = { x0: 1.08, y0: -0.12, x1: 0.56, y1: 0.52, t: 0, dur: 3.35, maxTier: current.tier, trail: [], onImpact: (x, y) => impact({ x, y }) };
   whoosh(3.2);
   if (skipping) { meteor.t = 1; }
   const at = await hit;
-  burst(at.x, at.y, 140, '#ffd86a', 620);
+  burst(at.x, at.y, 140, ['#bcd4ff', '#d2a0ff', '#ffd86a'][current.tier], 620);
   ring(at.x, at.y);
   shake();
   clip('powerup', 0.8);
@@ -827,7 +871,7 @@ async function pull() {
   $('flash').style.opacity = 0;
   if (!skipping) theme();
   await wait(700);
-  const text = "Let's-a go!";
+  const text = current.quote;
   $('quote').innerHTML = [...text].map((c) => `<span>${c === ' ' ? '&nbsp;' : c}</span>`).join('');
   if (!skipping) clip('letsago', 1);
   const spans = $('quote').querySelectorAll('span');
@@ -838,15 +882,13 @@ async function pull() {
   await flash(1, 160, 80, 700);
   $('quoteCard').hidden = true;
   mode = 'reveal';
-  charState.alpha = 1;
-  $('gl').style.opacity = 1;
-  $('gl').style.filter = 'blur(10px) brightness(1.34) saturate(1.2)';
   $('grade').style.opacity = 1;
-  $('grounding').classList.add('in');
-  cam.focusX = mobileLayout ? 0.14 : 0.36; cam.focusY = mobileLayout ? 0.18 : 0.3;
+  $('art').classList.add('in');
+  $('art').style.filter = 'blur(10px) brightness(1.34) saturate(1.2)';
+  $('art').style.transition = 'opacity .5s, filter .7s cubic-bezier(.16, 1, .3, 1)';
   speedLines(36);
-  requestAnimationFrame(() => { $('gl').style.filter = 'blur(0) brightness(1)'; });
-  await tween(1500, (k) => { cam.zoom = 1.75 + (1.08 - 1.75) * k; });
+  requestAnimationFrame(() => { $('art').style.filter = 'none'; });
+  await tween(1500, (k) => { $('art').style.setProperty('--z', String(1.4 - 0.4 * k)); });
   await wait(100);
 
   // 4. Rarity stamp, stars, nameplate
@@ -888,6 +930,8 @@ function backToBanner() {
   $('bannerSeal').style.transform = 'translateY(-50%)';
   $('grounding').classList.remove('in');
   $('screen').classList.remove('on');
+  $('art').classList.remove('in');
+  $('gl').style.opacity = 1;
   charState.alpha = 0;
   cam.zoom = 1.08; cam.focusX = 0; cam.focusY = 0;
   mode = 'banner';
@@ -917,9 +961,9 @@ function previewState(state) {
   $('bannerSeal').style.opacity = 0;
   if (state === 'reveal') {
     mode = 'reveal';
-    charState.alpha = 1;
-    cam.zoom = 1.08; cam.focusX = mobileLayout ? .14 : .36; cam.focusY = mobileLayout ? .18 : .3;
-    $('grounding').classList.add('in');
+    if (pullIndex < 0) pullIndex = (Number(new URLSearchParams(location.search).get('pull')) || 0) % PULLS.length;
+    applyPull(PULLS[pullIndex]);
+    $('art').classList.add('in');
     $('resultUI').hidden = false;
     document.querySelectorAll('#rarity span, #stars i, .fade-up, #pname').forEach((e) => e.classList.add('in'));
   } else if (state === 'quote') {
@@ -927,7 +971,7 @@ function previewState(state) {
     $('gl').style.opacity = 0;
     $('grade').style.opacity = 0;
     $('quoteCard').hidden = false;
-    const text = "Let's-a go!";
+    const text = current.quote;
     $('quote').innerHTML = [...text].map((c) => `<span class="in">${c === ' ' ? '&nbsp;' : c}</span>`).join('');
   } else if (state === 'wish') {
     mode = 'wish'; wishTier = 2;

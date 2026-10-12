@@ -52,7 +52,7 @@ Run the game: `npm install && npm start` (Electron) or `npm run web` (browser).
 Run the Mario demo: serve `demos/mario-pull/` over HTTP, e.g.
 `python3 -m http.server -d demos/mario-pull 8000`. It fetches files, so opening
 it as `file://` won't work. It's also published as a Claude artifact the owner
-views: https://claude.ai/artifact/7aSgKuTJpH6J7pxLpPMRUe (version 2).
+views: https://claude.ai/artifact/7aSgKuTJpH6J7pxLpPMRUe (version 3: five Pixiv illustrations as separate pulls, `PULLS` array in index.html).
 
 The main game still uses its own simple reveal (`src/views/reveal.js`) and
 placeholder pixel sprites for the original 22-hero test roster in `data.js`.
