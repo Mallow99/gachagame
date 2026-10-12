@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Desk Strip Prototype</title>
+<style>
+/* Layout: a mock desktop (wallpaper + one work window) with the game strip
+   pinned along the bottom edge, the way it would sit above a taskbar. */
+:root {
+  --wall-a: #1d2a44;
+  --wall-b: #3b2a4f;
+  --window: #f4f5f8;
+  --window-ink: #2b2f3a;
+  --window-line: #dde1ea;
+  --hud: rgba(12, 14, 24, .72);
+  --hud-ink: #f5f1e6;
+  --coin: #ffcf3f;
+  --ui: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body {
+  margin: 0; overflow: hidden; font-family: var(--ui);
+  background: radial-gradient(120% 90% at 20% 10%, var(--wall-b), var(--wall-a) 60%, #0c1222);
+  color: var(--hud-ink);
+}
+.window {
+  position: absolute; left: 50%; top: 6vh; transform: translateX(-50%);
+  width: min(760px, calc(100% - 32px)); height: calc(100% - 6vh - var(--strip-h) - 4vh);
+  background: var(--window); color: var(--window-ink); border-radius: 10px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .45); overflow: hidden; display: flex; flex-direction: column;
+}
+.window header { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--window-line); font: 600 14px system-ui, sans-serif; }
+.window header i { width: 12px; height: 12px; border-radius: 50%; background: #ff5f57; display: inline-block; }
+.window header i:nth-child(2) { background: #febc2e; }
+.window header i:nth-child(3) { background: #28c840; margin-right: 8px; }
+.doc { padding: 22px 28px; display: grid; gap: 12px; align-content: start; }
+.doc h2 { margin: 0 0 4px; font: 700 20px system-ui, sans-serif; }
+.doc p { margin: 0; font: 15px/1.55 system-ui, sans-serif; color: #4a5060; max-width: 62ch; }
+.strip { position: absolute; left: 0; right: 0; bottom: 0; height: var(--strip-h); }
+:root { --strip-h: clamp(170px, 26vh, 250px); }
+#stage { width: 100%; height: 100%; display: block; cursor: default; }
+.hud {
+  position: absolute; right: 14px; top: 8px; display: flex; gap: 8px; align-items: center;
+  background: var(--hud); border: 1px solid rgba(255,255,255,.12); border-radius: 999px; padding: 4px 12px;
+  font-size: 15px; letter-spacing: .06em; pointer-events: none; font-variant-numeric: tabular-nums;
+}
+.hud .coin { width: 12px; height: 12px; border-radius: 50%; background: var(--coin); box-shadow: inset -2px -2px 0 rgba(150, 90, 0, .5); }
+</style>
+</head>
+<body>
+<div class="window" aria-hidden="true">
+  <header><i></i><i></i><i></i>Notes: what you'd be working on</header>
+  <div class="doc">
+    <h2>The strip lives at the bottom of your screen</h2>
+    <p>This window stands in for whatever you're actually doing. Your pulled team lives in the strip below, fighting waves and earning coins while you work. In the real game the strip would be its own transparent, always-on-top window that clicks pass through.</p>
+    <p>Mario has two poses (running, plus the jump for his stomp). Walter and Tung Tung Tung Sahur have one pose each, animated entirely in code. Compare them.</p>
+    <p>Click a character to make them react.</p>
+  </div>
+</div>
+
+<div class="strip">
+  <canvas id="stage"></canvas>
+  <div class="hud"><span class="coin"></span><span id="coins">0</span><span>&middot;</span><span id="wave">Wave 1</span></div>
+</div>
+
+<script>
+const cv = document.getElementById('stage');
+const ctx = cv.getContext('2d');
+let W = 0, H = 0, DPR = 1, ground = 0;
+function resize() {
+  const r = cv.getBoundingClientRect();
+  DPR = Math.min(2, window.devicePixelRatio || 1);
+  W = r.width; H = r.height;
+  cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  ground = H - 18;
+}
+window.addEventListener('resize', resize);
+
+const rand = (a, b) => a + Math.random() * (b - a);
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const ease = (t) => 1 - Math.pow(1 - clamp(t, 0, 1), 3);
+const load = (src) => new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = src; });
+
+// White silhouette of an image, used for the hit flash.
+function silhouette(img) {
+  const c = document.createElement('canvas'); c.width = img.width; c.height = img.height;
+  const g = c.getContext('2d'); g.drawImage(img, 0, 0);
+  g.globalCompositeOperation = 'source-in'; g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height);
+  return c;
+}
+
+/* ---------- Puppet renderer ----------
+   Draws a cut-out in horizontal slices so the upper body can lean and sway
+   while the feet stay planted. That bend is most of what makes a flat image
+   read as a body instead of a card. */
+const SLICES = 22;
+function drawPuppet(p) {
+  const img = p.pose === 'alt' && p.alt ? p.alt : p.img;
+  const sil = p.pose === 'alt' && p.alt ? p.altSil : p.sil;
+  const h = p.h * (1 - p.squash), w = (p.h * img.width / img.height) * (1 + p.squash * 0.7);
+  const fx = p.x, fy = ground + p.z - p.lift;
+  // shadow shrinks as the puppet leaves the ground
+  const sh = clamp(1 - p.lift / 120, 0.3, 1);
+  ctx.fillStyle = `rgba(0,0,0,${0.28 * sh * p.alpha})`;
+  ctx.beginPath(); ctx.ellipse(fx, ground + p.z + 2, w * 0.36 * sh, 6 * sh, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.save();
+  ctx.globalAlpha = p.alpha;
+  ctx.translate(fx, fy);
+  ctx.rotate(p.rot);
+  ctx.scale(p.face, 1);
+  const sliceSrc = img.height / SLICES, sliceDst = h / SLICES;
+  for (let i = 0; i < SLICES; i++) {
+    const r = (SLICES - i) / SLICES;                 // 1 at the head, ~0 at the feet
+    const bend = p.lean * Math.pow(r, 1.6) * h * 0.22 + Math.sin(p.t * 2.1 + r * 1.4) * p.sway * r * h * 0.012;
+    const breathe = 1 + Math.sin(p.t * 2.4) * 0.012 * clamp((r - 0.35) * 2.5, 0, 1);
+    const dw = w * breathe;
+    const sy = i * sliceSrc, dy = -h + i * sliceDst;
+    ctx.drawImage(img, 0, sy, img.width, sliceSrc + 0.6, -dw / 2 + bend, dy, dw, sliceDst + 0.6);
+    if (p.flash > 0) {
+      ctx.globalAlpha = p.alpha * p.flash;
+      ctx.drawImage(sil, 0, sy, img.width, sliceSrc + 0.6, -dw / 2 + bend, dy, dw, sliceDst + 0.6);
+      ctx.globalAlpha = p.alpha;
+    }
+  }
+  ctx.restore();
+}
+
+/* ---------- World ---------- */
+const heroes = [], enemies = [], fxs = [], texts = [];
+let coins = 0, wave = 0, nextWave = 2.5, shakeT = 0;
+
+function puppet(o) {
+  return Object.assign({ x: 0, z: 0, lift: 0, face: 1, lean: 0, sway: 1, squash: 0, rot: 0, flash: 0, alpha: 1, t: rand(0, 6), pose: 'main', hop: 0, kb: 0, busy: null }, o);
+}
+function say(p, text, dur = 2.2) { p.bubble = { text, t: 0, dur }; }
+function popText(x, y, text, color = '#fff', size = 18) { texts.push({ x, y, text, color, size, t: 0, life: 0.9 }); }
+function burst(x, y, n, color, spd = 160) {
+  for (let i = 0; i < n; i++) { const a = rand(0, Math.PI * 2), v = rand(spd * .3, spd); fxs.push({ kind: 'spark', x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 60, t: 0, life: rand(.35, .7), color, r: rand(1.5, 3.5) }); }
+}
+function poof(x, y) { for (let i = 0; i < 8; i++) fxs.push({ kind: 'puff', x: x + rand(-14, 14), y: y + rand(-10, 4), vx: rand(-30, 30), vy: rand(-40, -10), t: 0, life: .6, r: rand(8, 14) }); }
+function coinFly(x, y) { fxs.push({ kind: 'coin', x, y, x0: x, y0: y, t: 0, life: .9 }); }
+
+function hurt(target, dmg, push) {
+  target.hp -= dmg;
+  target.flash = 1;
+  target.kb = (target.kb || 0) + push;
+  target.squash = 0.18;
+  popText(target.x, ground + target.z - target.h - 6, String(dmg), dmg >= 30 ? '#ffd23f' : '#fff', dmg >= 30 ? 24 : 18);
+  if (target.hp <= 0 && !target.dead) {
+    target.dead = true; target.deadT = 0;
+    poof(target.x, ground + target.z - target.h * 0.4);
+    coinFly(target.x, ground + target.z - target.h * 0.6);
+  }
+}
+function nearestEnemy(h) {
+  let best = null, d = 1e9;
+  for (const e of enemies) if (!e.dead && Math.abs(e.x - h.x) < d) { d = Math.abs(e.x - h.x); best = e; }
+  return best;
+}
+
+/* Timeline helper: an action is a list of [duration, update(k, dt)] steps. */
+function act(p, steps, done) { p.busy = { steps, i: 0, t: 0, done }; }
+function runAction(p, dt) {
+  const b = p.busy; if (!b) return;
+  const [dur, fn] = b.steps[b.i];
+  b.t += dt;
+  fn(clamp(b.t / dur, 0, 1), dt);
+  if (b.t >= dur) { b.i++; b.t = 0; if (b.i >= b.steps.length) { p.busy = null; p.lean = 0; p.rot = 0; p.lift = 0; p.pose = 'main'; b.done && b.done(); } }
+}
+
+/* ---------- Moves ---------- */
+function meleeAttack(h, e, dmg) {
+  const x0 = h.x, dir = Math.sign(e.x - h.x) || 1; h.face = dir;
+  act(h, [
+    [0.16, (k) => { h.lean = -0.35 * ease(k); h.x = x0 - dir * 6 * ease(k); }],
+    [0.09, (k) => { h.lean = -0.35 + 0.95 * ease(k); h.x = x0 + dir * 22 * ease(k); h.squash = -0.06 * k; }],
+    [0.02, () => { if (!e.dead) { hurt(e, dmg, dir * 26); burst(e.x - dir * 10, ground + e.z - e.h * 0.5, 8, '#fff2b0'); } }],
+    [0.28, (k) => { h.lean = 0.6 * (1 - ease(k)); h.x = x0 + dir * 22 * (1 - ease(k)); }],
+  ]);
+}
+function walterShot(h, e, dmg, big) {
+  const dir = Math.sign(e.x - h.x) || 1; h.face = dir;
+  act(h, [
+    [big ? 0.5 : 0.18, (k) => { h.lean = 0.12 * ease(k); }],
+    [0.02, () => {
+      const mx = h.x + dir * h.h * 0.32, my = ground + h.z - h.h * 0.62;
+      fxs.push({ kind: 'muzzle', x: mx, y: my, t: 0, life: .09, dir });
+      fxs.push({ kind: 'tracer', x: mx, y: my, x2: e.x, y2: ground + e.z - e.h * 0.5, t: 0, life: .12 });
+      if (!e.dead) hurt(e, dmg, dir * (big ? 120 : 16));
+      if (big) { shakeT = 0.25; burst(e.x, ground + e.z - e.h * 0.5, 22, '#ffd23f', 260); }
+    }],
+    [0.24, (k) => { h.lean = 0.12 - 0.42 * Math.sin(k * Math.PI); h.x -= dir * 0.4; }],
+  ]);
+}
+const SPECIALS = {
+  mario(h, e) {
+    say(h, 'Wahoo!', 1.2);
+    const x0 = h.x, x1 = e.x, dir = Math.sign(x1 - x0) || 1; h.face = dir;
+    act(h, [
+      [0.12, (k) => { h.squash = 0.2 * k; }],
+      [0.5, (k) => { h.pose = 'alt'; h.squash = -0.08; h.x = x0 + (x1 - x0) * k; h.lift = Math.sin(k * Math.PI) * h.h * 1.1 + (k > .5 ? 0 : 0); h.rot = dir * 0.15 * Math.sin(k * Math.PI); }],
+      [0.03, () => { h.lift = 0; if (!e.dead) { e.flat = 1; hurt(e, 60, 0); } shakeT = 0.18; fxs.push({ kind: 'ring', x: x1, y: ground + e.z, t: 0, life: .4 }); }],
+      [0.2, (k) => { h.squash = 0.22 * (1 - k); h.pose = 'alt'; }],
+    ]);
+  },
+  walter(h, e) {
+    say(h, 'I am the one who knocks.', 1.8);
+    walterShot(h, e, 55, true);
+  },
+  sahur(h, e) {
+    const dir = Math.sign(e.x - h.x) || 1; h.face = dir;
+    const x0 = h.x;
+    const hit = (n, last) => [0.02, () => {
+      popText(h.x + dir * 30, ground + h.z - h.h - 10 - n * 16, last ? 'SAHUR!' : 'TUNG', last ? '#ffcf3f' : '#fff', last ? 28 : 20);
+      if (!e.dead) { hurt(e, last ? 40 : 12, dir * (last ? 260 : 10)); if (last) { e.spin = dir * 14; e.vy = -420; } }
+      shakeT = last ? 0.22 : 0.08;
+    }];
+    const swing = (amt) => [0.1, (k) => { h.lean = -0.5 + 1.2 * ease(k) * amt; h.x = x0 + dir * 14 * ease(k); }];
+    const back = [0.1, (k) => { h.lean = 0.7 * (1 - k) - 0.5 * k; h.x = x0 + dir * 14 * (1 - k); }];
+    act(h, [[0.2, (k) => { h.lean = -0.5 * ease(k); }], swing(1), hit(0), back, swing(1), hit(1), back, swing(1.2), hit(2, true), [0.35, (k) => { h.lean = 0.7 * (1 - ease(k)); h.x = x0 + dir * 14 * (1 - ease(k)); }]]);
+  },
+};
+const BARKS = {
+  mario: ["It's-a me, Mario!", 'Wahoo!', 'Mamma mia!', 'Here we go!'],
+  walter: ['Say my name.', "I'm in the empire business.", 'Jesse, we need to cook.', 'Tread lightly.'],
+  sahur: ['Tung tung tung tung sahur!', 'TUNG.', '...tung?', 'Bangun! Sahur!'],
+};
+
+/* ---------- Spawning ---------- */
+function spawnWave() {
+  wave++; document.getElementById('wave').textContent = `Wave ${wave}`;
+  const n = 3 + Math.min(4, Math.floor(wave / 2));
+  for (let i = 0; i < n; i++) {
+    enemies.push(puppet({ kind: 'goomba', img: goombaImg, sil: goombaSil, h: H * 0.26, x: W + 40 + i * rand(55, 90), z: rand(-6, 4), face: -1, hp: 40 + wave * 6, speed: rand(34, 52), sway: 0.6, bump: rand(0, 1) }));
+  }
+}
+
+/* ---------- Hero brain ---------- */
+function thinkHero(h, dt) {
+  if (h.busy) return;
+  const e = nearestEnemy(h);
+  h.cd -= dt; h.sp -= dt;
+  if (e) {
+    const dist = Math.abs(e.x - h.x);
+    if (h.sp <= 0 && dist < (h.id === 'mario' ? 260 : h.range + 60)) { h.sp = rand(9, 14); SPECIALS[h.id](h, e); return; }
+    // hold the line: heroes step in to meet enemies but never chase past the middle
+    if (dist > h.range) { h.walkTo = clamp(e.x - Math.sign(e.x - h.x) * h.range * 0.8, 30, W * h.cap); if (Math.abs(h.walkTo - h.x) < 4) h.walkTo = null; }
+    else if (h.cd <= 0) {
+      h.cd = h.rate * rand(0.85, 1.15);
+      if (h.id === 'walter') walterShot(h, e, 14, false); else meleeAttack(h, e, h.id === 'sahur' ? 18 : 15);
+      return;
+    }
+  } else if (h.walkTo == null && Math.abs(h.x - h.home) > 90) {
+    h.walkTo = h.home + rand(-30, 30);
+  } else if (h.walkTo == null && Math.random() < dt * 0.35) {
+    h.walkTo = clamp(h.home + rand(-70, 70), 40, W * 0.6);
+    if (Math.random() < 0.15) say(h, BARKS[h.id][Math.floor(rand(0, BARKS[h.id].length))], 2);
+  }
+  if (h.walkTo != null) {
+    const d = h.walkTo - h.x;
+    if (Math.abs(d) < 4) { h.walkTo = null; h.hop = 0; }
+    else { h.face = Math.sign(d); h.x += Math.sign(d) * Math.min(Math.abs(d), h.speed * dt); h.hop += dt * h.speed / 18; }
+  }
+}
+
+/* ---------- Main loop ---------- */
+let last = performance.now();
+function frame(now) {
+  const dt = Math.min(0.05, (now - last) / 1000); last = now;
+  ctx.clearRect(0, 0, W, H);
+
+  // ground line, faint, so the strip reads as a place
+  const gg = ctx.createLinearGradient(0, ground - 6, 0, H);
+  gg.addColorStop(0, 'rgba(120,200,120,0)'); gg.addColorStop(0.3, 'rgba(70,140,80,.35)'); gg.addColorStop(1, 'rgba(30,60,40,.6)');
+  ctx.fillStyle = gg; ctx.fillRect(0, ground - 6, W, H - ground + 6);
+
+  ctx.save();
+  if (shakeT > 0) { shakeT -= dt; ctx.translate(rand(-4, 4), rand(-3, 3)); }
+
+  // waves
+  if (!enemies.some((e) => !e.dead)) { nextWave -= dt; if (nextWave <= 0) { spawnWave(); nextWave = 4; } }
+
+  for (const h of heroes) {
+    h.t += dt; h.flash = Math.max(0, h.flash - dt * 5);
+    thinkHero(h, dt);
+    runAction(h, dt);
+    if (!h.busy) {
+      const walking = h.walkTo != null;
+      const hopPhase = Math.abs(Math.sin(h.hop || 0));
+      h.lift = walking ? hopPhase * h.h * 0.08 : 0;
+      h.lean += ((walking ? 0.18 : 0) - h.lean) * Math.min(1, dt * 8);
+      h.squash += ((walking && hopPhase < 0.15 ? 0.1 : 0) - h.squash) * Math.min(1, dt * 14);
+    } else h.squash *= Math.pow(0.02, dt);
+    if (h.kb) { h.x += h.kb * dt * 6; h.kb *= Math.pow(0.001, dt); if (Math.abs(h.kb) < 1) h.kb = 0; }
+  }
+  for (const e of enemies) {
+    e.t += dt; e.flash = Math.max(0, e.flash - dt * 5); e.squash *= Math.pow(0.02, dt);
+    if (e.dead) {
+      e.deadT += dt;
+      if (e.vy != null) { e.vy += 900 * dt; e.lift -= e.vy * dt; e.x += e.kb * dt * 3; e.rot += e.spin * dt; }
+      else if (e.flat) { e.squash = 0.7; }
+      e.alpha = clamp(1 - e.deadT / 0.6, 0, 1);
+      continue;
+    }
+    if (e.kb) { e.x += e.kb * dt * 6; e.kb *= Math.pow(0.001, dt); if (Math.abs(e.kb) < 1) e.kb = 0; }
+    const target = heroes.reduce((a, h) => (Math.abs(h.x - e.x) < Math.abs(a.x - e.x) ? h : a));
+    const d = target.x - e.x;
+    if (Math.abs(d) > target.h * 0.32) { e.face = Math.sign(d); e.x += Math.sign(d) * e.speed * dt; e.lift = Math.abs(Math.sin(e.t * 9)) * 4; e.lean = 0.08 * Math.sin(e.t * 9); }
+    else {
+      e.bump -= dt; e.lift = 0;
+      if (e.bump <= 0) { e.bump = rand(1.1, 1.6); e.lean = 0.5; if (!target.busy) { target.flash = 0.8; target.kb = -Math.sign(d) * 10; target.squash = 0.12; } }
+      e.lean *= Math.pow(0.05, dt);
+    }
+  }
+  for (let i = enemies.length - 1; i >= 0; i--) if (enemies[i].dead && enemies[i].deadT > 0.7) enemies.splice(i, 1);
+
+  // draw back-to-front by z
+  const all = [...enemies, ...heroes].sort((a, b) => a.z - b.z);
+  for (const p of all) drawPuppet(p);
+
+  // effects
+  for (let i = fxs.length - 1; i >= 0; i--) {
+    const f = fxs[i]; f.t += dt; const k = f.t / f.life;
+    if (k >= 1) { if (f.kind === 'coin') { coins++; document.getElementById('coins').textContent = coins; } fxs.splice(i, 1); continue; }
+    if (f.kind === 'spark') { f.vy += 500 * dt; f.x += f.vx * dt; f.y += f.vy * dt; ctx.fillStyle = f.color; ctx.globalAlpha = 1 - k; ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, 7); ctx.fill(); }
+    if (f.kind === 'puff') { f.x += f.vx * dt; f.y += f.vy * dt; ctx.fillStyle = '#fff'; ctx.globalAlpha = 0.7 * (1 - k); ctx.beginPath(); ctx.arc(f.x, f.y, f.r * (1 + k), 0, 7); ctx.fill(); }
+    if (f.kind === 'ring') { ctx.strokeStyle = '#fff'; ctx.globalAlpha = 1 - k; ctx.lineWidth = 3; ctx.beginPath(); ctx.ellipse(f.x, f.y, 10 + k * 70, 4 + k * 14, 0, 0, 7); ctx.stroke(); }
+    if (f.kind === 'muzzle') { ctx.fillStyle = '#fff3a0'; ctx.globalAlpha = 1 - k; ctx.beginPath(); ctx.arc(f.x, f.y, 9, 0, 7); ctx.fill(); }
+    if (f.kind === 'tracer') { ctx.strokeStyle = '#fff7c8'; ctx.globalAlpha = 1 - k; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(f.x, f.y); ctx.lineTo(f.x2, f.y2); ctx.stroke(); }
+    if (f.kind === 'coin') {
+      const e2 = ease(k), tx = W - 70, ty = 18;
+      const x = f.x0 + (tx - f.x0) * e2, y = f.y0 + (ty - f.y0) * e2 - Math.sin(k * Math.PI) * 60;
+      ctx.globalAlpha = 1; ctx.fillStyle = '#ffcf3f'; ctx.beginPath(); ctx.ellipse(x, y, 6 * Math.abs(Math.cos(f.t * 12)) + 1, 6, 0, 0, 7); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+  for (let i = texts.length - 1; i >= 0; i--) {
+    const t = texts[i]; t.t += dt; const k = t.t / t.life;
+    if (k >= 1) { texts.splice(i, 1); continue; }
+    ctx.globalAlpha = 1 - Math.max(0, k - 0.6) / 0.4;
+    ctx.font = `700 ${t.size}px ${getComputedStyle(document.body).fontFamily}`;
+    ctx.textAlign = 'center'; ctx.lineWidth = 4; ctx.strokeStyle = 'rgba(0,0,0,.7)';
+    const y = t.y - ease(k) * 26;
+    ctx.strokeText(t.text, t.x, y); ctx.fillStyle = t.color; ctx.fillText(t.text, t.x, y);
+    ctx.globalAlpha = 1;
+  }
+  // speech bubbles and hover name tags
+  for (const h of heroes) {
+    const top = ground + h.z - h.lift - h.h - 8;
+    if (h.bubble) {
+      h.bubble.t += dt; if (h.bubble.t > h.bubble.dur) h.bubble = null;
+      else bubble(h.x, top, h.bubble.text, Math.min(1, h.bubble.t * 6, (h.bubble.dur - h.bubble.t) * 4));
+    } else if (hover === h) bubble(h.x, top, h.name, 1, true);
+  }
+  ctx.restore();
+  requestAnimationFrame(frame);
+}
+function bubble(x, y, text, a, tag) {
+  ctx.save(); ctx.globalAlpha = a;
+  ctx.font = `600 ${tag ? 13 : 15}px system-ui, sans-serif`;
+  const w = ctx.measureText(text).width + 18, h = tag ? 22 : 28;
+  const bx = clamp(x - w / 2, 6, W - w - 6), by = Math.max(4, y - h - 8);
+  ctx.fillStyle = tag ? 'rgba(12,14,24,.8)' : '#fff';
+  ctx.beginPath(); ctx.roundRect(bx, by, w, h, 10); ctx.fill();
+  if (!tag) { ctx.beginPath(); ctx.moveTo(x - 6, by + h); ctx.lineTo(x, by + h + 8); ctx.lineTo(x + 6, by + h); ctx.fill(); }
+  ctx.fillStyle = tag ? '#fff' : '#1c1f2a'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(text, bx + w / 2, by + h / 2 + 1);
+  ctx.restore();
+}
+
+/* ---------- Input ---------- */
+let hover = null;
+function heroAt(mx, my) {
+  for (const h of heroes) {
+    const w = h.h * h.img.width / h.img.height;
+    if (Math.abs(mx - h.x) < w * 0.4 && my > ground + h.z - h.h - h.lift && my < ground + h.z) return h;
+  }
+  return null;
+}
+cv.addEventListener('pointermove', (e) => { const r = cv.getBoundingClientRect(); hover = heroAt(e.clientX - r.left, e.clientY - r.top); cv.style.cursor = hover ? 'pointer' : 'default'; });
+cv.addEventListener('pointerleave', () => { hover = null; });
+cv.addEventListener('click', (e) => {
+  const r = cv.getBoundingClientRect(); const h = heroAt(e.clientX - r.left, e.clientY - r.top);
+  if (!h || h.busy) return;
+  say(h, BARKS[h.id][Math.floor(rand(0, BARKS[h.id].length))], 2.2);
+  act(h, [[0.1, (k) => { h.squash = 0.22 * k; }], [0.36, (k) => { h.squash = -0.08; h.lift = Math.sin(k * Math.PI) * h.h * 0.3; if (h.id === 'mario') h.pose = 'alt'; }], [0.14, (k) => { h.squash = 0.18 * (1 - k); }]]);
+});
+
+/* ---------- Boot ---------- */
+let goombaImg, goombaSil;
+(async function init() {
+  resize();
+  const [mario, marioJump, walter, sahur, goomba] = await Promise.all(['mario.webp', 'mario-jump.webp', 'walter.webp', 'sahur.webp', 'goomba.webp'].map(load));
+  goombaImg = goomba; goombaSil = silhouette(goomba);
+  heroes.push(
+    puppet({ id: 'walter', name: 'Walter White', img: walter, sil: silhouette(walter), h: H * 0.6, x: W * 0.08, home: W * 0.08, z: -4, cap: 0.4, range: W * 0.22, rate: 1.1, speed: 70, cd: 1, sp: 6 }),
+    puppet({ id: 'sahur', name: 'Tung Tung Tung Sahur', img: sahur, sil: silhouette(sahur), h: H * 0.62, x: W * 0.2, home: W * 0.2, z: 2, cap: 0.53, range: 46, rate: 1.0, speed: 85, cd: 1.3, sp: 9 }),
+    puppet({ id: 'mario', name: 'Mario', img: mario, alt: marioJump, sil: silhouette(mario), altSil: silhouette(marioJump), h: H * 0.44, x: W * 0.3, home: W * 0.3, z: 6, cap: 0.62, range: 40, rate: 0.75, speed: 110, cd: 0.6, sp: 4 }),
+  );
+  requestAnimationFrame((t) => { last = t; frame(t); });
+})();
+</script>
+</body>
+</html>
