@@ -1,5 +1,7 @@
 # Pocket Gacha
 
+> Picking this up? Read [HANDOFF.md](HANDOFF.md) first.
+
 A tiny gacha RPG that lives in the corner of your screen. Pull for heroes, level
 them up, send a party of three through auto-battles. No store, no real money.
 

@@ -16,10 +16,9 @@ import requests
 from PIL import Image, ImageDraw
 
 UA = {"User-Agent": "PocketGachaArtResearch/0.1 (personal hobby project)"}
-CA = "/root/.ccr/ca-bundle.crt"
 S = requests.Session()
 S.headers.update(UA)
-S.verify = CA
+S.verify = os.environ.get("REQUESTS_CA_BUNDLE", True)
 
 
 def api(host, **params):

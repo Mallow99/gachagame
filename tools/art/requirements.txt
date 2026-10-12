@@ -1,0 +1,6 @@
+requests
+pillow
+numpy
+rembg[cpu]
+onnxruntime
+imageio-ffmpeg
