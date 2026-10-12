@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mushroom Kingdom — artwork review</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f7f5ef;
+      --muted: #b9bcc8;
+      --panel: #181923;
+      --line: #303240;
+      --red: #e63b34;
+      --gold: #ffd655;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #0d0e14;
+      font: 15px/1.45 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: #94c9ff; }
+    button { font: inherit; }
+    header, main { width: min(1440px, calc(100% - 32px)); margin-inline: auto; }
+    header { padding: 38px 0 22px; }
+    h1 { margin: 0 0 8px; font-size: clamp(28px, 5vw, 54px); line-height: 1; }
+    h2 { margin: 34px 0 6px; font-size: 24px; }
+    p { margin: 0; color: var(--muted); }
+    .live {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(260px, .45fr);
+      gap: 18px;
+      position: sticky;
+      top: 0;
+      z-index: 4;
+      padding: 14px 0;
+      background: linear-gradient(#0d0e14 82%, transparent);
+    }
+    .stage {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      border: 1px solid #414453;
+      border-radius: 18px;
+      background: #86d8ff center / cover no-repeat;
+      box-shadow: 0 18px 60px #0009;
+      isolation: isolate;
+    }
+    .stage::after {
+      content: "COMPOSITION PREVIEW";
+      position: absolute;
+      right: 12px;
+      bottom: 10px;
+      z-index: 3;
+      color: #fff9;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-shadow: 0 1px 3px #000;
+    }
+    #hero {
+      position: absolute;
+      z-index: 2;
+      right: 5%;
+      bottom: -8%;
+      width: min(45%, 560px);
+      height: 92%;
+      object-fit: contain;
+      object-position: bottom right;
+      filter: drop-shadow(0 18px 12px #14202d55);
+      transform: rotate(1deg);
+    }
+    .decision {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--panel);
+    }
+    .decision strong { font-size: 20px; }
+    .code {
+      align-self: flex-start;
+      padding: 7px 10px;
+      border-radius: 7px;
+      color: #17130a;
+      background: var(--gold);
+      font-weight: 900;
+      letter-spacing: .05em;
+    }
+    .notice { color: #ffcb7d; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .card {
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      border: 2px solid transparent;
+      border-radius: 14px;
+      color: inherit;
+      background: var(--panel);
+      text-align: left;
+      cursor: pointer;
+      transition: transform .14s ease, border-color .14s ease;
+    }
+    .card:hover { transform: translateY(-2px); }
+    .card[aria-pressed="true"] { border-color: var(--gold); }
+    .card img {
+      display: block;
+      width: 100%;
+      height: 190px;
+      object-fit: contain;
+      background-color: #282a37;
+      background-image:
+        linear-gradient(45deg, #303240 25%, transparent 25%),
+        linear-gradient(-45deg, #303240 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #303240 75%),
+        linear-gradient(-45deg, transparent 75%, #303240 75%);
+      background-size: 24px 24px;
+      background-position: 0 0, 0 12px, 12px -12px, -12px 0;
+    }
+    #backgrounds .card img { object-fit: cover; }
+    .copy { display: block; padding: 13px 14px 15px; }
+    .title { display: block; font-weight: 800; }
+    .meta { display: block; margin-top: 3px; color: var(--muted); font-size: 13px; }
+    .tag {
+      display: inline-block;
+      margin: 8px 5px 0 0;
+      padding: 3px 7px;
+      border: 1px solid #494c5e;
+      border-radius: 99px;
+      color: #dddfea;
+      font-size: 11px;
+    }
+    .source {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      z-index: 2;
+      padding: 5px 8px;
+      border-radius: 99px;
+      color: white;
+      background: #08090dc7;
+      font-size: 11px;
+      text-decoration: none;
+    }
+    footer { padding: 45px 0 70px; color: var(--muted); }
+    @media (max-width: 760px) {
+      header, main { width: min(100% - 20px, 1440px); }
+      header { padding-top: 24px; }
+      .live { position: static; grid-template-columns: 1fr; }
+      .decision { padding: 14px; }
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+      .card img { height: 145px; }
+      .copy { padding: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mushroom Kingdom art direction</h1>
+    <p>Real, existing Mario artwork only. Pick one Mario and one background below; this page does not change the gacha demo.</p>
+  </header>
+  <main>
+    <section class="live" aria-label="Live composition preview">
+      <div class="stage" id="stage"><img id="hero" alt="Selected Mario artwork"></div>
+      <div class="decision">
+        <span class="code" id="choiceCode">M1 + B1</span>
+        <strong id="choiceTitle">Hero of Mushroom Kingdom + current painted castle</strong>
+        <p id="choiceNote">Recommended starting direction: keep the background you like, improve Mario, then animate separated limbs instead of deforming the whole render.</p>
+      </div>
+    </section>
+
+    <h2>Mario</h2>
+    <p>These are the strongest distinct directions from the search. M0 is the current render for comparison.</p>
+    <section class="grid" id="marios" aria-label="Mario artwork choices"></section>
+
+    <h2>Background / complete scene</h2>
+    <p>B1–B5 are backgrounds. B6 is complete key art: if chosen, it stays intact and no separate Mario is pasted over it.</p>
+    <section class="grid" id="backgrounds" aria-label="Background artwork choices"></section>
+
+    <footer>
+      Tell me the code shown above (for example, “M3 + B2”). After that choice, I’ll cut the selected Mario into body, head, arms, and legs and replace the full-image twitch with restrained joint motion.
+    </footer>
+  </main>
+
+  <script>
+    const ROOT = 'https://www.mariowiki.com/images/';
+    const marios = [
+      { id: 'M0', name: 'Current: 3D World jump', src: 'mario.webp', note: 'Baseline — this is the one you rejected.', tags: ['current', 'do not use'], source: 'https://www.mariowiki.com/File:Mario_Artwork_-_Super_Mario_3D_World.png' },
+      { id: 'M1', name: 'Hero of Mushroom Kingdom', src: ROOT + '5/58/HoM_Mario_jumping_artwork_2025.png', note: 'Modern, lively face; clean open silhouette.', tags: ['best overall', 'rig-friendly'], source: 'https://www.mariowiki.com/File:HoM_Mario_jumping_artwork_2025.png' },
+      { id: 'M2', name: 'New Super Mario Bros. U', src: ROOT + '0/06/NSMBU_Mario_Jumping_Artwork.png', note: 'Classic running jump with readable limbs.', tags: ['classic', 'rig-friendly'], source: 'https://www.mariowiki.com/File:NSMBU_Mario_Jumping_Artwork.png' },
+      { id: 'M3', name: 'Super Mario Galaxy', src: ROOT + '4/43/SMG_Mario_Jump_Artwork.png', note: 'More dramatic perspective and momentum.', tags: ['dynamic', 'good silhouette'], source: 'https://www.mariowiki.com/File:SMG_Mario_Jump_Artwork.png' },
+      { id: 'M4', name: 'Odyssey / Cappy dance', src: ROOT + 'f/f2/SMO_Artwork_Mario_Dancing.png', note: 'Most personality; Cappy makes it game-specific.', tags: ['expressive', 'harder rig'], source: 'https://www.mariowiki.com/File:SMO_Artwork_Mario_Dancing.png' },
+      { id: 'M5', name: 'Fire Mario action', src: ROOT + '9/98/Fire_Mario_Artwork_-_Super_Mario_3D_World.png', note: 'Strong action pose, but changes the pull to Fire Mario.', tags: ['action', 'variant costume'], source: 'https://www.mariowiki.com/File:Fire_Mario_Artwork_-_Super_Mario_3D_World.png' },
+      { id: 'M6', name: '25th anniversary illustration', src: ROOT + '9/9c/SMB_25th_Mario_Jumping_Artwork.png', note: 'Graphic 2D look instead of another glossy render.', tags: ['2D', 'distinct style'], source: 'https://www.mariowiki.com/File:SMB_25th_Mario_Jumping_Artwork.png' }
+    ];
+    const backgrounds = [
+      { id: 'B1', name: 'Current painted castle', src: 'bg.webp', note: 'Keep the background you already like.', tags: ['current', 'best pairing flexibility'], source: 'https://www.mariowiki.com/' },
+      { id: 'B2', name: 'Wonder meadow', src: ROOT + '6/64/BackgroundSMBWcastle.jpg', note: 'Clean, painterly, and spacious for the reveal UI.', tags: ['best alternative', 'quiet'], source: 'https://www.mariowiki.com/File:BackgroundSMBWcastle.jpg' },
+      { id: 'B3', name: 'Paper Mario castle vista', src: ROOT + '5/5b/PMTOK_title_screen_image_5.png', note: 'Bright focal castle with a handcrafted look.', tags: ['stylized', 'strong focal point'], source: 'https://www.mariowiki.com/File:PMTOK_title_screen_image_5.png' },
+      { id: 'B4', name: 'Movie Mushroom Kingdom', src: ROOT + '3/3a/TSMBM_Mushroom_Kingdom_art.jpg', note: 'Richest scenery; cinematic rather than game-art flat.', tags: ['cinematic', 'high detail'], source: 'https://www.mariowiki.com/File:TSMBM_Mushroom_Kingdom_art.jpg' },
+      { id: 'B5', name: 'Classic side-scrolling kingdom', src: ROOT + 'f/f4/NSMBW_Mushroom_Kingdom_Desktop_Wallpaper.jpg', note: 'Reads immediately as Mario gameplay and leaves room for UI.', tags: ['classic', 'wide'], source: 'https://www.mariowiki.com/File:NSMBW_Mushroom_Kingdom_Desktop_Wallpaper.jpg' },
+      { id: 'B6', name: 'Wonder complete key art', src: ROOT + '7/78/Smbw-keyart.jpg', note: 'A cohesive scene with Mario already integrated. No separate hero layer.', tags: ['complete scene', 'most cohesive'], source: 'https://www.mariowiki.com/File:Smbw-keyart.jpg', complete: true }
+    ];
+    let selectedMario = marios[1];
+    let selectedBackground = backgrounds[0];
+
+    function renderCards(items, target, kind) {
+      const host = document.getElementById(target);
+      items.forEach(item => {
+        const card = document.createElement('button');
+        card.className = 'card';
+        card.type = 'button';
+        card.dataset.id = item.id;
+        card.setAttribute('aria-pressed', 'false');
+        card.innerHTML = `
+          <a class="source" href="${item.source}" target="_blank" rel="noreferrer" aria-label="Open source for ${item.name}">source ↗</a>
+          <img src="${item.src}" alt="${item.name}" loading="lazy">
+          <span class="copy"><span class="title">${item.id} · ${item.name}</span><span class="meta">${item.note}</span>${item.tags.map(t => `<span class="tag">${t}</span>`).join('')}</span>`;
+        card.addEventListener('click', event => {
+          if (event.target.closest('a')) return;
+          if (kind === 'mario') selectedMario = item;
+          else selectedBackground = item;
+          update();
+        });
+        host.append(card);
+      });
+    }
+
+    function update() {
+      document.getElementById('stage').style.backgroundImage = `url("${selectedBackground.src}")`;
+      const hero = document.getElementById('hero');
+      hero.src = selectedMario.src;
+      hero.hidden = Boolean(selectedBackground.complete);
+      document.getElementById('choiceCode').textContent = selectedBackground.complete ? selectedBackground.id : `${selectedMario.id} + ${selectedBackground.id}`;
+      document.getElementById('choiceTitle').textContent = selectedBackground.complete ? selectedBackground.name : `${selectedMario.name} + ${selectedBackground.name}`;
+      document.getElementById('choiceNote').textContent = selectedBackground.complete
+        ? 'Complete-scene direction: preserve the composition and animate camera, light, particles, and UI—not Mario’s body.'
+        : `${selectedMario.note} ${selectedBackground.note} The final character motion will use separated body parts; the full render will not warp.`;
+      document.querySelectorAll('.card').forEach(card => card.setAttribute('aria-pressed', String(card.dataset.id === selectedMario.id || card.dataset.id === selectedBackground.id)));
+      history.replaceState(null, '', `#${selectedBackground.complete ? selectedBackground.id : `${selectedMario.id}-${selectedBackground.id}`}`);
+    }
+
+    renderCards(marios, 'marios', 'mario');
+    renderCards(backgrounds, 'backgrounds', 'background');
+    const match = location.hash.match(/^#(M\d+)-(B\d+)$/);
+    const completeMatch = location.hash.match(/^#(B\d+)$/);
+    if (match) {
+      selectedMario = marios.find(x => x.id === match[1]) || selectedMario;
+      selectedBackground = backgrounds.find(x => x.id === match[2]) || selectedBackground;
+    } else if (completeMatch) {
+      selectedBackground = backgrounds.find(x => x.id === completeMatch[1]) || selectedBackground;
+    }
+    update();
+  </script>
+</body>
+</html>

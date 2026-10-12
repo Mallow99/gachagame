@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Mario Pull — Take 3 Showcase</title>
+  <style>
+    :root { color-scheme: dark; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100dvh; background: radial-gradient(circle at 50% 0%, #17284d, #080b16 46%, #03040a); color: #fff; }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 24px; width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 22px 0 18px; }
+    h1 { margin: 0; font-size: clamp(18px, 2.2vw, 30px); letter-spacing: -.02em; }
+    .sub { margin-top: 4px; color: #aeb9d2; font-size: 13px; }
+    .switcher { display: flex; padding: 4px; border: 1px solid #344261; border-radius: 999px; background: rgba(8,12,26,.8); }
+    .switcher button { border: 0; border-radius: 999px; padding: 9px 15px; color: #aeb9d2; background: transparent; font: 700 12px/1 inherit; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
+    .switcher button.active { color: #271500; background: linear-gradient(#ffe68d, #ffba20); box-shadow: 0 4px 18px rgba(255,184,31,.25); }
+    main { width: min(1400px, calc(100% - 24px)); margin: 0 auto; padding-bottom: 28px; }
+    .stage { display: flex; align-items: center; justify-content: center; gap: 22px; min-height: calc(100dvh - 104px); }
+    .device { display: none; flex-direction: column; overflow: hidden; border: 1px solid #344261; background: #050712; box-shadow: 0 30px 90px rgba(0,0,0,.56); }
+    .device.visible { display: flex; }
+    .device.desktop { width: min(1120px, 100%); border-radius: 16px; }
+    .device.mobile { width: min(390px, 100%); border-radius: 30px; border-width: 6px; }
+    .chrome { display: flex; align-items: center; justify-content: space-between; height: 38px; padding: 0 13px; color: #9aa8c5; background: #0d1221; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .chrome a { color: #ffd567; text-decoration: none; }
+    .frame { position: relative; width: 100%; background: #000; }
+    .desktop .frame { aspect-ratio: 16 / 9; }
+    .mobile .frame { aspect-ratio: 9 / 16; }
+    iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .stage.both .device.desktop { width: min(850px, calc(100% - 350px)); }
+    .stage.both .device.mobile { width: min(310px, 32vw); }
+    @media (max-width: 760px) {
+      header { align-items: stretch; flex-direction: column; gap: 14px; padding-top: max(16px, env(safe-area-inset-top)); }
+      .switcher { align-self: stretch; }
+      .switcher button { flex: 1; padding-inline: 8px; }
+      .switcher button[data-view="both"] { display: none; }
+      .stage { min-height: 0; padding-bottom: max(16px, env(safe-area-inset-bottom)); }
+      .device.desktop { border-radius: 10px; }
+      .device.mobile { width: min(100%, 420px); }
+      .stage.both .device.desktop, .stage.both .device.mobile { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Mario Pull · Take 3</h1>
+      <div class="sub">Interactive preview — tap “Make a wish” and turn sound on.</div>
+    </div>
+    <nav class="switcher" aria-label="Preview size">
+      <button type="button" data-view="desktop">PC · 16:9</button>
+      <button type="button" data-view="mobile">Mobile · 9:16</button>
+      <button type="button" data-view="both">Both</button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="stage" id="stage">
+      <section class="device desktop" id="desktopDevice">
+        <div class="chrome"><span>PC · 16:9</span><a href="index.html?layout=desktop" target="_blank">Open full size ↗</a></div>
+        <div class="frame"><iframe title="Desktop Mario pull demo" data-src="index.html?layout=desktop"></iframe></div>
+      </section>
+      <section class="device mobile" id="mobileDevice">
+        <div class="chrome"><span>Mobile · 9:16</span><a href="index.html?layout=mobile" target="_blank">Open full size ↗</a></div>
+        <div class="frame"><iframe title="Mobile Mario pull demo" data-src="index.html?layout=mobile"></iframe></div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const stage = document.querySelector('#stage');
+    const devices = {
+      desktop: document.querySelector('#desktopDevice'),
+      mobile: document.querySelector('#mobileDevice'),
+    };
+    function load(device) {
+      const frame = device.querySelector('iframe');
+      if (!frame.src) frame.src = frame.dataset.src;
+    }
+    function show(view) {
+      const both = view === 'both';
+      stage.classList.toggle('both', both);
+      for (const [name, device] of Object.entries(devices)) {
+        const visible = both || name === view;
+        device.classList.toggle('visible', visible);
+        if (visible) load(device);
+      }
+      document.querySelectorAll('[data-view]').forEach((button) => button.classList.toggle('active', button.dataset.view === view));
+      history.replaceState(null, '', `?view=${view}`);
+    }
+    document.querySelectorAll('[data-view]').forEach((button) => button.addEventListener('click', () => show(button.dataset.view)));
+    const requested = new URLSearchParams(location.search).get('view');
+    show(['desktop', 'mobile', 'both'].includes(requested) ? requested : matchMedia('(max-width: 760px)').matches ? 'mobile' : 'desktop');
+  </script>
+</body>
+</html>
