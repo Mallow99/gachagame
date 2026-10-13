@@ -4,10 +4,9 @@
 import * as D from './data.js';
 
 const SAVE_KEY = 'pocketgacha.save.v1';
-const SAVE_VERSION = 2;
+const SAVE_VERSION = 3;
 
 const rand = () => Math.random();
-const randRange = (a, b) => a + Math.random() * (b - a);
 const randInt = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
 const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
@@ -29,8 +28,8 @@ class Game extends EventTarget {
     this.pitySsr = 0;
     this.pitySr = 0;
     this.stage = 1;
-    this.owned = Object.fromEntries(['bob', 'dave', 'pete', 'gary'].map((id) => [id, { lvl: 1, asc: 0 }]));
-    this.party = ['bob', 'dave', 'pete', 'gary'];
+    this.owned = Object.fromEntries(['mario', 'walter', 'sahur', 'bob'].map((id) => [id, { lvl: 1, asc: 0 }]));
+    this.party = ['mario', 'walter', 'sahur', 'bob'];
     this.totalPulls = 0;
     this.muted = true;
     this.lastSeen = 0;
@@ -154,7 +153,7 @@ class Game extends EventTarget {
   ssrChance() {
     const n = this.pitySsr + 1;
     if (n >= D.HARD_PITY) return 1;
-    if (n > D.SOFT_PITY) return D.SSR_RATE + 0.06 * (n - D.SOFT_PITY);
+    if (n > D.SOFT_PITY) return Math.min(1, D.SSR_RATE + D.SOFT_PITY_STEP * (n - D.SOFT_PITY));
     return D.SSR_RATE;
   }
 
@@ -202,17 +201,24 @@ class Game extends EventTarget {
     return { gems: 25 + 5 * s + (boss ? 75 : 0), gold: 60 + 18 * s + (boss ? 120 : 0) };
   }
 
-  makeEnemies(s) {
+  makeEnemies(s, options = {}) {
     const info = D.stageInfo(s);
     const p = D.ENEMY_GROWTH ** (s - 1);
-    if (info.boss) {
+    const boss = options.boss ?? info.boss;
+    const mod = options.modifier || {};
+    const hpMod = mod.hp || 1;
+    const atkMod = mod.atk || 1;
+    const defMod = mod.def || 1;
+    const spdMod = mod.spd || 1;
+    if (boss) {
       const [name, color] = info.area.boss;
-      return [unit(name, color, 300 * p, 15 * p, 7 * p, 9, true, 'charge')];
+      return [unit(name, color, 300 * p * hpMod, 15 * p * atkMod, 7 * p * defMod, 9 * spdMod, true, 'charge', enemyArt(name))];
     }
-    const count = info.worldStage === 1 ? 1 : info.areaStage < 4 ? 2 : 3;
+    const baseCount = info.worldStage === 1 ? 1 : info.areaStage < 4 ? 2 : 3;
+    const count = options.count ?? baseCount;
     return Array.from({ length: count }, () => {
       const [name, color] = pick(info.area.enemies);
-      return unit(name, color, 60 * p, 11 * p, 4 * p, randInt(6, 13), false, 'melee');
+      return unit(name, color, 60 * p * hpMod, 11 * p * atkMod, 4 * p * defMod, randInt(6, 13) * spdMod, false, 'melee', enemyArt(name));
     });
   }
 
@@ -220,37 +226,13 @@ class Game extends EventTarget {
     return this.party.map((id) => {
       const h = this.hero(id);
       const s = this.stats(id);
-      return { id, name: h.name, color: h.color, cls: h.cls, attackStyle: D.attackStyleFor(h), boss: false, hero: true,
+      return { id, name: h.name, color: h.color, cls: h.cls, art: h.art, attackStyle: D.attackStyleFor(h), boss: false, hero: true,
         hp: s.hp, maxHp: s.hp, atk: s.atk, def: s.def, spd: s.spd };
     });
   }
 
   teamPower(units) {
     return units.reduce((t, u) => t + Math.floor(u.maxHp / 4 + u.atk * 2 + u.def * 2 + u.spd), 0);
-  }
-
-  /** Runs the whole fight up front; the battle screen replays the events. */
-  simulate(heroes, enemies) {
-    const sides = [structuredClone(heroes), structuredClone(enemies)];
-    const events = [];
-    let winner = -1;
-    for (let round = 0; round < 50 && winner === -1; round++) {
-      const order = [];
-      sides.forEach((units, s) => units.forEach((_, i) => order.push([s, i])));
-      order.sort(() => rand() - 0.5);
-      order.sort((a, b) => sides[b[0]][b[1]].spd - sides[a[0]][a[1]].spd);
-      for (const [side, idx] of order) {
-        const me = sides[side][idx];
-        if (me.hp <= 0) continue;
-        const ev = act(side, idx, me, sides[side], sides[1 - side]);
-        if (ev) events.push(ev);
-        if (sides[1 - side].every((u) => u.hp <= 0)) {
-          winner = side;
-          break;
-        }
-      }
-    }
-    return { win: winner === 0, events };
   }
 
   /** Pays out and advances the stage on a win. Losses still pay a little gold. */
@@ -306,11 +288,13 @@ class Game extends EventTarget {
     for (const [id, o] of Object.entries(data.owned || {})) {
       if (this.byId[id] && o) owned[id] = { lvl: num(o.lvl, 1), asc: num(o.asc, 0) };
     }
-    // Early builds started with Bob alone. Give untouched legacy starters the
-    // four-person test team so the battle strip demonstrates the real layout.
-    if (!data.saveVersion && Object.keys(owned).length === 1 && owned.bob) {
-      for (const id of ['dave', 'pete', 'gary']) owned[id] = { lvl: 1, asc: 0 };
-      data.party = ['bob', 'dave', 'pete', 'gary'];
+    // Replace the placeholder-only starter team with the three characters from
+    // the approved roaming prototype. Keep every unit and level already earned.
+    const oldStarters = new Set(['bob', 'dave', 'pete', 'gary']);
+    const onlyOldStarters = Object.keys(owned).length > 0 && Object.keys(owned).every((id) => oldStarters.has(id));
+    if ((data.saveVersion || 0) < SAVE_VERSION && onlyOldStarters) {
+      for (const id of ['mario', 'walter', 'sahur']) owned[id] = { lvl: 1, asc: 0 };
+      data.party = ['mario', 'walter', 'sahur', 'bob'];
     }
     if (Object.keys(owned).length) {
       this.owned = owned;
@@ -325,47 +309,13 @@ class Game extends EventTarget {
   }
 }
 
-function unit(name, color, hp, atk, def, spd, boss, attackStyle) {
-  return { id: name, name, color, cls: '', attackStyle, boss, hero: false,
+function unit(name, color, hp, atk, def, spd, boss, attackStyle, art) {
+  return { id: name, name, color, cls: '', art, attackStyle, boss, hero: false,
     hp: Math.round(hp), maxHp: Math.round(hp), atk: Math.round(atk), def: Math.round(def), spd };
 }
 
-/** Index of the living unit with the least HP (or HP ratio), -1 if all dead. */
-function lowest(units, byRatio) {
-  let best = -1;
-  let bestV = Infinity;
-  units.forEach((u, i) => {
-    if (u.hp <= 0) return;
-    const v = byRatio ? u.hp / u.maxHp : u.hp;
-    if (v < bestV) {
-      bestV = v;
-      best = i;
-    }
-  });
-  return best;
-}
-
-function act(side, idx, me, allies, foes) {
-  if (me.cls === 'Cleric') {
-    const hurt = lowest(allies, true);
-    if (hurt !== -1 && allies[hurt].hp / allies[hurt].maxHp < 0.7) {
-      const t = allies[hurt];
-      const amount = Math.round(me.atk * 1.3 * randRange(0.9, 1.1));
-      t.hp = Math.min(t.maxHp, t.hp + amount);
-      return { side, idx, tSide: side, tIdx: hurt, kind: 'heal', amount, crit: false, tHp: t.hp };
-    }
-  }
-  const alive = foes.map((u, i) => (u.hp > 0 ? i : -1)).filter((i) => i !== -1);
-  if (!alive.length) return null;
-  const ti = me.cls === 'Rogue' ? lowest(foes, false) : pick(alive);
-  const target = foes[ti];
-  const critChance = me.cls === 'Rogue' ? 0.25 : me.cls === 'Ranger' ? 0.2 : 0.1;
-  const crit = rand() < critChance;
-  let dmg = Math.max(1, me.atk * randRange(0.85, 1.15) - target.def * 0.5);
-  if (crit) dmg *= 1.6;
-  const amount = Math.round(dmg);
-  target.hp = Math.max(0, target.hp - amount);
-  return { side, idx, tSide: 1 - side, tIdx: ti, kind: 'hit', amount, crit, tHp: target.hp };
+function enemyArt(name) {
+  return /goomba/i.test(name) ? { icon: 'demos/strip/goomba.webp' } : undefined;
 }
 
 export const game = new Game();

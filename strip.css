@@ -1,84 +1,65 @@
 :root {
-  --ink: #fff9df;
-  --muted: rgba(255, 249, 223, .72);
-  --accent: #ffd23f;
-  --sky-a: rgba(95, 190, 255, .84);
-  --sky-b: rgba(196, 235, 151, .9);
-  --ground-a: #65aa44;
-  --ground-b: #356b31;
+  --ink: #fff8d6;
+  --accent: #ffd43b;
+  --area: #78cf68;
+  --area-dark: #2f7040;
   color-scheme: dark;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 }
 
 * { box-sizing: border-box; }
 html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: transparent; user-select: none; }
 button { font: inherit; }
+#strip, #world, #stage { position: absolute; inset: 0; width: 100%; height: 100%; }
+#strip { overflow: hidden; }
+#stage { display: block; pointer-events: none; }
 
-#strip { position: relative; width: 100%; height: 100%; overflow: hidden; }
-#world {
-  position: absolute; inset: 38px 0 0;
-  overflow: hidden;
-  background: linear-gradient(to bottom, var(--sky-a), var(--sky-b) 72%);
-  border-top: 1px solid rgba(255,255,255,.36);
-  box-shadow: inset 0 12px 32px rgba(255,255,255,.08), 0 -8px 28px rgba(0,0,0,.14);
+.area-underground { --area: #9c7bb7; --area-dark: #372d4b; }
+.area-cloudtops { --area: #bde9ff; --area-dark: #4b86b2; }
+.area-airship { --area: #cf9665; --area-dark: #503727; }
+.area-castle { --area: #ff6a32; --area-dark: #491b1c; }
+
+#controls {
+  position: absolute; z-index: 30; top: 5px; right: 9px;
+  display: flex; gap: 4px; height: 29px;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,.55));
 }
-#world::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(0,0,0,.12), transparent 18% 82%, rgba(0,0,0,.14)); }
-.ground { position: absolute; z-index: 1; left: 0; right: 0; bottom: 0; height: 38px; background: linear-gradient(var(--ground-a) 0 8px, var(--ground-b) 8px); border-top: 2px solid rgba(255,255,255,.3); }
-.hills { position: absolute; bottom: 30px; width: 360px; height: 70px; border-radius: 70% 70% 0 0; opacity: .35; background: var(--ground-a); }
-.hills.far { left: 12%; transform: scale(.75); transform-origin: bottom; }
-.hills.near { right: 14%; width: 480px; height: 95px; opacity: .28; }
-
-.area-underground { --sky-a: rgba(54, 43, 74, .96); --sky-b: rgba(24, 23, 41, .98); --ground-a: #69556f; --ground-b: #332c42; }
-.area-cloudtops { --sky-a: rgba(91, 184, 244, .86); --sky-b: rgba(231, 246, 255, .92); --ground-a: #e7f6ff; --ground-b: #91b8d6; }
-.area-airship { --sky-a: rgba(113, 88, 91, .94); --sky-b: rgba(47, 39, 57, .98); --ground-a: #a2714e; --ground-b: #493425; }
-.area-castle { --sky-a: rgba(76, 23, 31, .96); --sky-b: rgba(23, 15, 25, .99); --ground-a: #e25325; --ground-b: #472019; }
-.area-underground .hills { border-radius: 0; clip-path: polygon(0 50%, 10% 25%, 20% 50%, 30% 10%, 45% 50%, 60% 18%, 70% 50%, 85% 5%, 100% 55%, 100% 100%, 0 100%); }
-.area-cloudtops .hills { border-radius: 999px 999px 0 0; background: #fff; }
-.area-airship .hills { border-radius: 4px; height: 12px; bottom: 72px; box-shadow: 60px -20px 0 var(--ground-a), 150px 8px 0 var(--ground-a); }
-.area-castle .hills { border-radius: 0; clip-path: polygon(0 100%, 0 30%, 14% 30%, 14% 0, 28% 0, 28% 50%, 50% 50%, 50% 16%, 66% 16%, 66% 60%, 82% 60%, 82% 25%, 100% 25%, 100% 100%); }
-
-#stage { position: absolute; z-index: 2; inset: 0; }
-.unit { position: absolute; bottom: 27px; width: 92px; margin-left: -46px; text-align: center; color: var(--ink); filter: drop-shadow(0 5px 4px rgba(0,0,0,.42)); }
-.unit.enemy .sprite { transform: scaleX(-1); }
-.fighter { position: relative; width: fit-content; margin: auto; transform-origin: 50% 100%; will-change: transform, filter, opacity; }
-.sprite { display: block; image-rendering: pixelated; }
-.name { width: 110px; margin-left: -9px; overflow: hidden; color: rgba(255,255,255,.9); font-size: 10px; font-weight: 750; line-height: 14px; text-overflow: ellipsis; text-shadow: 0 1px 3px #000; white-space: nowrap; }
-.hp { width: 70px; height: 5px; margin: 2px auto 0; overflow: hidden; border: 1px solid rgba(0,0,0,.6); border-radius: 5px; background: rgba(24,16,29,.72); }
-.hp-fill { height: 100%; background: linear-gradient(90deg, #68e67f, #b4f078); transition: width .16s; }
-.enemy .hp-fill { background: linear-gradient(90deg, #f25c62, #ff9c58); }
-.unit.dead .fighter { animation: defeated .42s ease-in forwards; }
-@keyframes defeated { to { transform: translateY(24px) rotate(18deg) scale(.5); opacity: 0; } }
-
+#hud, #hide-strip {
+  height: 29px; border: 1px solid rgba(255,255,255,.24); color: var(--ink);
+  background: rgba(19,17,24,.9); cursor: pointer;
+}
 #hud {
-  position: absolute; z-index: 20; top: 4px; right: 12px; height: 31px;
-  display: flex; align-items: center; gap: 7px; max-width: calc(100% - 24px); padding: 0 12px;
-  border: 1px solid rgba(255,255,255,.18); border-radius: 999px; color: var(--ink);
-  background: rgba(17, 15, 30, .88); box-shadow: 0 5px 18px rgba(0,0,0,.28); cursor: pointer;
-  font-size: 11px; letter-spacing: .03em; backdrop-filter: blur(10px);
+  display: flex; align-items: center; gap: 9px; padding: 0 9px;
+  border-radius: 3px 0 0 3px; font-size: 10px; letter-spacing: .04em;
 }
-#hud:hover { background: rgba(39, 33, 68, .96); }
-#location { color: var(--muted); }
+#hud:hover, #hide-strip:hover { color: #fff; background: rgba(48,42,52,.96); }
+#hide-strip { width: 29px; padding: 0; border-radius: 0 3px 3px 0; font-size: 15px; }
+#location { color: var(--area); font-weight: 800; }
 #stage-label { color: var(--accent); }
-#action-label { min-width: 118px; color: var(--muted); text-align: center; }
-.divider { width: 1px; height: 13px; background: rgba(255,255,255,.2); }
+#wave-label { color: rgba(255,255,255,.72); }
+#modifier-label { color: rgba(255,255,255,.58); }
 .gem { color: #7fe3ff; }
 .coin { color: #ffb347; }
-.open { margin-left: 3px; color: var(--accent); font-weight: 800; }
+.gem b, .coin b { color: var(--ink); }
+.open { padding-left: 2px; color: var(--accent); font-weight: 900; }
 
-#announce { position: absolute; z-index: 15; left: 50%; top: 15px; transform: translate(-50%, -8px); padding: 5px 13px; border-radius: 999px; color: var(--ink); background: rgba(16,14,28,.78); font-size: 12px; font-weight: 800; letter-spacing: .11em; opacity: 0; pointer-events: none; transition: .2s; }
+#turn-order {
+  position: absolute; z-index: 20; top: 8px; left: 11px;
+  display: flex; gap: 8px;
+  color: rgba(255,255,255,.88); font-size: 10px; line-height: 13px;
+  text-shadow: 0 1px 3px #000, 0 0 5px #000; pointer-events: none;
+}
+#turn-order small { color: var(--accent); font: inherit; font-weight: 900; }
+
+#announce {
+  position: absolute; z-index: 25; left: 50%; top: 8px; transform: translate(-50%, -5px);
+  padding: 4px 9px; border-left: 3px solid var(--area); color: #fff;
+  background: rgba(15,13,19,.78); font-size: 10px; font-weight: 900; letter-spacing: .08em;
+  opacity: 0; pointer-events: none; transition: .16s;
+}
 #announce.show { transform: translate(-50%, 0); opacity: 1; }
-.float { position: absolute; z-index: 12; left: 50%; top: -6px; color: #fff; font-size: 17px; font-weight: 900; text-shadow: 0 2px 3px #000; pointer-events: none; animation: float-up .6s ease-out forwards; }
-.float.crit { color: #ffd23f; font-size: 21px; }
-.float.heal { color: #79f0a0; }
-@keyframes float-up { to { transform: translateY(-36px); opacity: 0; } }
 
-.projectile { position: absolute; z-index: 9; width: 12px; height: 7px; margin: -4px 0 0 -6px; border-radius: 999px; background: #fff4a8; box-shadow: 0 0 9px #ffd23f; pointer-events: none; }
-.projectile.lob { width: 15px; height: 15px; border-radius: 50%; background: #d891ff; box-shadow: 0 0 12px #9d5cff; }
-.beam { position: absolute; z-index: 8; height: 7px; border-radius: 9px; transform-origin: 0 50%; background: linear-gradient(90deg, #fff, #ae7dff 35%, rgba(130,80,255,.15)); box-shadow: 0 0 14px #a670ff; pointer-events: none; }
-.impact { position: absolute; z-index: 11; width: 36px; height: 36px; margin: -18px; border: 4px solid #fff0a0; border-radius: 50%; pointer-events: none; animation: impact .28s ease-out forwards; }
-@keyframes impact { to { transform: scale(1.8); opacity: 0; } }
-
-@media (max-width: 720px) {
-  #location, #action-label, .divider { display: none; }
-  .unit { width: 72px; margin-left: -36px; }
+@media (max-width: 760px) {
+  #modifier-label, #location, #turn-order { display: none; }
+  #hud { gap: 6px; }
 }

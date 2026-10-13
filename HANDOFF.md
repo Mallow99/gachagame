@@ -33,12 +33,14 @@ index.html, styles.css         Management page (plain HTML/CSS/JS, no build step
 strip.html, strip.css          Real transparent battle-strip page
 src/
   data.js                      All tunables + roster (rates, pity, costs, classes)
-  game.js                      Rules/state: gacha, levels, battles, save (no DOM)
+  game.js                      Rules/state: gacha, levels, enemies, save (no DOM)
+  combat.js                    Exact action timing, damage and encounter rules
   main.js                      Widget shell: top bar, tabs, toasts, collapse
-  strip.js                     Continuous strip battles + seven attack animations
+  strip.js                     Roaming real-time strip combat adapted from the prototype
   ui.js, sprites.js, sfx.js    DOM helpers, placeholder pixel sprites, WebAudio sfx
   views/summon.js reveal.js    Banner screen + (old, basic) pull animation
-  views/heroes.js adventure.js Collection/level-up, battle playback
+  views/heroes.js adventure.js Collection/level-up, field status
+  views/mechanics.js           Exact in-game Field Manual and live party stats
   views/particles.js           Canvas particle bursts
 electron/main.js, preload.js   Always-on-top strip/manager modes + click-through IPC
 tools/serve.mjs                Static server: `npm run web` -> http://localhost:8080
@@ -56,13 +58,17 @@ ROADMAP.md                     What we're building and in what order
 Run the game: `npm install && npm start` (Electron) or `npm run web` (browser).
 Electron now starts in the real bottom battle strip; click its HUD to open the
 360×600 management view. The same window switches modes so both use one save.
+The strip is transparent except for fighters/effects/a faint ground line. Hide
+or restore it with its `×`, the menu-bar star, or `Cmd+Shift+G`; it does not
+follow the user into macOS full-screen spaces.
 Run the Mario demo: serve `demos/mario-pull/` over HTTP, e.g.
 `python3 -m http.server -d demos/mario-pull 8000`. It fetches files, so opening
 it as `file://` won't work. It's also published as a Claude artifact the owner
 views: https://claude.ai/artifact/7aSgKuTJpH6J7pxLpPMRUe (version 4, signed off by the owner: six Pixiv illustrations as separate pulls across R/SR/SSR, `PULLS` array in index.html; only the SSR gets the quote, voice and Starman theme). The strip prototype is at https://claude.ai/artifact/FaXzvANwXa628a8m1A9e1K.
 
-The main game still uses its own simple reveal (`src/views/reveal.js`) and
-placeholder pixel sprites for the original 22-hero test roster in `data.js`.
+The main game still uses its own simple reveal (`src/views/reveal.js`). The
+mechanics test team now uses the approved Mario, Walter and Sahur cut-outs from
+`demos/strip/`; the remaining test roster still uses placeholder pixel sprites.
 **Batch 1 art in `assets/characters/` is not wired into the game yet.**
 
 ---

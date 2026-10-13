@@ -17,14 +17,16 @@ npm run web      # or play in a browser at http://localhost:8080
 ```
 
 The desktop app starts as a transparent, always-on-top battle strip along the
-bottom of the screen. Click **MANAGE** to open the full game window; its `–`
-button returns to the strip. Outside the HUD, strip clicks pass through to the
-app underneath it.
+bottom of the screen. Click **MENU** to open the full game window; its `–`
+button returns to the strip. Outside the controls, strip clicks pass through to
+the app underneath it. Hide or restore it from the menu-bar star or with
+`⌘⇧G` (`Ctrl+Shift+G` on Windows/Linux); it stays out of full-screen spaces.
 
 ## Playing
 
-- **Strip:** battles run continuously. The HUD shows the current area, stage,
-  action and rewards; click **MANAGE** to pull or change the team.
+- **Strip:** real-time battles run continuously. Frontliners roam and close the
+  distance, ranged units hold back, yellow action gauges show readiness, and
+  the **NEXT** readout exposes initiative. Click **MENU** to manage the team.
 - **Management:** drag the gems/gold bar to move the window. `–` returns to the
   strip; `×` saves and quits.
 - **Summon:** 100 gems per pull, 1000 for ten. SSR 3%, SR 15%, R 82%. SSR odds
@@ -33,9 +35,12 @@ app underneath it.
 - **Dupes** raise a hero's Ascension (max 5): +10% stats and +10 level cap each.
   Dupes after that turn into gold.
 - **Heroes:** click a hero to level them up with gold and add or remove them from the party (max 4). Variants are separate pulls, but only one member of a character family can be equipped at once.
-- **Adventure:** auto-battle the current stage. Wins pay gems and gold and unlock
-  the next stage. The first 50 stages cross five Mushroom Kingdom areas, each
-  ending in a boss. Losses still pay a little gold.
+- **Field:** the strip auto-battles the current stage. Wins pay gems and gold and unlock
+  the next stage. Each stage has three waves and one of five encounter rules.
+  The first 50 stages cross five Mushroom Kingdom areas, each ending in a boss.
+  Losses still pay a little gold.
+- **Rules:** the management window's Field Manual lists the exact speed, damage,
+  crit, attack-style, enemy-scaling, reward, progression and pity formulas.
 - **Free gems:** +3/min while open, +1/min while closed (up to 8 hours), 500 daily,
   and stage clears.
 - Sound starts **off**. Turn it on with the SFX button.
@@ -46,11 +51,13 @@ app underneath it.
 | --- | --- |
 | `src/data.js` | All the numbers (rates, pity, costs, income) and the roster |
 | `src/game.js` | Rules and state: gacha, levels, battles, saving (no UI) |
+| `src/combat.js` | Exact real-time timing, damage, attack-style and stage-modifier rules |
 | `src/main.js` | Window shell: top bar, tabs, toasts, collapse |
-| `strip.html`, `strip.css`, `src/strip.js` | Always-on-top auto-battle strip and its seven attack animations |
+| `strip.html`, `strip.css`, `src/strip.js` | Transparent roaming strip, live action gauges and seven attack behaviors |
 | `src/views/summon.js`, `reveal.js` | Banner screen and the pull animation |
 | `src/views/heroes.js` | Collection, party, level-ups |
-| `src/views/adventure.js` | Stages and battle playback |
+| `src/views/adventure.js` | Current route, encounter rule, waves and team status |
+| `src/views/mechanics.js` | In-game Field Manual with formulas and live party stats |
 | `src/sprites.js` | Placeholder pixel sprites (replaced by real art when a hero has `art.icon`) |
 | `src/sfx.js` | Procedural sound effects |
 | `electron/` | Strip/management window switching and click-through behavior |

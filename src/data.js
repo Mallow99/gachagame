@@ -4,6 +4,7 @@ export const PULL_COST = 100;
 export const SSR_RATE = 0.03;
 export const SR_RATE = 0.15;
 export const SOFT_PITY = 50; // SSR odds start climbing after this many pulls without one
+export const SOFT_PITY_STEP = 0.03; // +3 percentage points per pull after soft pity
 export const HARD_PITY = 70; // guaranteed SSR on this pull
 export const SR_PITY = 10; // guaranteed SR-or-better every 10 pulls
 
@@ -16,8 +17,9 @@ export const DAILY_GEMS = 500;
 
 export const MAX_ASC = 5;
 export const MAX_PARTY = 4;
-export const ENEMY_GROWTH = 1.075; // enemy stats multiply by this every stage
+export const ENEMY_GROWTH = 1.045; // slower growth; stages are longer multi-wave runs
 export const WORLD_LENGTH = 50;
+export const STAGE_WAVES = 3;
 
 export const CLASSES = {
   Warrior: { hp: 120, atk: 16, def: 12, spd: 8 },
@@ -41,6 +43,9 @@ export const RARITY_MULT = { 3: 1.0, 4: 1.3, 5: 1.7 };
 // ({ icon, splash }) pointing at real images; until then a pixel sprite is
 // generated from the id and color.
 export const ROSTER = [
+  { id: 'mario', name: 'Mario', rarity: 3, cls: 'Warrior', family: 'mario', attackStyle: 'stomp', color: '#e44736', art: { icon: 'demos/strip/mario.webp', alt: 'demos/strip/mario-jump.webp' } },
+  { id: 'walter', name: 'Walter White', rarity: 3, cls: 'Ranger', family: 'walter-white', attackStyle: 'shot', color: '#b9b3a0', art: { icon: 'demos/strip/walter.webp' } },
+  { id: 'sahur', name: 'Tung Tung Tung Sahur', rarity: 3, cls: 'Warrior', family: 'sahur', attackStyle: 'combo', color: '#9b623d', art: { icon: 'demos/strip/sahur.webp' } },
   { id: 'aurelia', name: 'Aurelia Dawnblade', rarity: 5, cls: 'Warrior', color: '#ffcc33' },
   { id: 'vex', name: 'Vex the Unbound', rarity: 5, cls: 'Mage', color: '#b04cff' },
   { id: 'kiri', name: 'Kiri Nightstep', rarity: 5, cls: 'Rogue', color: '#3dd6c8' },
@@ -77,7 +82,7 @@ const ATTACK_STYLE_BY_HERO = {
 };
 
 export function attackStyleFor(hero) {
-  return ATTACK_STYLE_BY_HERO[hero.id] || 'melee';
+  return hero.attackStyle || ATTACK_STYLE_BY_HERO[hero.id] || 'melee';
 }
 
 export const MUSHROOM_KINGDOM = [

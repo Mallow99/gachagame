@@ -6,6 +6,7 @@ import { h, sleep } from './ui.js';
 import { SummonView } from './views/summon.js';
 import { HeroesView } from './views/heroes.js';
 import { AdventureView } from './views/adventure.js';
+import { MechanicsView } from './views/mechanics.js';
 import { Reveal } from './views/reveal.js';
 
 const desktop = window.desktop; // set by electron/preload.js
@@ -34,9 +35,10 @@ app.append(h('header.bar', h('div.drag', gems, gold), soundBtn, collapseBtn, clo
 
 const reveal = new Reveal(app);
 const views = [
-  ['Summon', SummonView((results) => reveal.play(results))],
-  ['Heroes', HeroesView()],
-  ['Adventure', AdventureView()],
+  ['Pull', SummonView((results) => reveal.play(results))],
+  ['Team', HeroesView()],
+  ['Field', AdventureView()],
+  ['Rules', MechanicsView()],
 ];
 views.forEach(([name, view], i) => {
   body.append(view);

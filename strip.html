@@ -11,22 +11,22 @@
 <body>
   <main id="strip" class="area-grassland">
     <section id="world" aria-label="Automatic battle">
-      <div class="hills far"></div>
-      <div class="hills near"></div>
-      <div class="ground"></div>
-      <div id="stage"></div>
+      <canvas id="stage"></canvas>
+      <div id="turn-order"><small>NEXT</small><span>—</span></div>
       <div id="announce"></div>
     </section>
-    <button id="hud" type="button" title="Open Pocket Gacha" data-interactive>
-      <span id="location">Mushroom Kingdom · Grassland</span>
-      <strong id="stage-label">Stage 1</strong>
-      <span class="divider"></span>
-      <span id="action-label">Preparing battle…</span>
-      <span class="divider"></span>
-      <span class="gem">◆</span><span id="gems">0</span>
-      <span class="coin">●</span><span id="gold">0</span>
-      <span class="open">MANAGE</span>
-    </button>
+    <div id="controls" data-interactive>
+      <button id="hud" type="button" title="Open collection and team management">
+        <span id="location">GRASSLAND</span>
+        <strong id="stage-label">STAGE 1</strong>
+        <span id="wave-label">1/3</span>
+        <span id="modifier-label">OPEN FIELD</span>
+        <span class="gem">◆ <b id="gems">0</b></span>
+        <span class="coin">● <b id="gold">0</b></span>
+        <span class="open">MENU</span>
+      </button>
+      <button id="hide-strip" type="button" title="Hide strip · restore with ⌘⇧G">×</button>
+    </div>
   </main>
   <script type="module" src="src/strip.js"></script>
 </body>

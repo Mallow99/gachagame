@@ -125,11 +125,14 @@ working.
 ## Roadmap 2: the strip (the playable core)
 
 **In progress:** Electron now starts as the real full-width bottom strip and
-switches to management when its HUD is clicked. Four-unit battles run
-continuously from the shared save, and melee, shot, combo, charge, stomp, lob
-and beam have distinct strip animations. The area/boss data and backgrounds
-cover all 50 Mushroom Kingdom stages. Passives, ultimate meters/cut-ins,
-front/back rows and reward drops are still pending.
+switches to management when its HUD is clicked. Combat was rebuilt from the
+approved `demos/strip/` prototype: frontliners roam, Walter-style ranged units
+hold back, Mario-style stomp units jump onto targets, and visible action gauges
+plus a NEXT queue expose initiative. Stages have three waves and five rotating
+encounter rules. The strip is transparent, click-through, hidden by `×`, menu
+bar or `Cmd+Shift+G`, and absent from full-screen spaces. The management window
+has an exact Field Manual for every current formula. Passives, ultimate
+meters/cut-ins and reward drops are still pending.
 
 - An Electron window that is transparent, always on top, sits along the
   bottom of the screen and passes clicks through.
@@ -196,17 +199,16 @@ front/back rows and reward drops are still pending.
 
 ---
 
-## Simplified combat actions
+## Combat actions
 
 Every kit is built from these parts. Each one has a cheap way to look good in
 the strip.
 
-The original seven attack types stay as animation styles: `melee`, `shot`,
-`combo`, `charge`, `stomp`, `lob` and `beam` tell the renderer what to play,
-not which of seven separate damage systems to run. Only three mechanics need
-to exist in the first simulation:
+The seven styles share one damage formula but now have small, visible mechanical
+differences. Exact powers and action timers live in `src/combat.js` and are
+shown inside the game's Rules tab.
 
-| Mechanic | What it does |
+| Outcome | What it does |
 |---|---|---|
 | Strike | Damage one target |
 | Burst | Damage several targets |
