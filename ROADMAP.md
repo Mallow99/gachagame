@@ -3,21 +3,26 @@
 Read this first. `HANDOFF.md` has the history and technical detail; this file
 says what we are building and in what order.
 
-**Goal:** maximum gacha dopamine from something that is **easy, simple, cheap
-and fast** to build and play. Polish where it pays off (pulls, SSRs), "charming
-jank" everywhere else. Personal use only.
+**Goal:** maximum gacha dopamine from something one person can actually finish.
+Keep infrastructure small, but do not simplify away the motion that makes a
+character recognizable. Polish pulls, signature combat behavior and SSR/UR
+presentation first. Personal use only.
 
 **Where we are:** build the playable game first. Character production and the
 art picker are paused until the strip loop works. The current step is the data
 and combat foundation in Roadmap 2. The definitive modular plan begins at
 [`docs/plan/README.md`](docs/plan/README.md); it supersedes earlier planning
 where they conflict. The approved structure is a branching Atlas where a Saga
-is a franchise and a World normally adapts one specific game. Major Worlds can
-be 25 stages, smaller titles can be 5–20, and a Saga has no fixed cap. The first
+is rendered as a franchise Hub, its Archive can contain production-ready
+iterations from several games, and each World normally adapts one specific
+game. Major Worlds can be 25 stages, smaller titles can be 5–20, and a Saga has
+no fixed cap. The first
 production Worlds are the 15-stage *Super Mario Bros.* and the 20-stage
 *Kirby's Adventure*. For the next coding session, execute
 [`docs/plan/07_TODAY_BUILD_TICKETS.md`](docs/plan/07_TODAY_BUILD_TICKETS.md)
-in order; the data/save shapes it references are in plan document `08`.
+in order; the data/save shapes it references are in plan document `08`. The
+summon/Hub decision and the exact Mario/Kirby behavior backlog are in documents
+`13` and `14`.
 
 ---
 
@@ -135,7 +140,7 @@ working.
   - id, name, title, family, tier, type, stats
   - attacks, passive, ultimate
   - art route, art files, sprite or puppet
-  - SSR only: quote, voice, music
+  - all rarities: quote and effect motif; SSR/UR: voice and music ceremony
 - **Picker page:** for a given Japanese tag or artist, generate a local page
   of about 60 thumbnails ranked by bookmarks. It saves ordered favorites to
   `picks.json`. The owner can use it directly or delegate the choice to the AI.
@@ -200,8 +205,10 @@ Assist Pages and reward drops are still pending.
   object (Super Star for Mario, a Warp Star for Kirby, a blue crystal for
   Mega Man or another source-specific object).
 - **Progressive pools:** Area Spotlights unlock during their Worlds, then their
-  contents move into a permanent Saga Archive. UR/Mythic banners stay separate,
-  cycle among unlocked candidates and keep persistent pity.
+  contents move into a permanent Saga Archive. The Archive may also release an
+  approved iteration before its source World exists; the card still names its
+  real source. UR/Mythic banners stay separate, cycle among unlocked candidates
+  and keep persistent pity.
 - **Supply gacha:** a cheaper, separately earned ticket banner for Power-Ups
   and Assist Pages. Area Supply Spotlights also move into a permanent Archive.
 - **Done when:** currency earned in the strip buys pulls, and a newly pulled
@@ -227,11 +234,17 @@ Assist Pages and reward drops are still pending.
 
 ## Roadmap 5: roster production
 
-- The first five-stage Super Mario Bros. slice at full quality, then the rest of the
-  roster in batches.
-- **Order of effort:** SSRs first (animated art, quote, voice, theme), then
-  SRs and Rs (art, title, kit).
-- Each batch ships as a new banner.
+- The first five-stage Super Mario Bros. slice at full quality, then Yoshi and
+  Mario 64 as the first regional Archive expansion, then the Kirby batch.
+- Produce engine primitives in dependency order: marker-synced hits, jump and
+  float, Goomba squash, shell actors, tongue/grab, inhale/store, Copy, then
+  giant transforms. The exact cards and acceptance tests are in plan `14`.
+- Within each approved batch, begin SSR/UR splash, quote, voice and theme work
+  early because it has the longest presentation lead; this does not postpone
+  the R/SR actors required to make the current stages playable.
+- Each batch appends to the permanent Saga Archive and may also receive a
+  progress Spotlight. A banner cannot ship a fighter whose battle signature is
+  still a generic attack placeholder.
 
 ## Roadmap 6: dopamine polish
 

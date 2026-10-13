@@ -4,8 +4,13 @@
 is next and the plan directory is the definitive design/balance/content source.
 This file is the history and technical detail behind them.
 
-Repo: `Mallow99/gachagame`. Latest work is on branch
-`claude/stoic-archimedes-h3m7qt` (built on `claude/admiring-maxwell-nmj2ha`). The owner is a programming beginner who wants the fun result.
+Repo: `Mallow99/gachagame`. Definitive planning is on branch
+`claude/stoic-archimedes-h3m7qt`; the stable PG-001/PG-002 coding foundation was
+committed separately on `codex/pg001-pg002` at
+`a957df556356dc80c183a5bb3707c5d694799592` (14 tests passing at that commit).
+Later combat work from that coding chat may be uncommitted and must be inspected
+before assuming it exists. The owner is a programming beginner who wants the
+fun result.
 Explain choices briefly and don't drown them in options.
 
 ---
@@ -22,9 +27,11 @@ future Oddities candidate and remains only in dev fixtures/assets for now. It is
 takedowns and requires a separate rights review.
 
 The current focus is the playable game loop. The definitive long-term structure
-is in `docs/plan/`: a Saga is a franchise and a World normally adapts one
-specific game, making visual history from old to newer sprites explicit. Worlds
-can be 5–25 stages according to their material, and Sagas have no stage cap.
+is in `docs/plan/`: a Saga is shown as a franchise Hub, its permanent Archive
+can contain production-ready iterations from several games, and a World adapts
+one specific game, making visual history from old to newer sprites explicit.
+Worlds can be 5–25 stages according to their material, and Sagas have no stage
+cap.
 Super Mario Bros. is the first planned 15-stage World and Kirby's Adventure is
 the recommended second 20-stage World; the player chooses eligible destinations
 with Atlas Keys rather than following the production order.
@@ -39,6 +46,12 @@ play, then repeatable Camp/Patrol Reports keep pulls renewable. Stackable Field
 Orders and optional resource/XP/Wanted-Hunt Sorties make the generous daily
 bundle something the player earns instead of a login claim. The signed-off
 Mario pull demo remains the reveal reference.
+
+Plan addenda `13_HUBS_BANNERS_AND_PRESENTATION.md` and
+`14_MARIO_KIRBY_CHARACTER_BIBLE.md` are authoritative for the regional Archive,
+summon timing/card content, Mario and Kirby kits, Copy, Goomba flatten, shell
+kicks, float, tongue and all signature-animation acceptance tests. The immediate
+post-slice roster expansion is Yoshi (SMW) plus Mario 64, not a mass roster dump.
 
 ---
 

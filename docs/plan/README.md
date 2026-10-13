@@ -1,6 +1,6 @@
 # Pocket Gacha definitive plan
 
-Status: **planning baseline v2, 2026-10-13**
+Status: **planning baseline v3, 2026-10-13**
 
 Scope: the game to build over the next several weeks, not a promise to produce
 the entire crossover catalog immediately.
@@ -36,6 +36,12 @@ disagree with this directory, this directory wins.
     ledger, pulls, Training, active time, reference teams and simulator cases.
 12. [`12_FIRST_RELEASE_CONTENT.md`](12_FIRST_RELEASE_CONTENT.md) — all 15 SMB1
     encounters, enemy/boss behavior, release pools and immediate World packets.
+13. [`13_HUBS_BANNERS_AND_PRESENTATION.md`](13_HUBS_BANNERS_AND_PRESENTATION.md)
+    — the Hub/World hybrid, regional Archives, finished summons, cards and
+    behavior-first sprite rules.
+14. [`14_MARIO_KIRBY_CHARACTER_BIBLE.md`](14_MARIO_KIRBY_CHARACTER_BIBLE.md)
+    — exact opening Mario/Kirby kits, signature motion, enemy states and
+    acceptance scenarios.
 
 ## The one-sentence game
 
@@ -116,6 +122,13 @@ for an eternal commitment.
     offer five account-legal missions and require any three. Optional Coin,
     Fighter Practice, Assist Study, Supply, Starfall and Wanted-Hunt Sorties let
     the player choose useful rewards without stamina or exact-pull checks.
+18. **Worlds preserve games; Hubs preserve possibility.** Story campaigns,
+    enemies and backgrounds belong to a specific source game. A franchise Hub
+    and its permanent Archive may offer any production-ready iteration from
+    that Saga, so favorites do not have to wait for their eventual campaign.
+19. **Animation is mechanics.** Stomps bounce, Goombas flatten, Koopas become
+    kickable shells, Peach floats, Yoshi grabs and Kirby inhales/copies. A
+    generic attack with themed particles is not a finished character.
 
 ## First playable promise
 
@@ -140,7 +153,8 @@ player-facing roster.
 ```text
 Library
 └── Shelf (filter only)
-    └── Saga (franchise or anthology)
+    └── Saga / Hub (stable franchise record; player-facing destination)
+        ├── permanent Saga Archive (released fighters across its games)
         └── World (normally one specific game/era)
             └── Area (five stages and a boss)
                 └── Encounter (authored waves, rules and rewards)

@@ -192,6 +192,12 @@ The banner key art is not the result splash. Pull ceremony uses source-specific
 objects, then a black quote/voice screen only for the rarities that actually
 have those assets. `Skip` always reaches an accessible results grid.
 
+The Fighter tab can show the active title Spotlight beside the permanent Saga
+Archive. The Archive may include production-ready iterations from games whose
+Worlds are not built; each result card states its real source game. The full
+timing, rarity treatments, card fields, crash-safe result commitment and
+reduced-motion behavior live in `13_HUBS_BANNERS_AND_PRESENTATION.md`.
+
 The page explicitly distinguishes currencies and guarantees:
 
 - Fighter uses Starlight;

@@ -283,10 +283,15 @@ Koopa Troopa, Hammer Bro, Blooper, Buzzy Beetle, Lakitu and Bowser can reuse
 their enemy animation definitions with controlled playable scaling and extra
 victory/ultimate effects. This makes the title's modest cast affordable.
 
+After the five-stage slice passes, Yoshi (SMW) and Mario 64 are the first
+regional Archive asset gates. They do not enter SMB1 encounter content: Yoshi
+proves tongue/grab/egg state and Mario 64 proves a genuinely distinct family
+iteration. Their required motions are in the character bible.
+
 ### Gate E — Kirby's Adventure
 
-Only after World 1 works: Kirby, Waddle Dee, copy enemies, four Area/finale
-boss packets (with Dedede as the stage-19 miniboss) and the
+Only after World 1 works: Kirby, Parasol Waddle Dee, copy enemies, four
+Area/finale boss packets (with Dedede as the stage-19 miniboss) and the
 first ability Power-Ups. Audit original NES sheets against the already scouted
 KSSU assets; choose original or explicitly enhanced treatment per unit.
 

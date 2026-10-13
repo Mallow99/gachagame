@@ -393,7 +393,9 @@ generous by design for a personal game. Pity and the featured guarantee carry
 across Fighter Spotlights.
 
 The first ten-pull is earned by stage 5. If it contains no new SR-or-better
-fighter, Hammer Bro replaces one R result; natural SSR rolls are never removed.
+fighter, the selected banner's beginner pool replaces one R result: Hammer Bro
+on the SMB1 Spotlight, or a production-ready welcome SR (initially Hammer Bro
+or Yoshi) in the Mushroom Kingdom Archive. Natural SSR rolls are never removed.
 This deterministic floor is cleaner than making the owner restart a local save.
 
 ### 4.3 Supply banner
@@ -457,6 +459,8 @@ random combat stats. Prices are set only after simulated pull volume exists.
 
 ### 4.6 Spotlight lifecycle
 
+- A permanent Saga Archive lists every released, production-ready fighter in
+  that franchise, regardless of whether its source World has been built.
 - A World banner appears when its World is unlocked.
 - Area focus entries appear when the Area is reached.
 - A defeated boss normally joins its focus only after the first victory. A
@@ -467,6 +471,11 @@ random combat stats. Prices are set only after simulated pull volume exists.
 - When it ends, every entry moves to the Saga Archive at standard odds.
 - Reruns improve focus odds/selector access; they do not rescue otherwise
   unobtainable content.
+
+At stage 5 the player may spend the beginner ten-pull on either the SMB1
+Spotlight or the Mushroom Kingdom Archive. Each banner declares its own
+new-SR-or-better replacement pool; see the presentation addendum. Channel pity
+is shared and never depends on which page was chosen.
 
 Real-time limited banners are **DEFERRED**. They add anxiety without improving
 the private desktop loop.

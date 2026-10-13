@@ -46,6 +46,11 @@ temporary implementation name does not become an eighth attack type.
 
 ## Unit contract
 
+The stable mechanical record below is extended by `presentation` and
+`animation` metadata in `13_HUBS_BANNERS_AND_PRESENTATION.md`. Shell, grab,
+swallow, Copy and transform behaviors use declared effect/state vocabularies;
+they must not be implemented as callbacks hidden inside content records.
+
 ```js
 {
   id: 'classic-mario',

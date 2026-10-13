@@ -325,8 +325,9 @@ shortened rather than endlessly enlarged.
 
 **Resolution:** enemy recruits and defeated bosses can be pullable when their
 animation works; the permanent Saga Archive remains alongside the current
-title; Supply provides collectibles without fake fighter variants; not every
-Area needs three new fighters.
+title and can add a production-ready cross-title iteration; Supply provides
+collectibles without fake fighter variants; not every Area needs three new
+fighters. World stages remain source-specific.
 
 **Audit result:** coherent, but a title must be allowed to ship a small banner.
 Never invent five Marios to meet a quota.

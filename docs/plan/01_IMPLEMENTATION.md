@@ -369,8 +369,10 @@ Purpose: close the strip → reward → pull → stronger/different strip loop.
 - Implement roster filters, exact stats, kit pages, family lock, party presets,
   one Power-Up per fighter and one Assist Page per party.
 - The first story party is granted outside gacha. The first ten-pull is earned
-  through play and grants Hammer Bro if it contains no new SR-or-better fighter,
-  so the banner always changes the account without suppressing natural SSRs.
+  through play. If it contains no new SR-or-better fighter, the selected
+  banner's declared beginner pool supplies one—Hammer Bro on the SMB1
+  Spotlight, or an approved welcome SR in the Saga Archive—without suppressing
+  natural SSRs.
 
 ### Acceptance
 

@@ -36,8 +36,10 @@ not staged as lucky results.
 
 Stage 5 therefore unlocks Summon at exactly one ten-pull. The complete World
 funds 30 pulls before renewable play and ordinary reports. The tutorial
-ten-pull guarantees Hammer Bro if the batch contains no new SR-or-better
-fighter. It does not replace or suppress the normal SSR roll.
+ten-pull guarantees a new banner-declared SR if the batch contains no new
+SR-or-better fighter: Hammer Bro on the SMB1 Spotlight or an approved welcome
+SR on the Mushroom Kingdom Archive. It does not replace or suppress a normal
+SSR roll.
 
 ### Coins
 

@@ -19,8 +19,13 @@ Exceptions are explicit:
   `Remix Boss` rather than borrowing a famous boss from another title;
 - a crossover party may enter any World; the active party is not forced to
   reenact the source plot;
-- a character can release with the most appropriate title, even if that means
-  waiting. Fame alone does not move King Boo into 1985.
+- a character may release early through its franchise Archive when its full
+  sprite, art, kit and provenance are production-ready; its card still names
+  the real source game. Fame alone does not move King Boo into an SMB1 stage.
+
+The Atlas renders a Saga as an evocative Hub such as Mushroom Kingdom or Dream
+Land. See `13_HUBS_BANNERS_AND_PRESENTATION.md`: title-specific Worlds preserve
+history, while the Saga Archive can offer released iterations across titles.
 
 ## 2. Opening complete Worlds: recommended production path
 
@@ -35,9 +40,10 @@ filler merely to hit 25.
 The source has eight short Worlds but few unique named bosses. Fifteen stages
 preserve its complete enemy/environment arc without inventing five modern-style
 guardians. The initially imagined airship moves to *Super Mario Bros. 3*;
-Goomba King, King Bob-omb, King Boo and Bowser Jr. wait for the games where they
-belong. Target first-clear time is 3–5 active hours including Camp, management
-and early pulls.
+Goomba King, King Bob-omb, King Boo and Bowser Jr. wait for their proper games
+as story enemies. A production-ready fighter iteration may appear in the Mario
+Archive earlier without changing these stages. Target first-clear time is 3–5
+active hours including Camp, management and early pulls.
 
 ### Area 1: Overworld, stages 1–5
 
@@ -196,7 +202,7 @@ World finale.
 
 | Availability | Fighters | Supply |
 | --- | --- | --- |
-| World unlock | R Kirby, R Waddle Dee, R Poppy Bros. Jr. | R Parasol, R Beam, R Dream Spring Page |
+| World unlock | R Kirby, R Parasol Waddle Dee, R Poppy Bros. Jr. | R Parasol, R Beam, R Dream Spring Page |
 | Area 1 | SR Sir Kibble, SR Hot Head | SR Cutter, SR Fire, Whispy's Apples Page |
 | Area 2 | SR Wheelie, SR Sparky, SR Rocky | SR Ice, SR Spark, Kracko Storm Page |
 | Area 3 | SR Bonkers; SSR Meta Knight after defeat | SR Hammer, SSR Sword, Halberd Knights Page |
@@ -226,14 +232,17 @@ coherent source game.
 | Bowser's Fury | 10 | Lake islands; Ruins/Lapcat | Fury Shadow remix; Fury Bowser | Fury Bowser UR, Giga Bell UR Power-Up, Bowser Jr. Assist |
 | Super Mario Bros. Wonder | 20 | Flower Kingdom biomes; Wonder gauntlets | authored title bosses and Bowser finale | Elephant/Bubble/Drill Power-Ups, Wonder Pages |
 
-Mario releases are distributed with their source Worlds. The plan does not
-front-load every Koopaling, Yoshi color and Mario iteration into launch.
+Mario releases normally focus with their source Worlds, but approved iterations
+may enter the Mushroom Kingdom Archive earlier. The opening expansion targets
+Yoshi (SMW) and Mario 64 so multiple eras are visible during the first Hub. The
+plan still does not front-load every Koopaling, color and iteration into launch.
 
 ### Mario family/rarity guide
 
-- R introductions: Mario, Luigi, Peach, Toad, Yoshi when their base entry ships.
+- R introductions: Mario, Luigi, Peach, Toad and Daisy when their base entry ships.
 - SR specialists: Hammer Bro, Lakitu, Captain Toad, colored Yoshis with real kit
-  differences, Koopalings, Kamek, Bowser Jr., Petey Piranha.
+  differences, base Yoshi's tongue/egg kit, Koopalings, Kamek, Bowser Jr.,
+  Wario, Waluigi and Petey Piranha.
 - SSR signatures/bosses: Bowser, King Bob-omb, King Boo, Paper Mario, Sunshine
   Mario, major era bosses.
 - UR candidates: Fury Bowser, Star-powered/Invincible Mario only if a full kit
@@ -493,5 +502,6 @@ To make the Library feel rich without requiring 190 hours or finished sprites:
 - locked future content is labeled `planned`, not presented as playable.
 
 The user can see that Yoshi belongs to *Super Mario World*, King Bob-omb to
-*Mario 64*, and Fury Bowser to *Bowser's Fury* long before owning them, without
-the game pretending all assets already exist.
+*Mario 64*, and Fury Bowser to *Bowser's Fury* before those Worlds are built.
+An entry is pullable early only after its assets pass production gates; planned
+silhouettes never pretend a fighter already exists.
