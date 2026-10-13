@@ -207,10 +207,10 @@ until these can be read clearly in a short strip.
 - A World never moves the goalposts during its first story clear.
 - Old Story remains easy. Mastery creates a separate current-rank version.
 
-The opening 25 stages therefore use Threat 1–25. Clearing their five Areas
-sets Atlas Rank 5 and reveals the next choices at Threat 26. A 10-stage World
-adds two Atlas Ranks; a 25-stage World adds five. A short side story may set
-`rankReward` or `keyReward` to zero if it is not intended to advance the map.
+The opening 15 stages use Threat 1–15. Clearing their three Areas sets Atlas
+Rank 3 and reveals Tier A at Threat 16. A 10-stage World adds two Atlas Ranks;
+a 25-stage World adds five. A short side story may set `rankReward` or
+`keyReward` to zero only when explicitly labeled as non-advancing bonus content.
 
 ### 2.2 Authored encounter budget
 
@@ -392,9 +392,9 @@ pull 23, 80% by 52, 90% by 56 and 95% by 59. The sharp soft-pity curve is
 generous by design for a personal game. Pity and the featured guarantee carry
 across Fighter Spotlights.
 
-The first ten-pull is earned by stage 5 and guarantees a non-story SR. It is
-not rerolled through account deletion; a small selector is cleaner than making
-the owner restart a local save.
+The first ten-pull is earned by stage 5. If it contains no new SR-or-better
+fighter, Hammer Bro replaces one R result; natural SSR rolls are never removed.
+This deterministic floor is cleaner than making the owner restart a local save.
 
 ### 4.3 Supply banner
 
@@ -459,7 +459,9 @@ random combat stats. Prices are set only after simulated pull volume exists.
 
 - A World banner appears when its World is unlocked.
 - Area focus entries appear when the Area is reached.
-- A defeated boss can join the pool only after the first victory.
+- A defeated boss normally joins its focus only after the first victory. A
+  declared signature-antagonist exception may exist in the base pool earlier;
+  SMB1 Bowser uses this so the opening banner has an honest SSR pool.
 - The current Spotlight remains until the next World finale, not a real-world
   clock. A clear warning shows the progress trigger.
 - When it ends, every entry moves to the Saga Archive at standard odds.
@@ -478,10 +480,11 @@ Reward formulas must be fitted to these experience targets:
 | Period | Fighter pulls | Supply pulls | Training |
 | --- | ---: | ---: | --- |
 | tutorial through stage 5 | 10 total | 3–5 | rank 5–7 |
-| each five-stage Area first clear | 4–7 | 5–8 | about +5 ranks |
+| ordinary five-stage Area after the tutorial | 4–8 | 5–8 | about +5 ranks |
+| 15-stage compact World first clear | 30 total including tutorial | 15–22 | about rank 15–18 |
 | 25-stage flagship first clear | 20–30 after tutorial | 25–40 | about +25 ranks |
-| repeat farming, active | 0.5–0.8/hour | 0.8–1.5/hour | useful Coin progress |
-| ordinary daily goals | 1–2 | 1–3 | one meaningful Coin bundle |
+| repeat farming, active | 1.5–2.5/hour | 0.8–1.5/hour | useful Coin progress |
+| ordinary daily goals | 3 | 2 | one meaningful Coin bundle |
 
 The first-clear pace is intentionally generous; a content game should let the
 owner interact with banners. Repeat income is slower so new Worlds remain the
@@ -500,6 +503,12 @@ Each encounter has separate components:
 
 Do not hide all Starlight behind unattended minutes. Progress, bosses and goals
 should visibly fund pulls.
+
+**LOCKED:** Fighter pulls remain renewable after all shipped Story is cleared.
+Repeat waves award small direct Starlight and every 20 repeat waves completes a
+repeatable Field Report. The target is 1.5–2.5 Fighter pulls per active Camp
+hour with no daily hard cap. Mastery later adds alternate repeatable Orders; it
+does not replace or disable the basic Camp route.
 
 ### 5.3 Away earnings
 

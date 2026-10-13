@@ -28,7 +28,7 @@ player has seen the game move.
 The Library prologue grants a four-person R party outside the gacha:
 
 1. Classic Mario — mobile stomp/bruiser;
-2. Classic Luigi — evasive shot/controller;
+2. Classic Luigi — evasive high-jump/charge controller;
 3. Toad — fast support/runner;
 4. Princess Peach — backline support/controller.
 
@@ -59,7 +59,7 @@ The first two stages teach only:
 The player has now completed the whole loop: watch → earn → understand → pull
 → change team → watch the difference.
 
-## 2. First World: hour 1–9
+## 2. First World: hour 1–5
 
 The exact pace depends on how long the strip is allowed to run and how much the
 owner explores management. Target:
@@ -67,10 +67,8 @@ owner explores management. Target:
 | Active time | Expected state |
 | ---: | --- |
 | 1–2 h | Overworld clear; first banner and Supply choices made |
-| 2–3 h | Underground/Water Area; first meaningful ranged/air counterplay |
-| 3–5 h | Sky Athletic; first loss for an unchanged weak formation is plausible |
-| 4–7 h | Castle Approach; stars and one specialized SR matter visibly |
-| 5–9 h | Bowser defeated; Training Rank about 23–28; Atlas opens |
+| 2–3.5 h | Open Water/High Roads; first meaningful ranged/air counterplay |
+| 3–5 h | Dark World/Bowser Castle; Bowser defeated at Rank about 15–18; Atlas opens |
 
 This is substantially slower than the prototype racing to stage 14, but the
 screen is not expected to show one stage for an hour. A stage is a multi-wave
@@ -80,8 +78,8 @@ the larger arc.
 World-finale rewards:
 
 - one Atlas Key;
-- one Fighter ten-pull worth of mixed rewards across the World target, not
-  necessarily all at once;
+- 30 Fighter pulls from first-clear rewards across the World, plus renewable
+  Field Reports targeting 35–45 total pulls by hour 5;
 - the Super Mario Bros. Saga Archive;
 - Mastery I for the World;
 - Mythic banner access;
@@ -142,11 +140,11 @@ generous targets assuming a mixture of 10- and 25-stage Worlds.
 | Access target | Earliest sensible reveal | Candidate Worlds made eligible |
 | --- | ---: | --- |
 | Opening | 0 h | Super Mario Bros. |
-| Tier A | 5–9 h / first finale | Super Mario Bros. 3, Kirby's Adventure, Mega Man 2, Pac-Man |
-| Tier B | 12–25 h / 2 finales | Sonic the Hedgehog, A Link to the Past, Castlevania, Luigi's Mansion route |
-| Tier C | 20–45 h / 3 finales | Pokémon Red/Blue, Super Metroid, Street Fighter II, Dragon Quest III |
-| Tier D | 35–75 h / 4 finales | Final Fantasy VI, Fire Emblem: The Blazing Blade, Doom, EarthBound |
-| Tier E | 50–100 h / 5 finales | Minecraft, Terraria, Hollow Knight, Innersloth, Bloons TD6 |
+| Tier A | 3–5 h / Rank 3 | Super Mario Bros. 3, Kirby's Adventure, Mega Man 2, Pac-Man |
+| Tier B | 7–18 h / Rank 6 | Sonic the Hedgehog, A Link to the Past, Castlevania, Luigi's Mansion route |
+| Tier C | 18–40 h / Rank 10 | Pokémon Red/Blue, Super Metroid, Street Fighter II, Dragon Quest III |
+| Tier D | 30–70 h / Rank 15 | Final Fantasy VI, Fire Emblem: The Blazing Blade, Doom, EarthBound |
+| Tier E | 45–100 h / Rank 20 | Minecraft, Terraria, Hollow Knight, Among Us |
 
 “Made eligible” does not mean everything is granted or that later art is already
 produced. It means the owner can spend subsequent Keys toward any shipped node
@@ -208,7 +206,7 @@ available later.
 | Active hours | Expected breadth and systems |
 | ---: | --- |
 | 0–1 | free party, first Area boss, first ten-pull, Supply introduced |
-| 5–9 | first World finale, Atlas, Archive, Mastery and Mythic access |
+| 3–5 | first World finale, Atlas, Archive, Mastery and Mythic access |
 | 10–25 | 2–4 World finales depending on length; 3+ Sagas visible as live choices |
 | 25–50 | a stable 8–12-unit usable collection; Tier C available; first serious specialist teams |
 | 50–100 | 5+ finales, all classic shelves eligible, several SSR anchors, first UR plausible |
@@ -222,15 +220,15 @@ fieldable through Training Rank, not fully starred.
 
 ## 7. Banner rhythm along a World
 
-For a 25-stage title:
+For any title, repeat one row per five-stage Area and use its actual finale:
 
 | Milestone | Fighter experience | Supply experience |
 | --- | --- | --- |
 | World unlock | title banner and permanent Saga Archive visible | permanent Supply Archive |
 | Stage 1 | first Area focus begins | Area Supply focus begins |
 | Stage 5 | boss enters pool after victory; first ten-pull target | 3–5 initial Tickets spent |
-| Stages 10/15/20 | one small release addition each, not a whole new banner UI | 5–8 Tickets per Area |
-| Stage 25 | finale boss/iteration unlock; next Spotlight grace begins | finale Page/Power-Up |
+| Intermediate Area bosses | one small release addition each, not a whole new banner UI | 5–8 Tickets per Area |
+| World finale (stage 15 in SMB1) | finale focus/iteration unlock; next Spotlight grace begins | finale Page/Power-Up |
 | next World finale | prior progress Spotlight archives | prior Supply focus archives |
 
 A banner should not demand the player stop progressing to preserve it. The next
@@ -246,6 +244,8 @@ The game is permitted to be closed.
 - Goals use ordinary actions: clear waves, change one loadout, use ultimates,
   fight an Area boss. No forced social/share or clock-specific task.
 - Away rewards cap at 12 hours and never expire a Spotlight.
+- Camp waves and repeatable Field Reports keep Starlight renewable at a target
+  1.5–2.5 Fighter pulls per active hour with no daily hard cap.
 - An optional “quiet day” lets the strip Camp without popups except pull-ready,
   defeat requiring attention or a completed long-term milestone.
 - The return panel is one summary, not a chain of modal reward claims.
@@ -282,7 +282,8 @@ an unexplained halt at stage 14.
 UR is shown early enough to be aspirational but not handed out before the game
 has a baseline.
 
-- Stage 25 reveals the Mythic system and may unlock UR Super Star.
+- The first World finale, SMB1 stage 15, reveals the Mythic system and may
+  unlock UR Super Star.
 - A title finale can unlock a thematically complete candidate: Star Rod Kirby,
   Super Sonic, a peak boss, or a later-era fighter.
 - Mythic pity persists forever across its rotations.

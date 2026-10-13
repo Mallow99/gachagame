@@ -13,8 +13,11 @@ and combat foundation in Roadmap 2. The definitive modular plan begins at
 [`docs/plan/README.md`](docs/plan/README.md); it supersedes earlier planning
 where they conflict. The approved structure is a branching Atlas where a Saga
 is a franchise and a World normally adapts one specific game. Major Worlds can
-be 25 stages, smaller titles can be 5–20, and a Saga has no fixed cap. Super
-Mario Bros. and Kirby's Adventure are the first production flagships.
+be 25 stages, smaller titles can be 5–20, and a Saga has no fixed cap. The first
+production Worlds are the 15-stage *Super Mario Bros.* and the 20-stage
+*Kirby's Adventure*. For the next coding session, execute
+[`docs/plan/07_TODAY_BUILD_TICKETS.md`](docs/plan/07_TODAY_BUILD_TICKETS.md)
+in order; the data/save shapes it references are in plan document `08`.
 
 ---
 
@@ -160,10 +163,10 @@ Assist Pages and reward drops are still pending.
 - **Authored title Worlds with scalable Mastery:**
   - 4–6-wave stages, with an Area boss every fifth story stage
   - Worlds may contain 5, 10, 15, 20 or 25 stages; 25 is for flagship campaigns
-  - World 1 is the 25-stage Super Mario Bros. adaptation in
+  - World 1 is the 15-stage Super Mario Bros. adaptation in
     `docs/plan/04_CONTENT_CATALOG.md`; later-era airships, kings and Bowser Jr.
     remain with their source games
-  - Kirby's Adventure is the second planned flagship, but later the player spends
+  - Kirby's Adventure is the second planned 20-stage World, but the player spends
     Atlas Keys to choose among a small set of eligible Worlds
   - the account's Atlas Rank snapshots all newly revealed choices to the same
     authored Threat; it does not rubber-band to the exact party or move the
@@ -172,7 +175,9 @@ Assist Pages and reward drops are still pending.
 - **Combat from the data files:** stats, one basic action, a passive, and an
   ultimate meter that fires with a cut-in of the character's art. Front and
   back row. No type multipliers in the first build.
-- **Rewards:** coin drops, pull currency from bosses, occasional chests.
+- **Rewards:** Coin drops, large first-clear/boss pull rewards, and repeatable
+  wave/Field Report Starlight targeting 1.5–2.5 Fighter pulls per active Camp
+  hour with no daily hard cap.
 - **Performance:** it must stay light on an 8 GB M2 Air. Lower the frame rate
   when nothing is happening, and keep images small.
 - **Done when:** a team of four, built from data, fights forever with bosses,
@@ -272,8 +277,8 @@ type, extra coins, a first strike.
 **Example kits:**
 - **Mario:** stomp, plus a melee punch. Passive: coin bonus. Ultimate:
   Super Star (invincible plus contact damage for a few seconds).
-- **Luigi:** bouncing ranged shot. Passive: evasive retreat when approached.
-  Ultimate: a high arcing stomp chain across the backline.
+- **Luigi:** high-jump charge with evasive retreat when approached. Ultimate:
+  a high arcing stomp chain across the backline.
 - **Kirby:** close strike with an equipped copy Power-Up. Passive: brief float
   over ground hazards. Ultimate depends on the complete iteration.
 - **Mega Man:** ranged shot with a charged beam ultimate. Equipped Robot Master

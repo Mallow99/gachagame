@@ -1,6 +1,6 @@
 # Pocket Gacha definitive plan
 
-Status: **planning baseline v1, 2026-10-13**
+Status: **planning baseline v2, 2026-10-13**
 
 Scope: the game to build over the next several weeks, not a promise to produce
 the entire crossover catalog immediately.
@@ -18,13 +18,24 @@ disagree with this directory, this directory wins.
    combat, progression, rarity, gacha, economy and difficulty rules.
 3. [`03_PLAYER_PATH.md`](03_PLAYER_PATH.md) — what a player sees from minute
    one through 190+ active hours.
-4. [`04_CONTENT_CATALOG.md`](04_CONTENT_CATALOG.md) — the first 50 stages,
-   title-based Worlds, release rosters, enemies, bosses and long-range Saga
-   map.
+4. [`04_CONTENT_CATALOG.md`](04_CONTENT_CATALOG.md) — the 15-stage opener,
+   title-based Worlds, release rosters, enemies, bosses and long-range Saga map.
 5. [`05_ASSET_PIPELINE.md`](05_ASSET_PIPELINE.md) — sprite suitability,
    manifests, provenance and production budgets.
 6. [`06_RESEARCH_AND_AUDIT.md`](06_RESEARCH_AND_AUDIT.md) — research sources,
    rejected alternatives, contradictions, risks and change tests.
+7. [`07_TODAY_BUILD_TICKETS.md`](07_TODAY_BUILD_TICKETS.md) — the exact next
+   coding tickets, dependencies, cut line and acceptance tests.
+8. [`08_DATA_AND_SAVE_CONTRACTS.md`](08_DATA_AND_SAVE_CONTRACTS.md) — stable
+   content records, SaveV4, migration rules, event logs and validation.
+9. [`09_UI_FLOW_AND_WIREFRAMES.md`](09_UI_FLOW_AND_WIREFRAMES.md) — strip,
+   paper-Manual management, summon and failure-state flows.
+10. [`10_ATLAS_AND_WORLD_MATRIX.md`](10_ATLAS_AND_WORLD_MATRIX.md) — exact
+    choice tiers, title branches, World lengths, Threat and production waves.
+11. [`11_ECONOMY_AND_SIMULATION.md`](11_ECONOMY_AND_SIMULATION.md) — first-World
+    ledger, pulls, Training, active time, reference teams and simulator cases.
+12. [`12_FIRST_RELEASE_CONTENT.md`](12_FIRST_RELEASE_CONTENT.md) — all 15 SMB1
+    encounters, enemy/boss behavior, release pools and immediate World packets.
 
 ## The one-sentence game
 
@@ -56,9 +67,9 @@ for an eternal commitment.
 3. **No turn order.** Every fighter and enemy acts when its own gauge is ready.
    The seven attack types are visible behaviors—strike, shot, combo, charge,
    stomp, lob and beam—not a rock-paper-scissors type triangle.
-4. **Saga means franchise; World normally means one game.** A 25-stage World
-   is usually anchored to one specific title, such as *Super Mario Bros.*,
-   *Kirby's Adventure* or *Mega Man 2*. Five-stage Areas are recognizable
+4. **Saga means franchise; World normally means one game.** Each World is
+   anchored to one specific title, such as *Super Mario Bros.*, *Kirby's
+   Adventure* or *Mega Man 2*. Five-stage Areas are recognizable
    locations or chapters from that title. This makes the historical march from
    old sprites to newer visual styles legible.
 5. **Length serves the source material.** Twenty-five stages is the flagship
@@ -97,6 +108,10 @@ for an eternal commitment.
     The personal desktop game does not punish the owner for closing it.
 15. **Build one excellent slice before manufacturing a Library.** Systems and
     Mushroom Overworld stages 1–5 come before mass character acquisition.
+16. **Pulls stay renewable.** Story gives the largest bursts, but Camp waves
+    and repeatable Field Reports continue funding roughly 1.5–2.5 Fighter
+    pulls per active hour after available Story is exhausted. There is no daily
+    hard cap on the core collection loop.
 
 ## First playable promise
 
@@ -130,10 +145,10 @@ Library
 Examples:
 
 ```text
-Mario Saga > Super Mario Bros. > Sky Athletic > Stage 14
-Mario Saga > Luigi's Mansion > Hidden Mansion > Stage 19
+Mario Saga > Super Mario Bros. > Dark World > Stage 14
+Mario Saga > Luigi's Mansion > Hidden Mansion > Stage 13
 Kirby Saga > Kirby's Adventure > Yogurt Yard > Stage 13
-Mega Man Saga > Mega Man 2 > Wily Fortress > Stage 24
+Mega Man Saga > Mega Man 2 > Wily Fortress > Stage 19
 ```
 
 An anthology such as Arcade Hall may treat each cabinet as a short World. A

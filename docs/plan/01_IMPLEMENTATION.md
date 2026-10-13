@@ -18,8 +18,8 @@ exists; they begin because the preceding loop is playable.
 | 3 | Training, rewards, failure and offline loop | 2 | 2 |
 | 4 | Super Mario Bros. stages 1–5 | 4 | 2–3 |
 | 5 | Fighter/Supply banners and team building | 3 | 1, 3–4 |
-| 6 | Super Mario Bros. stages 6–25 | 6 | 4–5 |
-| 7 | Atlas choice and Kirby's Adventure | 7 | 6 |
+| 6 | Super Mario Bros. stages 6–15 | 4 | 4–5 |
+| 7 | Atlas choice and Kirby's Adventure (20 stages) | 6 | 6 |
 | 8 | Repeatable World production pipeline | ongoing | 7 |
 
 The first meaningful owner review is after Phase 2; the first complete
@@ -59,37 +59,34 @@ work.
 Purpose: make a World, encounter, unit or banner an independent content record
 instead of another conditional in `game.js`.
 
-### Recommended layout
+### Recommended first layout
 
 ```text
-content/
-  units/<unit-id>.json
-  enemies/<enemy-id>.json
-  powerups/<powerup-id>.json
-  assists/<assist-id>.json
-  sagas/<saga-id>.json
-  worlds/<world-id>.json
-  encounters/<world-id>/<stage-id>.json
-  banners/<banner-id>.json
-  assets/manifest.json
-schemas/
-  unit.schema.json
-  enemy.schema.json
-  world.schema.json
-  encounter.schema.json
-  banner.schema.json
 src/
   config/balance.js
-  content/load-content.js
+  content/
+    index.js
+    units.js
+    enemies.js
+    powerups.js
+    assists.js
+    worlds.js
+    banners.js
+    encounters/smb1.js
+    dev-fixtures.js
   systems/combat/
   systems/progression/
   systems/gacha/
   systems/atlas/
   save/
+assets/manifest.json
 ```
 
-This can be introduced gradually; it is a boundary, not a demand for a
-framework rewrite. Vanilla JavaScript and Electron remain appropriate.
+The current app has no bundler or typed build step, so the first production
+records stay in ordinary ES modules with JSDoc-shaped contracts. This is a
+boundary, not a framework rewrite. Once the authoring model stabilizes, a
+validator/export tool may emit JSON and formal schemas without changing the
+runtime contracts. Do not make the first fight wait for a fetch/loader system.
 
 ### Stable record rules
 
@@ -365,8 +362,8 @@ Purpose: close the strip → reward → pull → stronger/different strip loop.
 - Implement roster filters, exact stats, kit pages, family lock, party presets,
   one Power-Up per fighter and one Assist Page per party.
 - The first story party is granted outside gacha. The first ten-pull is earned
-  through play and contains a guaranteed non-story SR so the banner still
-  changes the account.
+  through play and grants Hammer Bro if it contains no new SR-or-better fighter,
+  so the banner always changes the account without suppressing natural SSRs.
 
 ### Acceptance
 
@@ -382,18 +379,18 @@ Purpose: close the strip → reward → pull → stronger/different strip loop.
 
 ## Phase 6 — finish the Super Mario Bros. World
 
-Build the remaining four Areas from the exact stage sheet in
-`04_CONTENT_CATALOG.md`. Add water, underground, athletic/sky and castle
-movement/hazards; Big Blooper, Lakitu, Impostor Bowser and Bowser; full Area
+Build the remaining two Areas from the exact stage sheet in
+`04_CONTENT_CATALOG.md`. Add underground/high-road, water and castle
+movement/hazards; Blooper, Lakitu, Impostor Bowser and Bowser; full Area
 Spotlights; World finale; Atlas Key; Mastery replay data.
 
 The World remains anchored to the 1985 game. Later characters are not borrowed
 as bosses merely because they are famous. A clearly marked remix may enlarge an
-original enemy where the source title lacks five named bosses.
+original enemy where the source title lacks a suitable named boss.
 
 ### Acceptance
 
-- Stages 1–25 form five visually/mechanically distinct Areas from one coherent
+- Stages 1–15 form three visually/mechanically distinct Areas from one coherent
   title.
 - Free-reference clear, typical clear, premium clear and internal-UR check all
   meet the balance envelopes in `02_SYSTEMS_AND_BALANCE.md`.
@@ -412,7 +409,7 @@ different game rather than becoming a Mario-specific engine.
 - Offer at least Kirby's Adventure, Super Mario Bros. 3 and an Arcade cabinet
   route after the opening World, even if only the chosen production-ready route
   can initially launch. Never consume a key for unshipped content.
-- Build Kirby's Adventure as the second 25-stage flagship: copy-ability Supply
+- Build Kirby's Adventure as the second 20-stage World: copy-ability Supply
   content, aerial enemies, guarded Meta Knight, Nightmare vulnerability and a
   different movement silhouette.
 - Add Mastery I to the completed Mario World rather than appending generic

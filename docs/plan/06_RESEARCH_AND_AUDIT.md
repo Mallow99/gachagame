@@ -310,11 +310,11 @@ slice.
 **Problem:** Super Mario Bros. does not have five distinct modern-style named
 bosses.
 
-**Resolution:** variable World lengths are allowed, and flagship adaptations
-may promote an original elite into an explicitly labeled Remix Boss. The opener
-uses Hammer Bros., a Blooper swarm, Lakitu, Impostor Bowser and Bowser. It does
-not borrow Goomba King/King Bob-omb/King Boo/Bowser Jr. Those later bosses now
-make their source Worlds stronger.
+**Resolution:** variable World lengths are allowed. SMB1 is shortened to 15
+stages and three Areas: Hammer Bros., Lakitu and Bowser. Impostor Bowser remains
+a stage-14 miniboss wave rather than being promoted to pad the Area count. It
+does not borrow Goomba King/King Bob-omb/King Boo/Bowser Jr.; those later bosses
+now make their source Worlds stronger.
 
 **Audit result:** coherent if remix labels remain honest and sparse games are
 shortened rather than endlessly enlarged.
@@ -443,6 +443,20 @@ without A/B animation evidence.
 **Audit result:** the plan is feasible only as a modular long-term catalog. It
 is not feasible as one launch roster.
 
+### 7.13 Generous gacha versus finite Story rewards
+
+**Problem:** 20–30 one-time pulls make the banner visible but leave a gacha
+game feeling exhausted as soon as the player finishes available Story.
+
+**Resolution:** SMB1 first clears fund 30 pulls, ordinary combat completes
+repeatable Field Reports, and on-rank Camp targets 1.5–2.5 Fighter pulls per
+active hour without a daily hard cap. Away play earns a smaller share. New
+Worlds remain the fastest burst, not the only renewable source.
+
+**Audit result:** coherent for a personal non-monetized game. The rate still
+needs telemetry so the reveal remains exciting without making the strip feel
+like a slow pull-vending timer.
+
 ## 8. Remaining trial decisions
 
 These are not planning omissions; they require a real build or owner asset
@@ -450,8 +464,9 @@ choice.
 
 1. Whether Toad and Peach have acceptable era-coherent battle sheets for the
    free party or need temporary fixtures/reconstruction.
-2. Exact first-slice pullable roster after contact-sheet audit.
-3. Exact stage Coin/Starlight numbers after measured clear times.
+2. Whether every specified first-slice pullable has a sufficient sheet after
+   contact-sheet audit; failed units keep their stable IDs parked.
+3. Tuning the specified Coin/Starlight ledger after measured clear times.
 4. Whether original or explicitly enhanced sheets are better for individual
    early units.
 5. One Mythic slot versus a point budget after two UR options exist.
@@ -471,10 +486,10 @@ The plan is internally coherent under five conditions:
 4. content remains data-driven with stable IDs and independent save sections;
 5. every roster promise passes animation, art, provenance and workload gates.
 
-The user's new game-by-game structure makes the catalog stronger, not merely
+The user's game-by-game structure makes the catalog stronger, not merely
 larger. It preserves the Mushroom Kingdom, Dream Land and other recognizable
 destinations while creating an intelligible historical path through Mario,
 Kirby, Mega Man, Zelda and the rest. The plan deliberately leaves tuning knobs
-open where only play can answer them, but the coding order, formulas, first 50
-stages, access path and content homes are concrete enough to guide weeks of
-implementation without forcing a rewrite when one idea changes.
+open where only play can answer them, but the coding order, formulas, complete
+15-stage opener, Atlas path and content homes are concrete enough to guide
+weeks of implementation without forcing a rewrite when one idea changes.

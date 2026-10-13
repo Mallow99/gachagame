@@ -25,15 +25,18 @@ The current focus is the playable game loop. The definitive long-term structure
 is in `docs/plan/`: a Saga is a franchise and a World normally adapts one
 specific game, making visual history from old to newer sprites explicit. Worlds
 can be 5–25 stages according to their material, and Sagas have no stage cap.
-Super Mario Bros. and Kirby's Adventure are the first planned 25-stage
-flagships; later the player chooses eligible destinations with Atlas Keys.
+Super Mario Bros. is the first planned 15-stage World and Kirby's Adventure is
+the recommended second 20-stage World; the player chooses eligible destinations
+with Atlas Keys rather than following the production order.
 Fighter iterations, equippable Power-Ups, party-wide Assist Pages, SSRs and URs
 are separate systems. One Mythic slot is shared across an UR fighter, UR
 Power-Up or future UR Assist. One account-wide Training Rank replaces
 individual fighter levels. Atlas Rank snapshots a set of newly revealed Worlds
 instead of hard level-syncing the player's exact party. Build the real strip and
 one polished five-stage Super Mario Bros. slice before producing the larger
-roster. The signed-off Mario pull demo remains the reveal reference.
+roster. SMB1 first clears target 30 Fighter pulls, 35–45 by hour 5 with ordinary
+play, then repeatable Camp/Field Reports keep pulls renewable. The signed-off
+Mario pull demo remains the reveal reference.
 
 ---
 

@@ -269,7 +269,7 @@ do not have to be identical.
 | Fighter | Expected grade | Plan |
 | --- | --- | --- |
 | Classic Mario | A/B | source-era run/jump/fire frames; punch/stomp timing from engine |
-| Classic Luigi | B | distinct timing/height, not only a palette swap; reconstructed ranged identity |
+| Classic Luigi | B | distinct timing/height, not only a palette swap; reconstructed charge/retreat identity |
 | Toad | B/C | locate a coherent battle-capable sheet or keep support effects simple |
 | Princess Peach | B/C | source a coherent run/cast/hurt set; no static cut-out pretending to run |
 
@@ -285,7 +285,8 @@ victory/ultimate effects. This makes the title's modest cast affordable.
 
 ### Gate E — Kirby's Adventure
 
-Only after World 1 works: Kirby, Waddle Dee, copy enemies, five bosses and the
+Only after World 1 works: Kirby, Waddle Dee, copy enemies, four Area/finale
+boss packets (with Dedede as the stage-19 miniboss) and the
 first ability Power-Ups. Audit original NES sheets against the already scouted
 KSSU assets; choose original or explicitly enhanced treatment per unit.
 

@@ -22,19 +22,22 @@ Exceptions are explicit:
 - a character can release with the most appropriate title, even if that means
   waiting. Fame alone does not move King Boo into 1985.
 
-## 2. First 50 stages: recommended production path
+## 2. Opening complete Worlds: recommended production path
 
-These are two local 25-stage Worlds, not an eternal global stage counter. The
-player may eventually choose another World after the first 25; this is the
-recommended production/testing sequence.
+There is no global “first 50” track. Production finishes complete Worlds and
+the player chooses among shipped destinations after the opener. The recommended
+first two builds total 35 local stages: 15 for *Super Mario Bros.* and 20 for
+*Kirby's Adventure*. Shortening the source games is preferable to manufacturing
+filler merely to hit 25.
 
-## World 1 — Super Mario Bros. (1985), stages 1–25
+## World 1 — Super Mario Bros. (1985), stages 1–15
 
-The source has eight Worlds but few unique named bosses. The adaptation groups
-its visual/encounter vocabulary into five Areas and uses original enemies as
-clearly identified remixed guardians. The initially imagined airship moves to
-*Super Mario Bros. 3*; Goomba King, King Bob-omb, King Boo and Bowser Jr. wait
-for the games where they belong.
+The source has eight short Worlds but few unique named bosses. Fifteen stages
+preserve its complete enemy/environment arc without inventing five modern-style
+guardians. The initially imagined airship moves to *Super Mario Bros. 3*;
+Goomba King, King Bob-omb, King Boo and Bowser Jr. wait for the games where they
+belong. Target first-clear time is 3–5 active hours including Camp, management
+and early pulls.
 
 ### Area 1: Overworld, stages 1–5
 
@@ -50,59 +53,35 @@ Boss identity: the brothers alternate jumps and hammer fans until one falls;
 the survivor gains Haste and a ground-pound. Ranged access is helpful but the
 free party can win through Training and sustain.
 
-### Area 2: Underground and Sea, stages 6–10
+### Area 2: Open Water and High Roads, stages 6–10
 
 | Stage | Encounter purpose | Enemy/wave plan | Environment/rule | Unlock/reward |
 | ---: | --- | --- | --- | --- |
-| 6 | armored target | Buzzy Beetles + Goombas | low ceiling weakens high arcs | Guard Break tutorial |
-| 7 | formation compression | Koopas, Piranhas, Buzzy elite | pipe maze shortens range | loadout preset 2 |
-| 8 | aquatic movement | Cheep-cheeps in schools | water drag; projectiles curve slowly | Aquatic trait shown |
-| 9 | vertical/backline pressure | Bloopers + Cheep-cheeps | swim bands and ink tell | Assist charge tutorial |
-| 10 | Remix Boss: Blooper Swarm | Crown Blooper with small Blooper summons | ink obscures target reticle, not HUD | Area focus update |
-
-Boss identity: the Crown Blooper is an enlarged original-style guardian, not a
-claim that a later named boss appeared in the NES game. Destroying summoned
-Bloopers opens its Guard; area attacks trade faster opening for lower boss DPS.
-
-### Area 3: Sky Athletic, stages 11–15
-
-| Stage | Encounter purpose | Enemy/wave plan | Environment/rule | Unlock/reward |
-| ---: | --- | --- | --- | --- |
-| 11 | airborne targets | Paratroopas over Koopas | moving-platform parallax | Airborne counter hint |
-| 12 | crossing hazards | leaping Cheep-cheeps + Goombas | bridge gaps; no instant death | movement report |
-| 13 | summoner priority | Lakitu throws Spinies | cloud backline remains targetable | target-rule tutorial |
-| 14 | line pressure | Bullet Bills, Spinies, Lakitu elite | cannon tells cross the strip | anti-projectile Supply trial |
-| 15 | Remix Boss: Lakitu | armored cloud, Spiny rain, cloud dive | sky platform with safe windows | Lakitu joins focus after clear |
+| 6 | armored target | Buzzy Beetles + Koopas | underground ceiling weakens high arcs | Guard Break tutorial |
+| 7 | aquatic movement | Cheep-cheeps in schools | water drag; projectiles curve slowly | Aquatic trait shown |
+| 8 | vertical pressure | Bloopers + Cheep-cheeps | swim bands and ink tell | Assist charge tutorial |
+| 9 | airborne priority | Paratroopas, Spinies and one Lakitu | bridge/sky transition | target-rule tutorial |
+| 10 | Lakitu Area boss | armored cloud, Spiny rain, cloud dive | high road with safe windows | Lakitu focus, preset 2 |
 
 Boss identity: breaking the cloud's stagger meter drops Lakitu into melee range.
 Airborne specialists speed the fight; a balanced free team can weather it.
 
-### Area 4: Dark World and Castle Approach, stages 16–20
+### Area 3: Dark World and Bowser's Castle, stages 11–15
 
 | Stage | Encounter purpose | Enemy/wave plan | Environment/rule | Unlock/reward |
 | ---: | --- | --- | --- | --- |
-| 16 | night remix | faster Goombas/Koopas + Piranhas | dusk palette, shorter tells | Mastery preview |
-| 17 | projectile gauntlet | paired Hammer Bros. + Bullet Bills | tiered brick approach | elite chest |
-| 18 | timed hazard | Buzzy Beetles + fire-bar lanes | lava/Podoboo timing | Fire trait entry |
-| 19 | castle endurance | mixed elites, Bowser flames as hazard | looping-corridor visual, fixed wave order | finale banner preview |
-| 20 | Impostor Bowser | Bowser silhouette with original bridge kit; reveals elite | axe/bridge stagger rule | Impostor frame, boss focus |
+| 11 | night remix | faster Goombas/Koopas + Piranhas | dusk palette, shorter tells | Mastery preview |
+| 12 | projectile gauntlet | Hammer Bros. + Bullet Bills | tiered brick approach | anti-projectile Supply trial |
+| 13 | lava discipline | Buzzy Beetles, Podoboos, fire bars | rotating safe bands | Fire mitigation hint |
+| 14 | castle endurance | mixed elites; final wave is an Impostor Bowser | looping corridor, bridge stagger | finale preview, elite chest |
+| 15 | Bowser World boss | phase 1 fire/leaps; phase 2 hammers/flame; bridge stagger finale | lava bridge, phase floor | Bowser pool, Atlas Key, Archive |
 
-Boss identity: the party cannot use the axe manually; filling bridge stagger
-through attacks creates the opening. The impostor sheds its disguise in the
-victory animation.
+The stage-14 impostor is a miniboss wave, not a fourth Area boss. Filling bridge
+stagger creates the axe opening and reveals the disguised original enemy.
 
-### Area 5: Bowser's Castle, stages 21–25
-
-| Stage | Encounter purpose | Enemy/wave plan | Environment/rule | Unlock/reward |
-| ---: | --- | --- | --- | --- |
-| 21 | lava discipline | Koopas, Podoboos, fire bars | rotating safe bands | Fire mitigation hint |
-| 22 | target conflict | Lakitu/Spinies behind Buzzy line | doors reorder spawn sides | boss loadout quest |
-| 23 | hammer corridor | Hammer Bro elites + Bullet Bills | projectile density cap | Supply ten-pull total target |
-| 24 | royal guard | strongest legal mixed waves | no new rule; composition exam | full heal before finale |
-| 25 | Bowser | phase 1 fire/leaps; phase 2 hammers/flame; bridge stagger finale | lava bridge, phase floor | Bowser pool, Atlas Key, Archive |
-
-Bowser is an SSR boss fighter candidate after defeat, scaled to party size when
-playable. UR status is not awarded merely for being the first final boss.
+Bowser is an SSR boss fighter candidate, scaled to party size when playable.
+His focused rate unlocks after defeat; UR status is not awarded merely for
+being the first final boss.
 
 ### Super Mario Bros. release set
 
@@ -111,12 +90,10 @@ inventing unrelated variants.
 
 | Availability | Fighters | Supply |
 | --- | --- | --- |
-| Library prologue | R Classic Mario, R Classic Luigi, R Toad, R Princess Peach | R Super Mushroom, R Flagpole Rush Page |
+| Library prologue | R Classic Mario, R Classic Luigi, R Toad, R Princess Peach; SSR Bowser advertised in the base pool | R Super Mushroom, R Flagpole Rush Page |
 | Area 1 | R Koopa Troopa; SR Hammer Bro | SR Fire Flower, R Toad Retainer Page |
-| Area 2 | R Blooper; SR Buzzy Beetle specialist | SR Underwater Breather, SR Princess's Wish Page |
-| Area 3 | SR Lakitu | SR Cloud Ride, SR Anti-Projectile Block Page |
-| Area 4 | SSR Impostor Bowser candidate only if kit/animation earns it | SR Castle Axe Page, SSR Fire Flower upgrade candidate |
-| Area 5 | SSR Bowser after defeat | SSR Bowser's Bridge Page; UR Super Star Mythic candidate |
+| Area 2 | R Blooper; SR Buzzy Beetle specialist; SR Lakitu after defeat | SR Underwater Breather, SR Cloud Ride, SR Princess's Wish Page |
+| Area 3 | SSR Bowser gains his featured focus after defeat | SR Castle Axe Page, SSR Bowser's Bridge Page; UR Super Star Mythic candidate |
 
 `Classic Mario` and later complete Mario iterations share `familyId: mario`.
 Fire Mario is initially Mario plus Fire Flower, not another fighter. Peach and
@@ -139,12 +116,13 @@ approved sheet cannot animate it; rarity and combat job should remain stable.
 | Blooper (R) | Controller / Combo | Controller baseline; Aquatic | pulsing tentacle combo; `Ink Cloud` reduces enemy range/accuracy for 4 s | faster movement in Aquatic encounters; `Deep Ink` marks all enemies and dives the backline |
 | Buzzy Beetle (SR) | Vanguard / Charge | Vanguard stats × SR; +20 Guard, -12 Move | shell charge; `Ceiling Drop` targets farthest enemy where legal | takes 35% less Projectile damage; `Unbreakable Shell` blocks then reflects bounded damage |
 | Lakitu (SR) | Artillery / Lob | Artillery stats × SR; Airborne | Spiny Egg lob; `Spiny Rain` summons two short-lived Spinies | remains at extreme range until cloud staggered; `Storm Cloud` Slows and strikes marked zones |
-| Bowser (SSR, post-finale) | Vanguard / Charge | Vanguard stats × SSR; +25% HP budget, -10% Haste | claw/charge; `Royal Flame` beams a line every 11 s | control converts partly to stagger instead of full duration; `King of the Koopas` leaps away, crashes down, then uses flame/hammer follow-ups |
+| Bowser (SSR, signature) | Vanguard / Charge | Vanguard stats × SSR; +25% HP budget, -10% Haste | claw/charge; `Royal Flame` beams a line every 11 s | control converts partly to stagger instead of full duration; `King of the Koopas` leaps away, crashes down, then uses flame/hammer follow-ups |
 
 Mario, Luigi, Toad and Peach are granted; their later duplicates can still
-star them. Enemy fighters join only after the relevant encounter. Bowser's
-playable kit is scaled to the strip and does not reuse the World-boss HP/phase
-record.
+star them. Enemy fighters join only after the relevant encounter. Bowser is the
+declared signature-antagonist exception so the opening pool has an honest SSR;
+his featured focus begins after defeat. His playable kit is scaled to the strip
+and does not reuse the World-boss HP/phase record.
 
 ### First-slice Supply blueprints
 
@@ -162,12 +140,13 @@ record.
 Exact compatibility and scaling source are data fields. The Super Star is not
 obtainable during the five-stage slice; it is the first post-World Mythic test.
 
-## World 2 — Kirby's Adventure (1993), stages 1–25
+## World 2 — Kirby's Adventure (1993), stages 1–20
 
-This is the second production flagship because it proves flight, copy-ability
-Power-Ups, guarded bosses and a very different silhouette while staying
-sprite-friendly. The Saga can be titled Dream Land in the Atlas; the World card
-names the specific game.
+This is the second recommended production World because it proves flight,
+copy-ability Power-Ups, guarded bosses and a different silhouette while staying
+sprite-friendly. Twenty stages fit its useful variety without requiring every
+original level or miniboss to become a separate Area. The Saga can be titled
+Dream Land in the Atlas; the World card names the specific game.
 
 ### Area 1: Vegetable Valley, stages 1–5
 
@@ -179,49 +158,39 @@ names the specific game.
 | 4 | apple telegraph | Rocky + Waddle Doo elite | tree canopy hazards | boss hint |
 | 5 | Whispy Woods | apple drops, breath push, root adds | fixed giant background boss | Whispy Page/focus |
 
-### Area 2: Ice Cream Island, stages 6–10
+### Area 2: Butter Building and Grape Garden, stages 6–10
 
 | Stage | Encounter purpose | Enemy/wave plan | Environment/rule | Boss/reward |
 | ---: | --- | --- | --- | --- |
-| 6 | slippery movement | Chilly + Waddle Dee | low-friction reposition | Ice Supply focus |
-| 7 | electric zones | Sparky + Waddle Doo | charged ground circles | Spark Power-Up |
-| 8 | moving attacker | Wheelie + Poppy Bros. | repeated charge lines | Charge counter hint |
-| 9 | gallery remix | mixed copy enemies + Paint Roller drawings | spawned enemy icons telegraph | Assist preview |
-| 10 | Paint Roller | draws adds/effects, fast corner dashes | four-corner gallery | Paint Roller focus |
+| 6 | gallery remix | Paint Roller drawings + mixed copy enemies | spawned icons telegraph | Assist preview |
+| 7 | vertical tower | Rocky, Sword Knight | elevator bands | Sword focus |
+| 8 | speed lanes | Wheelie, Laser Ball | rotating tower parallax | Haste report |
+| 9 | ascent survival | Kracko Jr., Bronto Burt, lightning | upward-scroll illusion | boss hint |
+| 10 | Kracko | orbit, lightning lanes, Waddle Doo drops | storm ceiling | Kracko Page/focus |
 
-### Area 3: Butter Building and Grape Garden, stages 11–15
-
-| Stage | Encounter purpose | Enemy/wave plan | Environment/rule | Boss/reward |
-| ---: | --- | --- | --- | --- |
-| 11 | vertical tower | Rocky, Sword Knight | elevator bands | Sword focus |
-| 12 | speed lanes | Wheelie, Laser Ball | rotating tower parallax | Haste report |
-| 13 | rare ranged pressure | UFO + Waddle Doo elites | open sky, long range | UFO silhouette unlock |
-| 14 | ascent survival | Kracko Jr., Bronto Burt, lightning | upward scroll illusion | boss phase hint |
-| 15 | Kracko | orbit, lightning lanes, Waddle Doo drops | storm ceiling | Kracko Page/focus |
-
-### Area 4: Yogurt Yard and Orange Ocean, stages 16–20
+### Area 3: Yogurt Yard and Orange Ocean, stages 11–15
 
 | Stage | Encounter purpose | Enemy/wave plan | Environment/rule | Boss/reward |
 | ---: | --- | --- | --- | --- |
-| 16 | heavy melee | Bonkers + Rocky | slopes, ground shock | Hammer Power-Up |
-| 17 | water/land swap | aquatic enemies + Sir Kibble | tide bands | formation preset 3 |
-| 18 | knight formation | Blade/Axe/Mace/Spear Knights | disciplined front/back rows | Guard-break exam |
-| 19 | duel etiquette | Meta-Knight squad and offered sword motif | boss takes reduced frontal damage | Sword loan |
-| 20 | Meta Knight | guarded sword strings, tornado, cape reposition | moonlit deck/arena | SSR Meta Knight focus |
+| 11 | heavy melee | Bonkers + Rocky | slopes, ground shock | Hammer Power-Up |
+| 12 | water/land swap | aquatic enemies + Sir Kibble | tide bands | formation preset 3 |
+| 13 | knight formation | Blade/Axe/Mace/Spear Knights | disciplined rows | Guard-break exam |
+| 14 | duel etiquette | Meta-Knight squad and offered sword motif | reduced frontal boss damage | Sword loan |
+| 15 | Meta Knight | sword strings, tornado, cape reposition | moonlit arena | SSR Meta Knight focus |
 
-### Area 5: Rainbow Resort and Fountain of Dreams, stages 21–25
+### Area 4: Rainbow Resort and Fountain of Dreams, stages 16–20
 
 | Stage | Encounter purpose | Enemy/wave plan | Environment/rule | Boss/reward |
 | ---: | --- | --- | --- | --- |
-| 21 | memory remix | fast combinations of earlier enemies | shifting palettes | full copy Archive |
-| 22 | dream distortion | mirrored spawns and Scarfy pressure | target decoys are labeled | Nightmare hint |
-| 23 | fountain defense | Meta-Knights + dream hazards | Star Rod charges between waves | finale Supply focus |
-| 24 | Dedede's warning | King Dedede as nonfinal boss: hammer, inhale, pounce | ring arena | SSR Dedede focus |
-| 25 | Nightmare | Power Orb chase then vulnerable-cloak Wizard | falling sky → moon finale | UR Star Rod Kirby candidate, Key |
+| 16 | memory remix | fast combinations of earlier enemies | shifting palettes | full copy Archive |
+| 17 | dream distortion | mirrored spawns and Scarfy pressure | labeled target decoys | Nightmare hint |
+| 18 | fountain defense | Meta-Knights + dream hazards | Star Rod charges between waves | finale Supply focus |
+| 19 | Dedede's warning | King Dedede: hammer, inhale and pounce | ring arena | SSR Dedede focus |
+| 20 | Nightmare | Power Orb chase then vulnerable-cloak Wizard | falling sky → moon finale | UR Star Rod Kirby candidate, Key |
 
 The finale follows the source's logic: Dedede was containing Nightmare. Dedede
-is stage 24 so Nightmare receives a full two-phase stage 25 instead of being a
-last-second cutscene.
+is a stage-19 miniboss encounter so Nightmare receives a complete two-phase
+World finale.
 
 ### Kirby's Adventure release set
 
@@ -229,10 +198,9 @@ last-second cutscene.
 | --- | --- | --- |
 | World unlock | R Kirby, R Waddle Dee, R Poppy Bros. Jr. | R Parasol, R Beam, R Dream Spring Page |
 | Area 1 | SR Sir Kibble, SR Hot Head | SR Cutter, SR Fire, Whispy's Apples Page |
-| Area 2 | SR Wheelie, SR Sparky | SR Ice, SR Spark, Paint Roller Page |
-| Area 3 | SR UFO candidate, SR Rocky | SSR UFO ability candidate, Kracko Storm Page |
-| Area 4 | SR Bonkers; SSR Meta Knight after defeat | SR Hammer, SSR Sword, Halberd Knights Page |
-| Area 5 | SSR King Dedede; boss-only Nightmare unless animation works | SSR Star Rod Page; UR Star Rod Kirby fighter candidate |
+| Area 2 | SR Wheelie, SR Sparky, SR Rocky | SR Ice, SR Spark, Kracko Storm Page |
+| Area 3 | SR Bonkers; SSR Meta Knight after defeat | SR Hammer, SSR Sword, Halberd Knights Page |
+| Area 4 | SSR King Dedede; boss-only Nightmare unless animation works | SSR Star Rod Page; UR Star Rod Kirby fighter candidate |
 
 Copy abilities are normally Power-Ups. Star Rod Kirby can be a separate UR
 because the complete finale movement/attack set and identity justify a fighter,
@@ -245,15 +213,15 @@ coherent source game.
 
 | World/source game | Length | Five-stage Area direction | Signature bosses/finale | Roster and Supply hooks |
 | --- | ---: | --- | --- | --- |
-| Super Mario Bros. | 25 | Overworld; Underground/Sea; Sky; Castle Approach; Bowser Castle | Hammer Bros.; Blooper remix; Lakitu; Impostor; Bowser | Classic cast, Fire Flower, Super Star |
+| Super Mario Bros. | 15 | Overworld; Open Water/High Roads; Dark World/Bowser Castle | Hammer Bros.; Lakitu; Impostor miniboss/Bowser | Classic cast, Fire Flower, Super Star |
 | Super Mario Bros. 3 | 25 | Grass/Desert; Sea/Giant; Sky; Ice/Pipe; Dark Land | Boom Boom; Angry Sun remix; Giant guardian; Koopaling airship; Bowser | Koopalings SR batch, R Daisy candidate only if justified, Tanooki/Leaf/Hammer suits |
-| Super Mario World | 25 | Yoshi's Island; Donut Plains; Forest; Chocolate; Valley | Iggy; Reznor; Big Boo; Koopaling gauntlet; Bowser | Yoshi/color specialists, Cape/Feather, Switch Palace Pages |
-| Super Mario 64 | 25 | Bob-omb Battlefield; Whomp/Jolly; Lethal Lava; Big Boo/Tick Tock; castle finale | King Bob-omb; Whomp King; Big Bully; Big Boo; Bowser | 64 Mario iteration, Metal/Wing/Vanishing Caps |
-| Paper Mario | 25 | Goomba Road; Koopa Fortress; Dry Dry; Boo Mansion; Star Haven/Bowser | Goomba King; Koopa Bros.; Tutankoopa; Tubba Blubba; Bowser | Paper Mario, partners as fighters/Assists, badges as Supply |
-| Luigi's Mansion | 20–25 | foyer; portrait rooms; basement; rooftop; altar | Chauncey; Bogmire; Boolossus; portrait gauntlet; King Boo | Poltergust Luigi, E. Gadd Page, elemental medals; King Boo SSR |
-| Super Mario Sunshine | 25 | Bianco; Ricco; Pinna; Noki/Sirena; Corona | Petey Piranha; Gooper Blooper; Mecha-Bowser; Eely-Mouth/Phantamanta; Bowser Jr./Bowser | Sunshine Mario, FLUDD kits, Shadow Mario, Pianta Pages |
+| Super Mario World | 20 | Yoshi's Island/Donut; Vanilla Dome; Forest; Chocolate/Valley | Iggy; Reznor; Big Boo; Koopaling gauntlet/Bowser | Yoshi/color specialists, Cape/Feather, Switch Palace Pages |
+| Super Mario 64 | 20 | Bob-omb/Whomp; Jolly/Lethal Lava; Big Boo; clock/castle finale | King Bob-omb; Whomp King; Big Bully/Big Boo; Bowser | 64 Mario iteration, Metal/Wing/Vanishing Caps |
+| Paper Mario | 20 | Goomba/Koopa; Dry Dry; Boo Mansion; Star Haven/Bowser | Goomba King/Koopa Bros.; Tutankoopa; Tubba Blubba; Bowser | Paper Mario, partners as fighters/Assists, badges as Supply |
+| Luigi's Mansion | 15 | foyer/portrait rooms; basement/roof; altar | Chauncey; Bogmire/Boolossus; King Boo | Poltergust Luigi, E. Gadd Page, elemental medals; King Boo SSR |
+| Super Mario Sunshine | 20 | Bianco/Ricco; Pinna; Noki/Sirena; Corona | Petey/Gooper; Mecha-Bowser; Eely/Phantamanta; Bowser Jr./Bowser | Sunshine Mario, FLUDD kits, Shadow Mario, Pianta Pages |
 | Super Mario Galaxy | 25 | Good Egg; Honeyhive; Battlerock; Engine Room; Center | Dino Piranha; Bugaboom; Topmaniac; Bowser Jr. machine; Bowser | Galaxy Mario, Rosalina, Luma Assists, Bee/Spring/Boo Power-Ups |
-| Super Mario 3D World | 15–20 | Sprixie fields; carnival; neon train; castle | Boom Boom/Pom Pom; Hisstocrats; Motley Bossblob; Meowser | Cat/Super Bell, Double Cherry, Captain Toad iteration |
+| Super Mario 3D World | 15 | Sprixie fields; carnival/train; castle | Boom Boom/Pom Pom; Hisstocrats/Motley; Meowser | Cat/Super Bell, Double Cherry, Captain Toad iteration |
 | Super Mario Odyssey | 25 | Cascade; Sand; Wooded/Lake; Metro/Luncheon; Moon | Madame Broode; Hariet; Torkdrift; Mechawiggler; Broodals/Bowser | Cappy Mario iteration, captures as skills/Assists, regional Pages |
 | Bowser's Fury | 10 | Lake islands; Ruins/Lapcat | Fury Shadow remix; Fury Bowser | Fury Bowser UR, Giga Bell UR Power-Up, Bowser Jr. Assist |
 | Super Mario Bros. Wonder | 20 | Flower Kingdom biomes; Wonder gauntlets | authored title bosses and Bowser finale | Elephant/Bubble/Drill Power-Ups, Wonder Pages |
@@ -278,7 +246,7 @@ front-load every Koopaling, Yoshi color and Mario iteration into launch.
 
 | Source game | Length | Area spine | Major unlocks |
 | --- | ---: | --- | --- |
-| Kirby's Adventure | 25 | detailed above | base Kirby, Meta Knight, Dedede, ability Supply, Star Rod UR |
+| Kirby's Adventure | 20 | detailed above | base Kirby, Meta Knight, Dedede, ability Supply, Star Rod UR |
 | Kirby Super Star | 25 | Spring Breeze; Dyna Blade; Great Cave; Revenge; Milky Way | Marx, Dyna Blade, Helper fighters/Assists, copy expansions |
 | Kirby & the Amazing Mirror | 15 | mirror regions; Dark Meta path; Dimension Mirror | colored Kirby treatment, Dark Meta Knight, mirror Assists |
 | Return to Dream Land | 20 | Cookie; Raisin; Onion; Halcandra | Magolor, Super Abilities, Landia finale |
@@ -289,9 +257,9 @@ front-load every Koopaling, Yoshi color and Mario iteration into launch.
 
 | Source game | Length | Area spine | Boss/roster plan |
 | --- | ---: | --- | --- |
-| Mega Man 2 | 25 | Air/Crash; Metal/Quick; Bubble/Flash; Heat/Wood; Wily | eight Robot Masters grouped in pairs; Wily multi-phase; weapons as Power-Ups |
-| Mega Man 3 | 25 | eight Master pairs plus Doc Robot/Wily | Proto Man, Rush Assists, Robot Masters |
-| Mega Man X | 25 | Highway; four Maverick pairs; Sigma Fortress | X, Zero, eight Mavericks, armor parts as Supply |
+| Mega Man 2 | 20 | four Robot Master pairs; Wily Fortress | eight Robot Masters grouped in pairs; Wily multi-phase; weapons as Power-Ups |
+| Mega Man 3 | 20 | four Master pairs; Doc Robot/Wily | Proto Man, Rush Assists, Robot Masters |
+| Mega Man X | 20 | Highway/Maverick pairs; Sigma Fortress | X, Zero, eight Mavericks, armor parts as Supply |
 | Mega Man X4 | 20 | Repliforce regions and Final Weapon | X/Zero iterations, Iris Page, Sigma |
 | Mega Man Zero | 20 | Resistance missions; Neo Arcadia | Zero iteration, Ciel Assist, Copy X |
 | Mega Man Battle Network | 15–20 | internet areas and WWW | adaptation-heavy; NetNavis need bespoke movement plan |
@@ -304,9 +272,9 @@ all in one banner.
 
 | Source game | Length | Area spine | Boss/roster plan |
 | --- | ---: | --- | --- |
-| Sonic the Hedgehog | 25 | Green Hill; Marble; Spring Yard; Labyrinth; Star Light/Scrap Brain | Sonic, Eggman machines, shield Supply |
-| Sonic the Hedgehog 2 | 25 | Emerald/Chemical; Aquatic/Casino; Hill/Metropolis; Wing Fortress; Death Egg | Tails, Mecha Sonic, Super Sonic UR candidate |
-| Sonic 3 & Knuckles | 25 | Angel Island; Hydrocity; Carnival; IceCap; Launch Base/Doomsday | Knuckles, elemental shields, Mecha Sonic/Super forms |
+| Sonic the Hedgehog | 15 | Green Hill/Marble; Spring Yard/Labyrinth; Star Light/Scrap Brain | Sonic, Eggman machines, shield Supply |
+| Sonic the Hedgehog 2 | 20 | Emerald/Chemical; Aquatic/Casino; Hill/Metropolis; Wing Fortress/Death Egg | Tails, Mecha Sonic, Super Sonic UR candidate |
+| Sonic 3 & Knuckles | 20 | Angel/Hydrocity; Carnival/IceCap; Launch Base; Doomsday | Knuckles, elemental shields, Mecha Sonic/Super forms |
 | Sonic Mania | 20 | remixed classic zones plus Studiopolis/Press Garden | Mighty/Ray candidates, Hard-Boiled Heavies |
 | Sonic Adventure | 25 | Station Square; Mystic Ruins; carrier; Chaos path; Perfect Chaos | 3D/custom sprite burden; Amy, Gamma, Big, Chaos |
 
@@ -338,7 +306,7 @@ they create an entire independent move set.
 
 | Source game | Length | Area spine | Boss/roster plan |
 | --- | ---: | --- | --- |
-| Castlevania | 20 | grounds; halls; caverns; keep | Simon, subweapons, Medusa, Death, Dracula |
+| Castlevania | 15 | grounds/halls; caverns; keep | Simon, subweapons, Medusa, Death, Dracula |
 | Castlevania III | 20 | branching Wallachia route | Trevor, Sypha, Grant, Alucard, Dracula |
 | Symphony of the Night | 25 | entrance; chapel; library; caverns; inverted keep | Alucard, Richter, Maria, Death, Dracula/Shaft |
 | Aria of Sorrow | 20 | castle sectors and Chaos | Soma, soul Power-Ups, Julius, Graham/Chaos |
@@ -347,7 +315,7 @@ they create an entire independent move set.
 
 | Source game | Length | Area spine | Boss/roster plan |
 | --- | ---: | --- | --- |
-| Doom | 25 | Knee-Deep; Shores; Inferno; Thy Flesh; finale remix | Doomguy, weapon Supply, Barons, Cyberdemon, Spider Mastermind |
+| Doom | 20 | Knee-Deep; Shores; Inferno; Thy Flesh/finale | Doomguy, weapon Supply, Barons, Cyberdemon, Spider Mastermind |
 | Doom II | 25 | starport; city; hell; fortress; Icon | expanded demons, Super Shotgun, Icon of Sin |
 | Doom 64 | 20 | bases; temples; hell; Mother Demon | Doom 64 Marine iteration, Unmaker |
 | Doom (2016) | 25 | UAC; Foundry; Argent; Hell; VEGA/finale | bespoke modern sprites, Praetor suit, Cyberdemon/Spider Mastermind |
