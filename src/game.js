@@ -2,13 +2,10 @@
 // No DOM in here. Screens read from `game` and listen for 'changed', which
 // keeps the rules reusable if an online mode ever happens.
 import * as D from './data.js';
+import { createRandom, pickRandom, randomInt } from './random.js';
+import { parseSaveV3, SAVE_KEY, SAVE_VERSION, serializeSaveV3 } from './save-v3.js';
 
-const SAVE_KEY = 'pocketgacha.save.v1';
-const SAVE_VERSION = 3;
-
-const rand = () => Math.random();
-const randInt = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
-const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+const runtimeRandom = createRandom();
 
 class Game extends EventTarget {
   constructor() {
@@ -171,14 +168,14 @@ class Game extends EventTarget {
 
   rollOne() {
     const ssr = this.ssrChance();
-    const roll = rand();
+    const roll = runtimeRandom();
     let rarity = 3;
     if (roll < ssr) rarity = 5;
     else if (this.pitySr + 1 >= D.SR_PITY || roll < ssr + D.SR_RATE) rarity = 4;
     this.pitySsr = rarity === 5 ? 0 : this.pitySsr + 1;
     this.pitySr = rarity >= 4 ? 0 : this.pitySr + 1;
 
-    const h = pick(this.heroesOfRarity(rarity));
+    const h = pickRandom(this.heroesOfRarity(rarity), runtimeRandom);
     const res = { id: h.id, rarity, isNew: false, ascUp: false, refund: 0 };
     if (!this.owned[h.id]) {
       this.owned[h.id] = { lvl: 1, asc: 0 };
@@ -206,6 +203,7 @@ class Game extends EventTarget {
     const p = D.ENEMY_GROWTH ** (s - 1);
     const boss = options.boss ?? info.boss;
     const mod = options.modifier || {};
+    const random = options.random || runtimeRandom;
     const hpMod = mod.hp || 1;
     const atkMod = mod.atk || 1;
     const defMod = mod.def || 1;
@@ -217,8 +215,8 @@ class Game extends EventTarget {
     const baseCount = info.worldStage === 1 ? 1 : info.areaStage < 4 ? 2 : 3;
     const count = options.count ?? baseCount;
     return Array.from({ length: count }, () => {
-      const [name, color] = pick(info.area.enemies);
-      return unit(name, color, 60 * p * hpMod, 11 * p * atkMod, 4 * p * defMod, randInt(6, 13) * spdMod, false, 'melee', enemyArt(name));
+      const [name, color] = pickRandom(info.area.enemies, random);
+      return unit(name, color, 60 * p * hpMod, 11 * p * atkMod, 4 * p * defMod, randomInt(6, 13, random) * spdMod, false, 'melee', enemyArt(name));
     });
   }
 
@@ -253,26 +251,23 @@ class Game extends EventTarget {
 
   save() {
     this.lastSeen = Date.now();
-    const data = {
-      saveVersion: SAVE_VERSION,
-      gems: this.gems, gold: this.gold, pitySsr: this.pitySsr, pitySr: this.pitySr,
-      stage: this.stage, owned: this.owned, party: this.party, totalPulls: this.totalPulls,
-      muted: this.muted, lastSeen: this.lastSeen, lastDaily: this.lastDaily,
-    };
     try {
-      localStorage.setItem(SAVE_KEY, JSON.stringify(data));
+      localStorage.setItem(SAVE_KEY, serializeSaveV3(this, this.lastSeen));
     } catch {
       // storage unavailable (private window etc.); the game still runs
     }
   }
 
   load() {
-    let data;
     try {
-      data = JSON.parse(localStorage.getItem(SAVE_KEY));
+      const data = parseSaveV3(localStorage.getItem(SAVE_KEY));
+      this.applySave(data);
     } catch {
-      data = null;
+      // storage unavailable (private window etc.); keep the fresh game
     }
+  }
+
+  applySave(data) {
     if (!data || typeof data !== 'object') return;
     const num = (v, d) => (Number.isFinite(v) ? v : d);
     this.gems = num(data.gems, this.gems);

@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "start": "electron .",
-    "web": "node tools/serve.mjs"
+    "web": "node tools/serve.mjs",
+    "test": "node --test"
   },
   "devDependencies": {
     "electron": "^44.7.0"

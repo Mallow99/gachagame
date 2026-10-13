@@ -4,7 +4,11 @@
 import { game } from './game.js';
 import * as D from './data.js';
 import { ATTACK_STYLES, actionSeconds, damageAmount, healAmount, stageModifier } from './combat.js';
+import { validateContent } from './content/index.js';
+import { createRandom } from './random.js';
 import { heroImage } from './sprites.js';
+
+validateContent();
 
 const desktop = window.desktop;
 const root = document.getElementById('strip');
@@ -25,8 +29,10 @@ const goldLabel = document.getElementById('gold');
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const lerp = (a, b, t) => a + (b - a) * t;
 const ease = (t) => 1 - (1 - clamp(t, 0, 1)) ** 3;
-const rand = (a, b) => a + Math.random() * (b - a);
-const TIME_SCALE = clamp(Number(new URLSearchParams(location.search).get('speed')) || 1, 0.25, 12);
+const params = new URLSearchParams(location.search);
+const random = createRandom(params.get('seed'));
+const rand = (a, b) => a + random() * (b - a);
+const TIME_SCALE = clamp(Number(params.get('speed')) || 1, 0.25, 12);
 
 let W = 0;
 let H = 0;
@@ -159,7 +165,7 @@ async function spawnWave() {
   const isBoss = info.boss && wave === D.STAGE_WAVES;
   const baseCount = 1 + wave;
   const count = isBoss ? 1 : Math.min(6, baseCount + modifier.count);
-  const units = game.makeEnemies(game.stage, { boss: isBoss, count, modifier });
+  const units = game.makeEnemies(game.stage, { boss: isBoss, count, modifier, random });
   enemies = await Promise.all(units.map((unit, i) => makeFighter(unit, 1, i)));
   phase = 'battle';
   updateHud();
@@ -276,7 +282,7 @@ function updateFighter(p, dt) {
 
 function wander(p, dt) {
   if (p.side || p.dead) return idle(p, dt);
-  if (p.walkTo == null && Math.random() < dt * 0.32) p.walkTo = clamp(p.home + rand(-55, 55), 25, W * 0.56);
+  if (p.walkTo == null && random() < dt * 0.32) p.walkTo = clamp(p.home + rand(-55, 55), 25, W * 0.56);
   if (p.walkTo != null) {
     walk(p, p.walkTo, dt);
     if (Math.abs(p.x - p.walkTo) < 4) p.walkTo = null;
@@ -361,7 +367,7 @@ function triggerHit(actor, action, index, threshold) {
   const target = action.target;
   if (action.style === 'support') {
     if (!target.dead) {
-      const amount = healAmount(actor.unit);
+      const amount = healAmount(actor.unit, random);
       target.hp = Math.min(target.maxHp, target.hp + amount);
       target.flash = 0.5;
       popText(target.x, ground - target.h - 18, `+${amount}`, '#6ff29a');
@@ -391,7 +397,7 @@ function triggerHit(actor, action, index, threshold) {
 }
 
 function dealDamage(actor, target, style, power) {
-  const { amount, crit } = damageAmount(actor.unit, target.unit, style, Math.random, power);
+  const { amount, crit } = damageAmount(actor.unit, target.unit, style, random, power);
   target.hp = Math.max(0, target.hp - amount);
   target.flash = 1;
   target.squash = style === 'stomp' ? 0.55 : 0.16;

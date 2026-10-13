@@ -8,6 +8,9 @@ import { HeroesView } from './views/heroes.js';
 import { AdventureView } from './views/adventure.js';
 import { MechanicsView } from './views/mechanics.js';
 import { Reveal } from './views/reveal.js';
+import { validateContent } from './content/index.js';
+
+validateContent();
 
 const desktop = window.desktop; // set by electron/preload.js
 document.documentElement.classList.toggle('desktop', !!desktop);

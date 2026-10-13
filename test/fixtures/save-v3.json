@@ -1,0 +1,20 @@
+{
+  "saveVersion": 3,
+  "gems": 2375,
+  "gold": 1840,
+  "pitySsr": 31,
+  "pitySr": 6,
+  "stage": 18,
+  "owned": {
+    "mario": { "lvl": 8, "asc": 2 },
+    "walter": { "lvl": 7, "asc": 1 },
+    "sahur": { "lvl": 6, "asc": 0 },
+    "bob": { "lvl": 5, "asc": 3 },
+    "vex": { "lvl": 4, "asc": 1 }
+  },
+  "party": ["mario", "walter", "sahur", "vex"],
+  "totalPulls": 146,
+  "muted": false,
+  "lastSeen": 1791849600000,
+  "lastDaily": "Mon Oct 12 2026"
+}
