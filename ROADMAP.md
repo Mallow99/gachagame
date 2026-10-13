@@ -124,6 +124,13 @@ working.
 
 ## Roadmap 2: the strip (the playable core)
 
+**In progress:** Electron now starts as the real full-width bottom strip and
+switches to management when its HUD is clicked. Four-unit battles run
+continuously from the shared save, and melee, shot, combo, charge, stomp, lob
+and beam have distinct strip animations. The area/boss data and backgrounds
+cover all 50 Mushroom Kingdom stages. Passives, ultimate meters/cut-ins,
+front/back rows and reward drops are still pending.
+
 - An Electron window that is transparent, always on top, sits along the
   bottom of the screen and passes clicks through.
 - **Procedural stages:**

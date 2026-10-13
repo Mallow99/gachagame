@@ -4,6 +4,7 @@
 import * as D from './data.js';
 
 const SAVE_KEY = 'pocketgacha.save.v1';
+const SAVE_VERSION = 2;
 
 const rand = () => Math.random();
 const randRange = (a, b) => a + Math.random() * (b - a);
@@ -28,8 +29,8 @@ class Game extends EventTarget {
     this.pitySsr = 0;
     this.pitySr = 0;
     this.stage = 1;
-    this.owned = { bob: { lvl: 1, asc: 0 } };
-    this.party = ['bob'];
+    this.owned = Object.fromEntries(['bob', 'dave', 'pete', 'gary'].map((id) => [id, { lvl: 1, asc: 0 }]));
+    this.party = ['bob', 'dave', 'pete', 'gary'];
     this.totalPulls = 0;
     this.muted = true;
     this.lastSeen = 0;
@@ -206,12 +207,12 @@ class Game extends EventTarget {
     const p = D.ENEMY_GROWTH ** (s - 1);
     if (info.boss) {
       const [name, color] = info.area.boss;
-      return [unit(name, color, 300 * p, 15 * p, 7 * p, 9, true)];
+      return [unit(name, color, 300 * p, 15 * p, 7 * p, 9, true, 'charge')];
     }
     const count = info.worldStage === 1 ? 1 : info.areaStage < 4 ? 2 : 3;
     return Array.from({ length: count }, () => {
       const [name, color] = pick(info.area.enemies);
-      return unit(name, color, 60 * p, 11 * p, 4 * p, randInt(6, 13), false);
+      return unit(name, color, 60 * p, 11 * p, 4 * p, randInt(6, 13), false, 'melee');
     });
   }
 
@@ -219,7 +220,7 @@ class Game extends EventTarget {
     return this.party.map((id) => {
       const h = this.hero(id);
       const s = this.stats(id);
-      return { id, name: h.name, color: h.color, cls: h.cls, boss: false, hero: true,
+      return { id, name: h.name, color: h.color, cls: h.cls, attackStyle: D.attackStyleFor(h), boss: false, hero: true,
         hp: s.hp, maxHp: s.hp, atk: s.atk, def: s.def, spd: s.spd };
     });
   }
@@ -271,6 +272,7 @@ class Game extends EventTarget {
   save() {
     this.lastSeen = Date.now();
     const data = {
+      saveVersion: SAVE_VERSION,
       gems: this.gems, gold: this.gold, pitySsr: this.pitySsr, pitySr: this.pitySr,
       stage: this.stage, owned: this.owned, party: this.party, totalPulls: this.totalPulls,
       muted: this.muted, lastSeen: this.lastSeen, lastDaily: this.lastDaily,
@@ -304,6 +306,12 @@ class Game extends EventTarget {
     for (const [id, o] of Object.entries(data.owned || {})) {
       if (this.byId[id] && o) owned[id] = { lvl: num(o.lvl, 1), asc: num(o.asc, 0) };
     }
+    // Early builds started with Bob alone. Give untouched legacy starters the
+    // four-person test team so the battle strip demonstrates the real layout.
+    if (!data.saveVersion && Object.keys(owned).length === 1 && owned.bob) {
+      for (const id of ['dave', 'pete', 'gary']) owned[id] = { lvl: 1, asc: 0 };
+      data.party = ['bob', 'dave', 'pete', 'gary'];
+    }
     if (Object.keys(owned).length) {
       this.owned = owned;
       const party = [...new Set((Array.isArray(data.party) ? data.party : []).filter((id) => owned[id]))];
@@ -317,8 +325,8 @@ class Game extends EventTarget {
   }
 }
 
-function unit(name, color, hp, atk, def, spd, boss) {
-  return { id: name, name, color, cls: '', boss, hero: false,
+function unit(name, color, hp, atk, def, spd, boss, attackStyle) {
+  return { id: name, name, color, cls: '', attackStyle, boss, hero: false,
     hp: Math.round(hp), maxHp: Math.round(hp), atk: Math.round(atk), def: Math.round(def), spd };
 }
 

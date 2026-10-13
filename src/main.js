@@ -21,7 +21,7 @@ const soundBtn = h('button.chip', { onclick: () => {
   sfx.click();
 } });
 let collapsed = false;
-const collapseBtn = h('button.chip.square', { title: 'Collapse', onclick: toggleCollapse }, '–');
+const collapseBtn = h('button.chip.square', { title: desktop ? 'Return to battle strip' : 'Collapse', onclick: toggleCollapse }, '–');
 const closeBtn = desktop && h('button.chip.square.close', { title: 'Save & quit', onclick: () => {
   game.save();
   desktop.quit();
@@ -58,6 +58,11 @@ function refresh() {
 }
 
 function toggleCollapse() {
+  if (desktop?.openStrip) {
+    game.save();
+    desktop.openStrip();
+    return;
+  }
   collapsed = !collapsed;
   app.classList.toggle('collapsed', collapsed);
   collapseBtn.textContent = collapsed ? '+' : '–';

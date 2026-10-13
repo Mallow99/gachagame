@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'">
+  <title>Pocket Gacha Battle Strip</title>
+  <link rel="stylesheet" href="strip.css">
+</head>
+<body>
+  <main id="strip" class="area-grassland">
+    <section id="world" aria-label="Automatic battle">
+      <div class="hills far"></div>
+      <div class="hills near"></div>
+      <div class="ground"></div>
+      <div id="stage"></div>
+      <div id="announce"></div>
+    </section>
+    <button id="hud" type="button" title="Open Pocket Gacha" data-interactive>
+      <span id="location">Mushroom Kingdom · Grassland</span>
+      <strong id="stage-label">Stage 1</strong>
+      <span class="divider"></span>
+      <span id="action-label">Preparing battle…</span>
+      <span class="divider"></span>
+      <span class="gem">◆</span><span id="gems">0</span>
+      <span class="coin">●</span><span id="gold">0</span>
+      <span class="open">MANAGE</span>
+    </button>
+  </main>
+  <script type="module" src="src/strip.js"></script>
+</body>
+</html>

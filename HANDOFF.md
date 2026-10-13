@@ -29,16 +29,18 @@ future reveal reference.
 ## 2. Repo map
 
 ```
-index.html, styles.css         Game page (plain HTML/CSS/JS, no build step)
+index.html, styles.css         Management page (plain HTML/CSS/JS, no build step)
+strip.html, strip.css          Real transparent battle-strip page
 src/
   data.js                      All tunables + roster (rates, pity, costs, classes)
   game.js                      Rules/state: gacha, levels, battles, save (no DOM)
   main.js                      Widget shell: top bar, tabs, toasts, collapse
+  strip.js                     Continuous strip battles + seven attack animations
   ui.js, sprites.js, sfx.js    DOM helpers, placeholder pixel sprites, WebAudio sfx
   views/summon.js reveal.js    Banner screen + (old, basic) pull animation
   views/heroes.js adventure.js Collection/level-up, battle playback
   views/particles.js           Canvas particle bursts
-electron/main.js, preload.js   Frameless always-on-top 360x600 window, collapse IPC
+electron/main.js, preload.js   Always-on-top strip/manager modes + click-through IPC
 tools/serve.mjs                Static server: `npm run web` -> http://localhost:8080
 assets/characters/<id>/        Batch 1 art: splash.webp, battle.webp, icon.webp
 assets/characters/CATALOG.md   Per-character grade, source, processing, animations
@@ -52,6 +54,8 @@ ROADMAP.md                     What we're building and in what order
 ```
 
 Run the game: `npm install && npm start` (Electron) or `npm run web` (browser).
+Electron now starts in the real bottom battle strip; click its HUD to open the
+360×600 management view. The same window switches modes so both use one save.
 Run the Mario demo: serve `demos/mario-pull/` over HTTP, e.g.
 `python3 -m http.server -d demos/mario-pull 8000`. It fetches files, so opening
 it as `file://` won't work. It's also published as a Claude artifact the owner

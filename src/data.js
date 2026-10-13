@@ -65,6 +65,21 @@ export const ROSTER = [
   { id: 'twig', name: 'Twig', rarity: 3, cls: 'Ranger', color: '#9ac078' },
 ];
 
+// The seven styles change how an attack moves in the strip. They intentionally
+// share a small set of damage rules so animation variety does not become seven
+// separate combat systems.
+const ATTACK_STYLE_BY_HERO = {
+  aurelia: 'melee', vex: 'beam', kiri: 'combo', oriel: 'lob', juno: 'shot',
+  brakka: 'charge', thorne: 'stomp', lumen: 'beam', grimble: 'lob', pip: 'combo',
+  marisol: 'shot', fen: 'shot', bob: 'melee', chad: 'charge', dave: 'beam',
+  steve: 'lob', pete: 'combo', moth: 'charge', gary: 'shot', nana: 'lob',
+  archie: 'shot', twig: 'stomp',
+};
+
+export function attackStyleFor(hero) {
+  return ATTACK_STYLE_BY_HERO[hero.id] || 'melee';
+}
+
 export const MUSHROOM_KINGDOM = [
   {
     id: 'grassland', name: 'Grassland', range: '1–10',

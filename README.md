@@ -2,8 +2,8 @@
 
 > Picking this up? Read [HANDOFF.md](HANDOFF.md) first.
 
-A tiny gacha RPG that lives in the corner of your screen. Pull for heroes, level
-them up, send a party of three through auto-battles. No store, no real money.
+A tiny gacha RPG that fights along the bottom of your screen. Pull for heroes,
+level them up, and send a party of four through auto-battles. No store, no real money.
 
 Plain HTML/CSS/JavaScript (no framework, no build step) in an Electron window.
 The same code also runs as a normal web page.
@@ -16,13 +16,17 @@ npm start        # desktop widget (Electron)
 npm run web      # or play in a browser at http://localhost:8080
 ```
 
-The desktop window is frameless, floats above other apps (including full-screen
-ones on macOS), and starts in the bottom-right corner.
+The desktop app starts as a transparent, always-on-top battle strip along the
+bottom of the screen. Click **MANAGE** to open the full game window; its `–`
+button returns to the strip. Outside the HUD, strip clicks pass through to the
+app underneath it.
 
 ## Playing
 
-- **Drag** the gems/gold bar to move the window. `–` collapses it to just the bar;
-  `×` saves and quits.
+- **Strip:** battles run continuously. The HUD shows the current area, stage,
+  action and rewards; click **MANAGE** to pull or change the team.
+- **Management:** drag the gems/gold bar to move the window. `–` returns to the
+  strip; `×` saves and quits.
 - **Summon:** 100 gems per pull, 1000 for ten. SSR 3%, SR 15%, R 82%. SSR odds
   start climbing after 50 pulls, and pull 70 is a guaranteed SSR. Every 10 pulls
   guarantees an SR or better.
@@ -43,12 +47,13 @@ ones on macOS), and starts in the bottom-right corner.
 | `src/data.js` | All the numbers (rates, pity, costs, income) and the roster |
 | `src/game.js` | Rules and state: gacha, levels, battles, saving (no UI) |
 | `src/main.js` | Window shell: top bar, tabs, toasts, collapse |
+| `strip.html`, `strip.css`, `src/strip.js` | Always-on-top auto-battle strip and its seven attack animations |
 | `src/views/summon.js`, `reveal.js` | Banner screen and the pull animation |
 | `src/views/heroes.js` | Collection, party, level-ups |
 | `src/views/adventure.js` | Stages and battle playback |
 | `src/sprites.js` | Placeholder pixel sprites (replaced by real art when a hero has `art.icon`) |
 | `src/sfx.js` | Procedural sound effects |
-| `electron/` | The desktop window (frameless, always on top, collapse) |
+| `electron/` | Strip/management window switching and click-through behavior |
 
 The save lives in the app's local storage. To start over, open DevTools
 (View → Toggle Developer Tools in Electron, or the browser's) and run
