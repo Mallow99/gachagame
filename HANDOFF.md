@@ -4,13 +4,12 @@
 is next and the plan directory is the definitive design/balance/content source.
 This file is the history and technical detail behind them.
 
-Repo: `Mallow99/gachagame`. Definitive planning is on branch
-`claude/stoic-archimedes-h3m7qt`; the stable PG-001/PG-002 coding foundation was
-committed separately on `codex/pg001-pg002` at
-`a957df556356dc80c183a5bb3707c5d694799592` (14 tests passing at that commit).
-Later combat work from that coding chat may be uncommitted and must be inspected
-before assuming it exists. The owner is a programming beginner who wants the
-fun result.
+Repo: `Mallow99/gachagame`. Branch `codex/pg001-pg002` now contains the merged
+definitive planning corpus, the stable PG-001/PG-002 coding foundation and the
+owner decisions/audit in plans `17`–`18`. Do not return to
+`claude/stoic-archimedes-h3m7qt`; it predates the merged implementation branch.
+`npm test` currently covers 19 deterministic/content/save/pool checks. The owner
+is a programming beginner who wants the fun result.
 Explain choices briefly and don't drown them in options.
 
 ---
@@ -36,8 +35,8 @@ Super Mario Bros. is the first planned 15-stage World and Kirby's Adventure is
 the recommended second 20-stage World; the player chooses eligible destinations
 with Atlas Keys rather than following the production order.
 Fighter iterations, equippable Power-Ups, party-wide Assist Pages, SSRs and URs
-are separate systems. One Mythic slot is shared across an UR fighter, UR
-Power-Up or future UR Assist. One account-wide Training Rank replaces
+are separate systems. There is no Mythic loadout cap; multi-UR parties are
+legal and must be simulated. One account-wide Training Rank replaces
 individual fighter levels. Atlas Rank snapshots a set of newly revealed Worlds
 instead of hard level-syncing the player's exact party. Build the real strip and
 one polished five-stage Super Mario Bros. slice before producing the larger
@@ -47,8 +46,8 @@ Orders and optional resource/XP/Wanted-Hunt Sorties make the generous daily
 bundle something the player earns instead of a login claim. The signed-off
 Mario pull demo remains the reveal reference.
 
-Plan addenda `13_HUBS_BANNERS_AND_PRESENTATION.md` and
-`14_MARIO_KIRBY_CHARACTER_BIBLE.md` are authoritative for the regional Archive,
+Plan addenda `13_HUBS_BANNERS_AND_PRESENTATION.md` through
+`18_LOADOUT_COPY_AND_PROGRESSION_AUDIT.md` are authoritative for the regional Archive,
 summon timing/card content, Mario and Kirby kits, Copy, Goomba flatten, shell
 kicks, float, tongue and all signature-animation acceptance tests. Yoshi (SMW)
 and Mario 64 are the first post-slice engine proofs, followed by the regional
@@ -58,11 +57,12 @@ Mega Man 2, all eight Robot Masters, Wily, Roll and Proto Man.
 
 **Priority correction:** plan `16_MARIO_KIRBY_ARCHIVE_EXPANSION.md` now comes
 before plan `15` in production. “Bigger roster” means deeper Mushroom Kingdom
-and Dream Land pools, not reaching another franchise sooner. It adds 15 Mario
-and 19 Kirby cards, including Cappy Mario, Dry Bowser, Poltergust Luigi, all
-five Super Ability Kirbys and UR Hypernova Kirby. The normal-banner
-floor is 22 Mushroom fighters and 20 Dream Land fighters before each Archive's
-first real pull. Mega Man remains designed but is deferred.
+and Dream Land pools, not reaching another franchise sooner. Plans `17`–`18`
+reclassify the five Super Ability cards into one Return-to-Dream-Land Kirby UR,
+move Hypernova to SSR and Star Rod to a UR Power-Up, and expand the candidate
+museum. The opening normal-banner floor is 22 fighters for both Mushroom and
+Dream Land before each Archive's first real pull. Mega Man remains designed but
+is deferred.
 
 Ultimate coefficients in the character bibles were rebalanced after the owner
 correctly identified that the old 2–3× totals were barely normal attacks. The
@@ -120,7 +120,8 @@ mechanics test team currently uses Mario, Walter and Sahur cut-outs from
 `demos/strip/`; these are dev fixtures, not the planned player-facing roster.
 The remaining test roster uses placeholder pixel sprites. **Batch 1 art in
 `assets/characters/` is not wired into the game yet.** Do not delete fixtures
-until the real free party and enemies can boot every view and run combat.
+until the real one-starter/pulled-party path and enemies can boot every view and
+run combat.
 
 ---
 
@@ -136,8 +137,9 @@ until the real free party and enemies can boot every view and run combat.
   then a transition into the high-quality image, then **S / S / R slamming in**
   as separate letters, then stars, name and details.
 - **Variants by tier, refined later**: complete game-era movesets can be
-  separate fighter iterations, but ordinary Fire/Ice/Tanooki-style changes are
-  usually equippable Power-Ups. Base versions are normally R, specialists SR,
+  separate fighter iterations. Recurring pickups such as Fire/Ice Flowers are
+  effect-only Power-Ups; Tanooki and Cat versions pass the current full-fighter
+  test. Base versions are normally R, specialists SR,
   signatures/bosses SSR and truly exceptional anchors UR.
 - Later: kits per character (basic, skill, ultimate, passive) with
   animations and effects.

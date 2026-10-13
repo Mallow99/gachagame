@@ -96,7 +96,7 @@ and the first five stages are committed to current production.
 | --- | --- | ---: | ---: | --- | ---: | --- |
 | Mario | Super Mario Bros. | 15 | 0 | — | 0 | first complete World; provisional custom sheets for Peach/Toad |
 | Mario | Super Mario Bros. 3 | 25 | 3 | SMB1 | 2 | airships and Koopalings; strong native enemy sprites |
-| Dream Land | Kirby's Adventure | 20 | 3 | — | 1 | second production World; proves flight/copy Supply |
+| Dream Land | Kirby's Adventure | 20 | 3 | — | 1 | second production World; proves flight and encounter Copy |
 | Mega Man | Mega Man 2 | 20 | 3 | — | 3 | boss-heavy; weapons fit Power-Ups |
 | Arcade Hall | Pac-Man | 5 | 3 | — | 3 | proves short-World and lane rules |
 | Sonic | Sonic the Hedgehog | 15 | 6 | — | 4 | movement-speed stress test |
@@ -160,7 +160,7 @@ available, not the original prerequisite's ending Threat.
    Archive floor before its first real pull.
 3. Finish SMB1 stages 6–15, Bowser, the first Mushroom breadth batch and the
    Atlas choice screen.
-4. Build Kirby's Adventure stages 1–5 and its 20-fighter Archive floor to prove
+4. Build Kirby's Adventure stages 1–5 and its 22-fighter Archive floor to prove
    a second visual/combat/collection grammar.
 5. Finish Kirby's Adventure 6–20, the Mushroom/Dream Land breadth shelves and
    the repeatable World toolchain.

@@ -30,9 +30,9 @@ commitment.
 | SMB1 slice — engine gate | Classic Mario, Classic Luigi, Toad, Peach, Koopa Troopa, Hammer Bro, Bowser | complete stages 1–5 and prove the first real banner |
 | Mushroom opening Archive | this packet's Yoshi/Mario 64 plus the opening-floor additions in plan `16` | reach 22 production-ready normal fighters before the first Archive pull |
 | Mushroom breadth shelf | Wario, Waluigi, Paper Mario, Sunshine Mario, Rosalina, King Boo plus plan `16` additions | deepen the first playable region before producing another franchise roster |
-| Mushroom Mythic | Fury Bowser | high-production UR after the one-Mythic-slot test exists |
-| Dream Land opening Archive | the *Kirby's Adventure* cast here plus plan `16` additions | reach 20 production-ready normal fighters before the first Archive pull |
-| Dream Land breadth/Mythic | Star Rod Kirby plus later forms and cast in plan `16` | complete Copy/Super Ability/Hypernova choices before Mega Man production |
+| Mushroom Mythic | Fury Bowser | high-production UR after multi-UR fixtures exist |
+| Dream Land opening Archive | the *Kirby's Adventure* cast here plus plan `16` additions | reach 22 production-ready normal fighters before the first Archive pull |
+| Dream Land breadth/Mythic | Star Rod Power-Up, RTDL Kirby and later cast in plans `16`–`18` | complete Copy/Super Ability/Hypernova choices before Mega Man production |
 
 An item can move later when its assets fail. Do not replace it with a motionless
 card merely to preserve the table. Plan
@@ -59,7 +59,6 @@ Move 123; Haste 0%; Crit 8%.
 - **Ultimate — Course Clear, 100 energy:** runs through the line for 1.60× to
   each crossed target, stomps the backmost target for 3.40×, hits the flag pose
   and gives the party 15% Haste for 8 s. Single-target total: **5.00×**.
-- **Power-Ups:** Mushroom, Flower, Star.
 - **Reveal:** brick dust / warm red; quote “Let's-a go!”
 - **Must feel right:** run precedes takeoff; rise/apex/fall are distinct; damage
   occurs at foot contact; a successful stomp squashes eligible enemies and
@@ -80,7 +79,6 @@ Levels* and *Super Mario Bros. 2*. **Role:** Controller / Charge, front.
 - **Ultimate — Backline Bound:** chains three rising stomps at 1.20× each, then
   clears the front line and lands on the backmost target for 2.20× plus 0.60×
   splash. Maximum primary-target total: **5.80×**.
-- **Power-Ups:** Mushroom, Flower, Star.
 - **Reveal:** green speed streak / nervous inhale; quote “Here we go!”
 - **Must feel right:** apex is at least 25% higher and hang time about 20%
   longer than Mario's at the same distance. He skids or windmills on landing;
@@ -99,7 +97,6 @@ Move 138; Haste 4%; Crit 12%.
 - **Ultimate — Retainer Rush:** ricochets through priority enemies six times at
   0.85×, then finishes the lowest-HP survivor for 1.20×. Later hits retarget if
   a victim falls. Maximum single-target total: **6.30×**.
-- **Power-Ups:** Mushroom, Flower.
 - **Reveal:** paper route map / blue spots; quote “Leave it to me!”
 - **Must feel right:** tiny stride cycles quickly, parcel exists in his hands,
   heal lands on delivery, and the combo is scrappy rather than sword-like.
@@ -117,7 +114,6 @@ Move 112; Haste 0%; Crit 7%.
 - **Ultimate — Princess's Wish:** floats above the party, cleanses one control
   condition, heals everyone for 220% ATK, shields for 150% ATK and grants 15%
   Haste for 6 s. Its conservative support value clears the R ultimate floor.
-- **Power-Ups:** Mushroom, Flower, Star.
 - **Reveal:** petals and soft star light; quote “I can do this on my own.”
 - **Must feel right:** her reposition uses a short hover and slow descent; skirt
   and shadow separate from the floor; she can clear low ground hazards during
@@ -138,7 +134,6 @@ Move 112; Haste 0%; Crit 7%.
 - **Ultimate — Ricochet Route:** retracts, crosses the line four times for
   1.25× per pass, then exits the shell for a 2.00× impact and returns to its
   original front position. Maximum single-target total: **7.00×**.
-- **Power-Ups:** Shell, Mushroom.
 - **Reveal:** green checker trail; quote “One kick changes the whole course.”
 - **Must feel right:** walking body becomes a separate spinning-shell state;
   kick direction comes from the ally's contact; impacts occur at collision,
@@ -159,7 +154,6 @@ Move 112; Haste 0%; Crit 7%.
 - **Ultimate — Hammer Storm:** leaps between brick tiers while eight
   telegraphed hammers fall for 0.90× each; the final center impact deals an
   additional 1.20×. Maximum focused total: **8.40×**.
-- **Power-Ups:** Hammer, Shell.
 - **Reveal:** violet brick silhouette / spinning hammer; quote “Heads up!”
 - **Must feel right:** release happens at the apex, hammers rotate along real
   arcs, and paired Bros stagger their throws. Projectiles cannot appear from an
@@ -179,7 +173,6 @@ and fire motion may fill missing frames. **Role:** Vanguard / Charge, front.
 - **Ultimate — King of the Koopas:** leaps away, crashes down for 2.40× splash,
   then breathes eight 0.75× flame ticks across two lanes before returning to
   the front. Focused total: **8.40×**, plus Burn.
-- **Power-Ups:** Shell, Fire, Giant.
 - **Reveal:** screen blackout warms red, eyes and furnace breath emerge; quote
   “Showtime!” before the separate S/S/R impacts.
 - **Must feel right:** every step carries weight; fire has inhale, ignition and
@@ -206,7 +199,6 @@ and fire motion may fill missing frames. **Role:** Vanguard / Charge, front.
 - **Ultimate — Egg Relay:** lays and kicks three colored eggs through priority
   targets for 1.60× each; the last bursts for an additional 2.00× splash.
   Maximum focused total: **6.80×**.
-- **Power-Ups:** Shell, Fruit, Wing.
 - **Reveal:** egg spots and leaf confetti; quote “Yoshi!”
 - **Must feel right:** tongue tip is the hitbox, sticks to the target, and
   retracts with it; cheeks/body show the swallow; the egg exists as a persistent
@@ -229,7 +221,6 @@ Move 134; Haste 4%; Crit 12%.
 - **Ultimate — Acrobatic Course Clear:** long-jumps through the line for 2.20×,
   wall-kicks back for 1.80× and dives onto the highest-HP target for 5.20×.
   Maximum focused total: **9.20×**.
-- **Power-Ups:** Wing Cap, Metal Cap, Vanish Cap, Star.
 - **Reveal:** castle painting ripples, red cap silhouette dives through; quote
   “Here we go!”
 - **Must feel right:** attacks use the broad 64 stance and recoil; jump one,
@@ -400,7 +391,6 @@ Airborne. **Stats:** HP 943; ATK 129; Guard 30; Move 118; Haste 1%; Crit 9%.
   the skill becomes a sweeping 0.55× × 8 fire beam. A 5.00× final slam ends
   the form. It targets **18–26 normal-action equivalents** before crowd value;
   Fury cannot gain energy during it and boss phase floors remain respected.
-- **Power-Ups:** Shell, Fire, Giant; occupies the party Mythic slot.
 - **Reveal/feel:** black rain, lighthouse pulse, giant silhouette and roar; no
   written speaker name is needed. Scale change affects shadow, camera framing,
   collision lanes and sound—not just sprite zoom.
@@ -426,9 +416,10 @@ rows are named homes, not build commitments:
 Kirby's fantasy is non-negotiable, so Copy is a bounded engine system rather
 than a flavor buff.
 
-Ordinary Copy profiles remain this swappable system. Plan `16` separately
-approves Ultra Sword and Monster Flame as full Super Ability fighters and
-Hypernova as a UR transformation because each changes the entire actor grammar.
+Ordinary Copy profiles remain this encounter-acquired system. Plans `17`–`18`
+replace the five separate Super Ability fighters with one *Return to Dream
+Land* Kirby UR whose held Copy chooses the transformation ultimate. Hypernova
+Kirby is a separate SSR because suction changes its whole ordinary grammar.
 
 1. Enemies explicitly declare `copyAbilityId` or `null`.
 2. Kirby holds one copied ability at a time. Copy lasts until replaced, Kirby
@@ -441,6 +432,11 @@ Hypernova as a UR transformation because each changes the entire actor grammar.
    encounter-tag advantage next, then highest neutral output.
 5. Hats/palette and the basic/skill animation change immediately. A text icon
    without a visible Kirby change is not a complete Copy implementation.
+6. Every Copy-capable version declares `copyLibrary`. An out-of-library ability
+   produces three boosted Star Shots and refunds 40% of Copy cooldown rather
+   than showing an invisible or borrowed hat.
+7. A version with a transformation ultimate may spend the held Copy when it
+   fires. The record declares the deterministic no-Copy fallback.
 
 ### Launch copy library
 
@@ -455,7 +451,9 @@ Hypernova as a UR transformation because each changes the entire actor grammar.
 | Beam | common line Beam | sweeping Wave Beam | jester cap and segmented wave |
 
 Copy uses a fixed balance table. Enemy damage numbers are never imported into
-Kirby's player kit.
+Kirby's player kit. Adventure Kirby launches with all seven profiles above;
+future versions need at least three complete profiles. *Return to Dream Land*
+Kirby requires Sword, Fire, Beam, Hammer and Ice for its five ultimate routes.
 
 ## 8. Dream Land fighters
 
@@ -474,16 +472,15 @@ Kirby's player kit.
   reaching Airborne targets; Move drops 15% while floating and exhale ends it.
 - **Ultimate — Warp Star Crash:** rides across the enemy line twice for 1.60×
   per pass, then lands for 1.50× splash. Focused total: **4.70×**.
-- **Power-Ups:** Copy Ability pages, Star, Food.
 - **Reveal:** Warp Star trail and inhale silhouette; quote “Hii!”
 - **Must feel right:** suction moves particles, projectiles and eligible bodies;
   cheeks inflate; star shape exits the mouth; copied hat and actions swap on a
   single synchronized state boundary. Floating has flap/puff cadence.
 
-### Parasol Waddle Dee — Rain-or-Shine Guard · R
+### Parasol Waddle Dee — Rain-or-Shine Guard · SR
 
 **Source:** *Kirby's Adventure*. **Role:** Vanguard / Strike, front.
-**Stats:** HP 1,100; ATK 76; Guard 62; Move 112; Haste 1%; Crit 5%.
+**Stats:** HP 1,265; ATK 87; Guard 62; Move 112; Haste 1%; Crit 5%.
 
 - **Basic — Parasol Poke:** 0.95× Strike with enough reach to hold the line.
 - **Skill — Parasol Shield, 10 s:** opens upward for 4 s, blocking 55% of
@@ -606,11 +603,11 @@ Kirby's player kit.
 - **Reveal/feel:** hammer head lands before the name plate; quote “Bonk first!”
   Windup, weight transfer and rebound distinguish him from a generic bruiser.
 
-### Meta Knight — Masked Swordsman · SSR
+### Meta Knight — Masked Swordsman · SR
 
 **Source:** *Kirby's Adventure* with later official motion references where the
 NES sheet is incomplete. **Role:** Striker / Combo, front/either.
-**Stats:** HP 1,270; ATK 157; Guard 38; Move 142; Haste 7%; Crit 14%.
+**Stats:** HP 1,059; ATK 131; Guard 38; Move 142; Haste 7%; Crit 14%.
 
 - **Basic — Galaxia Sequence:** 0.34× × 3, ending with a short sword wave if the
   target moved out of reach.
@@ -647,7 +644,11 @@ NES sheet is incomplete. **Role:** Striker / Combo, front/either.
 - **Must feel right:** inhale deforms cheeks and pulls real objects; hammer drags
   through anticipation; jump shadow warns the landing; recovery stays heavy.
 
-### Star Rod Kirby — Fountain's Chosen · UR
+### Archived Star Rod Kirby reference — reclassified as UR Power-Up
+
+This is not a pullable fighter and does not count toward a roster floor. Keep
+the motion, VFX and value notes below as input for the Star Rod Awakening; the
+final Power-Up contract is plan `18` §3.2.
 
 **Source:** *Kirby's Adventure* finale. **Role:** Artillery / Beam, either.
 **Stats:** HP 1,613; ATK 188; Guard 34; Move 132; Haste 5%; Crit 12%.
@@ -663,7 +664,6 @@ NES sheet is incomplete. **Role:** Striker / Combo, front/either.
   Basics become 0.75× × 3 star volleys and the skill becomes a 3.20× charged
   Star Rod blast. A final 4.50× comet hit ends the form. It targets **18–24
   normal-action equivalents** and cannot generate energy during the form.
-- **Power-Ups:** Star only; occupies the Mythic slot.
 - **Reveal/feel:** Fountain goes dark, quote “Dreams belong to everyone,” Star
   Rod ignites, flight begins and U/R seals land. This requires a full airborne
   moveset; a glowing base Kirby sprite fails the UR gate.

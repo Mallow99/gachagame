@@ -118,7 +118,7 @@ Rarity should be felt before the ultimate animation plays.
 | R | 1.00× | 100 | complete introductory kit, eventually replaceable |
 | SR | 1.15× | 118 | specialist can beat SSR in its favorable job |
 | SSR | 1.38× | 145 | generally superior signature version or boss |
-| UR | 1.68× | 180 | exceptional anchor, constrained by Mythic slot |
+| UR | 1.68× | 180 | exceptional anchor; multi-UR parties are legal |
 
 The kit budget is a review index, not a runtime multiplier. Range, healing,
 control, survivability, targeting and uptime all spend it. It prevents an SSR
@@ -209,7 +209,9 @@ Fire, Ice, Electric, Explosive, Magic, Projectile, Summoned
 ```
 
 Example: an SR with `+40% damage to Airborne` can outperform a general SSR in
-a sky Area. The story remains clearable without that SR.
+a sky Area. Story may expect that mechanic, but a mandatory reaction must have
+a bounded deterministic item, selector or alternative-family route under plan
+`18` §7.2; one exact unguaranteed SR is never the only answer.
 
 First supported conditions:
 
@@ -311,7 +313,7 @@ Run at least 2,000 seeded simulations after a balance change.
 
 | Team | Construction | Normal-stage target | Boss target |
 | --- | --- | --- | --- |
-| Free minimum | story R/SR, 0–1 stars, free Supply | ≥90% clear | 75–90% clear |
+| Pull minimum | one Hub starter plus expected ordinary R/SR pulls, 0–1 stars, earned Supply | ≥90% clear | 75–90% clear |
 | Typical | ordinary R/SR + one SSR-equivalent value | ≥97% | 90–98% |
 | Premium | SSR-heavy, no required featured unit | ~100%, faster | ≥98% |
 | UR check | one UR anchor, otherwise typical | fast | shows every mandatory phase |
@@ -377,7 +379,7 @@ Fighters retain identity through:
 - 0–5 duplicate stars;
 - a five-rank Technique Mastery track earned by fielding the unit or applying
   universal Technique Notes;
-- one compatible Power-Up;
+- one Hub-scoped Power-Up, with cross-Hub combinations allowed in Endless;
 - party composition and one Assist Page;
 - optional cosmetic frames/titles.
 
@@ -456,7 +458,7 @@ This deterministic floor is cleaner than making the owner restart a local save.
 
 **LOCKED:** a finished regional Archive does not accept its first pull below
 its breadth floor: Mushroom Kingdom 22 normal fighters (10 R / 7 SR / 5 SSR),
-Dream Land 20 (8 / 7 / 5). A smaller pool may exist only in a labeled engine
+Dream Land 22 (8 / 9 / 5). A smaller pool may exist only in a labeled engine
 preview using non-spendable test pulls or the source-specific Spotlight. The
 twenty-pull simulation must keep median ownership at or below 75% of the live
 normal pool.
@@ -479,9 +481,11 @@ turning the Archive into mostly duplicates immediately after the opening test.
 | hard pity | pull 45 |
 | expected SSR | 16.7 pulls |
 
-Supply contains only Power-Ups and Assist Pages. Each Area should award 5–8
-Tickets during first clear and 1–3 through repeat goals. Its permanent Archive
-is always available.
+Supply uses two selectable pages: a Power-Up Cache containing only Power-Ups
+and an Assist Call containing only Assist Pages. They share Supply Tickets and
+channel pity, but a result set never mixes categories. Each Area should award
+5–8 Tickets during first clear and 1–3 through repeat goals. Permanent Archives
+are always available after their six-record release gates pass.
 
 ### 4.4 Mythic banner
 
@@ -499,15 +503,10 @@ pulls directly to the Mythic counter. A selectable unlocked UR is awarded by a
 major Atlas milestone no later than the 120-active-hour target; luck is not the
 only path to the defining rarity.
 
-One party has one shared Mythic slot. It may contain:
-
-- one UR fighter; or
-- one UR Power-Up on any fighter; or
-- one future UR Assist Page.
-
-The restriction is a **TRIAL** structural rule. After two URs exist, compare it
-against a two-point budget where a fighter costs two and a Supply UR costs one.
-Do not loosen it before there is something real to test.
+There is no Mythic loadout slot or point cap. Family lock prevents multiple
+versions of one identity, not different UR identities. Zero-, one- and four-UR
+fixtures are mandatory once enough UR content exists, including UR Power-Ups;
+the simulator—not a hidden restriction—must expose unhealthy stacking.
 
 ### 4.5 Duplicates and Echoes
 
@@ -539,10 +538,12 @@ random combat stats. Prices are set only after simulated pull volume exists.
 - Reruns improve focus odds/selector access; they do not rescue otherwise
   unobtainable content.
 
-At stage 5 the player may spend the beginner ten-pull on either the SMB1
-Spotlight or the Mushroom Kingdom Archive. Each banner declares its own
-new-SR-or-better replacement pool; see the presentation addendum. Channel pity
-is shared and never depends on which page was chosen.
+Stage 1 unlocks the first Hub Fighter pages and guarantees that the first result
+is new, excluding the owned starter. Stages 1–4 grant 100 Starlight each and
+stage 5 grants 600, funding ten total results. If the first ten contain no new
+SR or better, result ten is replaced from that page's owned-safe welcome pool.
+The player may spend those results singly or together; the welcome counter and
+channel pity are shared and never depend on the chosen page.
 
 Real-time limited banners are **DEFERRED**. They add anxiety without improving
 the private desktop loop.
@@ -581,10 +582,11 @@ Do not hide all Starlight behind unattended minutes. Progress, bosses and goals
 should visibly fund pulls.
 
 **LOCKED:** Fighter pulls remain renewable after all shipped Story is cleared.
-Repeat waves award small direct Starlight and every 20 repeat waves completes a
-repeatable Patrol Report. The target is 1.5–2.5 Fighter pulls per active Camp
-hour with no daily hard cap. Mastery later adds alternate repeatable Orders; it
-does not replace or disable the basic Camp route.
+Each cleared Camp awards one Patrol Mark; ten Marks convert automatically into
+100 Starlight. At the 3–4-minute replay target this yields roughly 1.5–2 pulls
+per active hour with no daily hard cap. Failed Advance attempts award no Marks
+and return to a selected cleared Camp. Mastery may add alternate Orders; it
+never replaces or disables this basic route.
 
 Daily Field Orders and optional Sorties provide a more directed layer above
 that baseline. A player completes any three of five legal Orders for four pulls
@@ -610,23 +612,21 @@ reward source. A player should understand the number without trusting magic.
 
 ### 6.1 Power-Ups
 
-One per fighter. A Power-Up supplies at most two of:
+One per fighter. A normal Power-Up supplies exactly one `grantedTrait`, one
+`statLean` and at most one bounded proc expressing the trait. It never replaces
+a fighter basic, skill, passive or ultimate and never requires a new sprite.
+Matching palette/hat frames already present in a source sheet are optional
+polish.
 
-- trait;
-- passive modifier;
-- basic/skill replacement;
-- ultimate modifier;
-- temporary cosmetic/VFX form.
+Power-Ups are scoped to their Hub in Story and universal in Endless. Unit
+records have no `powerupCompatibility`. Re-granting a trait already on the
+fighter does not stack it; the stat lean still applies.
 
-Compatibility is tag-based plus explicit exceptions. A universal Fire Flower
-can add fireballs/VFX to compatible Mario-family fighters without requiring a
-new full sheet for each. Unsupported combinations remain unavailable instead
-of producing broken visuals.
-
-**TRIAL rarity budgets:** R is a 5–8% situational effect, SR 10–15%, SSR
-18–25%, UR a build-defining effect constrained by the Mythic slot. The Super
-Star is an 8–15-second invulnerable/contact-damage window, never one literal
-minute in a three-minute stage.
+**TRIAL rarity budgets:** R 6–8%, SR 9–13%, SSR 14–18%, UR 18–25% plus one
+once-per-stage Awakening. A UR Awakening begins after the wearer's first
+ultimate resolves and does not spend or replace fighter energy. Power-Ups have
+no XP/star track; duplicates become Echoes. See plan `18` §3 for the exact
+contract and first catalogs.
 
 ### 6.2 Assist Pages
 
@@ -638,6 +638,11 @@ One per party. Each has:
 An Assist should change a plan—first emergency heal, anti-projectile screen,
 coin/chest bias, summon or boss stagger—not merely add another invisible +3%.
 Minor NPCs and baby companions with poor combat sheets belong here.
+
+Assist records declare a `familyId`; the Assist cannot equip while that family
+is in the active party. Story permits the current Hub's Assists and Endless
+permits any unlocked Assist. A character does not occupy both Fighter and
+Assist collections without an explicit reclassification/migration.
 
 Equipped Assists earn five short Proficiency ranks through normal combat or
 Assist Study Sorties. The complete behavior exists at rank 1; later ranks add at

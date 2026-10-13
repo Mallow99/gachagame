@@ -9,8 +9,10 @@ character recognizable. Polish pulls, signature combat behavior and SSR/UR
 presentation first. Personal use only.
 
 **Where we are:** build the playable game first. Character production and the
-art picker are paused until the strip loop works. The current step is the data
-and combat foundation in Roadmap 2. The definitive modular plan begins at
+art picker are paused until the strip loop works. PG-001/PG-002 plus the audited
+equipment/content contracts are complete on `codex/pg001-pg002`; the next code
+ticket is PG-003 SaveV4/migration, followed by the real-time gauge work in
+PG-004. The definitive modular plan begins at
 [`docs/plan/README.md`](docs/plan/README.md); it supersedes earlier planning
 where they conflict. The approved structure is a branching Atlas where a Saga
 is rendered as a franchise Hub, its Archive can contain production-ready
@@ -21,8 +23,8 @@ production Worlds are the 15-stage *Super Mario Bros.* and the 20-stage
 *Kirby's Adventure*. For the next coding session, execute
 [`docs/plan/07_TODAY_BUILD_TICKETS.md`](docs/plan/07_TODAY_BUILD_TICKETS.md)
 in order; the data/save shapes it references are in plan document `08`. The
-summon/Hub decision and the exact Mario/Kirby behavior backlog are in documents
-`13` and `14`.
+summon/Hub decisions, expanded rosters and the equipment/Copy audit are in
+documents `13`–`18`.
 
 ---
 
@@ -66,11 +68,11 @@ summon/Hub decision and the exact Mario/Kirby behavior backlog are in documents
   SR go straight to the art with name and title. UR extends the SSR ceremony.
 
 **Forms and equipment:** complete eras or movesets are pullable fighter
-iterations. Ordinary Fire/Ice/Tanooki/Cat-style changes are usually equippable
-Power-Ups instead of separate Marios. Power-Ups and party-wide Assist Pages use
-a cheaper Supply gacha with separately earned tickets, so they do not compete
-with saving for fighters. A party has one Mythic slot shared by an UR fighter,
-UR Power-Up or future UR Assist Page.
+iterations. Recurring pickups such as Fire/Ice Flowers are effect-only
+Power-Ups; Tanooki and Cat versions currently pass the full-fighter test.
+Power-Ups and party-wide Assist Pages use separate selectable Supply pages with
+the same cheaper tickets, so neither dilutes fighters or each other. There is
+no Mythic loadout cap; late simulation includes multi-UR parties.
 
 **Art per character.** One good image is reused for the reveal, the profile
 and the ultimate cut-in. Three routes:
@@ -109,12 +111,13 @@ asset and research plans are in `docs/plan/`.
 **TRIAL decisions that require the real slice:**
 
 1. **Prestige** is deferred; authored Worlds and Mastery ship first.
-2. **The first production roster:** four free Library fighters plus the
-   smallest Super Mario Bros. banner that passes the animation-sheet audit.
+2. **The first production roster:** Classic Mario as the only free fighter,
+   followed by an immediate guaranteed-new pull and the 22-fighter Mushroom
+   Archive floor.
 3. **Earn rates:** implement the trial targets in
    `docs/plan/02_SYSTEMS_AND_BALANCE.md`, then tune from measured clear times.
-4. **Mythic restriction:** one shared slot until at least two UR choices can be
-   compared with a point-budget alternative.
+4. **UR balance:** no loadout cap; compare zero-, one- and four-UR fixtures as
+   soon as enough production-ready choices exist.
 
 Decided: meaningful fighter iterations are separate pullable units. A team may
 equip only one unit from the same family, so it cannot be filled with four
@@ -236,7 +239,7 @@ Assist Pages and reward drops are still pending.
 
 - The first five-stage Super Mario Bros. slice at full quality, then Yoshi and
   Mario 64 as engine/asset proofs, then the 22-fighter Mushroom opening floor.
-  Build the 20-fighter Dream Land floor next, then complete both breadth
+  Build the 22-fighter Dream Land floor next, then complete both breadth
   shelves. The finished Mega Man 2 design packet waits behind those regions.
 - Produce engine primitives in dependency order: marker-synced hits, jump and
   float, Goomba squash, shell actors, tongue/grab, inhale/store, Copy, then

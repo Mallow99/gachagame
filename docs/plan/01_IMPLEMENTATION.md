@@ -110,7 +110,7 @@ runtime contracts. Do not make the first fight wait for a fetch/loader system.
   baseStats: { hp, attack, guard, moveSpeed, haste, critChance },
   basic: { pattern, coefficient, interval, range, targetRule, effects },
   passive, skill, ultimate,
-  traits, powerupCompatibility,
+  traits, acquisition, copyLibrary,
   artId, spriteId, releaseId,
   productionStatus
 }
@@ -389,7 +389,7 @@ Purpose: close the strip → reward → pull → stronger/different strip loop.
 - Currency earned in the strip buys a pull; that pull can visibly change the
   next strip fight.
 - Before the first production Archive pull, Mushroom contains at least 22
-  normal fighters (10/7/5 by R/SR/SSR) and Dream Land at least 20 (8/7/5);
+  normal fighters (10/7/5 by R/SR/SSR) and Dream Land at least 22 (8/9/5);
   twenty-pull median ownership stays at or below 75%.
 
 ## Phase 6 — finish the Super Mario Bros. World
@@ -424,10 +424,10 @@ different game rather than becoming a Mario-specific engine.
 - Offer at least Kirby's Adventure, Super Mario Bros. 3 and an Arcade cabinet
   route after the opening World, even if only the chosen production-ready route
   can initially launch. Never consume a key for unshipped content.
-- Build Kirby's Adventure as the second 20-stage World: copy-ability Supply
+- Build Kirby's Adventure as the second 20-stage World: encounter-acquired Copy
   content, aerial enemies, guarded Meta Knight, Nightmare vulnerability and a
   different movement silhouette.
-- Fill the Dream Land opening Archive to its 20-fighter floor before enabling
+- Fill the Dream Land opening Archive to its 22-fighter floor before enabling
   its unrestricted regional pull loop; complete its breadth shelf before a new
   franchise roster enters production.
 - Add Mastery I to the completed Mario World rather than appending generic

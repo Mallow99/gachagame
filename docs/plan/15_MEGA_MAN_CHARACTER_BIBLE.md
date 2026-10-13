@@ -24,16 +24,20 @@ adds 25% potency or two seconds to a transformation under the common rules.
 | Area 4 | SR Wood Man, SR Heat Man; SSR Wily focus after finale | shield/tank, fire charge and Wily phases |
 | 20XX Archive A | R Roll (*Powered Up*), SSR Proto Man (*Mega Man 3*) | iconic favorites released without corrupting MM2 stages |
 
-Dr. Light, Eddie and weapon-energy capsules begin as Assist/Supply content.
+Dr. Light and Eddie begin as Assist content. Weapon-energy capsules are stage
+pickups, not Supply collectibles.
 Rush does not appear in an MM2 stage; his Assist and playable interactions wait
 for the *Mega Man 3* source packet. Alien Wily remains boss-only unless a later
 kit can do more than reproduce one deception scene.
 
 ## 2. Special Weapon rule
 
-The eight boss weapons are primarily Power-Ups, not eight shallow Mega Man
-fighter forms. A compatible Mega Man-family fighter equips one at a time; it
-replaces or augments the skill and changes the correct palette/projectile.
+The eight boss weapons are Power-Ups, not eight shallow Mega Man fighter forms.
+Each drops on its Robot Master's first defeat. Any 20XX fighter may equip one
+in Story and any fighter may equip one in Endless; there is no compatibility
+list. Each grants one trait, one stat lean and one bounded proc. When a Mega Man
+sheet already includes the correct palette/projectile it may display them, but
+the item never requires a replacement basic/skill animation to function.
 
 | Weapon | Power-Up effect direction | MM2 boss interaction |
 | --- | --- | --- |
@@ -48,8 +52,8 @@ replaces or augments the skill and changes the correct palette/projectile.
 
 Weaknesses are authored title-local facts, not a universal element triangle.
 The matching weapon gives **+35% damage and +30% stagger** to that boss. Every
-story fight remains clearable with the Buster/free roster; the weakness rewards
-collection and observation instead of acting as a key.
+mandatory weakness has a deterministic boss-drop/selector route under plan
+`18`; no exact random fighter is the only key.
 
 Special Weapons use cooldowns and visible weapon energy but no permanent ammo
 consumable. Their energy refills between waves and through authored capsules,
@@ -87,12 +91,12 @@ either row. **Stats:** HP 840; ATK 116; Guard 30; Move 128; Haste 4%; Crit 10%.
 - **Basic — Mega Buster:** 0.92× Shot at 420 px; can destroy declared weak
   projectiles and fires only after the arm-cannon pose locks.
 - **Skill — Charged Buster, 10 s:** plants his feet and fires a 2.20× piercing
-  shot with 18 stagger. An equipped Special Weapon replaces this record.
+  shot with 18 stagger. A Special Weapon proc may decorate or follow the shot;
+  it does not replace this record.
 - **Passive — Weapon Ready:** matching a declared weakness adds the common 35%
   damage/30% stagger. Weapon energy refills 25% at wave start.
 - **Ultimate — Buster Overdrive:** four 0.80× running shots, a slide-through
   reposition and one 2.00× full charge. Focused total: **5.20×**.
-- **Power-Ups:** all eight MM2 Special Weapons; later adapter/armor tags.
 - **Reveal/feel:** teleport beam resolves into idle before the first shot;
   quote “Systems ready.” Running and firing can overlap, damage begins at the
   muzzle flash, and recoil/palette always match the equipped weapon.

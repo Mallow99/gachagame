@@ -1,5 +1,8 @@
 # Today's build tickets
 
+Status: **PG-001 and PG-002 complete; audited equipment/content extension
+complete; PG-003 is next.**
+
 This is the executable queue for the next coding session. It translates the
 larger plan into changes that fit the existing vanilla-JavaScript/Electron app.
 The goal is not to finish the gacha today; it is to leave a playable first
@@ -7,8 +10,9 @@ encounter on architecture that can support the rest of the first World.
 
 ## First implementation milestone
 
-A development build boots old saves, shows only the four planned free fighters
-to a new player, loads **Super Mario Bros. stage 1** from authored content, and
+A development build boots old saves, grants only Classic Mario to a new player,
+keeps Luigi/Toad/Peach as production pull records, loads **Super Mario Bros.
+stage 1** from authored content, and
 runs a deterministic four-wave roaming battle with no turn-order queue. The
 strip can still hide, pass clicks through and open management. A developer can
 change the encounter without editing combat code.
@@ -64,7 +68,8 @@ src/content/dev-fixtures.js
 
 - move new trial formulas into `balance.js`, leaving compatibility re-exports
   in `data.js` until old views are migrated;
-- add stable records for the four free fighters, Goomba, Koopa Troopa,
+- add stable records for the starter plus the first three pullable R fighters,
+  Goomba, Koopa Troopa,
   Piranha Plant, Hammer Bro, the SMB1 World and stages 1–5;
 - keep Walter White, Tung Tung Sahur and generic heroes in `dev-fixtures.js`;
 - expose `getUnit`, `getEnemy`, `getWorld` and `getEncounter` lookups;
@@ -177,8 +182,8 @@ proven.
 
 **Acceptance:**
 
-- the free Rank-1 party wins the fixed reference seed with 1–2 members below
-  50% HP and no knockout in the median run;
+- solo Rank-1 Classic Mario wins the fixed reference seed below 50% HP and with
+  no knockout in the median run;
 - auto-targeting does not leave a unit idle for more than two seconds while a
   legal target exists;
 - Mario visibly stomps, Luigi charges/jumps, Peach lobs and Toad combos/heals;
@@ -233,10 +238,10 @@ Kirby, UR implementation, Mastery, real-time events, payments or social systems.
 | Ticket | Outcome | Dependency |
 | --- | --- | --- |
 | PG-008 | SMB1 stages 2–4 with Koopa, pipe and Hammer Bro behaviors | PG-006 |
-| PG-009 | stage 5 Hammer Bros. boss and first ten-pull reward | PG-008 |
+| PG-009 | stage 1 guaranteed-new pull, stage 5 Hammer Bros. boss and welcome-ten completion | PG-008 |
 | PG-010 | Party builder, family lock and two saved presets | PG-003/005 |
 | PG-011 | Fighter Spotlight with permanent pity | PG-003/010 |
-| PG-012 | Supply Spotlight and one Power-Up/Assist slot | PG-010 |
+| PG-012 | separate Power-Up Cache and Assist Call pages; four personal Power-Up slots and one party Assist | PG-010 |
 | PG-013 | SMB1 stages 6–10 and Lakitu | PG-009/012 |
 | PG-014 | SMB1 stages 11–15, Bowser and credits card | PG-013 |
 | PG-015 | Atlas Key choice screen and Threat snapshot | PG-014 |

@@ -7,7 +7,8 @@
   "scripts": {
     "start": "electron .",
     "web": "node tools/serve.mjs",
-    "test": "node --test"
+    "test": "node --test",
+    "simulate:opening": "node tools/simulate-opening-pools.mjs"
   },
   "devDependencies": {
     "electron": "^44.7.0"

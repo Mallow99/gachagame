@@ -26,4 +26,8 @@ test('invalid or missing SaveV3 input is ignored', () => {
   assert.equal(parseSaveV3(null), null);
   assert.equal(parseSaveV3('not-json'), null);
   assert.equal(parseSaveV3('[]'), null);
+  assert.equal(parseSaveV3('{}'), null);
+  assert.equal(parseSaveV3('{"owned":{},"party":[],"stage":0}'), null);
+  assert.equal(parseSaveV3('{"owned":{},"party":[],"gems":-1}'), null);
+  assert.equal(parseSaveV3('{"saveVersion":99,"owned":{},"party":[]}'), null);
 });

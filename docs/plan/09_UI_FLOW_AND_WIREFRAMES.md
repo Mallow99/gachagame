@@ -80,16 +80,16 @@ footer is the bridge back to the strip.
 
 1. A three-panel paper intro says: characters roam automatically; each acts
    when ready; the strip can be hidden at any time.
-2. The player receives Mario, Luigi, Toad and Peach together. This is a story
-   grant, not four fake pulls.
-3. Party opens with their positions already legal. Player can swap front/back
-   but may immediately press `DEPLOY`.
+2. The player receives Classic Mario. Luigi, Toad and Peach remain ordinary R
+   results instead of four fake story pulls.
+3. Party opens with Mario in front and may immediately press `DEPLOY`.
 4. Stage 1 runs in the strip. Only the HUD and hide controls are taught.
-5. Clear rewards stamp into the ledger; Training unlocks with one free Rank.
+5. Stage 1 clear stamps 100 Starlight into the ledger, unlocks Summon and
+   guarantees the first result is new and not Classic Mario.
 6. Stage 3 unlocks the first Power-Up slot and grants Super Mushroom.
-7. Stage 5 unlocks Summon and gives exactly enough cumulative Starlight for one
-   ten-pull. Supply and the Field Desk unlock with their earned tickets/first
-   Order folder.
+7. Stage 5 completes the first ten-result welcome sequence with 1,000
+   cumulative Starlight. Supply and the Field Desk unlock with their earned
+   tickets/first Order folder.
 
 No banner, inbox, daily checklist or sale interrupts the first fight.
 
@@ -158,7 +158,7 @@ so the player never waits on the same random spawn twice.
  │                                                                 │
  │ FRONT     [Mario R ★0] [Luigi R ★0] [Toad R ★0]                │
  │ BACK      [Peach R ★0] [empty]                                  │
- │ Assist    [none]             Mythic slot [empty]                 │
+ │ Party Assist [none]         Story Hub: Mushroom Kingdom          │
  │                                                                 │
  │ Selected: Mario · Bruiser · Stomp                               │
  │ Power-Up [Super Mushroom]       [kit] [exact stats]              │
@@ -177,7 +177,7 @@ modifiers as separate rows. “Power” may summarize but never replace them.
 
 ```text
  ┌─ SUMMON LEDGER ──────────────────────────────────────────────────┐
- │ [Fighter] [Supply] [Mythic] [Archive]                            │
+ │ [Fighter] [Power-Up Cache] [Assist Call] [Mythic] [Archive]      │
  │                                                                 │
  │ OVERWORLD SPOTLIGHT                          progress-based      │
  │ Hammer Bro SR · Classic party · enemy recruits                  │
@@ -201,7 +201,8 @@ reduced-motion behavior live in `13_HUBS_BANNERS_AND_PRESENTATION.md`.
 The page explicitly distinguishes currencies and guarantees:
 
 - Fighter uses Starlight;
-- Supply uses Supply Tickets;
+- Power-Up Cache and Assist Call both use Supply Tickets and shared channel
+  pity, but never mix their result pools;
 - Mythic uses its own unlocked route and persistent pity;
 - Archives do not expire and inherit the appropriate channel pity.
 
@@ -253,7 +254,7 @@ mode can export the deterministic event log.
 
 | State | Required behavior |
 | --- | --- |
-| no save | grant starter party and begin intro |
+| no save | grant the current Hub's one starter and begin intro |
 | v3 save | migrate, show one concise migration note and preserve backup |
 | corrupt save | offer fresh start or copy raw backup; never loop/crash |
 | missing content ID | substitute an `Unavailable Record`, preserve ownership and report ID |

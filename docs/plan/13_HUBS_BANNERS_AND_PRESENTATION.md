@@ -33,13 +33,18 @@ schema stable while giving the player the region feeling requested.
 - A **World Spotlight** focuses characters and Supply tied to the current game.
 - A fighter always declares `sourceGameId`, `familyId`, visual treatment and
   kit references. Releasing it early does not pretend it came from SMB1.
-- A crossover party can enter any World. Story authenticity applies to the
-  World and its enemies, not to the player's four-person team.
+- Story parties and equipment are Hub-locked: every fighter and equipped item
+  must match the World's `sagaId`. The first cleared World finale in that Hub
+  permanently exposes its collection to mixed-Hub Endless parties. Story
+  authenticity therefore covers both encounter content and the player's team;
+  Endless is the unrestricted crossover showcase.
 
 This means the first Mushroom Kingdom section can offer Classic Mario and a
 later Mario iteration without putting Mario 64 enemies into an SMB1 stage.
-When the Mario 64 World eventually ships, that iteration receives a focused
-rerun and its most compatible Power-Ups; ownership is never reset.
+Both may enter Mario Story because they share the Hub. When the Mario 64 World
+eventually ships, that iteration receives a focused rerun; ownership is never
+reset. Neither may enter Dream Land Story, though both can join Kirby in
+Endless after the relevant Hub finales are cleared.
 
 ### 1.1 Naming examples
 
@@ -100,7 +105,7 @@ This changes pool availability, not the existing rarity rates or channel pity.
 - Archives can become large. Once a Saga exceeds 18 fighters, its Archive adds
   rotating focus shelves or selectors while retaining the complete rate table.
 - Pool breadth is a release gate, not a preview count. Mushroom opens its full
-  earning loop with at least 22 normal fighters; Dream Land uses at least 20.
+  earning loop with at least 22 normal fighters; Dream Land also uses 22.
   Median twenty-pull ownership must remain at or below 75% of the live pool.
 - An iteration's source World is a card filter and provenance field, not an
   ownership prerequisite.
@@ -216,7 +221,7 @@ for what the unit does.
 - exact coefficient, interval/cooldown, energy, duration and target rule;
 - plain-language explanation before formula details;
 - interaction rules such as `small enemies can be swallowed; bosses cannot`;
-- compatible Power-Up categories and Assist hooks;
+- equipped Power-Up trait/stat/proc, Story Hub legality and Assist hooks;
 - 2–4 second in-engine preview clip for the signature behavior when available.
 
 ### Identity / production page
@@ -348,14 +353,15 @@ appearances when a classic visual treatment alone does not supply a full kit.
 This addendum does not pull all Mario/Kirby art into the current five-stage
 engine milestone. The next code sequence remains:
 
-1. finish deterministic movement/combat and the real four-person free party;
+1. finish deterministic movement/combat, the solo starter stage and the first
+   expected-pull party fixtures;
 2. implement Goomba flatten and Koopa shell state in stages 1–2;
 3. finish the five SMB1 encounters and strip/Manual acceptance;
 4. port the in-application summon route and result-card schema;
 5. produce Yoshi and Mario 64 as the first regional Archive engine proofs;
 6. fill the 22-fighter Mushroom opening floor in plan `16`;
 7. begin Kirby after the copy-state design has a test harness and fill its
-   20-fighter opening floor;
+   22-fighter opening floor;
 8. complete both regional breadth shelves before producing a third Hub roster
    such as Mega Man.
 

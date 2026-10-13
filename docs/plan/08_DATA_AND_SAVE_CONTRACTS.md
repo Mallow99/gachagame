@@ -110,7 +110,8 @@ they must not be implemented as callbacks hidden inside content records.
     4: { effect: 'passive-quality', id: 'coin-hunter-radius' },
     5: { effect: 'ultimate-potency', value: 0.25 },
   },
-  powerupCompatibility: ['mushroom', 'flower', 'star'],
+  acquisition: { type: 'hub-starter', sagaId: 'mario' },
+  copyLibrary: undefined, // present only on Copy-capable Kirby versions
   artId: 'classic-mario-portrait',
   spriteId: 'classic-mario-battle',
   releaseId: 'smb1-prologue',
@@ -121,6 +122,29 @@ they must not be implemented as callbacks hidden inside content records.
 For today's stage, passive/skill/ultimate records may be parsed but visually
 disabled behind a `COMING IN SLICE 2` stamp. The engine must not invent their
 effects from display text.
+
+## Power-Up and Assist contracts
+
+Power-Ups are Hub-scoped, effect-only records. There is no unit compatibility
+list.
+
+```js
+{
+  id: 'fire-flower', sagaId: 'mario', name: 'Fire Flower', rarity: 'SR',
+  grantedTrait: 'fire',
+  statLean: { stat: 'rangedDamage', multiplier: 1.11 },
+  proc: { trigger: 'every-nth-basic', count: 4,
+          effects: [{ type: 'burn', durationSeconds: 5 }] },
+  awakening: null,
+  duplicatePolicyId: 'powerup-echoes-v1',
+  artId: 'fire-flower-item', productionStatus: 'provisional'
+}
+```
+
+UR `awakening` records use `after-first-ultimate`, `usesPerStage: 1`; they do
+not spend fighter energy. Assists declare `sagaId`, `familyId`, a trigger,
+bounded uses/cooldown, effects and `assist-five-rank-v1`. An Assist family may
+not match an active fighter family. See plan `18` §§3–4.
 
 ## Enemy and boss contracts
 
@@ -189,7 +213,8 @@ contains executable callbacks.
     keyReward: 1,
   },
   threat: { authoredMin: 1, authoredMax: 15 },
-  bannerIds: ['smb1-fighter-archive', 'smb1-supply-archive'],
+  bannerIds: ['smb1-overworld-fighter', 'smb1-overworld-powerup-cache',
+              'smb1-overworld-assist-call'],
   productionStatus: 'slice',
 }
 ```
@@ -217,16 +242,18 @@ contains executable callbacks.
   }],
   clearRules: { type: 'defeat-all-waves', timeLimitSeconds: null },
   rewards: {
-    firstClear: [{ type: 'starlight', amount: 60 },
+    firstClear: [{ type: 'starlight', amount: 100 },
                  { type: 'coins', amount: 40 }],
-    repeat: [{ type: 'coins', amount: 25 }],
+    repeat: [{ type: 'coins', amount: 25 },
+             { type: 'patrol-mark', amount: 1 }],
   },
   referenceTeams: [{
-    id: 'free-rank-1',
-    unitIds: ['classic-mario', 'classic-luigi', 'toad', 'princess-peach'],
+    id: 'starter-solo',
+    acquisitionEnvelope: 'hub-starter',
+    unitIds: ['classic-mario'],
     trainingRank: 1,
     stars: 0,
-    powerupIds: ['super-mushroom', null, null, null],
+    powerupIds: [null],
     assistId: null,
     expected: { clearSeconds: [90, 150], winRate: [0.90, 1] },
   }],
@@ -245,7 +272,7 @@ Area's size.
   id: 'smb1-overworld-fighter',
   channel: 'fighter',             // fighter | supply | mythic
   lifecycle: 'progress',          // progress | archive | rotation
-  unlock: { type: 'stage-clear', encounterId: 'smb1-05' },
+  unlock: { type: 'stage-clear', encounterId: 'smb1-01' },
   pool: [
     { itemId: 'classic-mario', rarity: 'R', weight: 1 },
     { itemId: 'classic-luigi', rarity: 'R', weight: 1 },
@@ -269,7 +296,7 @@ content to an Archive must not reset or strand pity.
 
 The finished Mushroom Archive declares
 `releaseGate: { minimumLivePool: 22, minimumByRarity: { R: 10, SR: 7, SSR: 5 } }`;
-Dream Land declares `20` and `{ R: 8, SR: 7, SSR: 5 }`. Preview catalogs do not
+Dream Land declares `22` and `{ R: 8, SR: 9, SSR: 5 }`. Preview catalogs do not
 count toward these fields. Development may bypass the gate only with an
 explicit non-spendable test-pull mode that cannot alter the production save.
 Mushroom and Dream Land additionally declare pull-40 growth floors of 28 and
@@ -322,7 +349,7 @@ referencing an encountered enemy/miniboss variant and a Manual discovery entry.
 ```js
 {
   saveVersion: 4,
-  contentVersion: 1,
+  contentVersion: 2,
   profile: {
     createdAt: 0,
     lastSeenAt: 0,
@@ -335,7 +362,7 @@ referencing an encountered enemy/miniboss variant and a Manual discovery entry.
   progression: {
     training: { rank: 1 },
     atlas: { rank: 0, areaXp: 0, keys: 0 },
-    orders: { storedFolders: [], repeatWaveProgress: 0 },
+    orders: { storedFolders: [], patrolMarks: 0 },
     sorties: { dailyBonusDate: '', bonusClearsById: {}, discoveredWantedIds: [] },
     worlds: {
       'super-mario-bros-1985': {
@@ -347,13 +374,14 @@ referencing an encountered enemy/miniboss variant and a Manual discovery entry.
       },
     },
     availableWorldIds: ['super-mario-bros-1985'],
+    endlessUnlockedBySaga: { mario: false },
   },
   collection: {
     units: {
       'classic-mario': { stars: 0, masteryRank: 1, masteryXp: 0, discoveredAt: 0 },
     },
-    powerups: {},
-    assists: {}, // { [assistId]: { stars, proficiencyRank, proficiencyXp } }
+    powerups: {}, // { [powerupId]: { discoveredAt } }; duplicates become Echoes
+    assists: {}, // { [assistId]: { proficiencyRank, proficiencyXp, discoveredAt } }
     legacyUnits: {},
   },
   loadouts: {
@@ -361,9 +389,10 @@ referencing an encountered enemy/miniboss variant and a Manual discovery entry.
     presets: {
       'preset-1': {
         name: 'Main Party',
-        unitIds: ['classic-mario', 'classic-luigi', 'toad', 'princess-peach'],
-        rows: ['front', 'front', 'front', 'back'],
-        powerupIds: [null, null, null, null],
+        mode: 'story',
+        unitIds: ['classic-mario'],
+        rows: ['front'],
+        powerupIds: [null],
         assistId: null,
       },
     },

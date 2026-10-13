@@ -10,8 +10,8 @@ export const UNITS = [
     basic: { id: 'classic-stomp', behavior: 'stomp', coefficient: 1.15, intervalSeconds: 2.8, range: 300, targetRule: 'nearest', hitCount: 1, effects: [] },
     skill: { id: 'brick-break', cooldownSeconds: 10, behavior: 'stomp', coefficient: 1.2, targetRule: 'nearest', effects: [{ type: 'splash', coefficient: 0.35, radius: 54 }, { type: 'stagger', amount: 18 }] },
     passive: { id: 'coin-hunter', trigger: 'on-kill', effects: [{ type: 'reward-multiplier', currency: 'coins', value: 0.1 }] },
-    ultimate: { id: 'course-clear', energyCost: 100, behavior: 'charge', targetRule: 'backmost', coefficient: 1.8, effects: [{ type: 'party-haste', value: 0.15, durationSeconds: 8 }] },
-    powerupCompatibility: ['mushroom', 'flower', 'star'], artId: 'classic-mario-portrait', spriteId: 'classic-mario-battle', releaseId: 'smb1-prologue', productionStatus: 'provisional',
+    ultimate: { id: 'course-clear', energyCost: 100, behavior: 'charge', targetRule: 'backmost', coefficient: 3.4, declaredTotalCoefficient: 5, declaredBasicActionEquivalents: 4.35, effects: [{ type: 'line-damage', coefficient: 1.6 }, { type: 'party-haste', value: 0.15, durationSeconds: 8 }] },
+    acquisition: { type: 'hub-starter', sagaId: 'mario' }, artId: 'classic-mario-portrait', spriteId: 'classic-mario-battle', releaseId: 'smb1-prologue', productionStatus: 'provisional',
   },
   {
     id: 'classic-luigi', familyId: 'luigi', sagaId: 'mario', sourceGameId: 'super-mario-bros-1985',
@@ -21,8 +21,8 @@ export const UNITS = [
     basic: { id: 'high-jump-charge', behavior: 'charge', coefficient: 1.08, intervalSeconds: 2.65, range: 320, targetRule: 'nearest', hitCount: 1, effects: [{ type: 'slow', value: 0.12, durationSeconds: 2 }] },
     skill: { id: 'evasive-retreat', cooldownSeconds: 9, behavior: 'charge', coefficient: 0.9, targetRule: 'nearest', effects: [{ type: 'retreat', distance: 100 }] },
     passive: { id: 'green-momentum', trigger: 'after-move', effects: [{ type: 'guard', value: 0.08, durationSeconds: 2 }] },
-    ultimate: { id: 'backline-bound', energyCost: 100, behavior: 'stomp', targetRule: 'backmost', coefficient: 1.65, effects: [{ type: 'splash', coefficient: 0.3, radius: 64 }] },
-    powerupCompatibility: ['mushroom', 'flower', 'star'], artId: 'classic-luigi-portrait', spriteId: 'classic-luigi-battle', releaseId: 'smb1-prologue', productionStatus: 'provisional',
+    ultimate: { id: 'backline-bound', energyCost: 100, behavior: 'stomp', targetRule: 'backmost', coefficient: 2.2, declaredTotalCoefficient: 5.8, declaredBasicActionEquivalents: 5.37, effects: [{ type: 'multi-hit', count: 3, coefficient: 1.2 }, { type: 'splash', coefficient: 0.6, radius: 64 }] },
+    acquisition: { type: 'fighter-banner' }, artId: 'classic-luigi-portrait', spriteId: 'classic-luigi-battle', releaseId: 'smb1-prologue', productionStatus: 'provisional',
   },
   {
     id: 'toad', familyId: 'toad', sagaId: 'mario', sourceGameId: 'super-mario-bros-1985',
@@ -32,8 +32,8 @@ export const UNITS = [
     basic: { id: 'courier-combo', behavior: 'combo', coefficient: 0.4, intervalSeconds: 2.45, range: 64, targetRule: 'nearest', hitCount: 3, effects: [] },
     skill: { id: 'emergency-delivery', cooldownSeconds: 12, behavior: 'lob', coefficient: 0, targetRule: 'lowest-hp-ally', effects: [{ type: 'heal', coefficient: 0.6 }] },
     passive: { id: 'quick-feet', trigger: 'wave-start', effects: [{ type: 'haste', value: 0.08, durationSeconds: 6 }] },
-    ultimate: { id: 'retainer-rush', energyCost: 100, behavior: 'combo', targetRule: 'lowest-hp', coefficient: 0.55, effects: [{ type: 'hit-count', amount: 5 }] },
-    powerupCompatibility: ['mushroom', 'flower'], artId: 'toad-portrait', spriteId: 'toad-battle', releaseId: 'smb1-prologue', productionStatus: 'provisional',
+    ultimate: { id: 'retainer-rush', energyCost: 100, behavior: 'combo', targetRule: 'lowest-hp', coefficient: 0.85, hitCount: 6, declaredTotalCoefficient: 6.3, declaredBasicActionEquivalents: 5.25, effects: [{ type: 'finisher', coefficient: 1.2 }, { type: 'retarget-on-defeat' }] },
+    acquisition: { type: 'fighter-banner' }, artId: 'toad-portrait', spriteId: 'toad-battle', releaseId: 'smb1-prologue', productionStatus: 'provisional',
   },
   {
     id: 'princess-peach', familyId: 'peach', sagaId: 'mario', sourceGameId: 'super-mario-bros-1985',
@@ -43,7 +43,7 @@ export const UNITS = [
     basic: { id: 'turnip-lob', behavior: 'lob', coefficient: 0.82, intervalSeconds: 2.9, range: 390, targetRule: 'nearest', hitCount: 1, effects: [{ type: 'splash', coefficient: 0.35, radius: 58 }] },
     skill: { id: 'royal-shield', cooldownSeconds: 11, behavior: 'lob', coefficient: 0, targetRule: 'lowest-hp-ally', effects: [{ type: 'shield', coefficient: 0.8 }] },
     passive: { id: 'gentle-recovery', trigger: 'wave-clear', effects: [{ type: 'heal-party', coefficient: 0.18 }] },
-    ultimate: { id: 'princess-wish', energyCost: 100, behavior: 'lob', targetRule: 'party', coefficient: 0, effects: [{ type: 'heal-party', coefficient: 1.1 }, { type: 'shield-party', coefficient: 0.55 }] },
-    powerupCompatibility: ['mushroom', 'flower', 'star'], artId: 'princess-peach-portrait', spriteId: 'princess-peach-battle', releaseId: 'smb1-prologue', productionStatus: 'provisional',
+    ultimate: { id: 'princess-wish', energyCost: 100, behavior: 'lob', targetRule: 'party', coefficient: 0, declaredTotalCoefficient: 0, declaredBasicActionEquivalents: 4.5, effects: [{ type: 'cleanse-party', count: 1 }, { type: 'heal-party', coefficient: 2.2 }, { type: 'shield-party', coefficient: 1.5 }, { type: 'party-haste', value: 0.15, durationSeconds: 6 }] },
+    acquisition: { type: 'fighter-banner' }, artId: 'princess-peach-portrait', spriteId: 'princess-peach-battle', releaseId: 'smb1-prologue', productionStatus: 'provisional',
   },
 ];

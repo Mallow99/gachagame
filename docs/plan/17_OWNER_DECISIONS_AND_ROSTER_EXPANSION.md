@@ -1,6 +1,6 @@
 # Owner decisions and roster expansion
 
-Status: **owner-directed baseline v1, 2026-10-13**
+Status: **owner-directed baseline v1, audited by plan `18`, 2026-10-13**
 
 This packet records decisions the owner made directly while reviewing plans
 `02`–`16`. Where it conflicts with an earlier file, **this file wins**. Part I
@@ -44,9 +44,9 @@ progress through repeated play is acceptable; a wall is not a design failure.
   is allowed, so Cappy Mario can play SMB1.
 - Clearing a World unlocks that Hub's fighters for **Endless mode**, which
   accepts any unlocked fighter from any Hub with any items.
-- **Interpretation to confirm with the owner:** the unlock trigger is the
-  first cleared World finale in that Hub (for example, beating all 25 stages
-  of the Hub's first World).
+- **LOCKED BY AUDIT:** the first cleared World finale in that Hub sets its
+  permanent `endlessUnlocked` flag. Later Worlds do not require separate
+  per-fighter Endless unlocks.
 
 ## 3. Power-Ups are effect-only items, scoped by region
 
@@ -79,6 +79,8 @@ progress through repeated play is acceptable; a wall is not a design failure.
 
 Star Rod Kirby is **removed as a fighter**. The finale Star Rod granted during
 the Nightmare encounter (`14` §9) remains an encounter mechanic.
+Plan `18` §3.2 clarifies that a UR item's once-per-stage Awakening begins after
+the wearer's first ultimate; it does not consume or replace fighter energy.
 
 ## 4. The equippable layers
 
@@ -124,6 +126,9 @@ remain fighter kits, never Assists.
   late-World budgets.
 - `02` §4.4's "UR Power-Up or UR fighter" exclusivity is gone; a UR item is
   limited only by one item per fighter.
+- Multi-UR parties are legal and must be included explicitly in late-game
+  balance fixtures; family lock is not treated as a limit on different UR
+  identities.
 
 ## 7. Rarity guidance
 
@@ -306,11 +311,11 @@ Owner rarity changes: Parasol Waddle Dee R → SR; Bandana Waddle Dee R → SSR;
 *Kirby's Adventure* Meta Knight SSR → SR (a stronger Meta Knight version takes
 SSR). King Dedede stays SSR. Rolly was Wheelie, already SR.
 
-**Opening-floor recount (8 R / 7 SR / 5 SSR in `16` §1):** R loses Bandana and
+**Opening-floor recount (8 R / 9 SR / 5 SSR; 22 total):** R loses Bandana and
 Parasol Waddle Dee, refilled by plain Waddle Dee and *Kirby's Dream Land* Kirby.
 SR gains Parasol Waddle Dee and Meta Knight (9 total). SSR loses Meta Knight
-and Ultra Sword Kirby, refilled by Bandana Waddle Dee and *Kirby Super Star*
-Meta Knight.
+and Ultra Sword Kirby, refilled by Bandana Waddle Dee and *Kirby Super Star
+Ultra* Meta Knight. Plan `18` §9.1 lists the exact corrected shelf.
 
 ### 9.1 Kirby — `kirby`
 
@@ -502,13 +507,18 @@ World rather than all at once.
 Each UR gets its own Mythic banner rotation. Release order follows asset
 readiness.
 
-# Part III — Plan files to rewrite
+# Part III — Reconciliation ledger
+
+Plan `18` completed the cross-file audit and directly updated the active
+contracts below. This table remains as the provenance of each owner-directed
+change, not as an outstanding to-do list. If a historical kit block still
+exists for animation/value reference, its reclassified heading says so.
 
 | File | Section | Change |
 | --- | --- | --- |
 | `README.md` | pillars 10–13 | Power-Ups are effect-only items (10); pulls are progression, story may require pulls (13); one-Mythic-slot rule removed (12) |
 | `02` | §3.2, §4.4, §6.1 | remove one Mythic slot; effect-only Hub-scoped Power-Ups; drop compatibility tags |
-| `03`, `04`, `12` | starters and Supply lists | one starter per Hub; Super Leaf out of SMB3 Supply; Special Weapons as boss drops; Star Rod Page removed |
+| `03`, `04`, `12` | starters and Supply lists | one starter per Hub; Super Leaf remains an effect-only item beside the full Tanooki fighter; Special Weapons are boss drops; Star Rod fighter/Page removed |
 | `08` | unit and loadout records | delete `powerupCompatibility`; add `copyLibrary` per Kirby version; add Hub `endlessUnlocked` save flag |
 | `11` | economy | replay income for walled players; Mythic banner per UR |
 | `13` | §1 | region lock for story; Endless mode for cross-Hub parties |
@@ -516,11 +526,13 @@ readiness.
 | `15` | §2 | Special Weapons are Robot Master drops, effect-only for non-Mega Man wearers |
 | `16` | §1 floors, §5 shelves, §6 Super Ability cards, Hypernova card | five Super Abilities become one UR's variants; Hypernova SSR; Bandana SSR; floor recount |
 
-## 12. Open questions for the owner
+## 12. Remaining owner choices
 
-1. Region lock unlock trigger: first World finale in the Hub, or every World?
-2. 20XX UR item.
-3. Mega Man growth: rarity prestige via a boss rush, or weapons as his growth
+1. 20XX UR item.
+2. Mega Man growth: rarity prestige via a boss rush, or weapons as his growth
    with the MM2 Wily teleporter rush unlocking mid-fight weapon swapping.
-4. Whether Bowser's Fury Mario and Dark Bowser join as URs or stay candidates.
-5. Whether `galacta-knight` and `morpho-knight` share a family lock.
+3. Whether Bowser's Fury Mario and Dark Bowser join as URs or stay candidates.
+4. Whether `galacta-knight` and `morpho-knight` share a family lock.
+
+The equipment split, Super Ability treatment, first-World Endless trigger and
+opening Archive counts are no longer open questions; plan `18` resolves them.

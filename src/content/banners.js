@@ -3,14 +3,20 @@
 export const BANNERS = [
   {
     id: 'smb1-overworld-fighter', channel: 'fighter', lifecycle: 'progress',
-    unlock: { type: 'stage-clear', encounterId: 'smb1-05' }, pool: [], featured: [],
+    unlock: { type: 'stage-clear', encounterId: 'smb1-01' }, pool: [], featured: [],
     pityPolicyId: 'fighter-standard-v1', duplicatePolicyId: 'fighter-stars-v1',
     archiveBannerId: null, availability: 'preview', productionStatus: 'slice',
   },
   {
-    id: 'smb1-overworld-supply', channel: 'supply', lifecycle: 'progress',
+    id: 'smb1-overworld-powerup-cache', channel: 'supply', poolKind: 'powerup', lifecycle: 'progress',
     unlock: { type: 'stage-clear', encounterId: 'smb1-03' }, pool: [], featured: [],
-    pityPolicyId: 'supply-standard-v1', duplicatePolicyId: 'supply-stars-v1',
+    pityPolicyId: 'supply-standard-v1', duplicatePolicyId: 'powerup-echoes-v1',
+    archiveBannerId: null, availability: 'preview', productionStatus: 'slice',
+  },
+  {
+    id: 'smb1-overworld-assist-call', channel: 'supply', poolKind: 'assist', lifecycle: 'progress',
+    unlock: { type: 'stage-clear', encounterId: 'smb1-05' }, pool: [], featured: [],
+    pityPolicyId: 'supply-standard-v1', duplicatePolicyId: 'assist-proficiency-v1',
     archiveBannerId: null, availability: 'preview', productionStatus: 'slice',
   },
 ];

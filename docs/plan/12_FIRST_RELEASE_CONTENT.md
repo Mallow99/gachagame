@@ -76,7 +76,7 @@ proves targeting/destroying them is fun.
 - hits against the cloud build stagger; at 100, Lakitu falls for 7 seconds,
   loses Projectile reduction and takes +20% damage;
 - 45% HP begins lightning-marked safe lanes and faster egg cycles;
-- a fully melee free party can win through landing windows; ranged units only
+- a fully melee ordinary-pull party can win through landing windows; ranged units only
   improve consistency;
 - target: 4–6 minutes, 75–88% Rank-10 free-team success.
 
@@ -145,16 +145,16 @@ not these presentation changes.
 
 | Item | First usable | Exact first-pass effect |
 | --- | --- | --- |
-| Super Mushroom R | stage 3 grant | +8% max HP; first heal received each stage +20% |
-| Flagpole Rush R | stage 5 pool | +8% Move; clearing a wave grants party 5 energy |
-| Toad Retainers R | stage 5 pool | first knockout instead heals 60% support-scale Attack, once/stage |
-| Fire Flower SR | stage 5 pool | compatible basic gains Fire; every fourth basic fires 0.65 shot + Burn |
-| Princess's Wish SR | stage 5 pool | every 40 s shield two lowest allies for 80% support-scale Attack |
-| Underwater Breather SR | stage 7 | negates 60% Aquatic Move penalty; +10% Guard in water |
-| Cloud Ride SR | stage 10 | compatible unit gains Airborne/+15 Move and loses 10 Guard |
-| Castle Axe SR | stage 14 | +20% boss stagger dealt; no ordinary damage bonus |
-| Bowser's Bridge SSR | stage 15 | first boss phase transition grants shield and 20 energy |
-| Super Star UR | Mythic eligibility after stage 15 | 12 s invulnerable contact-damage state at full energy; uses Mythic slot |
+| Super Mushroom R | stage 3 grant | Enlarged; +8% max HP; ignores first minor knockback each wave |
+| Toadsworth R Assist | stage 5 Assist Call | first ally below 30% receives tea heal, once/wave |
+| Sprixie Princess R Assist | stage 5 Assist Call | clearing a wave grants party 5 energy |
+| Fire Flower SR | stage 5 Power-Up Cache | Fire; +11% ranged damage; every fourth basic applies light Burn |
+| Professor E. Gadd SR Assist | stage 5 Assist Call | boss-phase scan reveals reactions and adds stagger |
+| Ice Flower SR | stage 7 Power-Up Cache | Ice; +10% Guard; every fourth basic applies Slow |
+| Super Leaf SR | stage 10 Power-Up Cache | Airborne; +10% Move; crosses low hazards without a form sheet |
+| Tiara SR Assist | stage 14 Assist Call | catches one marked projectile and shields back row |
+| Penguin Suit SSR | stage 15 Power-Up Cache | Ice; +15% Move; one ground-hazard slide per 10 s |
+| Super Star UR | Mythic eligibility after stage 15 | after first fighter ultimate, 12 s invulnerable contact-damage Awakening |
 
 ## Art and animation minimum for the first slice
 
@@ -206,21 +206,20 @@ a new economy. Its 20 encounters are specified in `04_CONTENT_CATALOG.md`.
 
 | Priority | Content | Engine proof |
 | ---: | --- | --- |
-| 1 | Kirby, Waddle Dee, Bronto Burt, Hot Head, Sir Kibble | persistent flight and copy-compatible Supply |
+| 1 | Kirby, Waddle Dee, Bronto Burt, Hot Head, Sir Kibble | persistent flight and encounter-acquired Copy profiles |
 | 2 | Whispy Woods | fixed giant/background boss with targetable zones |
 | 3 | Paint Roller, Wheelie, Rocky, Kracko | spawned hazards, fast lanes, vertical boss |
 | 4 | Bonkers, Meta-Knights, Meta Knight | offered weapon rule and duel posture |
 | 5 | Dedede, Nightmare Orb/Wizard | narrative miniboss plus two-form finale |
 
-First release fighters: R Kirby/Parasol Waddle Dee/Poppy Bros. Jr.; SR Sir Kibble/Hot
-Head/Wheelie/Sparky/Rocky/Bonkers; SSR Meta Knight/Dedede. Ability hats are
-Supply. Star Rod Kirby is the single UR candidate and ships only if it has a
-complete fighter sheet and kit.
+The exact 22-fighter opening Dream Land shelf is plan `18` §9.1. Ability hats
+are encounter-acquired Copy state, not Supply. Star Rod is the Hub UR Power-Up;
+*Return to Dream Land* Kirby is the one UR Kirby.
 
 That list is the *Kirby's Adventure* World/Spotlight cast, not the whole early
 Dream Land Archive. Before its first real pull, the permanent Archive must
-reach the 20-fighter floor in plan `16`, adding sprite-ready helpers,
-rivals and Super Ability forms without inserting them into this title's stages.
+reach the 22-fighter floor in plans `16`–`18`, adding sprite-ready helpers and
+rivals without inserting them into this title's stages.
 
 ## Tier-A production packets
 
@@ -233,11 +232,12 @@ tables wait until their World enters production.
 - Free/accessible additions: R Toad-house/support candidates and source-valid
   enemy recruits; SR Boom Boom, Koopalings released in small batches, Kamek only
   if source treatment is justified; SSR Bowser iteration or signature finale.
-- Supply: Super Leaf/Tanooki, Frog Suit, Hammer Suit, P-Wing, Music Box Page.
+- Supply: effect-only Super Leaf, Frog Suit, Hammer Suit, P-Wing and supporting
+  character Assist Pages. Tanooki Mario remains a separate complete fighter.
 - Boss packet: Boom Boom → Angry Sun/remix → Giant guardian → Koopaling
   airship → Bowser. The airship mechanic belongs here, not in SMB1.
-- Engineering: moving platform/airship background, large actors and more complex
-  Power-Up compatibility.
+- Engineering: moving platform/airship background, large actors and readable
+  effect-only Power-Up overlays.
 
 ### Mega Man 2 — 20 stages
 
@@ -245,8 +245,8 @@ tables wait until their World enters production.
   into stages 16–20 without exceeding four five-stage Areas;
 - R Mega Man and support bots if their movement is complete; SR Robot Masters
   with strong niches; SSR Proto/signature candidates only when source-valid;
-- eight weapons are primarily Power-Ups, preventing eight shallow Mega Man
-  fighter forms;
+- eight weapons are Power-Ups dropped on each Robot Master's first defeat,
+  preventing eight shallow Mega Man fighter forms and Supply dilution;
 - finale: Wily machine phases and alien illusion;
 - engineering: targetable projectiles, weakness hints without a universal
   triangle, destructible shots and boss-room transitions.

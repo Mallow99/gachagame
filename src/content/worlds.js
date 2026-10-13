@@ -14,7 +14,7 @@ export const WORLDS = [
     areaIds: ['smb1-overworld', 'smb1-high-roads', 'smb1-dark-world'],
     atlas: { rankRequired: 0, prerequisiteWorldIds: [], keyCost: 0, keyReward: 1 },
     threat: { authoredMin: 1, authoredMax: 15 },
-    bannerIds: ['smb1-overworld-fighter', 'smb1-overworld-supply'],
+    bannerIds: ['smb1-overworld-fighter', 'smb1-overworld-powerup-cache', 'smb1-overworld-assist-call'],
     implementedEncounterIds: ['smb1-01', 'smb1-02', 'smb1-03', 'smb1-04', 'smb1-05'],
     productionStatus: 'slice',
   },

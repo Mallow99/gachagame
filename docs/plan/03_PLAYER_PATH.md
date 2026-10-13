@@ -17,26 +17,24 @@ ships one World at a time.
 - The player chooses compact/normal strip scale, reduced motion and sound.
 - The shortcut and menu-bar restore control are shown before combat begins.
 - The management window closes into a transparent practice strip.
-- Mario demonstrates running and a stomp; Luigi demonstrates a visibly higher
-  jump/charge; the player sees gauges fill independently.
+- Mario demonstrates running and a stomp; the player sees his action gauge fill
+  independently. Luigi's visibly higher jump/charge appears if he is among the
+  welcome pulls rather than being silently granted.
 
 No gacha, store carousel, seven currencies or lore wall appears before the
 player has seen the game move.
 
-### Minute 5–20: form the free party
+### Minute 5–20: earn the second fighter
 
-The Library prologue grants a four-person R party outside the gacha:
+The Mushroom Kingdom prologue grants only Classic Mario. Stage 1 is the solo
+movement/combat lesson; its first clear grants 100 Starlight and unlocks the
+Hub Fighter pages. The first result is guaranteed new and excludes Classic
+Mario, so stage 2 always begins with at least two fighters if the player follows
+the pull prompt. Classic Luigi, Toad and Princess Peach are ordinary R results.
 
-1. Classic Mario — mobile stomp/bruiser;
-2. Classic Luigi — evasive high-jump/charge controller;
-3. Toad — fast support/runner;
-4. Princess Peach — backline support/controller.
-
-These are introductory Library interpretations with era-coherent sprites; they
-do not imply all four were playable in the 1985 source game. Yoshi's source is
-still *Super Mario World*, but a production-ready Yoshi may enter the regional
-Archive after stage 5. The title-based rule anchors environments, enemies,
-bosses and art direction without making campaign order a roster prison.
+The source-game World anchors environments, enemies, bosses and art direction.
+The Hub Archive may include production-ready later Mario iterations, but Story
+accepts only Mario-Saga fighters/items; cross-Hub parties belong to Endless.
 
 The first two stages teach only:
 
@@ -45,16 +43,16 @@ The first two stages teach only:
 - Coins raise the single account Training Rank;
 - `Advance` versus `Camp`.
 
-### Minute 20–90: first Area and first ten-pull
+### Minute 20–90: complete the welcome ten
 
 - Stages 1–4 introduce one enemy behavior at a time and then combine them.
 - Training Rank rises to about 5–7.
 - Stage 5 is the Hammer Bros. boss.
-- Victory funds the remainder of the first ten Fighter pulls and unlocks the
-  Supply page with 3–5 Tickets.
-- The player chooses the SMB1 Spotlight or Mushroom Kingdom Archive. If the
-  ten-pull has no new SR or better, that banner inserts a declared welcome SR;
-  this is preferable to save deletion/rerolling.
+- Stages 1–4 grant 100 Starlight each; stage 5 grants the remaining 600 and
+  unlocks Supply with 3–5 Tickets. The player may pull after each stage or save.
+- The first ten results across the SMB1 Spotlight and Mushroom Kingdom Archive
+  form one welcome sequence. If it has no new SR or better, result ten is
+  replaced by the active page's declared owned-safe welcome SR.
 - In the finished build, the Archive accepts that first pull only when its
   22-fighter opening floor is production-ready. An engine-preview build may
   test the smaller SMB1 Spotlight, but cannot present a tiny Archive as final.
@@ -91,8 +89,9 @@ World-finale rewards:
 - the Super Mario Bros. Saga Archive;
 - Mastery I for the World;
 - Mythic banner access;
-- **CANDIDATE:** UR Super Star becomes the first Mythic option, because it can
-  prove the shared Mythic slot without requiring a complete UR fighter sheet.
+- **CANDIDATE:** UR Super Star becomes the first Mythic option, proving a
+  once-per-stage Power-Up Awakening without requiring a complete UR fighter
+  sheet.
 
 ## 3. Atlas rules
 
@@ -213,7 +212,7 @@ available later.
 
 | Active hours | Expected breadth and systems |
 | ---: | --- |
-| 0–1 | free party, first Area boss, first ten-pull, Supply introduced |
+| 0–1 | one starter, first Area boss, welcome ten completed, Supply introduced |
 | 3–5 | first World finale, Atlas, Archive, Mastery and Mythic access |
 | 10–25 | 2–4 World finales depending on length; 3+ Sagas visible as live choices |
 | 25–50 | a stable 8–12-unit usable collection; Tier C available; first serious specialist teams |
@@ -285,8 +284,8 @@ When stuck, the player sees four honest options:
 1. Camp for Coins and raise Training Rank;
 2. swap row/role/target behavior using already owned units;
 3. change Power-Up or Assist Page;
-4. pull because the player wants more options, never because one featured unit
-   is the only key.
+4. pull because roster breadth is progression, while no exact unguaranteed
+   featured unit is the only key.
 
 The battle report explains which one is relevant. Farming remains a choice, not
 an unexplained halt at stage 14.
@@ -298,14 +297,14 @@ has a baseline.
 
 - The first World finale, SMB1 stage 15, reveals the Mythic system and may
   unlock UR Super Star.
-- A title finale can unlock a thematically complete candidate: Star Rod Kirby,
-  Super Sonic, a peak boss, or a later-era fighter.
+- A title finale can unlock a thematically complete candidate: Star Rod
+  Power-Up, Super Sonic, a peak boss, or a later-era fighter.
 - Mythic pity persists forever across its rotations.
 - Atlas milestone around 20 cleared Areas grants a selector among URs the
   account has unlocked. If content pacing makes that later than 120 active
   hours, move the milestone earlier rather than violating the time promise.
-- Only one Mythic item can be active, so the first UR remains relevant as the
-  collection grows.
+- URs have no loadout cap. The first remains relevant through its kit and
+  source mechanics, not an exclusivity rule; late fixtures test multi-UR teams.
 
 The plan does not assume a player gets lucky to experience the system.
 

@@ -17,8 +17,8 @@ Exceptions are explicit:
 - a very large game may be split into multiple Worlds;
 - a game without five named bosses can promote an original elite into a labeled
   `Remix Boss` rather than borrowing a famous boss from another title;
-- a crossover party may enter any World; the active party is not forced to
-  reenact the source plot;
+- Story parties/items match the World's Saga; mixed-Hub teams enter Endless
+  after each relevant Hub's first World finale;
 - a character may release early through its franchise Archive when its full
   sprite, art, kit and provenance are production-ready; its card still names
   the real source game. Fame alone does not move King Boo into an SMB1 stage.
@@ -53,11 +53,11 @@ active hours including Camp, management and early pulls.
 | 2 | teach shells/body blocking | Goomba + green/red Koopa Troopa | low pipes, shell ricochet tell | party rows |
 | 3 | teach fixed hazard target | Piranha Plants behind Koopa line | pipes periodically close/open | first Power-Up slot |
 | 4 | teach arcing projectiles | one Hammer Bro elite plus fodder | brick tiers, safe gaps | boss hint/report |
-| 5 | Area exam | staggered Hammer Bros.; phase two enrages survivor | long bridge, falling hammers | first ten-pull, Supply page |
+| 5 | Area exam | staggered Hammer Bros.; phase two enrages survivor | long bridge, falling hammers | welcome-ten completion, Supply page |
 
 Boss identity: the brothers alternate jumps and hammer fans until one falls;
 the survivor gains Haste and a ground-pound. Ranged access is helpful but the
-free party can win through Training and sustain.
+expected ordinary-pull party can win through Training and sustain.
 
 ### Area 2: Open Water and High Roads, stages 6–10
 
@@ -127,8 +127,8 @@ summary.
 | Lakitu (SR) | Artillery / Lob | Artillery stats × SR; Airborne | Spiny Egg lob; `Spiny Rain` summons two short-lived Spinies | remains at extreme range until cloud staggered; `Storm Cloud` Slows and strikes marked zones |
 | Bowser (SSR, signature) | Vanguard / Charge | HP 1,960; ATK 126; Guard 72; Move 92; Haste -2% | two 0.58 claws; `Royal Flame` deals four 0.34 ticks and Burn every 11 s | 45% of control converts to stagger; `King of the Koopas` deals 2.40 impact plus eight 0.75 flame ticks |
 
-Mario, Luigi, Toad and Peach are granted; their later duplicates can still
-star them. Enemy fighters join only after the relevant encounter. Bowser is the
+Classic Mario is granted; Luigi, Toad and Peach are ordinary R pulls. Enemy
+fighters join only after the relevant encounter. Bowser is the
 declared signature-antagonist exception so the opening pool has an honest SSR;
 his featured focus begins after defeat. His playable kit is scaled to the strip
 and does not reuse the World-boss HP/phase record.
@@ -137,22 +137,28 @@ and does not reuse the World-boss HP/phase record.
 
 | Supply | Rarity/type | Trial effect |
 | --- | --- | --- |
-| Super Mushroom | R Power-Up | +8% max HP; first heal received each stage is 20% stronger |
-| Fire Flower | SR Power-Up | compatible basic gains Fire; every fourth basic launches a 0.65 shot and Burn |
-| Cloud Ride | SR Power-Up | compatible fighter becomes Airborne and gains +15% Move; loses 10 Guard |
-| Flagpole Rush | R Assist Page | +8% Move; clearing a wave grants 5 energy to the party |
-| Toad Retainers | R Assist Page | first knockout attempt instead heals that ally for 60% ATK-equivalent; once/stage |
-| Princess's Wish | SR Assist Page | at 40 s and every 40 s, shield the two lowest-HP allies for 80% support-scale Attack |
-| Castle Axe | SR Assist Page | boss stagger damage +20%; no effect on ordinary damage |
-| Super Star | UR Power-Up / Mythic | at full wearer energy, 12 s invulnerable contact-damage state; consumes the party Mythic slot |
+| Super Mushroom | R Power-Up | Enlarged; +8% max HP; ignores first minor knockback each wave |
+| Fire Flower | SR Power-Up | Fire; +11% ranged damage; every fourth basic applies light Burn |
+| Ice Flower | SR Power-Up | Ice; +10% Guard; every fourth basic applies 18% Slow for 2 s |
+| Super Leaf | SR Power-Up | Airborne; +10% Move; may cross low hazards without granting Tanooki's kit |
+| Super Bell | SR Power-Up | Feline; +8 Crit points; bounded backline pounce proc |
+| Penguin Suit | SSR Power-Up | Ice; +15% Move; slides through one ground hazard every 10 s |
+| Toadsworth | R Assist Page | first ally below 30% HP receives a tea heal; once/wave |
+| Sprixie Princess | R Assist Page | clearing a wave grants 5 energy to the party |
+| Pianta Lifeguard | R Assist Page | clears one ground hazard and lightly heals its nearest ally |
+| Professor E. Gadd | SR Assist Page | scans a boss phase, revealing reactions and adding stagger |
+| Tiara | SR Assist Page | catches one marked projectile and shields the back row |
+| Lubba | SSR Assist Page | once/stage, pulls the weakest ally to safety and restores HP/energy |
+| Super Star | UR Power-Up / Mythic | after wearer's first ultimate, 12 s invulnerable contact-damage Awakening |
 
-Exact compatibility and scaling source are data fields. The Super Star is not
+Exact stat/effect scaling is data-driven; unit compatibility lists do not
+exist. The Super Star is not
 obtainable during the five-stage slice; it is the first post-World Mythic test.
 
 ## World 2 — Kirby's Adventure (1993), stages 1–20
 
 This is the second recommended production World because it proves flight,
-copy-ability Power-Ups, guarded bosses and a different silhouette while staying
+Kirby's encounter-acquired Copy, guarded bosses and a different silhouette while staying
 sprite-friendly. Twenty stages fit its useful variety without requiring every
 original level or miniboss to become a separate Area. The Saga can be titled
 Dream Land in the Atlas; the World card names the specific game.
@@ -162,7 +168,7 @@ Dream Land in the Atlas; the World card names the specific game.
 | Stage | Encounter purpose | Enemy/wave plan | Environment/rule | Boss/reward |
 | ---: | --- | --- | --- | --- |
 | 1 | establish Dream Land pace | Waddle Dee, Bronto Burt | rolling hills, softer knockback | Kirby copy slot |
-| 2 | introduce copy traits | Hot Head, Sir Kibble | Fire/Cutter pickups as Supply preview | Fire/Cutter trial |
+| 2 | introduce copy traits | Hot Head, Sir Kibble | enemies expose Fire/Cutter Copy targets | Copy-policy trial |
 | 3 | mixed altitude | Parasol Waddle Dee + Poppy Bros. Jr. | drifting landings | aerial targeting |
 | 4 | apple telegraph | Rocky + Waddle Doo elite | tree canopy hazards | boss hint |
 | 5 | Whispy Woods | apple drops, breath push, root adds | fixed giant background boss | Whispy Page/focus |
@@ -185,7 +191,7 @@ Dream Land in the Atlas; the World card names the specific game.
 | 12 | water/land swap | aquatic enemies + Sir Kibble | tide bands | formation preset 3 |
 | 13 | knight formation | Blade/Axe/Mace/Spear Knights | disciplined rows | Guard-break exam |
 | 14 | duel etiquette | Meta-Knight squad and offered sword motif | reduced frontal boss damage | Sword loan |
-| 15 | Meta Knight | sword strings, tornado, cape reposition | moonlit arena | SSR Meta Knight focus |
+| 15 | Meta Knight | sword strings, tornado, cape reposition | moonlit arena | SR Adventure Meta Knight focus |
 
 ### Area 4: Rainbow Resort and Fountain of Dreams, stages 16–20
 
@@ -195,7 +201,7 @@ Dream Land in the Atlas; the World card names the specific game.
 | 17 | dream distortion | mirrored spawns and Scarfy pressure | labeled target decoys | Nightmare hint |
 | 18 | fountain defense | Meta-Knights + dream hazards | Star Rod charges between waves | finale Supply focus |
 | 19 | Dedede's warning | King Dedede: hammer, inhale and pounce | ring arena | SSR Dedede focus |
-| 20 | Nightmare | Power Orb chase then vulnerable-cloak Wizard | falling sky → moon finale | UR Star Rod Kirby candidate, Key |
+| 20 | Nightmare | Power Orb chase then vulnerable-cloak Wizard | falling sky → moon finale | UR Star Rod item eligibility, Key |
 
 The finale follows the source's logic: Dedede was containing Nightmare. Dedede
 is a stage-19 miniboss encounter so Nightmare receives a complete two-phase
@@ -205,15 +211,15 @@ World finale.
 
 | Availability | Fighters | Supply |
 | --- | --- | --- |
-| World unlock | R Kirby, R Parasol Waddle Dee, R Poppy Bros. Jr. | R Parasol, R Beam, R Dream Spring Page |
-| Area 1 | SR Sir Kibble, SR Hot Head | SR Cutter, SR Fire, Whispy's Apples Page |
-| Area 2 | SR Wheelie, SR Sparky, SR Rocky | SR Ice, SR Spark, Kracko Storm Page |
-| Area 3 | SR Bonkers; SSR Meta Knight after defeat | SR Hammer, SSR Sword, Halberd Knights Page |
-| Area 4 | SSR King Dedede; boss-only Nightmare unless animation works | SSR Star Rod Page; UR Star Rod Kirby fighter candidate |
+| World unlock | R Kirby, R Dream Land Kirby, R Waddle Dee, R Poppy Bros. Jr. | Maxim Tomato, Dream Spring Assist preview |
+| Area 1 | SR Parasol Waddle Dee, SR Sir Kibble, SR Hot Head | Copy profiles learned from enemies; Whispy Assist focus |
+| Area 2 | SR Wheelie, SR Sparky, SR Rocky | Invincibility Candy, Kracko Storm Assist |
+| Area 3 | SR Bonkers; SR Adventure Meta Knight after defeat | Friend Heart, Halberd Crew Assist |
+| Area 4 | SSR Bandana Waddle Dee, SSR King Dedede; boss-only Nightmare unless animation works | UR Star Rod item eligibility |
 
-Copy abilities are normally Power-Ups. Star Rod Kirby can be a separate UR
-because the complete finale movement/attack set and identity justify a fighter,
-not because every copied hat deserves a unit.
+Copy abilities are Kirby family state, never owned Power-Ups. The Star Rod is a
+UR Dream Land Power-Up. *Return to Dream Land* Kirby is the one UR Kirby and
+uses held Copy to choose among five Super Ability ultimate variants.
 
 ## 3. Mario Saga title map
 
@@ -474,8 +480,8 @@ forcing everything to walk.
 - 1–3 SSR signature units or defeated bosses;
 - 0–1 UR candidate, often none;
 - 4–10 Power-Ups and Assist Pages tied to actual mechanics;
-- at least one free/story path to a complete four-unit team across the early
-  Library, not necessarily four freebies per World.
+- one Hub starter plus a bounded guaranteed-new/welcome sequence that can form
+  a complete four-unit team across the early Library;
 
 These are ranges, not quotas. A five-stage cabinet can release two fighters and
 two Supply items. A Final Fantasy World can hold most of its cast for reruns or

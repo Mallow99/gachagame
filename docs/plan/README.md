@@ -51,7 +51,11 @@ disagree with this directory, this directory wins.
     — **owner decisions that override earlier files**: pulls as progression,
     region-locked story plus Endless, effect-only Hub-scoped Power-Ups, no
     Mythic slot, one UR Kirby, and the expanded Mario/Kirby/20XX roster with
-    side-cast versions. Part III lists the earlier sections still to rewrite.
+    side-cast versions. Part III records the reconciliation provenance.
+18. [`18_LOADOUT_COPY_AND_PROGRESSION_AUDIT.md`](18_LOADOUT_COPY_AND_PROGRESSION_AUDIT.md)
+    — the reconciled implementation contract for separate Power-Up and Assist
+    slots, Kirby Copy/Super Abilities, one-starter pull progression, renewable
+    anti-deadlock income, region lock/Endless and corrected opening pools.
 
 ## The one-sentence game
 
@@ -106,19 +110,18 @@ for an eternal commitment.
 9. **One family member per party.** Separate iterations of Mario, Link, Sonic
    or another identity can be pulled, but only one from that family can fight
    at once. The player chooses a version instead of fielding four Marios.
-10. **Amended by plan `17` §3–4 — Power-Ups are effect-only Hub items.** **Forms are not all fighters.** A complete era or moveset can be a fighter;
-    an ordinary Fire Flower, Ice Flower or Super Star is normally a Power-Up.
-    This prevents variant spam and impossible sprite workloads.
-11. **Support collectibles do not tax character savings.** Power-Ups and one
-    party-wide Assist Page use Supply Tickets, not fighter currency. Fighters
-    never share their banner with memories or equipment.
-12. **SUPERSEDED by plan `17` §6 — one-Mythic-slot rule removed.** **UR has a real opportunity cost.** One Mythic slot is shared by an UR
-    fighter, UR Power-Up or future UR Assist Page. This stays a trial through
-    the first UR playtest but is the implementation baseline.
-13. **SUPERSEDED by plan `17` §1 — story stages may require pulls.** **No normal story pull check.** Traits and specialist kits may make an
-    encounter easier, but every story stage is clearable by an expected free
-    or ordinary-pull roster. Pulling strength buys speed and consistency, not
-    permission to continue.
+10. **Power-Ups are effect-only Hub items.** A complete era or moveset can be a
+    fighter; recurring pickups grant one trait and one stat lean without
+    multiplying sprite sheets. Kirby Copy remains a family mechanic.
+11. **Support collectibles do not tax character savings.** Power-Ups and the
+    one party-wide Assist Page use selectable Supply pages and Supply Tickets,
+    never a Fighter banner.
+12. **URs are unrestricted by a loadout cap.** Family lock still separates
+    versions of one identity, but different UR fighters and UR Power-Ups may be
+    used together. Late balance tests zero-, one- and four-UR teams.
+13. **Pulls are progression.** Story may expect roster breadth or pulled power.
+    A required mechanic always has a bounded deterministic or selector route,
+    so bad luck cannot create an infinite account lock.
 14. **Banners archive instead of vanishing.** Area spotlights are initially
     progress-based. Their contents move into permanent Saga and Supply Archives.
     The personal desktop game does not punish the owner for closing it.
@@ -132,10 +135,10 @@ for an eternal commitment.
     offer five account-legal missions and require any three. Optional Coin,
     Fighter Practice, Assist Study, Supply, Starfall and Wanted-Hunt Sorties let
     the player choose useful rewards without stamina or exact-pull checks.
-18. **Worlds preserve games; Hubs preserve possibility.** Story campaigns,
-    enemies and backgrounds belong to a specific source game. A franchise Hub
-    and its permanent Archive may offer any production-ready iteration from
-    that Saga, so favorites do not have to wait for their eventual campaign.
+18. **Worlds preserve games; Hubs gate Story; Endless is the crossover.** Story
+    campaigns, enemies and backgrounds belong to a source game and accept that
+    Saga's fighters/items. A Hub Archive may release later-game iterations
+    early; its first World finale opens them for mixed-Hub Endless teams.
 19. **Animation is mechanics.** Stomps bounce, Goombas flatten, Koopas become
     kickable shells, Peach floats, Yoshi grabs and Kirby inhales/copies. A
     generic attack with themed particles is not a finished character.

@@ -1,6 +1,6 @@
 # Mario and Kirby Archive expansion
 
-Status: **regional breadth baseline v1, 2026-10-13**
+Status: **regional breadth baseline v1, reconciled by plans `17`–`18`, 2026-10-13**
 
 This packet corrects an earlier production-priority mistake. The next roster
 work deepens Mushroom Kingdom and Dream Land rather than moving immediately to
@@ -18,7 +18,7 @@ when it contains at least:
 | Archive | Normal-banner floor | R | SR | SSR | Separate Mythic candidates |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Mushroom Kingdom | 22 | 10 | 7 | 5 | Fury Bowser |
-| Dream Land | 20 | 8 | 7 | 5 | Star Rod Kirby, Hypernova Kirby |
+| Dream Land | 22 | 8 | 9 | 5 | Return to Dream Land Kirby |
 
 The floor counts only production-ready fighters with a complete battle actor,
 card and kit. Advertised silhouettes and unreleased candidates do not count.
@@ -28,9 +28,10 @@ Spotlight earlier, but it cannot call a sub-floor regional Archive finished.
 
 At the common 80% R / 17% SR / 3% SSR rates, a 100,000-account seeded baseline
 with equal within-rarity weights and each ten-pull's SR floor produced a mean
-12.29 and median 12 Mushroom fighters owned after twenty pulls, including the
-four free R starters; its 10th–90th-percentile band was 11–14. The comparable
-Dream Land baseline produced mean 10.58, median 11 and a 9–12 band. Exact focus
+11.73 and median 12 Mushroom fighters owned after twenty pulls, including the
+one free starter; its 10th–90th-percentile band was 10–13. The corrected
+22-fighter Dream Land baseline produced mean 10.75, median 11 and a 9–12 band.
+Exact focus
 weights and the beginner owned-safe SR can move these values, so the production
 simulator reruns the distribution and enforces the 75% median ceiling.
 
@@ -38,7 +39,7 @@ The pool continues growing before renewable income catches it:
 
 | Checkpoint | Mushroom normal pool | Dream Land normal pool | Baseline median owned |
 | --- | ---: | ---: | --- |
-| first Archive pull | 22 | 20 | measured after pull 20: 12 / 11 |
+| first Archive pull | 22 | 22 | measured after pull 20: 12 / 11 |
 | before regional pull 40 | at least 28 | at least 26 | measured after pull 40: 16 / 15 |
 | before a third Hub roster | full 32 | full 29 | rerun with final focus weights |
 
@@ -46,13 +47,16 @@ The 40-pull baseline used 10/10/8 Mushroom and 9/9/8 Dream Land rarity counts;
 its 90th-percentile ownership was 18/28 and 17/26. These are release gates, not
 an instruction to withhold already finished fighters.
 
-This is a minimum, not a target to freeze forever. The complete rosters after
-this packet are:
+This is a minimum, not a target to freeze forever. After the reclassification
+in plans `17`–`18`, the detailed active-fighter cards in plans `14`–`16` are:
 
 | Hub | Existing detailed | Added here | Total | Normal / UR |
 | --- | ---: | ---: | ---: | ---: |
 | Mushroom Kingdom | 18 | 15 | 33 | 32 / 1 |
-| Dream Land | 12 | 19 | 31 | 29 / 2 |
+| Dream Land | 11 | 14 plus RTDL Kirby | 26 | 25 / 1 |
+
+Plan `17` Part II adds a much larger candidate museum; candidates do not change
+these released/detailed counts until they pass the asset and kit gates.
 
 No post-beginner system guarantees a new fighter every ten-pull. Duplicates
 retain star/Echo value, while focus shelves and selectors solve dilution after
@@ -73,8 +77,9 @@ separate fighter only when it passes all five checks:
 Fire Mario normally fails; a Fire Flower can modify several Mario iterations.
 Tanooki Mario passes through flight, tail combat and statue state. Cappy Mario
 passes through cap travel, bounce and bounded capture. Kirby's ordinary Copy
-Abilities remain swappable profiles, while a Super Ability passes only when it
-supports a full oversized moveset. Every Mario form uses `familyId: mario` and
+Abilities remain encounter-acquired profiles, while the five Super Abilities
+are one *Return to Dream Land* Kirby transformation-ultimate table rather than
+five fighters. Every Mario form uses `familyId: mario` and
 every Kirby form uses `familyId: kirby`; variants enlarge choice, not party size.
 
 ## 3. Mushroom Kingdom release shelves
@@ -85,8 +90,8 @@ every Kirby form uses `familyId: kirby`; variants enlarge choice, not party size
 | --- | --- | --- |
 | Classic Mario, Classic Luigi, Toad, Peach, Koopa Troopa, Daisy, Captain Toad, Dry Bones, Birdo, Shy Guy | Hammer Bro, Yoshi, Bowser Jr., Dr. Mario, Builder Mario, Kamek, Tanooki Mario | Bowser, Mario 64, Cappy Mario, Dry Bowser, Poltergust Luigi |
 
-The four classic heroes remain free. The other eighteen records supply enough
-breadth for the first Archive. If asset review blocks one, another approved
+Classic Mario is the only free fighter. The other twenty-one records supply
+the pull pool and collection breadth. If asset review blocks one, another approved
 fighter of the same rarity must replace it before the first Archive pull;
 an empty silhouette does not satisfy the floor.
 
@@ -368,25 +373,25 @@ Haste -2%; Crit 6%.
 
 | R | SR | SSR |
 | --- | --- | --- |
-| Kirby, Parasol Waddle Dee, Poppy Bros. Jr., Bandana Waddle Dee, Knuckle Joe, Blade Knight, Chilly, Bio Spark | Sir Kibble, Hot Head, Wheelie, Sparky, Rocky, Bonkers, Gooey | Meta Knight, King Dedede, Daroach, Magolor, Ultra Sword Kirby |
+| Kirby, Dream Land Kirby, Waddle Dee, Poppy Bros. Jr., Knuckle Joe, Blade Knight, Chilly, Bio Spark | Parasol Waddle Dee, Adventure Meta Knight, Sir Kibble, Hot Head, Wheelie, Sparky, Rocky, Bonkers, Gooey | Bandana Waddle Dee, King Dedede, Daroach, Magolor, Super Star Ultra Meta Knight |
 
 Kirby is the story grant. The World Spotlight may focus source-appropriate
 fighters, while the Archive contains this broader release-ready shelf.
 
 ### Dream Land breadth shelf
 
-Broom Hatter, Chef Kawasaki, Taranza, Marx, Dark Meta Knight and all five Super
-Ability Kirby forms join next. Star Rod Kirby remains tied to the Nightmare
-finale; Hypernova Kirby may enter the Mythic rotation once its model-derived
-actor and giant suction states pass review. Neither requires waiting for a
-fifth franchise.
+Broom Hatter, Chef Kawasaki, Taranza, Marx, Dark Meta Knight and Hypernova Kirby
+join next. *Return to Dream Land* Kirby is the one UR Kirby and owns all five
+Super Ability ultimate variants. Star Rod is a UR Power-Up; the Nightmare
+finale's encounter-loan remains separate. None requires waiting for a fifth
+franchise.
 
 ## 6. New Dream Land fighter cards
 
-### Bandana Waddle Dee — Spear-Line Loyalist · R
+### Bandana Waddle Dee — Spear-Line Loyalist · SSR
 
 **Source:** *Kirby's Return to Dream Land*. **Family:** `bandana-waddle-dee`.
-**Role:** Striker / Combo, front. **Stats:** HP 930; ATK 105; Guard 34;
+**Role:** Striker / Combo, front. **Stats:** HP 1,283; ATK 145; Guard 34;
 Move 128; Haste 4%; Crit 10%.
 
 - **Basic — Spear Thrusts:** three 0.40× contacts with a short step between hits.
@@ -394,8 +399,8 @@ Move 128; Haste 4%; Crit 10%.
   clears one low hazard before descending.
 - **Passive — Loyal Guard:** intercepting a hit aimed at an ally below 35% HP
   grants 20 Guard for 4 s, once per ally each wave.
-- **Ultimate — Spear Barrage:** six 0.70× thrust/throws end in a 1.20× downward
-  spear. Focused total: **5.40×**.
+- **Ultimate — Spear Barrage:** eight 0.85× thrust/throws end in a 2.40×
+  downward spear. Focused total: **9.20×** (**7.67** basic-action equivalents).
 - **Reveal/feel:** spear plants before the bandana ties itself; quote “Wanya!”
   The weapon remains gripped or visibly thrown—never an unattached effect.
 
@@ -589,7 +594,14 @@ Guard 38; Move 142; Haste 6%; Crit 15%.
 - **Reveal/feel:** the card cracks before the masked reflection moves; quote
   “Face what follows you.” Clone hitboxes always correspond to visible copies.
 
-### Ultra Sword Kirby — Super-Ability Cleaver · SSR
+### Archived Super Ability kit references — not separate fighters
+
+The five blocks below are retained only as motion, VFX and coefficient input
+for *Return to Dream Land* Kirby's UR transformation table in plan `18` §6.1.
+They are not pullable records, do not count toward an Archive floor and do not
+own separate stats or family slots.
+
+#### Ultra Sword reference
 
 **Source:** *Kirby's Return to Dream Land*. **Family:** `kirby`. **Role:**
 Bruiser / Strike, front. **Stats:** HP 1,373; ATK 164; Guard 48; Move 118;
@@ -605,7 +617,7 @@ Haste 1%; Crit 12%.
 - **Reveal/feel:** the sword outgrows the card before Kirby appears; quote
   “Hii-yaa!” Each oversized blade has anticipation, contact and ground response.
 
-### Monster Flame Kirby — Super-Ability Dragon · SSR
+#### Monster Flame reference
 
 **Source:** *Kirby's Return to Dream Land*. **Family:** `kirby`. **Role:**
 Artillery / Beam, either. **Stats:** HP 1,304; ATK 168; Guard 36; Move 126;
@@ -621,7 +633,7 @@ Haste 3%; Crit 11%.
 - **Reveal/feel:** dragon jaws close around the card; quote “Fwoosh!” The flame
   creature has a head, body path and exit instead of functioning as a red beam.
 
-### Flare Beam Kirby — Super-Ability Conductor · SSR
+#### Flare Beam reference
 
 **Source:** *Kirby's Return to Dream Land*. **Family:** `kirby`. **Role:**
 Controller / Beam, either. **Stats:** HP 1,270; ATK 162; Guard 34; Move 130;
@@ -641,7 +653,7 @@ Haste 5%; Crit 12%.
   “Bzzzt!” The beam bends through actual anchors and never tracks as a generic
   homing projectile.
 
-### Grand Hammer Kirby — Super-Ability Breaker · SSR
+#### Grand Hammer reference
 
 **Source:** *Kirby's Return to Dream Land*. **Family:** `kirby`. **Role:**
 Bruiser / Strike, front. **Stats:** HP 1,587; ATK 170; Guard 62; Move 100;
@@ -658,7 +670,7 @@ Haste -2%; Crit 10%.
 - **Reveal/feel:** hammer heads grow through stone, metal and ornate forms;
   quote “Bonk!” Weight deforms the ground and recovery remains deliberately slow.
 
-### Snow Bowl Kirby — Super-Ability Avalanche · SSR
+#### Snow Bowl reference
 
 **Source:** *Kirby's Return to Dream Land*. **Family:** `kirby`. **Role:**
 Vanguard / Charge, front/either. **Stats:** HP 1,450; ATK 158; Guard 54;
@@ -676,10 +688,10 @@ Move 150; Haste 4%; Crit 11%.
   out; quote “Wheee!” Rotation, acceleration, collected bodies and unroll point
   must all agree.
 
-### Hypernova Kirby — Miracle-Fruit Devourer · UR
+### Hypernova Kirby — Miracle-Fruit Devourer · SSR
 
 **Source:** *Kirby: Triple Deluxe*. **Family:** `kirby`. **Role:** Controller /
-Beam-transform, either. **Stats:** HP 1,647; ATK 184; Guard 40; Move 130;
+Beam, either. **Stats:** HP 1,353; ATK 151; Guard 40; Move 130;
 Haste 5%; Crit 12%.
 
 - **Basic — Star Inhale:** pulls projectiles and eligible Small targets before
@@ -689,44 +701,45 @@ Haste 5%; Crit 12%.
 - **Passive — Bottomless Breath:** suction strength and cone width rise 20% for
   each distinct object inhaled that wave, capped at three. The bonus resets on
   wave transition and never consumes permanent inventory.
-- **Ultimate — Hypernova Maw:** Miracle Fruit transforms Kirby for 14 s with
-  **+70% ATK, +40% Haste, +50% suction width and 40% damage reduction while
-  channeling**. Basics become five 0.55× vacuum ticks plus a 1.50× Star Shot;
-  the skill creates a screen-spanning legal pull and 80 boss stagger. A 4.50×
-  giant Star Shot ends the form. It targets **20–28 normal-action equivalents**
-  and at least 2.5× normal active DPS without crowd credit.
+- **Ultimate — Hypernova Maw:** inhales across the full legal field for eight
+  0.80× vacuum contacts, pulling projectiles and eligible secondary actors,
+  then fires a 4.10× piercing giant Star Shot. Focused total: **10.50×** plus
+  80 boss stagger. It is an SSR burst, not another long UR transformation.
 - **Reveal/feel:** Miracle Fruit color floods Kirby's mouth and the foreground
   bends inward; quote “Poyo!” Suction moves dust, actors, projectiles and UI-safe
   foreground fragments toward a real mouth anchor. Scaling only the sprite fails.
 
 ## 7. Ultimate floor audit
 
-The 30 new direct or mixed-damage ultimates clear their raw Mastery-1 rarity
-ratio before crowd credit:
+Every active new direct or mixed-damage ultimate clears its raw Mastery-1 rarity
+ratio before crowd credit. The five archived Super Ability reference kits are
+excluded; their values feed the one UR transformation in plan `18` §6.1.
 
 | Rarity | Lowest new direct ratio | Highest new direct ratio | Required floor |
 | --- | ---: | ---: | ---: |
 | R | 4.50 basic actions | 5.78 | 4.00 |
 | SR | 5.60 basic actions | 7.56 | 5.50 |
 | SSR | 7.27 basic actions | 8.00 | 7.00 |
-| UR transform | 20–28 total; ≥2.5× active DPS | — | 10+ / 18–26 form target |
+| UR transform | plan `18`: 18–24 total | — | 10+ / 18–26 form target |
 
 Dr. Mario, Broom Hatter and Chef Kawasaki require the emergency support
 fixture because their realized heal/shield/cleanse value matters. Hypernova
-Kirby requires the paired 14-second transformation simulation. None receives a
-pass merely from its animation, and all ratios still pay any actor-only cast
-time once runtime timing exists.
+Kirby requires a suction/stagger fixture plus the ordinary SSR burst check. The
+Return-to-Dream-Land UR receives the paired 14-second transformation simulation
+in plan `18`. None receives a pass merely from animation, and all ratios still
+pay actor-only cast time once runtime timing exists.
 
 ## 8. Remaining high-form ledger
 
-All five *Return to Dream Land* Super Abilities now have complete fighter cards.
-Other major forms still wait for a distinct full kit:
+All five *Return to Dream Land* Super Abilities now have archived motion/value
+references for one UR fighter's ultimate. Other major forms remain candidates
+until their plan `17` records pass the full kit gate:
 
 | Candidate | Direction | Approval requirement |
 | --- | --- | --- |
-| Robobot Armor Kirby | SSR/UR form | machinery, scan/copy slot and pilot/armor damage states |
-| Mouthful Kirby | SSR form set | one coherent iteration with bounded object profiles, not ten shallow cards |
-| Morpho Knight | UR candidate | full boss-grade sword/butterfly grammar and Mythic opportunity-cost test |
+| Robobot Kirby | SSR iteration | machinery, scan/copy slot and pilot/armor damage states |
+| Forgotten Land Kirby | SSR iteration | one coherent Mouthful ultimate with bounded object profiles, not ten shallow cards |
+| Morpho Knight | UR candidate | full boss-grade sword/butterfly grammar and multi-UR fixture |
 
 ## 9. Model-derived actor policy
 
@@ -762,10 +775,10 @@ online” is not provenance.
 The first five-stage combat slice remains the engine gate, but the roster order
 after it changes:
 
-1. free classic party and SMB1 enemy behaviors;
+1. Classic Mario solo opening, welcome pulls and SMB1 enemy behaviors;
 2. Yoshi/Mario 64 primitives already queued;
 3. complete the 22-fighter Mushroom opening floor in asset-ready batches;
-4. build Kirby Copy plus the 20-fighter Dream Land opening floor;
+4. build Kirby Copy plus the 22-fighter Dream Land opening floor;
 5. complete both Mushroom and Dream Land breadth/Mythic shelves;
 6. only then begin a third Hub roster such as Mega Man.
 

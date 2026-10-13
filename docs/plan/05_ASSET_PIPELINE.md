@@ -19,13 +19,14 @@ As of 2026-10-13:
   downloaded sheets;
 - `tools/art/sprite-batch.json` and `docs/SPRITE_FIRST_BATCH.md` scout 12
   sprite-friendly crossover units and Bowser, but that batch predates the new
-  game-first/title-based plan;
+game-first/title-based plan;
 - the Mario pull demo has useful presentation/art experiments but does not
   supply the roaming combat roster.
 
 Nothing should be deleted. The earlier 12-unit batch becomes a scouting queue
 for later Sagas. It is **not** the production order. Super Mario Bros. enemies,
-the four free Library fighters and the Hammer Bros. boss now come first.
+Classic Mario plus the first three pullable R actors, and the Hammer Bros. boss
+now come first.
 
 ## 2. Two independent asset grades
 
@@ -251,7 +252,7 @@ candidate record
 - hit frame and simulation impact coincide;
 - transparent cleanup does not erase white eyes/gloves/effects;
 - silhouette remains readable over every Area background;
-- fighter scale feels intentional beside the free party;
+- fighter scale feels intentional beside the starter/early-pull party;
 - KO/phase transitions do not snap to missing frames.
 
 ## 8. First production queue
@@ -283,7 +284,7 @@ timing, but the final *Super Mario Bros.* World should use an original-era or
 deliberately declared enhanced treatment. Prototype source and shipped source
 do not have to be identical.
 
-### Gate C — free party
+### Gate C — starter and first pullable actors
 
 | Fighter | Expected grade | Plan |
 | --- | --- | --- |
@@ -311,13 +312,13 @@ normal fighters in plan `16` before a new franchise roster enters production.
 
 ### Gate E — Kirby's Adventure
 
-Only after the Mushroom opening floor works: Kirby, Parasol Waddle Dee, copy
+Only after the Mushroom opening floor works: Kirby, Parasol Waddle Dee, Copy
 enemies, four
 Area/finale boss packets (with Dedede as the stage-19 miniboss) and the
-first ability Power-Ups. Audit original NES sheets against the already scouted
+first seven Copy profiles. Audit original NES sheets against the already scouted
 KSSU assets; choose original or explicitly enhanced treatment per unit.
 
-The *Kirby's Adventure* World cast is followed by the 20-fighter Dream Land
+The *Kirby's Adventure* World cast is followed by the 22-fighter Dream Land
 opening floor and breadth shelf in plan `16`; Mega Man asset production waits.
 
 ## 9. Work budget per release

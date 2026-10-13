@@ -1,14 +1,18 @@
+import { ASSISTS } from './assists.js';
 import { BANNERS } from './banners.js';
 import { ENEMIES } from './enemies.js';
 import { SMB1_ENCOUNTERS } from './encounters/smb1.js';
+import { POWERUPS } from './powerups.js';
 import { UNITS } from './units.js';
 import { AREAS, SAGAS, WORLDS } from './worlds.js';
 
-export const CONTENT_VERSION = 1;
+export const CONTENT_VERSION = 2;
 
 const DEFAULT_RECORDS = {
   units: UNITS,
   enemies: ENEMIES,
+  powerups: POWERUPS,
+  assists: ASSISTS,
   sagas: SAGAS,
   areas: AREAS,
   worlds: WORLDS,
@@ -20,8 +24,8 @@ export function createContentIndex(records = DEFAULT_RECORDS) {
   return {
     units: index(records.units),
     enemies: index(records.enemies),
-    powerups: new Map(),
-    assists: new Map(),
+    powerups: index(records.powerups),
+    assists: index(records.assists),
     sagas: index(records.sagas),
     areas: index(records.areas),
     worlds: index(records.worlds),
@@ -37,6 +41,8 @@ export const content = createContentIndex();
 
 export const getUnit = (id) => content.units.get(id);
 export const getEnemy = (id) => content.enemies.get(id);
+export const getPowerUp = (id) => content.powerups.get(id);
+export const getAssist = (id) => content.assists.get(id);
 export const getWorld = (id) => content.worlds.get(id);
 export const getEncounter = (id) => content.encounters.get(id);
 
@@ -62,6 +68,8 @@ export function validateContent(candidate = content) {
   const allowedTargets = new Set(['nearest', 'frontmost', 'backmost', 'lowest-hp', 'lowest-hp-ally', 'cluster', 'party']);
   const allowedLengths = new Set([5, 10, 15, 20, 25]);
   const allowedProductionStates = new Set(['dev', 'provisional', 'approved', 'slice', 'planned', 'backlog']);
+  const allowedAcquisitionTypes = new Set(['hub-starter', 'fighter-banner', 'story', 'boss-recruit']);
+  const ultimateFloors = { R: 4, SR: 5.5, SSR: 7, UR: 10 };
 
   for (const [namespace, items] of Object.entries(records)) {
     const seen = new Set();
@@ -81,10 +89,42 @@ export function validateContent(candidate = content) {
     validateAbility(unit.basic, `unit ${unit.id}.basic`);
     validateAbility(unit.skill, `unit ${unit.id}.skill`);
     validateAbility(unit.ultimate, `unit ${unit.id}.ultimate`);
+    if (!allowedAcquisitionTypes.has(unit.acquisition?.type)) errors.push(`unit ${unit.id}.acquisition.type is illegal: "${unit.acquisition?.type}"`);
+    if (unit.copyLibrary !== undefined && (!Array.isArray(unit.copyLibrary) || unit.copyLibrary.length < 3)) {
+      errors.push(`unit ${unit.id}.copyLibrary must contain at least three profiles`);
+    }
+    if (unit.ultimate && (!Number.isFinite(unit.ultimate.declaredBasicActionEquivalents) || unit.ultimate.declaredBasicActionEquivalents < ultimateFloors[unit.rarity])) {
+      errors.push(`unit ${unit.id}.ultimate.declaredBasicActionEquivalents must meet the ${unit.rarity} floor of ${ultimateFloors[unit.rarity]}`);
+    }
     validateStats(unit.baseStats, `unit ${unit.id}.baseStats`);
     validateProductionState(unit, `unit ${unit.id}`);
     if (unit.productionStatus === 'dev') errors.push(`production unit ${unit.id} is marked dev`);
     if (unit.productionStatus === 'provisional') warnings.push(`unit ${unit.id} uses provisional art`);
+  }
+
+  for (const powerup of candidate.powerups.values()) {
+    if (!candidate.sagas.has(powerup.sagaId)) errors.push(`powerup ${powerup.id}.sagaId references missing saga "${powerup.sagaId}"`);
+    if (!allowedRarities.has(powerup.rarity)) errors.push(`powerup ${powerup.id}.rarity is illegal: "${powerup.rarity}"`);
+    if (!powerup.grantedTrait) errors.push(`powerup ${powerup.id}.grantedTrait is required`);
+    const leanModes = ['multiplier', 'additive'].filter((key) => powerup.statLean?.[key] !== undefined);
+    if (!powerup.statLean?.stat || leanModes.length !== 1) errors.push(`powerup ${powerup.id}.statLean must declare one stat and exactly one value mode`);
+    else if (!Number.isFinite(powerup.statLean[leanModes[0]]) || powerup.statLean[leanModes[0]] <= 0) errors.push(`powerup ${powerup.id}.statLean.${leanModes[0]} must be positive`);
+    if (powerup.proc && powerup.awakening) errors.push(`powerup ${powerup.id} cannot declare both a normal proc and an Awakening`);
+    if (powerup.rarity === 'UR' && (powerup.awakening?.trigger !== 'after-first-ultimate' || powerup.awakening?.usesPerStage !== 1)) {
+      errors.push(`powerup ${powerup.id}.awakening must trigger once after the first ultimate`);
+    }
+    if (!powerup.duplicatePolicyId) errors.push(`powerup ${powerup.id}.duplicatePolicyId is required`);
+    validateProductionState(powerup, `powerup ${powerup.id}`);
+  }
+
+  for (const assist of candidate.assists.values()) {
+    if (!candidate.sagas.has(assist.sagaId)) errors.push(`assist ${assist.id}.sagaId references missing saga "${assist.sagaId}"`);
+    if (!assist.familyId) errors.push(`assist ${assist.id}.familyId is required`);
+    if (!allowedRarities.has(assist.rarity)) errors.push(`assist ${assist.id}.rarity is illegal: "${assist.rarity}"`);
+    if (!assist.trigger?.type) errors.push(`assist ${assist.id}.trigger.type is required`);
+    if (!assist.effects?.length) errors.push(`assist ${assist.id}.effects must not be empty`);
+    if (assist.proficiencyPolicyId !== 'assist-five-rank-v1') errors.push(`assist ${assist.id}.proficiencyPolicyId is illegal`);
+    validateProductionState(assist, `assist ${assist.id}`);
   }
 
   for (const enemy of candidate.enemies.values()) {
@@ -146,7 +186,30 @@ export function validateContent(candidate = content) {
       }
     }
     for (const [teamIndex, team] of encounter.referenceTeams.entries()) {
-      for (const [unitIndex, unitId] of team.unitIds.entries()) requireRef(candidate.units, unitId, `encounter ${encounter.id}.referenceTeams[${teamIndex}].unitIds[${unitIndex}]`, 'unit');
+      const teamPath = `encounter ${encounter.id}.referenceTeams[${teamIndex}]`;
+      const worldSagaId = candidate.worlds.get(encounter.worldId)?.sagaId;
+      const families = new Set();
+      const teamUnitIds = team.unitIds || [];
+      const teamPowerupIds = team.powerupIds || [];
+      for (const [unitIndex, unitId] of teamUnitIds.entries()) {
+        requireRef(candidate.units, unitId, `${teamPath}.unitIds[${unitIndex}]`, 'unit');
+        const unit = candidate.units.get(unitId);
+        if (unit && unit.sagaId !== worldSagaId) errors.push(`${teamPath}.unitIds[${unitIndex}] violates the Story Hub lock`);
+        if (unit && families.has(unit.familyId)) errors.push(`${teamPath}.unitIds[${unitIndex}] duplicates family "${unit.familyId}"`);
+        if (unit) families.add(unit.familyId);
+      }
+      if (teamPowerupIds.length !== teamUnitIds.length) errors.push(`${teamPath}.powerupIds must align with unitIds`);
+      for (const [powerupIndex, powerupId] of teamPowerupIds.entries()) {
+        if (!powerupId) continue;
+        requireRef(candidate.powerups, powerupId, `${teamPath}.powerupIds[${powerupIndex}]`, 'powerup');
+        if (candidate.powerups.get(powerupId)?.sagaId !== worldSagaId) errors.push(`${teamPath}.powerupIds[${powerupIndex}] violates the Story Hub lock`);
+      }
+      if (team.assistId) {
+        requireRef(candidate.assists, team.assistId, `${teamPath}.assistId`, 'assist');
+        const assist = candidate.assists.get(team.assistId);
+        if (assist?.sagaId !== worldSagaId) errors.push(`${teamPath}.assistId violates the Story Hub lock`);
+        if (assist && families.has(assist.familyId)) errors.push(`${teamPath}.assistId conflicts with active family "${assist.familyId}"`);
+      }
     }
     validateRewards(encounter.rewards.firstClear, `encounter ${encounter.id}.rewards.firstClear`);
     validateRewards(encounter.rewards.repeat, `encounter ${encounter.id}.rewards.repeat`);
@@ -156,8 +219,13 @@ export function validateContent(candidate = content) {
   for (const banner of candidate.banners.values()) {
     validateProductionState(banner, `banner ${banner.id}`);
     if (banner.unlock?.encounterId) requireRef(candidate.encounters, banner.unlock.encounterId, `banner ${banner.id}.unlock.encounterId`, 'encounter');
+    if (banner.channel === 'supply' && !['powerup', 'assist'].includes(banner.poolKind)) errors.push(`banner ${banner.id}.poolKind must be powerup or assist`);
     for (const [i, entry] of banner.pool.entries()) {
-      if (banner.channel === 'fighter') requireRef(candidate.units, entry.itemId, `banner ${banner.id}.pool[${i}].itemId`, 'unit');
+      const itemType = entry.itemType || (banner.channel === 'fighter' ? 'unit' : banner.poolKind);
+      const map = itemType === 'unit' ? candidate.units : itemType === 'powerup' ? candidate.powerups : itemType === 'assist' ? candidate.assists : null;
+      if (!map) errors.push(`banner ${banner.id}.pool[${i}].itemType is illegal: "${itemType}"`);
+      else requireRef(map, entry.itemId, `banner ${banner.id}.pool[${i}].itemId`, itemType);
+      if (banner.channel === 'supply' && itemType !== banner.poolKind) errors.push(`banner ${banner.id}.pool[${i}] mixes ${itemType} into ${banner.poolKind} results`);
     }
     if (banner.archiveBannerId === banner.id) errors.push(`banner ${banner.id}.archiveBannerId points to itself`);
   }
@@ -187,6 +255,9 @@ export function validateContent(candidate = content) {
   function validateRewards(rewards, path) {
     for (const [i, reward] of rewards.entries()) {
       if (typeof reward.amount === 'number' && reward.amount < 0) errors.push(`${path}[${i}].amount must not be negative`);
+      if (reward.type === 'powerup') requireRef(candidate.powerups, reward.itemId, `${path}[${i}].itemId`, 'powerup');
+      if (reward.type === 'assist') requireRef(candidate.assists, reward.itemId, `${path}[${i}].itemId`, 'assist');
+      if (reward.type === 'unit') requireRef(candidate.units, reward.itemId, `${path}[${i}].itemId`, 'unit');
     }
   }
 

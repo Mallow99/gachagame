@@ -15,8 +15,9 @@ progress and pulls satisfying rather than instant noise.
 | Echoes | 0 | duplicates explain this later |
 | Atlas Keys | 0 | first World is free; its finale awards the first Key |
 
-The four R starters are a story grant. They do not consume pull value and are
-not staged as lucky results.
+Classic Mario is the only Mushroom Hub story grant. Classic Luigi, Toad and
+Princess Peach are ordinary R pulls. Each later Hub likewise grants exactly one
+starter when its first World is entered.
 
 ## Exact SMB1 first-clear ledger
 
@@ -24,9 +25,8 @@ not staged as lucky results.
 
 | Milestone | Per-stage/bonus | Running total | Fighter pulls funded |
 | --- | ---: | ---: | ---: |
-| stages 1–4 | 60 each | 240 | 2.4 |
-| stage 5 | 160 | 400 | 4.0 |
-| Area 1 mission | 600 | **1,000** | **10.0** |
+| stages 1–4 | 100 each | 400 | 4.0 |
+| stage 5 | 600 | **1,000** | **10.0** |
 | stages 6–9 | 75 each | 1,300 | 13.0 |
 | stage 10 | 200 | 1,500 | 15.0 |
 | Area 2 mission | 300 | 1,800 | 18.0 |
@@ -34,12 +34,12 @@ not staged as lucky results.
 | stage 15 | 300 | 2,500 | 25.0 |
 | World completion | 500 | **3,000** | **30.0** |
 
-Stage 5 therefore unlocks Summon at exactly one ten-pull. The complete World
-funds 30 pulls before renewable play and ordinary reports. The tutorial
-ten-pull guarantees a new banner-declared SR if the batch contains no new
-SR-or-better fighter: Hammer Bro on the SMB1 Spotlight or an approved welcome
-SR on the Mushroom Kingdom Archive. It does not replace or suppress a normal
-SSR roll.
+Stage 1 unlocks Summon and its 100 Starlight funds one guaranteed-new result,
+excluding Classic Mario. Stage 5 completes the first ten results whether the
+player spent singly or saved. If that welcome sequence has no new SR or better,
+result ten becomes Hammer Bro on the SMB1 Spotlight or an approved owned-safe
+welcome SR on the Mushroom Kingdom Archive. It never replaces a natural SSR.
+The complete World still funds 30 pulls before renewable play.
 
 ### Coins
 
@@ -118,7 +118,7 @@ funds 30 pulls before renewable income:
 | 56 | 91.0% |
 
 The opener should therefore feel exciting whether or not it produces an SSR:
-the guaranteed SR must be useful, the free party must remain viable, and
+the guaranteed SR must be useful, the expected ordinary-pull roster must remain viable, and
 Bowser's defeat—not lucky rarity—is the gate. First clears, one Field Order folder
 and normal renewable combat target **35–45 pulls by hour 5**. That is beyond
 the median SSR point without making one mandatory; an unusually fast no-Camp
@@ -273,9 +273,10 @@ Every stage ships with four versioned reference teams and at least 2,000 seeds.
 
 | Fixture | SMB1 composition | Rank/stars | Expected envelope |
 | --- | --- | --- | --- |
-| free-minimum | Mario, Luigi, Toad, Peach; granted Mushroom only | recommended Rank, 0 stars | normals ≥90%; Area bosses 75–90%; Bowser 75–85% |
-| free-comfort | same party with earned SR Supply | +2 Ranks, 0 stars | bosses ≥92%; no mandatory phase skipped |
-| typical | three starters + one ordinary SR/SSR-equivalent value | recommended Rank, 0–1 stars | normals ≥97%; bosses 90–98% |
+| starter-solo | Classic Mario; stage 1 only | Rank 1, 0 stars | stage 1 ≥95%; validates the one-starter opening |
+| pull-minimum | Mario plus the weakest legal expected-pull roster and granted Mushroom | recommended Rank, 0 stars | normals ≥90%; Area bosses 75–90%; Bowser 75–85% |
+| pull-comfort | same rarity envelope with earned SR Supply | +2 Ranks, 0 stars | bosses ≥92%; no mandatory phase skipped |
+| typical | one starter plus three ordinary R/SR pulls, at most one SSR-equivalent | recommended Rank, 0–1 stars | normals ≥97%; bosses 90–98% |
 | premium | two SSRs, two ordinary units, legal Supply | recommended Rank | near 100%, 20–35% faster |
 | Mythic | one UR item, otherwise typical | recommended Rank | ordinary waves crushed; every boss identity still appears |
 
@@ -368,8 +369,9 @@ form whose new basic is only ten percent stronger from passing on spectacle.
 
 A balance change fails review if it causes any of these:
 
-- the first ten-pull arrives before the player clears stage 5 or after it;
-- the free party requires a random SSR to reach stage 15;
+- the first guaranteed-new result arrives after stage 1, or the welcome-ten
+  sequence completes before/after stage 5;
+- the expected R/SR pull roster requires a random SSR to reach stage 15;
 - a new unit enters more than two effective Ranks below the account;
 - renewable active income falls below 1.5 Fighter pulls/hour at an on-rank Camp
   or shuts off behind a daily cap;
@@ -384,7 +386,7 @@ A balance change fails review if it causes any of these:
 - repeated farming is the only rational action for more than 30 active minutes.
 - any first-copy ultimate misses its rarity value floor or requires a duplicate
   or Technique Mastery rank to feel stronger than an ordinary action.
-- real Archive pulls are enabled below the 22-fighter Mushroom or 20-fighter
+- real Archive pulls are enabled below the 22-fighter Mushroom or 22-fighter
   Dream Land normal-pool floor, or median ownership exceeds 75% of that pool
   after twenty pulls.
 - regional pull 40 becomes earnable below 28 live Mushroom or 26 live Dream
@@ -401,7 +403,7 @@ time a new tier is first entered.
 | I · Veteran | Story composition at current Threat; one disclosed modifier | Supply Tickets, Echoes, profile stamp |
 | II · Expert | +15% composition budget; one authored elite substitution | mastery material/selector progress |
 | III · Remix | +30% budget; two compatible modifiers; boss move remix | Starlight, SSR fragment progress, frame |
-| IV · Mythic | +45% budget; authored boss phase variant; Mythic slot expected | Mythic pull credits, title effect |
+| IV · Mythic | +45% budget; authored boss phase variant; UR access expected | Mythic pull credits, title effect |
 | V · Chronicle | +60% budget; full-World endurance order, no healing reset abuse | cosmetic crown and repeat-order unlock |
 
 Percentages affect encounter point budget, not a blanket hidden damage
@@ -432,8 +434,8 @@ encounters have enough measured data to remix intelligently.
   first, grants one selector among UR candidates actually unlocked by the
   account;
 - if only one candidate is unlocked, the selector can be held indefinitely;
-- one Mythic slot means a first UR remains a meaningful loadout choice after
-  another arrives.
+- no loadout cap prevents multiple URs; the simulator validates zero-, one- and
+  four-UR parties so later content does not quietly require a full UR team.
 
 The time fallback is based on active simulation time and requires at least five
 complete Worlds so leaving the strip open on stage 1 is not a selector farm.

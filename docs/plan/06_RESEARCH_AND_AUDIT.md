@@ -414,19 +414,18 @@ the current-rank track.
 **Problem:** UR should feel outrageous without deleting every boss before its
 identity appears.
 
-**Resolution:** one Mythic slot, 68% trial base gap, powerful 12–18-second
-windows and boss phase floors/max burst windows. Ordinary enemies are allowed
-to be obliterated.
-
-**Audit result:** one-slot rule is intentionally severe and stays a trial until
-at least two genuinely different UR choices exist.
+**Superseded resolution (plans `17`–`18`):** no Mythic loadout cap. Keep the
+68% trial base gap, powerful 12–18-second windows and boss phase floors/max
+burst windows. Ordinary enemies may be obliterated; late simulation must
+compare zero-, one- and four-UR parties.
 
 ### 7.9 Power-Up variety versus sprite cross-product
 
 **Problem:** six Power-Ups across ten Mario iterations could imply sixty sheets.
 
-**Resolution:** universal VFX/mechanics, tag compatibility, optional bespoke
-frames only for priority combinations and unsupported combinations blocked.
+**Resolution:** effect-only Power-Ups grant one trait, one stat lean and at most
+one proc. There is no compatibility matrix or sprite cross-product; optional
+matching frames remain polish.
 
 **Audit result:** coherent only if the first slice implements very few authored
 combinations.
@@ -501,7 +500,7 @@ produces mostly known low-rarity cards before the collection fantasy has room
 to breathe.
 
 **Resolution:** Mushroom requires 22 normal fighters (10 R / 7 SR / 5 SSR) and
-Dream Land requires 20 (8 / 7 / 5) before the Archive's first real pull.
+Dream Land requires 22 (8 / 9 / 5) before the Archive's first real pull.
 Simulation rejects median ownership above 75% after twenty pulls. The full expansion in
 plan `16` reaches 33 Mario and 31 Kirby fighters including Mythics, then uses
 focus shelves/selectors after 18 rather than deleting the complete Archive.
@@ -529,14 +528,14 @@ animation quality remain the gate, so “a model exists” is not enough.
 These are not planning omissions; they require a real build or owner asset
 choice.
 
-1. Whether Toad and Peach have acceptable era-coherent battle sheets for the
-   free party or need temporary fixtures/reconstruction.
+1. Whether Toad and Peach have acceptable era-coherent battle sheets for their
+   pullable R records or need temporary fixtures/reconstruction.
 2. Whether every specified first-slice pullable has a sufficient sheet after
    contact-sheet audit; failed units keep their stable IDs parked.
 3. Tuning the specified Coin/Starlight ledger after measured clear times.
 4. Whether original or explicitly enhanced sheets are better for individual
    early units.
-5. One Mythic slot versus a point budget after two UR options exist.
+5. Whether unrestricted multi-UR parties exceed the tested late-stage budgets.
 6. Whether UR Super Star is satisfying enough to introduce Mythic before the
    first UR fighter.
 7. Final strip scale, FPS and click-through behavior on the owner's M2 Air.
