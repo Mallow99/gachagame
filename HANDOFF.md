@@ -19,10 +19,13 @@ White, Omni-Man, Kirby, Ronald McDonald, Tung Tung Tung Sahur, ...) using
 ripped or official art. It's **personal use only**; the owner accepts that public
 distribution could draw takedowns.
 
-The current focus is the playable game loop: build the real Electron desk
-strip and its first 50-stage Mushroom Kingdom world before producing more
-characters or art. The Mario pull demo is already signed off and remains the
-future reveal reference.
+The current focus is the playable game loop. The long-term structure is now a
+Library of franchise Sagas containing complete 25-stage Worlds; see
+`docs/WORLD_TOUR_PLAN.md`. The first 50 authored stages are Mushroom Kingdom
+1–25 and Dream Land 1–25, while Mario can later expand to four Worlds and 100
+authored stages. Build the real Electron desk strip and one polished five-stage
+Mario slice before producing the larger roster. The Mario pull demo is already
+signed off and remains the future reveal reference.
 
 ---
 

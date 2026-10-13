@@ -9,6 +9,9 @@ jank" everywhere else. Personal use only.
 
 **Where we are:** build the playable game first. Character production and the
 art picker are paused until the strip loop works. The current step is Roadmap 2.
+The approved long-term content structure is now recorded in
+[`docs/WORLD_TOUR_PLAN.md`](docs/WORLD_TOUR_PLAN.md): a Library of franchise
+Sagas, made from complete 25-stage Worlds, with Mario and Kirby first.
 
 ---
 
@@ -41,12 +44,13 @@ art picker are paused until the strip loop works. The current step is Roadmap 2.
 - **The loop:** the strip earns → you pull in the window → your team gets
   stronger and new units appear in the strip → repeat.
 
-**Rarity:** R / SR / SSR as letters. Stars show duplicates.
+**Rarity:** R / SR / SSR / UR as letters. Stars show duplicates.
 - For variant families like Mario: base form is R, power-ups are SR, and
-  overpowered forms (Super Star, Mega, maybe Cappy) are SSR.
+  signature forms and bosses are SSR. UR is reserved for temporary,
+  screen-dominating transformations such as Fury Bowser or Invincible Mario.
 - Only SSRs get the full ceremony: the long draw, the in-flight
   transformation, the quote card and voice line, and the theme music. R and
-  SR go straight to the art with name and title.
+  SR go straight to the art with name and title. UR extends the SSR ceremony.
 
 **Art per character.** One good image is reused for the reveal, the profile
 and the ultimate cut-in. Three routes:
@@ -86,8 +90,9 @@ Decided: everything in the section above.
 1. **Prestige** (reset the stage for a permanent multiplier). It fits idle
    games, but the owner finds it a bit lame. Decide in Roadmap 4; bosses and
    new areas may be enough on their own.
-2. **The first vertical slice:** gaming characters with polished existing
-   sprites; choose the exact roster after the core game works.
+2. **The first vertical slice roster:** Mushroom Grasslands with 10–12 playable
+   candidates, four enemy families and Goomba King. Exact membership still
+   waits for an animation-sheet audit.
 3. **Earn rates:** how often a pull is affordable (tune by feel in Roadmap 4).
 
 Decided: variants are separate pullable units. A team may equip only one unit
@@ -127,20 +132,23 @@ working.
 **In progress:** Electron now starts as the real full-width bottom strip and
 switches to management when its HUD is clicked. Combat was rebuilt from the
 approved `demos/strip/` prototype: frontliners roam, Walter-style ranged units
-hold back, Mario-style stomp units jump onto targets, and visible action gauges
-plus a NEXT queue expose initiative. Stages have three waves and five rotating
-encounter rules. The strip is transparent, click-through, hidden by `×`, menu
-bar or `Cmd+Shift+G`, and absent from full-screen spaces. The management window
-has an exact Field Manual for every current formula. Passives, ultimate
-meters/cut-ins and reward drops are still pending.
+hold back and Mario-style stomp units jump onto targets. Visible action gauges
+already expose readiness; the redundant NEXT queue is scheduled for removal.
+Stages have three waves and five rotating encounter rules. The strip is
+transparent, click-through, hidden by `×`, menu bar or `Cmd+Shift+G`, and absent
+from full-screen spaces. The management window has an exact Field Manual for
+every current formula. Passives, ultimate meters/cut-ins, transformations,
+Assist Pages and reward drops are still pending.
 
 - An Electron window that is transparent, always on top, sits along the
   bottom of the screen and passes clicks through.
-- **Procedural stages:**
-  - waves of enemies, with a boss every 10th stage
-  - World 1 is 50 Mushroom Kingdom stages: Grassland, Underground, Cloudtops,
-    Airship Fleet and Bowser's Castle; each area lasts 10 stages
-  - themed bosses on stages 10/20/30/40, then Bowser on stage 50
+- **Authored Worlds with procedural Mastery:**
+  - three-wave stages, with a boss every fifth story stage
+  - World 1 is 25 Mushroom Kingdom stages: Grasslands, Underground Mines,
+    Haunted House, Koopa Airship and Bowser's Castle
+  - themed bosses on stages 5/10/15/20, then Bowser on stage 25
+  - the first 50 authored stages are Mushroom Kingdom 1–25 and Dream Land 1–25
+  - World stages 26–100 are optional Mastery remixes rather than 75 new biomes
   - enemy stats that keep scaling
 - **Combat from the data files:** stats, one basic action, a passive, and an
   ultimate meter that fires with a cut-in of the character's art. Front and
@@ -165,6 +173,8 @@ meters/cut-ins and reward drops are still pending.
 - **Banner skins:** each featured banner swaps the shooting star for its own
   object (Super Star for Mario, a Warp Star for Kirby, a blue crystal for
   Breaking Bad).
+- **Progressive pools:** area banners unlock as their bosses are defeated. UR
+  banners stay separate and do not open until the first World is complete.
 - **Done when:** currency earned in the strip buys pulls, and a newly pulled
   unit shows up in the strip.
 
@@ -173,6 +183,9 @@ meters/cut-ins and reward drops are still pending.
 - Levels bought with coins, stars from duplicates, four team slots with front
   and back rows, and one equipped variant per character family.
 - A collection log (who you have, who's missing as silhouettes).
+- One party-wide **Assist Page** with a passive and a charged or conditional
+  intervention. Support pages use their own rewards/tickets and never dilute
+  fighter banners.
 - "While you were away" earnings.
 - Decide on prestige (OPEN #2). Tune earn rates (OPEN #5).
 
