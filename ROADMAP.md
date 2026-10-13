@@ -8,11 +8,13 @@ and fast** to build and play. Polish where it pays off (pulls, SSRs), "charming
 jank" everywhere else. Personal use only.
 
 **Where we are:** build the playable game first. Character production and the
-art picker are paused until the strip loop works. The current step is Roadmap 2.
-The approved long-term content structure is now recorded in
-[`docs/WORLD_TOUR_PLAN.md`](docs/WORLD_TOUR_PLAN.md): a branching Atlas of
-franchise Sagas. Major Worlds can be 25 stages, smaller destinations can be
-5–20, and a Saga has no fixed stage cap. Mario and Kirby are first.
+art picker are paused until the strip loop works. The current step is the data
+and combat foundation in Roadmap 2. The definitive modular plan begins at
+[`docs/plan/README.md`](docs/plan/README.md); it supersedes earlier planning
+where they conflict. The approved structure is a branching Atlas where a Saga
+is a franchise and a World normally adapts one specific game. Major Worlds can
+be 25 stages, smaller titles can be 5–20, and a Saga has no fixed cap. Super
+Mario Bros. and Kirby's Adventure are the first production flagships.
 
 ---
 
@@ -36,7 +38,7 @@ franchise Sagas. Major Worlds can be 25 stages, smaller destinations can be
 
 - **The strip:** a transparent, always-on-top window along the bottom of the
   screen; clicks pass through except on game elements. Your team of four
-  auto-battles through endless procedural stages there while you work, and
+  auto-battles through authored Worlds and repeatable Camp stages while you work, and
   earns coins and pull currency. It's an auto-battler, like *Desktop Raid*
   or *Desktop Heroes*.
 - **The big window:** opens when you click the strip, or when a pull is ready.
@@ -91,19 +93,20 @@ and the ultimate cut-in. Three routes:
 
 ---
 
-## Roadmap 0: planning (now)
+## Roadmap 0: planning baseline (complete)
 
-Decided: everything in the section above.
+The definitive system, progression, player-path, first-50-stage, content,
+asset and research plans are in `docs/plan/`.
 
-**OPEN, to discuss when we get there:**
+**TRIAL decisions that require the real slice:**
 
-1. **Prestige** (reset the stage for a permanent multiplier). It fits idle
-   games, but the owner finds it a bit lame. Decide in Roadmap 4; bosses and
-   new areas may be enough on their own.
-2. **The first vertical slice roster:** Mushroom Grasslands with 8–12 playable
-   candidates, four enemy families and Goomba King. Exact membership still
-   waits for an animation-sheet audit.
-3. **Earn rates:** how often a pull is affordable (tune by feel in Roadmap 4).
+1. **Prestige** is deferred; authored Worlds and Mastery ship first.
+2. **The first production roster:** four free Library fighters plus the
+   smallest Super Mario Bros. banner that passes the animation-sheet audit.
+3. **Earn rates:** implement the trial targets in
+   `docs/plan/02_SYSTEMS_AND_BALANCE.md`, then tune from measured clear times.
+4. **Mythic restriction:** one shared slot until at least two UR choices can be
+   compared with a point-budget alternative.
 
 Decided: meaningful fighter iterations are separate pullable units. A team may
 equip only one unit from the same family, so it cannot be filled with four
@@ -143,8 +146,8 @@ working.
 
 **In progress:** Electron now starts as the real full-width bottom strip and
 switches to management when its HUD is clicked. Combat was rebuilt from the
-approved `demos/strip/` prototype: frontliners roam, Walter-style ranged units
-hold back and Mario-style stomp units jump onto targets. Visible action gauges
+approved `demos/strip/` prototype: frontliners roam, ranged dev fixtures hold
+back and Mario-style stomp units jump onto targets. Visible action gauges
 already expose readiness; the redundant NEXT queue is scheduled for removal.
 Stages have three waves and five rotating encounter rules. The strip is
 transparent, click-through, hidden by `×`, menu bar or `Cmd+Shift+G`, and absent
@@ -154,17 +157,17 @@ Assist Pages and reward drops are still pending.
 
 - An Electron window that is transparent, always on top, sits along the
   bottom of the screen and passes clicks through.
-- **Authored Worlds with scalable Mastery:**
-  - three-wave stages, with an Area boss every fifth story stage
+- **Authored title Worlds with scalable Mastery:**
+  - 4–6-wave stages, with an Area boss every fifth story stage
   - Worlds may contain 5, 10, 15, 20 or 25 stages; 25 is for flagship campaigns
-  - World 1 is 25 Mushroom Kingdom stages: Grasslands, Underground Mines,
-    Haunted House, Koopa Airship and Bowser's Castle
-  - themed bosses on stages 5/10/15/20, then Bowser on stage 25
-  - Dream Land is the second planned flagship, but later the player spends
+  - World 1 is the 25-stage Super Mario Bros. adaptation in
+    `docs/plan/04_CONTENT_CATALOG.md`; later-era airships, kings and Bowser Jr.
+    remain with their source games
+  - Kirby's Adventure is the second planned flagship, but later the player spends
     Atlas Keys to choose among a small set of eligible Worlds
-  - the account's Atlas Rank sets a new World's authored Threat Band when the
-    player first enters it; it does not rubber-band to the exact party or move
-    the goalposts during the campaign
+  - the account's Atlas Rank snapshots all newly revealed choices to the same
+    authored Threat; it does not rubber-band to the exact party or move the
+    goalposts during Story
   - Casual replay permits farming; Mastery remixes completed content upward
 - **Combat from the data files:** stats, one basic action, a passive, and an
   ultimate meter that fires with a cut-in of the character's art. Front and
@@ -188,7 +191,7 @@ Assist Pages and reward drops are still pending.
   gets its full ceremony, and there's a "skip to results" button.
 - **Banner skins:** each featured banner swaps the shooting star for its own
   object (Super Star for Mario, a Warp Star for Kirby, a blue crystal for
-  Breaking Bad).
+  Mega Man or another source-specific object).
 - **Progressive pools:** Area Spotlights unlock during their Worlds, then their
   contents move into a permanent Saga Archive. UR/Mythic banners stay separate,
   cycle among unlocked candidates and keep persistent pity.
@@ -199,8 +202,9 @@ Assist Pages and reward drops are still pending.
 
 ## Roadmap 4: progression and team building
 
-- Levels bought with coins, stars from duplicates, four team slots with front
-  and back rows, and one equipped variant per character family.
+- One account-wide Training Rank bought with Coins, stars from duplicates, four
+  team slots with front and back rows, and one equipped iteration per character
+  family. New pulls inherit Training Rank immediately.
 - A collection log (who you have, who's missing as silhouettes).
 - One party-wide **Assist Page** with a passive and a charged or conditional
   intervention, plus one compatible **Power-Up** slot per fighter. Supply
@@ -208,11 +212,12 @@ Assist Pages and reward drops are still pending.
 - Atlas Keys earned from final bosses open one of a small set of eligible
   destinations. Choices never permanently lock the unchosen Worlds.
 - "While you were away" earnings.
-- Decide on prestige (OPEN #2). Tune earn rates (OPEN #5).
+- Add 12-hour trial away earnings. Tune earn rates; reconsider prestige only
+  if Worlds and Mastery leave a demonstrated endgame gap.
 
 ## Roadmap 5: roster production
 
-- The first vertical slice (OPEN #3) at full quality, then the rest of the
+- The first five-stage Super Mario Bros. slice at full quality, then the rest of the
   roster in batches.
 - **Order of effort:** SSRs first (animated art, quote, voice, theme), then
   SRs and Rs (art, title, kit).
@@ -267,9 +272,9 @@ type, extra coins, a first strike.
 **Example kits:**
 - **Mario:** stomp, plus a melee punch. Passive: coin bonus. Ultimate:
   Super Star (invincible plus contact damage for a few seconds).
-- **Walter White:** ranged shot. Passive: poisons targets ("chemistry").
-  Ultimate: "Say my name." (stuns all enemies, then a big area-damage burst).
-- **Tung Tung Tung Sahur:** combo (TUNG TUNG TUNG). Passive: the third hit
-  stuns. Ultimate: "SAHUR!" (launches every enemy off the screen).
-- **Omni-Man:** charge. Passive: takes less damage. Ultimate: flies through
-  the whole wave.
+- **Luigi:** bouncing ranged shot. Passive: evasive retreat when approached.
+  Ultimate: a high arcing stomp chain across the backline.
+- **Kirby:** close strike with an equipped copy Power-Up. Passive: brief float
+  over ground hazards. Ultimate depends on the complete iteration.
+- **Mega Man:** ranged shot with a charged beam ultimate. Equipped Robot Master
+  weapons change traits and targeting rather than creating eight Mega Men.

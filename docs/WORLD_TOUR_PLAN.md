@@ -1,4 +1,10 @@
-# Pocket Gacha: World Atlas plan
+# Pocket Gacha: World Atlas plan (historical design pass)
+
+> The definitive plan now begins at [`docs/plan/README.md`](plan/README.md).
+> It adopts a newer default: each World normally adapts one specific game, so
+> the mixed-era Mushroom Kingdom and its boss order below are no longer the
+> production plan. Keep this document as the design history behind the Atlas,
+> family, Power-Up, Assist and banner decisions.
 
 This document extends `ROADMAP.md`. It consolidates the expandable content,
 roster, gacha and difficulty structure without replacing the immediate goal:

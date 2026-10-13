@@ -1,7 +1,8 @@
 # Pocket Gacha: handoff
 
-**Start with `ROADMAP.md`**: it says what we're building and in what order.
-This file is the history and technical detail behind it.
+**Start with `ROADMAP.md`, then `docs/plan/README.md`**: the roadmap says what
+is next and the plan directory is the definitive design/balance/content source.
+This file is the history and technical detail behind them.
 
 Repo: `Mallow99/gachagame`. Latest work is on branch
 `claude/stoic-archimedes-h3m7qt` (built on `claude/admiring-maxwell-nmj2ha`). The owner is a programming beginner who wants the fun result.
@@ -11,26 +12,28 @@ Explain choices briefly and don't drown them in options.
 
 ## 1. What this is
 
-A personal, free-to-play gacha RPG that runs as a small always-on-top desktop
-widget (Electron) on the owner's **M2 MacBook Air (8 GB)**. You pull for
-characters, level them, and auto-battle stages. There's no money involved; it's
-purely for the dopamine. The roster is a deliberately absurd crossover (Walter
-White, Omni-Man, Kirby, Ronald McDonald, Tung Tung Tung Sahur, ...) using
-ripped or official art. It's **personal use only**; the owner accepts that public
-distribution could draw takedowns.
+A personal, free-to-play desktop gacha auto-battler that runs as a small
+always-on-top strip (Electron) on the owner's **M2 MacBook Air (8 GB)**. You
+pull for characters and watch four of them physically roam and fight while you
+work. There is no money involved. The first production Library is gaming-first
+so real sprites can carry the combat; the earlier meme/live-action roster is a
+future Oddities candidate and remains only in dev fixtures/assets for now. It is
+**personal use only**; public distribution of third-party IP/assets may draw
+takedowns and requires a separate rights review.
 
-The current focus is the playable game loop. The long-term structure is now a
-branching Atlas of franchise Sagas; see `docs/WORLD_TOUR_PLAN.md`. Worlds can be
-5–25 stages according to their material, and Sagas have no stage cap. Mushroom
-Kingdom and Dream Land remain the first planned 25-stage flagships, but later
-the player chooses eligible destinations with Atlas Keys. Fighter iterations,
-equippable Power-Ups, party-wide Assist Pages, SSRs and one-per-team URs are
-separate systems; the refined rule is one Mythic slot shared across an UR
-fighter, UR Power-Up or future UR Assist. Atlas Rank sets a new World's Threat
-Band when it is first entered instead of hard level-syncing the player's team.
-Build the real Electron desk strip and one polished
-five-stage Mario slice before producing the larger roster. The Mario pull demo
-is already signed off and remains the future reveal reference.
+The current focus is the playable game loop. The definitive long-term structure
+is in `docs/plan/`: a Saga is a franchise and a World normally adapts one
+specific game, making visual history from old to newer sprites explicit. Worlds
+can be 5–25 stages according to their material, and Sagas have no stage cap.
+Super Mario Bros. and Kirby's Adventure are the first planned 25-stage
+flagships; later the player chooses eligible destinations with Atlas Keys.
+Fighter iterations, equippable Power-Ups, party-wide Assist Pages, SSRs and URs
+are separate systems. One Mythic slot is shared across an UR fighter, UR
+Power-Up or future UR Assist. One account-wide Training Rank replaces
+individual fighter levels. Atlas Rank snapshots a set of newly revealed Worlds
+instead of hard level-syncing the player's exact party. Build the real strip and
+one polished five-stage Super Mario Bros. slice before producing the larger
+roster. The signed-off Mario pull demo remains the reveal reference.
 
 ---
 
@@ -57,6 +60,8 @@ assets/characters/CATALOG.md   Per-character grade, source, processing, animatio
 assets/characters/gallery.html Visual review page for batch 1
 tools/art/                     Art pipeline scripts (see section 5)
 docs/CHARACTER_SPEC.md         Target pull sequence, asset checklist, kit structure
+docs/plan/                     Definitive implementation, balance, path, content,
+                               assets, research and audit documents
 demos/mario-pull/              The Mario showcase pull (section 4); open index.html
 demos/strip/                   Desk strip prototype: cut-out puppets auto-battling
                                along the bottom of a mock desktop
@@ -75,9 +80,11 @@ it as `file://` won't work. It's also published as a Claude artifact the owner
 views: https://claude.ai/artifact/7aSgKuTJpH6J7pxLpPMRUe (version 4, signed off by the owner: six Pixiv illustrations as separate pulls across R/SR/SSR, `PULLS` array in index.html; only the SSR gets the quote, voice and Starman theme). The strip prototype is at https://claude.ai/artifact/FaXzvANwXa628a8m1A9e1K.
 
 The main game still uses its own simple reveal (`src/views/reveal.js`). The
-mechanics test team now uses the approved Mario, Walter and Sahur cut-outs from
-`demos/strip/`; the remaining test roster still uses placeholder pixel sprites.
-**Batch 1 art in `assets/characters/` is not wired into the game yet.**
+mechanics test team currently uses Mario, Walter and Sahur cut-outs from
+`demos/strip/`; these are dev fixtures, not the planned player-facing roster.
+The remaining test roster uses placeholder pixel sprites. **Batch 1 art in
+`assets/characters/` is not wired into the game yet.** Do not delete fixtures
+until the real free party and enemies can boot every view and run combat.
 
 ---
 
@@ -92,8 +99,10 @@ mechanics test team now uses the approved Mario, Walter and Sahur cut-outs from
   **quote typed in and a voice line**, plus a rendition of their **iconic music**,
   then a transition into the high-quality image, then **S / S / R slamming in**
   as separate letters, then stars, name and details.
-- **Variants by tier**: e.g. plain Mario (R) → power-up Marios (Fire, Ice,
-  Tanuki, Propeller, Penguin; SR) → Superstar/invincible Mario (SSR).
+- **Variants by tier, refined later**: complete game-era movesets can be
+  separate fighter iterations, but ordinary Fire/Ice/Tanooki-style changes are
+  usually equippable Power-Ups. Base versions are normally R, specialists SR,
+  signatures/bosses SSR and truly exceptional anchors UR.
 - Later: kits per character (basic, skill, ultimate, passive) with
   animations and effects.
 - Widescreen is fine; mobile aspect isn't required.

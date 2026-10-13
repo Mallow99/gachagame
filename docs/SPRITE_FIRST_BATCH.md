@@ -1,5 +1,11 @@
 # Sprite-first vertical slice
 
+> Historical scouting batch. The 12 sheets remain useful candidates, but this
+> is no longer the production order. The engine and five-stage Super Mario
+> Bros. slice in [`docs/plan/01_IMPLEMENTATION.md`](plan/01_IMPLEMENTATION.md)
+> come first; use [`docs/plan/05_ASSET_PIPELINE.md`](plan/05_ASSET_PIPELINE.md)
+> for the current intake gates.
+
 The first production batch is deliberately made of characters whose existing
 game sprites can carry the desk strip. This saves animation work for the pull
 ceremony and combat effects, where polish pays off most.

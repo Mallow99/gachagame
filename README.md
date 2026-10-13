@@ -1,12 +1,18 @@
 # Pocket Gacha
 
-> Picking this up? Read [HANDOFF.md](HANDOFF.md) first.
+> Picking this up? Read [ROADMAP.md](ROADMAP.md), then the definitive
+> [plan index](docs/plan/README.md), then [HANDOFF.md](HANDOFF.md) for history.
 
 A tiny gacha RPG that fights along the bottom of your screen. Pull for heroes,
 level them up, and send a party of four through auto-battles. No store, no real money.
 
 Plain HTML/CSS/JavaScript (no framework, no build step) in an Electron window.
 The same code also runs as a normal web page.
+
+The sections below document the **current prototype**, including its temporary
+roster, individual levels, NEXT readout and 50-stage test route. They are not the
+approved target design. The next implementation replaces those pieces in the
+dependency order recorded in `docs/plan/01_IMPLEMENTATION.md`.
 
 ## Run it
 

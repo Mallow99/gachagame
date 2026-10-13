@@ -1,5 +1,9 @@
 # Character spec: what a "finished" character is
 
+> Presentation checklist only. Roster structure, rarity, Power-Ups, title
+> release homes and asset gates now live in [`docs/plan/`](plan/README.md) and
+> override older variant examples below where they conflict.
+
 The bar: low-budget, but every pull should feel like a real gacha pull.
 This doc is the checklist each batch is built against.
 
