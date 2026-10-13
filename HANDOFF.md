@@ -4,8 +4,13 @@
 is next and the plan directory is the definitive design/balance/content source.
 This file is the history and technical detail behind them.
 
-Repo: `Mallow99/gachagame`. Latest work is on branch
-`claude/stoic-archimedes-h3m7qt` (built on `claude/admiring-maxwell-nmj2ha`). The owner is a programming beginner who wants the fun result.
+Repo: `Mallow99/gachagame`. Definitive planning is on branch
+`claude/stoic-archimedes-h3m7qt`; the stable PG-001/PG-002 coding foundation was
+committed separately on `codex/pg001-pg002` at
+`a957df556356dc80c183a5bb3707c5d694799592` (14 tests passing at that commit).
+Later combat work from that coding chat may be uncommitted and must be inspected
+before assuming it exists. The owner is a programming beginner who wants the
+fun result.
 Explain choices briefly and don't drown them in options.
 
 ---
@@ -22,9 +27,11 @@ future Oddities candidate and remains only in dev fixtures/assets for now. It is
 takedowns and requires a separate rights review.
 
 The current focus is the playable game loop. The definitive long-term structure
-is in `docs/plan/`: a Saga is a franchise and a World normally adapts one
-specific game, making visual history from old to newer sprites explicit. Worlds
-can be 5–25 stages according to their material, and Sagas have no stage cap.
+is in `docs/plan/`: a Saga is shown as a franchise Hub, its permanent Archive
+can contain production-ready iterations from several games, and a World adapts
+one specific game, making visual history from old to newer sprites explicit.
+Worlds can be 5–25 stages according to their material, and Sagas have no stage
+cap.
 Super Mario Bros. is the first planned 15-stage World and Kirby's Adventure is
 the recommended second 20-stage World; the player chooses eligible destinations
 with Atlas Keys rather than following the production order.
@@ -39,6 +46,30 @@ play, then repeatable Camp/Patrol Reports keep pulls renewable. Stackable Field
 Orders and optional resource/XP/Wanted-Hunt Sorties make the generous daily
 bundle something the player earns instead of a login claim. The signed-off
 Mario pull demo remains the reveal reference.
+
+Plan addenda `13_HUBS_BANNERS_AND_PRESENTATION.md` and
+`14_MARIO_KIRBY_CHARACTER_BIBLE.md` are authoritative for the regional Archive,
+summon timing/card content, Mario and Kirby kits, Copy, Goomba flatten, shell
+kicks, float, tongue and all signature-animation acceptance tests. Yoshi (SMW)
+and Mario 64 are the first post-slice engine proofs, followed by the regional
+pool floors and breadth shelves in plan `16`.
+Plan `15_MEGA_MAN_CHARACTER_BIBLE.md` is a complete future roster packet for
+Mega Man 2, all eight Robot Masters, Wily, Roll and Proto Man.
+
+**Priority correction:** plan `16_MARIO_KIRBY_ARCHIVE_EXPANSION.md` now comes
+before plan `15` in production. “Bigger roster” means deeper Mushroom Kingdom
+and Dream Land pools, not reaching another franchise sooner. It adds 15 Mario
+and 19 Kirby cards, including Cappy Mario, Dry Bowser, Poltergust Luigi, all
+five Super Ability Kirbys and UR Hypernova Kirby. The normal-banner
+floor is 22 Mushroom fighters and 20 Dream Land fighters before each Archive's
+first real pull. Mega Man remains designed but is deferred.
+
+Ultimate coefficients in the character bibles were rebalanced after the owner
+correctly identified that the old 2–3× totals were barely normal attacks. The
+current floor is measured in basic-action equivalents: 4+ R, 5.5+ SR, 7+ SSR
+and 10+ UR or 18–26 over a transformation. Technique Mastery has five ranks;
+universal Technique Notes accelerate it, while the first copy retains the full
+kit and a strong ultimate.
 
 ---
 

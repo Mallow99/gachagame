@@ -17,8 +17,8 @@ ships one World at a time.
 - The player chooses compact/normal strip scale, reduced motion and sound.
 - The shortcut and menu-bar restore control are shown before combat begins.
 - The management window closes into a transparent practice strip.
-- Mario demonstrates running and a stomp; Luigi demonstrates a ranged/bouncing
-  action; the player sees gauges fill independently.
+- Mario demonstrates running and a stomp; Luigi demonstrates a visibly higher
+  jump/charge; the player sees gauges fill independently.
 
 No gacha, store carousel, seven currencies or lore wall appears before the
 player has seen the game move.
@@ -33,10 +33,10 @@ The Library prologue grants a four-person R party outside the gacha:
 4. Princess Peach — backline support/controller.
 
 These are introductory Library interpretations with era-coherent sprites; they
-do not imply all four were playable in the 1985 source game. Yoshi first appears
-with a World where Yoshi belongs. The title-based rule anchors environments,
-enemies, bosses, releases and art direction without forbidding a crossover
-party from entering them.
+do not imply all four were playable in the 1985 source game. Yoshi's source is
+still *Super Mario World*, but a production-ready Yoshi may enter the regional
+Archive after stage 5. The title-based rule anchors environments, enemies,
+bosses and art direction without making campaign order a roster prison.
 
 The first two stages teach only:
 
@@ -52,9 +52,17 @@ The first two stages teach only:
 - Stage 5 is the Hammer Bros. boss.
 - Victory funds the remainder of the first ten Fighter pulls and unlocks the
   Supply page with 3–5 Tickets.
-- The ten-pull guarantees one non-story SR. A small three-unit focus selector
-  is preferable to save deletion/rerolling.
+- The player chooses the SMB1 Spotlight or Mushroom Kingdom Archive. If the
+  ten-pull has no new SR or better, that banner inserts a declared welcome SR;
+  this is preferable to save deletion/rerolling.
+- In the finished build, the Archive accepts that first pull only when its
+  22-fighter opening floor is production-ready. An engine-preview build may
+  test the smaller SMB1 Spotlight, but cannot present a tiny Archive as final.
 - The newly pulled unit inherits Training Rank and can be fielded immediately.
+- Fighter Practice and Technique Mastery unlock after the pull. Rank 1 already
+  contains the complete kit; the tutorial grants a small universal Technique
+  Note bundle and demonstrates investing in any favorite rather than demanding
+  another copy.
 
 The player has now completed the whole loop: watch → earn → understand → pull
 → change team → watch the difference.

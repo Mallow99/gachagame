@@ -110,21 +110,22 @@ no bridge phases. Sharing art/identity does not mean importing boss health.
 | `toad` | R | prologue grant/pool | Combo striker with small emergency delivery heal | 1 |
 | `princess-peach` | R | prologue grant/pool | Lob support, shields and party recovery | 1 |
 | `koopa-troopa` | R | stage 2 seen; stage 5 pool | defensive Strike, taunt and ricochet | 2 |
-| `hammer-bro` | SR | stage 5 defeat; guaranteed first-ten recruit if needed | anti-Airborne Lob artillery | 2 |
+| `hammer-bro` | SR | stage 5 defeat; SMB1 first-ten safeguard if needed | anti-Airborne Lob artillery | 2 |
 | `blooper` | R | stage 8 seen; Area-2 focus | Combo controller and ink | 3 |
 | `buzzy-beetle` | SR | stage 6 seen; Area-2 focus | Projectile-resistant Charge vanguard | 3 |
 | `lakitu` | SR | stage 10 defeat; Area-2 focus | Airborne Lob artillery/summoner | 3 |
 | `bowser` | SSR | advertised in World banner; focus improves after stage 15 | Charge vanguard, flame line and control conversion | 4 |
 
-Bowser is the initial banner's only SSR so the published 3% SSR rate is honest.
+Bowser is the initial **SMB1 Spotlight's** only SSR so its published 3% SSR rate is honest.
 Pulling the playable version before the finale is allowed; stage 15 unlocks his
 50% SSR focus and Saga Archive entry rather than his basic existence. Other
 bosses normally join after defeat unless their banner record declares this
 signature-antagonist exception.
 
-The tutorial ten-pull guarantees the first copy of Hammer Bro if it contains no
-new SR-or-better fighter. This replaces rerolling and ensures the player owns a
-non-story recruit. The normal SSR roll still occurs on all ten results.
+On the SMB1 Spotlight, the tutorial ten-pull guarantees the first copy of
+Hammer Bro if it contains no new SR-or-better fighter. On the regional Archive,
+the equivalent safeguard uses that banner's approved welcome-SR pool. This
+replaces rerolling and ensures a non-story recruit; natural SSRs remain intact.
 
 ## SMB1 banner lifecycle
 
@@ -132,9 +133,9 @@ non-story recruit. The normal SSR roll still occurs on all ten results.
 | --- | --- | --- |
 | start | preview only; exact rates/pool visible | locked with stage-3 condition |
 | stage 3 | unchanged | Mushroom granted; Overworld Supply preview |
-| stage 5 | Overworld Spotlight opens; starters, Koopa, Hammer Bro, Bowser | Overworld Supply opens |
+| stage 5 | Overworld Spotlight opens; Mushroom Kingdom Archive accepts pulls only at its 22-fighter plan-`16` floor | Overworld Supply opens |
 | stage 10 | adds Blooper, Buzzy Beetle and Lakitu focus | High Roads items added |
-| stage 15 | Bowser becomes featured; full Saga Archive opens | Castle items and Archive open |
+| stage 15 | Bowser becomes featured; completed SMB1 entries settle into the Archive | Castle items and Archive open |
 | next World finale | progress Spotlight closes into Mario Archive | progress Supply closes into Archive |
 
 No item leaves permanent availability. Pity belongs to Fighter/Supply channel,
@@ -211,10 +212,15 @@ a new economy. Its 20 encounters are specified in `04_CONTENT_CATALOG.md`.
 | 4 | Bonkers, Meta-Knights, Meta Knight | offered weapon rule and duel posture |
 | 5 | Dedede, Nightmare Orb/Wizard | narrative miniboss plus two-form finale |
 
-First release fighters: R Kirby/Waddle Dee/Poppy Bros. Jr.; SR Sir Kibble/Hot
+First release fighters: R Kirby/Parasol Waddle Dee/Poppy Bros. Jr.; SR Sir Kibble/Hot
 Head/Wheelie/Sparky/Rocky/Bonkers; SSR Meta Knight/Dedede. Ability hats are
 Supply. Star Rod Kirby is the single UR candidate and ships only if it has a
 complete fighter sheet and kit.
+
+That list is the *Kirby's Adventure* World/Spotlight cast, not the whole early
+Dream Land Archive. Before its first real pull, the permanent Archive must
+reach the 20-fighter floor in plan `16`, adding sprite-ready helpers,
+rivals and Super Ability forms without inserting them into this title's stages.
 
 ## Tier-A production packets
 
@@ -244,6 +250,10 @@ tables wait until their World enters production.
 - finale: Wily machine phases and alien illusion;
 - engineering: targetable projectiles, weakness hints without a universal
   triangle, destructible shots and boss-room transitions.
+
+Detailed release packet: R Mega Man story grant and Sniper Joe; all eight Robot
+Masters as SR specialists; SSR Wily; then R Roll and SSR Proto Man as honest
+cross-title 20XX Archive additions. See `15_MEGA_MAN_CHARACTER_BIBLE.md`.
 
 ### Pac-Man — 5 stages
 

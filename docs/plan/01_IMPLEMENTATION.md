@@ -368,9 +368,14 @@ Purpose: close the strip → reward → pull → stronger/different strip loop.
   R/SR reveals stay brisk.
 - Implement roster filters, exact stats, kit pages, family lock, party presets,
   one Power-Up per fighter and one Assist Page per party.
+- Support declared Archive release floors and same-rarity focus shelves. Dev
+  fixtures may test the banner earlier, but production currency beyond the
+  tutorial ten-pull does not open on an undersized “finished” regional pool.
 - The first story party is granted outside gacha. The first ten-pull is earned
-  through play and grants Hammer Bro if it contains no new SR-or-better fighter,
-  so the banner always changes the account without suppressing natural SSRs.
+  through play. If it contains no new SR-or-better fighter, the selected
+  banner's declared beginner pool supplies one—Hammer Bro on the SMB1
+  Spotlight, or an approved welcome SR in the Saga Archive—without suppressing
+  natural SSRs.
 
 ### Acceptance
 
@@ -383,6 +388,9 @@ Purpose: close the strip → reward → pull → stronger/different strip loop.
 - Duplicate and max-star conversions are explained before the player pulls.
 - Currency earned in the strip buys a pull; that pull can visibly change the
   next strip fight.
+- Before the first production Archive pull, Mushroom contains at least 22
+  normal fighters (10/7/5 by R/SR/SSR) and Dream Land at least 20 (8/7/5);
+  twenty-pull median ownership stays at or below 75%.
 
 ## Phase 6 — finish the Super Mario Bros. World
 
@@ -419,6 +427,9 @@ different game rather than becoming a Mario-specific engine.
 - Build Kirby's Adventure as the second 20-stage World: copy-ability Supply
   content, aerial enemies, guarded Meta Knight, Nightmare vulnerability and a
   different movement silhouette.
+- Fill the Dream Land opening Archive to its 20-fighter floor before enabling
+  its unrestricted regional pull loop; complete its breadth shelf before a new
+  franchise roster enters production.
 - Add Mastery I to the completed Mario World rather than appending generic
   stages 26–100.
 
@@ -454,7 +465,7 @@ animation plan is unresolved.
 | Layer | Automated | Manual |
 | --- | --- | --- |
 | Data | schema, references, stable IDs, asset existence | names, title fidelity |
-| Combat | seeded outcomes, formulas, status stacking, no stalls | readability, charm, pacing |
+| Combat | seeded outcomes, formulas, status stacking, ultimate value floor, no stalls | readability, charm, pacing and ultimate impact |
 | Balance | thousands of reference-team runs | strongest/weakest plausible builds |
 | Save | migration fixtures, round trips, missing content | owner backup/restore |
 | Gacha | distribution, pity, guarantee, conversion | ceremony, skip, expectation clarity |

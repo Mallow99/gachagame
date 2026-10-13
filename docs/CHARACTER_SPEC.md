@@ -1,8 +1,10 @@
 # Character spec: what a "finished" character is
 
-> Presentation checklist only. Roster structure, rarity, Power-Ups, title
-> release homes and asset gates now live in [`docs/plan/`](plan/README.md) and
-> override older variant examples below where they conflict.
+> Historical presentation checklist only. Roster structure, rarity, Power-Ups,
+> title release homes and asset gates live in [`docs/plan/`](plan/README.md).
+> In particular, plan documents `13` and `14` override the older variant and
+> skill-point examples below with the Hub Archive, real-time cooldown kits and
+> the Mario/Kirby character bible.
 
 The bar: low-budget, but every pull should feel like a real gacha pull.
 This doc is the checklist each batch is built against.

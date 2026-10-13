@@ -192,12 +192,22 @@ The banner key art is not the result splash. Pull ceremony uses source-specific
 objects, then a black quote/voice screen only for the rarities that actually
 have those assets. `Skip` always reaches an accessible results grid.
 
+The Fighter tab can show the active title Spotlight beside the permanent Saga
+Archive. The Archive may include production-ready iterations from games whose
+Worlds are not built; each result card states its real source game. The full
+timing, rarity treatments, card fields, crash-safe result commitment and
+reduced-motion behavior live in `13_HUBS_BANNERS_AND_PRESENTATION.md`.
+
 The page explicitly distinguishes currencies and guarantees:
 
 - Fighter uses Starlight;
 - Supply uses Supply Tickets;
 - Mythic uses its own unlocked route and persistent pity;
 - Archives do not expire and inherit the appropriate channel pity.
+
+An Archive above 18 released fighters adds rarity/source filters and rotating
+focus shelves without hiding the complete pool. The banner header shows
+`owned / released` and the full rate table—not misleading silhouette totals.
 
 ## Manual page
 
@@ -212,6 +222,10 @@ configuration where practical:
 6. World Threat, recommended Rank and Mastery scaling;
 7. reward sources, Field Orders, optional Sorties and offline behavior;
 8. glossary of traits such as Airborne, Aquatic, Fire and Mechanical.
+
+The fighter detail page also shows Technique Mastery 1–5, current XP, the exact
+next node and an `Apply Technique Notes` control. Rank 1 displays the complete
+kit; the UI never labels an unfinished move as unlocked only after duplicates.
 
 Every rule marks `TRIAL` where tuning remains open. The Manual shows build and
 content versions for bug reports.

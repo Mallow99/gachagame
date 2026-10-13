@@ -19,8 +19,13 @@ Exceptions are explicit:
   `Remix Boss` rather than borrowing a famous boss from another title;
 - a crossover party may enter any World; the active party is not forced to
   reenact the source plot;
-- a character can release with the most appropriate title, even if that means
-  waiting. Fame alone does not move King Boo into 1985.
+- a character may release early through its franchise Archive when its full
+  sprite, art, kit and provenance are production-ready; its card still names
+  the real source game. Fame alone does not move King Boo into an SMB1 stage.
+
+The Atlas renders a Saga as an evocative Hub such as Mushroom Kingdom or Dream
+Land. See `13_HUBS_BANNERS_AND_PRESENTATION.md`: title-specific Worlds preserve
+history, while the Saga Archive can offer released iterations across titles.
 
 ## 2. Opening complete Worlds: recommended production path
 
@@ -35,9 +40,10 @@ filler merely to hit 25.
 The source has eight short Worlds but few unique named bosses. Fifteen stages
 preserve its complete enemy/environment arc without inventing five modern-style
 guardians. The initially imagined airship moves to *Super Mario Bros. 3*;
-Goomba King, King Bob-omb, King Boo and Bowser Jr. wait for the games where they
-belong. Target first-clear time is 3–5 active hours including Camp, management
-and early pulls.
+Goomba King, King Bob-omb, King Boo and Bowser Jr. wait for their proper games
+as story enemies. A production-ready fighter iteration may appear in the Mario
+Archive earlier without changing these stages. Target first-clear time is 3–5
+active hours including Camp, management and early pulls.
 
 ### Area 1: Overworld, stages 1–5
 
@@ -104,19 +110,22 @@ their production grade must not be hidden.
 
 These are **TRIAL** kits for engine/data planning. A move may change if the
 approved sheet cannot animate it; rarity and combat job should remain stable.
+The exact current cards and corrected ultimate coefficients in
+`14_MARIO_KIRBY_CHARACTER_BIBLE.md` supersede older numbers in this compact
+summary.
 
 | Fighter | Role/pattern | Level-1 R stats or rarity basis | Basic and skill | Passive and ultimate |
 | --- | --- | --- | --- | --- |
 | Classic Mario (R, free) | Bruiser / Stomp | HP 1,100; ATK 99; Guard 42; Move 123; Haste 0% | 1.15-coefficient stomp; `Brick Break` every 10 s splashes and adds boss stagger | +10% Coin from his kills; `Course Clear` runs through the line, stomps backmost target and grants team +15% Haste for 8 s |
-| Classic Luigi (R, free) | Controller / Charge | HP 850; ATK 92; Guard 28; Move 135; Haste 5% | high-jump charge through one target; `Scared Stiff` every 12 s retreats and Slows nearby enemies | +20% dodge chance during movement states; `Luigi Leap` chains three low-damage stomps and knocks back non-bosses |
-| Toad (R, free) | Striker / Combo | HP 760; ATK 118; Guard 25; Move 142; Haste 8% | three-hit headlong combo; `Mushroom Delivery` every 11 s heals the lowest ally for 85% ATK | gains 10 energy when an ally drops below 35% HP, once per ally/wave; `Fastest Route` gives party Move/Haste and performs a line charge |
-| Princess Peach (R, free) | Support / Lob | HP 900; ATK 80; Guard 34; Move 112; Haste 4% | 0.80 turnip lob with small splash; `Royal Guard` every 10 s shields the lowest two allies for 110% ATK | first party member below 20% HP receives a one-time 100% ATK heal; `Peach's Wish` heals 140% ATK and shields the party for 100% ATK |
-| Koopa Troopa (R) | Vanguard / Strike | Vanguard baseline | shell jab; `Shell Guard` taunts and gains +50 Guard for 5 s | shell recoil damages melee attackers; `Ricochet Route` crosses the enemy line twice |
-| Hammer Bro (SR) | Artillery / Lob | Artillery stats × SR; +8 Guard | hammer arc; `Hammer Fan` sends three falling hammers across distinct zones | +40% damage to Airborne; `Hammer Storm` fills the enemy half with staggered telegraphed impacts |
+| Classic Luigi (R, free) | Controller / Charge | HP 980; ATK 94; Guard 36; Move 132; Haste 3% | 1.08 high-jump charge; `Evasive Retreat` every 9 s hits for 0.90 and slides him to safety | movement grants 8 Guard; `Backline Bound` chains three 1.20 stomps into a 2.20 landing plus 0.60 splash |
+| Toad (R, free) | Striker / Combo | HP 900; ATK 102; Guard 30; Move 138; Haste 4% | three 0.40 hits; `Emergency Delivery` every 12 s heals the lowest ally for 60% ATK | +8% Haste for each wave's first 6 s; `Retainer Rush` deals six 0.85 hits plus a 1.20 finisher |
+| Princess Peach (R, free) | Support / Lob | HP 940; ATK 88; Guard 34; Move 112; Haste 0% | 0.82 turnip plus 0.35 splash; `Royal Shield` every 11 s shields the lowest ally for 80% ATK | heals party for 18% ATK after waves; `Princess's Wish` cleanses, heals 220%, shields 150% and grants Haste |
+| Koopa Troopa (R) | Vanguard / Strike | HP 1,280; ATK 80; Guard 67; Move 108; Haste 0% | 1.00 shell jab; `Shell Guard` taunts and gains 45 Guard for 4 s | low HP creates a kickable shell; `Ricochet Route` makes four 1.25 passes plus a 2.00 exit hit |
+| Hammer Bro (SR) | Artillery / Lob | HP 897; ATK 129; Guard 28; Move 108; Haste 0% | 0.90 arc plus 0.40 splash; `Hammer Fan` sends three 0.62 hammers | +35% damage to Airborne; `Hammer Storm` deals eight 0.90 impacts plus a 1.20 center hit |
 | Blooper (R) | Controller / Combo | Controller baseline; Aquatic | pulsing tentacle combo; `Ink Cloud` reduces enemy range/accuracy for 4 s | faster movement in Aquatic encounters; `Deep Ink` marks all enemies and dives the backline |
 | Buzzy Beetle (SR) | Vanguard / Charge | Vanguard stats × SR; +20 Guard, -12 Move | shell charge; `Ceiling Drop` targets farthest enemy where legal | takes 35% less Projectile damage; `Unbreakable Shell` blocks then reflects bounded damage |
 | Lakitu (SR) | Artillery / Lob | Artillery stats × SR; Airborne | Spiny Egg lob; `Spiny Rain` summons two short-lived Spinies | remains at extreme range until cloud staggered; `Storm Cloud` Slows and strikes marked zones |
-| Bowser (SSR, signature) | Vanguard / Charge | Vanguard stats × SSR; +25% HP budget, -10% Haste | claw/charge; `Royal Flame` beams a line every 11 s | control converts partly to stagger instead of full duration; `King of the Koopas` leaps away, crashes down, then uses flame/hammer follow-ups |
+| Bowser (SSR, signature) | Vanguard / Charge | HP 1,960; ATK 126; Guard 72; Move 92; Haste -2% | two 0.58 claws; `Royal Flame` deals four 0.34 ticks and Burn every 11 s | 45% of control converts to stagger; `King of the Koopas` deals 2.40 impact plus eight 0.75 flame ticks |
 
 Mario, Luigi, Toad and Peach are granted; their later duplicates can still
 star them. Enemy fighters join only after the relevant encounter. Bowser is the
@@ -196,7 +205,7 @@ World finale.
 
 | Availability | Fighters | Supply |
 | --- | --- | --- |
-| World unlock | R Kirby, R Waddle Dee, R Poppy Bros. Jr. | R Parasol, R Beam, R Dream Spring Page |
+| World unlock | R Kirby, R Parasol Waddle Dee, R Poppy Bros. Jr. | R Parasol, R Beam, R Dream Spring Page |
 | Area 1 | SR Sir Kibble, SR Hot Head | SR Cutter, SR Fire, Whispy's Apples Page |
 | Area 2 | SR Wheelie, SR Sparky, SR Rocky | SR Ice, SR Spark, Kracko Storm Page |
 | Area 3 | SR Bonkers; SSR Meta Knight after defeat | SR Hammer, SSR Sword, Halberd Knights Page |
@@ -226,16 +235,22 @@ coherent source game.
 | Bowser's Fury | 10 | Lake islands; Ruins/Lapcat | Fury Shadow remix; Fury Bowser | Fury Bowser UR, Giga Bell UR Power-Up, Bowser Jr. Assist |
 | Super Mario Bros. Wonder | 20 | Flower Kingdom biomes; Wonder gauntlets | authored title bosses and Bowser finale | Elephant/Bubble/Drill Power-Ups, Wonder Pages |
 
-Mario releases are distributed with their source Worlds. The plan does not
-front-load every Koopaling, Yoshi color and Mario iteration into launch.
+Mario releases normally focus with their source Worlds, but approved iterations
+may enter the Mushroom Kingdom Archive earlier. The opening expansion targets
+Yoshi (SMW) and Mario 64 as engine proofs, then reaches the 22-fighter opening
+floor in `16_MARIO_KIRBY_ARCHIVE_EXPANSION.md` before the first real Archive
+pull. This front-loads useful collection breadth, not every Koopaling, color or
+palette variation.
 
 ### Mario family/rarity guide
 
-- R introductions: Mario, Luigi, Peach, Toad, Yoshi when their base entry ships.
+- R introductions: Mario, Luigi, Peach, Toad and Daisy when their base entry ships.
 - SR specialists: Hammer Bro, Lakitu, Captain Toad, colored Yoshis with real kit
-  differences, Koopalings, Kamek, Bowser Jr., Petey Piranha.
+  differences, base Yoshi's tongue/egg kit, Koopalings, Kamek, Bowser Jr.,
+  Wario, Waluigi, Dr. Mario, Builder/Tanooki Mario and Swordfighter Peach.
 - SSR signatures/bosses: Bowser, King Bob-omb, King Boo, Paper Mario, Sunshine
-  Mario, major era bosses.
+  Mario, Cappy Mario, Dry Bowser, Poltergust Luigi, Petey Piranha and major era
+  bosses.
 - UR candidates: Fury Bowser, Star-powered/Invincible Mario only if a full kit
   exists, a peak Galaxy/Rosalina treatment, or another truly build-defining
   interpretation. Retro status alone is not an UR qualification.
@@ -253,7 +268,15 @@ front-load every Koopaling, Yoshi color and Mario iteration into launch.
 | Planet Robobot | 20 | mechanized Popstar districts | Robobot Armor Power-Up/iteration, Susie, Haltmann |
 | Kirby and the Forgotten Land | 25 | plains; coast; carnival; winter; Lab Discovera | Bandana Dee, Mouthful effects, Clawroline, Fecto Elfilis |
 
+The opening/breadth Dream Land Archive, Hypernova Kirby and first two pullable
+Super Ability forms are detailed in `16_MARIO_KIRBY_ARCHIVE_EXPANSION.md`.
+
 ### Mega Man Saga
+
+The exact *Mega Man 2* fighter cards, Special Weapon rule and 20XX regional
+Archive additions are specified in `15_MEGA_MAN_CHARACTER_BIBLE.md`. Its design
+is retained, but production waits until the Mario/Kirby breadth floors in plan
+`16` are complete.
 
 | Source game | Length | Area spine | Boss/roster plan |
 | --- | ---: | --- | --- |
@@ -493,5 +516,6 @@ To make the Library feel rich without requiring 190 hours or finished sprites:
 - locked future content is labeled `planned`, not presented as playable.
 
 The user can see that Yoshi belongs to *Super Mario World*, King Bob-omb to
-*Mario 64*, and Fury Bowser to *Bowser's Fury* long before owning them, without
-the game pretending all assets already exist.
+*Mario 64*, and Fury Bowser to *Bowser's Fury* before those Worlds are built.
+An entry is pullable early only after its assets pass production gates; planned
+silhouettes never pretend a fighter already exists.

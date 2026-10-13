@@ -120,6 +120,24 @@ For example, Kirby's Adventure enemies can retain NES styling while a later
 Kirby Super Star iteration uses its richer native sheet. A KSSU sheet is not
 silently labeled “1993 Kirby.”
 
+### 4.1 Model-derived fighters
+
+Modern characters may use an approved 3D model as animation source. The
+preferred first route is `model-baked-sprite`: render fixed-camera animation
+passes into transparent atlases, then use the same pivots, markers, hitboxes,
+memory limits and visual approval as a native sprite.
+
+The bake manifest records model/animation provenance, renderer/version, camera,
+ground plane, light direction, frame rate, outline/downsample treatment and
+every derived atlas hash. Cappy Mario, Poltergust Luigi, Swordfighter Peach and
+Hypernova Kirby are priority tests when a coherent native sheet is unavailable.
+
+`live-3d` is allowed as a candidate route, not assumed production technology.
+It must prove transparent-window performance, deterministic event markers,
+click-through behavior, 2D/3D z-order and a cohesive treatment beside pixel
+actors before any roster milestone depends on it. Plan `16` owns the complete
+policy and candidate list.
+
 ## 5. Asset manifest
 
 Every original file and derived output has a record similar to:
@@ -141,6 +159,7 @@ Every original file and derived output has a record similar to:
   originalFilename: "...",
   sha256: "...",
   importedAt: "...",
+  renderMode: "native-sprite", // native-sprite | model-baked-sprite | live-3d
   transformations: ["crop", "transparent-cleanup", "nearest-4x"],
   spriteGrade: "B",
   artGrade: null,
@@ -283,12 +302,23 @@ Koopa Troopa, Hammer Bro, Blooper, Buzzy Beetle, Lakitu and Bowser can reuse
 their enemy animation definitions with controlled playable scaling and extra
 victory/ultimate effects. This makes the title's modest cast affordable.
 
+After the five-stage slice passes, Yoshi (SMW) and Mario 64 are the first
+regional Archive asset gates. They do not enter SMB1 encounter content: Yoshi
+proves tongue/grab/egg state and Mario 64 proves a genuinely distinct family
+iteration. Their required motions are in the character bible. They are proofs,
+not the final breadth target: Gate D continues through the 22 production-ready
+normal fighters in plan `16` before a new franchise roster enters production.
+
 ### Gate E — Kirby's Adventure
 
-Only after World 1 works: Kirby, Waddle Dee, copy enemies, four Area/finale
-boss packets (with Dedede as the stage-19 miniboss) and the
+Only after the Mushroom opening floor works: Kirby, Parasol Waddle Dee, copy
+enemies, four
+Area/finale boss packets (with Dedede as the stage-19 miniboss) and the
 first ability Power-Ups. Audit original NES sheets against the already scouted
 KSSU assets; choose original or explicitly enhanced treatment per unit.
+
+The *Kirby's Adventure* World cast is followed by the 20-fighter Dream Land
+opening floor and breadth shelf in plan `16`; Mega Man asset production waits.
 
 ## 9. Work budget per release
 

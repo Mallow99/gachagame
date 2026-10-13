@@ -325,8 +325,9 @@ shortened rather than endlessly enlarged.
 
 **Resolution:** enemy recruits and defeated bosses can be pullable when their
 animation works; the permanent Saga Archive remains alongside the current
-title; Supply provides collectibles without fake fighter variants; not every
-Area needs three new fighters.
+title and can add a production-ready cross-title iteration; Supply provides
+collectibles without fake fighter variants; not every Area needs three new
+fighters. World stages remain source-specific.
 
 **Audit result:** coherent, but a title must be allowed to ship a small banner.
 Never invent five Marios to meet a quota.
@@ -371,11 +372,31 @@ dependency.
 
 **Problem:** removing individual levels can make units feel unowned or flat.
 
-**Resolution:** stars, bounded mastery, kit pages, Power-Ups, art, family
-collection and party presets retain identity. Mastery is capped at 4–8 hours
-and 8% power so it does not recreate leveling.
+**Resolution:** stars, bounded Technique Mastery, kit pages, Power-Ups, art,
+family collection and party presets retain identity. Mastery is capped at 4–8
+ordinary or 2–4 focused hours and about 8–12% sustained power so it does not
+recreate leveling. Universal Technique Notes accelerate any favorite without
+adding character-specific materials.
 
 **Audit result:** stronger than per-unit leveling for a swapping-heavy game.
+
+### 7.6.1 Ultimate spectacle versus real value
+
+**Problem:** a three-times-ATK cut-in sounds large, but when an actor freely
+performs a one-times basic every few seconds it may equal only three ordinary
+actions. The animation then promises more than the combat delivers. Scaling HP
+and Attack with Training Rank cannot fix the ratio because it scales both moves.
+
+**Resolution:** every ultimate is audited in complete basic-action equivalents
+at Mastery 1: R 4+, SR 5.5+, SSR 7+, UR 10+ or 18–26 across a transformation.
+First copies meet the floor. Mastery 5 adds 25% potency or two form seconds;
+duplicates add bounded quality rather than rescuing the move.
+
+**Audit result:** coherent and measurable. Simulator reports must include cast
+time, first-use timing, support conversion and transform exit state. The
+current paper audit has 35 direct/combat-value ultimates above their rarity
+floor; eight support or transformation ultimates require the paired scenario
+simulation rather than receiving an unmeasured presentation exemption.
 
 ### 7.7 Branch choice versus fair scaling
 
@@ -472,6 +493,37 @@ requirements are forbidden. Camp remains renewable after the folder is done.
 the four-pull daily bundle replaces rather than stacks with the old flat daily
 grant.
 
+### 7.15 Generous pulls versus a tiny regional pool
+
+**Problem:** a 9–14 fighter Archive can be functionally complete after twenty
+pulls, especially when four R fighters are free. Renewable currency then
+produces mostly known low-rarity cards before the collection fantasy has room
+to breathe.
+
+**Resolution:** Mushroom requires 22 normal fighters (10 R / 7 SR / 5 SSR) and
+Dream Land requires 20 (8 / 7 / 5) before the Archive's first real pull.
+Simulation rejects median ownership above 75% after twenty pulls. The full expansion in
+plan `16` reaches 33 Mario and 31 Kirby fighters including Mythics, then uses
+focus shelves/selectors after 18 rather than deleting the complete Archive.
+
+**Audit result:** this adds a serious art workload but directly fixes early
+collection saturation. The five-stage engine slice remains first and is labeled
+an engine preview until the content floor passes.
+
+### 7.16 Pixel-only identity versus modern forms
+
+**Problem:** requiring native 2D sheets forever excludes Cappy, Poltergust,
+Swordfighter Peach, Hypernova and many later games; dropping live 3D models into
+the strip without treatment could make the game visually incoherent.
+
+**Resolution:** approved 3D models may be baked through a fixed camera/light
+pipeline into transparent atlases that obey the normal sprite contract. Native
+live 3D remains a candidate after performance, click-through, z-order and art
+tests; it is not forbidden or required.
+
+**Audit result:** model-derived sprites are the default bridge. Provenance and
+animation quality remain the gate, so “a model exists” is not enough.
+
 ## 8. Remaining trial decisions
 
 These are not planning omissions; they require a real build or owner asset
@@ -493,13 +545,15 @@ choice.
 
 ## 9. Final audit conclusion
 
-The plan is internally coherent under five conditions:
+The plan is internally coherent under six conditions:
 
 1. the engine and five-stage slice remain ahead of mass character production;
 2. title Worlds may be shorter or use honest remixes instead of padding;
 3. Training Rank is account-wide and World threat snapshots at reveal;
 4. content remains data-driven with stable IDs and independent save sections;
-5. every roster promise passes animation, art, provenance and workload gates.
+5. every roster promise passes animation, art, provenance and workload gates;
+6. generous pull income is not enabled against a regional pool below its
+   declared breadth floor.
 
 The user's game-by-game structure makes the catalog stronger, not merely
 larger. It preserves the Mushroom Kingdom, Dream Land and other recognizable

@@ -1,6 +1,6 @@
 # Pocket Gacha definitive plan
 
-Status: **planning baseline v2, 2026-10-13**
+Status: **planning baseline v5, 2026-10-13**
 
 Scope: the game to build over the next several weeks, not a promise to produce
 the entire crossover catalog immediately.
@@ -36,6 +36,17 @@ disagree with this directory, this directory wins.
     ledger, pulls, Training, active time, reference teams and simulator cases.
 12. [`12_FIRST_RELEASE_CONTENT.md`](12_FIRST_RELEASE_CONTENT.md) — all 15 SMB1
     encounters, enemy/boss behavior, release pools and immediate World packets.
+13. [`13_HUBS_BANNERS_AND_PRESENTATION.md`](13_HUBS_BANNERS_AND_PRESENTATION.md)
+    — the Hub/World hybrid, regional Archives, finished summons, cards and
+    behavior-first sprite rules.
+14. [`14_MARIO_KIRBY_CHARACTER_BIBLE.md`](14_MARIO_KIRBY_CHARACTER_BIBLE.md)
+    — exact opening Mario/Kirby kits, signature motion, enemy states and
+    acceptance scenarios.
+15. [`15_MEGA_MAN_CHARACTER_BIBLE.md`](15_MEGA_MAN_CHARACTER_BIBLE.md) — the
+    deferred Mega Man 2 roster, Special Weapons and 20XX Archive additions.
+16. [`16_MARIO_KIRBY_ARCHIVE_EXPANSION.md`](16_MARIO_KIRBY_ARCHIVE_EXPANSION.md)
+    — the current roster priority: 34 additional Mario/Kirby cards, opening
+    Archive floors, form rules and model-derived actor policy.
 
 ## The one-sentence game
 
@@ -116,6 +127,21 @@ for an eternal commitment.
     offer five account-legal missions and require any three. Optional Coin,
     Fighter Practice, Assist Study, Supply, Starfall and Wanted-Hunt Sorties let
     the player choose useful rewards without stamina or exact-pull checks.
+18. **Worlds preserve games; Hubs preserve possibility.** Story campaigns,
+    enemies and backgrounds belong to a specific source game. A franchise Hub
+    and its permanent Archive may offer any production-ready iteration from
+    that Saga, so favorites do not have to wait for their eventual campaign.
+19. **Animation is mechanics.** Stomps bounce, Goombas flatten, Koopas become
+    kickable shells, Peach floats, Yoshi grabs and Kirby inhales/copies. A
+    generic attack with themed particles is not a finished character.
+20. **An ultimate must swing the fight.** R/SR/SSR/UR ultimates target at least
+    4/5.5/7/10 ordinary basic-action equivalents before crowd value. First
+    copies meet that floor; Technique Mastery and duplicates only improve an
+    already complete move.
+21. **Early Archives need collection runway.** Their first real pull waits for
+    at least 22 production-ready Mushroom fighters or 20 Dream Land fighters.
+    A median account cannot already own over 75% after twenty pulls, and pool
+    growth reaches 28/26 before regional pull 40.
 
 ## First playable promise
 
@@ -140,7 +166,8 @@ player-facing roster.
 ```text
 Library
 └── Shelf (filter only)
-    └── Saga (franchise or anthology)
+    └── Saga / Hub (stable franchise record; player-facing destination)
+        ├── permanent Saga Archive (released fighters across its games)
         └── World (normally one specific game/era)
             └── Area (five stages and a boss)
                 └── Encounter (authored waves, rules and rewards)

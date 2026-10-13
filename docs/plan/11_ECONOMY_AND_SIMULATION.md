@@ -36,8 +36,10 @@ not staged as lucky results.
 
 Stage 5 therefore unlocks Summon at exactly one ten-pull. The complete World
 funds 30 pulls before renewable play and ordinary reports. The tutorial
-ten-pull guarantees Hammer Bro if the batch contains no new SR-or-better
-fighter. It does not replace or suppress the normal SSR roll.
+ten-pull guarantees a new banner-declared SR if the batch contains no new
+SR-or-better fighter: Hammer Bro on the SMB1 Spotlight or an approved welcome
+SR on the Mushroom Kingdom Archive. It does not replace or suppress a normal
+SSR roll.
 
 ### Coins
 
@@ -172,7 +174,7 @@ available; one category receives a modest first-three-clears bonus each day.
 | Sortie | Primary reward | Encounter idea |
 | --- | --- | --- |
 | Coin Course | Coins | dense fragile waves and coin-carrying elite |
-| Fighter Practice | deployed fighters' Mastery XP | role drills with a readable target rule |
+| Fighter Practice | deployed fighters' Mastery XP + universal Technique Notes | role drills with a readable target rule |
 | Assist Study | equipped Assist Page Proficiency XP | survival/trigger conditions built around its intervention |
 | Supply Route | Supply Tickets | escort a chest through mixed pressure |
 | Starfall Route | Starlight | timed waves with optional bonus targets |
@@ -184,7 +186,8 @@ a choice rather than an exploit. Auto-repeat is supported after first clear.
 
 `XP` is applied directly and is not another inventory currency:
 
-- Fighter Practice grants Mastery XP to the deployed fighters;
+- Fighter Practice grants Mastery XP to deployed fighters and a bounded bundle
+  of universal Technique Notes that can be applied to any owned fighter;
 - Assist Study grants Proficiency XP to the equipped Assist Page;
 - Training Rank still uses Coins and remains account-wide;
 - Power-Ups do not gain a second leveling track in the first release.
@@ -310,9 +313,56 @@ Required batches:
 3. every Tier-A route ordering through Atlas Rank 10;
 4. 190-hour projections with no lucky UR, median luck and 95th-percentile luck;
 5. sensitivity at ±15% Coin income, Starlight income, enemy HP and stage time.
+6. every released fighter at Technique Mastery 1 and 5: ultimate
+   basic-action-equivalent value, first-use timing, damage/support contribution
+   and transformation exit state.
+7. 100,000 twenty-pull regional Archive samples at every approved opening pool:
+   unique ownership by rarity, duplicate/Echo count and percent of pool owned.
 
 The simulator is a planning tool, not proof of fun. Visual readability and
 roaming behavior still require actual Electron playtests.
+
+## Ultimate valuation protocol
+
+The rarity floor is measured against a paired simulation, not declared from a
+move description. For fighter `F`, let `B` be the expected effective value of
+one complete basic cycle against the same target at the same Training Rank,
+including average Crit but excluding temporary weaknesses and crowd splash.
+
+```text
+ultimate BAE = (
+  effective ultimate damage
+  + 0.65 × effective HP restored or damage shielded
+  + 0.85 × incremental allied damage caused by buffs
+  + 0.65 × enemy damage actually prevented by control
+) / B
+```
+
+Only health that is missing, a shield that is consumed within eight seconds,
+buff damage that actually resolves and enemy damage that would otherwise land
+receive credit. Overheal, an unbroken shield, cosmetic knockback and projected
+area damage against nonexistent targets are worth zero. If an ultimate pauses
+the owner's ordinary action clock, the paired no-ultimate output lost during
+that cast is subtracted; a global presentation pause costs neither side time.
+
+Every ultimate runs in three deterministic fixtures:
+
+1. a lone 40-Guard boss with ordinary control resistance;
+2. a four-enemy wave with mixed front/back targets;
+3. an emergency boss state with allies between 40% and 65% HP.
+
+A pure damage ultimate passes its Mastery-1 rarity floor in fixture 1. A
+support/controller passes in the fixture matching its declared AI condition
+and must still create visible boss value; it cannot borrow imaginary crowd
+hits. Reports list raw coefficient, `B`, converted value, cast-time cost and
+final BAE so a support conversion can be challenged.
+
+Transformations also run a paired baseline for the exact form duration. The
+report separates entry/end burst, total form output, output the fighter would
+have produced without transforming and survival/control value. In addition to
+the rarity floor, a damage-led UR form must sustain at least **2.5× its normal
+DPS while active** before entry/end burst. This specifically prevents a giant
+form whose new basic is only ten percent stronger from passing on spectacle.
 
 ## Economy guardrails
 
@@ -332,6 +382,13 @@ A balance change fails review if it causes any of these:
 - one short five-stage World yields the same Atlas Rank or total first-clear
   currency as a 25-stage flagship;
 - repeated farming is the only rational action for more than 30 active minutes.
+- any first-copy ultimate misses its rarity value floor or requires a duplicate
+  or Technique Mastery rank to feel stronger than an ordinary action.
+- real Archive pulls are enabled below the 22-fighter Mushroom or 20-fighter
+  Dream Land normal-pool floor, or median ownership exceeds 75% of that pool
+  after twenty pulls.
+- regional pull 40 becomes earnable below 28 live Mushroom or 26 live Dream
+  Land normal fighters.
 
 ## Mastery replay model
 
