@@ -1,6 +1,6 @@
 # Pocket Gacha definitive plan
 
-Status: **planning baseline v3, 2026-10-13**
+Status: **planning baseline v4, 2026-10-13**
 
 Scope: the game to build over the next several weeks, not a promise to produce
 the entire crossover catalog immediately.
@@ -42,6 +42,9 @@ disagree with this directory, this directory wins.
 14. [`14_MARIO_KIRBY_CHARACTER_BIBLE.md`](14_MARIO_KIRBY_CHARACTER_BIBLE.md)
     — exact opening Mario/Kirby kits, signature motion, enemy states and
     acceptance scenarios.
+15. [`15_MEGA_MAN_CHARACTER_BIBLE.md`](15_MEGA_MAN_CHARACTER_BIBLE.md) — the
+    Mega Man 2 roster, Special Weapons, title-local weakness graph, corrected
+    ultimates and 20XX Archive additions.
 
 ## The one-sentence game
 
@@ -129,6 +132,10 @@ for an eternal commitment.
 19. **Animation is mechanics.** Stomps bounce, Goombas flatten, Koopas become
     kickable shells, Peach floats, Yoshi grabs and Kirby inhales/copies. A
     generic attack with themed particles is not a finished character.
+20. **An ultimate must swing the fight.** R/SR/SSR/UR ultimates target at least
+    4/5.5/7/10 ordinary basic-action equivalents before crowd value. First
+    copies meet that floor; Technique Mastery and duplicates only improve an
+    already complete move.
 
 ## First playable promise
 

@@ -56,6 +56,10 @@ The first two stages teach only:
   ten-pull has no new SR or better, that banner inserts a declared welcome SR;
   this is preferable to save deletion/rerolling.
 - The newly pulled unit inherits Training Rank and can be fielded immediately.
+- Fighter Practice and Technique Mastery unlock after the pull. Rank 1 already
+  contains the complete kit; the tutorial grants a small universal Technique
+  Note bundle and demonstrates investing in any favorite rather than demanding
+  another copy.
 
 The player has now completed the whole loop: watch → earn → understand → pull
 → change team → watch the difference.

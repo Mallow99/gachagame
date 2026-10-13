@@ -12,6 +12,9 @@ commitment.
 
 - Listed HP and Attack are displayed Training Rank 1, zero-star values after
   the rarity multiplier. Guard, Move, Haste and Crit use their authored values.
+- Ultimate coefficients below are Technique Mastery 1 values. Mastery 5 adds
+  25% ultimate potency or two seconds to a transformation, never both by
+  default. A first copy must already feel complete.
 - Cooldowns begin half charged under the common combat rules.
 - `Small` means a non-boss enemy whose record permits grab/swallow. Elites and
   bosses always use the stated fallback; no kit silently deletes them.
@@ -50,8 +53,9 @@ Move 123; Haste 0%; Crit 8%.
   the target for 1.20× plus 0.35× splash and 18 boss stagger.
 - **Passive — Coin Hunter:** his kills add 10% to that encounter's Coin drop;
   this is visible as coins following his rebound.
-- **Ultimate — Course Clear, 100 energy:** runs to the backmost enemy, stomps
-  for 1.80×, hits the flag pose and gives the party 15% Haste for 8 s.
+- **Ultimate — Course Clear, 100 energy:** runs through the line for 1.60× to
+  each crossed target, stomps the backmost target for 3.40×, hits the flag pose
+  and gives the party 15% Haste for 8 s. Single-target total: **5.00×**.
 - **Power-Ups:** Mushroom, Flower, Star.
 - **Reveal:** brick dust / warm red; quote “Let's-a go!”
 - **Must feel right:** run precedes takeoff; rise/apex/fall are distinct; damage
@@ -70,8 +74,9 @@ Levels* and *Super Mario Bros. 2*. **Role:** Controller / Charge, front.
   100 px back to safety.
 - **Passive — Green Momentum:** moving grants 8 Guard for 2 s; renewed only
   after meaningful displacement.
-- **Ultimate — Backline Bound:** clears the front line with his highest jump,
-  lands on the backmost target for 1.65× and 0.30× splash.
+- **Ultimate — Backline Bound:** chains three rising stomps at 1.20× each, then
+  clears the front line and lands on the backmost target for 2.20× plus 0.60×
+  splash. Maximum primary-target total: **5.80×**.
 - **Power-Ups:** Mushroom, Flower, Star.
 - **Reveal:** green speed streak / nervous inhale; quote “Here we go!”
 - **Must feel right:** apex is at least 25% higher and hang time about 20%
@@ -88,8 +93,9 @@ Move 138; Haste 4%; Crit 12%.
 - **Skill — Emergency Delivery, 12 s:** dashes to the lowest-HP ally, throws a
   Mushroom parcel and heals 60% ATK before returning to his lane.
 - **Passive — Quick Feet:** gains 8% Haste for the first 6 s of every wave.
-- **Ultimate — Retainer Rush:** ricochets through the lowest-HP enemy five times
-  at 0.55×; later hits retarget if the victim falls.
+- **Ultimate — Retainer Rush:** ricochets through priority enemies six times at
+  0.85×, then finishes the lowest-HP survivor for 1.20×. Later hits retarget if
+  a victim falls. Maximum single-target total: **6.30×**.
 - **Power-Ups:** Mushroom, Flower.
 - **Reveal:** paper route map / blue spots; quote “Leave it to me!”
 - **Must feel right:** tiny stride cycles quickly, parcel exists in his hands,
@@ -105,8 +111,9 @@ Move 112; Haste 0%; Crit 7%.
 - **Skill — Royal Shield, 11 s:** floats to sight of the lowest-HP ally and
   grants a shield equal to 80% ATK.
 - **Passive — Gentle Recovery:** after each wave, heals the party for 18% ATK.
-- **Ultimate — Princess's Wish:** floats above the party, healing 110% ATK and
-  shielding for 55% ATK as star motes fall.
+- **Ultimate — Princess's Wish:** floats above the party, cleanses one control
+  condition, heals everyone for 220% ATK, shields for 150% ATK and grants 15%
+  Haste for 6 s. Its conservative support value clears the R ultimate floor.
 - **Power-Ups:** Mushroom, Flower, Star.
 - **Reveal:** petals and soft star light; quote “I can do this on my own.”
 - **Must feel right:** her reposition uses a short hover and slow descent; skirt
@@ -125,8 +132,9 @@ Move 112; Haste 0%; Crit 7%.
   shell state. The next allied Stomp or Charge that crosses it kicks the shell
   through the enemy line for 1.10× Koopa ATK. If untouched, Koopa self-launches
   at reduced 0.75× power so AI composition cannot brick it.
-- **Ultimate — Ricochet Route:** retracts, crosses the line twice for 0.85× per
-  pass and returns to its original front position.
+- **Ultimate — Ricochet Route:** retracts, crosses the line four times for
+  1.25× per pass, then exits the shell for a 2.00× impact and returns to its
+  original front position. Maximum single-target total: **7.00×**.
 - **Power-Ups:** Shell, Mushroom.
 - **Reveal:** green checker trail; quote “One kick changes the whole course.”
 - **Must feel right:** walking body becomes a separate spinning-shell state;
@@ -145,8 +153,9 @@ Move 112; Haste 0%; Crit 7%.
   three 0.62× hammers so moving targets can evade part of the fan.
 - **Passive — Look Up:** deals 35% more damage and 20% more stagger to Airborne
   enemies, but cannot receive that bonus against a grounded lone boss.
-- **Ultimate — Hammer Storm:** leaps between brick tiers while six telegraphed
-  hammers fall for 0.48× each across the enemy half.
+- **Ultimate — Hammer Storm:** leaps between brick tiers while eight
+  telegraphed hammers fall for 0.90× each; the final center impact deals an
+  additional 1.20×. Maximum focused total: **8.40×**.
 - **Power-Ups:** Hammer, Shell.
 - **Reveal:** violet brick silhouette / spinning hammer; quote “Heads up!”
 - **Must feel right:** release happens at the apex, hammers rotate along real
@@ -164,8 +173,9 @@ and fire motion may fill missing frames. **Role:** Vanguard / Charge, front.
   0.34× × 4; applies Burn for 5 s.
 - **Passive — Unbowed:** 45% of incoming control duration converts to stagger
   buildup instead. At full stagger he still falls; he is not control-immune.
-- **Ultimate — King of the Koopas:** leaps away, crashes down for 1.35× splash,
-  then breathes two 0.70× flame lanes before returning to the front.
+- **Ultimate — King of the Koopas:** leaps away, crashes down for 2.40× splash,
+  then breathes eight 0.75× flame ticks across two lanes before returning to
+  the front. Focused total: **8.40×**, plus Burn.
 - **Power-Ups:** Shell, Fire, Giant.
 - **Reveal:** screen blackout warms red, eyes and furnace breath emerge; quote
   “Showtime!” before the separate S/S/R impacts.
@@ -191,7 +201,8 @@ and fire motion may fill missing frames. **Role:** Vanguard / Charge, front.
   triggers a flutter that clears low ground hazards and grants 15% dodge while
   airborne.
 - **Ultimate — Egg Relay:** lays and kicks three colored eggs through priority
-  targets for 0.75× each; the last bursts for 0.65× splash.
+  targets for 1.60× each; the last bursts for an additional 2.00× splash.
+  Maximum focused total: **6.80×**.
 - **Power-Ups:** Shell, Fruit, Wing.
 - **Reveal:** egg spots and leaf confetti; quote “Yoshi!”
 - **Must feel right:** tongue tip is the hitbox, sticks to the target, and
@@ -212,8 +223,9 @@ Move 134; Haste 4%; Crit 12%.
 - **Passive — Momentum Route:** completing a move without being interrupted
   grants one Momentum stack, up to three; each gives 4% Move and Crit. Taking
   a heavy hit drops one stack, not all three.
-- **Ultimate — Acrobatic Course Clear:** long-jumps through the line for 0.85×,
-  wall-kicks back and dives onto the highest-HP target for 1.80×.
+- **Ultimate — Acrobatic Course Clear:** long-jumps through the line for 2.20×,
+  wall-kicks back for 1.80× and dives onto the highest-HP target for 5.20×.
+  Maximum focused total: **9.20×**.
 - **Power-Ups:** Wing Cap, Metal Cap, Vanish Cap, Star.
 - **Reveal:** castle painting ripples, red cap silhouette dives through; quote
   “Here we go!”
@@ -234,8 +246,9 @@ Move 134; Haste 5%; Crit 11%.
   1.25×; bosses receive 20 stagger instead.
 - **Passive — Competitive Spirit:** gains 10% Haste for 5 s whenever another
   ally reaches full ultimate energy first, once per ally/wave.
-- **Ultimate — Sarasaland Rally:** crosses the field three times, leaving a
-  petal trail that gives allies 15% Move and Crit for 8 s.
+- **Ultimate — Sarasaland Rally:** crosses the field three times for 1.10× per
+  pass, finishes for 1.50×, then gives allies 15% Move and Crit for 8 s.
+  Focused total: **4.80×**, plus the party buff.
 - **Reveal/feel:** orange petals, loud arrival, planted athletic turns; quote
   “Hi, I'm Daisy!” She charges confidently and never borrows Peach's float.
 
@@ -251,7 +264,8 @@ Airborne. **Stats:** HP 943; ATK 129; Guard 30; Move 118; Haste 1%; Crit 9%.
 - **Passive — Clown-Car Cover:** the first hit every 8 s is reduced 35%; the car
   visibly dents and repairs during cooldown.
 - **Ultimate — Junior's Crash Course:** paints three danger marks, bombards
-  them, then rams the lowest-HP target for a combined 2.40×.
+  each for 1.60×, then rams the lowest-HP target for 2.70×. Maximum focused
+  total: **7.50×**.
 - **Reveal/feel:** crayon marks and propeller smoke; quote “My turn!” Car tilt,
   recoil and propeller acceleration must drive every movement.
 
@@ -267,8 +281,10 @@ Airborne. **Stats:** HP 943; ATK 129; Guard 30; Move 118; Haste 1%; Crit 9%.
 - **Passive — Treasure Nose:** the first chest/coin-bearing enemy each wave is
   Marked; Wario deals 20% more damage to it and its defeat adds a small bounded
   Coin bonus.
-- **Ultimate — Hurry Up!:** the stage alarm sounds; Wario becomes unstoppable
-  and charges back and forth for 10 s, replacing basics with 0.72× bashes.
+- **Ultimate — Hurry Up!:** the stage alarm sounds; for 10 s Wario gains 45%
+  ATK, 35% Haste and knockback immunity, replacing basics with 1.10× line
+  bashes. He ends with a 2.00× ground slam. The form targets **8–12 normal
+  basic-action equivalents** depending on travel time.
 - **Reveal/feel:** garlic, coins and screen shake; quote “Have a rotten day!”
   Acceleration, shoulder contact and belly recovery carry his weight.
 
@@ -283,8 +299,9 @@ Airborne. **Stats:** HP 943; ATK 129; Guard 30; Move 118; Haste 1%; Crit 9%.
   enemies crossing it trip, taking 0.55× and Slow for 4 s.
 - **Passive — Long Reach:** gains 20% range and can intercept one projectile
   every 10 s with a racket return at 70% original power.
-- **Ultimate — Waluigi Time:** rose-petal pose, then five trick serves alternate
-  front/back targets at 0.48× and end with a 1.00× smash.
+- **Ultimate — Waluigi Time:** rose-petal pose, then five 0.90× trick serves
+  alternate front/back targets and end with a 2.20× smash. Maximum focused
+  total: **6.70×**.
 - **Reveal/feel:** purple court lines and roses; quote “Everyone's cheating but
   me!” His exaggerated limbs and theatrical recovery are the point.
 
@@ -301,8 +318,9 @@ Airborne. **Stats:** HP 943; ATK 129; Guard 30; Move 118; Haste 1%; Crit 9%.
 - **Passive — Partner Plan:** at wave start chooses one visible need: lowest
   enemy Guard gets `Goombario Mark`, projectiles enable `Kooper Cover`, or a
   hurt party enables `Tattle Aid`. Only one bounded plan is active per wave.
-- **Ultimate — Star Storm:** Star Spirits cross the stage for 0.62× × 4 Beam
-  damage and cleanse one control condition from the party.
+- **Ultimate — Star Storm:** five Star Spirits cross the stage for 1.40× each,
+  cleanse one control condition from the party and grant 10 energy to allies.
+  Focused total: **7.00×**, plus cleanse and energy.
 - **Reveal/feel:** page turn, paper fold shadow and star trails; quote “Every
   story needs someone willing to take the first jump.” He flips edge-on while
   dodging and attacks on flat animation beats.
@@ -320,7 +338,8 @@ Airborne. **Stats:** HP 943; ATK 129; Guard 30; Move 118; Haste 1%; Crit 9%.
   5 s: -15% Move and +20% incoming Electric effect, a local kit interaction,
   not a global elemental triangle.
 - **Ultimate — Rocket Nozzle:** charges, launches beyond the top of the strip
-  and ground-pounds for 1.85× plus 0.65× splash and 35 stagger.
+  and ground-pounds for 5.50× plus 2.00× splash and 60 stagger. Primary-target
+  total: **7.50×**.
 - **Reveal/feel:** sun glare, water droplets and nozzle silhouette; quote “Let's
   clean this place up!” Water must push, pool and refract; FLUDD animates as an
   attached device, not a blue beam emitted from Mario's chest.
@@ -337,8 +356,9 @@ Airborne. **Stats:** HP 943; ATK 129; Guard 30; Move 118; Haste 1%; Crit 9%.
   0.65× and Slows 25% for 4 s.
 - **Passive — Luma Orbit:** Luma alternates between intercepting one projectile
   every 9 s and empowering Rosalina's next basic by 25%.
-- **Ultimate — Grand Star Passage:** shields the party for 90% ATK, lifts them
-  over ground hazards for 3 s and drops star fragments for 1.35× total damage.
+- **Ultimate — Grand Star Passage:** shields the party for 180% ATK, lifts them
+  over ground hazards for 4 s, grants 20 energy and drops star fragments for
+  3.50× total damage. Its support value meets the SSR floor.
 - **Reveal/feel:** observatory silhouette, comet arc, restrained zero-gravity
   drift; quote “May the stars shine down on you.” Rosalina barely runs—Luma and
   gravity carry her positioning.
@@ -354,7 +374,8 @@ Airborne. **Stats:** HP 943; ATK 129; Guard 30; Move 118; Haste 1%; Crit 9%.
 - **Passive — Lights Out:** every third enemy projectile dims the arena for
   2.5 s, granting Ghost allies 15% dodge; a visible counter sits by his crown.
 - **Ultimate — Gallery Trap:** frames the enemy field, pulls Small targets into
-  portraits for 2 s and deals 2.00× on release. Bosses remain visible and take
+  portraits for 2 s, deals four 0.60× spectral ticks and releases them for
+  6.00×. Focused total: **8.40×**. Bosses remain visible and take damage plus
   continuous stagger instead of being removed.
 - **Reveal/feel:** total darkness, crown gem and grin appear before the body;
   quote “No one escapes my gallery.” Movement is squashy hover/phase, never a
@@ -370,10 +391,12 @@ Airborne. **Stats:** HP 943; ATK 129; Guard 30; Move 118; Haste 1%; Crit 9%.
 - **Passive — The Storm Returns:** damage dealt/taken fills a separate Fury
   gauge. At 100, the ultimate becomes available even if normal energy is 80+;
   Fury cannot refill during transformation.
-- **Ultimate — Lake Lapcat Awakening:** leaps off-screen and crashes back as a
-  giant for 15 s. Basics become 0.44× × 3 claw waves; the skill becomes a
-  sweeping 0.24× × 8 fire beam. Final slam deals 1.40×, then normal scale
-  returns. Boss phase floors remain respected.
+- **Ultimate — Lake Lapcat Awakening:** leaps off-screen and crashes back for
+  3.00×, then remains giant for 15 s with **+80% ATK, +40% Haste, +60 Guard,
+  +40% reach and 50% shorter control**. Basics become 0.80× × 3 claw waves;
+  the skill becomes a sweeping 0.55× × 8 fire beam. A 5.00× final slam ends
+  the form. It targets **18–26 normal-action equivalents** before crowd value;
+  Fury cannot gain energy during it and boss phase floors remain respected.
 - **Power-Ups:** Shell, Fire, Giant; occupies the party Mythic slot.
 - **Reveal/feel:** black rain, lighthouse pulse, giant silhouette and roar; no
   written speaker name is needed. Scale change affects shadow, camera framing,
@@ -441,8 +464,8 @@ Kirby's player kit.
   40% of the cooldown.
 - **Passive — Air Puff:** can inflate for up to 4 s while crossing hazards or
   reaching Airborne targets; Move drops 15% while floating and exhale ends it.
-- **Ultimate — Warp Star Crash:** rides across the enemy line twice for 0.90×
-  per pass, then lands for 0.65× splash.
+- **Ultimate — Warp Star Crash:** rides across the enemy line twice for 1.60×
+  per pass, then lands for 1.50× splash. Focused total: **4.70×**.
 - **Power-Ups:** Copy Ability pages, Star, Food.
 - **Reveal:** Warp Star trail and inhale silhouette; quote “Hii!”
 - **Must feel right:** suction moves particles, projectiles and eligible bodies;
@@ -459,8 +482,9 @@ Kirby's player kit.
   projectile damage to allies directly behind it.
 - **Passive — Gentle Descent:** knockback launches become controlled floats;
   landing grants 20 Guard for 2 s.
-- **Ultimate — Circus Toss:** spins the parasol for 0.35× × 5, lifts Small
-  enemies, then drops them for 0.80×; bosses gain stagger instead.
+- **Ultimate — Circus Toss:** spins the parasol for 0.65× × 6, lifts Small
+  enemies, then drops them for 1.50×. Focused total: **5.40×**; bosses gain
+  stagger instead of the lift.
 - **Reveal/feel:** raindrops reverse upward; quote “The weather won't stop me.”
   The parasol opens/closes and catches impacts; generic Waddle Dee is an enemy,
   not padded into a fighter with invented punches.
@@ -476,7 +500,8 @@ Kirby's player kit.
 - **Passive — Juggler:** catching his own rebound every third basic reduces the
   next skill cooldown 2 s; interruption visibly drops the bomb and the bonus.
 - **Ultimate — Poppy Festival:** juggles five bombs into staggered lanes for
-  0.55× each, ending with a 0.75× center burst.
+  0.90× each, ending with a 1.50× center burst. Maximum focused total:
+  **6.00×**.
 - **Reveal/feel:** juggling silhouette and fuse sparks; quote “Up it goes!”
 
 ### Sir Kibble — Return-Arc Knight · SR
@@ -491,7 +516,8 @@ Kirby's player kit.
 - **Passive — Clean Catch:** catching the returning blade grants 8% Haste for
   4 s; control that prevents the catch forfeits it.
 - **Ultimate — Crescent Circuit:** three large cutters orbit through the enemy
-  half for up to 0.52× × 6 bounded hits.
+  half for up to six 1.00× hits, then converge for 1.50×. Maximum focused
+  total: **7.50×**.
 - **Reveal/feel:** blade splits the card and returns to his hand; quote “Every
   arc comes back.” The boomerang path and catch are physical states.
 
@@ -505,7 +531,8 @@ Kirby's player kit.
   flame patch worth up to 1.40×.
 - **Passive — Stoke:** hitting a Burning target increases flame width 20% for
   the next action, not raw damage.
-- **Ultimate — Furnace Line:** inhales, then sweeps two fire lanes for 0.30× × 8.
+- **Ultimate — Furnace Line:** inhales, then sweeps two fire lanes for ten
+  0.65× ticks. Maximum focused total: **6.50×**, plus Burn.
 - **Reveal/feel:** cheeks expand before a continuous flame tongue; quote “Feel
   the heat!” No idle-frame projectile spawn.
 
@@ -520,7 +547,8 @@ Kirby's player kit.
 - **Passive — RPM:** gains one RPM per uninterrupted charge, up to three; each
   adds 6% Move and 4% damage. Stun or collision with a Heavy enemy drops one.
 - **Ultimate — Grand Prix:** becomes untargetable only while crossing the outer
-  lane four times for 0.62× each, then overheats for 1.5 s.
+  lane five times for 1.20× each, crashes through the largest target for 1.50×,
+  then overheats for 1.5 s. Focused total: **7.50×**.
 - **Reveal/feel:** tire track tears across the result; quote “No brakes!” Spin
   rate, dust, acceleration and skid direction must correspond to speed.
 
@@ -534,8 +562,8 @@ Kirby's player kit.
   discharges 1.20× Electric damage when it breaks/expires.
 - **Passive — Conductor:** projectiles intercepted by the shield add 10% to the
   discharge, capped at +40%.
-- **Ultimate — Thunderhead:** calls four readable bolts at priority targets for
-  0.65× and a final 0.80× center ring.
+- **Ultimate — Thunderhead:** calls four readable 1.20× bolts at priority
+  targets and a final 1.80× center ring. Maximum focused total: **6.60×**.
 - **Reveal/feel:** charge crawls around the outline before the flash; quote
   “Hold it... now!”
 
@@ -550,7 +578,8 @@ Kirby's player kit.
 - **Passive — Bedrock:** ground knockback immunity; Airborne attacks deal 15%
   more to Rocky so the strength has readable counterplay.
 - **Ultimate — Mountain Fall:** rises slowly, shadow telegraphs a large circle,
-  then lands for 1.85×, 0.65× splash and 40 stagger.
+  then lands for 4.80×, 2.20× splash and 60 stagger. Primary-target total:
+  **7.00×**.
 - **Reveal/feel:** the card appears to crack under his weight; quote “...”
   Stone state changes silhouette, collision and sound rather than tint alone.
 
@@ -564,8 +593,8 @@ Kirby's player kit.
   and 28 stagger; interruption before release spends half cooldown.
 - **Passive — Enraged Rhythm:** taking 12% max HP within 3 s grants 12% Haste
   for 5 s, with an 8 s internal cooldown.
-- **Ultimate — Coconut Quake:** leaps, throws explosive coconuts to two lanes,
-  then ground-pounds for 1.45× splash.
+- **Ultimate — Coconut Quake:** leaps, throws two 1.40× explosive coconuts,
+  then ground-pounds for 4.20× splash. Maximum focused total: **7.00×**.
 - **Reveal/feel:** hammer head lands before the name plate; quote “Bonk first!”
   Windup, weight transfer and rebound distinguish him from a generic bruiser.
 
@@ -583,7 +612,8 @@ NES sheet is incomplete. **Role:** Striker / Combo, front/either.
 - **Passive — Knight's Tempo:** every clean third action grants one 20% dodge
   charge; taking an unguarded hit resets the count.
 - **Ultimate — Mach Tornado:** opens his wings, crosses the line in a tornado
-  for 0.30× × 7, then ends in a 1.00× Galaxia slash.
+  for eight 0.80× hits, then ends in a 2.20× Galaxia slash. Maximum focused
+  total: **8.60×**—about 8.4 normal Galaxia combos before crowd value.
 - **Reveal:** black quote screen, eye slit, cape sweep, Galaxia line; quote
   “Come. Let us test your strength.”
 - **Must feel right:** cape teleport has exit/entry tells, wings support real
@@ -602,7 +632,8 @@ NES sheet is incomplete. **Role:** Striker / Combo, front/either.
 - **Passive — Belly Armor:** front-facing projectile damage is reduced 25%; a
   hit from behind or during hammer recovery ignores it.
 - **Ultimate — Super Dedede Jump:** crouches, launches off-strip and lands on
-  the largest cluster for 1.70× plus 0.60× splash and 35 stagger.
+  the largest cluster for 6.00× plus 2.75× splash and 60 stagger. Primary-target
+  total: **8.75×**.
 - **Reveal:** hammer silhouette, robe pattern and heavy landing; quote “This
   here kingdom's got one king!” before S/S/R.
 - **Must feel right:** inhale deforms cheeks and pulls real objects; hammer drags
@@ -619,9 +650,11 @@ NES sheet is incomplete. **Role:** Striker / Combo, front/either.
   from Kirby.
 - **Passive — Nightmare's End:** deals 25% more stagger to bosses and gains a
   20% ATK shield at each phase transition. It is useful but not mandatory.
-- **Ultimate — Starlight Pursuit:** mounts the Warp Star for 15 s; basics become
-  0.38× × 3 star volleys and the skill becomes a 1.55× charged Star Rod blast.
-  A final 1.20× comet hit ends the form.
+- **Ultimate — Starlight Pursuit:** deals 2.50× on takeoff, then mounts the Warp
+  Star for 15 s with **+70% ATK, +35% Haste, +30% dodge and permanent Airborne**.
+  Basics become 0.75× × 3 star volleys and the skill becomes a 3.20× charged
+  Star Rod blast. A final 4.50× comet hit ends the form. It targets **18–24
+  normal-action equivalents** and cannot generate energy during the form.
 - **Power-Ups:** Star only; occupies the Mythic slot.
 - **Reveal/feel:** Fountain goes dark, quote “Dreams belong to everyone,” Star
   Rod ignites, flight begins and U/R seals land. This requires a full airborne

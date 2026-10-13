@@ -130,7 +130,7 @@ core passive or ultimate hostage.
 | Stars after duplicates | HP/Attack multiplier | Additional reward |
 | ---: | ---: | --- |
 | 0 | 1.00× | complete base kit |
-| 1 | 1.04× | small mastery node |
+| 1 | 1.04× | minor star-quality node |
 | 2 | 1.08× | skill quality improvement |
 | 3 | 1.13× | passive quality improvement |
 | 4 | 1.18× | ultimate quality improvement |
@@ -145,15 +145,51 @@ not another hidden combat multiplier.
 
 **TRIAL:** ultimate meter is 100.
 
-- resolving a basic action: 12 energy;
-- resolving a skill: its data-defined 8–16 energy;
-- taking damage: up to 8 energy per hit, proportional to max-HP loss;
-- securing a kill: 4 energy;
+- resolving a basic action: 8 energy;
+- resolving a skill: its data-defined 10–14 energy;
+- taking damage: up to 6 energy per hit, proportional to max-HP loss;
+- securing a kill: 3 energy;
 - a unit cannot gain energy during its own transformation unless stated.
 
-Ordinary ultimates should first occur about 18–35 seconds into a sustained
-fight and recur less often after wave downtime. AI use conditions are explicit:
-boss present, allies below a threshold, at least N targets, or immediate.
+### 1.6.1 Ultimate value floor
+
+**LOCKED:** an ultimate is not a normal action with a larger animation. Review
+its complete single-target value against that fighter's ordinary basic cycle:
+
+```text
+basic-action equivalents = ultimate combat value / one complete basic cycle
+```
+
+Damage, healing, shields, control, party buffs and transformation uptime all
+count, using conservative conversion values recorded by the simulator. Area
+damage is evaluated against one target first; hitting a crowd cannot conceal a
+weak boss result.
+
+| Rarity | Trial minimum at Mastery 1 | Typical direct-damage coefficient | Purpose |
+| --- | ---: | ---: | --- |
+| R | 4.0–5.5 basic actions | 4.5–6.0× ATK | satisfying complete starter |
+| SR | 5.5–7.0 basic actions | 6.0–8.0× ATK | specialist's defining payoff |
+| SSR | 7.0–9.0 basic actions | 8.0–11.0× ATK | battle-swinging signature moment |
+| UR | 10+ actions or 18–26 over a form | 12–18× burst equivalent | temporary team anchor that feels unfair |
+
+These are value bands, not a demand that every support deal damage. A Peach
+ultimate can meet the R band through healing, shielding, cleanse and Haste. A
+Vanguard may trade damage for taunt, protection and stagger. The calculation
+must be written down rather than excused by spectacle.
+
+- An ultimate's cast/animation time is included as lost basic-action time.
+- Multi-hit ultimates state their total coefficient, not only the per-hit value.
+- Transformations state entry damage, stat changes, replacement actions, end
+  damage and duration. A form with only a 10% basic increase fails automatically.
+- SSR/UR presentation does not buy mechanical budget; the kit must also pass.
+- Boss phase floors still preserve mechanics, but never reduce the numbers or
+  feedback shown to the player. Excess becomes capped phase damage/stagger.
+
+Ordinary ultimates should first occur about 22–40 seconds into a sustained
+fight and recur less often after wave downtime. Fast-energy specialists may
+beat that range only when their ultimate budget pays for the frequency. AI use
+conditions are explicit: boss present, allies below a threshold, at least N
+targets, or immediate.
 Management settings allow `Auto`, `Hold for boss` and eventually manual trigger;
 the strip never requires twitch input.
 
@@ -339,15 +375,35 @@ unlocked Threat, not a hidden ceiling.
 Fighters retain identity through:
 
 - 0–5 duplicate stars;
-- a small mastery track earned by fielding the unit, capped quickly enough to
-  encourage swapping;
+- a five-rank Technique Mastery track earned by fielding the unit or applying
+  universal Technique Notes;
 - one compatible Power-Up;
 - party composition and one Assist Page;
 - optional cosmetic frames/titles.
 
-**TRIAL:** full combat mastery takes 4–8 active hours with the fighter, grants
-at most 8% total non-rarity power and can be completed in any valid World.
-Mastery cannot recreate the individual-level burden by another name.
+Every first copy starts at Technique Mastery 1 with its complete, newly buffed
+kit. Technique progression makes a favorite better; it never makes an unusable
+fighter become functional.
+
+| Mastery | Upgrade |
+| ---: | --- |
+| 1 | full base kit and full-strength ultimate |
+| 2 | basic coefficient/healing +8% |
+| 3 | skill coefficient/healing/shield +12%; cooldown -5% |
+| 4 | authored passive quality node; no new trigger requirement |
+| 5 | ultimate potency +25%, or transformation duration +2 s, plus its signature cosmetic stamp |
+
+**TRIAL:** full Technique Mastery takes 4–8 active hours through normal fielding
+or about 2–4 focused hours using Fighter Practice rewards. Its average sustained
+combat increase targets 8–12%; the larger ultimate number is intermittent.
+Mastery can be completed in any valid World and cannot recreate individual
+character levels by another name.
+
+**Technique Notes** are a universal inventory material, not a fifth top-bar
+currency. Fighter Practice, bosses, Field Orders and the Echo shop award them;
+one Note grants Mastery XP to any owned fighter. There are no Mario Notes,
+rarity-colored dusts or character-specific promotion items. Duplicate stars
+remain separate and never substitute for Technique Mastery.
 
 ### 3.3 Family lock
 

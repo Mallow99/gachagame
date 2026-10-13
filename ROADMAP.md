@@ -235,7 +235,8 @@ Assist Pages and reward drops are still pending.
 ## Roadmap 5: roster production
 
 - The first five-stage Super Mario Bros. slice at full quality, then Yoshi and
-  Mario 64 as the first regional Archive expansion, then the Kirby batch.
+  Mario 64 as the first regional Archive expansion, then the Kirby batch and
+  the Mega Man 2 packet.
 - Produce engine primitives in dependency order: marker-synced hits, jump and
   float, Goomba squash, shell actors, tongue/grab, inhale/store, Copy, then
   giant transforms. The exact cards and acceptance tests are in plan `14`.
@@ -245,6 +246,10 @@ Assist Pages and reward drops are still pending.
 - Each batch appends to the permanent Saga Archive and may also receive a
   progress Spotlight. A banner cannot ship a fighter whose battle signature is
   still a generic attack placeholder.
+- Ultimates are reviewed as complete basic-action equivalents: R 4+, SR 5.5+,
+  SSR 7+ and UR 10+ or an 18–26-action transformation. Technique Mastery ranks
+  improve favorites with field XP/universal Notes; duplicates never rescue a
+  weak first-copy ultimate.
 
 ## Roadmap 6: dopamine polish
 

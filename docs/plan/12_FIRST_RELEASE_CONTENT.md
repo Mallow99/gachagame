@@ -246,6 +246,10 @@ tables wait until their World enters production.
 - engineering: targetable projectiles, weakness hints without a universal
   triangle, destructible shots and boss-room transitions.
 
+Detailed release packet: R Mega Man story grant and Sniper Joe; all eight Robot
+Masters as SR specialists; SSR Wily; then R Roll and SSR Proto Man as honest
+cross-title 20XX Archive additions. See `15_MEGA_MAN_CHARACTER_BIBLE.md`.
+
 ### Pac-Man — 5 stages
 
 - stages teach pellets/lanes, Pinky/Inky/Clyde pressure, frightened windows and

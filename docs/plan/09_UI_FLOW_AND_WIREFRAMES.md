@@ -219,6 +219,10 @@ configuration where practical:
 7. reward sources, Field Orders, optional Sorties and offline behavior;
 8. glossary of traits such as Airborne, Aquatic, Fire and Mechanical.
 
+The fighter detail page also shows Technique Mastery 1–5, current XP, the exact
+next node and an `Apply Technique Notes` control. Rank 1 displays the complete
+kit; the UI never labels an unfinished move as unlocked only after duplicates.
+
 Every rule marks `TRIAL` where tuning remains open. The Manual shows build and
 content versions for bug reports.
 

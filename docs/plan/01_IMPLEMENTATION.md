@@ -456,7 +456,7 @@ animation plan is unresolved.
 | Layer | Automated | Manual |
 | --- | --- | --- |
 | Data | schema, references, stable IDs, asset existence | names, title fidelity |
-| Combat | seeded outcomes, formulas, status stacking, no stalls | readability, charm, pacing |
+| Combat | seeded outcomes, formulas, status stacking, ultimate value floor, no stalls | readability, charm, pacing and ultimate impact |
 | Balance | thousands of reference-team runs | strongest/weakest plausible builds |
 | Save | migration fixtures, round trips, missing content | owner backup/restore |
 | Gacha | distribution, pity, guarantee, conversion | ceremony, skip, expectation clarity |

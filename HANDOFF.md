@@ -52,6 +52,15 @@ Plan addenda `13_HUBS_BANNERS_AND_PRESENTATION.md` and
 summon timing/card content, Mario and Kirby kits, Copy, Goomba flatten, shell
 kicks, float, tongue and all signature-animation acceptance tests. The immediate
 post-slice roster expansion is Yoshi (SMW) plus Mario 64, not a mass roster dump.
+Plan `15_MEGA_MAN_CHARACTER_BIBLE.md` is the next roster packet and includes
+Mega Man 2, all eight Robot Masters, Wily, Roll and Proto Man.
+
+Ultimate coefficients in the character bibles were rebalanced after the owner
+correctly identified that the old 2–3× totals were barely normal attacks. The
+current floor is measured in basic-action equivalents: 4+ R, 5.5+ SR, 7+ SSR
+and 10+ UR or 18–26 over a transformation. Technique Mastery has five ranks;
+universal Technique Notes accelerate it, while the first copy retains the full
+kit and a strong ultimate.
 
 ---
 

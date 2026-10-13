@@ -100,8 +100,15 @@ they must not be implemented as callbacks hidden inside content records.
     energyCost: 100,
     behavior: 'charge',
     targetRule: 'backmost',
-    coefficient: 1.8,
-    effects: [{ type: 'party-haste', value: 0.15, durationSeconds: 8 }],
+    coefficient: 3.4,
+    declaredTotalCoefficient: 5,
+    effects: [{ type: 'line-damage', coefficient: 1.6 },
+              { type: 'party-haste', value: 0.15, durationSeconds: 8 }],
+  },
+  techniqueMasteryPolicyId: 'fighter-standard-v1',
+  techniqueMasteryNodes: {
+    4: { effect: 'passive-quality', id: 'coin-hunter-radius' },
+    5: { effect: 'ultimate-potency', value: 0.25 },
   },
   powerupCompatibility: ['mushroom', 'flower', 'star'],
   artId: 'classic-mario-portrait',
@@ -295,9 +302,10 @@ Mission objectives use a declared vocabulary: `clear-waves`, `clear-stage`,
 against the live collection; it never embeds executable predicates.
 
 XP rewards name their destination and apply immediately. Fighter Mastery XP and
-Assist Proficiency XP are progression values, not inventory items. A Wanted
-Hunt is a Sortie record referencing an encountered enemy/miniboss variant and a
-Manual discovery entry.
+Assist Proficiency XP are progression values, not inventory items. Universal
+Technique Notes are the explicit exception: they live in `materials` until the
+player applies them to any owned fighter. A Wanted Hunt is a Sortie record
+referencing an encountered enemy/miniboss variant and a Manual discovery entry.
 
 ## SaveV4
 
@@ -332,7 +340,7 @@ Manual discovery entry.
   },
   collection: {
     units: {
-      'classic-mario': { stars: 0, masteryXp: 0, discoveredAt: 0 },
+      'classic-mario': { stars: 0, masteryRank: 1, masteryXp: 0, discoveredAt: 0 },
     },
     powerups: {},
     assists: {}, // { [assistId]: { stars, proficiencyRank, proficiencyXp } }
@@ -355,7 +363,7 @@ Manual discovery entry.
     starlight: 0,
     supplyTickets: 0,
     echoes: 0,
-    materials: {},
+    materials: { techniqueNotes: 0 },
   },
   banners: {
     fighter: { sinceSsr: 0, sinceSr: 0, totalPulls: 0, featuredGuarantee: false },

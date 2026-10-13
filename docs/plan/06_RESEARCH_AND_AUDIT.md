@@ -372,11 +372,31 @@ dependency.
 
 **Problem:** removing individual levels can make units feel unowned or flat.
 
-**Resolution:** stars, bounded mastery, kit pages, Power-Ups, art, family
-collection and party presets retain identity. Mastery is capped at 4–8 hours
-and 8% power so it does not recreate leveling.
+**Resolution:** stars, bounded Technique Mastery, kit pages, Power-Ups, art,
+family collection and party presets retain identity. Mastery is capped at 4–8
+ordinary or 2–4 focused hours and about 8–12% sustained power so it does not
+recreate leveling. Universal Technique Notes accelerate any favorite without
+adding character-specific materials.
 
 **Audit result:** stronger than per-unit leveling for a swapping-heavy game.
+
+### 7.6.1 Ultimate spectacle versus real value
+
+**Problem:** a three-times-ATK cut-in sounds large, but when an actor freely
+performs a one-times basic every few seconds it may equal only three ordinary
+actions. The animation then promises more than the combat delivers. Scaling HP
+and Attack with Training Rank cannot fix the ratio because it scales both moves.
+
+**Resolution:** every ultimate is audited in complete basic-action equivalents
+at Mastery 1: R 4+, SR 5.5+, SSR 7+, UR 10+ or 18–26 across a transformation.
+First copies meet the floor. Mastery 5 adds 25% potency or two form seconds;
+duplicates add bounded quality rather than rescuing the move.
+
+**Audit result:** coherent and measurable. Simulator reports must include cast
+time, first-use timing, support conversion and transform exit state. The
+current paper audit has 35 direct/combat-value ultimates above their rarity
+floor; eight support or transformation ultimates require the paired scenario
+simulation rather than receiving an unmeasured presentation exemption.
 
 ### 7.7 Branch choice versus fair scaling
 
