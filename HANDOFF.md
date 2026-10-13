@@ -50,10 +50,19 @@ Mario pull demo remains the reveal reference.
 Plan addenda `13_HUBS_BANNERS_AND_PRESENTATION.md` and
 `14_MARIO_KIRBY_CHARACTER_BIBLE.md` are authoritative for the regional Archive,
 summon timing/card content, Mario and Kirby kits, Copy, Goomba flatten, shell
-kicks, float, tongue and all signature-animation acceptance tests. The immediate
-post-slice roster expansion is Yoshi (SMW) plus Mario 64, not a mass roster dump.
-Plan `15_MEGA_MAN_CHARACTER_BIBLE.md` is the next roster packet and includes
+kicks, float, tongue and all signature-animation acceptance tests. Yoshi (SMW)
+and Mario 64 are the first post-slice engine proofs, followed by the regional
+pool floors and breadth shelves in plan `16`.
+Plan `15_MEGA_MAN_CHARACTER_BIBLE.md` is a complete future roster packet for
 Mega Man 2, all eight Robot Masters, Wily, Roll and Proto Man.
+
+**Priority correction:** plan `16_MARIO_KIRBY_ARCHIVE_EXPANSION.md` now comes
+before plan `15` in production. “Bigger roster” means deeper Mushroom Kingdom
+and Dream Land pools, not reaching another franchise sooner. It adds 15 Mario
+and 19 Kirby cards, including Cappy Mario, Dry Bowser, Poltergust Luigi, all
+five Super Ability Kirbys and UR Hypernova Kirby. The normal-banner
+floor is 22 Mushroom fighters and 20 Dream Land fighters before each Archive's
+first real pull. Mega Man remains designed but is deferred.
 
 Ultimate coefficients in the character bibles were rebalanced after the owner
 correctly identified that the old 2–3× totals were barely normal attacks. The

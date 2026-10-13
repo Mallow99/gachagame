@@ -1,6 +1,6 @@
 # Pocket Gacha definitive plan
 
-Status: **planning baseline v4, 2026-10-13**
+Status: **planning baseline v5, 2026-10-13**
 
 Scope: the game to build over the next several weeks, not a promise to produce
 the entire crossover catalog immediately.
@@ -43,8 +43,10 @@ disagree with this directory, this directory wins.
     — exact opening Mario/Kirby kits, signature motion, enemy states and
     acceptance scenarios.
 15. [`15_MEGA_MAN_CHARACTER_BIBLE.md`](15_MEGA_MAN_CHARACTER_BIBLE.md) — the
-    Mega Man 2 roster, Special Weapons, title-local weakness graph, corrected
-    ultimates and 20XX Archive additions.
+    deferred Mega Man 2 roster, Special Weapons and 20XX Archive additions.
+16. [`16_MARIO_KIRBY_ARCHIVE_EXPANSION.md`](16_MARIO_KIRBY_ARCHIVE_EXPANSION.md)
+    — the current roster priority: 34 additional Mario/Kirby cards, opening
+    Archive floors, form rules and model-derived actor policy.
 
 ## The one-sentence game
 
@@ -136,6 +138,10 @@ for an eternal commitment.
     4/5.5/7/10 ordinary basic-action equivalents before crowd value. First
     copies meet that floor; Technique Mastery and duplicates only improve an
     already complete move.
+21. **Early Archives need collection runway.** Their first real pull waits for
+    at least 22 production-ready Mushroom fighters or 20 Dream Land fighters.
+    A median account cannot already own over 75% after twenty pulls, and pool
+    growth reaches 28/26 before regional pull 40.
 
 ## First playable promise
 

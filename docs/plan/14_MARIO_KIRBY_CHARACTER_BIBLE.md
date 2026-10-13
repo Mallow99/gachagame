@@ -1,6 +1,6 @@
 # Mario and Kirby character bible
 
-Status: **kit and behavior baseline v1, 2026-10-13**
+Status: **core kit and behavior baseline v2, 2026-10-13**
 
 This is the first roster bible, not a promise to build every entry at once.
 It answers what each planned fighter actually does, what animation sells that
@@ -27,15 +27,18 @@ commitment.
 
 | Wave | Fighters | Purpose |
 | --- | --- | --- |
-| SMB1 slice — build now | Classic Mario, Classic Luigi, Toad, Peach, Koopa Troopa, Hammer Bro, Bowser | complete stages 1–5 and the first real banner |
-| Mario Archive A — immediately after slice | Yoshi (SMW), Mario 64 | prove tongue/grab and a visibly different Mario while still in the opening Hub |
-| Mario Archive B | Daisy, Bowser Jr., Wario, Waluigi, Paper Mario, Sunshine Mario | broaden roles and iterations before remote endgame hours |
-| Mario signature wave | Rosalina, King Boo, Fury Bowser | high-production SSR/UR goals tied to later content |
-| Kirby's Adventure launch | Kirby, Parasol Waddle Dee, Poppy Bros. Jr., Sir Kibble, Hot Head, Wheelie, Sparky, Rocky, Bonkers, Meta Knight, King Dedede | first Dream Land World and copy-system proof |
-| Kirby finale Mythic | Star Rod Kirby | post-Nightmare UR; only after a complete sheet/ceremony exists |
+| SMB1 slice — engine gate | Classic Mario, Classic Luigi, Toad, Peach, Koopa Troopa, Hammer Bro, Bowser | complete stages 1–5 and prove the first real banner |
+| Mushroom opening Archive | this packet's Yoshi/Mario 64 plus the opening-floor additions in plan `16` | reach 22 production-ready normal fighters before the first Archive pull |
+| Mushroom breadth shelf | Wario, Waluigi, Paper Mario, Sunshine Mario, Rosalina, King Boo plus plan `16` additions | deepen the first playable region before producing another franchise roster |
+| Mushroom Mythic | Fury Bowser | high-production UR after the one-Mythic-slot test exists |
+| Dream Land opening Archive | the *Kirby's Adventure* cast here plus plan `16` additions | reach 20 production-ready normal fighters before the first Archive pull |
+| Dream Land breadth/Mythic | Star Rod Kirby plus later forms and cast in plan `16` | complete Copy/Super Ability/Hypernova choices before Mega Man production |
 
 An item can move later when its assets fail. Do not replace it with a motionless
-card merely to preserve the table.
+card merely to preserve the table. Plan
+`16_MARIO_KIRBY_ARCHIVE_EXPANSION.md` supplies the expanded release floors and
+34 additional complete cards; this file remains authoritative for the original
+30 cards, Copy contract, enemy states and acceptance scenarios.
 
 # Part I — Mushroom Kingdom
 
@@ -404,13 +407,14 @@ Airborne. **Stats:** HP 943; ATK 129; Guard 30; Move 118; Haste 1%; Crit 9%.
 
 ### Additional Mario iteration ledger
 
-These are named homes, not build commitments:
+Plan `16` promotes Cappy and Builder Mario to complete cards. The remaining
+rows are named homes, not build commitments:
 
 | Candidate | Rarity direction | Distinct identity required before approval |
 | --- | --- | --- |
 | Galaxy Mario | SSR | spin, gravity/Launch Star movement; cannot be Rosalina-lite |
-| Cappy Mario | SSR | cap throw plus bounded capture echo; never permanently steals a boss |
-| Builder Mario | SR | hammer/block construction used as spatial setup, not Fire Mario recolor |
+| Cappy Mario | SSR · approved in plan `16` | cap throw plus bounded capture echo; never permanently steals a boss |
+| Builder Mario | SR · approved in plan `16` | hammer/block construction used as spatial setup, not Fire Mario recolor |
 | Cat Mario | Power-Up first | becomes fighter only if a complete 3D World iteration exceeds the Power-Up kit |
 | Invincible Mario | UR Power-Up first | 45–60 s is too long for trial; begin at 12–18 s and tune by boss floors |
 | Retro/Arcade Mario | separate family iteration candidate | hammer, ladder and barrel response from *Donkey Kong*, not SMB1 stomp kit |
@@ -421,6 +425,10 @@ These are named homes, not build commitments:
 
 Kirby's fantasy is non-negotiable, so Copy is a bounded engine system rather
 than a flavor buff.
+
+Ordinary Copy profiles remain this swappable system. Plan `16` separately
+approves Ultra Sword and Monster Flame as full Super Ability fighters and
+Hypernova as a UR transformation because each changes the entire actor grammar.
 
 1. Enemies explicitly declare `copyAbilityId` or `null`.
 2. Kirby holds one copied ability at a time. Copy lasts until replaced, Kirby

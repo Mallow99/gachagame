@@ -1,8 +1,10 @@
 # Mega Man character bible
 
-Status: **kit and behavior baseline v1, 2026-10-13**
+Status: **future kit and behavior baseline v1, 2026-10-13; production deferred**
 
-This is the third detailed roster packet. *Mega Man 2* is selected because its
+This is a retained future roster packet. Production is deferred until the
+Mushroom Kingdom and Dream Land opening/breadth shelves in plan `16` are
+complete. *Mega Man 2* remains selected because its
 native sprite vocabulary is unusually compatible with the desktop strip and
 its eight Robot Masters expand reusable projectile, shield, charge and control
 systems. All ultimate values use the corrected rarity floors in plan `02`.

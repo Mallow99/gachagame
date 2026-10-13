@@ -454,6 +454,17 @@ on the SMB1 Spotlight, or a production-ready welcome SR (initially Hammer Bro
 or Yoshi) in the Mushroom Kingdom Archive. Natural SSR rolls are never removed.
 This deterministic floor is cleaner than making the owner restart a local save.
 
+**LOCKED:** a finished regional Archive does not accept its first pull below
+its breadth floor: Mushroom Kingdom 22 normal fighters (10 R / 7 SR / 5 SSR),
+Dream Land 20 (8 / 7 / 5). A smaller pool may exist only in a labeled engine
+preview using non-spendable test pulls or the source-specific Spotlight. The
+twenty-pull simulation must keep median ownership at or below 75% of the live
+normal pool.
+
+Before regional pull 40, Mushroom expands to at least 28 normal fighters and
+Dream Land to at least 26. This second checkpoint keeps renewable currency from
+turning the Archive into mostly duplicates immediately after the opening test.
+
 ### 4.3 Supply banner
 
 **TRIAL:**

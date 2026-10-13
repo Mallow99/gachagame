@@ -55,6 +55,9 @@ The first two stages teach only:
 - The player chooses the SMB1 Spotlight or Mushroom Kingdom Archive. If the
   ten-pull has no new SR or better, that banner inserts a declared welcome SR;
   this is preferable to save deletion/rerolling.
+- In the finished build, the Archive accepts that first pull only when its
+  22-fighter opening floor is production-ready. An engine-preview build may
+  test the smaller SMB1 Spotlight, but cannot present a tiny Archive as final.
 - The newly pulled unit inherits Training Rank and can be fielded immediately.
 - Fighter Practice and Technique Mastery unlock after the pull. Rank 1 already
   contains the complete kit; the tutorial grants a small universal Technique

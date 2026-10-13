@@ -133,7 +133,7 @@ replaces rerolling and ensures a non-story recruit; natural SSRs remain intact.
 | --- | --- | --- |
 | start | preview only; exact rates/pool visible | locked with stage-3 condition |
 | stage 3 | unchanged | Mushroom granted; Overworld Supply preview |
-| stage 5 | Overworld Spotlight and Mushroom Kingdom Archive open; regional additions appear only when approved | Overworld Supply opens |
+| stage 5 | Overworld Spotlight opens; Mushroom Kingdom Archive accepts pulls only at its 22-fighter plan-`16` floor | Overworld Supply opens |
 | stage 10 | adds Blooper, Buzzy Beetle and Lakitu focus | High Roads items added |
 | stage 15 | Bowser becomes featured; completed SMB1 entries settle into the Archive | Castle items and Archive open |
 | next World finale | progress Spotlight closes into Mario Archive | progress Supply closes into Archive |
@@ -216,6 +216,11 @@ First release fighters: R Kirby/Parasol Waddle Dee/Poppy Bros. Jr.; SR Sir Kibbl
 Head/Wheelie/Sparky/Rocky/Bonkers; SSR Meta Knight/Dedede. Ability hats are
 Supply. Star Rod Kirby is the single UR candidate and ships only if it has a
 complete fighter sheet and kit.
+
+That list is the *Kirby's Adventure* World/Spotlight cast, not the whole early
+Dream Land Archive. Before its first real pull, the permanent Archive must
+reach the 20-fighter floor in plan `16`, adding sprite-ready helpers,
+rivals and Super Ability forms without inserting them into this title's stages.
 
 ## Tier-A production packets
 

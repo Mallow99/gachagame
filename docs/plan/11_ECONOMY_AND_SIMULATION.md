@@ -316,6 +316,8 @@ Required batches:
 6. every released fighter at Technique Mastery 1 and 5: ultimate
    basic-action-equivalent value, first-use timing, damage/support contribution
    and transformation exit state.
+7. 100,000 twenty-pull regional Archive samples at every approved opening pool:
+   unique ownership by rarity, duplicate/Echo count and percent of pool owned.
 
 The simulator is a planning tool, not proof of fun. Visual readability and
 roaming behavior still require actual Electron playtests.
@@ -382,6 +384,11 @@ A balance change fails review if it causes any of these:
 - repeated farming is the only rational action for more than 30 active minutes.
 - any first-copy ultimate misses its rarity value floor or requires a duplicate
   or Technique Mastery rank to feel stronger than an ordinary action.
+- real Archive pulls are enabled below the 22-fighter Mushroom or 20-fighter
+  Dream Land normal-pool floor, or median ownership exceeds 75% of that pool
+  after twenty pulls.
+- regional pull 40 becomes earnable below 28 live Mushroom or 26 live Dream
+  Land normal fighters.
 
 ## Mastery replay model
 

@@ -74,9 +74,9 @@ After stage 5, the Summon Ledger exposes two Fighter pages:
 1. **Overworld Spotlight** — the compact SMB1 pool already specified, with
    Hammer Bro focus and Bowser as its SSR.
 2. **Mushroom Kingdom Archive** — every production-ready Mario Saga fighter.
-   Its first expansion targets Yoshi and Mario 64 so a second Mario iteration
-   and a mechanically expressive favorite are available during the opening
-   World rather than many campaigns later.
+   Yoshi and Mario 64 are its first engine/asset proofs, but the content-ready
+   opening Archive reaches the 22-fighter, 10 R / 7 SR / 5 SSR floor in plan
+   `16` before it accepts the player's first real Fighter pull.
 
 The player may spend the first ten-pull on either page. The beginner guarantee
 is data-driven per banner:
@@ -99,6 +99,9 @@ This changes pool availability, not the existing rarity rates or channel pity.
   no rate until approved.
 - Archives can become large. Once a Saga exceeds 18 fighters, its Archive adds
   rotating focus shelves or selectors while retaining the complete rate table.
+- Pool breadth is a release gate, not a preview count. Mushroom opens its full
+  earning loop with at least 22 normal fighters; Dream Land uses at least 20.
+  Median twenty-pull ownership must remain at or below 75% of the live pool.
 - An iteration's source World is a card filter and provenance field, not an
   ownership prerequisite.
 
@@ -349,8 +352,12 @@ engine milestone. The next code sequence remains:
 2. implement Goomba flatten and Koopa shell state in stages 1–2;
 3. finish the five SMB1 encounters and strip/Manual acceptance;
 4. port the in-application summon route and result-card schema;
-5. produce Yoshi and Mario 64 as the first regional Archive expansion;
-6. begin Kirby only after the copy-state design has a test harness.
+5. produce Yoshi and Mario 64 as the first regional Archive engine proofs;
+6. fill the 22-fighter Mushroom opening floor in plan `16`;
+7. begin Kirby after the copy-state design has a test harness and fill its
+   20-fighter opening floor;
+8. complete both regional breadth shelves before producing a third Hub roster
+   such as Mega Man.
 
 The detailed roster in `14_MARIO_KIRBY_CHARACTER_BIBLE.md` is a specification
 queue, not permission to substitute breadth for a finished opening slice.
@@ -365,12 +372,13 @@ queue, not permission to substitute breadth for a finished opening slice.
 | Does this require a save/schema rewrite? | No. Existing Saga is the Hub record and World remains the campaign. Presentation fields extend stable unit/banner IDs. |
 | Will the Archive become unusably diluted? | Not immediately. At 18 fighters it gains focus shelves/selectors without deleting the complete pool or pity. |
 | Do complex signature kits become one-off engine debt? | Not if implemented through the shared primitives in the character bible: arcs, persistent actors, grabs, substates, profile swap and transforms. |
-| Does the new roster derail today's build? | No. Yoshi/Mario 64 begin only after the five-stage acceptance gate; Kirby begins after their reusable state primitives exist. |
+| Does the larger roster derail today's engine build? | No. The five-stage slice remains the gate. It is labeled an engine preview until the regional pool floor is actually production-ready. |
 | Is Rivals of Aether a reliable automatic source? | No. It is a candidate/reference route that still needs creator rights, provenance and style review. |
 | Does rarity still feel meaningful? | Yes. R/SR reveal quickly; SSR/UR receive the blackout/quote ceremony and visibly stronger kit budgets. |
 
 Remaining **TRIAL** decisions belong to play/asset evidence, not more abstract
-planning: the exact day-one Archive pool after sprite review, individual
-coefficients after simulation, whether Mario 64 has an acceptable approved 2D
-treatment, voice/theme availability, and the one-Mythic-slot rule after two URs
-exist. None requires changing the Hub/World structure.
+planning: same-rarity focus weights and asset-gate substitutions inside the
+fixed Archive floors, individual coefficients after simulation, which modern
+fighters use model-derived sprites, voice/theme availability, and the
+one-Mythic-slot rule after two URs exist. None requires changing the Hub/World
+structure.

@@ -235,11 +235,13 @@ Assist Pages and reward drops are still pending.
 ## Roadmap 5: roster production
 
 - The first five-stage Super Mario Bros. slice at full quality, then Yoshi and
-  Mario 64 as the first regional Archive expansion, then the Kirby batch and
-  the Mega Man 2 packet.
+  Mario 64 as engine/asset proofs, then the 22-fighter Mushroom opening floor.
+  Build the 20-fighter Dream Land floor next, then complete both breadth
+  shelves. The finished Mega Man 2 design packet waits behind those regions.
 - Produce engine primitives in dependency order: marker-synced hits, jump and
   float, Goomba squash, shell actors, tongue/grab, inhale/store, Copy, then
-  giant transforms. The exact cards and acceptance tests are in plan `14`.
+  giant transforms. The original cards/tests are in plan `14`; the 34-card
+  Mario/Kirby expansion, pool floors and model-derived route are in plan `16`.
 - Within each approved batch, begin SSR/UR splash, quote, voice and theme work
   early because it has the longest presentation lead; this does not postpone
   the R/SR actors required to make the current stages playable.

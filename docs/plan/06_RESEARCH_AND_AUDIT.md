@@ -493,6 +493,37 @@ requirements are forbidden. Camp remains renewable after the folder is done.
 the four-pull daily bundle replaces rather than stacks with the old flat daily
 grant.
 
+### 7.15 Generous pulls versus a tiny regional pool
+
+**Problem:** a 9–14 fighter Archive can be functionally complete after twenty
+pulls, especially when four R fighters are free. Renewable currency then
+produces mostly known low-rarity cards before the collection fantasy has room
+to breathe.
+
+**Resolution:** Mushroom requires 22 normal fighters (10 R / 7 SR / 5 SSR) and
+Dream Land requires 20 (8 / 7 / 5) before the Archive's first real pull.
+Simulation rejects median ownership above 75% after twenty pulls. The full expansion in
+plan `16` reaches 33 Mario and 31 Kirby fighters including Mythics, then uses
+focus shelves/selectors after 18 rather than deleting the complete Archive.
+
+**Audit result:** this adds a serious art workload but directly fixes early
+collection saturation. The five-stage engine slice remains first and is labeled
+an engine preview until the content floor passes.
+
+### 7.16 Pixel-only identity versus modern forms
+
+**Problem:** requiring native 2D sheets forever excludes Cappy, Poltergust,
+Swordfighter Peach, Hypernova and many later games; dropping live 3D models into
+the strip without treatment could make the game visually incoherent.
+
+**Resolution:** approved 3D models may be baked through a fixed camera/light
+pipeline into transparent atlases that obey the normal sprite contract. Native
+live 3D remains a candidate after performance, click-through, z-order and art
+tests; it is not forbidden or required.
+
+**Audit result:** model-derived sprites are the default bridge. Provenance and
+animation quality remain the gate, so “a model exists” is not enough.
+
 ## 8. Remaining trial decisions
 
 These are not planning omissions; they require a real build or owner asset
@@ -514,13 +545,15 @@ choice.
 
 ## 9. Final audit conclusion
 
-The plan is internally coherent under five conditions:
+The plan is internally coherent under six conditions:
 
 1. the engine and five-stage slice remain ahead of mass character production;
 2. title Worlds may be shorter or use honest remixes instead of padding;
 3. Training Rank is account-wide and World threat snapshots at reveal;
 4. content remains data-driven with stable IDs and independent save sections;
-5. every roster promise passes animation, art, provenance and workload gates.
+5. every roster promise passes animation, art, provenance and workload gates;
+6. generous pull income is not enabled against a regional pool below its
+   declared breadth floor.
 
 The user's game-by-game structure makes the catalog stronger, not merely
 larger. It preserves the Mushroom Kingdom, Dream Land and other recognizable

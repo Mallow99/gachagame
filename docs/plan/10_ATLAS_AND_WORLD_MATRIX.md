@@ -156,12 +156,17 @@ available, not the original prerequisite's ending Threat.
 ## Production order for the first releases
 
 1. SMB1 stages 1–5 and core systems.
-2. Finish SMB1 stages 6–15, Bowser and the Atlas choice screen.
-3. Kirby's Adventure stages 1–5 to prove a second visual/combat grammar.
-4. Finish Kirby's Adventure 6–20 and the repeatable World toolchain.
-5. Build either SMB3, Mega Man 2 or Pac-Man based on asset readiness. The Atlas
+2. Use Yoshi/Mario 64 as engine proofs, then complete the 22-fighter Mushroom
+   Archive floor before its first real pull.
+3. Finish SMB1 stages 6–15, Bowser, the first Mushroom breadth batch and the
+   Atlas choice screen.
+4. Build Kirby's Adventure stages 1–5 and its 20-fighter Archive floor to prove
+   a second visual/combat/collection grammar.
+5. Finish Kirby's Adventure 6–20, the Mushroom/Dream Land breadth shelves and
+   the repeatable World toolchain.
+6. Build either SMB3, Mega Man 2 or Pac-Man based on asset readiness. The Atlas
    may display all three as planned, but only shipped Worlds can be entered.
-6. Add the first Tier-B World after two distinct Tier-A implementations prove
+7. Add the first Tier-B World after two distinct Tier-A implementations prove
    that Rank/key gates and snapshots work.
 
 ## Example player paths

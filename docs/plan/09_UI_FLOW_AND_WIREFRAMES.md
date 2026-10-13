@@ -205,6 +205,10 @@ The page explicitly distinguishes currencies and guarantees:
 - Mythic uses its own unlocked route and persistent pity;
 - Archives do not expire and inherit the appropriate channel pity.
 
+An Archive above 18 released fighters adds rarity/source filters and rotating
+focus shelves without hiding the complete pool. The banner header shows
+`owned / released` and the full rate table—not misleading silhouette totals.
+
 ## Manual page
 
 Manual is both help and balance truth. Its sections are generated from live

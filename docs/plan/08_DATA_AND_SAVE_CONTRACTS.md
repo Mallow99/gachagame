@@ -259,11 +259,21 @@ Area's size.
   pityPolicyId: 'fighter-standard-v1',
   duplicatePolicyId: 'fighter-stars-v1',
   archiveBannerId: 'mario-saga-fighter-archive',
+  releaseGate: null, // Archives use { minimumLivePool, minimumByRarity }
+  growthGates: [],   // e.g. [{ beforeRegionalPull: 40, minimumLivePool: 28 }]
 }
 ```
 
 Pity belongs to the channel policy, not an individual temporary banner. Moving
 content to an Archive must not reset or strand pity.
+
+The finished Mushroom Archive declares
+`releaseGate: { minimumLivePool: 22, minimumByRarity: { R: 10, SR: 7, SSR: 5 } }`;
+Dream Land declares `20` and `{ R: 8, SR: 7, SSR: 5 }`. Preview catalogs do not
+count toward these fields. Development may bypass the gate only with an
+explicit non-spendable test-pull mode that cannot alter the production save.
+Mushroom and Dream Land additionally declare pull-40 growth floors of 28 and
+26 normal fighters.
 
 ## Mission and Sortie contracts
 
@@ -432,6 +442,8 @@ The content validator must reject:
 - a negative reward, coefficient, interval or stat;
 - an ordinary story reference team containing UR or unavailable content;
 - an Archive destination that points back to itself;
+- a content-ready regional Archive below its declared `minimumLivePool` or
+  rarity-floor counts while real Archive pulls are enabled;
 - a boss without a stagger rule or phase;
 - an Order with no legal fallback or an exact-unit requirement;
 - a Sortie that awards Atlas Rank/Keys or references an unshipped encounter;

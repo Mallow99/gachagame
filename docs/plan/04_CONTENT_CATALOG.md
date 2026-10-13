@@ -237,17 +237,20 @@ coherent source game.
 
 Mario releases normally focus with their source Worlds, but approved iterations
 may enter the Mushroom Kingdom Archive earlier. The opening expansion targets
-Yoshi (SMW) and Mario 64 so multiple eras are visible during the first Hub. The
-plan still does not front-load every Koopaling, color and iteration into launch.
+Yoshi (SMW) and Mario 64 as engine proofs, then reaches the 22-fighter opening
+floor in `16_MARIO_KIRBY_ARCHIVE_EXPANSION.md` before the first real Archive
+pull. This front-loads useful collection breadth, not every Koopaling, color or
+palette variation.
 
 ### Mario family/rarity guide
 
 - R introductions: Mario, Luigi, Peach, Toad and Daisy when their base entry ships.
 - SR specialists: Hammer Bro, Lakitu, Captain Toad, colored Yoshis with real kit
   differences, base Yoshi's tongue/egg kit, Koopalings, Kamek, Bowser Jr.,
-  Wario, Waluigi and Petey Piranha.
+  Wario, Waluigi, Dr. Mario, Builder/Tanooki Mario and Swordfighter Peach.
 - SSR signatures/bosses: Bowser, King Bob-omb, King Boo, Paper Mario, Sunshine
-  Mario, major era bosses.
+  Mario, Cappy Mario, Dry Bowser, Poltergust Luigi, Petey Piranha and major era
+  bosses.
 - UR candidates: Fury Bowser, Star-powered/Invincible Mario only if a full kit
   exists, a peak Galaxy/Rosalina treatment, or another truly build-defining
   interpretation. Retro status alone is not an UR qualification.
@@ -265,10 +268,15 @@ plan still does not front-load every Koopaling, color and iteration into launch.
 | Planet Robobot | 20 | mechanized Popstar districts | Robobot Armor Power-Up/iteration, Susie, Haltmann |
 | Kirby and the Forgotten Land | 25 | plains; coast; carnival; winter; Lab Discovera | Bandana Dee, Mouthful effects, Clawroline, Fecto Elfilis |
 
+The opening/breadth Dream Land Archive, Hypernova Kirby and first two pullable
+Super Ability forms are detailed in `16_MARIO_KIRBY_ARCHIVE_EXPANSION.md`.
+
 ### Mega Man Saga
 
 The exact *Mega Man 2* fighter cards, Special Weapon rule and 20XX regional
-Archive additions are specified in `15_MEGA_MAN_CHARACTER_BIBLE.md`.
+Archive additions are specified in `15_MEGA_MAN_CHARACTER_BIBLE.md`. Its design
+is retained, but production waits until the Mario/Kirby breadth floors in plan
+`16` are complete.
 
 | Source game | Length | Area spine | Boss/roster plan |
 | --- | ---: | --- | --- |
