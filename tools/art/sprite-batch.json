@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "batch": "sprite-first-01",
+  "units": [
+    {"id":"mario","name":"Mario","role":"unit","source":{"provider":"spriters-resource","url":"https://www.spriters-resource.com/ds_dsi/marioandluigi3/asset/76348/"},"delivery":"manual_download","expectedFile":"mario.png"},
+    {"id":"kirby","name":"Kirby","role":"unit","source":{"provider":"spriters-resource","url":"https://www.spriters-resource.com/ds_dsi/kssu/asset/14758/"},"delivery":"manual_download","expectedFile":"kirby.png"},
+    {"id":"sonic","name":"Sonic","role":"unit","source":{"provider":"spriters-resource","url":"https://www.spriters-resource.com/pc_computer/sonicmania/asset/95304/"},"delivery":"manual_download","expectedFile":"sonic.png"},
+    {"id":"mega-man-x","name":"Mega Man X","role":"unit","source":{"provider":"spriters-resource","url":"https://www.spriters-resource.com/snes/mmx/asset/1225/"},"delivery":"manual_download","expectedFile":"mega-man-x.png"},
+    {"id":"link","name":"Link","role":"unit","source":{"provider":"spriters-resource","url":"https://www.spriters-resource.com/game_boy_advance/thelegendofzeldatheminishcap/asset/6369/"},"delivery":"manual_download","expectedFile":"link.png"},
+    {"id":"samus","name":"Samus","role":"unit","source":{"provider":"spriters-resource","url":"https://www.spriters-resource.com/game_boy_advance/metzero/asset/106418/"},"delivery":"manual_download","expectedFile":"samus.png"},
+    {"id":"ryu","name":"Ryu","role":"unit","source":{"provider":"spriters-resource","url":"https://www.spriters-resource.com/arcade/streetfighteralpha3/asset/560863/"},"delivery":"manual_download","expectedFile":"ryu.png"},
+    {"id":"cuphead","name":"Cuphead","role":"unit","source":{"provider":"spriters-resource","url":"https://www.spriters-resource.com/pc_computer/cupheaddontdealwiththedevil/asset/108720/"},"delivery":"manual_download","expectedFile":"cuphead.zip"},
+    {"id":"shovel-knight","name":"Shovel Knight","role":"unit","source":{"provider":"spriters-resource","url":"https://www.spriters-resource.com/pc_computer/shovelknightdig/asset/184333/"},"delivery":"manual_download","expectedFile":"shovel-knight.zip"},
+    {"id":"alucard","name":"Alucard","role":"unit","source":{"provider":"spriters-resource","url":"https://www.spriters-resource.com/playstation/cvsotn/asset/163758/"},"delivery":"manual_download","expectedFile":"alucard.png"},
+    {"id":"susie","name":"Susie","role":"unit","source":{"provider":"spriters-resource","url":"https://www.spriters-resource.com/pc_computer/deltarunedemo/asset/110471/"},"delivery":"manual_download","expectedFile":"susie.png"},
+    {"id":"marshadow","name":"Marshadow","role":"unit","source":{"provider":"pokemon-showdown","url":"https://github.com/smogon/sprites"},"delivery":"already_processed","expectedFile":""},
+    {"id":"bowser","name":"Bowser","role":"boss","source":{"provider":"spriters-resource","url":"https://www.spriters-resource.com/ds_dsi/marioandluigi3/asset/19548/"},"delivery":"manual_download","expectedFile":"bowser.png"}
+  ]
+}

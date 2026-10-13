@@ -20,8 +20,9 @@ jank" everywhere else. Personal use only.
   not before and not on your own.
 - Check visually (Playwright screenshots) before saying something works, and
   say what you couldn't check (sound, real-time motion).
-- Keep token use low: small sessions with one goal each, the owner picks art
-  by eye (not the AI), and keep this file and `HANDOFF.md` current.
+- Keep token use low: small sessions with one goal each. The AI may shortlist
+  and choose art when the owner delegates it; use the picker when the owner
+  wants the final visual choice. Keep this file and `HANDOFF.md` current.
 
 ---
 
@@ -105,14 +106,23 @@ Decided: everything in the section above.
 
 Make adding a character mostly data entry.
 
+**In progress:** the owner-facing Pixiv picker is built. It produces a local,
+bookmark-ranked gallery (60 works by default), supports filtering and ordered
+favorites, remembers the selection, and exports `picks.json`. The generated
+page was visually checked at desktop and phone widths with the six approved
+Mario works. Live Pixiv search returned HTTP 403 from the Codex cloud on
+2026-10-12, so its live API path still needs a run on the owner's normal
+connection. Character JSON and processing integration are next, after the
+relevant OPEN decisions below.
+
 - **Character data template:** one JSON file per unit, with:
   - id, name, title, family, tier, type, stats
   - attacks, passive, ultimate
   - art route, art files, sprite or puppet
   - SSR only: quote, voice, music
 - **Picker page:** for a given Japanese tag or artist, generate a local page
-  of about 60 thumbnails ranked by bookmarks. The owner clicks picks, and it
-  saves `picks.json`. No AI looking at images.
+  of about 60 thumbnails ranked by bookmarks. It saves ordered favorites to
+  `picks.json`. The owner can use it directly or delegate the choice to the AI.
 - **Processing:** download the originals, cut out, resize, and write files
   into `assets/characters/<id>/`. Handle all three art routes and import
   sprites from `incoming/`.
