@@ -88,7 +88,8 @@ footer is the bridge back to the strip.
 5. Clear rewards stamp into the ledger; Training unlocks with one free Rank.
 6. Stage 3 unlocks the first Power-Up slot and grants Super Mushroom.
 7. Stage 5 unlocks Summon and gives exactly enough cumulative Starlight for one
-   ten-pull. Supply unlocks with its earned tickets.
+   ten-pull. Supply and the Field Desk unlock with their earned tickets/first
+   Order folder.
 
 No banner, inbox, daily checklist or sale interrupts the first fight.
 
@@ -119,6 +120,35 @@ The Atlas page separates:
 - **Available:** shipped choices the player can unlock with a Key;
 - **Library:** completed Worlds and Mastery tiers;
 - **Planned shelf:** optional previews the owner can hide.
+
+### Field Desk and optional Sorties
+
+Field Desk is a binder divider inside Atlas, not a fifth permanent top-level
+tab.
+
+```text
+ ┌─ FIELD DESK · 2 FOLDERS STORED ─────────────────────────────────┐
+ │ Complete any 3                                                │
+ │ [✓] Clear 20 waves                             +75 ✦ +100 Coin │
+ │ [ ] Trigger an Assist twice                    +75 ✦ +1 Ticket │
+ │ [ ] Defeat a Wanted target                     +75 ✦ +Assist XP│
+ │ [ ] Run one Supply Route                       optional        │
+ │ [ ] Clear three different Camps                optional        │
+ │ Progress 1/3 · folder bonus +175 ✦              [VIEW SORTIES] │
+ ├─ SORTIES ───────────────────────────────────────────────────────┤
+ │ Coin Course · Fighter Practice · Assist Study · Supply Route   │
+ │ Starfall Route · Wanted Hunt                                   │
+ └────────────────────────────────────────────────────────────────┘
+```
+
+An Order card names its legal solution and exact reward before deployment. If
+the player's collection changes and invalidates it, the card regenerates
+without consuming progress. Sortie cards show `daily bonus remaining`, normal
+repeat rewards, recommended Rank and auto-repeat state; none uses stamina.
+
+Wanted targets appear as stamped case files. A random discovery animation may
+introduce one after a Camp wave, but discovered Hunts remain directly selectable
+so the player never waits on the same random spawn twice.
 
 ## Party / collection page
 
@@ -180,7 +210,7 @@ configuration where practical:
 4. rarity multipliers, stars and family/Mythic restrictions;
 5. current banner rates, soft/hard pity and featured guarantee;
 6. World Threat, recommended Rank and Mastery scaling;
-7. reward sources, daily limits and offline behavior;
+7. reward sources, Field Orders, optional Sorties and offline behavior;
 8. glossary of traits such as Airborne, Aquatic, Fire and Mechanical.
 
 Every rule marks `TRIAL` where tuning remains open. The Manual shows build and

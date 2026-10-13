@@ -109,9 +109,13 @@ for an eternal commitment.
 15. **Build one excellent slice before manufacturing a Library.** Systems and
     Mushroom Overworld stages 1–5 come before mass character acquisition.
 16. **Pulls stay renewable.** Story gives the largest bursts, but Camp waves
-    and repeatable Field Reports continue funding roughly 1.5–2.5 Fighter
+    and repeatable Patrol Reports continue funding roughly 1.5–2.5 Fighter
     pulls per active hour after available Story is exhausted. There is no daily
     hard cap on the core collection loop.
+17. **Daily generosity is played, not claimed.** Stackable Field Order folders
+    offer five account-legal missions and require any three. Optional Coin,
+    Fighter Practice, Assist Study, Supply, Starfall and Wanted-Hunt Sorties let
+    the player choose useful rewards without stamina or exact-pull checks.
 
 ## First playable promise
 

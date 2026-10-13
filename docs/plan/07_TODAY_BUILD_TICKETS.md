@@ -240,6 +240,8 @@ Kirby, UR implementation, Mastery, real-time events, payments or social systems.
 | PG-013 | SMB1 stages 6–10 and Lakitu | PG-009/012 |
 | PG-014 | SMB1 stages 11–15, Bowser and credits card | PG-013 |
 | PG-015 | Atlas Key choice screen and Threat snapshot | PG-014 |
+| PG-016 | Field Desk, legal Order generator and Coin/Fighter Practice Sorties | PG-003/006 |
+| PG-017 | Assist Proficiency, Assist Study and first SMB1 Wanted Hunts | PG-012/016 |
 
 ## Definition of done for any ticket
 

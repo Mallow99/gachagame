@@ -117,7 +117,7 @@ funds 30 pulls before renewable income:
 
 The opener should therefore feel exciting whether or not it produces an SSR:
 the guaranteed SR must be useful, the free party must remain viable, and
-Bowser's defeat—not lucky rarity—is the gate. First clears, one daily report
+Bowser's defeat—not lucky rarity—is the gate. First clears, one Field Order folder
 and normal renewable combat target **35–45 pulls by hour 5**. That is beyond
 the median SSR point without making one mandatory; an unusually fast no-Camp
 clear still earns 30.
@@ -129,19 +129,89 @@ low outcome.
 
 ## Daily, repeat and away income
 
-### Three stackable daily reports
+### Field Orders: earned daily generosity
 
-One report is stored per day up to three. It asks for ordinary play and awards:
+The daily reward is a folder of optional missions, not a login claim. One
+folder is added each day and up to three uncompleted folders stack. Each folder
+offers five legal Orders; completing any three stamps the folder complete.
 
-| Completion | Reward |
-| --- | --- |
-| clear or simulate 12 waves | 100 Starlight, 100 Coins |
-| change/use one legal loadout and clear 4 waves | 100 Starlight, 1 Supply Ticket |
-| defeat/replay an Area boss | 100 Starlight, 150 Coins, 1 Supply Ticket |
-| all three | no extra currency; a visible report stamp |
+| Order family | Example | What it encourages |
+| --- | --- | --- |
+| routine | clear 20 waves in any mode | letting the strip do its normal job |
+| tactics | clear 8 waves with a Support or Projectile unit | broad roster experimentation |
+| Supply | trigger an Assist twice or finish with a Power-Up equipped | learning loadouts without demanding a rarity |
+| hunt | defeat any encountered Area boss or Wanted miniboss | purposeful rematches |
+| route | clear one optional Sortie or three different Camps | changing scenery rather than one-stage farming |
 
-Total: 300 Starlight, 250 Coins and 2 Supply Tickets. No login streak resets.
-The loadout goal auto-completes if the account owns no alternative legal item.
+Each of the first three stamps awards 75 Starlight plus its displayed secondary
+reward. Completing the folder adds 175 Starlight, for **400 Starlight / four
+Fighter pulls per completed day**. The folder also totals about 250 Coins and
+2–3 Supply Tickets depending on chosen Orders. Completing the remaining two
+offers no extra daily Starlight; they may still be played as ordinary Sorties.
+
+Generation rules are strict:
+
+- never require one exact fighter, rarity, gacha result or Mythic item;
+- every composition Order has at least one currently owned legal solution;
+- never require manual ultimate timing while the owner is multitasking;
+- a loadout Order auto-substitutes a routine Order if no alternative exists;
+- locked or unshipped content cannot be selected;
+- missing a day loses nothing until all three stored folders are already full;
+- there is no streak multiplier or escalating fear-of-missing-out reward.
+
+The four-pull daily target replaces the earlier flat three-goal payout; it is
+not added on top of it. The player earns generosity by using the game, but can
+choose among several useful activities.
+
+### Optional Sorties
+
+Sorties are authored side stages outside the numbered World route. They cost no
+stamina, do not award Atlas Rank and cannot block Story. Basic Sorties remain
+available; one category receives a modest first-three-clears bonus each day.
+
+| Sortie | Primary reward | Encounter idea |
+| --- | --- | --- |
+| Coin Course | Coins | dense fragile waves and coin-carrying elite |
+| Fighter Practice | deployed fighters' Mastery XP | role drills with a readable target rule |
+| Assist Study | equipped Assist Page Proficiency XP | survival/trigger conditions built around its intervention |
+| Supply Route | Supply Tickets | escort a chest through mixed pressure |
+| Starfall Route | Starlight | timed waves with optional bonus targets |
+| Wanted Hunt | mixed currency, XP and Archive entry | a specific encountered miniboss or boss remix |
+
+The featured bonus changes the reward profile, not access. After its daily bonus
+clears, a Sortie pays the same renewable hourly envelope as Camp so it remains
+a choice rather than an exploit. Auto-repeat is supported after first clear.
+
+`XP` is applied directly and is not another inventory currency:
+
+- Fighter Practice grants Mastery XP to the deployed fighters;
+- Assist Study grants Proficiency XP to the equipped Assist Page;
+- Training Rank still uses Coins and remains account-wide;
+- Power-Ups do not gain a second leveling track in the first release.
+
+Assist Proficiency has five short ranks, targets 2–4 active hours to finish and
+adds at most 5% total effect/reliability. Rank 1 already contains the complete
+Assist behavior; XP never holds its intervention hostage. Rank 5 primarily
+awards a Manual stamp, lore/art entry and small cosmetic treatment. This gives
+“Assist XP” something satisfying to do without recreating individual leveling.
+
+### Wanted minibosses
+
+Wanted Hunts are drawn only from enemies the account has encountered. A World
+can define 2–5 hunts by promoting an existing behavior combination rather than
+requiring a new character sheet. SMB1 candidates are:
+
+- Veteran Goomba formation after stage 1;
+- Red Shell Patrol after stage 2;
+- Hammer Bro Pair after stage 5;
+- Lakitu's Spiny Storm after stage 10;
+- False Bowser Hunt after stage 14, rotating the revealed enemy beneath the
+  disguise.
+
+The first Hunt clear records the variant in the Manual and gives a larger mixed
+reward; repeats become valid Hunt Orders and use renewable rates. A rare Wanted
+spawn may replace the last Camp wave, but the same Hunt is selectable directly
+after it has been discovered, so rewards never depend permanently on luck.
 
 ### Active Camp target
 
@@ -155,14 +225,14 @@ At an on-rank cleared Camp, the target after bounded chests is:
 Renewable Starlight is visible rather than hidden in a rare chest:
 
 - each repeat wave awards 1 Starlight;
-- every 20 repeat waves completes a Field Report for 25 Starlight;
+- every 20 repeat waves completes a Patrol Report for 30 Starlight;
 - Area-boss rematches add a bounded 25-Starlight report once per clear cycle;
 - later Mastery Orders add harder repeatable reports without replacing Camp.
 
-At measured 60–110 waves per hour, direct wave/report income supplies the
+At measured 60–100 waves per hour, direct wave/report income supplies the
 target range forever. It has no daily hard cap. Repeatedly camping one stage
 reduces only its optional chest chance; direct Starlight, enemy Coins and the
-Field Report meter never shut off.
+Patrol Report meter never shut off.
 
 ### Away target
 
@@ -186,7 +256,7 @@ Field Report meter never shut off.
 | **expected complete World** | **3–5 active hours** |
 
 This time budget yields roughly 5–12 renewable pulls depending on how much of
-the session is Camp combat, plus the 30 first-clear pulls and up to 3 daily
+the session is Camp/Sortie combat, plus the 30 first-clear pulls and up to 4 daily
 pulls. The end-of-opener target is therefore 35–45, not twenty.
 
 Raw combat is not padded to three hours. The full loop takes time because the

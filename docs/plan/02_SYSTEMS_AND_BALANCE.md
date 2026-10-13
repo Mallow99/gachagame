@@ -484,7 +484,7 @@ Reward formulas must be fitted to these experience targets:
 | 15-stage compact World first clear | 30 total including tutorial | 15–22 | about rank 15–18 |
 | 25-stage flagship first clear | 20–30 after tutorial | 25–40 | about +25 ranks |
 | repeat farming, active | 1.5–2.5/hour | 0.8–1.5/hour | useful Coin progress |
-| ordinary daily goals | 3 | 2 | one meaningful Coin bundle |
+| daily Field Order folder | 4 | 2–3 | one meaningful Coin bundle plus direct XP |
 
 The first-clear pace is intentionally generous; a content game should let the
 owner interact with banners. Repeat income is slower so new Worlds remain the
@@ -506,9 +506,15 @@ should visibly fund pulls.
 
 **LOCKED:** Fighter pulls remain renewable after all shipped Story is cleared.
 Repeat waves award small direct Starlight and every 20 repeat waves completes a
-repeatable Field Report. The target is 1.5–2.5 Fighter pulls per active Camp
+repeatable Patrol Report. The target is 1.5–2.5 Fighter pulls per active Camp
 hour with no daily hard cap. Mastery later adds alternate repeatable Orders; it
 does not replace or disable the basic Camp route.
+
+Daily Field Orders and optional Sorties provide a more directed layer above
+that baseline. A player completes any three of five legal Orders for four pulls
+plus Coins/Supply, while Coin, Fighter Practice, Assist Study, Supply, Starfall
+and Wanted-Hunt Sorties let them choose the progression resource they need.
+This is earned generosity, not a second flat login grant.
 
 ### 5.3 Away earnings
 
@@ -556,6 +562,11 @@ One per party. Each has:
 An Assist should change a plan—first emergency heal, anti-projectile screen,
 coin/chest bias, summon or boss stagger—not merely add another invisible +3%.
 Minor NPCs and baby companions with poor combat sheets belong here.
+
+Equipped Assists earn five short Proficiency ranks through normal combat or
+Assist Study Sorties. The complete behavior exists at rank 1; later ranks add at
+most 5% total effect/reliability and mostly unlock Manual stamps, art or lore.
+Proficiency is applied XP, not a fifth inventory currency.
 
 ## 7. Failure, farming and Mastery
 

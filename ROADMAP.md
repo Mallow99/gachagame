@@ -176,8 +176,10 @@ Assist Pages and reward drops are still pending.
   ultimate meter that fires with a cut-in of the character's art. Front and
   back row. No type multipliers in the first build.
 - **Rewards:** Coin drops, large first-clear/boss pull rewards, and repeatable
-  wave/Field Report Starlight targeting 1.5–2.5 Fighter pulls per active Camp
-  hour with no daily hard cap.
+  wave/Patrol Report Starlight targeting 1.5–2.5 Fighter pulls per active Camp
+  hour with no daily hard cap. Stackable Field Orders give four earned daily
+  pulls, while optional Coin, Fighter Practice, Assist Study, Supply, Starfall
+  and Wanted-Hunt Sorties let the player choose what to progress.
 - **Performance:** it must stay light on an 8 GB M2 Air. Lower the frame rate
   when nothing is happening, and keep images small.
 - **Done when:** a team of four, built from data, fights forever with bosses,
@@ -214,6 +216,9 @@ Assist Pages and reward drops are still pending.
 - One party-wide **Assist Page** with a passive and a charged or conditional
   intervention, plus one compatible **Power-Up** slot per fighter. Supply
   collectibles use their own rewards/tickets and never dilute fighter banners.
+- Equipped Assists earn a short five-rank Proficiency track through combat or
+  Assist Study; the complete ability exists at rank 1 and later XP is capped at
+  a small improvement plus Manual/art rewards.
 - Atlas Keys earned from final bosses open one of a small set of eligible
   destinations. Choices never permanently lock the unchosen Worlds.
 - "While you were away" earnings.

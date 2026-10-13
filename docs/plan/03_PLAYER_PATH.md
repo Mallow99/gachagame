@@ -79,7 +79,7 @@ World-finale rewards:
 
 - one Atlas Key;
 - 30 Fighter pulls from first-clear rewards across the World, plus renewable
-  Field Reports targeting 35–45 total pulls by hour 5;
+  Patrol Reports targeting 35–45 total pulls by hour 5;
 - the Super Mario Bros. Saga Archive;
 - Mastery I for the World;
 - Mythic banner access;
@@ -239,12 +239,18 @@ all contents remain in the Archive afterward.
 
 The game is permitted to be closed.
 
-- Three daily goals accumulate for up to three days rather than breaking a
-  streak.
-- Goals use ordinary actions: clear waves, change one loadout, use ultimates,
-  fight an Area boss. No forced social/share or clock-specific task.
+- One Field Order folder appears per day and up to three folders stack. Each
+  offers five account-legal missions; completing any three earns four Fighter
+  pulls plus Coins, 2–3 Supply Tickets and direct progression XP.
+- Orders use ordinary actions or optional Sorties: clear waves, try a broad
+  role/loadout, fight a discovered boss/miniboss, escort a Supply chest, or run
+  a Coin/Fighter Practice/Assist Study/Starfall route.
+- No Order requires an exact pull, rarity, manual timing, social/share action or
+  clock-specific login. Missing a day does not break a streak.
+- Fighter Mastery XP and Assist Proficiency XP apply directly to their targets;
+  they are not additional inventory currencies. Training Rank still uses Coins.
 - Away rewards cap at 12 hours and never expire a Spotlight.
-- Camp waves and repeatable Field Reports keep Starlight renewable at a target
+- Camp waves and repeatable Patrol Reports keep Starlight renewable at a target
   1.5–2.5 Fighter pulls per active hour with no daily hard cap.
 - An optional “quiet day” lets the strip Camp without popups except pull-ready,
   defeat requiring attention or a completed long-term milestone.

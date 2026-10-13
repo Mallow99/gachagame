@@ -35,7 +35,9 @@ individual fighter levels. Atlas Rank snapshots a set of newly revealed Worlds
 instead of hard level-syncing the player's exact party. Build the real strip and
 one polished five-stage Super Mario Bros. slice before producing the larger
 roster. SMB1 first clears target 30 Fighter pulls, 35–45 by hour 5 with ordinary
-play, then repeatable Camp/Field Reports keep pulls renewable. The signed-off
+play, then repeatable Camp/Patrol Reports keep pulls renewable. Stackable Field
+Orders and optional resource/XP/Wanted-Hunt Sorties make the generous daily
+bundle something the player earns instead of a login claim. The signed-off
 Mario pull demo remains the reveal reference.
 
 ---

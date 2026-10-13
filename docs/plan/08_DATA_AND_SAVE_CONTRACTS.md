@@ -30,6 +30,8 @@ export const content = {
   worlds: new Map(),
   encounters: new Map(),
   banners: new Map(),
+  missions: new Map(),
+  sorties: new Map(),
 };
 ```
 
@@ -251,6 +253,47 @@ Area's size.
 Pity belongs to the channel policy, not an individual temporary banner. Moving
 content to an Archive must not reset or strand pity.
 
+## Mission and Sortie contracts
+
+```js
+{
+  id: 'order-clear-waves',
+  cadence: 'daily-folder',        // daily-folder | repeatable | milestone
+  objective: { type: 'clear-waves', count: 20, modeIds: ['story', 'camp', 'sortie'] },
+  eligibility: { solutionPolicy: 'owned-any', requiredTags: [] },
+  rewards: [{ type: 'starlight', amount: 75 },
+            { type: 'coins', amount: 100 }],
+  fallbackMissionId: 'order-clear-waves-basic',
+}
+```
+
+```js
+{
+  id: 'smb1-assist-study',
+  worldId: 'super-mario-bros-1985',
+  category: 'assist-proficiency',
+  unlock: { type: 'stage-clear', encounterId: 'smb1-05' },
+  encounterId: 'smb1-sortie-assist-01',
+  rewards: {
+    firstDailyClears: 3,
+    bonus: [{ type: 'assist-xp-equipped', amount: 40 },
+            { type: 'supply-ticket', amount: 1 }],
+    repeatProfileId: 'sortie-standard-v1',
+  },
+  autoRepeatAfterFirstClear: true,
+}
+```
+
+Mission objectives use a declared vocabulary: `clear-waves`, `clear-stage`,
+`deploy-role`, `equip-supply`, `trigger-assist`, `defeat-boss`,
+`defeat-wanted`, `clear-distinct-camps` and `clear-sortie`. Generation validates
+against the live collection; it never embeds executable predicates.
+
+XP rewards name their destination and apply immediately. Fighter Mastery XP and
+Assist Proficiency XP are progression values, not inventory items. A Wanted
+Hunt is a Sortie record referencing an encountered enemy/miniboss variant and a
+Manual discovery entry.
+
 ## SaveV4
 
 ```js
@@ -269,6 +312,8 @@ content to an Archive must not reset or strand pity.
   progression: {
     training: { rank: 1 },
     atlas: { rank: 0, areaXp: 0, keys: 0 },
+    orders: { storedFolders: [], repeatWaveProgress: 0 },
+    sorties: { dailyBonusDate: '', bonusClearsById: {}, discoveredWantedIds: [] },
     worlds: {
       'super-mario-bros-1985': {
         state: 'unlocked',        // locked | available | unlocked | complete
@@ -285,7 +330,7 @@ content to an Archive must not reset or strand pity.
       'classic-mario': { stars: 0, masteryXp: 0, discoveredAt: 0 },
     },
     powerups: {},
-    assists: {},
+    assists: {}, // { [assistId]: { stars, proficiencyRank, proficiencyXp } }
     legacyUnits: {},
   },
   loadouts: {
@@ -375,6 +420,9 @@ The content validator must reject:
 - an ordinary story reference team containing UR or unavailable content;
 - an Archive destination that points back to itself;
 - a boss without a stagger rule or phase;
+- an Order with no legal fallback or an exact-unit requirement;
+- a Sortie that awards Atlas Rank/Keys or references an unshipped encounter;
+- XP whose destination type is missing from the save contract;
 - production-facing content marked `dev`.
 
 Warnings, rather than errors, cover provisional art, missing optional sound,

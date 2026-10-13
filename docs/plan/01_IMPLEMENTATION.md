@@ -72,6 +72,8 @@ src/
     assists.js
     worlds.js
     banners.js
+    missions.js
+    sorties.js
     encounters/smb1.js
     dev-fixtures.js
   systems/combat/
@@ -299,8 +301,11 @@ Purpose: turn a combat toy into a loop without adding gacha yet.
   Camp repeats the selected cleared stage for resources.
 - On defeat, return to the most recent camp stage, show the exact reason in the
   Field Manual/battle report and retry only after its configured delay.
-- Add the first daily page without streak loss: three small goals, all
-  completable in normal play, with an accumulating three-day buffer.
+- Add the Field Desk: one daily folder, five account-legal Orders, any three to
+  complete, with an accumulating three-day buffer and no streak loss.
+- Add the Sortie record/route seam, but only Coin Course and Fighter Practice
+  fixtures in this phase. Assist Study, Supply, Starfall and Wanted content may
+  follow after their target systems exist.
 - Add away earnings based on the best cleared camp stage. Cap at 12 hours for
   the trial; active play remains more rewarding because it can advance, open
   chests and complete goals.
@@ -313,6 +318,8 @@ Purpose: turn a combat toy into a loop without adding gacha yet.
 - A player who loses has at least two visible routes: train/farm or change
   composition; the game does not loop an unwinnable fight every few seconds.
 - Offline rewards for 1, 6, 12 and 24 hours match the documented cap exactly.
+- Generated Orders always have a currently owned solution and regenerate safely
+  if their referenced content becomes unavailable.
 - The Field Manual's displayed damage example reproduces an actual seeded hit.
 
 ## Phase 4 — Super Mario Bros. Overworld, stages 1–5
@@ -434,6 +441,10 @@ After two Sagas prove the abstractions, production becomes a repeating gate:
 6. simulate four reference-team envelopes;
 7. perform visual/window/performance QA;
 8. release the World and archive its source manifest.
+
+Each World also declares zero to five Wanted Hunts and any source-specific
+Sorties it can support. These are side records and never pad the numbered Story
+length.
 
 No World enters active production if its boss set, four-person free path or
 animation plan is unresolved.

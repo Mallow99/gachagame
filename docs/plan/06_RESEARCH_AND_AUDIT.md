@@ -449,13 +449,28 @@ is not feasible as one launch roster.
 game feeling exhausted as soon as the player finishes available Story.
 
 **Resolution:** SMB1 first clears fund 30 pulls, ordinary combat completes
-repeatable Field Reports, and on-rank Camp targets 1.5–2.5 Fighter pulls per
+repeatable Patrol Reports, and on-rank Camp targets 1.5–2.5 Fighter pulls per
 active hour without a daily hard cap. Away play earns a smaller share. New
 Worlds remain the fastest burst, not the only renewable source.
 
 **Audit result:** coherent for a personal non-monetized game. The rate still
 needs telemetry so the reveal remains exciting without making the strip feel
 like a slow pull-vending timer.
+
+### 7.14 Generous daily rewards versus chore lists
+
+**Problem:** a large free login bundle has nothing to play, while a rigid daily
+checklist turns a background game into chores and can demand characters the
+player never pulled.
+
+**Resolution:** Field Order folders stack for three days, offer five validated
+missions and require any three. Optional resource/XP/Wanted Sorties let the
+player choose a useful activity. Exact-unit, rarity, social and manual-timing
+requirements are forbidden. Camp remains renewable after the folder is done.
+
+**Audit result:** coherent if Order generation is tested against real saves and
+the four-pull daily bundle replaces rather than stacks with the old flat daily
+grant.
 
 ## 8. Remaining trial decisions
 

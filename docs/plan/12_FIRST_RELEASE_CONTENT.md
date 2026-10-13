@@ -173,6 +173,31 @@ rotation/squash effect or honest provisional sprite over changing the unit's
 combat job invisibly. Portrait art is not cut into a battle puppet unless its
 source and visual quality support it.
 
+## SMB1 optional Sorties and Wanted Hunts
+
+These unlock after their source behavior has appeared. They reuse approved
+actors/background kits with new compositions, so they add things to do without
+padding the 15-stage Story or demanding another art batch.
+
+| Unlock | Side stage | Primary reward | Authored twist |
+| --- | --- | --- | --- |
+| stage 3 | Coin Course: Pipe Run | Coins | fragile Goombas carry coins; Plants control safe collection windows |
+| stage 5 | Fighter Practice: Jump School | deployed Fighter Mastery XP | distant targets reward movement/target reacquisition rather than raw damage |
+| stage 5 | Supply Route: Toad's Delivery | 1–2 Supply Tickets during daily bonus | protect a moving chest/Toad marker through four waves |
+| first Assist equipped | Assist Study: Royal Signal | equipped Assist Proficiency XP | survival waves create reliable intervention triggers |
+| stage 5 | Starfall Route: Brick Rush | Starlight | defeat marked bonus targets before they retreat |
+| stage 10 | Wanted: Lakitu's Spiny Storm | mixed Field Order reward | stagger Lakitu while capped Spiny waves pressure the party |
+| stage 14 | Wanted: False Bowser | mixed reward and Manual entry | bridge stagger reveals a rotating encountered enemy beneath the disguise |
+
+Veteran Goomba, Red Shell Patrol and Hammer Bro Pair are smaller Wanted files
+that can appear in Field Orders before the two authored Hunt stages. Discovery
+may happen through a rare final Camp wave, but afterward the Hunt is always
+selectable directly.
+
+Sortie repeat rewards use the common economy profile. Only the first three
+featured clears receive the daily category bonus; no Sortie consumes stamina,
+Atlas Keys or a separate entry ticket.
+
 ## Kirby's Adventure production backlog
 
 Kirby follows SMB1 because it exercises new engine capabilities without adding
