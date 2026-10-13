@@ -47,6 +47,11 @@ disagree with this directory, this directory wins.
 16. [`16_MARIO_KIRBY_ARCHIVE_EXPANSION.md`](16_MARIO_KIRBY_ARCHIVE_EXPANSION.md)
     — the current roster priority: 34 additional Mario/Kirby cards, opening
     Archive floors, form rules and model-derived actor policy.
+17. [`17_OWNER_DECISIONS_AND_ROSTER_EXPANSION.md`](17_OWNER_DECISIONS_AND_ROSTER_EXPANSION.md)
+    — **owner decisions that override earlier files**: pulls as progression,
+    region-locked story plus Endless, effect-only Hub-scoped Power-Ups, no
+    Mythic slot, one UR Kirby, and the expanded Mario/Kirby/20XX roster with
+    side-cast versions. Part III lists the earlier sections still to rewrite.
 
 ## The one-sentence game
 
@@ -101,16 +106,16 @@ for an eternal commitment.
 9. **One family member per party.** Separate iterations of Mario, Link, Sonic
    or another identity can be pulled, but only one from that family can fight
    at once. The player chooses a version instead of fielding four Marios.
-10. **Forms are not all fighters.** A complete era or moveset can be a fighter;
+10. **Amended by plan `17` §3–4 — Power-Ups are effect-only Hub items.** **Forms are not all fighters.** A complete era or moveset can be a fighter;
     an ordinary Fire Flower, Ice Flower or Super Star is normally a Power-Up.
     This prevents variant spam and impossible sprite workloads.
 11. **Support collectibles do not tax character savings.** Power-Ups and one
     party-wide Assist Page use Supply Tickets, not fighter currency. Fighters
     never share their banner with memories or equipment.
-12. **UR has a real opportunity cost.** One Mythic slot is shared by an UR
+12. **SUPERSEDED by plan `17` §6 — one-Mythic-slot rule removed.** **UR has a real opportunity cost.** One Mythic slot is shared by an UR
     fighter, UR Power-Up or future UR Assist Page. This stays a trial through
     the first UR playtest but is the implementation baseline.
-13. **No normal story pull check.** Traits and specialist kits may make an
+13. **SUPERSEDED by plan `17` §1 — story stages may require pulls.** **No normal story pull check.** Traits and specialist kits may make an
     encounter easier, but every story stage is clearable by an expected free
     or ordinary-pull roster. Pulling strength buys speed and consistency, not
     permission to continue.
