@@ -20,12 +20,17 @@ ripped or official art. It's **personal use only**; the owner accepts that publi
 distribution could draw takedowns.
 
 The current focus is the playable game loop. The long-term structure is now a
-Library of franchise Sagas containing complete 25-stage Worlds; see
-`docs/WORLD_TOUR_PLAN.md`. The first 50 authored stages are Mushroom Kingdom
-1–25 and Dream Land 1–25, while Mario can later expand to four Worlds and 100
-authored stages. Build the real Electron desk strip and one polished five-stage
-Mario slice before producing the larger roster. The Mario pull demo is already
-signed off and remains the future reveal reference.
+branching Atlas of franchise Sagas; see `docs/WORLD_TOUR_PLAN.md`. Worlds can be
+5–25 stages according to their material, and Sagas have no stage cap. Mushroom
+Kingdom and Dream Land remain the first planned 25-stage flagships, but later
+the player chooses eligible destinations with Atlas Keys. Fighter iterations,
+equippable Power-Ups, party-wide Assist Pages, SSRs and one-per-team URs are
+separate systems; the refined rule is one Mythic slot shared across an UR
+fighter, UR Power-Up or future UR Assist. Atlas Rank sets a new World's Threat
+Band when it is first entered instead of hard level-syncing the player's team.
+Build the real Electron desk strip and one polished
+five-stage Mario slice before producing the larger roster. The Mario pull demo
+is already signed off and remains the future reveal reference.
 
 ---
 

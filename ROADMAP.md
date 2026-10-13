@@ -10,8 +10,9 @@ jank" everywhere else. Personal use only.
 **Where we are:** build the playable game first. Character production and the
 art picker are paused until the strip loop works. The current step is Roadmap 2.
 The approved long-term content structure is now recorded in
-[`docs/WORLD_TOUR_PLAN.md`](docs/WORLD_TOUR_PLAN.md): a Library of franchise
-Sagas, made from complete 25-stage Worlds, with Mario and Kirby first.
+[`docs/WORLD_TOUR_PLAN.md`](docs/WORLD_TOUR_PLAN.md): a branching Atlas of
+franchise Sagas. Major Worlds can be 25 stages, smaller destinations can be
+5–20, and a Saga has no fixed stage cap. Mario and Kirby are first.
 
 ---
 
@@ -45,12 +46,21 @@ Sagas, made from complete 25-stage Worlds, with Mario and Kirby first.
   stronger and new units appear in the strip → repeat.
 
 **Rarity:** R / SR / SSR / UR as letters. Stars show duplicates.
-- For variant families like Mario: base form is R, power-ups are SR, and
-  signature forms and bosses are SSR. UR is reserved for temporary,
-  screen-dominating transformations such as Fury Bowser or Invincible Mario.
+- For variant families like Mario: base form is normally R, specialized
+  iterations and lieutenants are SR, signature forms and bosses are SSR, and
+  peak versions are UR. An R may be replaced by a higher-rarity family member;
+  SR remains valuable through specialization. UR is not limited to temporary
+  transformations, although transformations are one important UR mechanic.
 - Only SSRs get the full ceremony: the long draw, the in-flight
   transformation, the quote card and voice line, and the theme music. R and
   SR go straight to the art with name and title. UR extends the SSR ceremony.
+
+**Forms and equipment:** complete eras or movesets are pullable fighter
+iterations. Ordinary Fire/Ice/Tanooki/Cat-style changes are usually equippable
+Power-Ups instead of separate Marios. Power-Ups and party-wide Assist Pages use
+a cheaper Supply gacha with separately earned tickets, so they do not compete
+with saving for fighters. A party has one Mythic slot shared by an UR fighter,
+UR Power-Up or future UR Assist Page.
 
 **Art per character.** One good image is reused for the reveal, the profile
 and the ultimate cut-in. Three routes:
@@ -90,13 +100,15 @@ Decided: everything in the section above.
 1. **Prestige** (reset the stage for a permanent multiplier). It fits idle
    games, but the owner finds it a bit lame. Decide in Roadmap 4; bosses and
    new areas may be enough on their own.
-2. **The first vertical slice roster:** Mushroom Grasslands with 10–12 playable
+2. **The first vertical slice roster:** Mushroom Grasslands with 8–12 playable
    candidates, four enemy families and Goomba King. Exact membership still
    waits for an animation-sheet audit.
 3. **Earn rates:** how often a pull is affordable (tune by feel in Roadmap 4).
 
-Decided: variants are separate pullable units. A team may equip only one unit
-from the same family, so it cannot be filled with four Marios.
+Decided: meaningful fighter iterations are separate pullable units. A team may
+equip only one unit from the same family, so it cannot be filled with four
+Marios. Ordinary power-up changes are equipment unless the form supports a
+complete distinct fighter kit.
 
 ---
 
@@ -142,14 +154,18 @@ Assist Pages and reward drops are still pending.
 
 - An Electron window that is transparent, always on top, sits along the
   bottom of the screen and passes clicks through.
-- **Authored Worlds with procedural Mastery:**
-  - three-wave stages, with a boss every fifth story stage
+- **Authored Worlds with scalable Mastery:**
+  - three-wave stages, with an Area boss every fifth story stage
+  - Worlds may contain 5, 10, 15, 20 or 25 stages; 25 is for flagship campaigns
   - World 1 is 25 Mushroom Kingdom stages: Grasslands, Underground Mines,
     Haunted House, Koopa Airship and Bowser's Castle
   - themed bosses on stages 5/10/15/20, then Bowser on stage 25
-  - the first 50 authored stages are Mushroom Kingdom 1–25 and Dream Land 1–25
-  - World stages 26–100 are optional Mastery remixes rather than 75 new biomes
-  - enemy stats that keep scaling
+  - Dream Land is the second planned flagship, but later the player spends
+    Atlas Keys to choose among a small set of eligible Worlds
+  - the account's Atlas Rank sets a new World's authored Threat Band when the
+    player first enters it; it does not rubber-band to the exact party or move
+    the goalposts during the campaign
+  - Casual replay permits farming; Mastery remixes completed content upward
 - **Combat from the data files:** stats, one basic action, a passive, and an
   ultimate meter that fires with a cut-in of the character's art. Front and
   back row. No type multipliers in the first build.
@@ -173,8 +189,11 @@ Assist Pages and reward drops are still pending.
 - **Banner skins:** each featured banner swaps the shooting star for its own
   object (Super Star for Mario, a Warp Star for Kirby, a blue crystal for
   Breaking Bad).
-- **Progressive pools:** area banners unlock as their bosses are defeated. UR
-  banners stay separate and do not open until the first World is complete.
+- **Progressive pools:** Area Spotlights unlock during their Worlds, then their
+  contents move into a permanent Saga Archive. UR/Mythic banners stay separate,
+  cycle among unlocked candidates and keep persistent pity.
+- **Supply gacha:** a cheaper, separately earned ticket banner for Power-Ups
+  and Assist Pages. Area Supply Spotlights also move into a permanent Archive.
 - **Done when:** currency earned in the strip buys pulls, and a newly pulled
   unit shows up in the strip.
 
@@ -184,8 +203,10 @@ Assist Pages and reward drops are still pending.
   and back rows, and one equipped variant per character family.
 - A collection log (who you have, who's missing as silhouettes).
 - One party-wide **Assist Page** with a passive and a charged or conditional
-  intervention. Support pages use their own rewards/tickets and never dilute
-  fighter banners.
+  intervention, plus one compatible **Power-Up** slot per fighter. Supply
+  collectibles use their own rewards/tickets and never dilute fighter banners.
+- Atlas Keys earned from final bosses open one of a small set of eligible
+  destinations. Choices never permanently lock the unchosen Worlds.
 - "While you were away" earnings.
 - Decide on prestige (OPEN #2). Tune earn rates (OPEN #5).
 
