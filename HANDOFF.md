@@ -19,10 +19,10 @@ White, Omni-Man, Kirby, Ronald McDonald, Tung Tung Tung Sahur, ...) using
 ripped or official art. It's **personal use only**; the owner accepts that public
 distribution could draw takedowns.
 
-The current focus is **not** the game loop. It's making one character's pull
-feel as good as a real gacha (Genshin / Star Rail / Jujutsu Kaisen Phantom
-Parade), using Mario as the test case, then turning that into a template for
-every character.
+The current focus is the playable game loop: build the real Electron desk
+strip and its first 50-stage Mushroom Kingdom world before producing more
+characters or art. The Mario pull demo is already signed off and remains the
+future reveal reference.
 
 ---
 

@@ -129,7 +129,7 @@ class Game extends EventTarget {
     if (this.party.includes(id)) {
       if (this.party.length === 1) return false; // always keep someone to fight
       this.party = this.party.filter((p) => p !== id);
-    } else if (this.owned[id] && this.party.length < D.MAX_PARTY) {
+    } else if (this.owned[id] && this.party.length < D.MAX_PARTY && !this.partyFamilyConflict(id)) {
       this.party.push(id);
     } else {
       return false;
@@ -137,6 +137,14 @@ class Game extends EventTarget {
     this.save();
     this.emit();
     return true;
+  }
+
+  /** Variants are separate units, but only one member of a family can fight. */
+  partyFamilyConflict(id) {
+    const hero = this.hero(id);
+    const family = hero?.family;
+    if (!family) return null;
+    return this.party.find((member) => member !== id && this.hero(member)?.family === family) || null;
   }
 
   // --- Gacha ----------------------------------------------------------------
@@ -175,7 +183,7 @@ class Game extends EventTarget {
     if (!this.owned[h.id]) {
       this.owned[h.id] = { lvl: 1, asc: 0 };
       res.isNew = true;
-      if (this.party.length < D.MAX_PARTY) this.party.push(h.id);
+      if (this.party.length < D.MAX_PARTY && !this.partyFamilyConflict(h.id)) this.party.push(h.id);
     } else if (this.asc(h.id) < D.MAX_ASC) {
       this.owned[h.id].asc += 1;
       res.ascUp = true;
@@ -189,18 +197,20 @@ class Game extends EventTarget {
   // --- Battles --------------------------------------------------------------
 
   stageRewards(s) {
-    return { gems: 40 + 8 * s, gold: 80 + 25 * s };
+    const boss = D.stageInfo(s).boss;
+    return { gems: 25 + 5 * s + (boss ? 75 : 0), gold: 60 + 18 * s + (boss ? 120 : 0) };
   }
 
   makeEnemies(s) {
+    const info = D.stageInfo(s);
     const p = D.ENEMY_GROWTH ** (s - 1);
-    if (s % 5 === 0) {
-      const [name, color] = D.BOSSES[(s / 5 - 1) % D.BOSSES.length];
+    if (info.boss) {
+      const [name, color] = info.area.boss;
       return [unit(name, color, 300 * p, 15 * p, 7 * p, 9, true)];
     }
-    const count = s === 1 ? 1 : s < 4 ? 2 : 3;
+    const count = info.worldStage === 1 ? 1 : info.areaStage < 4 ? 2 : 3;
     return Array.from({ length: count }, () => {
-      const [name, color] = pick(D.ENEMIES);
+      const [name, color] = pick(info.area.enemies);
       return unit(name, color, 60 * p, 11 * p, 4 * p, randInt(6, 13), false);
     });
   }
@@ -296,8 +306,12 @@ class Game extends EventTarget {
     }
     if (Object.keys(owned).length) {
       this.owned = owned;
-      const party = (Array.isArray(data.party) ? data.party : []).filter((id) => owned[id]);
-      this.party = [...new Set(party)].slice(0, D.MAX_PARTY);
+      const party = [...new Set((Array.isArray(data.party) ? data.party : []).filter((id) => owned[id]))];
+      this.party = [];
+      for (const id of party) {
+        if (this.party.length >= D.MAX_PARTY) break;
+        if (!this.partyFamilyConflict(id)) this.party.push(id);
+      }
       if (!this.party.length) this.party = [Object.keys(owned)[0]];
     }
   }

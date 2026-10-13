@@ -15,8 +15,9 @@ export const OFFLINE_CAP_MIN = 480;
 export const DAILY_GEMS = 500;
 
 export const MAX_ASC = 5;
-export const MAX_PARTY = 3;
-export const ENEMY_GROWTH = 1.1; // enemy stats multiply by this every stage
+export const MAX_PARTY = 4;
+export const ENEMY_GROWTH = 1.075; // enemy stats multiply by this every stage
+export const WORLD_LENGTH = 50;
 
 export const CLASSES = {
   Warrior: { hp: 120, atk: 16, def: 12, spd: 8 },
@@ -64,19 +65,48 @@ export const ROSTER = [
   { id: 'twig', name: 'Twig', rarity: 3, cls: 'Ranger', color: '#9ac078' },
 ];
 
-export const ENEMIES = [
-  ['Slime', '#6fe08a'],
-  ['Goblin', '#9bc53d'],
-  ['Bat', '#8a6fbf'],
-  ['Skeleton', '#e8e4d8'],
-  ['Imp', '#ff6b6b'],
-  ['Mushroom Guy', '#d08a5a'],
+export const MUSHROOM_KINGDOM = [
+  {
+    id: 'grassland', name: 'Grassland', range: '1–10',
+    enemies: [['Goomba', '#9b5a32'], ['Koopa Troopa', '#7fbd42'], ['Shy Guy', '#e34d4d'], ['Piranha Plant', '#52a447']],
+    boss: ['Goomba King', '#a65f32'],
+  },
+  {
+    id: 'underground', name: 'Underground', range: '11–20',
+    enemies: [['Swooper', '#7555a5'], ['Dry Bones', '#ded7c4'], ['Buzzy Beetle', '#365273'], ['Spike', '#4f9b50']],
+    boss: ['King Boo', '#eee8ff'],
+  },
+  {
+    id: 'cloudtops', name: 'Cloudtops', range: '21–30',
+    enemies: [['Paratroopa', '#e65e4f'], ['Lakitu', '#f2cf45'], ['Spiny', '#d8473d'], ['Fuzzy', '#292634']],
+    boss: ['Thunder Lakitu', '#f3c72e'],
+  },
+  {
+    id: 'airship', name: 'Airship Fleet', range: '31–40',
+    enemies: [['Bob-omb', '#30313b'], ['Rocky Wrench', '#a76b41'], ['Bullet Bill', '#252633'], ['Mechakoopa', '#e5ad45']],
+    boss: ['Boom Boom', '#d29a56'],
+  },
+  {
+    id: 'castle', name: "Bowser's Castle", range: '41–50',
+    enemies: [['Dry Bones', '#ded7c4'], ['Podoboo', '#ff6b24'], ['Hammer Bro', '#4ca34d'], ['Thwomp', '#88909b']],
+    boss: ['Bowser', '#d6782f'],
+  },
 ];
 
-export const BOSSES = [
-  ['King Slime', '#3ddc84'],
-  ['Goblin Warlord', '#7da03a'],
-  ['Bone Dragon', '#d8d0c0'],
-  ['Lich', '#7b5cff'],
-  ['Final Boss (Probably)', '#ff3b6b'],
-];
+/** World/area metadata for any absolute stage. Later worlds can replace the loop. */
+export function stageInfo(stage) {
+  const safe = Math.max(1, Math.floor(stage));
+  const world = Math.floor((safe - 1) / WORLD_LENGTH) + 1;
+  const worldStage = ((safe - 1) % WORLD_LENGTH) + 1;
+  const areaIndex = Math.floor((worldStage - 1) / 10);
+  const areaStage = ((worldStage - 1) % 10) + 1;
+  return {
+    stage: safe,
+    world,
+    worldStage,
+    areaStage,
+    boss: areaStage === 10,
+    worldName: world === 1 ? 'Mushroom Kingdom' : `Mushroom Kingdom · Loop ${world}`,
+    area: MUSHROOM_KINGDOM[areaIndex],
+  };
+}

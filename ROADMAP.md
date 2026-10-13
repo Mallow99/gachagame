@@ -7,8 +7,8 @@ says what we are building and in what order.
 and fast** to build and play. Polish where it pays off (pulls, SSRs), "charming
 jank" everywhere else. Personal use only.
 
-**Where we are:** Roadmap 0 is done except for the open decisions marked
-**OPEN**. The next step is Roadmap 1.
+**Where we are:** build the playable game first. Character production and the
+art picker are paused until the strip loop works. The current step is Roadmap 2.
 
 ---
 
@@ -71,7 +71,8 @@ and the ultimate cut-in. Three routes:
 - Duplicates raise stars, so pulls stay meaningful after you've collected
   everything.
 - New character batches arrive as new banners. This is the biggest lever.
-- Type advantages and bosses keep weaker units useful.
+- Boss mechanics and team roles keep weaker units useful. Type matchups are
+  deferred until the core loop works and playtesting shows they add choices.
 - "While you were away" earnings when you come back.
 
 ---
@@ -82,23 +83,15 @@ Decided: everything in the section above.
 
 **OPEN, to discuss when we get there:**
 
-1. **Types.** Three types in a rock-paper-scissors triangle, with neutral for
-   oddballs. Gamer / Meme / Real Person was rejected: there aren't many memes,
-   and someone like Omni-Man doesn't fit. Options:
-   - *By how they fight:* **Power / Brains / Chaos.** Omni-Man is Power,
-     Walter is Brains, Sahur is Chaos. Works for any origin. Claude's lean.
-   - *By where they come from:* **Game / Screen / Internet** (TV and film are
-     Screen; memes and brainrot are Internet). Easy to assign, but the roster
-     is mostly Screen.
-   - Something the owner names.
-2. **Prestige** (reset the stage for a permanent multiplier). It fits idle
+1. **Prestige** (reset the stage for a permanent multiplier). It fits idle
    games, but the owner finds it a bit lame. Decide in Roadmap 4; bosses and
    new areas may be enough on their own.
-3. **The first vertical slice:** which 10–15 characters get full treatment
-   first.
-4. **Variants:** is "Mario" one unit with forms, or are Mario / Bubble Mario /
-   Superstar Mario separate units? This decides how duplicates and stars work.
-5. **Earn rates:** how often a pull is affordable (tune by feel in Roadmap 4).
+2. **The first vertical slice:** gaming characters with polished existing
+   sprites; choose the exact roster after the core game works.
+3. **Earn rates:** how often a pull is affordable (tune by feel in Roadmap 4).
+
+Decided: variants are separate pullable units. A team may equip only one unit
+from the same family, so it cannot be filled with four Marios.
 
 ---
 
@@ -106,14 +99,14 @@ Decided: everything in the section above.
 
 Make adding a character mostly data entry.
 
-**In progress:** the owner-facing Pixiv picker is built. It produces a local,
+**Paused after its first tool:** the Pixiv picker produces a local,
 bookmark-ranked gallery (60 works by default), supports filtering and ordered
 favorites, remembers the selection, and exports `picks.json`. The generated
 page was visually checked at desktop and phone widths with the six approved
 Mario works. Live Pixiv search returned HTTP 403 from the Codex cloud on
 2026-10-12, so its live API path still needs a run on the owner's normal
-connection. Character JSON and processing integration are next, after the
-relevant OPEN decisions below.
+connection. Do not continue character production until the playable strip is
+working.
 
 - **Character data template:** one JSON file per unit, with:
   - id, name, title, family, tier, type, stats
@@ -135,11 +128,13 @@ relevant OPEN decisions below.
   bottom of the screen and passes clicks through.
 - **Procedural stages:**
   - waves of enemies, with a boss every 10th stage
-  - a new area every 50 stages (background tint plus a new enemy set)
+  - World 1 is 50 Mushroom Kingdom stages: Grassland, Underground, Cloudtops,
+    Airship Fleet and Bowser's Castle; each area lasts 10 stages
+  - themed bosses on stages 10/20/30/40, then Bowser on stage 50
   - enemy stats that keep scaling
-- **Combat from the data files:** stats, 1–2 basic attacks, a passive, and an
-  ultimate meter that fires with a cut-in of the character's art. Type
-  multipliers. Front and back row.
+- **Combat from the data files:** stats, one basic action, a passive, and an
+  ultimate meter that fires with a cut-in of the character's art. Front and
+  back row. No type multipliers in the first build.
 - **Rewards:** coin drops, pull currency from bosses, occasional chests.
 - **Performance:** it must stay light on an 8 GB M2 Air. Lower the frame rate
   when nothing is happening, and keep images small.
@@ -166,7 +161,7 @@ relevant OPEN decisions below.
 ## Roadmap 4: progression and team building
 
 - Levels bought with coins, stars from duplicates, four team slots with front
-  and back rows, types.
+  and back rows, and one equipped variant per character family.
 - A collection log (who you have, who's missing as silhouettes).
 - "While you were away" earnings.
 - Decide on prestige (OPEN #2). Tune earn rates (OPEN #5).
@@ -194,22 +189,21 @@ relevant OPEN decisions below.
 
 ---
 
-## Planned attack types
+## Simplified combat actions
 
 Every kit is built from these parts. Each one has a cheap way to look good in
 the strip.
 
-**Basic attacks (each unit has 1–2):**
+The original seven attack types stay as animation styles: `melee`, `shot`,
+`combo`, `charge`, `stomp`, `lob` and `beam` tell the renderer what to play,
+not which of seven separate damage systems to run. Only three mechanics need
+to exist in the first simulation:
 
-| Type | What it does | How it looks |
+| Mechanic | What it does |
 |---|---|---|
-| Melee | Hits the nearest enemy | Lean back, lunge, flash, knockback |
-| Ranged shot | Fires at an enemy from the back row | Muzzle flash and tracer |
-| Combo | Several small hits in a row | Quick lunges with numbers popping |
-| Charge | Dashes through the enemy line, hitting everything it passes | Stretch, then a fast slide |
-| Stomp | Jumps onto one target | Arc jump, the target flattens |
-| Lob | An arcing projectile that splashes | A thrown object, then a burst |
-| Beam | A line that hits everything in a row | A stretched glow |
+| Strike | Damage one target |
+| Burst | Damage several targets |
+| Support | Heal, shield, buff or control |
 
 **Effects** (abilities, passives and ultimates combine these):
 - **Crowd control:** area damage, knockback / launch, stun

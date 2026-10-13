@@ -1,6 +1,7 @@
-// Stage preview and the animated auto-battle. Wins pay gems and gold and
-// unlock the next stage; every 5th stage is a boss.
+// Stage preview and the animated auto-battle. World 1 crosses five Mushroom
+// Kingdom areas, with a themed boss at the end of each ten-stage run.
 import { game } from '../game.js';
+import * as D from '../data.js';
 import { sfx } from '../sfx.js';
 import { h, sleep, sprite } from '../ui.js';
 
@@ -10,13 +11,17 @@ export function AdventureView() {
   let fast = false;
   let units = [[], []];
 
+  const worldLabel = h('div.world-title');
   const stageLabel = h('div.stage-title');
+  const areaLabel = h('div.area-title');
+  const progressFill = h('div.area-progress-fill');
+  const progress = h('div.area-progress', progressFill);
   const heroPreview = h('div.preview');
   const enemyPreview = h('div.preview');
   const powerLabel = h('div.center.small');
   const rewardLabel = h('div.muted.small.center');
   const prep = h('div.prep',
-    stageLabel,
+    worldLabel, stageLabel, areaLabel, progress,
     h('div.muted.tiny.center', 'Your party'), heroPreview,
     h('div.vs', 'VS'),
     enemyPreview,
@@ -42,7 +47,12 @@ export function AdventureView() {
   function refresh() {
     if (fighting) return;
     const s = game.stage;
-    stageLabel.textContent = s % 5 === 0 ? `Stage ${s}  —  BOSS` : `Stage ${s}`;
+    const info = D.stageInfo(s);
+    root.className = `view adventure area-${info.area.id}`;
+    worldLabel.textContent = `World ${info.world} · ${info.worldName}`;
+    stageLabel.textContent = info.boss ? `Stage ${info.worldStage} · BOSS` : `Stage ${info.worldStage}`;
+    areaLabel.textContent = `${info.area.name} · ${info.areaStage}/10`;
+    progressFill.style.width = `${info.areaStage * 10}%`;
     const heroes = game.partyUnits();
     fillPreview(heroPreview, heroes, true);
     fillPreview(enemyPreview, enemies, false);

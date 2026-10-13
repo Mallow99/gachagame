@@ -286,12 +286,23 @@ button:disabled { opacity: 0.4; cursor: default; }
 /* ---- Adventure ------------------------------------------------------------ */
 
 .prep { position: absolute; inset: 0; display: flex; flex-direction: column; gap: 8px; }
+.adventure { overflow: hidden; border-radius: 10px; --area-a: #79c65b; --area-b: #315e39; --area-glow: #d8f09a; }
+.adventure::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 72% 18%, var(--area-glow), transparent 24%), linear-gradient(165deg, var(--area-a), var(--area-b) 72%); opacity: .3; }
+.adventure.area-underground { --area-a: #5b486f; --area-b: #201d35; --area-glow: #9e82ba; }
+.adventure.area-cloudtops { --area-a: #70bde8; --area-b: #586dac; --area-glow: #fff; }
+.adventure.area-airship { --area-a: #9d7659; --area-b: #302b3c; --area-glow: #f0b56d; }
+.adventure.area-castle { --area-a: #6c2927; --area-b: #1c1521; --area-glow: #ff6b21; }
+.prep { padding: 8px; }
+.world-title { color: var(--text); font-size: 10px; font-weight: 750; letter-spacing: .12em; text-align: center; text-transform: uppercase; opacity: .78; }
 .stage-title { font-size: 22px; font-weight: 800; color: var(--accent); text-align: center; }
+.area-title { margin-top: -7px; font-size: 12px; font-weight: 700; text-align: center; }
+.area-progress { width: 76%; height: 5px; margin: -3px auto 2px; overflow: hidden; border-radius: 99px; background: rgba(0,0,0,.3); }
+.area-progress-fill { height: 100%; background: var(--accent); box-shadow: 0 0 8px var(--accent); transition: width .25s; }
 .preview { display: flex; justify-content: center; align-items: flex-end; gap: 12px; min-height: 64px; }
 .preview-unit { display: flex; flex-direction: column; align-items: center; max-width: 72px; text-align: center; }
 .vs { text-align: center; color: var(--bad); font-weight: 800; }
 
-.arena { position: absolute; inset: 0; }
+.arena { position: absolute; inset: 0; z-index: 1; }
 .speed { position: absolute; top: 0; left: 0; z-index: 1; }
 .sides { position: absolute; inset: 0; display: flex; }
 .side { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 16px; }

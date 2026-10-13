@@ -107,9 +107,13 @@ export function HeroesView() {
     }
 
     const inParty = game.party.includes(id);
+    const conflict = game.partyFamilyConflict(id);
     if (inParty) {
       d.party.textContent = 'Remove from party';
       d.party.disabled = game.party.length === 1;
+    } else if (conflict) {
+      d.party.textContent = `Choose one ${hero.family} variant (${game.hero(conflict).name} equipped)`;
+      d.party.disabled = true;
     } else if (game.party.length < D.MAX_PARTY) {
       d.party.textContent = 'Add to party';
       d.party.disabled = false;

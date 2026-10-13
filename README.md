@@ -28,9 +28,10 @@ ones on macOS), and starts in the bottom-right corner.
   guarantees an SR or better.
 - **Dupes** raise a hero's Ascension (max 5): +10% stats and +10 level cap each.
   Dupes after that turn into gold.
-- **Heroes:** click a hero to level them up with gold and add or remove them from the party (max 3).
+- **Heroes:** click a hero to level them up with gold and add or remove them from the party (max 4). Variants are separate pulls, but only one member of a character family can be equipped at once.
 - **Adventure:** auto-battle the current stage. Wins pay gems and gold and unlock
-  the next stage. Every 5th stage is a boss. Losses still pay a little gold.
+  the next stage. The first 50 stages cross five Mushroom Kingdom areas, each
+  ending in a boss. Losses still pay a little gold.
 - **Free gems:** +3/min while open, +1/min while closed (up to 8 hours), 500 daily,
   and stage clears.
 - Sound starts **off**. Turn it on with the SFX button.
