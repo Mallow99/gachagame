@@ -20,6 +20,7 @@ Run `python tools/art/import-v1-sprites.py` to reproduce the atlases. Open
 | Meta Knight, Paint Roller, Sparky, Knuckle Joe, Bio Spark | [Arisotura/Blargboard-extras](https://github.com/Arisotura/Blargboard-extras/tree/master/ranksets/kirby) animated Kirby rank set | Animated source poses plus marker-driven motion. Their source-game/artist provenance is unverified; enhanced treatment, no final NES claim |
 | Bandana Waddle Dee and spear | Happiiz/KirboMod, `Projectiles/BandanaDee/` | Source idle, six walk, three jab, jump and two throw poses; separately sourced held/thrown spears. Copter and ultimate motion remain provisional; original-game/artist review pending |
 | Star Rod | Happiiz/KirboMod, `Items/Weapons/StarRod.png` | Finale-only encounter prop. No Star Rod fighter or paid Mythic pool is shipped |
+| Kabu Assist | Happiiz/KirboMod, `NPCs/Kabu.png` | Four source turn poses; brief entrance/doorway effect, never a fifth fighter. Whispy and Kracko Assists also reuse their sourced body sheets at declared Assist scale |
 
 Grade **B** means the prototype declares reused poses and procedural motion.
 It does not mean final visual approval. The regional Archives stay locked until

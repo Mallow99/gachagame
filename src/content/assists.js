@@ -49,5 +49,8 @@ export const ASSISTS = [
 ASSISTS.push(...EXTRA_ASSISTS);
 for (const assist of ASSISTS) if (assist.id!=='pianta-lifeguard-rescue') {assist.productionStatus='provisional';assist.usable=true;}
 ASSISTS.find(a=>a.id==='toadsworth-tea-service').effects[0].coefficient=1.2;
+ASSISTS.find(a=>a.id==='toadsworth-tea-service').effects.push({type:'cleanse-slow',targetRule:'lowest-hp-ally'});
+ASSISTS.find(a=>a.id==='sprixie-wave-blessing').effects.push({type:'shield-party',coefficient:.35});
+for(const [id,key]of [['kabu','kabu'],['whispy-woods-page','whispy'],['kracko-page','kracko']])ASSISTS.find(a=>a.id===id).spriteKey=key;
 ASSISTS.find(a=>a.id==='lubba-emergency-orbit').trigger={type:'low-energy',afterSeconds:45,usesPerStage:1,cooldownSeconds:60};
 ASSISTS.find(a=>a.id==='lubba-emergency-orbit').effects=[{type:'party-energy',amount:12},{type:'party-haste',value:0.12,durationSeconds:8}];

@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-14T12:48:17.935Z",
+  "at": "2026-10-14T13:17:41.769Z",
   "method": "Actual Battle and BattleView in native canvas. These are renderer captures, not browser CSS or macOS window screenshots.",
   "captures": [
     {
@@ -55,6 +55,24 @@
       "width": 360,
       "height": 170,
       "transparent": true
+    },
+    {
+      "name": "kabu-assist-entry",
+      "file": "docs/validation/captures/kabu-assist-entry.png",
+      "encounter": "ka-02",
+      "seconds": 2.533333333333334,
+      "width": 1000,
+      "height": 220,
+      "transparent": false
+    },
+    {
+      "name": "bandana-spear-flight",
+      "file": "docs/validation/captures/bandana-spear-flight.png",
+      "encounter": "ka-03",
+      "seconds": 2.4666666666666677,
+      "width": 1000,
+      "height": 220,
+      "transparent": false
     }
   ]
 }

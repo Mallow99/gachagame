@@ -1,12 +1,12 @@
 {
   "build": "v1-playable",
-  "at": "2026-10-14T12:49:15.108Z",
-  "seconds": 57.759,
+  "at": "2026-10-14T13:18:59.791Z",
+  "seconds": 57.944,
   "seeds": 50,
   "content": {
     "fighters": 28,
     "encounters": 35,
-    "sprites": 57
+    "sprites": 58
   },
   "banners": [
     {

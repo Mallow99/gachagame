@@ -172,6 +172,9 @@ export('bandana',frames,['enhanced-bandana.png','enhanced-spear-held.png'],heigh
     notes='Source Bandana walk, jab, jump and throw poses from Happiiz/KirboMod. Held spear attached to source jab poses; copter path and ultimate marker motion remain provisional. Original-game/custom artist review pending.')
 export('bandana-spear',grid('enhanced-spear-thrown.png',1,1),'enhanced-spear-thrown.png',height=8,
     notes='Source horizontal spear projectile; persistent flight is resolved by combat, separate from the fighter body.')
+export('kabu',grid('enhanced-Kabu.png',1,4),'enhanced-Kabu.png',height=34,
+    clips={'idle':[0],'skill_or_secondary':[0,1,2,3]},
+    notes='Four source Kabu turn poses used for a brief Assist entrance. Doorway/glow and exit are provisional procedural effects; never an extra fighter.')
 
 export('meta-knight',animated('rankset-metaknight.gif'),'rankset-metaknight.gif',height=40,
     clips={'idle':[0,1],'move_forward':[0,1,2,3],'move_back':[3,2,1,0],'basic_windup':[0],

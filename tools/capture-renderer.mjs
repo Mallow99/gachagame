@@ -19,12 +19,16 @@ const cases=[
  {name:'whispy-field',id:'ka-05',party:['adventure-kirby','parasol-waddle-dee','sir-kibble','hot-head'],rank:21,threat:20,boss:true,width:1000,height:220},
  {name:'bowser-ultimate-strip',id:'smb1-15',party:['classic-mario','koopa-troopa','hammer-bro','bowser'],rank:15,threat:15,ultimate:'bowser',width:1280,height:170,transparent:true},
  {name:'small-strip',id:'ka-03',party:['adventure-kirby','waddle-dee','poppy-bros-jr'],rank:18,threat:18,seconds:18,width:360,height:170,transparent:true},
+ {name:'kabu-assist-entry',id:'ka-02',party:['adventure-kirby','poppy-bros-jr'],rank:17,threat:17,assist:'kabu',width:1000,height:220},
+ {name:'bandana-spear-flight',id:'ka-03',party:['adventure-kirby','bandana-waddle-dee'],rank:20,threat:18,spear:true,width:1000,height:220},
 ];
 const captures=[];
 for(const c of cases){
  const canvas=createCanvas(c.width,c.height);canvas.getBoundingClientRect=()=>({width:c.width,height:c.height});
- const b=new Battle({encounter:content.encounters.get(c.id),party:c.party,rank:c.rank,threat:c.threat,seed:42});
- if(c.boss||c.ultimate){for(let i=0;i<18000&&!b.done;i++){b.step();if(c.boss&&b.living(false).some(a=>a.boss)||c.ultimate&&b.events.some(e=>e.type==='ultimate'&&e.sourceId.startsWith(c.ultimate+'#')))break;}b.advance(c.boss?1:.25);}
+ const b=new Battle({encounter:content.encounters.get(c.id),party:c.party,rank:c.rank,threat:c.threat,assistId:c.assist,seed:42});
+ if(c.assist){b.advance(2);b.living(true)[0].hp*=.2;b.checkAssist();b.advance(.5);}
+ else if(c.spear){b.advance(2);const spear=b.living(true).find(a=>a.id==='bandana-waddle-dee'),target=b.living(false)[0];b.startAction(spear,{...spear.definition.ultimate,kind:'ultimate'},target);b.advance(.45);}
+ else if(c.boss||c.ultimate){for(let i=0;i<18000&&!b.done;i++){b.step();if(c.boss&&b.living(false).some(a=>a.boss)||c.ultimate&&b.events.some(e=>e.type==='ultimate'&&e.sourceId.startsWith(c.ultimate+'#')))break;}b.advance(c.boss?1:.25);}
  else b.advance(c.seconds);
  const view=new BattleView(canvas,{transparent:c.transparent});await view.ready;view.draw(b);
  await new Promise(r=>setTimeout(r,30));view.draw(b);

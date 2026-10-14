@@ -4,6 +4,7 @@ const escape=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>'
 // Original printed symbols for supply records without approved character art.
 // They identify the item/intervention rather than impersonating a fighter.
 export function supplyArt(item,kind,cls=''){
+ if(kind==='assist'&&item.spriteKey)return `<img class="${cls}" src="${spriteIcon(item.spriteKey)}" alt="${escape(item.name)}" draggable="false">`;
  if(icons.has(item.id))return `<img class="${cls}" src="${spriteIcon(item.id)}" alt="${escape(item.name)}" draggable="false">`;
  const symbols={
   'super-leaf':'<path d="M15 43C12 25 25 14 49 10c4 25-7 41-26 38l-7 6 2-11Z"/><path class="cut" d="m21 43 19-22M30 33l-7-9M36 27l9 1"/>',

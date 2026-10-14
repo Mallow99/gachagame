@@ -5350,6 +5350,92 @@
     "notes": "Source horizontal spear projectile; persistent flight is resolved by combat, separate from the fighter body.",
     "sha256": "90fe5ec454396efc5c559bf05aac43863032ea4a90404e286ccb88491f196444"
   },
+  "kabu": {
+    "url": "assets/sprites/v1/kabu.png",
+    "frames": [
+      [
+        0,
+        0,
+        64,
+        64
+      ],
+      [
+        64,
+        0,
+        64,
+        64
+      ],
+      [
+        128,
+        0,
+        64,
+        64
+      ],
+      [
+        192,
+        0,
+        64,
+        64
+      ]
+    ],
+    "clips": {
+      "idle": [
+        0
+      ],
+      "move_forward": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "move_back": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "basic_windup": [
+        0
+      ],
+      "basic_resolve": [
+        1
+      ],
+      "skill_or_secondary": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "hurt": [
+        0
+      ],
+      "knockout": [
+        3
+      ],
+      "ultimate_entry": [
+        2
+      ]
+    },
+    "fps": 8,
+    "cell": [
+      64,
+      64
+    ],
+    "pivot": [
+      32.0,
+      62
+    ],
+    "nativeHeight": 34,
+    "facing": "left",
+    "sourceFiles": [
+      "enhanced-Kabu.png"
+    ],
+    "spriteGrade": "B",
+    "status": "provisional",
+    "renderMode": "native-sprite",
+    "notes": "Four source Kabu turn poses used for a brief Assist entrance. Doorway/glow and exit are provisional procedural effects; never an extra fighter.",
+    "sha256": "c021ee7d54fb99122c869398b04c5d05d76a82dfa5a2049366dab7a6fdbd0412"
+  },
   "meta-knight": {
     "url": "assets/sprites/v1/meta-knight.png",
     "frames": [

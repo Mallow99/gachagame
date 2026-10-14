@@ -34,7 +34,7 @@ test('zero-cooldown Assist interventions fire on consecutive short waves',()=>{
  const b=new Battle({encounter:fixture,party:['adventure-kirby'],mode:'endless',assistId:'mr-star'});b.advance(1);assert.equal(b.assistUses,1);b.checkAssist('wave-start');assert.equal(b.assistUses,1);b.assistWaveUses=0;b.checkAssist('wave-start');assert.equal(b.assistUses,2);
 });
 test('higher Assist proficiency improves the same complete intervention',()=>{
- const low=new Battle({encounter:fixture,party:['adventure-kirby'],mode:'endless',assistId:'mr-star',assistProficiencyRank:1}),high=new Battle({encounter:fixture,party:['adventure-kirby'],mode:'endless',assistId:'mr-star',assistProficiencyRank:5});low.advance(.4);high.advance(.4);assert.equal(low.assistUses,1);assert.equal(high.assistUses,1);assert.ok(high.actors[0].energy>low.actors[0].energy);
+ const low=new Battle({encounter:fixture,party:['adventure-kirby'],mode:'endless',assistId:'mr-star',assistProficiencyRank:1}),high=new Battle({encounter:fixture,party:['adventure-kirby'],mode:'endless',assistId:'mr-star',assistProficiencyRank:5});low.advance(1);high.advance(1);assert.equal(low.assistUses,1);assert.equal(high.assistUses,1);assert.ok(high.actors[0].energy>low.actors[0].energy);
 });
 test('mastery improves delivered heals and ultimate support exactly once',()=>{
  const delivery=rank=>{const b=setup(['toad','classic-mario']),[toad,ally]=b.living(true);toad.mastery=rank;ally.hp-=500;const before=ally.hp;b.startAction(toad,{...toad.definition.skill,kind:'skill'},ally);const cooldown=toad.skillIn;b.advance(1.5);return{healed:ally.hp-before,cooldown};};
@@ -48,4 +48,14 @@ test('Blooper swims faster only in water and Hot Head widens the next action wit
 });
 test('Wheelie accelerates with RPM and loses a stack to a heavy collision or stun',()=>{
  const b=setup(['wheelie']),h=b.living(true)[0],target=b.living(false)[0];h.x=100;b.approach(h,900,.1);const ordinary=h.x-100;b.passive(h,'after-action');b.passive(h,'after-action');h.x=100;b.approach(h,900,.1);assert.ok(h.x-100>ordinary);assert.equal(h.momentum,2);target.definition={...target.definition,traits:['heavy']};b.damage(h,target,1,{behavior:'charge'});assert.equal(h.momentum,1);b.status(h,'stun',1,1);assert.equal(h.momentum,0);
+});
+test('Toadsworth enters before the tea parcel heals and cleanses the actual patient',()=>{
+ const b=setup(['classic-mario'],[],'toadsworth-tea-service'),hero=b.living(true)[0],enemy=b.living(false)[0];hero.hp=hero.maxHp*.2;b.status(hero,'slow',8,.25,enemy);const before=hero.hp;b.checkAssist();assert.equal(b.assistUses,1);assert.equal(hero.hp,before);b.advance(.45);assert.ok(b.projectiles.some(p=>p.kind==='parcel'));assert.ok(hero.statuses.slow);b.advance(1);assert.ok(hero.hp>before);assert.equal(hero.statuses.slow,undefined);assert.ok(b.events.some(e=>e.type==='assist-resolve'));
+});
+test('Tiara catches only a projectile aimed at a back-row ally and then shields that row',()=>{
+ const b=setup(['classic-mario','princess-peach'],[],'tiara-projectile-catch'),[front,back]=b.living(true),enemy=b.living(false)[0];front.row='front';back.row='back';b.projectile(enemy,front,{behavior:'shot',effects:[]},1);const frontShot=b.projectiles.at(-1);b.checkAssist();assert.equal(b.assistUses,0);
+ b.projectile(enemy,back,{behavior:'shot',effects:[]},1);const backShot=b.projectiles.at(-1);b.checkAssist();assert.equal(b.assistUses,1);assert.equal(backShot.done,true);assert.equal(frontShot.done,false);b.advance(.5);assert.ok(back.shield>0);assert.equal(front.shield,0);
+});
+test('Sprixie grants the full energy and shield intervention at wave clear',()=>{
+ const b=setup(['classic-mario'],[],'sprixie-wave-blessing'),hero=b.living(true)[0];const energy=hero.energy;b.checkAssist('wave-clear');b.resolveAssists(true);assert.equal(hero.energy,energy+5);assert.ok(hero.shield>0);
 });

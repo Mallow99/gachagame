@@ -21,6 +21,11 @@ local `codex/v1-playable`. The original planning corpus remains intact.
   checks, bounded procs, Training, stars, Technique Notes and fielding mastery.
   Mastery upgrades apply to secondary contacts, heals and shields exactly once;
   Assist proficiency adds at most 5% effect strength with complete rank-one kits.
+- Assists reserve an entrance, resolve after arrival, and exit without taking a
+  fighter slot. Tea healing/cleansing travels in a parcel; Tiara catches the
+  actual back-row projectile. Kabu/Whispy/Kracko use sourced entrance bodies;
+  other entrances use provisional printed-page symbols. Combat notices expire
+  after victory independently of the stopped simulation clock.
 - Paper Manual Atlas/Party/Summon/Manual, kit/formation/policy inspection,
   per-result rates, reports, Orders, recovery hints and separate audio controls.
 - Banner art distinct from reveal art; 4.8-second flight/late rarity signal;
@@ -78,7 +83,7 @@ performance pass is claimed.
 Source treatments remain provisional Grade B, including reused poses, palette
 reconstructions and enhanced boss/NPC sheets. Bandana now uses sourced walk,
 jab, jump and throw poses with separate held/thrown spear sources. Its copter
-and ultimate motion remain provisional. The 57-atlas source manifest
+and ultimate motion remain provisional. The 58-atlas source manifest
 records hashes/paths; original-game and artist authorship still need review.
 Supply symbols without approved art are original printed UI symbols. Full
 portraits, voice quotes and music are unfinished. Audio uses procedural

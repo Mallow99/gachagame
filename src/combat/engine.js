@@ -19,7 +19,7 @@ export class Battle {
     this.actors=[];this.projectiles=[];this.shells=[];this.events=[];this.sequence=0;this.eventSink=eventSink;
     this.done=false;this.win=false;this.kills=0;this.wavesCleared=0;this.ultimates=0;this.counter=0;
     this.assistProficiencyRank=clamp(assistProficiencyRank,1,5);this.assistStrength=1+(this.assistProficiencyRank-1)*.0125;
-    this.assist=content.assists.get(assistId);this.assistUses=0;this.assistWaveUses=0;this.assistReadyAt=0;
+    this.assist=content.assists.get(assistId);this.assistUses=0;this.assistWaveUses=0;this.assistReadyAt=0;this.assistPending=[];this.secondarySources=new Map();
     this.stats={damage:{},healing:{},actions:{},knockouts:[],firstUltimate:{},idle:{},damageTaken:{},conditions:0,assists:0,bossPhases:[]};
     const families=new Set(),saga=content.worlds.get(encounter.worldId)?.sagaId;
     party.forEach((id,i)=>{
@@ -87,7 +87,7 @@ export class Battle {
         if(a.row==='back'&&distance<85&&!has(a,'fixed'))this.approach(a,a.x-a.direction*70,dt,0.5);
       }
     }
-    this.updateProjectiles(dt);this.updateShells(dt);this.checkAssist();
+    this.resolveAssists();this.updateProjectiles(dt);this.updateShells(dt);this.checkAssist();
     if(this.encounter.hazard&&this.waveIndex>=0&&this.wait<=0&&Math.floor(this.time*30)%180===0)this.hazard();
     if(this.waveIndex>=0&&this.wait<=0&&!this.pending.length&&!this.actors.some(a=>!a.hero&&alive(a)))this.clearWave();
     // Retain defeated bodies just long enough for a readable flatten/tumble.
@@ -122,7 +122,7 @@ export class Battle {
     if(has(a,'airborne'))a.y=28;
     this.actors.push(a);this.log('spawn',a,null,{x:a.x,enemy:true,boss:a.boss,variant:spawn.variantId});
     if(a.boss){this.log('boss-intro',a,null,{name:a.name,phase:a.definition.boss.phases[0].id});a.readyIn=RULES.bossIntro;this.stats.bossPhases.push(a.name+': opening');}
-    this.checkAssist(a.boss?'boss-phase-start':has(a,'airborne')?'airborne-enters':def.size==='elite'?'elite-enters':'spawn');
+    this.checkAssist(a.boss?'boss-phase-start':has(a,'airborne')?'airborne-enters':def.size==='elite'?'elite-enters':'spawn',a);
   }
   approach(a,x,dt,multiplier=1) {
     if(has(a,'fixed'))return;
@@ -252,7 +252,7 @@ export class Battle {
   updateProjectiles(dt) {
     for(const p of this.projectiles) {
       if(p.done)continue;
-      const a=this.actors.find(x=>x.uid===p.sourceUid),target=this.actors.find(x=>x.uid===p.targetUid);
+      const a=this.actors.find(x=>x.uid===p.sourceUid)||this.secondarySources.get(p.sourceUid),target=this.actors.find(x=>x.uid===p.targetUid);
       const t=clamp((this.time-p.start)/p.duration,0,1);if(target&&alive(target)){p.to=target.x;p.endHeight=target.y+25;}
       p.x=p.from+(p.to-p.from)*t;p.y=p.originHeight+(p.endHeight-p.originHeight)*t+(p.lob?Math.sin(t*Math.PI)*55:0);
       if(p.returning&&a)for(const victim of this.living(!a.hero))if(Math.abs(victim.x-p.x)<25&&!p.hitUids.includes(victim.uid)){p.hitUids.push(victim.uid);this.damage(a,victim,p.coefficient,p.ability);}
@@ -323,6 +323,7 @@ export class Battle {
       if(has(target,'spiked')&&!target.statuses['guard-break'])source.hp=Math.max(1,source.hp-Math.round(source.maxHp*0.015));
     }
     if(target.boss||target.definition.size==='elite'){this.addStagger(target,ability.behavior==='stomp'?12:ability.kind==='ultimate'?8:4,source);if(target.boss)this.phase(target);}
+    if(ability.kind==='basic'&&source.hero&&target.statuses['stagger-mark']?.until>this.time)this.addStagger(target,target.statuses['stagger-mark'].value,source);
     if(target.statuses.counter&&source.hero!==target.hero&&target.statuses.counter.until>this.time){const counter=target.statuses.counter;delete target.statuses.counter;target.x=clamp(source.x-40,30,970);this.log('counter',target,source,{x:target.x});this.damage(target,source,counter.value,{behavior:'strike'});}
     if(!alive(target))this.knockout(target,source,ability);
   }
@@ -395,6 +396,10 @@ export class Battle {
       case 'next-crit':source.nextCrit=e.value;break;
       case 'cleanse-party':for(const a of allies)for(const name of ['slow','stun','burn'])delete a.statuses[name];this.log('cleanse',source,null,{party:true});break;
       case 'cleanse-self':for(const name of ['slow','stun'])delete source.statuses[name];this.log('cleanse',source,source,{party:false});break;
+      case 'cleanse-slow':delete target.statuses.slow;this.log('cleanse',source,target,{type:'slow'});break;
+      case 'stagger-mark':this.status(target,'stagger-mark',duration,e.amount,source);break;
+      case 'slow-enemies':for(const a of enemies)this.status(a,'slow',duration,e.value,source);break;
+      case 'knockback-enemies':for(const a of enemies.filter(a=>!e.smallOnly||small(a)))this.applyEffect(source,a,{type:'knockback',amount:e.amount});break;
       case 'stagger':this.addStagger(target,e.amount,source);break;
       case 'boss-stagger':for(const a of enemies.filter(x=>x.boss))this.addStagger(a,e.amount,source);break;
       case 'target-stagger':this.addStagger(target,e.amount,source);break;
@@ -457,7 +462,7 @@ export class Battle {
   addStagger(a,amount,source) {
     if((!a.boss&&a.definition.size!=='elite')||!alive(a)||a.statuses.stun?.until>this.time)return;
     a.stagger=clamp(a.stagger+amount,0,100);this.log('stagger',source,a,{amount,total:a.stagger});
-    if(a.stagger>=100){this.status(a,'stun',a.definition.boss?.staggerDurationSeconds||5,1);a.action=null;a.phaseAt=this.time;a.y=0;this.log(a.boss?'boss-staggered':'elite-staggered',a,null,{duration:5});if(a.boss)this.checkAssist('boss-staggered');
+    if(a.stagger>=100){this.status(a,'stun',a.definition.boss?.staggerDurationSeconds||5,1);a.action=null;a.phaseAt=this.time;a.y=0;this.log(a.boss?'boss-staggered':'elite-staggered',a,null,{duration:5});if(a.boss)this.checkAssist('boss-staggered',a);
       if(a.definition.copyAbilityId)for(const kirby of this.living(true).filter(k=>k.definition.copyLibrary))this.copy(kirby,{...a,stagger:100});
     }
   }
@@ -468,7 +473,7 @@ export class Battle {
       if(next.attackMultiplier)a.attack*=next.attackMultiplier;
       if(next.hasteBonus)a.haste=(a.haste||0)+next.hasteBonus;
       for(const add of next.adds||[])for(let i=0;i<add.count;i++)this.spawn({enemyId:add.enemyId,index:i,entry:'right'});
-      this.checkAssist('boss-phase-start');
+      this.checkAssist('boss-phase-start',a);
       for(const hero of this.living(true))if(hero.definition.copyLibrary&&a.definition.copyAbilityId)this.copy(hero,{...a,stagger:100});
     }
   }
@@ -483,27 +488,47 @@ export class Battle {
     }
     this.shells=this.shells.filter(s=>this.time-s.start<4&&s.x>-20&&s.x<1020);
   }
-  checkAssist(trigger='tick') {
+  checkAssist(trigger='tick',triggerActor=null) {
     const assist=this.assist;if(!assist||this.time<this.assistReadyAt)return;
     const t=assist.trigger;
     if(t.usesPerStage&&this.assistUses>=t.usesPerStage||t.usesPerWave&&this.assistWaveUses>=t.usesPerWave)return;
     const allies=this.living(true),enemies=this.living(false);
-    let ready=t.type===trigger;
+    let ready=t.type===trigger,target=triggerActor||enemies[0]||allies[0],projectile;
     if(t.type==='ally-below-hp')ready=allies.some(a=>a.hp/a.maxHp<t.hpRatio);
     if(t.type==='allies-below-hp')ready=allies.filter(a=>a.hp/a.maxHp<t.hpRatio).length>=t.count;
     if(t.type==='crowd')ready=enemies.length>=t.count;
-    if(t.type==='long-lived-target')ready=enemies.some(e=>(!t.targetKind||e.definition.size===t.targetKind)&&this.time-e.spawnAt>=t.afterSeconds);
+    if(t.type==='long-lived-target'){target=enemies.find(e=>(!t.targetKind||e.definition.size===t.targetKind)&&this.time-e.spawnAt>=t.afterSeconds);ready=Boolean(target);}
     if(t.type==='low-energy')ready=this.time>=t.afterSeconds&&allies.reduce((sum,a)=>sum+a.energy,0)<35;
     if(t.type==='party-condition')ready=allies.filter(a=>a.statuses.burn||a.statuses.slow).length>=t.count;
-    if(t.type==='marked-projectile')ready=this.projectiles.some(p=>!p.hero);
+    if(t.type==='marked-projectile'){projectile=this.projectiles.find(p=>!p.hero&&allies.some(a=>a.uid===p.targetUid&&a.row==='back'));ready=Boolean(projectile);}
     if(!ready||!allies.length)return;
     this.assistUses++;this.assistWaveUses++;this.assistReadyAt=this.time+(t.cooldownSeconds??20);this.stats.assists++;
-    const source={uid:'assist-'+assist.id,id:assist.id,hero:true,attack:allies.reduce((s,a)=>s+a.attack,0)/allies.length*this.assistStrength,direction:1,energy:0,statuses:{},definition:{},momentum:0,critChance:0};
-    this.log('assist',source,null,{id:assist.id,name:assist.name,effects:assist.effects});
-    const target=enemies[0]||allies[0];for(const raw of assist.effects){const e={...raw};if(e.amount)e.amount*=this.assistStrength;if(e.value)e.value*=this.assistStrength;
-      if(e.type==='heal')this.applyEffect(source,[...allies].sort((a,b)=>a.hp/a.maxHp-b.hp/b.maxHp)[0],e);else if(e.type==='destroy-triggering-projectile')this.projectiles=this.projectiles.filter(p=>p.hero);else if(e.type==='shield-row')for(const a of allies.filter(a=>a.row==='back'))this.applyEffect(source,a,{type:'shield',coefficient:e.coefficient});else this.applyEffect(source,target,e);
+    const source={uid:'assist-'+assist.id+'#'+this.counter++,id:assist.id,hero:true,attack:allies.reduce((s,a)=>s+a.attack,0)/allies.length*this.assistStrength,x:Math.max(40,allies[0].x-85),y:0,direction:1,energy:0,statuses:{},definition:{},momentum:0,critChance:0};
+    this.secondarySources.set(source.uid,source);
+    // The catch is immediate on entry; other interventions resolve after the
+    // readable arrival. Delaying a catch until flight ends would invent a hit.
+    if(projectile)projectile.done=true;
+    this.log('assist',source,target,{id:assist.id,name:assist.name,spriteKey:assist.spriteKey,x:source.x,effects:assist.effects});
+    this.assistPending.push({source,targetUid:target?.uid,at:this.time+.4,waveClear:trigger==='wave-clear'});
+  }
+  resolveAssists(waveClear=false){
+    const due=this.assistPending.filter(p=>p.at<=this.time||waveClear&&p.waveClear);this.assistPending=this.assistPending.filter(p=>!due.includes(p));
+    for(const pending of due){
+      const source=pending.source,allies=this.living(true),enemies=this.living(false);if(!allies.length)continue;
+      const target=this.actors.find(a=>a.uid===pending.targetUid&&alive(a))||enemies[0]||allies[0];
+      this.log('assist-resolve',source,target,{id:this.assist.id,x:source.x,enemyXs:enemies.map(a=>a.x),allyXs:allies.map(a=>a.x)});
+      for(const raw of this.assist.effects){const e={...raw};if(e.amount)e.amount*=this.assistStrength;if(e.value)e.value*=this.assistStrength;
+        if(e.type==='destroy-triggering-projectile')continue;
+        if(e.type==='heal'||e.type==='cleanse-slow'){
+          const patient=[...allies].sort((a,b)=>a.hp/a.maxHp-b.hp/b.maxHp)[0];
+          if(e.type==='cleanse-slow'&&!pending.waveClear&&this.assist.effects.some(effect=>effect.type==='heal'))continue;
+          if(e.type==='heal'&&!pending.waveClear)this.projectile(source,patient,{id:'assist-heal',behavior:'lob',effects:[],deliveryEffects:[e,...this.assist.effects.filter(effect=>effect.type==='cleanse-slow')]},0);
+          else this.applyEffect(source,patient,e);
+        }else if(e.type==='shield-row')for(const a of allies.filter(a=>a.row==='back'))this.applyEffect(source,a,{type:'shield',coefficient:e.coefficient});
+        else this.applyEffect(source,target,e);
+      }
+      for(const ally of allies)if(ally.powerup?.proc?.trigger==='assist'&&!ally.procWave){ally.procWave=true;for(const e of ally.powerup.proc.effects)this.applyEffect(ally,ally,e);this.log('powerup-proc',ally,target,{id:ally.powerup.id});}
     }
-    for(const ally of allies)if(ally.powerup?.proc?.trigger==='assist'&&!ally.procWave){ally.procWave=true;for(const e of ally.powerup.proc.effects)this.applyEffect(ally,ally,e);this.log('powerup-proc',ally,target,{id:ally.powerup.id});}
   }
   hazard() {
     for(const a of this.living(true))if(a.y<12&&!has(a,'airborne')){
@@ -514,6 +539,7 @@ export class Battle {
   clearWave() {
     this.wavesCleared++;this.log('wave-clear',null,null,{wave:this.waveIndex+1});
     this.checkAssist('wave-clear');
+    this.resolveAssists(true);
     for(const a of this.living(true)){
       const bonus=a.powerup?.proc?.trigger==='wave-clear'?(a.powerup.proc.effects.find(e=>e.type==='heal-bonus')?.value||0):0;
       this.heal(a,a,0.5*(1+bonus));this.passive(a,'wave-clear');a.y=0;

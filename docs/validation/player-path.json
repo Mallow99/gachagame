@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-14T12:55:27.011Z",
+  "at": "2026-10-14T13:20:16.051Z",
   "method": "Fresh saves use real Game rewards, actual pulls, earned Training, best measured cleared Camp, legal party/equipment selection and real Battle results. No ownership, currency, Rank or clears are injected.",
   "accounts": 20,
   "records": [
@@ -1314,7 +1314,7 @@
           ],
           "attempts": 1,
           "camps": 10,
-          "minutes": 6,
+          "minutes": 7,
           "fighterPulls": 48
         },
         {
@@ -2479,7 +2479,7 @@
       "cleared": 35,
       "camps": 114,
       "losses": 1,
-      "hours": 2.7,
+      "hours": 2.8,
       "rank": 35,
       "units": 22,
       "pulls": 82,
@@ -2920,7 +2920,7 @@
           ],
           "attempts": 1,
           "camps": 7,
-          "minutes": 8,
+          "minutes": 7,
           "fighterPulls": 69
         },
         {
@@ -3465,12 +3465,12 @@
     {
       "seed": 7,
       "cleared": 35,
-      "camps": 112,
+      "camps": 126,
       "losses": 0,
-      "hours": 3.1,
+      "hours": 3,
       "rank": 35,
       "units": 25,
-      "pulls": 82,
+      "pulls": 83,
       "warnings": [],
       "stages": [
         {
@@ -3797,8 +3797,8 @@
             "bandana-waddle-dee"
           ],
           "attempts": 1,
-          "camps": 6,
-          "minutes": 8,
+          "camps": 10,
+          "minutes": 7,
           "fighterPulls": 50
         },
         {
@@ -3811,7 +3811,7 @@
             "bandana-waddle-dee"
           ],
           "attempts": 1,
-          "camps": 7,
+          "camps": 11,
           "minutes": 12,
           "fighterPulls": 56
         },
@@ -3821,13 +3821,13 @@
           "party": [
             "adventure-kirby",
             "parasol-waddle-dee",
-            "bonkers",
-            "bandana-waddle-dee"
+            "king-dedede",
+            "bonkers"
           ],
           "attempts": 1,
-          "camps": 2,
-          "minutes": 4,
-          "fighterPulls": 57
+          "camps": 3,
+          "minutes": 3,
+          "fighterPulls": 58
         },
         {
           "id": "ka-12",
@@ -3839,9 +3839,9 @@
             "bonkers"
           ],
           "attempts": 1,
-          "camps": 8,
+          "camps": 13,
           "minutes": 8,
-          "fighterPulls": 59
+          "fighterPulls": 60
         },
         {
           "id": "ka-13",
@@ -3855,7 +3855,7 @@
           "attempts": 1,
           "camps": 7,
           "minutes": 10,
-          "fighterPulls": 60
+          "fighterPulls": 62
         },
         {
           "id": "ka-14",
@@ -3869,7 +3869,7 @@
           "attempts": 1,
           "camps": 7,
           "minutes": 9,
-          "fighterPulls": 62
+          "fighterPulls": 63
         },
         {
           "id": "ka-15",
@@ -3883,7 +3883,7 @@
           "attempts": 1,
           "camps": 8,
           "minutes": 15,
-          "fighterPulls": 66
+          "fighterPulls": 67
         },
         {
           "id": "ka-16",
@@ -3895,9 +3895,9 @@
             "bonkers"
           ],
           "attempts": 1,
-          "camps": 5,
-          "minutes": 7,
-          "fighterPulls": 67
+          "camps": 6,
+          "minutes": 8,
+          "fighterPulls": 69
         },
         {
           "id": "ka-17",
@@ -3909,9 +3909,9 @@
             "bonkers"
           ],
           "attempts": 1,
-          "camps": 8,
-          "minutes": 11,
-          "fighterPulls": 69
+          "camps": 7,
+          "minutes": 10,
+          "fighterPulls": 71
         },
         {
           "id": "ka-18",
@@ -3925,7 +3925,7 @@
           "attempts": 1,
           "camps": 8,
           "minutes": 9,
-          "fighterPulls": 71
+          "fighterPulls": 72
         },
         {
           "id": "ka-19",
@@ -3937,9 +3937,9 @@
             "bonkers"
           ],
           "attempts": 1,
-          "camps": 8,
-          "minutes": 13,
-          "fighterPulls": 73
+          "camps": 9,
+          "minutes": 14,
+          "fighterPulls": 74
         },
         {
           "id": "ka-20",
@@ -3951,9 +3951,9 @@
             "bonkers"
           ],
           "attempts": 1,
-          "camps": 10,
-          "minutes": 14,
-          "fighterPulls": 82
+          "camps": 9,
+          "minutes": 13,
+          "fighterPulls": 83
         }
       ]
     },
@@ -5094,7 +5094,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 4,
+          "minutes": 3,
           "fighterPulls": 22
         },
         {
@@ -5573,7 +5573,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 2,
+          "minutes": 1,
           "fighterPulls": 17
         },
         {
@@ -6330,7 +6330,7 @@
           ],
           "attempts": 1,
           "camps": 7,
-          "minutes": 9,
+          "minutes": 8,
           "fighterPulls": 60
         },
         {
@@ -6386,7 +6386,7 @@
           ],
           "attempts": 1,
           "camps": 8,
-          "minutes": 8,
+          "minutes": 9,
           "fighterPulls": 69
         },
         {

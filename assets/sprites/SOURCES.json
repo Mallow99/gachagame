@@ -648,5 +648,15 @@
     "bytes": 300,
     "active": true,
     "url": "https://github.com/Happiiz/KirboMod/blob/f60f2d3741a00851de7d50f56242413650d37db5/Projectiles/BandanaDee/BandanaDeeSpearThrown.png"
+  },
+  {
+    "name": "enhanced-Kabu.png",
+    "repo": "Happiiz/KirboMod",
+    "path": "NPCs/Kabu.png",
+    "sha": "f742e94dc5e0bbe8c6960bca800f26e63df38082",
+    "sha256": "cefe657a368c48e99eb48f27c8098f3fe40a27f9ce9e2a30e0d6aea68df34c74",
+    "bytes": 487,
+    "active": true,
+    "url": "https://github.com/Happiiz/KirboMod/blob/f60f2d3741a00851de7d50f56242413650d37db5/NPCs/Kabu.png"
   }
 ]
