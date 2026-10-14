@@ -1,45 +1,69 @@
 <!doctype html>
-<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Full-art summon research</title>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Full-art summon comparison</title>
 <style>
-:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#11131c;color:#eee7db;font:16px/1.6 system-ui}main{max-width:1320px;padding:30px;margin:auto}h1{font:42px/1.1 Georgia;margin:8px 0 16px}h2{font:29px Georgia;margin-top:35px}p{max-width:880px;color:#c8c2b7}a{color:#f1ce88}button{font:inherit;cursor:pointer;background:#252a3a;border:1px solid #555c70;color:#eee7db;padding:9px 15px;border-radius:4px}button[aria-pressed=true]{background:#e0c18a;color:#211c16;border-color:#e0c18a}button:focus-visible,a:focus-visible{outline:3px solid #ffe0a1;outline-offset:4px}.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:25px 0 15px}.frame{aspect-ratio:16/9;background:#05060b;display:grid;place-items:center;border:1px solid #343b50;overflow:hidden}.frame img{width:100%;height:100%;object-fit:contain;min-height:0}.caption{display:flex;gap:20px;justify-content:space-between;align-items:center;margin-top:12px}.caption p{margin:0;font-size:14px}.references,.art-search{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.references img{width:100%;height:440px;object-fit:contain;background:#05060b}.references p{font-size:14px}.art-search{grid-template-columns:repeat(4,minmax(0,1fr))}.art-search img{width:100%;height:260px;object-fit:contain;background:#080a11}.art-search small{display:block;color:#b9b1a1;font-size:12px}.sources{display:flex;flex-wrap:wrap;gap:18px}.note{border-left:3px solid #ad935f;padding-left:16px}article{min-width:0}footer{margin-top:40px;font-size:12px;color:#928c80}@media(max-width:700px){main{padding:18px}h1{font-size:32px}.references{grid-template-columns:1fr}.art-search{grid-template-columns:repeat(2,minmax(0,1fr))}.caption{display:block}.frame{min-height:210px}.art-search img{height:220px}}
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#11131c;color:#eee7db;font:16px/1.6 system-ui}main{max-width:1320px;padding:30px;margin:auto}h1{font:42px/1.1 Georgia;margin:8px 0 16px}h2{font:29px Georgia;margin-top:35px}h3{font-size:20px;margin:12px 0 4px}p{max-width:880px;color:#c8c2b7}a{color:#f1ce88}a:focus-visible{outline:3px solid #ffe0a1;outline-offset:4px}.comparison{position:relative;display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}.comparison>input{position:absolute;opacity:0;width:1px;height:1px}.comparison>label{cursor:pointer;background:#252a3a;border:1px solid #555c70;padding:9px 15px;border-radius:4px}.comparison>input:checked+label{background:#e0c18a;color:#211c16;border-color:#e0c18a}.comparison>input:focus-visible+label{outline:3px solid #ffe0a1;outline-offset:4px}.panels{width:100%;margin-top:8px}.panels figure{display:none;margin:0}.frame{aspect-ratio:16/9;background:#05060b;display:grid;place-items:center;border:1px solid #343b50;overflow:hidden}.frame img{width:100%;height:100%;object-fit:contain;min-height:0}.panels figcaption{margin-top:12px;color:#c8c2b7;font-size:14px}#compare-0:checked~.panels #panel-0,#compare-1:checked~.panels #panel-1,#compare-2:checked~.panels #panel-2,#compare-3:checked~.panels #panel-3{display:block}.references,.art-search{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.references img{width:100%;height:440px;object-fit:contain;background:#05060b}.references p{font-size:14px}.art-search{grid-template-columns:repeat(4,minmax(0,1fr))}.art-search img{width:100%;height:260px;object-fit:contain;background:#080a11}.art-search small{display:block;color:#b9b1a1;font-size:12px}.sources{display:flex;flex-wrap:wrap;gap:18px}.note{border-left:3px solid #ad935f;padding-left:16px}article{min-width:0}footer{margin-top:40px;font-size:12px;color:#928c80}summary{cursor:pointer;color:#f1ce88;font-size:21px;margin:30px 0 15px}.local-link{color:#a9a195;font-size:14px}@media(max-width:700px){main{padding:18px}h1{font-size:32px}.references{grid-template-columns:1fr}.art-search{grid-template-columns:repeat(2,minmax(0,1fr))}.art-search img{height:220px}}
 </style>
+</head>
+<body>
 <main>
-<p>VISUAL RESEARCH / PRESENTATION RESET</p>
+<p>VISUAL COMPARISON / RESEARCH</p>
 <h1>Give the artwork a stage.</h1>
-<p>The approved Mario examples are the target: a complete illustration, a wide composition, suspense, then a deliberate artwork and identity reveal. This page compares references. It does not load an account or spend currency.</p>
-<div class="tabs" id="tabs" aria-label="Compare presentation references"></div>
-<div class="frame"><img id="comparison" alt=""></div>
-<div class="caption"><p id="description"></p><a href="/demos/mario-pull/index.html?layout=desktop" target="_blank" rel="noopener">Play the approved Mario reference ↗</a></div>
-<p class="note">The native proof uses the existing approved demo in a separate Electron window, with a measured 1198 × 674 stage. It demonstrates available room. Production receipt routing and the replacement fighter artwork still need implementation.</p>
+<p>Your Mario examples set the direction: a wide stage, a complete illustration, and a reveal that gives an SSR room to feel special. The comparison below shows those examples alongside the current rejected pull.</p>
+<div class="comparison" role="group" aria-label="Compare presentation references">
+<input type="radio" name="comparison" id="compare-0" checked><label for="compare-0">Approved Mario SSR</label>
+<input type="radio" name="comparison" id="compare-1"><label for="compare-1">Approved landscape art</label>
+<input type="radio" name="comparison" id="compare-2"><label for="compare-2">Rejected current SSR</label>
+<input type="radio" name="comparison" id="compare-3"><label for="compare-3">Native wide sizing proof</label>
+<div class="panels">
+<figure id="panel-0"><div class="frame"><img src="approved-ssr.png" alt="Approved Mario SSR: a complete Superstar Mario painting on the right of a wide stage, with large identity text on the left"></div><figcaption>The approved full illustration: a portrait piece staged wide, with atmosphere from the same painting and a separate identity area. Art: 者委任具ハチナナ, <a href="https://www.pixiv.net/artworks/107788642" target="_blank" rel="noopener">original source</a>.</figcaption></figure>
+<figure id="panel-1"><div class="frame"><img src="approved-wide-art.png" alt="Approved Mario landscape reveal: a complete painting of the Flower Kingdom fills the wide frame"></div><figcaption>A complete landscape piece fills the frame. The painting supplies its setting and lighting. Art: maribou, <a href="https://www.pixiv.net/artworks/109312593" target="_blank" rel="noopener">original source</a>.</figcaption></figure>
+<figure id="panel-2"><div class="frame"><img src="../summon-review/loaded-before-arrival-360.png" alt="Rejected narrow King Dedede SSR reveal: isolated character art above stacked labels"></div><figcaption>The current rejected presentation: isolated character art, generic background and stacked labels inside the narrow Manual. Enlarging this image would not supply a complete illustration.</figcaption></figure>
+<figure id="panel-3"><div class="frame"><img src="native-wide-theater-proof.png" alt="The approved Mario illustration in a real wide Electron window"></div><figcaption>The existing approved demo in a real Electron window, with a measured 1198 × 674 stage. This shows available room; the replacement production pull still needs rebuilding.</figcaption></figure>
+</div>
+</div>
+<p><a href="../../../demos/mario-pull/index.html?layout=desktop" target="_blank" rel="noopener">Play the approved Mario reference ↗</a></p>
+<h2>Kirby artwork: two possible moods</h2>
+<p>These complete paintings are by すびかか / Suyasuyabi427, an artist already credited in the Mario examples. The useful feedback here is the quality and mood you like. I will handle sourcing and the character/version checks.</p>
+<div class="references mood-examples">
+<article><img src="art-search/4091851.jpg" alt="Dramatic painted battle: King Dedede leaps above Kirby in a lit arena"><h3>A. Dramatic battle</h3><p>Action, scale and theatrical lighting. <a href="https://safebooru.org/index.php?page=post&amp;s=view&amp;id=4091851" target="_blank" rel="noopener">Source 4091851</a>. A Dream Land composition reference; this has not been selected for the Adventure-version Dedede.</p></article>
+<article><img src="art-search/4271894.jpg" alt="Bright painted adventure: Kirby and friends travel through a sunny landscape"><h3>B. Bright adventure</h3><p>Warm colour, a lively world and an inviting mood. <a href="https://safebooru.org/index.php?page=post&amp;s=view&amp;id=4271894" target="_blank" rel="noopener">Source 4271894</a>. Return to Dream Land / Deluxe ensemble reference; individual pulls need the right hero as their focal point.</p></article>
+</div>
+<p class="note">These are art-direction examples, not newly implemented pulls. The next game-facing proof is one rebuilt SSR with suitable full artwork, a wide stage, character-specific sound, staged rarity/name impacts and a final image that waits for Continue.</p>
+<details>
+<summary>More references and sourced artwork candidates</summary>
 <h2>Full art means a complete composition.</h2>
-<p>A portrait painting can work inside a wide stage, as Mario already demonstrates. Character-specific lighting, setting, action and painted effects give the piece substance. Increasing the size of an isolated catalogue drawing does not provide that composition.</p>
+<p>A portrait painting can work inside a wide stage, as Mario demonstrates. Lighting, setting, action and painted effects give the piece substance.</p>
 <div class="references">
 <article><img src="references/genshin-jean.png" alt="Genshin's Jean reveal with a large character and painted wind effects across a wide stage"><p><a href="https://www.hoyolab.com/article/10307975" target="_blank" rel="noopener">Genshin visual reference</a>: character and authored wind effects fill a landscape stage. HoYoverse / COGNOSPHERE; community screenshot on HoYoLAB.</p></article>
-<article><img src="references/rtdl-battle-display.jpg" alt="A complete painted Return to Dream Land battle scene by Suyasuyabi"><p><a href="https://www.pixiv.net/artworks/101336861" target="_blank" rel="noopener">Kirby art-search lead</a>: one painting with shared lighting and action. すびかか / Suyasuyabi427, credited on an approved Mario piece. This ensemble is a composition reference; it has not been assigned to Bandana's pull.</p></article>
+<article><img src="references/rtdl-battle-display.jpg" alt="A complete painted Return to Dream Land battle scene by Suyasuyabi"><p><a href="https://www.pixiv.net/artworks/101336861" target="_blank" rel="noopener">Kirby art-search lead</a>: one painting with shared lighting and action. すびかか / Suyasuyabi427. This ensemble is a composition reference; it has not been assigned to Bandana's pull.</p></article>
 </div>
-<h2>Candidate compositions from the artist's Kirby work</h2>
-<p>The search reviewed 78 artist entries and retained twelve previews below. These are research candidates, with different depicted games and focal characters. Art for each live SSR needs its own hero-focus and version check before selection.</p>
-<div class="art-search" id="art-search"></div>
+<h2>Candidate compositions</h2>
+<p>The search reviewed 78 artist entries and retained twelve previews, including alternate uploads of two paintings. The depicted games and focal characters differ. These remain research candidates.</p>
+<div class="art-search" id="art-search">
+<!-- CANDIDATES START -->
+<article><img src="art-search/4271933.jpg" alt="Composition research candidate 4271933 by Suyasuyabi427"><a href="https://safebooru.org/index.php?page=post&amp;s=view&amp;id=4271933" target="_blank" rel="noopener">Source 4271933 ↗</a><small>2894 × 4093 original · Alternate upload of a painting in this gallery; version/focus pending.</small></article>
+<article><img src="art-search/3982323.jpg" alt="Composition research candidate 3982323 by Suyasuyabi427"><a href="https://safebooru.org/index.php?page=post&amp;s=view&amp;id=3982323" target="_blank" rel="noopener">Source 3982323 ↗</a><small>2765 × 2536 original · Version/focus pending.</small></article>
+<article><img src="art-search/4091851.jpg" alt="Composition research candidate 4091851 by Suyasuyabi427"><a href="https://safebooru.org/index.php?page=post&amp;s=view&amp;id=4091851" target="_blank" rel="noopener">Source 4091851 ↗</a><small>2894 × 4093 original · Version/focus pending.</small></article>
+<article><img src="art-search/5375344.jpg" alt="Composition research candidate 5375344 by Suyasuyabi427"><a href="https://safebooru.org/index.php?page=post&amp;s=view&amp;id=5375344" target="_blank" rel="noopener">Source 5375344 ↗</a><small>660 × 1024 original · Low-resolution composition reference; not selected for an SSR theater.</small></article>
+<article><img src="art-search/4141960.jpg" alt="Composition research candidate 4141960 by Suyasuyabi427"><a href="https://safebooru.org/index.php?page=post&amp;s=view&amp;id=4141960" target="_blank" rel="noopener">Source 4141960 ↗</a><small>2280 × 2338 original · Alternate upload of a painting in this gallery; version/focus pending.</small></article>
+<article><img src="art-search/3518175.jpg" alt="Composition research candidate 3518175 by Suyasuyabi427"><a href="https://safebooru.org/index.php?page=post&amp;s=view&amp;id=3518175" target="_blank" rel="noopener">Source 3518175 ↗</a><small>1999 × 2048 original · Alternate upload of a painting in this gallery; version/focus pending.</small></article>
+<article><img src="art-search/7173141.jpg" alt="Composition research candidate 7173141 by Suyasuyabi427"><a href="https://safebooru.org/index.php?page=post&amp;s=view&amp;id=7173141" target="_blank" rel="noopener">Source 7173141 ↗</a><small>2184 × 3089 original · Version/focus pending.</small></article>
+<article><img src="art-search/4271894.jpg" alt="Composition research candidate 4271894 by Suyasuyabi427"><a href="https://safebooru.org/index.php?page=post&amp;s=view&amp;id=4271894" target="_blank" rel="noopener">Source 4271894 ↗</a><small>4093 × 2894 original · Version/focus pending.</small></article>
+<article><img src="art-search/4426425.jpg" alt="Composition research candidate 4426425 by Suyasuyabi427"><a href="https://safebooru.org/index.php?page=post&amp;s=view&amp;id=4426425" target="_blank" rel="noopener">Source 4426425 ↗</a><small>2000 × 2500 original · Version/focus pending.</small></article>
+<article><img src="art-search/4091843.jpg" alt="Composition research candidate 4091843 by Suyasuyabi427"><a href="https://safebooru.org/index.php?page=post&amp;s=view&amp;id=4091843" target="_blank" rel="noopener">Source 4091843 ↗</a><small>2894 × 4093 original · Version/focus pending.</small></article>
+<article><img src="art-search/3487932.jpg" alt="Composition research candidate 3487932 by Suyasuyabi427"><a href="https://safebooru.org/index.php?page=post&amp;s=view&amp;id=3487932" target="_blank" rel="noopener">Source 3487932 ↗</a><small>1181 × 1427 original · Version/focus pending.</small></article>
+<article><img src="art-search/6370083.jpg" alt="Composition research candidate 6370083 by Suyasuyabi427"><a href="https://safebooru.org/index.php?page=post&amp;s=view&amp;id=6370083" target="_blank" rel="noopener">Source 6370083 ↗</a><small>2184 × 3089 original · Alternate upload of a painting in this gallery; version/focus pending.</small></article>
+<!-- CANDIDATES END -->
+</div>
 <h2>The proposed ceremony</h2>
 <p>Hub journey → rare signal and impact → unnamed quote/voice → artwork camera reveal → individual S / S / R impacts → name and stars → hold until Continue. Each character supplies the painting, musical identity and signature effects. Banner artwork is a separate composition.</p>
-<div class="sources"><a href="/docs/GACHA_REDESIGN_RESEARCH.md">Full research and implementation recommendation</a><a href="https://hearthstone.blizzard.com/en-gb/news/22552047/developer-insights-the-art-behind-the-science" target="_blank" rel="noopener">Blizzard: effects from art and lore</a><a href="https://dengekionline.com/article/202405/5522" target="_blank" rel="noopener">Phantom Parade broadcast illustrations</a><a href="/docs/validation/reveal-redesign/native-sizing-results.json">Native sizing evidence</a></div>
-<footer>Private development research. Third-party references and source links remain credited. The Mario variants shown in the reference are not newly shipped fighters.</footer>
+<div class="sources"><a href="../../GACHA_REDESIGN_RESEARCH.md">Full research and implementation recommendation</a><a href="https://hearthstone.blizzard.com/en-gb/news/22552047/developer-insights-the-art-behind-the-science" target="_blank" rel="noopener">Blizzard: effects from art and lore</a><a href="https://dengekionline.com/article/202405/5522" target="_blank" rel="noopener">Phantom Parade broadcast illustrations</a><a href="native-sizing-results.json">Native sizing evidence</a></div>
+</details>
+<footer>Private development research. Third-party references remain credited. This page does not load an account or spend currency. The Mario variants shown are not newly shipped fighters.</footer>
 </main>
-<script type="module">
-const entries=[
- {name:'Approved Mario SSR',src:'approved-ssr.png',description:'The owner-approved full illustration: a portrait piece staged wide, with atmospheric continuity and a separate identity area.'},
- {name:'Approved landscape art',src:'approved-wide-art.png',description:'A complete landscape piece fills the frame. The composition supplies the setting and lighting.'},
- {name:'Rejected current SSR',src:'../summon-review/loaded-before-arrival-360.png',description:'Current rejected presentation: isolated character art, generic background and stacked labels inside the narrow Manual.'},
- {name:'Native wide sizing proof',src:'native-wide-theater-proof.png',description:'The approved scene in a real Electron window. This is a sizing/reference proof, not the redesigned production pull.'},
-];
-const tabs=document.getElementById('tabs'),comparison=document.getElementById('comparison'),description=document.getElementById('description');
-function select(index){const entry=entries[index];comparison.src=entry.src;comparison.alt=entry.description;description.textContent=entry.description;[...tabs.children].forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));}
-entries.forEach((entry,index)=>{const button=document.createElement('button');button.textContent=entry.name;button.onclick=()=>select(index);tabs.append(button);});select(0);
-const candidates=await fetch('art-search/candidates.json').then(response=>response.json()),gallery=document.getElementById('art-search');
-for(const candidate of candidates){if(!candidate.preview)continue;const article=document.createElement('article'),image=document.createElement('img'),link=document.createElement('a'),details=document.createElement('small');
- image.src='art-search/'+candidate.id+'.jpg';image.alt='Composition research candidate '+candidate.id+' by Suyasuyabi427';image.loading='lazy';
- link.href=candidate.page;link.target='_blank';link.rel='noopener';link.textContent='Source '+candidate.id+' ↗';details.textContent=candidate.dimensions.join(' × ')+' original · version/focus pending';article.append(image,link,details);gallery.append(article);
-}
-window.revealResearch={entries:entries.length,candidates:candidates.filter(candidate=>candidate.preview).length,select};
-</script></html>
+</body>
+</html>

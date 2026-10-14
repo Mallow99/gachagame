@@ -1,7 +1,28 @@
 {
-  "at": "2026-10-14T21:16:30.560Z",
-  "method": "Actual Chromium: four comparison images decode; twelve sourced composition previews render; no page errors or missing assets.",
-  "errors": [],
-  "missing": [],
-  "candidates": 12
+  "at": "2026-10-14T21:29:32.077Z",
+  "method": "Actual Chromium, JavaScript disabled: server page and standalone file. All image assets decode; CSS comparison tabs and source gallery work. Standalone makes zero network requests.",
+  "checks": [
+    {
+      "name": "server",
+      "images": 20,
+      "decoded": 20,
+      "comparisonViews": 4,
+      "candidates": 12,
+      "javaScript": false,
+      "errors": [],
+      "missing": [],
+      "networkRequests": 19
+    },
+    {
+      "name": "standalone",
+      "images": 20,
+      "decoded": 20,
+      "comparisonViews": 4,
+      "candidates": 12,
+      "javaScript": false,
+      "errors": [],
+      "missing": [],
+      "networkRequests": 0
+    }
+  ]
 }

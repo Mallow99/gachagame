@@ -6,8 +6,39 @@ full art, and makes SSRs feel like small mobile reward cards. Technical checks
 proved that the UI worked; they did not establish the requested visual quality.
 
 The approved [Mario demo](../demos/mario-pull/index.html) remains the primary
-reference. [Open the visual comparison](validation/reveal-redesign/index.html)
-through `npm run web`. It is a research page and does not load an account.
+reference. [Open the private browser comparison](https://pocket-gacha-reveal-review.berryowlet9.chatgpt.site)
+with the owner's ChatGPT account. The [local comparison](validation/reveal-redesign/index.html)
+also works through `npm run web`. These are research pages and do not load a
+game account or spend currency.
+
+The owner requested visible iterations for sign-off before further extensive
+presentation work. Start with one SSR proof, incorporate feedback, then extend
+the accepted treatment. The current review separates the established Mario
+layout reference from two Kirby artwork moods: dramatic battle and bright
+adventure. Both paintings remain examples, pending exact-game/focal-character
+checks for production use.
+
+## Review delivery
+
+The chat file viewer could not open the original linked HTML. A self-contained
+export also failed in that viewer despite working in Chromium. The owner-facing
+review now uses an owner-private Sites deployment, with eighteen local image
+assets and no application scripts. Image comparison controls and the source
+gallery work without JavaScript. All twenty image elements decode in actual
+Chromium on both the project server and the standalone export; the export
+makes no network requests. This browser evidence does not prove compatibility
+with the chat's file viewer.
+
+The separate hosting checkout is `/workspace/sites/gacha-reveal-review`.
+Its Site identity is persisted in `.openai/hosting.json`; reuse that Site for
+review iterations and preserve owner-only access. Only review HTML and image
+assets were deployed, with credits and source links; game saves were excluded.
+[Deployment evidence](validation/reveal-redesign/hosted-preview.json) records
+the successful private publication. The game repository remains local.
+
+For a downloadable single-file copy, run `node tools/build-reveal-preview.mjs`.
+The default export is `/workspace/gacha-reveal-preview.html`; opening that file
+in a normal browser is supported, but chat file-preview delivery is unverified.
 
 ## What the approved example does differently
 

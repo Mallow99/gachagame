@@ -12,6 +12,15 @@ reveal work. The comparison and native sizing proof are at
 selected production art. Passing browser/layout checks does not establish this
 visual quality gate.
 
+**Owner-facing review:** use the [private browser preview](https://pocket-gacha-reveal-review.berryowlet9.chatgpt.site).
+The chat file viewer failed to open linked HTML even after embedding the images.
+The owner wants small visible iterations for sign-off before more extensive
+reveal work. Rebuild one SSR proof before extending the treatment. Reuse the
+owner-private Site at `/workspace/sites/gacha-reveal-review`, whose identity is
+in `.openai/hosting.json`; the game repository has not been pushed. This hosted
+page is a reference/art-direction comparison, not the replacement production
+theater. Its source links/credits and exact-version caveats remain visible.
+
 The v1 implementation is on local `codex/v1-playable` from the latest planning
 push (`ef450706`). Read [the build report](docs/V1_BUILD_REPORT.md) and
 [README](README.md) before the historical notes below. SaveV4, roaming combat,

@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-14T21:34:41.969Z",
+  "purpose": "Owner-private visual reference review for short iterations and sign-off. Not a new production gacha reveal.",
+  "project_id": "appgprj_6acff4c4416081918499004cc7f2fcb4",
+  "version_id": "appgprj_6acff4c4416081918499004cc7f2fcb4~appgver_b5480a851c488191943531b09a393f75",
+  "deployment_id": "appgdep_6acff52909f48191a10ace2fc3a251d9",
+  "status": "succeeded",
+  "url": "https://pocket-gacha-reveal-review.berryowlet9.chatgpt.site",
+  "audience": "owner-private; published using save_version_and_deploy_private",
+  "source_commit_sha": "b65eec05f5c69a8331d26aed521423e5111acc21",
+  "source_checkout": "/workspace/sites/gacha-reveal-review",
+  "assets": 18,
+  "imageElements": 20,
+  "gameSaveDataIncluded": false,
+  "verification": "Native Sites deployment succeeded. Actual Chromium checks recorded separately in viewer-results.json. Chat file viewer compatibility failed; use the hosted URL."
+}
