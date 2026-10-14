@@ -90,6 +90,9 @@ Twenty-nine Supply records now have sourced illustrations; the Mushroom
 theater uses the approved demo's native sounds and Starman music. Dream Land
 SSR arrivals use the original 1993 Adventure fanfare. Lakitu now throws native
 Spiny eggs from a faithful classic rider/cloud expansion.
+Fighter profiles reuse their sourced artwork. Reveals preload/decode images
+before arrival; Skip stays responsive while an image is loading. Whole source
+downloads are preserved alongside small display and thumbnail copies.
 The real Electron IPC/save/relaunch check runs with an isolated QA profile;
 see [desktop evidence](docs/validation/desktop-review/results.json). Native Mac
 tray/Spaces/click-through and M2 performance still need a device check.

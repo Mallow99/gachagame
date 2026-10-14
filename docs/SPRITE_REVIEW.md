@@ -99,6 +99,13 @@ candidates, with their different origins stated; they are not active fighter art
 Whole original downloads stay intact. Display copies cap at 896 pixels,
 thumbnails at 256. The twenty-nine Supply displays total about 1.34 MiB and
 thumbnails 0.38 MiB, instead of loading the 32 MiB originals into result grids.
+The twenty-four fighter illustrations likewise preserve whole originals,
+with 896-pixel displays totaling 0.71 MiB and 256-pixel profile thumbnails
+totaling 0.33 MiB. Their combined display decode estimate is 18.77 MiB rather
+than 40.26 MiB for the originals. Profiles now reuse these illustrations.
+The theater preloads the current receipt's images during the flight and waits
+for decode before starting artwork arrival/hold timing. Skip cancels that wait;
+failed or stalled art has a bounded native-icon/printed-symbol fallback.
 Assist pages use source portraits for their printed field entrances where no
 native animated body is available; this does not claim full character rigging.
 
@@ -142,6 +149,9 @@ combat during a pause.
   Supply kinds. [Rare gallery results](validation/summon-review/gallery-results.json)
   decode all thirty-two SR/SSR collectibles at 360 × 600, check name/art bounds
   and confirm gallery preview activity leaves local storage unchanged.
+- [Image loading review](validation/summon-review/image-loading-results.json)
+  deliberately delays/fails image requests in Chromium: decode before arrival,
+  no late overwrite after Skip, fighter/Supply fallbacks and unchanged storage.
 
 Lakitu now uses yiey20's expanded classic green-goggled rider and small cloud,
 selected after comparing five sheets. Later orange/outlined costumes and big

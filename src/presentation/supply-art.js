@@ -4,8 +4,14 @@ const icons=new Set(['super-mushroom','life-mushroom','mini-mushroom','fire-flow
 const escape=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 // Original printed symbols for supply records without approved character art.
 // They identify the item/intervention rather than impersonating a fighter.
-export function supplyArt(item,kind,cls=''){
- const art=illustrations[item.id];
+export function supplyImageUrl(item,kind,{source=true}={}){
+ if(source&&illustrations[item.id])return illustrations[item.id].url;
+ if(kind==='assist'&&item.spriteKey)return spriteIcon(item.spriteKey);
+ if(icons.has(item.id))return spriteIcon(item.id);
+ return null;
+}
+export function supplyArt(item,kind,cls='',{source=true}={}){
+ const art=source&&illustrations[item.id];
  if(art){const hero=cls==='hero-splash';return `<img class="${cls} ${hero?'source-art '+art.style:'supply-source'}" src="${hero?art.url:art.thumbnailUrl||art.url}" alt="${escape(item.name)}" draggable="false">${hero?`<small class="art-credit">${escape(art.credit)}</small>`:''}`;}
  if(kind==='assist'&&item.spriteKey)return `<img class="${cls}" src="${spriteIcon(item.spriteKey)}" alt="${escape(item.name)}" draggable="false">`;
  if(icons.has(item.id))return `<img class="${cls}" src="${spriteIcon(item.id)}" alt="${escape(item.name)}" draggable="false">`;

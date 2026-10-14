@@ -3,16 +3,21 @@ import { spriteIcon } from '../render/sprite-bank.js';
 import { rarityRank } from '../config/rules.js';
 import { revealChime, revealTheme, stopRevealAudio, sting, voice } from '../audio.js';
 import { REVEAL_ART } from './art.js';
-import { supplyArt, supplyOrigin } from './supply-art.js';
+import { supplyArt, supplyOrigin, supplyImageUrl } from './supply-art.js';
+import {createRevealImageLoader} from './image-readiness.js';
 const escape=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const itemOf=r=>(r.kind==='unit'?content.units:r.kind==='powerup'?content.powerups:content.assists).get(r.id)||{id:r.id,name:'Unavailable Record',title:'Ownership preserved',rarity:r.rarity};
 const label=r=>r.isNew?'NEW':r.kind==='unit'?`★ ${r.stars} · +${r.echoes} Echoes`:`+${r.echoes} Echoes`;
-export function collectibleArt(item,kind='unit',cls=''){
-  const art=kind==='unit'&&REVEAL_ART[item.id];
-  if(art&&cls==='hero-splash')return `<img class="${cls} source-art ${art.style}" src="${art.url}" alt="${escape(item.name)}" draggable="false"><small class="art-credit">${escape(art.credit)}</small>`;
+export function collectibleImageUrl(item,kind='unit',{source=true}={}){
+  if(kind!=='unit')return supplyImageUrl(item,kind,{source});
+  return source&&REVEAL_ART[item.id]?.url||item.spriteKey&&spriteIcon(item.spriteKey)||null;
+}
+export function collectibleArt(item,kind='unit',cls='',{source=true}={}){
+  const art=source&&kind==='unit'&&REVEAL_ART[item.id],hero=cls==='hero-splash';
+  if(art&&(hero||cls==='detail-splash'))return `<img class="${cls} source-art ${art.style}" src="${hero?art.url:art.thumbnailUrl||art.url}" alt="${escape(item.name)}" draggable="false">${hero?`<small class="art-credit">${escape(art.credit)}</small>`:''}`;
   if(kind==='unit'&&item.spriteKey)return `<img class="${cls} ${item.treatment==='game-boy'?'game-boy':''}" src="${spriteIcon(item.spriteKey)}" alt="${escape(item.name)}" draggable="false">`;
   if(kind==='unit')return `<span class="collectible-glyph ${cls}">?</span>`;
-  return supplyArt(item,kind,cls);
+  return supplyArt(item,kind,cls,{source});
 }
 export async function showReceipt(game,receipt,act,onInspect=()=>{}){
   if(document.querySelector('.reveal-dialog'))return;
@@ -21,6 +26,8 @@ export async function showReceipt(game,receipt,act,onInspect=()=>{}){
   const stage=dialog.querySelector('.reveal-stage'),skip=dialog.querySelector('.reveal-skip');
   const controller=new AbortController();const {signal}=controller;let finished=false;
   signal.addEventListener('abort',stopRevealAudio,{once:true});
+  const loadImage=createRevealImageLoader(signal);
+  for(const result of receipt.results){const item=itemOf(result);loadImage(collectibleImageUrl(item,result.kind));loadImage(collectibleImageUrl(item,result.kind,{source:false}));}
   const wait=ms=>new Promise(resolve=>{if(signal.aborted){resolve(false);return;}const abort=()=>{clearTimeout(id);resolve(false);};const id=setTimeout(()=>{signal.removeEventListener('abort',abort);resolve(true);},ms);signal.addEventListener('abort',abort,{once:true});});
   async function close(){
     const button=stage.querySelector('.result-continue');if(button?.disabled)return;controller.abort();
@@ -60,7 +67,9 @@ export async function showReceipt(game,receipt,act,onInspect=()=>{}){
       if(reduced)quote.textContent='“'+text+'”';else for(let i=0;i<=text.length;i++){if(!await wait(35))return;quote.textContent='“'+text.slice(0,i)+(i===text.length?'”':'');}
       if(!await wait(reduced?150:1000))return;
     }
-    stage.innerHTML=`<div class="hero-reveal ${r.rarity} ${receipt.sagaId} ${reduced?'reduced':''}"><div class="reveal-rays"></div><div class="reveal-emblem">${escape(sourceId?.match(/\d{4}$/)?.[0]||'')}</div>${collectibleArt(item,r.kind,'hero-splash')}<div class="rarity-letters">${[...r.rarity].map((letter,i)=>`<b style="--i:${i}">${letter}</b>`).join('')}</div><div class="reveal-name"><small>${escape(item.title||item.grantedTrait||'ASSIST PAGE')}</small><h2>${escape(item.name)}</h2><p>${escape(origin?.sourceTitle||content.worlds.get(sourceId)?.name||sourceId||destination)}</p><span class="reveal-stars">${'★'.repeat(rarityRank(r.rarity)+3)}</span><p class="reveal-new">${label(r)}</p></div></div>`;
+    const sourceReady=await loadImage(collectibleImageUrl(item,r.kind));if(signal.aborted)return;
+    if(!sourceReady){await loadImage(collectibleImageUrl(item,r.kind,{source:false}));if(signal.aborted)return;}
+    stage.innerHTML=`<div class="hero-reveal ${r.rarity} ${receipt.sagaId} ${reduced?'reduced':''}"><div class="reveal-rays"></div><div class="reveal-emblem">${escape(sourceId?.match(/\d{4}$/)?.[0]||'')}</div>${collectibleArt(item,r.kind,'hero-splash',{source:sourceReady})}<div class="rarity-letters">${[...r.rarity].map((letter,i)=>`<b style="--i:${i}">${letter}</b>`).join('')}</div><div class="reveal-name"><small>${escape(item.title||item.grantedTrait||'ASSIST PAGE')}</small><h2>${escape(item.name)}</h2><p>${escape(origin?.sourceTitle||content.worlds.get(sourceId)?.name||sourceId||destination)}</p><span class="reveal-stars">${'★'.repeat(rarityRank(r.rarity)+3)}</span><p class="reveal-new">${label(r)}</p></div></div>`;
     if(!rare)voice(game.state.profile,item.id);
     if(rare&&receipt.sagaId==='kirby')revealTheme(game.state.profile,receipt.sagaId);else revealChime(game.state.profile,receipt.sagaId,r.rarity);
     // Reduced motion keeps the artwork and identity readable; it suppresses

@@ -91,7 +91,8 @@ The real Electron application also passes on a Linux virtual display, using an
 isolated QA profile: primary clear, observer Training/pull/receipt completion
 over actual IPC, matching quit/save acknowledgment and persisted relaunch.
 `validation/desktop-review/results.json` and its screenshots record that check.
-It validates file-URL assets and desktop transport; native macOS behavior and
+The isolated visual SSR also verifies source WebP decode/readiness through
+actual file URLs. It validates desktop transport; native macOS behavior and
 M2 performance remain separate.
 
 `validation/render-performance.json` profiles four fighters and twelve varied
@@ -133,6 +134,12 @@ stay intact while display/thumbnail copies limit game loading to about 1.72 MiB.
 The isolated gallery previews all sixty opening collectibles. Chromium checks
 all thirty-two rare reveals, identity bounds, image decode, unchanged gallery
 storage, native audio playback and ten-result scroll/inspect/replay behavior.
+All twenty-four sourced fighter illustrations have smaller whole-composition
+displays (0.71 MiB) and profile thumbnails (0.33 MiB). Original files/hashes stay
+intact. The reveal preloads during flight, waits for image decode, then starts
+the arrival animation and viewing time. Skip aborts pending waits, and failed
+art has a bounded fallback. Controlled Chromium delay/failure cases pass without
+changing save storage. Fighter profiles reuse their sourced illustration.
 See [the sprite review](SPRITE_REVIEW.md), current manifest and credited intake.
 
 Source fidelity is not final human approval of feel. Sparse SR pose sets,

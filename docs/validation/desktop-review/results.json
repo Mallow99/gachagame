@@ -1,11 +1,17 @@
 {
-  "at": "2026-10-14T19:49:55.571Z",
-  "method": "Real Electron in an isolated profile: primary clear, observer Training/pull/receipt completion over actual IPC, matching quit/save acknowledgment and persisted relaunch.",
+  "at": "2026-10-14T20:29:30.667Z",
+  "method": "Real Electron in an isolated profile: primary clear, observer Training/pull/receipt completion over actual IPC, source WebP readiness through file URLs, matching quit/save acknowledgment and persisted relaunch.",
   "runtime": {
     "electron": "44.7.0",
     "chrome": "152.0.7977.130",
     "platform": "linux",
     "headless": false
+  },
+  "fileArtwork": {
+    "fileUrl": true,
+    "decoded": true,
+    "width": 648,
+    "height": 896
   },
   "saved": {
     "rank": 2,
@@ -33,6 +39,6 @@
   },
   "errors": [],
   "limits": [
-    "Linux Ozone evidence does not verify native macOS tray, spaces, click-through, speaker quality or M2 performance."
+    "Linux virtual-display evidence does not verify native macOS tray, spaces, click-through, speaker quality or M2 performance."
   ]
 }

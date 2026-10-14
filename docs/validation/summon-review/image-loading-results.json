@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-14T20:26:24.307Z",
+  "method": "Actual Chromium: delayed first SSR image, Skip with an outstanding image, failed fighter artwork/native icon fallback and failed Supply artwork/printed-symbol fallback, in the isolated gallery.",
+  "delayed": {
+    "decoded": true,
+    "url": "king-dedede.webp"
+  },
+  "fallback": {
+    "decoded": true,
+    "url": "bandana-icon.png",
+    "sourceArt": false
+  },
+  "storageUnchanged": true,
+  "errors": [],
+  "limits": [
+    "Network failures are deliberate fixtures. This checks reveal lifecycle, not speaker quality or native macOS behavior."
+  ]
+}

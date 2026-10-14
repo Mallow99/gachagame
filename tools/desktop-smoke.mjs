@@ -26,7 +26,9 @@ async function launch(){
  catch(error){console.log(JSON.stringify({urls:windows.map(w=>w.url()),errors}));await app.close();throw error;}
  return{app,strip,manual};
 }
-let {app,strip,manual}=await launch();
+let app,strip,manual;
+try{
+({app,strip,manual}=await launch());
 const runtime=await app.evaluate(({app})=>({versions:process.versions,profile:app.getPath('userData')}));assert.equal(runtime.profile,profile);
 await strip.evaluate(async()=>{const {game:g}=await import('./src/game.js');window.nativeReviewGame=g;if(!g.battle)g.start();g.battle.advance(601);g.completeBattle(g.battle.report());if(!g.paused)g.pause();});
 await manual.waitForFunction(()=>window.__pocketGame.inventory.starlight===100);
@@ -35,12 +37,26 @@ await strip.waitForFunction(()=>window.nativeReviewGame.rank===2);await manual.w
 await manual.locator('[data-tab="summon"]').click();await manual.locator('[data-action="pull"]').first().click();
 await manual.locator('.reveal-skip').click();assert.equal(await manual.locator('.result-card').count(),1);await manual.locator('.result-continue').click();
 await strip.waitForFunction(()=>window.nativeReviewGame.state.banners.pendingReveal===null);
+// The primary acknowledges the save before the observer's close loop returns.
+// Wait for the actual modal removal before opening the next visual fixture.
+await manual.locator('.reveal-dialog').waitFor({state:'detached'});
+// An isolated visual receipt proves that source WebP decode/readiness also
+// works through Electron's file URLs. It grants/spends nothing.
+await manual.evaluate(async()=>{const{showReceipt}=await import('./src/presentation/reveal.js');const g=window.__pocketGame;
+ const review={rank:g.rank,state:{profile:{...g.state.profile,reducedMotion:true,muted:true},banners:{}}};
+ void showReceipt(review,{id:'native-art-review',preview:true,sagaId:'kirby',results:[{kind:'unit',id:'bandana-waddle-dee',rarity:'SSR',isNew:true}]},()=>{});
+});
+await manual.locator('.hero-reveal.SSR').waitFor();
+const fileArtwork=await manual.locator('.hero-splash').evaluate(image=>({fileUrl:image.src.startsWith('file:'),decoded:image.complete&&image.naturalWidth>0,width:image.naturalWidth,height:image.naturalHeight}));
+assert.ok(fileArtwork.fileUrl&&fileArtwork.decoded);await manual.screenshot({path:out+'/source-art-file-reveal.png'});
+await manual.locator('.reveal-skip').click();await manual.locator('.result-continue').click();
 await manual.screenshot({path:out+'/manual-after-pull.png'});await strip.screenshot({path:out+'/strip-after-clear.png'});
 const saved=await strip.evaluate(()=>({rank:window.nativeReviewGame.rank,party:window.nativeReviewGame.party,owned:Object.keys(window.nativeReviewGame.owned),starlight:window.nativeReviewGame.inventory.starlight}));
 const closing=app.waitForEvent('close');await app.evaluate(({app})=>app.quit());await closing;
 ({app,strip,manual}=await launch());
 const restored=await strip.evaluate(async()=>{const{game:g}=await import('./src/game.js');return{rank:g.rank,party:g.party,owned:Object.keys(g.owned),starlight:g.inventory.starlight};});
 assert.deepEqual(restored,saved);assert.deepEqual(errors,[]);
-fs.writeFileSync(out+'/results.json',JSON.stringify({at:new Date().toISOString(),method:'Real Electron in an isolated profile: primary clear, observer Training/pull/receipt completion over actual IPC, matching quit/save acknowledgment and persisted relaunch.',runtime:{electron:runtime.versions.electron,chrome:runtime.versions.chrome,platform:process.platform,headless:args.includes('--ozone-platform=headless')},saved,restored,errors,limits:['Linux Ozone evidence does not verify native macOS tray, spaces, click-through, speaker quality or M2 performance.']},null,2)+'\n');
+fs.writeFileSync(out+'/results.json',JSON.stringify({at:new Date().toISOString(),method:'Real Electron in an isolated profile: primary clear, observer Training/pull/receipt completion over actual IPC, source WebP readiness through file URLs, matching quit/save acknowledgment and persisted relaunch.',runtime:{electron:runtime.versions.electron,chrome:runtime.versions.chrome,platform:process.platform,headless:args.includes('--ozone-platform=headless')},fileArtwork,saved,restored,errors,limits:['Linux virtual-display evidence does not verify native macOS tray, spaces, click-through, speaker quality or M2 performance.']},null,2)+'\n');
 const closeAgain=app.waitForEvent('close');await app.evaluate(({app})=>app.quit());await closeAgain;
 console.log('Real Electron smoke passed: IPC Training/pull/save and isolated profile relaunch.');
+}finally{if(app)await app.close().catch(()=>{});}

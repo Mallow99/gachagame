@@ -35,6 +35,14 @@ records artwork URLs, game identity, dimensions and hashes. Some old game art
 is an opaque scan; it is displayed as a printed illustration without altering
 the original artwork. Featured banner and reveal art remain separate pieces.
 
+The twenty-four fighter illustrations now have complete display copies at up
+to 896 pixels and profile thumbnails at up to 256, without cropping, recoloring
+or upscaling. Originals and intake hashes remain intact. Run
+`python tools/art/prepare-fighter-art.py` to rebuild them; output dimensions and
+hashes are recorded in `assets/portraits/source-era/manifest.json`. Displays
+total 0.71 MiB and thumbnails 0.33 MiB. Profiles reuse the sourced artwork while
+collection/result icons retain their version-specific combat sprites.
+
 `v1/manifest.json` records source game, source page, credits, original source
 rectangles, foot anchors, fixed pixel scale, clips, body height, world height
 and output hashes. `python tools/art/import-v1-sprites.py` rebuilds legacy

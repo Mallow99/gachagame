@@ -52,6 +52,17 @@ projectile dots. Single ranged throws, as well as repeated ones, reach their
 release pose at the real spawn marker. The added motion examples include both
 Storm Cloud and one Spiny Egg. No kit, rarity, ownership or balance changed.
 
+Fighter art now uses whole-composition display/thumbnail copies (0.71/0.33 MiB)
+instead of loading original scans/renders into the theater and profile header.
+All twenty-four originals and credited hashes are preserved. Reveal images
+preload during flight; arrival/hold timing waits for decode, and Skip aborts the
+wait. Controlled Chromium delays/failures verify no late result overwrite and
+readable native-icon/printed-symbol fallbacks without changing storage. Run
+`tools/browser-reveal-loading.mjs` for that check. The full suite has 111 tests.
+Real Electron also passes the source-art WebP preview through file URLs, along
+with IPC/persistence. Its harness waits for the paid modal to close before the
+next visual fixture and cleans up the app if a check fails.
+
 The old prototype descriptions and PG-003 “next” tickets below are historical.
 Longer-term plans remain authoritative; the latest user instruction authorized
 the broader v1 implementation pass.
