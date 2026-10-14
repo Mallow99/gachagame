@@ -262,5 +262,32 @@
       219
     ],
     "sha256": "eef6b1de19b25f7304bce19919d7334ac9008cad139b2ed22875dff60f3967cc"
+  },
+  {
+    "id": "toad",
+    "url": "https://mario.wiki.gallery/images/e/eb/SMB_Toad_Artwork.jpg",
+    "path": "assets/portraits/source-era/toad.jpg",
+    "sourceGameId": "super-mario-bros-1985",
+    "illustrationYear": 1985,
+    "credit": "Nintendo",
+    "dimensions": [
+      382,
+      517
+    ],
+    "sha256": "b3aab3d326b011891f5db16c6600781aa52f977fe313044b1cf52af53f447416"
+  },
+  {
+    "id": "koopa-troopa",
+    "url": "https://mario.wiki.gallery/images/b/b4/SMB_-_Koopa_Troopa.png",
+    "path": "assets/portraits/source-era/koopa-troopa.png",
+    "sourceGameId": "super-mario-bros-1985",
+    "illustrationYear": 2020,
+    "credit": "Nintendo",
+    "dimensions": [
+      192,
+      153
+    ],
+    "sha256": "a3b03ebab2bcbe913816984dfac08da4517e5d72723c2609d3c9cca383e997b1",
+    "notes": "Official Super Mario Bros. 35 redraw of the original walking-on-all-fours SMB1 design; depicts the 1985 version, drawn in 2020."
   }
 ]

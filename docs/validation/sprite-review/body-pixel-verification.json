@@ -46,7 +46,7 @@
     {
       "key": "hammer-bro",
       "sourceGameId": "super-mario-bros-1985",
-      "frames": 4,
+      "frames": 12,
       "sourcePixelsPreserved": true
     },
     {
@@ -64,7 +64,7 @@
     {
       "key": "buzzy",
       "sourceGameId": "super-mario-bros-1985",
-      "frames": 2,
+      "frames": 8,
       "sourcePixelsPreserved": true
     },
     {
@@ -377,6 +377,18 @@
       "key": "ka-star",
       "sourceGameId": "kirbys-adventure-1993",
       "frames": 1,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "parasol-body",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 2,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "ka-parasol",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 2,
       "sourcePixelsPreserved": true
     }
   ]

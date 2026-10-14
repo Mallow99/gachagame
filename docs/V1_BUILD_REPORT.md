@@ -11,6 +11,9 @@ local `codex/v1-playable`. The original planning corpus remains intact.
   paid receipts. Failed battle reward writes remain exportable and retry once.
 - Independent 30 Hz roaming actors, seven patterns, persistent projectiles,
   timed contacts, stagger recovery, finite substates and bounded reports.
+  Landings now match contact; repeated charges travel through targets; Cape
+  Counter replaces its fallback hit and answers after a visible exit/return.
+  Ranged finishers fly before damaging, and throw poses repeat at releases.
 - All 15 SMB and 20 Adventure courses, bosses/phase changes, first-clear
   rewards, Camps, Atlas Key/Threat snapshots, Kirby unlock and mixed Endless.
 - 28 numeric fighter records: 10 Mushroom and 18 Dream Land. Source Spotlights
@@ -56,8 +59,9 @@ Rank, composition or hardware performance budget.
 with only Mario, 300 Coins and zero Starlight. The bot chooses owned legal
 parties, spends earned rewards, equips owned Supply, trains, claims earned
 Orders, farms measured Camps and retries after retreat. All 20 accounts cleared
-35/35 stages in 2.5–3.3 simulated active hours, with 109–156 Camp clears,
-81–86 Fighter pulls and five total retreats. `validation/player-path.json`
+35/35 stages in 2.5–3.3 simulated active hours, with 109–157 Camp clears,
+81–86 Fighter pulls and three total retreats in the current interaction pass.
+`validation/player-path.json`
 contains every stage and recovery path. Bot decisions are more systematic than
 a new player's decisions; this is progression evidence, not a human playtest.
 
@@ -90,8 +94,15 @@ archive has no animation tracks. Bowser uses Captain/FungiCaptain's expansion
 of the actual classic NES design. Bodies keep one source-pixel scale and a
 shared foot anchor across weapon poses. Finite clips hold their end frames;
 skills/ultimates and source projectile effects use the appropriate clips.
-Original source-game illustrations cover 22 pulls, including every current
-SSR, with actual version years and readable reduced-motion reveal times.
+Illustrations cover 24 pulls, including every current SSR, with actual version
+years and readable reduced-motion reveal times. Koopa's official 2020 redraw
+depicts the original 1985 body and is credited as a redraw. Hammer Bro/Buzzy
+have fuller faithful expanded sheets; Parasol's native body and umbrella
+articulate separately. The combat review at
+`/docs/validation/sprite-review/combat.html` offers fourteen real-engine moves
+with playback/seek/speed controls. Chromium motion evidence and frame sequences
+are in `validation/sprite-review/motion/results.json`; source validation preserves
+443 frames across 65 extracted atlases. The full manifest has 74 atlases.
 See [the sprite review](SPRITE_REVIEW.md), current manifest and credited intake.
 
 Source fidelity is not final human approval of feel. Sparse SR pose sets,

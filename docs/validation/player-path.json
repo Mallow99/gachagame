@@ -1,12 +1,12 @@
 {
-  "at": "2026-10-14T13:20:16.051Z",
+  "at": "2026-10-14T17:28:28.387Z",
   "method": "Fresh saves use real Game rewards, actual pulls, earned Training, best measured cleared Camp, legal party/equipment selection and real Battle results. No ownership, currency, Rank or clears are injected.",
   "accounts": 20,
   "records": [
     {
       "seed": 0,
       "cleared": 35,
-      "camps": 125,
+      "camps": 126,
       "losses": 0,
       "hours": 2.8,
       "rank": 35,
@@ -134,7 +134,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 1,
+          "minutes": 2,
           "fighterPulls": 17
         },
         {
@@ -340,8 +340,8 @@
             "bio-spark"
           ],
           "attempts": 1,
-          "camps": 9,
-          "minutes": 7,
+          "camps": 10,
+          "minutes": 6,
           "fighterPulls": 50
         },
         {
@@ -368,8 +368,8 @@
             "wheelie"
           ],
           "attempts": 1,
-          "camps": 4,
-          "minutes": 4,
+          "camps": 3,
+          "minutes": 3,
           "fighterPulls": 58
         },
         {
@@ -382,8 +382,8 @@
             "sir-kibble"
           ],
           "attempts": 1,
-          "camps": 12,
-          "minutes": 7,
+          "camps": 13,
+          "minutes": 8,
           "fighterPulls": 60
         },
         {
@@ -397,7 +397,7 @@
           ],
           "attempts": 1,
           "camps": 7,
-          "minutes": 9,
+          "minutes": 8,
           "fighterPulls": 62
         },
         {
@@ -425,7 +425,7 @@
           ],
           "attempts": 1,
           "camps": 8,
-          "minutes": 14,
+          "minutes": 13,
           "fighterPulls": 67
         },
         {
@@ -454,7 +454,7 @@
           "attempts": 1,
           "camps": 7,
           "minutes": 8,
-          "fighterPulls": 70
+          "fighterPulls": 71
         },
         {
           "id": "ka-18",
@@ -503,12 +503,12 @@
     {
       "seed": 1,
       "cleared": 35,
-      "camps": 120,
+      "camps": 157,
       "losses": 0,
-      "hours": 3.2,
+      "hours": 3.1,
       "rank": 35,
       "units": 24,
-      "pulls": 83,
+      "pulls": 86,
       "warnings": [],
       "stages": [
         {
@@ -627,7 +627,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 2,
+          "minutes": 1,
           "fighterPulls": 17
         },
         {
@@ -832,7 +832,7 @@
             "bio-spark"
           ],
           "attempts": 1,
-          "camps": 6,
+          "camps": 10,
           "minutes": 7,
           "fighterPulls": 50
         },
@@ -846,8 +846,8 @@
             "sir-kibble"
           ],
           "attempts": 1,
-          "camps": 7,
-          "minutes": 12,
+          "camps": 11,
+          "minutes": 11,
           "fighterPulls": 56
         },
         {
@@ -860,9 +860,9 @@
             "bandana-waddle-dee"
           ],
           "attempts": 1,
-          "camps": 2,
+          "camps": 3,
           "minutes": 3,
-          "fighterPulls": 57
+          "fighterPulls": 58
         },
         {
           "id": "ka-12",
@@ -874,9 +874,9 @@
             "bandana-waddle-dee"
           ],
           "attempts": 1,
-          "camps": 8,
-          "minutes": 9,
-          "fighterPulls": 59
+          "camps": 13,
+          "minutes": 8,
+          "fighterPulls": 60
         },
         {
           "id": "ka-13",
@@ -888,9 +888,9 @@
             "bandana-waddle-dee"
           ],
           "attempts": 1,
-          "camps": 8,
+          "camps": 14,
           "minutes": 9,
-          "fighterPulls": 60
+          "fighterPulls": 62
         },
         {
           "id": "ka-14",
@@ -902,9 +902,9 @@
             "bandana-waddle-dee"
           ],
           "attempts": 1,
-          "camps": 10,
-          "minutes": 10,
-          "fighterPulls": 62
+          "camps": 15,
+          "minutes": 9,
+          "fighterPulls": 65
         },
         {
           "id": "ka-15",
@@ -916,9 +916,9 @@
             "bandana-waddle-dee"
           ],
           "attempts": 1,
-          "camps": 10,
-          "minutes": 15,
-          "fighterPulls": 66
+          "camps": 17,
+          "minutes": 14,
+          "fighterPulls": 70
         },
         {
           "id": "ka-16",
@@ -930,9 +930,9 @@
             "bandana-waddle-dee"
           ],
           "attempts": 1,
-          "camps": 7,
+          "camps": 12,
           "minutes": 7,
-          "fighterPulls": 68
+          "fighterPulls": 72
         },
         {
           "id": "ka-17",
@@ -946,7 +946,7 @@
           "attempts": 1,
           "camps": 8,
           "minutes": 11,
-          "fighterPulls": 70
+          "fighterPulls": 74
         },
         {
           "id": "ka-18",
@@ -960,7 +960,7 @@
           "attempts": 1,
           "camps": 8,
           "minutes": 10,
-          "fighterPulls": 72
+          "fighterPulls": 75
         },
         {
           "id": "ka-19",
@@ -974,7 +974,7 @@
           "attempts": 1,
           "camps": 8,
           "minutes": 13,
-          "fighterPulls": 74
+          "fighterPulls": 77
         },
         {
           "id": "ka-20",
@@ -988,19 +988,19 @@
           "attempts": 1,
           "camps": 10,
           "minutes": 15,
-          "fighterPulls": 83
+          "fighterPulls": 86
         }
       ]
     },
     {
       "seed": 2,
       "cleared": 35,
-      "camps": 109,
+      "camps": 125,
       "losses": 0,
-      "hours": 2.8,
+      "hours": 3,
       "rank": 35,
-      "units": 24,
-      "pulls": 81,
+      "units": 25,
+      "pulls": 83,
       "warnings": [],
       "stages": [
         {
@@ -1271,7 +1271,7 @@
             "wheelie"
           ],
           "attempts": 1,
-          "camps": 16,
+          "camps": 18,
           "minutes": 15,
           "fighterPulls": 45
         },
@@ -1299,9 +1299,9 @@
             "wheelie"
           ],
           "attempts": 1,
-          "camps": 2,
+          "camps": 3,
           "minutes": 3,
-          "fighterPulls": 46
+          "fighterPulls": 47
         },
         {
           "id": "ka-08",
@@ -1314,8 +1314,8 @@
           ],
           "attempts": 1,
           "camps": 10,
-          "minutes": 7,
-          "fighterPulls": 48
+          "minutes": 6,
+          "fighterPulls": 49
         },
         {
           "id": "ka-09",
@@ -1323,13 +1323,13 @@
           "party": [
             "adventure-kirby",
             "parasol-waddle-dee",
-            "sir-kibble",
-            "wheelie"
+            "bandana-waddle-dee",
+            "sir-kibble"
           ],
           "attempts": 1,
-          "camps": 6,
+          "camps": 12,
           "minutes": 7,
-          "fighterPulls": 50
+          "fighterPulls": 51
         },
         {
           "id": "ka-10",
@@ -1337,13 +1337,13 @@
           "party": [
             "adventure-kirby",
             "parasol-waddle-dee",
-            "bandana-waddle-dee",
-            "sir-kibble"
+            "king-dedede",
+            "bandana-waddle-dee"
           ],
           "attempts": 1,
           "camps": 7,
           "minutes": 11,
-          "fighterPulls": 56
+          "fighterPulls": 57
         },
         {
           "id": "ka-11",
@@ -1351,13 +1351,13 @@
           "party": [
             "adventure-kirby",
             "parasol-waddle-dee",
-            "bandana-waddle-dee",
-            "sir-kibble"
+            "king-dedede",
+            "bandana-waddle-dee"
           ],
           "attempts": 1,
-          "camps": 1,
-          "minutes": 2,
-          "fighterPulls": 57
+          "camps": 2,
+          "minutes": 4,
+          "fighterPulls": 58
         },
         {
           "id": "ka-12",
@@ -1365,11 +1365,11 @@
           "party": [
             "adventure-kirby",
             "parasol-waddle-dee",
-            "bandana-waddle-dee",
-            "sir-kibble"
+            "king-dedede",
+            "bandana-waddle-dee"
           ],
           "attempts": 1,
-          "camps": 8,
+          "camps": 7,
           "minutes": 9,
           "fighterPulls": 59
         },
@@ -1379,13 +1379,13 @@
           "party": [
             "adventure-kirby",
             "parasol-waddle-dee",
-            "bandana-waddle-dee",
-            "sir-kibble"
+            "king-dedede",
+            "bandana-waddle-dee"
           ],
           "attempts": 1,
-          "camps": 6,
-          "minutes": 8,
-          "fighterPulls": 60
+          "camps": 7,
+          "minutes": 10,
+          "fighterPulls": 61
         },
         {
           "id": "ka-14",
@@ -1393,13 +1393,13 @@
           "party": [
             "adventure-kirby",
             "parasol-waddle-dee",
-            "bandana-waddle-dee",
-            "sir-kibble"
+            "king-dedede",
+            "bandana-waddle-dee"
           ],
           "attempts": 1,
           "camps": 8,
-          "minutes": 10,
-          "fighterPulls": 62
+          "minutes": 9,
+          "fighterPulls": 63
         },
         {
           "id": "ka-15",
@@ -1407,13 +1407,13 @@
           "party": [
             "adventure-kirby",
             "parasol-waddle-dee",
-            "bandana-waddle-dee",
-            "sir-kibble"
+            "king-dedede",
+            "bandana-waddle-dee"
           ],
           "attempts": 1,
-          "camps": 7,
-          "minutes": 13,
-          "fighterPulls": 66
+          "camps": 10,
+          "minutes": 15,
+          "fighterPulls": 67
         },
         {
           "id": "ka-16",
@@ -1421,22 +1421,8 @@
           "party": [
             "adventure-kirby",
             "parasol-waddle-dee",
-            "bandana-waddle-dee",
-            "sir-kibble"
-          ],
-          "attempts": 1,
-          "camps": 5,
-          "minutes": 7,
-          "fighterPulls": 67
-        },
-        {
-          "id": "ka-17",
-          "rank": 32,
-          "party": [
-            "adventure-kirby",
-            "parasol-waddle-dee",
-            "bandana-waddle-dee",
-            "sir-kibble"
+            "king-dedede",
+            "bandana-waddle-dee"
           ],
           "attempts": 1,
           "camps": 7,
@@ -1444,18 +1430,32 @@
           "fighterPulls": 69
         },
         {
+          "id": "ka-17",
+          "rank": 32,
+          "party": [
+            "adventure-kirby",
+            "parasol-waddle-dee",
+            "king-dedede",
+            "bandana-waddle-dee"
+          ],
+          "attempts": 1,
+          "camps": 8,
+          "minutes": 11,
+          "fighterPulls": 70
+        },
+        {
           "id": "ka-18",
           "rank": 33,
           "party": [
             "adventure-kirby",
             "parasol-waddle-dee",
-            "bandana-waddle-dee",
-            "sir-kibble"
+            "king-dedede",
+            "bandana-waddle-dee"
           ],
           "attempts": 1,
           "camps": 8,
           "minutes": 9,
-          "fighterPulls": 71
+          "fighterPulls": 72
         },
         {
           "id": "ka-19",
@@ -1463,13 +1463,13 @@
           "party": [
             "adventure-kirby",
             "parasol-waddle-dee",
-            "bandana-waddle-dee",
-            "sir-kibble"
+            "king-dedede",
+            "bandana-waddle-dee"
           ],
           "attempts": 1,
-          "camps": 9,
-          "minutes": 12,
-          "fighterPulls": 73
+          "camps": 8,
+          "minutes": 13,
+          "fighterPulls": 74
         },
         {
           "id": "ka-20",
@@ -1477,20 +1477,20 @@
           "party": [
             "adventure-kirby",
             "parasol-waddle-dee",
-            "bonkers",
-            "bandana-waddle-dee"
+            "king-dedede",
+            "bonkers"
           ],
           "attempts": 1,
-          "camps": 9,
-          "minutes": 12,
-          "fighterPulls": 81
+          "camps": 10,
+          "minutes": 14,
+          "fighterPulls": 83
         }
       ]
     },
     {
       "seed": 3,
       "cleared": 35,
-      "camps": 156,
+      "camps": 153,
       "losses": 0,
       "hours": 3,
       "rank": 35,
@@ -1630,7 +1630,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 4,
+          "minutes": 5,
           "fighterPulls": 22
         },
         {
@@ -1781,7 +1781,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 1,
+          "minutes": 2,
           "fighterPulls": 45
         },
         {
@@ -1823,7 +1823,7 @@
           ],
           "attempts": 1,
           "camps": 10,
-          "minutes": 6,
+          "minutes": 7,
           "fighterPulls": 50
         },
         {
@@ -1878,7 +1878,7 @@
             "bandana-waddle-dee"
           ],
           "attempts": 1,
-          "camps": 13,
+          "camps": 9,
           "minutes": 9,
           "fighterPulls": 62
         },
@@ -1892,7 +1892,7 @@
             "bandana-waddle-dee"
           ],
           "attempts": 1,
-          "camps": 15,
+          "camps": 16,
           "minutes": 9,
           "fighterPulls": 65
         },
@@ -1906,9 +1906,9 @@
             "bandana-waddle-dee"
           ],
           "attempts": 1,
-          "camps": 17,
+          "camps": 16,
           "minutes": 14,
-          "fighterPulls": 70
+          "fighterPulls": 69
         },
         {
           "id": "ka-16",
@@ -1920,9 +1920,9 @@
             "bandana-waddle-dee"
           ],
           "attempts": 1,
-          "camps": 12,
-          "minutes": 7,
-          "fighterPulls": 72
+          "camps": 13,
+          "minutes": 8,
+          "fighterPulls": 71
         },
         {
           "id": "ka-17",
@@ -1931,12 +1931,12 @@
             "adventure-kirby",
             "parasol-waddle-dee",
             "king-dedede",
-            "bonkers"
+            "bandana-waddle-dee"
           ],
           "attempts": 1,
           "camps": 8,
           "minutes": 11,
-          "fighterPulls": 74
+          "fighterPulls": 73
         },
         {
           "id": "ka-18",
@@ -1949,7 +1949,7 @@
           ],
           "attempts": 1,
           "camps": 8,
-          "minutes": 10,
+          "minutes": 9,
           "fighterPulls": 75
         },
         {
@@ -1985,12 +1985,12 @@
     {
       "seed": 4,
       "cleared": 35,
-      "camps": 115,
-      "losses": 0,
-      "hours": 2.8,
+      "camps": 109,
+      "losses": 1,
+      "hours": 3.1,
       "rank": 35,
       "units": 26,
-      "pulls": 82,
+      "pulls": 81,
       "warnings": [],
       "stages": [
         {
@@ -2027,7 +2027,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 1,
+          "minutes": 2,
           "fighterPulls": 3
         },
         {
@@ -2124,7 +2124,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 4,
+          "minutes": 5,
           "fighterPulls": 22
         },
         {
@@ -2166,7 +2166,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 2,
+          "minutes": 1,
           "fighterPulls": 25
         },
         {
@@ -2245,7 +2245,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 3,
+          "minutes": 2,
           "fighterPulls": 38
         },
         {
@@ -2287,7 +2287,7 @@
           ],
           "attempts": 1,
           "camps": 2,
-          "minutes": 3,
+          "minutes": 4,
           "fighterPulls": 46
         },
         {
@@ -2300,8 +2300,8 @@
             "rocky"
           ],
           "attempts": 1,
-          "camps": 10,
-          "minutes": 7,
+          "camps": 7,
+          "minutes": 10,
           "fighterPulls": 48
         },
         {
@@ -2330,7 +2330,7 @@
           "attempts": 1,
           "camps": 7,
           "minutes": 11,
-          "fighterPulls": 56
+          "fighterPulls": 55
         },
         {
           "id": "ka-11",
@@ -2338,8 +2338,8 @@
           "party": [
             "adventure-kirby",
             "bonkers",
-            "bio-spark",
-            "knuckle-joe"
+            "wheelie",
+            "bio-spark"
           ],
           "attempts": 1,
           "camps": 2,
@@ -2352,13 +2352,13 @@
           "party": [
             "adventure-kirby",
             "bonkers",
-            "bio-spark",
-            "knuckle-joe"
+            "wheelie",
+            "bio-spark"
           ],
           "attempts": 1,
           "camps": 8,
           "minutes": 8,
-          "fighterPulls": 59
+          "fighterPulls": 58
         },
         {
           "id": "ka-13",
@@ -2366,12 +2366,12 @@
           "party": [
             "adventure-kirby",
             "bonkers",
-            "bio-spark",
-            "knuckle-joe"
+            "wheelie",
+            "bio-spark"
           ],
           "attempts": 1,
-          "camps": 8,
-          "minutes": 7,
+          "camps": 6,
+          "minutes": 8,
           "fighterPulls": 60
         },
         {
@@ -2380,26 +2380,26 @@
           "party": [
             "adventure-kirby",
             "bonkers",
-            "bio-spark",
-            "knuckle-joe"
+            "wheelie",
+            "bio-spark"
           ],
           "attempts": 1,
-          "camps": 10,
+          "camps": 8,
           "minutes": 9,
           "fighterPulls": 62
         },
         {
           "id": "ka-15",
-          "rank": 30,
+          "rank": 31,
           "party": [
             "adventure-kirby",
             "bonkers",
             "sir-kibble",
-            "bio-spark"
+            "wheelie"
           ],
-          "attempts": 1,
-          "camps": 7,
-          "minutes": 12,
+          "attempts": 2,
+          "camps": 17,
+          "minutes": 27,
           "fighterPulls": 66
         },
         {
@@ -2412,9 +2412,9 @@
             "sir-kibble"
           ],
           "attempts": 1,
-          "camps": 5,
-          "minutes": 6,
-          "fighterPulls": 68
+          "camps": 0,
+          "minutes": 1,
+          "fighterPulls": 67
         },
         {
           "id": "ka-17",
@@ -2426,8 +2426,8 @@
             "sir-kibble"
           ],
           "attempts": 1,
-          "camps": 8,
-          "minutes": 8,
+          "camps": 4,
+          "minutes": 5,
           "fighterPulls": 69
         },
         {
@@ -2454,8 +2454,8 @@
             "sir-kibble"
           ],
           "attempts": 1,
-          "camps": 8,
-          "minutes": 10,
+          "camps": 9,
+          "minutes": 12,
           "fighterPulls": 73
         },
         {
@@ -2468,18 +2468,18 @@
             "sir-kibble"
           ],
           "attempts": 1,
-          "camps": 10,
-          "minutes": 12,
-          "fighterPulls": 82
+          "camps": 9,
+          "minutes": 11,
+          "fighterPulls": 81
         }
       ]
     },
     {
       "seed": 5,
       "cleared": 35,
-      "camps": 114,
+      "camps": 111,
       "losses": 1,
-      "hours": 2.8,
+      "hours": 2.7,
       "rank": 35,
       "units": 22,
       "pulls": 82,
@@ -2615,7 +2615,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 4,
+          "minutes": 3,
           "fighterPulls": 22
         },
         {
@@ -2863,8 +2863,8 @@
             "bio-spark"
           ],
           "attempts": 1,
-          "camps": 9,
-          "minutes": 7,
+          "camps": 7,
+          "minutes": 8,
           "fighterPulls": 60
         },
         {
@@ -2877,7 +2877,7 @@
             "bio-spark"
           ],
           "attempts": 1,
-          "camps": 9,
+          "camps": 7,
           "minutes": 7,
           "fighterPulls": 62
         },
@@ -2891,8 +2891,8 @@
             "bio-spark"
           ],
           "attempts": 1,
-          "camps": 7,
-          "minutes": 12,
+          "camps": 8,
+          "minutes": 11,
           "fighterPulls": 66
         },
         {
@@ -2906,8 +2906,8 @@
           ],
           "attempts": 1,
           "camps": 6,
-          "minutes": 7,
-          "fighterPulls": 68
+          "minutes": 6,
+          "fighterPulls": 67
         },
         {
           "id": "ka-17",
@@ -2920,7 +2920,7 @@
           ],
           "attempts": 1,
           "camps": 7,
-          "minutes": 7,
+          "minutes": 8,
           "fighterPulls": 69
         },
         {
@@ -2970,12 +2970,12 @@
     {
       "seed": 6,
       "cleared": 35,
-      "camps": 127,
-      "losses": 2,
-      "hours": 3.1,
+      "camps": 111,
+      "losses": 0,
+      "hours": 3,
       "rank": 35,
       "units": 23,
-      "pulls": 83,
+      "pulls": 82,
       "warnings": [],
       "stages": [
         {
@@ -3302,23 +3302,23 @@
             "blade-knight"
           ],
           "attempts": 1,
-          "camps": 10,
-          "minutes": 7,
+          "camps": 6,
+          "minutes": 8,
           "fighterPulls": 50
         },
         {
           "id": "ka-10",
-          "rank": 26,
+          "rank": 25,
           "party": [
             "adventure-kirby",
             "bandana-waddle-dee",
             "wheelie",
             "bio-spark"
           ],
-          "attempts": 2,
-          "camps": 25,
-          "minutes": 22,
-          "fighterPulls": 58
+          "attempts": 1,
+          "camps": 7,
+          "minutes": 13,
+          "fighterPulls": 56
         },
         {
           "id": "ka-11",
@@ -3330,9 +3330,9 @@
             "bio-spark"
           ],
           "attempts": 1,
-          "camps": 0,
-          "minutes": 1,
-          "fighterPulls": 59
+          "camps": 1,
+          "minutes": 2,
+          "fighterPulls": 57
         },
         {
           "id": "ka-12",
@@ -3344,9 +3344,9 @@
             "bio-spark"
           ],
           "attempts": 1,
-          "camps": 2,
-          "minutes": 2,
-          "fighterPulls": 60
+          "camps": 8,
+          "minutes": 8,
+          "fighterPulls": 59
         },
         {
           "id": "ka-13",
@@ -3358,9 +3358,9 @@
             "bio-spark"
           ],
           "attempts": 1,
-          "camps": 7,
-          "minutes": 9,
-          "fighterPulls": 62
+          "camps": 6,
+          "minutes": 8,
+          "fighterPulls": 60
         },
         {
           "id": "ka-14",
@@ -3372,23 +3372,23 @@
             "bio-spark"
           ],
           "attempts": 1,
-          "camps": 7,
-          "minutes": 8,
-          "fighterPulls": 63
+          "camps": 8,
+          "minutes": 9,
+          "fighterPulls": 62
         },
         {
           "id": "ka-15",
-          "rank": 31,
+          "rank": 30,
           "party": [
             "adventure-kirby",
             "bandana-waddle-dee",
             "wheelie",
             "bio-spark"
           ],
-          "attempts": 2,
-          "camps": 18,
-          "minutes": 29,
-          "fighterPulls": 68
+          "attempts": 1,
+          "camps": 8,
+          "minutes": 14,
+          "fighterPulls": 66
         },
         {
           "id": "ka-16",
@@ -3400,9 +3400,9 @@
             "bio-spark"
           ],
           "attempts": 1,
-          "camps": 0,
-          "minutes": 1,
-          "fighterPulls": 69
+          "camps": 5,
+          "minutes": 6,
+          "fighterPulls": 67
         },
         {
           "id": "ka-17",
@@ -3414,9 +3414,9 @@
             "bio-spark"
           ],
           "attempts": 1,
-          "camps": 4,
-          "minutes": 5,
-          "fighterPulls": 71
+          "camps": 8,
+          "minutes": 10,
+          "fighterPulls": 69
         },
         {
           "id": "ka-18",
@@ -3430,7 +3430,7 @@
           "attempts": 1,
           "camps": 8,
           "minutes": 9,
-          "fighterPulls": 72
+          "fighterPulls": 71
         },
         {
           "id": "ka-19",
@@ -3442,9 +3442,9 @@
             "bio-spark"
           ],
           "attempts": 1,
-          "camps": 9,
-          "minutes": 13,
-          "fighterPulls": 74
+          "camps": 8,
+          "minutes": 12,
+          "fighterPulls": 73
         },
         {
           "id": "ka-20",
@@ -3456,16 +3456,16 @@
             "wheelie"
           ],
           "attempts": 1,
-          "camps": 9,
-          "minutes": 12,
-          "fighterPulls": 83
+          "camps": 10,
+          "minutes": 13,
+          "fighterPulls": 82
         }
       ]
     },
     {
       "seed": 7,
       "cleared": 35,
-      "camps": 126,
+      "camps": 125,
       "losses": 0,
       "hours": 3,
       "rank": 35,
@@ -3811,7 +3811,7 @@
             "bandana-waddle-dee"
           ],
           "attempts": 1,
-          "camps": 11,
+          "camps": 10,
           "minutes": 12,
           "fighterPulls": 56
         },
@@ -3882,7 +3882,7 @@
           ],
           "attempts": 1,
           "camps": 8,
-          "minutes": 15,
+          "minutes": 14,
           "fighterPulls": 67
         },
         {
@@ -3896,7 +3896,7 @@
           ],
           "attempts": 1,
           "camps": 6,
-          "minutes": 8,
+          "minutes": 7,
           "fighterPulls": 69
         },
         {
@@ -3911,7 +3911,7 @@
           "attempts": 1,
           "camps": 7,
           "minutes": 10,
-          "fighterPulls": 71
+          "fighterPulls": 70
         },
         {
           "id": "ka-18",
@@ -3960,9 +3960,9 @@
     {
       "seed": 8,
       "cleared": 35,
-      "camps": 112,
+      "camps": 111,
       "losses": 0,
-      "hours": 2.8,
+      "hours": 2.9,
       "rank": 35,
       "units": 25,
       "pulls": 82,
@@ -4116,7 +4116,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 2,
+          "minutes": 1,
           "fighterPulls": 23
         },
         {
@@ -4130,7 +4130,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 2,
+          "minutes": 1,
           "fighterPulls": 24
         },
         {
@@ -4281,7 +4281,7 @@
           ],
           "attempts": 1,
           "camps": 10,
-          "minutes": 6,
+          "minutes": 5,
           "fighterPulls": 48
         },
         {
@@ -4322,8 +4322,8 @@
             "bio-spark"
           ],
           "attempts": 1,
-          "camps": 2,
-          "minutes": 3,
+          "camps": 1,
+          "minutes": 2,
           "fighterPulls": 57
         },
         {
@@ -4337,7 +4337,7 @@
           ],
           "attempts": 1,
           "camps": 8,
-          "minutes": 7,
+          "minutes": 8,
           "fighterPulls": 59
         },
         {
@@ -4378,8 +4378,8 @@
             "wheelie"
           ],
           "attempts": 1,
-          "camps": 8,
-          "minutes": 14,
+          "camps": 7,
+          "minutes": 13,
           "fighterPulls": 66
         },
         {
@@ -4392,8 +4392,8 @@
             "wheelie"
           ],
           "attempts": 1,
-          "camps": 5,
-          "minutes": 6,
+          "camps": 6,
+          "minutes": 7,
           "fighterPulls": 67
         },
         {
@@ -4407,7 +4407,7 @@
           ],
           "attempts": 1,
           "camps": 8,
-          "minutes": 9,
+          "minutes": 10,
           "fighterPulls": 69
         },
         {
@@ -4435,7 +4435,7 @@
           ],
           "attempts": 1,
           "camps": 8,
-          "minutes": 12,
+          "minutes": 13,
           "fighterPulls": 73
         },
         {
@@ -4457,9 +4457,9 @@
     {
       "seed": 9,
       "cleared": 35,
-      "camps": 112,
-      "losses": 1,
-      "hours": 3,
+      "camps": 113,
+      "losses": 0,
+      "hours": 2.9,
       "rank": 35,
       "units": 24,
       "pulls": 82,
@@ -4795,17 +4795,17 @@
         },
         {
           "id": "ka-10",
-          "rank": 26,
+          "rank": 25,
           "party": [
             "adventure-kirby",
             "king-dedede",
             "bio-spark",
             "knuckle-joe"
           ],
-          "attempts": 2,
-          "camps": 16,
-          "minutes": 25,
-          "fighterPulls": 57
+          "attempts": 1,
+          "camps": 7,
+          "minutes": 13,
+          "fighterPulls": 56
         },
         {
           "id": "ka-11",
@@ -4817,9 +4817,9 @@
             "knuckle-joe"
           ],
           "attempts": 1,
-          "camps": 0,
-          "minutes": 1,
-          "fighterPulls": 58
+          "camps": 1,
+          "minutes": 2,
+          "fighterPulls": 57
         },
         {
           "id": "ka-12",
@@ -4831,8 +4831,8 @@
             "knuckle-joe"
           ],
           "attempts": 1,
-          "camps": 1,
-          "minutes": 2,
+          "camps": 8,
+          "minutes": 8,
           "fighterPulls": 59
         },
         {
@@ -4845,8 +4845,8 @@
             "knuckle-joe"
           ],
           "attempts": 1,
-          "camps": 7,
-          "minutes": 9,
+          "camps": 6,
+          "minutes": 8,
           "fighterPulls": 60
         },
         {
@@ -4859,8 +4859,8 @@
             "knuckle-joe"
           ],
           "attempts": 1,
-          "camps": 7,
-          "minutes": 8,
+          "camps": 8,
+          "minutes": 9,
           "fighterPulls": 62
         },
         {
@@ -4873,7 +4873,7 @@
             "bio-spark"
           ],
           "attempts": 1,
-          "camps": 7,
+          "camps": 8,
           "minutes": 13,
           "fighterPulls": 66
         },
@@ -4887,8 +4887,8 @@
             "bio-spark"
           ],
           "attempts": 1,
-          "camps": 6,
-          "minutes": 7,
+          "camps": 5,
+          "minutes": 6,
           "fighterPulls": 67
         },
         {
@@ -4901,7 +4901,7 @@
             "bandana-waddle-dee"
           ],
           "attempts": 1,
-          "camps": 8,
+          "camps": 10,
           "minutes": 11,
           "fighterPulls": 69
         },
@@ -4952,7 +4952,7 @@
     {
       "seed": 10,
       "cleared": 35,
-      "camps": 112,
+      "camps": 111,
       "losses": 0,
       "hours": 2.8,
       "rank": 35,
@@ -5010,7 +5010,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 1,
+          "minutes": 2,
           "fighterPulls": 4
         },
         {
@@ -5080,7 +5080,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 2,
+          "minutes": 1,
           "fighterPulls": 17
         },
         {
@@ -5094,7 +5094,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 3,
+          "minutes": 4,
           "fighterPulls": 22
         },
         {
@@ -5287,7 +5287,7 @@
           ],
           "attempts": 1,
           "camps": 6,
-          "minutes": 6,
+          "minutes": 7,
           "fighterPulls": 50
         },
         {
@@ -5301,7 +5301,7 @@
           ],
           "attempts": 1,
           "camps": 7,
-          "minutes": 10,
+          "minutes": 11,
           "fighterPulls": 56
         },
         {
@@ -5314,8 +5314,8 @@
             "sir-kibble"
           ],
           "attempts": 1,
-          "camps": 2,
-          "minutes": 3,
+          "camps": 1,
+          "minutes": 2,
           "fighterPulls": 57
         },
         {
@@ -5329,7 +5329,7 @@
           ],
           "attempts": 1,
           "camps": 8,
-          "minutes": 8,
+          "minutes": 9,
           "fighterPulls": 59
         },
         {
@@ -5342,8 +5342,8 @@
             "sir-kibble"
           ],
           "attempts": 1,
-          "camps": 7,
-          "minutes": 9,
+          "camps": 6,
+          "minutes": 7,
           "fighterPulls": 60
         },
         {
@@ -5356,8 +5356,8 @@
             "sir-kibble"
           ],
           "attempts": 1,
-          "camps": 7,
-          "minutes": 8,
+          "camps": 8,
+          "minutes": 9,
           "fighterPulls": 62
         },
         {
@@ -5449,9 +5449,9 @@
     {
       "seed": 11,
       "cleared": 35,
-      "camps": 115,
+      "camps": 112,
       "losses": 0,
-      "hours": 2.6,
+      "hours": 2.5,
       "rank": 35,
       "units": 24,
       "pulls": 82,
@@ -5573,7 +5573,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 1,
+          "minutes": 2,
           "fighterPulls": 17
         },
         {
@@ -5615,7 +5615,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 1,
+          "minutes": 2,
           "fighterPulls": 24
         },
         {
@@ -5629,7 +5629,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 1,
+          "minutes": 2,
           "fighterPulls": 25
         },
         {
@@ -5834,8 +5834,8 @@
             "bio-spark"
           ],
           "attempts": 1,
-          "camps": 8,
-          "minutes": 7,
+          "camps": 7,
+          "minutes": 8,
           "fighterPulls": 60
         },
         {
@@ -5848,8 +5848,8 @@
             "bio-spark"
           ],
           "attempts": 1,
-          "camps": 10,
-          "minutes": 8,
+          "camps": 7,
+          "minutes": 7,
           "fighterPulls": 62
         },
         {
@@ -5862,8 +5862,8 @@
             "bio-spark"
           ],
           "attempts": 1,
-          "camps": 7,
-          "minutes": 12,
+          "camps": 8,
+          "minutes": 11,
           "fighterPulls": 66
         },
         {
@@ -5877,8 +5877,8 @@
           ],
           "attempts": 1,
           "camps": 5,
-          "minutes": 6,
-          "fighterPulls": 68
+          "minutes": 5,
+          "fighterPulls": 67
         },
         {
           "id": "ka-17",
@@ -5905,7 +5905,7 @@
           ],
           "attempts": 1,
           "camps": 8,
-          "minutes": 8,
+          "minutes": 7,
           "fighterPulls": 71
         },
         {
@@ -5919,7 +5919,7 @@
           ],
           "attempts": 1,
           "camps": 8,
-          "minutes": 11,
+          "minutes": 10,
           "fighterPulls": 73
         },
         {
@@ -6069,7 +6069,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 2,
+          "minutes": 1,
           "fighterPulls": 17
         },
         {
@@ -6218,7 +6218,7 @@
           ],
           "attempts": 1,
           "camps": 16,
-          "minutes": 13,
+          "minutes": 14,
           "fighterPulls": 45
         },
         {
@@ -6288,7 +6288,7 @@
           ],
           "attempts": 1,
           "camps": 7,
-          "minutes": 11,
+          "minutes": 10,
           "fighterPulls": 56
         },
         {
@@ -6316,7 +6316,7 @@
           ],
           "attempts": 1,
           "camps": 8,
-          "minutes": 7,
+          "minutes": 8,
           "fighterPulls": 59
         },
         {
@@ -6330,7 +6330,7 @@
           ],
           "attempts": 1,
           "camps": 7,
-          "minutes": 8,
+          "minutes": 9,
           "fighterPulls": 60
         },
         {
@@ -6372,7 +6372,7 @@
           ],
           "attempts": 1,
           "camps": 5,
-          "minutes": 5,
+          "minutes": 6,
           "fighterPulls": 67
         },
         {
@@ -6414,7 +6414,7 @@
           ],
           "attempts": 1,
           "camps": 8,
-          "minutes": 12,
+          "minutes": 11,
           "fighterPulls": 73
         },
         {
@@ -6436,12 +6436,12 @@
     {
       "seed": 13,
       "cleared": 35,
-      "camps": 112,
+      "camps": 128,
       "losses": 0,
-      "hours": 2.6,
+      "hours": 2.8,
       "rank": 35,
       "units": 23,
-      "pulls": 82,
+      "pulls": 83,
       "warnings": [],
       "stages": [
         {
@@ -6700,7 +6700,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 2,
+          "minutes": 1,
           "fighterPulls": 38
         },
         {
@@ -6769,7 +6769,7 @@
             "bio-spark"
           ],
           "attempts": 1,
-          "camps": 6,
+          "camps": 10,
           "minutes": 6,
           "fighterPulls": 50
         },
@@ -6783,8 +6783,8 @@
             "bandana-waddle-dee"
           ],
           "attempts": 1,
-          "camps": 7,
-          "minutes": 10,
+          "camps": 11,
+          "minutes": 9,
           "fighterPulls": 56
         },
         {
@@ -6797,9 +6797,9 @@
             "bandana-waddle-dee"
           ],
           "attempts": 1,
-          "camps": 2,
+          "camps": 3,
           "minutes": 3,
-          "fighterPulls": 57
+          "fighterPulls": 58
         },
         {
           "id": "ka-12",
@@ -6811,9 +6811,9 @@
             "bandana-waddle-dee"
           ],
           "attempts": 1,
-          "camps": 8,
+          "camps": 13,
           "minutes": 8,
-          "fighterPulls": 59
+          "fighterPulls": 60
         },
         {
           "id": "ka-13",
@@ -6826,8 +6826,8 @@
           ],
           "attempts": 1,
           "camps": 7,
-          "minutes": 8,
-          "fighterPulls": 60
+          "minutes": 9,
+          "fighterPulls": 62
         },
         {
           "id": "ka-14",
@@ -6841,91 +6841,91 @@
           "attempts": 1,
           "camps": 7,
           "minutes": 8,
-          "fighterPulls": 62
+          "fighterPulls": 63
         },
         {
           "id": "ka-15",
           "rank": 30,
           "party": [
             "adventure-kirby",
+            "parasol-waddle-dee",
             "king-dedede",
-            "bonkers",
-            "bandana-waddle-dee"
+            "bonkers"
           ],
           "attempts": 1,
           "camps": 8,
           "minutes": 13,
-          "fighterPulls": 66
+          "fighterPulls": 67
         },
         {
           "id": "ka-16",
           "rank": 31,
           "party": [
             "adventure-kirby",
+            "parasol-waddle-dee",
             "king-dedede",
-            "bonkers",
-            "bandana-waddle-dee"
+            "bonkers"
           ],
           "attempts": 1,
-          "camps": 5,
-          "minutes": 6,
-          "fighterPulls": 67
+          "camps": 6,
+          "minutes": 7,
+          "fighterPulls": 69
         },
         {
           "id": "ka-17",
           "rank": 32,
           "party": [
             "adventure-kirby",
+            "parasol-waddle-dee",
             "king-dedede",
-            "bonkers",
-            "bandana-waddle-dee"
+            "bonkers"
           ],
           "attempts": 1,
-          "camps": 8,
-          "minutes": 8,
-          "fighterPulls": 69
+          "camps": 9,
+          "minutes": 9,
+          "fighterPulls": 71
         },
         {
           "id": "ka-18",
           "rank": 33,
           "party": [
             "adventure-kirby",
+            "parasol-waddle-dee",
             "king-dedede",
-            "bonkers",
-            "bandana-waddle-dee"
+            "bonkers"
           ],
           "attempts": 1,
           "camps": 8,
-          "minutes": 8,
-          "fighterPulls": 71
+          "minutes": 10,
+          "fighterPulls": 73
         },
         {
           "id": "ka-19",
           "rank": 34,
           "party": [
             "adventure-kirby",
+            "parasol-waddle-dee",
             "king-dedede",
-            "bonkers",
-            "bandana-waddle-dee"
+            "bonkers"
           ],
           "attempts": 1,
-          "camps": 8,
-          "minutes": 12,
-          "fighterPulls": 73
+          "camps": 9,
+          "minutes": 14,
+          "fighterPulls": 74
         },
         {
           "id": "ka-20",
           "rank": 35,
           "party": [
             "adventure-kirby",
+            "parasol-waddle-dee",
             "king-dedede",
-            "bonkers",
-            "bandana-waddle-dee"
+            "bonkers"
           ],
           "attempts": 1,
-          "camps": 10,
+          "camps": 9,
           "minutes": 13,
-          "fighterPulls": 82
+          "fighterPulls": 83
         }
       ]
     },
@@ -6934,7 +6934,7 @@
       "cleared": 35,
       "camps": 111,
       "losses": 0,
-      "hours": 2.5,
+      "hours": 2.6,
       "rank": 35,
       "units": 23,
       "pulls": 82,
@@ -7102,7 +7102,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 2,
+          "minutes": 1,
           "fighterPulls": 24
         },
         {
@@ -7197,7 +7197,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 1,
+          "minutes": 2,
           "fighterPulls": 38
         },
         {
@@ -7211,7 +7211,7 @@
           ],
           "attempts": 1,
           "camps": 16,
-          "minutes": 13,
+          "minutes": 14,
           "fighterPulls": 45
         },
         {
@@ -7429,7 +7429,7 @@
     {
       "seed": 15,
       "cleared": 35,
-      "camps": 112,
+      "camps": 119,
       "losses": 0,
       "hours": 3.1,
       "rank": 35,
@@ -7583,7 +7583,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 2,
+          "minutes": 1,
           "fighterPulls": 23
         },
         {
@@ -7597,7 +7597,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 1,
+          "minutes": 2,
           "fighterPulls": 24
         },
         {
@@ -7789,7 +7789,7 @@
           ],
           "attempts": 1,
           "camps": 2,
-          "minutes": 4,
+          "minutes": 3,
           "fighterPulls": 57
         },
         {
@@ -7817,7 +7817,7 @@
           ],
           "attempts": 1,
           "camps": 7,
-          "minutes": 10,
+          "minutes": 9,
           "fighterPulls": 60
         },
         {
@@ -7830,7 +7830,7 @@
             "bonkers"
           ],
           "attempts": 1,
-          "camps": 7,
+          "camps": 10,
           "minutes": 9,
           "fighterPulls": 62
         },
@@ -7844,8 +7844,8 @@
             "bonkers"
           ],
           "attempts": 1,
-          "camps": 8,
-          "minutes": 15,
+          "camps": 10,
+          "minutes": 14,
           "fighterPulls": 66
         },
         {
@@ -7858,9 +7858,9 @@
             "bonkers"
           ],
           "attempts": 1,
-          "camps": 5,
-          "minutes": 6,
-          "fighterPulls": 67
+          "camps": 8,
+          "minutes": 7,
+          "fighterPulls": 68
         },
         {
           "id": "ka-17",
@@ -7872,9 +7872,9 @@
             "bonkers"
           ],
           "attempts": 1,
-          "camps": 8,
-          "minutes": 11,
-          "fighterPulls": 69
+          "camps": 7,
+          "minutes": 10,
+          "fighterPulls": 70
         },
         {
           "id": "ka-18",
@@ -7887,8 +7887,8 @@
           ],
           "attempts": 1,
           "camps": 8,
-          "minutes": 9,
-          "fighterPulls": 71
+          "minutes": 10,
+          "fighterPulls": 72
         },
         {
           "id": "ka-19",
@@ -7900,9 +7900,9 @@
             "bonkers"
           ],
           "attempts": 1,
-          "camps": 8,
-          "minutes": 13,
-          "fighterPulls": 73
+          "camps": 9,
+          "minutes": 14,
+          "fighterPulls": 74
         },
         {
           "id": "ka-20",
@@ -7914,8 +7914,8 @@
             "bonkers"
           ],
           "attempts": 1,
-          "camps": 10,
-          "minutes": 14,
+          "camps": 9,
+          "minutes": 13,
           "fighterPulls": 82
         }
       ]
@@ -7923,9 +7923,9 @@
     {
       "seed": 16,
       "cleared": 35,
-      "camps": 111,
+      "camps": 112,
       "losses": 1,
-      "hours": 2.9,
+      "hours": 2.8,
       "rank": 35,
       "units": 24,
       "pulls": 82,
@@ -7965,7 +7965,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 1,
+          "minutes": 2,
           "fighterPulls": 3
         },
         {
@@ -8255,7 +8255,7 @@
           ],
           "attempts": 1,
           "camps": 7,
-          "minutes": 8,
+          "minutes": 7,
           "fighterPulls": 50
         },
         {
@@ -8282,8 +8282,8 @@
             "bio-spark"
           ],
           "attempts": 1,
-          "camps": 2,
-          "minutes": 3,
+          "camps": 3,
+          "minutes": 4,
           "fighterPulls": 57
         },
         {
@@ -8296,8 +8296,8 @@
             "wheelie"
           ],
           "attempts": 1,
-          "camps": 8,
-          "minutes": 8,
+          "camps": 7,
+          "minutes": 7,
           "fighterPulls": 58
         },
         {
@@ -8310,8 +8310,8 @@
             "wheelie"
           ],
           "attempts": 1,
-          "camps": 9,
-          "minutes": 7,
+          "camps": 7,
+          "minutes": 8,
           "fighterPulls": 60
         },
         {
@@ -8325,7 +8325,7 @@
           ],
           "attempts": 1,
           "camps": 7,
-          "minutes": 9,
+          "minutes": 8,
           "fighterPulls": 62
         },
         {
@@ -8338,7 +8338,7 @@
             "bonkers"
           ],
           "attempts": 1,
-          "camps": 7,
+          "camps": 8,
           "minutes": 13,
           "fighterPulls": 66
         },
@@ -8352,8 +8352,8 @@
             "bonkers"
           ],
           "attempts": 1,
-          "camps": 5,
-          "minutes": 8,
+          "camps": 6,
+          "minutes": 7,
           "fighterPulls": 67
         },
         {
@@ -8366,8 +8366,8 @@
             "bonkers"
           ],
           "attempts": 1,
-          "camps": 8,
-          "minutes": 11,
+          "camps": 9,
+          "minutes": 10,
           "fighterPulls": 69
         },
         {
@@ -8381,7 +8381,7 @@
           ],
           "attempts": 1,
           "camps": 8,
-          "minutes": 9,
+          "minutes": 10,
           "fighterPulls": 71
         },
         {
@@ -8394,8 +8394,8 @@
             "bonkers"
           ],
           "attempts": 1,
-          "camps": 8,
-          "minutes": 13,
+          "camps": 9,
+          "minutes": 14,
           "fighterPulls": 73
         },
         {
@@ -8408,8 +8408,8 @@
             "bonkers"
           ],
           "attempts": 1,
-          "camps": 10,
-          "minutes": 14,
+          "camps": 9,
+          "minutes": 13,
           "fighterPulls": 82
         }
       ]
@@ -8419,7 +8419,7 @@
       "cleared": 35,
       "camps": 109,
       "losses": 0,
-      "hours": 3,
+      "hours": 3.1,
       "rank": 35,
       "units": 26,
       "pulls": 81,
@@ -8484,7 +8484,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 9,
+          "minutes": 10,
           "fighterPulls": 10
         },
         {
@@ -8858,7 +8858,7 @@
           ],
           "attempts": 1,
           "camps": 7,
-          "minutes": 7,
+          "minutes": 8,
           "fighterPulls": 69
         },
         {
@@ -9076,7 +9076,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 1,
+          "minutes": 2,
           "fighterPulls": 24
         },
         {
@@ -9185,7 +9185,7 @@
           ],
           "attempts": 1,
           "camps": 16,
-          "minutes": 17,
+          "minutes": 16,
           "fighterPulls": 45
         },
         {
@@ -9199,7 +9199,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 1,
+          "minutes": 2,
           "fighterPulls": 45
         },
         {
@@ -9227,7 +9227,7 @@
           ],
           "attempts": 1,
           "camps": 10,
-          "minutes": 7,
+          "minutes": 8,
           "fighterPulls": 48
         },
         {
@@ -9241,7 +9241,7 @@
           ],
           "attempts": 1,
           "camps": 10,
-          "minutes": 8,
+          "minutes": 7,
           "fighterPulls": 50
         },
         {
@@ -9381,7 +9381,7 @@
           ],
           "attempts": 1,
           "camps": 8,
-          "minutes": 13,
+          "minutes": 14,
           "fighterPulls": 74
         },
         {
@@ -9543,7 +9543,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 5,
+          "minutes": 4,
           "fighterPulls": 22
         },
         {
@@ -9571,7 +9571,7 @@
           ],
           "attempts": 1,
           "camps": 0,
-          "minutes": 2,
+          "minutes": 1,
           "fighterPulls": 24
         },
         {
@@ -9722,7 +9722,7 @@
           ],
           "attempts": 1,
           "camps": 10,
-          "minutes": 6,
+          "minutes": 7,
           "fighterPulls": 48
         },
         {
@@ -9750,7 +9750,7 @@
           ],
           "attempts": 1,
           "camps": 7,
-          "minutes": 11,
+          "minutes": 12,
           "fighterPulls": 56
         },
         {
@@ -9890,7 +9890,7 @@
           ],
           "attempts": 1,
           "camps": 10,
-          "minutes": 16,
+          "minutes": 15,
           "fighterPulls": 82
         }
       ]

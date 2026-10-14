@@ -1,12 +1,12 @@
 {
   "build": "v1-playable",
-  "at": "2026-10-14T16:22:14.574Z",
-  "seconds": 6.415,
+  "at": "2026-10-14T17:20:12.901Z",
+  "seconds": 7.894,
   "seeds": 5,
   "content": {
     "fighters": 28,
     "encounters": 35,
-    "sprites": 72
+    "sprites": 74
   },
   "banners": [
     {
@@ -99,9 +99,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 109,
-      "maxSeconds": 115,
-      "meanHp": 0.3118181818181818
+      "minSeconds": 111,
+      "maxSeconds": 117,
+      "meanHp": 0.31072727272727274
     },
     {
       "id": "smb1-02",
@@ -112,9 +112,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 79,
-      "maxSeconds": 84,
-      "meanHp": 0.735510579576817
+      "minSeconds": 82,
+      "maxSeconds": 87,
+      "meanHp": 0.6776448942042318
     },
     {
       "id": "smb1-03",
@@ -125,9 +125,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 83,
-      "maxSeconds": 92,
-      "meanHp": 0.5919859092910612
+      "minSeconds": 82,
+      "maxSeconds": 103,
+      "meanHp": 0.514487010127697
     },
     {
       "id": "smb1-04",
@@ -140,9 +140,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 109,
-      "maxSeconds": 117,
-      "meanHp": 1
+      "minSeconds": 111,
+      "maxSeconds": 115,
+      "meanHp": 0.9998658618376929
     },
     {
       "id": "smb1-05",
@@ -155,9 +155,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 228,
-      "maxSeconds": 248,
-      "meanHp": 1
+      "minSeconds": 234,
+      "maxSeconds": 246,
+      "meanHp": 0.9961924257932446
     },
     {
       "id": "smb1-06",
@@ -170,9 +170,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 110,
-      "maxSeconds": 120,
-      "meanHp": 0.9968065506653019
+      "minSeconds": 111,
+      "maxSeconds": 119,
+      "meanHp": 0.9901330603889458
     },
     {
       "id": "smb1-07",
@@ -185,9 +185,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 89,
-      "maxSeconds": 98,
-      "meanHp": 0.961853448275862
+      "minSeconds": 88,
+      "maxSeconds": 99,
+      "meanHp": 0.968867554858934
     },
     {
       "id": "smb1-08",
@@ -200,9 +200,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 95,
+      "minSeconds": 91,
       "maxSeconds": 105,
-      "meanHp": 0.9886035613870666
+      "meanHp": 0.9837675726335521
     },
     {
       "id": "smb1-09",
@@ -215,9 +215,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 113,
-      "maxSeconds": 139,
-      "meanHp": 0.8966457399103138
+      "minSeconds": 117,
+      "maxSeconds": 133,
+      "meanHp": 0.8758385650224214
     },
     {
       "id": "smb1-10",
@@ -230,9 +230,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 313,
-      "maxSeconds": 333,
-      "meanHp": 0.9518798283261802
+      "minSeconds": 320,
+      "maxSeconds": 334,
+      "meanHp": 0.9085115879828326
     },
     {
       "id": "smb1-11",
@@ -245,9 +245,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 98,
-      "maxSeconds": 109,
-      "meanHp": 0.9870466491458607
+      "minSeconds": 101,
+      "maxSeconds": 108,
+      "meanHp": 0.9525
     },
     {
       "id": "smb1-12",
@@ -260,8 +260,8 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 103,
-      "maxSeconds": 108,
+      "minSeconds": 101,
+      "maxSeconds": 111,
       "meanHp": 1
     },
     {
@@ -275,9 +275,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 104,
+      "minSeconds": 100,
       "maxSeconds": 108,
-      "meanHp": 0.983727997592899
+      "meanHp": 0.9686324657740334
     },
     {
       "id": "smb1-14",
@@ -290,9 +290,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 231,
-      "maxSeconds": 237,
-      "meanHp": 0.9984396142219663
+      "minSeconds": 233,
+      "maxSeconds": 238,
+      "meanHp": 0.9991593493594358
     },
     {
       "id": "smb1-15",
@@ -305,9 +305,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 410,
-      "maxSeconds": 418,
-      "meanHp": 0.9052561983471075
+      "minSeconds": 412,
+      "maxSeconds": 417,
+      "meanHp": 0.9561735537190084
     },
     {
       "id": "ka-01",
@@ -318,8 +318,8 @@
       "wins": 5,
       "trials": 5,
       "minSeconds": 96,
-      "maxSeconds": 99,
-      "meanHp": 0.40786516853932586
+      "maxSeconds": 102,
+      "meanHp": 0.3474157303370787
     },
     {
       "id": "ka-02",
@@ -330,9 +330,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 75,
+      "minSeconds": 72,
       "maxSeconds": 78,
-      "meanHp": 0.7847748359357322
+      "meanHp": 0.8616338538130801
     },
     {
       "id": "ka-03",
@@ -344,8 +344,8 @@
       "wins": 5,
       "trials": 5,
       "minSeconds": 86,
-      "maxSeconds": 89,
-      "meanHp": 0.7881654754169373
+      "maxSeconds": 88,
+      "meanHp": 0.8940957331600604
     },
     {
       "id": "ka-04",
@@ -359,8 +359,8 @@
       "wins": 5,
       "trials": 5,
       "minSeconds": 68,
-      "maxSeconds": 77,
-      "meanHp": 0.9573571671003507
+      "maxSeconds": 78,
+      "meanHp": 0.9781604253874872
     },
     {
       "id": "ka-05",
@@ -373,9 +373,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 207,
+      "minSeconds": 210,
       "maxSeconds": 213,
-      "meanHp": 0.9861479486116866
+      "meanHp": 0.994840447575632
     },
     {
       "id": "ka-06",
@@ -388,9 +388,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 66,
-      "maxSeconds": 71,
-      "meanHp": 0.9296208039784501
+      "minSeconds": 67,
+      "maxSeconds": 73,
+      "meanHp": 0.9653128885205138
     },
     {
       "id": "ka-07",
@@ -403,9 +403,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 73,
-      "maxSeconds": 85,
-      "meanHp": 0.9544106275403985
+      "minSeconds": 79,
+      "maxSeconds": 84,
+      "meanHp": 0.9669594527609794
     },
     {
       "id": "ka-08",
@@ -418,9 +418,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 55,
+      "minSeconds": 56,
       "maxSeconds": 61,
-      "meanHp": 0.9759222011385198
+      "meanHp": 0.9674886148007589
     },
     {
       "id": "ka-09",
@@ -433,9 +433,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 61,
+      "minSeconds": 63,
       "maxSeconds": 65,
-      "meanHp": 0.9678027964408933
+      "meanHp": 0.9741783185037225
     },
     {
       "id": "ka-10",
@@ -448,9 +448,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 268,
-      "maxSeconds": 275,
-      "meanHp": 0.8562641181581234
+      "minSeconds": 269,
+      "maxSeconds": 279,
+      "meanHp": 0.914509122502172
     },
     {
       "id": "ka-11",
@@ -463,9 +463,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 85,
-      "maxSeconds": 88,
-      "meanHp": 0.9786764216827404
+      "minSeconds": 86,
+      "maxSeconds": 94,
+      "meanHp": 0.9818091120718325
     },
     {
       "id": "ka-12",
@@ -478,9 +478,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 65,
-      "maxSeconds": 66,
-      "meanHp": 0.8852896244430299
+      "minSeconds": 64,
+      "maxSeconds": 67,
+      "meanHp": 0.909403246339911
     },
     {
       "id": "ka-13",
@@ -493,9 +493,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 74,
-      "maxSeconds": 81,
-      "meanHp": 0.9198218364550023
+      "minSeconds": 73,
+      "maxSeconds": 79,
+      "meanHp": 0.9337825491091823
     },
     {
       "id": "ka-14",
@@ -508,9 +508,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 73,
+      "minSeconds": 74,
       "maxSeconds": 77,
-      "meanHp": 0.9157260473588342
+      "meanHp": 0.9244721311475409
     },
     {
       "id": "ka-15",
@@ -523,9 +523,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 370,
-      "maxSeconds": 397,
-      "meanHp": 0.6093146482604755
+      "minSeconds": 364,
+      "maxSeconds": 378,
+      "meanHp": 0.651977968346929
     },
     {
       "id": "ka-16",
@@ -538,9 +538,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 69,
+      "minSeconds": 68,
       "maxSeconds": 74,
-      "meanHp": 0.902837891927952
+      "meanHp": 0.90745963975984
     },
     {
       "id": "ka-17",
@@ -553,9 +553,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 58,
+      "minSeconds": 61,
       "maxSeconds": 63,
-      "meanHp": 0.9302489785495404
+      "meanHp": 0.9274425434116447
     },
     {
       "id": "ka-18",
@@ -568,9 +568,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 78,
-      "maxSeconds": 81,
-      "meanHp": 0.878880811289633
+      "minSeconds": 76,
+      "maxSeconds": 80,
+      "meanHp": 0.8899578471501008
     },
     {
       "id": "ka-19",
@@ -583,9 +583,9 @@
       ],
       "wins": 5,
       "trials": 5,
-      "minSeconds": 319,
+      "minSeconds": 334,
       "maxSeconds": 345,
-      "meanHp": 0.6430026308097048
+      "meanHp": 0.6320912014030986
     },
     {
       "id": "ka-20",
@@ -599,8 +599,8 @@
       "wins": 5,
       "trials": 5,
       "minSeconds": 321,
-      "maxSeconds": 324,
-      "meanHp": 0.8188441311402034
+      "maxSeconds": 325,
+      "meanHp": 0.8144858453619781
     }
   ],
   "limits": [

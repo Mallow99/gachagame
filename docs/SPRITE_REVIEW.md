@@ -16,6 +16,7 @@ URLs, credits and hashes stay in
 | --- | --- | --- |
 | SMB Mario/Luigi, Toad/Peach, enemies | Original 1985 NES sheets; Superjustinbros | Native palettes and poses. NPCs retain their actual single rescue pose. |
 | Current classic Bowser | Captain / FungiCaptain expansion of the actual boar-like SMB1 body, compared with native NES and five other custom candidates | Faithful expanded 2D treatment: walk, skid, jump, swimming, fire and defeat. Later-design NES-style sheets were rejected. |
+| Classic Hammer Bro / Buzzy Beetle | PixelatedPete (PlugItIn&Pete) / Side Steppa expanded SMB1 sheets | Hammer Bro uses the original 24-pixel costume/body row, excluding compressed ROM-hack and later-game variants. Buzzy keeps the exact native brown/peach palette, with four walk and four roll frames. |
 | Adventure Kirby and seven Copy profiles | Original 1993 NES sheet; Drshnaps/Jermungandr, QuadFactor, UltraHype97 | Native neutral/weapon/action cells. NES Fire/Spark/Cutter do not get invented modern hats. Ice uses the sheet's actual Ice palette. |
 | Dream Land Kirby | Original 1992 Game Boy sheet; Sonikku/thejohnston7 | Separate body/atlas, native grayscale, separate motions. |
 | Adventure Meta Knight/Dedede | Original 1993 NES sheets; someguy/Jermungandr and Drshnaps/Jermungandr | Actual sword/guard/spin in the native blue duel palette, and hammer/inhale/jump poses replace later-game wings and boss derivatives. |
@@ -42,11 +43,36 @@ Bandana's landing. Meta Knight's spin and Bandana's copter can loop during
 their continuous actions. Projectile flight stays on the combat clock, with
 visual origins adjusted to the actual source and target body heights.
 
-Original source-game art now covers 22 fighter reveals, including all current
-SSRs. Dedede/Meta Knight use Adventure illustrations; Bandana uses his original
+Illustrations now cover 24 fighter reveals, including all current SSRs. Toad
+joins the original source-era art; Koopa uses Nintendo's 2020 redraw of the
+walking-on-all-fours 1985 design, with that provenance stated explicitly.
+Dedede/Meta Knight use Adventure illustrations; Bandana uses his original
 Return to Dream Land render. Backgrounds and featured banner art are separate
-from the reveal pieces. Reveals display their own version year. Reduced motion
-keeps rare art readable instead of flashing it for 300 ms.
+from the reveal pieces. Reveals display their depicted version year. Reduced
+motion keeps rare art readable instead of flashing it for 300 ms.
+
+## Combat interaction pass
+
+Open [the actual combat review](validation/sprite-review/combat.html) through
+`npm run web`: `/docs/validation/sprite-review/combat.html`. Fourteen isolated
+moves can be paused, replayed, scrubbed and played at quarter speed. It uses
+the real Battle engine and BattleView without reading or writing saves.
+
+- Stomp bodies reach the floor at the first hit marker. Dedede's primary hit
+  and quake share the landing, followed by recovery instead of a late extra hit.
+- Bowser leaps and crashes before his eight flame ticks. Native flame begins
+  after landing, extends to actual forward-lane targets and does not hit behind
+  his mouth. Spark instead affects close enemies around its owner.
+- Repeated charges follow physical passes through targets and retarget after
+  defeat. Meta Knight spins, then uses his native sword-finisher frames.
+- Cape Counter guards first, shows exit/return tells and answers after arrival.
+  It replaces the fallback strike; burn cannot trigger the teleport.
+- Repeated native throw poses align with projectile releases. Ranged finishers
+  travel too; Bandana's final spear damages only at contact. Hit flashes retain
+  the active attack pose instead of hiding the release.
+- Parasol Dee's original body and umbrella can move as separate native layers
+  for pokes/spins. Those additional motions are authored, not claimed as ripped
+  frames. The original whole-body idle and sparse body poses remain intact.
 
 ## Evidence and remaining quality work
 
@@ -59,12 +85,18 @@ keeps rare art readable instead of flashing it for 300 ms.
 - [Renderer captures](validation/sprite-review/game-captures/index.json) and
   pose boards use the current atlases. These are development evidence, not
   human approval of final production animation.
+- [Motion browser results](validation/sprite-review/motion/results.json) cover
+  fourteen completed moves, nine frame sequences, transparent/reduced modes
+  and a narrow review page with no errors or missing assets.
+- Source-pixel validation preserves 443 frames in 65 extracted atlases; three
+  layered boss records are reviewed separately. The full manifest has 74 atlases.
 
-Sparse NES pose sets still limit Hammer Bro, Lakitu, Buzzy Beetle and Parasol Dee; Bowser now has a fuller faithful expansion.
+Sparse NES pose sets still limit Lakitu and Parasol Dee; Hammer Bro, Buzzy and
+Bowser now have fuller faithful expansions.
 Their source fidelity does not by itself prove final SR/SSR animation quality.
 Some simple effects, recoil/KO motion, Whispy's assembled tree silhouette and
 Assist entrances remain authored reconstructions. The high-tier presentation
-gates still need a stricter interaction/motion review. Buzzy Beetle and Parasol
+gates still need human interaction/motion review. Buzzy Beetle and Parasol
 Dee need better source-faithful pull illustrations. Native macOS behavior,
 audio timing and a human fun/feel pass remain unverified.
 

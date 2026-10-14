@@ -1,0 +1,165 @@
+{
+  "at": "2026-10-14T17:20:10.261Z",
+  "method": "Actual Chromium renders the isolated Battle/BattleView fixtures, scrubs every listed move, captures nine key moves and checks transparent/reduced/narrow modes.",
+  "records": [
+    {
+      "id": "bowser",
+      "contacts": 8,
+      "damage": 20,
+      "hero": {
+        "x": 457.3333333333332,
+        "y": 0,
+        "state": "recovery",
+        "action": false
+      }
+    },
+    {
+      "id": "dedede",
+      "contacts": 1,
+      "damage": 3,
+      "hero": {
+        "x": 520,
+        "y": 0,
+        "state": "recovery",
+        "action": false
+      }
+    },
+    {
+      "id": "meta-tornado",
+      "contacts": 8,
+      "damage": 9,
+      "hero": {
+        "x": 518.2222222222229,
+        "y": 0,
+        "state": "recovery",
+        "action": false
+      }
+    },
+    {
+      "id": "meta-counter",
+      "contacts": 1,
+      "damage": 2,
+      "hero": {
+        "x": 550,
+        "y": 0,
+        "state": "recovery",
+        "action": false
+      }
+    },
+    {
+      "id": "meta-fallback",
+      "contacts": 1,
+      "damage": 1,
+      "hero": {
+        "x": 459.34000000000003,
+        "y": 0,
+        "state": "recovery",
+        "action": false
+      }
+    },
+    {
+      "id": "bandana-spear",
+      "contacts": 17,
+      "damage": 9,
+      "hero": {
+        "x": 456.6666666666663,
+        "y": 0,
+        "state": "recovery",
+        "action": false
+      }
+    },
+    {
+      "id": "bandana-copter",
+      "contacts": 1,
+      "damage": 1,
+      "hero": {
+        "x": 520,
+        "y": 0,
+        "state": "recovery",
+        "action": false
+      }
+    },
+    {
+      "id": "koopa",
+      "contacts": 4,
+      "damage": 5,
+      "hero": {
+        "x": 502,
+        "y": 0,
+        "state": "recovery",
+        "action": false
+      }
+    },
+    {
+      "id": "wheelie",
+      "contacts": 5,
+      "damage": 6,
+      "hero": {
+        "x": 623.6666666666674,
+        "y": 0,
+        "state": "recovery",
+        "action": false
+      }
+    },
+    {
+      "id": "luigi",
+      "contacts": 4,
+      "damage": 4,
+      "hero": {
+        "x": 455,
+        "y": 0,
+        "state": "recovery",
+        "action": false
+      }
+    },
+    {
+      "id": "mario",
+      "contacts": 1,
+      "damage": 1,
+      "hero": {
+        "x": 520,
+        "y": 0,
+        "state": "recovery",
+        "action": false
+      }
+    },
+    {
+      "id": "hammer-bro",
+      "contacts": 17,
+      "damage": 9,
+      "hero": {
+        "x": 350,
+        "y": 0,
+        "state": "recovery",
+        "action": false
+      }
+    },
+    {
+      "id": "buzzy",
+      "contacts": 5,
+      "damage": 5,
+      "hero": {
+        "x": 623.6666666666674,
+        "y": 0,
+        "state": "recovery",
+        "action": false
+      }
+    },
+    {
+      "id": "parasol",
+      "contacts": 6,
+      "damage": 7,
+      "hero": {
+        "x": 490,
+        "y": 0,
+        "state": "recovery",
+        "action": false
+      }
+    }
+  ],
+  "errors": [],
+  "missing": [],
+  "limits": [
+    "Stationary training targets do not validate normal encounter balance or native macOS behavior. Human animation approval remains separate."
+  ]
+}

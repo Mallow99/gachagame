@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-14T16:22:08.105Z",
+  "at": "2026-10-14T17:20:07.085Z",
   "method": "Actual Battle and BattleView in native canvas. These are renderer captures, not browser CSS or macOS window screenshots.",
   "captures": [
     {
@@ -33,7 +33,7 @@
       "name": "whispy-field",
       "file": "docs/validation/sprite-review/game-captures/whispy-field.png",
       "encounter": "ka-05",
-      "seconds": 37.766666666667085,
+      "seconds": 34.6000000000006,
       "width": 1000,
       "height": 220,
       "transparent": false
@@ -42,7 +42,7 @@
       "name": "bowser-ultimate-strip",
       "file": "docs/validation/sprite-review/game-captures/bowser-ultimate-strip.png",
       "encounter": "smb1-15",
-      "seconds": 29.300000000000615,
+      "seconds": 31.566666666667395,
       "width": 1280,
       "height": 170,
       "transparent": true

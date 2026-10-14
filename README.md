@@ -82,6 +82,9 @@ Game-specific sprite replacements, source-game pull art and an animated
 actual BattleView; Chromium checks cover the playable flow and 360 × 600 Manual.
 Sparse pose sets, some signatures/audio and a real M2 desktop pass remain work.
 The animated comparison runs at `/docs/validation/sprite-review/index.html`.
+Play, pause and scrub fourteen actual attacks at
+`/docs/validation/sprite-review/combat.html`; the review uses isolated encounters
+and does not change your save.
 
 | Path | Responsibility |
 | --- | --- |

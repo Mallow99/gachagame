@@ -1,6 +1,7 @@
 import { COPY_PROFILES } from '../content/opening-roster.js';
 import { SpriteBank, spriteDetails } from './sprite-bank.js';
 import { actorAnimation } from './actor-animation.js';
+import {isFieldBeam,insideBeam} from '../combat/attack-shape.js';
 const colors={R:'#82b9ef',SR:'#ad82ed',SSR:'#edbf5b',UR:'#eb8ce1'};
 export class BattleView {
   constructor(canvas,{transparent=false,reducedMotion=()=>false,onEvent=()=>{},clock=()=>performance.now()/1000}={}){
@@ -39,9 +40,16 @@ export class BattleView {
       const hit=time-a.hitAt<0.14;
       const animation=actorAnimation(a,time,sprite,{reducedMotion:this.reducedMotion()});
       const squashed=a.squashUntil>time&&!this.reducedMotion();
-      this.bank.draw(ctx,key,x,y,size,{...animation,direction:a.direction,scaleY:flattened?0.22:squashed?.65:1,scaleX:flattened?1.28:squashed?1.18:1,
+      const articulated=sprite?.parts&&a.action&&a.action.ability.coefficient>0;
+      this.bank.draw(ctx,articulated?sprite.parts.body:key,x,y,size,{...animation,direction:a.direction,scaleY:flattened?0.22:squashed?.65:1,scaleX:flattened?1.28:squashed?1.18:1,
         alpha:a.hp<=0?Math.max(0,1-age):a.vanishUntil>time?.08:1,rotation:a.hp<=0&&!flattened?Math.min(1,age)*1.4:0,
         tint:hit&&!this.reducedMotion()?'brightness(1.8)':null});
+      if(articulated){
+        const act=a.action,elapsed=time-act.start,ultimate=act.ability.kind==='ultimate';
+        const resolve=Math.max(0,1-Math.abs(elapsed-act.marker)/.18),rotation=ultimate?elapsed*12:a.direction*resolve*Math.PI*.5;
+        const orbit=ultimate&&!this.reducedMotion()?Math.sin(elapsed*12)*size*.65:0;
+        this.bank.draw(ctx,sprite.parts.weapon,x+orbit,y-size*.45,size*1.125,{time:elapsed,direction:1,rotation:this.reducedMotion()?0:rotation});
+      }
       if(a.hero&&a.hp>0){const bar=32,top=y-headroom-11;ctx.fillStyle='rgba(24,26,27,.7)';ctx.fillRect(x-bar/2,top,bar,4);ctx.fillStyle='#79b780';ctx.fillRect(x-bar/2,top,bar*a.hp/a.maxHp,4);
         ctx.fillStyle='#323743';ctx.fillRect(x-bar/2,top+6,bar,3);ctx.fillStyle='#ede1aa';ctx.fillRect(x-bar/2,top+6,bar*Math.max(0,Math.min(1,a.action?1:1-a.readyIn/a.maxReady)),3);
         ctx.fillStyle='#647694';ctx.fillRect(x-bar/2,top+11,bar*(a.energy||0)/100,2);
@@ -49,11 +57,13 @@ export class BattleView {
       }
       if(!a.hero&&!a.boss&&a.hp>0){const top=y-size-8;ctx.fillStyle='#343740aa';ctx.fillRect(x-12,top,24,3);ctx.fillStyle='#d1a085';ctx.fillRect(x-12,top,24*a.hp/a.maxHp,3);ctx.fillStyle='#afbea8';ctx.fillRect(x-12,top+5,24*Math.max(0,Math.min(1,a.action?1:1-a.readyIn/a.maxReady)),2);}
       if(a.boss&&a.hp>0){const bar=Math.min(150,w*.45);ctx.fillStyle='#271f30';ctx.fillRect(x-bar/2,y-size-14,bar,5);ctx.fillStyle='#ba5647';ctx.fillRect(x-bar/2,y-size-14,bar*a.hp/a.maxHp,5);ctx.fillStyle='#e4c878';ctx.fillRect(x-bar/2,y-size-6,bar*(a.stagger||0)/100,2);ctx.fillStyle='#9fb8ad';ctx.fillRect(x-bar/2,y-size-3,bar*Math.max(0,Math.min(1,a.action?1:1-a.readyIn/a.maxReady)),2);}
-      if(a.action){const elapsed=time-a.action.start,ability=a.action.ability;if(ability.behavior==='beam'&&elapsed>0.45&&elapsed<a.action.duration){
-        const motif=a.copy||a.definition?.presentation?.effectMotif||a.spriteKey,field=motif==='spark'||a.spriteKey==='sparky',flame=motif==='fire'||a.spriteKey==='hot-head'||a.spriteKey==='bowser',ice=motif==='ice'||a.spriteKey==='chilly';
+      if(a.action){const elapsed=time-a.action.start,ability=a.action.ability;if(ability.behavior==='beam'&&elapsed>=a.action.marker&&elapsed<a.action.duration){
+        const motif=a.copy||a.definition?.presentation?.effectMotif||a.spriteKey,field=isFieldBeam(a),flame=motif==='fire'||a.spriteKey==='hot-head'||a.spriteKey==='bowser',ice=motif==='ice'||a.spriteKey==='chilly';
         if(field){this.bank.draw(ctx,'ka-spark-field',x,y+size*.15,size*1.5,{time:elapsed,direction:a.direction,alpha:.85});}
         else if((flame||ice)&&a.definition?.treatment!=='game-boy'){
-          const effect=ice?'ka-ice-breath':a.spriteKey==='bowser'?'nes-flame':'ka-flame',distance=Math.min(300*sx,Math.abs(xpos(a.action.to)-x)),height=(ice?14:a.spriteKey==='bowser'?18:16)*(ability.areaScale||1)*(ability.kind==='ultimate'?1.2:1),spacing=ice?30:18;
+          const secondary=actors.filter(other=>other.uid!==a.action.targetUid&&other.hero!==a.hero&&other.hp>0&&!other.hidden&&!(other.vanishUntil>time)&&insideBeam(a,other,ability)).slice(0,2);
+          const reach=Math.max(Math.abs(a.action.to-a.x),...secondary.map(other=>Math.abs(other.x-a.x)));
+          const effect=ice?'ka-ice-breath':a.spriteKey==='bowser'?'nes-flame':'ka-flame',distance=reach*sx,height=(ice?14:a.spriteKey==='bowser'?18:16)*(ability.areaScale||1)*(ability.kind==='ultimate'?1.2:1),spacing=ice?30:18;
           for(let i=0;i<Math.max(1,Math.ceil(distance/spacing));i++)this.bank.draw(ctx,effect,x+a.direction*(size*.35+i*spacing),y-size*.5+height*.5,height,{time:elapsed+i*.12,direction:a.direction,alpha:Math.max(.25,1-i*.08)});
         }else{ctx.strokeStyle=a.definition?.treatment==='game-boy'?'#e3e3e3':dream?'#f6cc79':'#f59548';ctx.lineWidth=7*(ability.areaScale||1);ctx.globalAlpha=0.6;ctx.beginPath();ctx.moveTo(x,y-size*.5);ctx.lineTo(xpos(a.action.to),y-size*.5+3);ctx.stroke();ctx.globalAlpha=1;}
       }
@@ -71,7 +81,7 @@ export class BattleView {
       const x=xpos(p.x),y=ground-(p.y-25)*(this.transparent?.82:1)-muzzle;
       const projectileKey=p.kind.includes('spear')?'bandana-spear':p.kind.includes('hammer')?'nes-hammer':p.kind==='apple'?'nes-apple':p.kind.includes('cutter')?'nes-cutter':p.kind==='kunai'?'nes-kunai':p.kind.includes('bomb')||p.kind==='poppy'?'nes-bomb':p.kind.includes('star')||p.kind==='shot'||p.ability.id==='puff-star'?source?.definition?.treatment==='game-boy'?'nes-star':'ka-star':null;
       ctx.save();ctx.translate(x,y);ctx.rotate(p.kind.includes('spear')?p.to<p.from?Math.PI:0:time*(p.kind.includes('hammer')?9:3));
-      if(projectileKey&&this.bank.draw(ctx,projectileKey,0,6,p.kind.includes('spear')?8:12,{time:time-p.start,direction:1})){ctx.restore();continue;}
+      if(projectileKey&&this.bank.draw(ctx,projectileKey,0,6,(p.kind.includes('spear')?8:12)*(p.ability.finisher?1.4:1),{time:time-p.start,direction:1})){ctx.restore();continue;}
       ctx.fillStyle=p.hero?'#eac97b':'#e89462';if(p.kind.includes('hammer')){ctx.fillRect(-3,-4,3,12);ctx.fillRect(-7,-8,12,6);}
       else if(p.kind.includes('bomb')||p.kind==='poppy'){ctx.fillStyle='#323443';ctx.beginPath();ctx.arc(0,0,6,0,Math.PI*2);ctx.fill();ctx.fillStyle='#eecb73';ctx.fillRect(3,-8,2,4);}
       else if(p.kind.includes('spear')){if(!this.bank.draw(ctx,'bandana-spear',0,4,8,{time,direction:1})){ctx.fillStyle='#b99b65';ctx.fillRect(-10,-1,17,2);ctx.fillStyle='#d8e2de';ctx.beginPath();ctx.moveTo(12,0);ctx.lineTo(4,-4);ctx.lineTo(4,4);ctx.closePath();ctx.fill();}}
@@ -82,12 +92,24 @@ export class BattleView {
       else {ctx.beginPath();ctx.arc(0,0,5,0,Math.PI*2);ctx.fill();}ctx.restore();}
     for(const shell of battle?.shells||[])this.bank.draw(ctx,'koopa',xpos(shell.x),ground,24,{state:'skill_or_secondary',time,rotation:shell.kicked?time*10:0});
     this.fx=this.fx.filter(f=>time-f.start<(f.life||1.2));
-    for(const f of this.fx){const age=time-f.start,x=xpos(f.x),y=ground-(f.y||30)-age*22;if(f.type==='number'){
+    // Event timestamps are rounded to milliseconds; the current simulation
+    // time can be fractionally earlier than the newly emitted presentation cue.
+    for(const f of this.fx){const age=Math.max(0,time-f.start),x=xpos(f.x),y=ground-(f.y||30)-age*22;if(f.type==='number'){
       ctx.globalAlpha=Math.max(0,1-age/1.2);ctx.fillStyle=f.color;ctx.strokeStyle='rgba(20,22,24,.8)';ctx.lineWidth=2;ctx.textAlign='center';ctx.font=`${f.crit?'bold 16px':'bold 12px'} system-ui`;ctx.strokeText(f.text,x,y);ctx.fillText(f.text,x,y);ctx.globalAlpha=1;
     }else if(f.type==='ultimate'&&f.rarity==='SSR'){
       const enter=this.reducedMotion()?1:Math.min(1,age/.2),left=w*.5-130-(1-enter)*50;
       ctx.globalAlpha=Math.max(0,1-Math.max(0,age-1.5)*2);ctx.fillStyle='#2a2537';ctx.fillRect(left,30,260*enter,47);ctx.fillStyle='#e8be66';ctx.fillRect(left,30,3,47);
       this.bank.draw(ctx,f.spriteKey,left+28,77,54,{state:'ultimate_entry',time,direction:1});ctx.fillStyle='#e8be66';ctx.font='bold 10px system-ui';ctx.textAlign='left';ctx.fillText('SSR  /  ULTIMATE',left+57,47);ctx.fillStyle='#fff1d7';ctx.font='bold 12px system-ui';if(ctx.measureText(f.text).width>195)ctx.font='bold 10px system-ui';ctx.fillText(f.text,left+57,66,195);ctx.globalAlpha=1;
+    }else if(f.type==='counter-tell'){
+      const p=Math.min(1,age/f.life);ctx.globalAlpha=1-p;ctx.strokeStyle='#b3bfe3';ctx.lineWidth=1.5;
+      ctx.beginPath();ctx.ellipse(x,ground-18,8+(this.reducedMotion()?0:p*12),20,0,0,Math.PI*2);ctx.stroke();ctx.globalAlpha=1;
+    }else if(f.type==='landing-impact'){
+      const p=Math.min(1,age/f.life),radius=(f.heavy?48:24)*(this.reducedMotion()?1:p)*sx;
+      ctx.globalAlpha=(1-p)*.8;ctx.strokeStyle=f.heavy?'#efcc8a':'#e6d6ad';ctx.lineWidth=f.heavy?3:1.5;
+      ctx.beginPath();ctx.ellipse(x,ground-2,radius,Math.max(2,radius*.13),0,0,Math.PI*2);ctx.stroke();
+      if(!this.reducedMotion())for(const direction of [-1,1])for(let i=0;i<3;i++){
+        ctx.fillStyle=i%2?'#d2b889':'#efdcba';ctx.fillRect(x+direction*(10+p*(16+i*12))*sx,ground-4-Math.sin(p*Math.PI)*(5+i*3),3,3);
+      }ctx.globalAlpha=1;
     }else if(f.type==='assist-impact'){
       ctx.globalAlpha=Math.max(0,1-age/.8);ctx.strokeStyle=f.id==='kracko-page'?'#9bbadb':'#9cc19c';ctx.lineWidth=2;
       for(const px of f.enemyXs){const xx=xpos(px);ctx.beginPath();if(f.id==='kracko-page'){ctx.moveTo(xx-12,45);ctx.lineTo(xx+8,90);ctx.lineTo(xx-5,113);ctx.lineTo(xx+4,ground-6);}else{ctx.moveTo(xx-16,ground-4);ctx.lineTo(xx,ground-25);ctx.lineTo(xx+16,ground-4);}ctx.stroke();}
@@ -103,6 +125,11 @@ export class BattleView {
     }}
   }
   consume(event,time,actors){const v=event.values,actor=actors.find(a=>a.uid===event.targetId);
+    if(event.type==='counter-exit'||event.type==='counter')this.fx.push({type:'counter-tell',start:time,life:.24,x:v.x});
+    if(event.type==='entry-impact'||event.type==='animation-marker'&&v.marker==='land'&&v.index===0){
+      const source=actors.find(a=>a.uid===event.sourceId);
+      this.fx.push({type:'landing-impact',start:time,life:.45,x:v.x,heavy:event.type==='entry-impact'||source?.boss||source?.definition.traits?.includes('heavy')});
+    }
     if(event.type==='damage'||event.type==='heal'){
       const previous=this.fx.findLast(f=>f.type==='number'&&f.op===event.type&&f.target===event.targetId&&time-f.latest<.25),amount=event.type==='heal'?v.amount:v.final;
       if(previous){previous.amount+=amount;previous.latest=time;previous.text=(event.type==='heal'?'+':'')+previous.amount;previous.crit||=v.crit;if(v.crit)previous.color='#f2ce71';}

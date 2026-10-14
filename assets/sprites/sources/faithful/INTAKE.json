@@ -292,5 +292,31 @@
     "bytes": 2851,
     "sha256": "65b5b44f6d9cfe4bf3dccf6db8e2979da9f5e50a7ac539b4ea73fcae3aed4ac3",
     "creditExcerpt": "Uploaded By FungiCaptain Size 2.78 KB (562x51) Format PNG (image/png) Hits 13,037 Tags (2): Characte"
+  },
+  {
+    "name": "smb-hammer-expanded",
+    "page": "https://www.spriters-resource.com/custom_edited/mariocustoms/asset/601993/",
+    "download": "https://www.spriters-resource.com/media/assets/579/601993.png?updated=1788458937",
+    "path": "assets/sprites/sources/faithful/smb-hammer-expanded.png",
+    "bytes": 39318,
+    "sha256": "381d820cd23a26bee8ac84f1d44985ccf569bfcf69c51c06a94f86b629600f2a",
+    "creditExcerpt": "Uploaded By PlugItIn&Pete Size 38.40 KB (713x471) Format PNG (image/png) Hits 970 Tags (1): Species Hammer Bros / Boomerang Bros / Fire Bros / Ice Bros (Super Mario) Animations (0) Comments (4) You must be logged in to post comments. I think this is used in a SMB1R mod Side Steppa Sep 6, 2026 8:03 PM There is a ROM Hac",
+    "dimensions": [
+      713,
+      471
+    ]
+  },
+  {
+    "name": "smb-buzzy-expanded",
+    "page": "https://www.spriters-resource.com/custom_edited/mariocustoms/asset/538931/",
+    "download": "https://www.spriters-resource.com/media/assets/519/538931.png?updated=1774996255",
+    "path": "assets/sprites/sources/faithful/smb-buzzy-expanded.png",
+    "bytes": 2014,
+    "sha256": "c529d259222226280d80574aa3bd2de90973b1be9e7f83ee75f411f25302c6a6",
+    "creditExcerpt": "Uploaded By Side Steppa Size 1.97 KB (162x93) Format PNG (image/png) Hits 1,316 Tags (2): Custom Style Super Mario Bros. (NES) Species Buzzy Beetle (Super Mario) Animations (0) Comments (4) You must be logged in to post comments. Reply to comment by Lockelanp posted Apr 2, 2026 11:35 AM I based it off of this https://w",
+    "dimensions": [
+      162,
+      93
+    ]
   }
 ]

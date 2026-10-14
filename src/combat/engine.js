@@ -5,6 +5,7 @@ import { RULES, PATTERNS, fighterStats, growth, hitDamage, interval, techniqueAb
 import { createSeededRandom } from '../random.js';
 import { ENCOUNTER_TUNING } from '../config/encounter-tuning.js';
 import { ENCOUNTER_LOANS } from '../content/encounter-loans.js';
+import {isFieldBeam,insideBeam} from './attack-shape.js';
 const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 const alive=a=>a.hp>0;
 const small=a=>a.definition.size==='small'&&!a.boss;
@@ -77,7 +78,7 @@ export class Battle {
       delete a.retreatTo;
       const ability=this.chooseAbility(a),target=this.target(a,ability,opponents);
       if(!target){a.state='idle';if(a.hero)this.stats.idle[a.id]+=dt;continue;}
-      const distance=Math.abs(target.x-a.x),range=ability.range||PATTERNS[ability.behavior].range;
+      const distance=Math.abs(target.x-a.x),range=ability.behavior==='beam'&&isFieldBeam(a)?Math.min(110,ability.range||110):ability.range||PATTERNS[ability.behavior].range;
       const safeRange=['strike','combo'].includes(ability.behavior)?range:Math.min(range,310);
       if(ability.targetRule!=='party'&&ability.targetRule!=='lowest-hp-ally'&&distance>range){
         a.state='moving';a.direction=Math.sign(target.x-a.x)||a.direction;this.approach(a,target.x-a.direction*safeRange*0.8,dt);a.y=0;
@@ -166,15 +167,22 @@ export class Battle {
     const contacts=Array(ability.hitCount||1).fill(ability.coefficient||0);
     for(const e of ability.effects||[])if(e.type==='multi-hit')contacts.push(...Array(e.count).fill(e.coefficient));
     const hits=contacts.length,jumping=behavior==='stomp'||behavior==='charge'&&movement==='high-jump';
+    const routing=behavior==='charge'&&hits>1&&!jumping,hitInterval=routing?.24:.16;
     let duration=behavior==='stomp'?1.1:behavior==='charge'?0.85:behavior==='combo'?0.45+hits*0.16:behavior==='beam'?0.7+hits*0.18:0.45+hits*0.16;
     if(movement==='high-jump')duration*=1.25;
     if(ability.kind==='ultimate')duration=Math.max(duration,1.4);
-    const marker=jumping?duration*0.64:behavior==='charge'?0.34:behavior==='beam'?0.6:0.3;
-    duration=Math.max(duration,marker+(hits-1)*0.16+0.18);
+    const counter=ability.effects?.find(e=>e.type==='counter');
+    const marker=counter?counter.durationSeconds||.8:jumping?duration*0.64:behavior==='charge'?0.34:behavior==='beam'?0.6:0.3;
+    duration=Math.max(duration,marker+(hits-1)*hitInterval+0.18);
     if(ability.kind==='basic'&&a.powerup?.proc?.trigger==='every-nth-basic'&&(a.basicActions+1)%(a.powerup.proc.count||4)===0)ability={...ability,procEffects:a.powerup.proc.effects};
     const vanish=ability.effects?.find(e=>e.type==='vanish');
-    a.action={ability,targetUid:target.uid,start:this.time,from:a.x,to:target.x,duration,marker:vanish?Math.max(marker,vanish.durationSeconds+.04):marker,nextHit:0,hits,contacts,effectsDone:false,movement,landedHits:0};
+    a.action={ability,targetUid:target.uid,start:this.time,from:a.x,to:target.x,duration,marker:vanish?Math.max(marker,vanish.durationSeconds+.04):marker,nextHit:0,hits,contacts,hitInterval,effectsDone:false,movement,landedHits:0};
+    if(routing){
+      const others=this.living(!a.hero).filter(e=>e!==target&&Math.abs(e.x-target.x)<=300).sort((x,y)=>x.x-y.x);
+      a.action.route={order:[target.uid,...others.map(e=>e.uid)],targetUid:target.uid,from:a.x,start:0,end:a.action.marker,pass:0};
+    }
     a.state='windup';a.direction=Math.sign(target.x-a.x)||a.direction;
+    if(counter){a.action.counterArmed=true;this.applyEffect(a,a,counter);}
     if(ability.kind==='skill'){a.skillIn=ability.cooldownSeconds;a.skills++;}
     const block=ability.effects?.find(e=>e.type==='windup-block');if(block){a.blockUntil=this.time+block.durationSeconds;a.blockStagger=block.stagger;}
     if(vanish){a.vanishUntil=this.time+vanish.durationSeconds;this.log('vanish-start',a,null,{x:a.x,duration:vanish.durationSeconds});}
@@ -189,17 +197,36 @@ export class Battle {
   updateAction(a,dt) {
     const act=a.action,t=this.time-act.start,p=clamp(t/act.duration,0,1),ability=act.ability,behavior=ability.behavior;
     const target=this.actors.find(e=>e.uid===act.targetUid);
-    if(behavior==='stomp'||(behavior==='charge'&&act.movement==='high-jump')) {
+    if(act.counterArmed&&t<act.marker){
+      a.state='windup';a.y=0;
+    }else if(ability.effects?.some(e=>e.type==='entry-stomp')&&t<act.marker){
+      const jump=clamp(t/act.marker,0,1);
+      // The crash owns the first hit marker; breath begins after his feet land.
+      a.y=Math.sin(Math.PI*jump)*72;a.state=jump<.5?'rise':'fall';
+    }else if(behavior==='stomp'||(behavior==='charge'&&act.movement==='high-jump')) {
       const height=act.movement==='high-jump'?87:a.boss||act.movement==='heavy'?72:62;
-      if(p<0.72){const jump=p/0.72;a.x=clamp(act.from+(act.to-act.from)*jump,30,970);a.y=Math.sin(Math.PI*jump)*height;a.state=jump<0.5?'rise':'fall';}
-      else {a.y=Math.sin((p-0.72)/0.28*Math.PI)*26;a.state='rebound';}
+      if(t<act.marker){const jump=t/act.marker;a.x=clamp(act.from+(act.to-act.from)*jump,30,970);a.y=Math.sin(Math.PI*jump)*height;a.state=jump<0.5?'rise':'fall';}
+      else {
+        a.x=clamp(act.to,30,970);
+        // Hold the landing for one simulation step, then recover in a small hop.
+        const rebound=clamp((t-act.marker-RULES.step)/Math.max(RULES.step,act.duration-act.marker-RULES.step),0,1);
+        a.y=Math.sin(rebound*Math.PI)*26;a.state='rebound';
+      }
+    }else if(act.route){
+      const route=act.route,victim=this.actors.find(e=>e.uid===route.targetUid&&alive(e))||this.target(a,ability);
+      const destination=(victim?.x??act.to)+(route.pass%2?18:-18),travel=clamp((t-route.start)/Math.max(RULES.step,route.end-route.start),0,1);
+      a.x=clamp(route.from+(destination-route.from)*travel,30,970);
+      a.direction=Math.sign(destination-route.from)||a.direction;
+      a.y=act.movement==='cape'?12+Math.sin(travel*Math.PI)*16:act.movement==='puff'?Math.sin(travel*Math.PI)*38:has(a,'airborne')?28:0;
+      a.state='charge';
     }else if(behavior==='charge') {
       a.x=clamp(act.from+(act.to-act.from)*Math.sin(p*Math.PI/2),30,970);a.y=act.movement==='arc'?Math.sin(p*Math.PI)*52:has(a,'airborne')?28+Math.sin(p*Math.PI)*18:0;a.state='charge';
     }else if(behavior==='combo'||behavior==='strike') {
       this.approach(a,act.to-a.direction*(30+(a.partyIndex||0)*8),dt,1.3);a.state=p<0.25?'windup':'resolve';a.y=0;
     }else {a.state=p<0.35?'windup':'cast';a.y=['float','pulse-float'].includes(act.movement)?Math.sin(p*Math.PI)*34:act.movement==='puff'?Math.sin(p*Math.PI)*(a.mastery>=4?46:38):['perch-jump','band-hop','hop'].includes(act.movement)?Math.sin(p*Math.PI)*24:has(a,'airborne')?30:0;}
-    while(act.nextHit<act.hits&&t>=act.marker+act.nextHit*0.16) {
-      const hit=act.nextHit++;let victim=target&&alive(target)&&!target.hidden?target:this.target(a,ability);
+    while(act.nextHit<act.hits&&t>=act.marker+act.nextHit*act.hitInterval) {
+      const hit=act.nextHit++,routeTarget=act.route&&this.actors.find(e=>e.uid===act.route.targetUid);
+      let victim=routeTarget&&alive(routeTarget)&&!routeTarget.hidden?routeTarget:target&&alive(target)&&!target.hidden?target:this.target(a,ability);
       if((behavior==='lob'||ability.targetRule==='cluster')&&act.hits>1){const candidates=this.living(!a.hero);victim=candidates[hit%candidates.length]||victim;}
       if(!victim)continue;
       const delivery=['shot','lob'].includes(behavior)&&ability.coefficient===0&&ability.targetRule==='lowest-hp-ally';
@@ -207,23 +234,25 @@ export class Battle {
       if(!act.effectsDone){if(!delivery)this.actionEffects(a,victim,ability);act.effectsDone=true;}
       const coefficient=act.contacts[hit];
       if(delivery)this.projectile(a,victim,{...ability,deliveryEffects:ability.effects},0);
-      else if(coefficient>0) {
+      else if(coefficient>0&&!act.counterTriggered) {
         if(['shot','lob'].includes(behavior))this.projectile(a,victim,ability,coefficient);
         else {
           this.damage(a,victim,coefficient,ability);
           for(const e of ability.effects||[])if(e.type==='splash')for(const other of this.living(!a.hero).filter(x=>x!==victim&&Math.abs(x.x-victim.x)<(e.radius||60)*(ability.areaScale||1)))this.damage(a,other,e.coefficient,{...ability,effects:[]});
-          if(behavior==='beam')for(const [i,e] of this.living(!a.hero).filter(e=>e!==victim&&Math.abs(e.x-a.x)<460*(ability.areaScale||1)).slice(0,2).entries())this.damage(a,e,coefficient*[0.65,0.45][i],ability);
+          if(behavior==='beam')for(const [i,e] of this.living(!a.hero).filter(e=>e!==victim&&insideBeam(a,e,ability)).slice(0,2).entries())this.damage(a,e,coefficient*[0.65,0.45][i],ability);
         }
       }
       if(behavior==='stomp')for(const shell of this.shells)if(!shell.kicked&&Math.abs(shell.x-a.x)<95)this.kickShell(shell,a);
+      if(behavior==='stomp'&&act.nextHit===act.hits)this.finishEffects(a,ability);
+      if(act.route){
+        const route=act.route,next=this.actors.find(e=>e.uid===route.order[(hit+1)%route.order.length]&&alive(e)&&!e.hidden)||this.target(a,ability);
+        route.from=a.x;route.start=act.marker+hit*act.hitInterval;route.end=route.start+act.hitInterval;route.pass++;
+        if(next){route.targetUid=next.uid;act.targetUid=next.uid;act.to=next.x;}
+        if(act.nextHit===act.hits)act.finisherAt=t;
+      }
     }
     if(t>=act.duration) {
-      for(const e of ability.effects||[]) {
-        if(['finisher','line-damage'].includes(e.type)) {
-          const victims=e.splash||e.type!=='finisher'?this.living(!a.hero):[this.target(a,ability)].filter(Boolean);
-          for(const v of victims)this.damage(a,v,e.coefficient,ability);
-        }
-      }
+      if(behavior!=='stomp')this.finishEffects(a,ability);
       a.actions++;if(ability.kind==='basic')a.basicActions++;if(a.hero){this.stats.actions[a.id]++;a.energy=clamp(a.energy+(ability.kind==='skill'?12:ability.kind==='ultimate'?0:8),0,100);}
       if(a.hero&&a.powerup)this.itemProc(a,target,ability);
       this.passive(a,'after-action',target);
@@ -238,6 +267,16 @@ export class Battle {
       if(ability.effects?.some(e=>e.type==='retreat'))a.x=clamp(a.x-a.direction*100,30,970);
       if(a.hero&&ability.kind!=='basic'&&['shot','lob','beam'].includes(a.definition.basic.behavior)&&target&&target.hero!==a.hero&&Math.abs(target.x-a.x)<(a.row==='back'?160:90))a.retreatTo=clamp(target.x-a.direction*(a.row==='back'?210:125),30,970);
       a.action=null;a.state='recovery';this.log('action-end',a,null,{readyIn:a.readyIn});
+    }
+  }
+  finishEffects(a,ability){
+    for(const e of ability.effects||[])if(['finisher','line-damage'].includes(e.type)){
+      const victims=e.splash||e.type!=='finisher'?this.living(!a.hero):[this.target(a,ability)].filter(Boolean);
+      for(const v of victims){
+        if(e.type==='finisher'&&['shot','lob'].includes(ability.behavior))
+          this.projectile(a,v,{...ability,effects:[],finisher:true},e.coefficient);
+        else this.damage(a,v,e.coefficient,ability);
+      }
     }
   }
   haste(a){const aquatic=a.definition.passive?.trigger==='aquatic'&&/water/.test(this.encounter.environment?.sceneId)?(a.definition.passive.effects.find(e=>e.type==='haste')?.value||0)*techniqueQuality(a.mastery):0;return (a.haste||0)+aquatic+(a.statuses.haste?.value||0)-(a.statuses.slow?.value||0);}
@@ -324,7 +363,13 @@ export class Battle {
     }
     if(target.boss||target.definition.size==='elite'){this.addStagger(target,ability.behavior==='stomp'?12:ability.kind==='ultimate'?8:4,source);if(target.boss)this.phase(target);}
     if(ability.kind==='basic'&&source.hero&&target.statuses['stagger-mark']?.until>this.time)this.addStagger(target,target.statuses['stagger-mark'].value,source);
-    if(target.statuses.counter&&source.hero!==target.hero&&target.statuses.counter.until>this.time){const counter=target.statuses.counter;delete target.statuses.counter;target.x=clamp(source.x-40,30,970);this.log('counter',target,source,{x:target.x});this.damage(target,source,counter.value,{behavior:'strike'});}
+    if(alive(target)&&target.statuses.counter&&source.hero!==target.hero&&target.statuses.counter.until>this.time&&ability.behavior!=='burn'){
+      const counter=target.statuses.counter;delete target.statuses.counter;
+      if(target.action)target.action.counterTriggered=true;
+      target.counterAnswer={sourceUid:source.uid,start:this.time,resolveAt:this.time+.18,coefficient:counter.value,abilityId:target.action?.ability.id};
+      target.vanishUntil=this.time+.12;
+      this.log('counter-exit',target,source,{x:target.x});
+    }
     if(!alive(target))this.knockout(target,source,ability);
   }
   knockout(target,source,ability={}) {
@@ -349,7 +394,8 @@ export class Battle {
     for(const e of ability.effects||[]) {
       if(e.type==='copy')this.copy(a,target);
       else if(e.type==='inhale')this.inhale(a,target,e,ability);
-      else if(e.type==='entry-stomp'){for(const victim of this.living(!a.hero))this.damage(a,victim,e.coefficient,{...ability,effects:[]});this.log('entry-impact',a,target,{x:a.x});}
+      else if(e.type==='entry-stomp'){for(const victim of this.living(!a.hero))this.damage(a,victim,e.coefficient,{...ability,effects:[]});this.log('entry-impact',a,target,{x:a.x,y:a.y});}
+      else if(e.type==='counter'&&a.action?.counterArmed)continue;
       else if(e.type==='airborne-followup'&&has(target,'airborne'))this.damage(a,target,e.coefficient,{...ability,effects:[]});
       else if(!['splash','finisher','line-damage','entry-stomp','multi-hit','burn','slow','guard-break','mark','return-shot','retarget-on-defeat','vanish','windup-block','airborne-followup'].includes(e.type))this.applyEffect(a,target,e);
     }
@@ -434,6 +480,18 @@ export class Battle {
     for(const [name,s] of Object.entries(a.statuses)) {
       if(s.until<=this.time){delete a.statuses[name];if(name==='stun')a.stagger=0;this.log('status-remove',a,null,{type:name});}
       else if(name==='burn'){s.tick=(s.tick||0)+dt;if(s.tick>=1){s.tick-=1;const source=this.actors.find(x=>x.uid===s.sourceUid);if(source)this.damage(source,a,s.value/source.attack,{behavior:'burn'});}}
+    }
+    if(a.counterAnswer){
+      const answer=a.counterAnswer,attacker=this.actors.find(e=>e.uid===answer.sourceUid);
+      if(a.statuses.stun?.until>this.time){delete a.counterAnswer;this.log('counter-cancel',a,attacker,{reason:'interrupted'});}
+      else if(this.time>=answer.resolveAt){
+        delete a.counterAnswer;
+        if(attacker&&alive(attacker)&&!attacker.hidden){
+          a.x=clamp(attacker.x-attacker.direction*40,30,970);a.direction=Math.sign(attacker.x-a.x)||a.direction;a.counterEnteredAt=this.time;
+          this.log('counter',a,attacker,{x:a.x});
+          this.damage(a,attacker,answer.coefficient,{id:answer.abilityId,kind:'skill',behavior:'strike',effects:[]});
+        }else this.log('counter-cancel',a,attacker,{reason:'target-gone'});
+      }
     }
     if(a.shieldUntil<this.time)a.shield=0;
     if(a.shieldBurst&&(a.shield<=0||a.shieldBurst.until<=this.time)){

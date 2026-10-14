@@ -117,7 +117,7 @@ enemy_boxes={
 for key,boxes in enemy_boxes.items():
     f=frames('smb-enemies',boxes);height=32 if key=='bowser' else 24 if key in ['koopa','hammer-bro','piranha','lakitu','blooper'] else 16
     clips={'idle':f[:2],'move_forward':f[:2],'move_back':f[:2],'basic_windup':f[:1],'basic_resolve':f[2:]or f,'skill_or_secondary':f[2:]or f,'hurt':f[:1],'knockout':f[-1:],'ultimate_entry':f}
-    if key=='koopa':clips['skill_or_secondary']=f[2:];clips['knockout']=f[2:3]
+    if key=='koopa':clips['skill_or_secondary']=f[2:];clips['knockout']=f[2:3];clips['ultimate_entry']=f[2:3]
     export(key,'smb-enemies',SMB,clips,body=height,world={'bowser':64,'koopa':36,'hammer-bro':36,'piranha':38,'lakitu':38,'blooper':32}.get(key,24),facing='left',
       sparse=True,notes='Original 1985 enemy body and palette. Sparse native pose set; actions use simulation-timed movement and source projectiles.')
 
@@ -126,9 +126,31 @@ for key,boxes in enemy_boxes.items():
 bowser=frames('smb-bowser-180958',[[i*33,10,i*33+32,42]for i in range(17)])
 export('bowser','smb-bowser-180958',SMB,{'idle':bowser[:1],'move_forward':bowser[5:7],'move_back':bowser[5:7],
  'basic_windup':bowser[:1],'basic_resolve':bowser[5:7],'skill_or_secondary':bowser[16:17],
- 'ultimate_entry':[bowser[8],bowser[0],bowser[16]],'jump':bowser[8:9],'hurt':bowser[7:8],'knockout':bowser[15:16]},
+ 'ultimate_entry':bowser[16:17],'jump':bowser[8:9],'hurt':bowser[7:8],'knockout':bowser[15:16]},
  body=32,world=64,facing='right',adaptation=True,notes='Captain / FungiCaptain expansion of the actual 1985 boar-like Bowser body: native-design walk, crouch/spin, skid, jump, swimming, fire and defeat. Chosen over later-design NES-style sheets. Claw/flame interactions still use authored contact effects.')
 manifest['bowser']['credit']='Captain (FungiCaptain) / Nintendo original sprite'
+
+# Use the classic 24-pixel body row, not the smaller ROM-hack body or the
+# Fire/SMB2 variants on the same sheet. The original costume stays intact.
+hammer_idle=frames('smb-hammer-expanded',[[280,99,296,124]])
+hammer_walk=frames('smb-hammer-expanded',[[354,98,369,123],[387,101,403,124],[420,100,435,124]])
+hammer_throw=frames('smb-hammer-expanded',[[145,94,160,124],[178,94,193,124],[210,94,225,124],[243,94,258,124]])
+hammer_jump=frames('smb-hammer-expanded',[[12,133,28,165],[45,133,61,165]])
+export('hammer-bro','smb-hammer-expanded',SMB,{'idle':hammer_idle,'move_forward':hammer_walk,'move_back':hammer_walk,
+ 'basic_windup':hammer_throw[:1],'basic_resolve':hammer_throw,'skill_or_secondary':hammer_throw,
+ 'ultimate_entry':hammer_throw,'jump':hammer_jump,'hurt':frames('smb-hammer-expanded',[[458,99,472,124]]),
+ 'knockout':frames('smb-hammer-expanded',[[353,140,371,162]])},body=24,world=36,facing='left',adaptation=True,
+ notes='PixelatedPete expansion of the original 24-pixel SMB1 Hammer Bro. Classic green/white costume, native-pixel walk, throw, jump, skid and defeat; smaller ROM-hack and later-game variants excluded.')
+manifest['hammer-bro']['credit']='PixelatedPete (PlugItIn&Pete); Superjustinbros original rip / Nintendo'
+
+buzzy_walk=frames('smb-buzzy-expanded',[[3,13,22,28],[25,12,44,28],[47,11,66,28],[69,12,88,28]])
+buzzy_shell=frames('smb-buzzy-expanded',[[4,38,20,52],[23,38,39,52],[42,38,60,52],[63,38,80,52]])
+export('buzzy','smb-buzzy-expanded',SMB,{'idle':buzzy_walk[:1],'move_forward':buzzy_walk,'move_back':buzzy_walk,
+ 'basic_windup':buzzy_walk[:1],'basic_resolve':buzzy_shell,'skill_or_secondary':buzzy_shell,'ultimate_entry':buzzy_shell,
+ 'jump':buzzy_shell,'hurt':buzzy_walk[1:2],'knockout':buzzy_shell[:1]},body=16,world=24,facing='left',adaptation=True,
+ notes='Side Steppa expansion of the original SMB1 black/brown body. Exact native brown/peach palette, four walking and four rolling frames. Winged later-game variants excluded.')
+manifest['buzzy']['credit']='Side Steppa / Nintendo original character'
+manifest['buzzy']['loopClips']+=['basic_resolve','ultimate_entry']
 
 pinkfeet={(252,130,116)}
 idle=row('ka-kirby','idle',[0,1]);walk=row('ka-kirby','walk');inhale=row('ka-kirby','inhale',[0,1,2,3,4,5,6,7,8,9]);puff=row('ka-kirby','puff',[0,1,2,3,4,5,6,7])
@@ -178,6 +200,17 @@ for key,(label,world)in profiles.items():
     export(key,'ka-enemies',KA,{'idle':f[:1],'move_forward':f[:2],'move_back':f[:2],'basic_windup':f[:1],
       'basic_resolve':f[1:]or f,'skill_or_secondary':f[1:]or f,'hurt':f[:1],'knockout':f[-1:],'ultimate_entry':f},
       body=16,world=world,facing='left',notes='Original Adventure body cells and sheet palette. Sword Knight and Blade Knight are separate sources, not a shared sprite.')
+# Keep the original whole-body idle; articulate the same native umbrella and
+# body pixels for the playable poke/spin instead of swapping in a later Dee.
+parasol_body=frames('ka-enemies',[[114,41,134,59],[134,41,154,59]])
+export('parasol-body','ka-enemies',KA,{'idle':parasol_body[:1],'move_forward':parasol_body,'basic_resolve':parasol_body,
+ 'ultimate_entry':parasol_body},body=16,world=24,facing='left',sparse=True,
+ notes='Native 1993 Parasol Waddle Dee body, separated from its own umbrella only for articulated playable attacks.')
+export('ka-parasol','ka-enemies',KA,{'idle':frames('ka-enemies',[[114,23,134,41],[134,23,154,41]])},body=18,world=27,
+ notes='Native 1993 umbrella cells from Parasol Waddle Dee. Handle pivot supports authored poke/spin motion without changing the source pixels.')
+manifest['parasol']['parts']={'body':'parasol-body','weapon':'ka-parasol'}
+manifest['parasol']['status']='layered-native'
+manifest['parasol']['notes']+=' Playable poke/spin articulate the original body and umbrella as separate layers; those extra motions are authored, not ripped frames.'
 poppy=band('ka-enemies',[94,757,173,778]);poppy_throw=band('ka-enemies',[94,784,174,805],[0,2])
 export('poppy','ka-enemies',KA,{'idle':poppy[:1],'move_forward':poppy,'basic_resolve':poppy_throw,'skill_or_secondary':poppy_throw,'ultimate_entry':poppy_throw},world=26,facing='left')
 
@@ -197,7 +230,7 @@ meta_idle=row('ka-meta-knight','walk',[0]);meta_walk=row('ka-meta-knight','walk'
 meta_swing=frames('ka-meta-knight',[[9,569,34,608],[34,569,61,608],[61,569,85,608],[85,569,116,608],[116,569,145,608],[145,569,185,608]])
 meta_spin=frames('ka-meta-knight',[[6,428,36,465],[36,428,64,465],[64,428,90,465],[90,428,116,465],[116,428,145,465],[145,428,170,465],[170,428,195,465],[195,428,222,465]])
 meta_clips={'idle':meta_idle,'move_forward':meta_walk,'move_back':meta_walk,'basic_windup':meta_idle,
- 'basic_resolve':meta_swing,'skill_or_secondary':meta_counter,'jump':row('ka-meta-knight','jump',[0,1,2,3]),'ultimate_entry':meta_spin,
+ 'basic_resolve':meta_swing,'skill_or_secondary':meta_counter,'counter_exit':meta_counter,'counter_entry':meta_swing,'jump':row('ka-meta-knight','jump',[0,1,2,3]),'ultimate_entry':meta_spin,'finisher':meta_swing,
  'hurt':meta_counter[-1:],'knockout':meta_idle}
 meta_palette={(219,0,205):(152,120,248),(240,208,176):(248,248,248)}
 meta_clips={key:palette(value,meta_palette)for key,value in meta_clips.items()}
@@ -227,7 +260,7 @@ export('bandana','bandana-adaptation',RTDL,{'idle':bandana_idle,'move_forward':b
 
 bonkers_idle=row('ka-midbosses','bonkers-idle',[0,1,2,3]);bonkers_swing=frames('ka-midbosses',[[8,750,42,798],[48,750,82,798],[88,750,124,798],[128,750,162,798],[168,750,205,798],[207,750,250,798],[251,750,291,798]])
 export('bonkers','ka-midbosses',KA,{'idle':bonkers_idle[:1],'move_forward':bonkers_idle,'basic_windup':bonkers_swing[:3],
- 'basic_resolve':bonkers_swing[3:],'skill_or_secondary':bonkers_swing,'ultimate_entry':bonkers_swing,'hurt':bonkers_idle[-1:]},body=32,world=44,facing='left')
+ 'basic_resolve':bonkers_swing[3:],'skill_or_secondary':bonkers_swing,'ultimate_entry':bonkers_swing,'hurt':bonkers_idle[-1:]},body=32,world=44,facing='left',feet={(252,130,116)})
 
 paint_idle=frames('ka-paint-roller',[[263,4,292,36],[297,4,326,36],[331,4,360,36]])
 paint_walk=frames('ka-paint-roller',[[263,78,292,110],[303,78,332,110],[337,78,366,110],[371,78,400,110]])

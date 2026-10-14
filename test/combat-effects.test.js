@@ -59,3 +59,13 @@ test('Tiara catches only a projectile aimed at a back-row ally and then shields 
 test('Sprixie grants the full energy and shield intervention at wave clear',()=>{
  const b=setup(['classic-mario'],[],'sprixie-wave-blessing'),hero=b.living(true)[0];const energy=hero.energy;b.checkAssist('wave-clear');b.resolveAssists(true);assert.equal(hero.energy,energy+5);assert.ok(hero.shield>0);
 });
+test('breath hits only its forward lane while Spark surrounds its owner at close range',()=>{
+ const flame=setup(['bowser']),h=flame.living(true)[0],[front,back]=flame.living(false);h.x=400;front.x=520;back.x=350;
+ for(const e of [front,back]){e.action=null;e.readyIn=100;e.moveSpeed=0;}
+ const backHp=back.hp;flame.startAction(h,{...h.definition.skill,kind:'skill'},front);flame.advance(.7);
+ assert.ok(front.hp<front.maxHp);assert.equal(back.hp,backHp);
+ const spark=setup(['sparky']),s=spark.living(true)[0],[a,z]=spark.living(false);s.x=400;a.x=450;z.x=350;
+ for(const e of [a,z]){e.action=null;e.readyIn=100;e.moveSpeed=0;}
+ spark.startAction(s,{...s.definition.basic,kind:'basic'},a);spark.advance(.7);assert.ok(z.hp<z.maxHp);
+ z.x=200;const outside=z.hp;spark.startAction(s,{...s.definition.basic,kind:'basic'},a);spark.advance(.7);assert.equal(z.hp,outside);
+});

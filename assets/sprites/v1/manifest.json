@@ -755,10 +755,7 @@
         2
       ],
       "ultimate_entry": [
-        0,
-        1,
-        2,
-        3
+        2
       ]
     },
     "fps": 10,
@@ -992,43 +989,100 @@
         0,
         64,
         64
+      ],
+      [
+        256,
+        0,
+        64,
+        64
+      ],
+      [
+        320,
+        0,
+        64,
+        64
+      ],
+      [
+        384,
+        0,
+        64,
+        64
+      ],
+      [
+        448,
+        0,
+        64,
+        64
+      ],
+      [
+        0,
+        64,
+        64,
+        64
+      ],
+      [
+        64,
+        64,
+        64,
+        64
+      ],
+      [
+        128,
+        64,
+        64,
+        64
+      ],
+      [
+        192,
+        64,
+        64,
+        64
       ]
     ],
     "clips": {
       "idle": [
-        0,
-        1
+        0
       ],
       "move_forward": [
-        0,
-        1
-      ],
-      "move_back": [
-        0,
-        1
-      ],
-      "basic_windup": [
-        0
-      ],
-      "basic_resolve": [
-        2,
-        3
-      ],
-      "skill_or_secondary": [
-        2,
-        3
-      ],
-      "hurt": [
-        0
-      ],
-      "knockout": [
-        3
-      ],
-      "ultimate_entry": [
-        0,
         1,
         2,
         3
+      ],
+      "move_back": [
+        1,
+        2,
+        3
+      ],
+      "basic_windup": [
+        4
+      ],
+      "basic_resolve": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "skill_or_secondary": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "ultimate_entry": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "jump": [
+        8,
+        9
+      ],
+      "hurt": [
+        10
+      ],
+      "knockout": [
+        11
       ]
     },
     "fps": 10,
@@ -1049,77 +1103,181 @@
     ],
     "pivot": [
       32.0,
-      28
+      36
     ],
-    "labelHeight": 24,
+    "labelHeight": 25,
     "nativeHeight": 24,
     "worldHeight": 36,
     "facing": "left",
     "sourceFiles": [
-      "assets/sprites/sources/faithful/smb-enemies.png"
+      "assets/sprites/sources/faithful/smb-hammer-expanded.png"
     ],
-    "sourcePage": "https://www.spriters-resource.com/nes/supermariobros/asset/52570/",
+    "sourcePage": "https://www.spriters-resource.com/custom_edited/mariocustoms/asset/601993/",
     "sourceGameId": "super-mario-bros-1985",
-    "credit": "Superjustinbros / Nintendo",
-    "spriteGrade": "B",
-    "status": "native-sparse",
-    "renderMode": "native-sprite",
+    "credit": "PixelatedPete (PlugItIn&Pete); Superjustinbros original rip / Nintendo",
+    "spriteGrade": "A",
+    "status": "reviewed-adaptation",
+    "renderMode": "faithful-2d-adaptation",
     "frameMetadata": [
       {
         "sourceRect": [
-          36,
-          178,
-          52,
-          202
+          280,
+          99,
+          296,
+          124
         ],
         "sourceFoot": [
-          10.0,
+          8.0,
+          25
+        ],
+        "pixelScale": 1
+      },
+      {
+        "sourceRect": [
+          354,
+          98,
+          369,
+          123
+        ],
+        "sourceFoot": [
+          7.0,
+          25
+        ],
+        "pixelScale": 1
+      },
+      {
+        "sourceRect": [
+          387,
+          101,
+          403,
+          124
+        ],
+        "sourceFoot": [
+          5.0,
+          23
+        ],
+        "pixelScale": 1
+      },
+      {
+        "sourceRect": [
+          420,
+          100,
+          435,
+          124
+        ],
+        "sourceFoot": [
+          6.5,
           24
         ],
         "pixelScale": 1
       },
       {
         "sourceRect": [
-          54,
-          178,
-          70,
-          202
+          145,
+          94,
+          160,
+          124
         ],
         "sourceFoot": [
-          11.0,
-          24
+          9.5,
+          30
         ],
         "pixelScale": 1
       },
       {
         "sourceRect": [
-          72,
           178,
-          88,
-          202
+          94,
+          193,
+          124
         ],
         "sourceFoot": [
-          10.0,
-          24
+          9.5,
+          30
         ],
         "pixelScale": 1
       },
       {
         "sourceRect": [
-          90,
-          178,
-          106,
-          202
+          210,
+          94,
+          225,
+          124
         ],
         "sourceFoot": [
-          11.0,
-          24
+          5.5,
+          30
+        ],
+        "pixelScale": 1
+      },
+      {
+        "sourceRect": [
+          243,
+          94,
+          258,
+          124
+        ],
+        "sourceFoot": [
+          5.5,
+          30
+        ],
+        "pixelScale": 1
+      },
+      {
+        "sourceRect": [
+          12,
+          133,
+          28,
+          165
+        ],
+        "sourceFoot": [
+          3.0,
+          32
+        ],
+        "pixelScale": 1
+      },
+      {
+        "sourceRect": [
+          45,
+          133,
+          61,
+          165
+        ],
+        "sourceFoot": [
+          3.0,
+          32
+        ],
+        "pixelScale": 1
+      },
+      {
+        "sourceRect": [
+          458,
+          99,
+          472,
+          124
+        ],
+        "sourceFoot": [
+          4.0,
+          25
+        ],
+        "pixelScale": 1
+      },
+      {
+        "sourceRect": [
+          353,
+          140,
+          371,
+          162
+        ],
+        "sourceFoot": [
+          9.0,
+          22
         ],
         "pixelScale": 1
       }
     ],
-    "notes": "Original 1985 enemy body and palette. Sparse native pose set; actions use simulation-timed movement and source projectiles.",
-    "sha256": "dd879c39c20eaf28152d862638af0e17b1655d7186d21f7520bfe298ad836bae"
+    "notes": "PixelatedPete expansion of the original 24-pixel SMB1 Hammer Bro. Classic green/white costume, native-pixel walk, throw, jump, skid and defeat; smaller ROM-hack and later-game variants excluded.",
+    "sha256": "3d23f18857d0131363339e8af6baeab2617ab3439f1f5bbb753ea2942416ff21"
   },
   "bowser": {
     "url": "assets/sprites/v1/bowser.png",
@@ -1190,8 +1348,6 @@
         3
       ],
       "ultimate_entry": [
-        4,
-        0,
         3
       ],
       "jump": [
@@ -1462,41 +1618,92 @@
         0,
         64,
         64
+      ],
+      [
+        128,
+        0,
+        64,
+        64
+      ],
+      [
+        192,
+        0,
+        64,
+        64
+      ],
+      [
+        256,
+        0,
+        64,
+        64
+      ],
+      [
+        320,
+        0,
+        64,
+        64
+      ],
+      [
+        384,
+        0,
+        64,
+        64
+      ],
+      [
+        448,
+        0,
+        64,
+        64
       ]
     ],
     "clips": {
       "idle": [
-        0,
-        1
+        0
       ],
       "move_forward": [
         0,
-        1
+        1,
+        2,
+        3
       ],
       "move_back": [
         0,
-        1
+        1,
+        2,
+        3
       ],
       "basic_windup": [
         0
       ],
       "basic_resolve": [
-        0,
-        1
+        4,
+        5,
+        6,
+        7
       ],
       "skill_or_secondary": [
-        0,
-        1
-      ],
-      "hurt": [
-        0
-      ],
-      "knockout": [
-        1
+        4,
+        5,
+        6,
+        7
       ],
       "ultimate_entry": [
-        0,
+        4,
+        5,
+        6,
+        7
+      ],
+      "jump": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "hurt": [
         1
+      ],
+      "knockout": [
+        4
       ]
     },
     "fps": 10,
@@ -1509,7 +1716,9 @@
     "loopClips": [
       "idle",
       "move_forward",
-      "move_back"
+      "move_back",
+      "basic_resolve",
+      "ultimate_entry"
     ],
     "cell": [
       64,
@@ -1517,51 +1726,129 @@
     ],
     "pivot": [
       32.0,
-      19
+      21
     ],
     "labelHeight": 16,
     "nativeHeight": 16,
     "worldHeight": 24,
     "facing": "left",
     "sourceFiles": [
-      "assets/sprites/sources/faithful/smb-enemies.png"
+      "assets/sprites/sources/faithful/smb-buzzy-expanded.png"
     ],
-    "sourcePage": "https://www.spriters-resource.com/nes/supermariobros/asset/52570/",
+    "sourcePage": "https://www.spriters-resource.com/custom_edited/mariocustoms/asset/538931/",
     "sourceGameId": "super-mario-bros-1985",
-    "credit": "Superjustinbros / Nintendo",
-    "spriteGrade": "B",
-    "status": "native-sparse",
-    "renderMode": "native-sprite",
+    "credit": "Side Steppa / Nintendo original character",
+    "spriteGrade": "A",
+    "status": "reviewed-adaptation",
+    "renderMode": "faithful-2d-adaptation",
     "frameMetadata": [
       {
         "sourceRect": [
-          0,
-          35,
-          16,
-          51
+          3,
+          13,
+          22,
+          28
         ],
         "sourceFoot": [
-          8.5,
+          10.5,
           15
         ],
         "pixelScale": 1
       },
       {
         "sourceRect": [
-          18,
-          35,
-          34,
-          51
+          25,
+          12,
+          44,
+          28
+        ],
+        "sourceFoot": [
+          9.5,
+          16
+        ],
+        "pixelScale": 1
+      },
+      {
+        "sourceRect": [
+          47,
+          11,
+          66,
+          28
+        ],
+        "sourceFoot": [
+          10.5,
+          17
+        ],
+        "pixelScale": 1
+      },
+      {
+        "sourceRect": [
+          69,
+          12,
+          88,
+          28
+        ],
+        "sourceFoot": [
+          9.5,
+          16
+        ],
+        "pixelScale": 1
+      },
+      {
+        "sourceRect": [
+          4,
+          38,
+          20,
+          52
+        ],
+        "sourceFoot": [
+          8.0,
+          14
+        ],
+        "pixelScale": 1
+      },
+      {
+        "sourceRect": [
+          23,
+          38,
+          39,
+          52
+        ],
+        "sourceFoot": [
+          7.5,
+          14
+        ],
+        "pixelScale": 1
+      },
+      {
+        "sourceRect": [
+          42,
+          38,
+          60,
+          52
+        ],
+        "sourceFoot": [
+          9.0,
+          14
+        ],
+        "pixelScale": 1
+      },
+      {
+        "sourceRect": [
+          63,
+          38,
+          80,
+          52
         ],
         "sourceFoot": [
           8.5,
-          15
+          14
         ],
         "pixelScale": 1
       }
     ],
-    "notes": "Original 1985 enemy body and palette. Sparse native pose set; actions use simulation-timed movement and source projectiles.",
-    "sha256": "7342d59a131a3b8fc91594bdf4f37386f1e3f47b1b11d03886b95624487eb89f"
+    "notes": "Side Steppa expansion of the original SMB1 black/brown body. Exact native brown/peach palette, four walking and four rolling frames. Winged later-game variants excluded.",
+    "sha256": "de42cda19287c86c1ee3effe6ca2039f8517b4f4ee773368d07d764b4ca1700f"
   },
   "cheep": {
     "url": "assets/sprites/v1/cheep.png",
@@ -5483,7 +5770,7 @@
     "sourceGameId": "kirbys-adventure-1993",
     "credit": "Drshnaps (Jermungandr) / HAL Laboratory",
     "spriteGrade": "A",
-    "status": "reviewed-native",
+    "status": "layered-native",
     "renderMode": "native-sprite",
     "frameMetadata": [
       {
@@ -5513,8 +5800,12 @@
         "pixelScale": 1
       }
     ],
-    "notes": "Original Adventure body cells and sheet palette. Sword Knight and Blade Knight are separate sources, not a shared sprite.",
-    "sha256": "04c808b23a54acb18860e1674993c7451c8cd4e0dd229fabee46c42e7e08c5c7"
+    "notes": "Original Adventure body cells and sheet palette. Sword Knight and Blade Knight are separate sources, not a shared sprite. Playable poke/spin articulate the original body and umbrella as separate layers; those extra motions are authored, not ripped frames.",
+    "sha256": "04c808b23a54acb18860e1674993c7451c8cd4e0dd229fabee46c42e7e08c5c7",
+    "parts": {
+      "body": "parasol-body",
+      "weapon": "ka-parasol"
+    }
   },
   "poppy": {
     "url": "assets/sprites/v1/poppy.png",
@@ -11354,6 +11645,18 @@
         12,
         13
       ],
+      "counter_exit": [
+        12,
+        13
+      ],
+      "counter_entry": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
       "jump": [
         14,
         15,
@@ -11369,6 +11672,14 @@
         23,
         24,
         25
+      ],
+      "finisher": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
       ],
       "hurt": [
         13
@@ -14165,5 +14476,236 @@
     ],
     "notes": "Native detached ability effect, animated independently of the owner body.",
     "sha256": "d82cff311796d95ea9e0462b1cbce089edb7df08270fbeeb4480c2bcec9c3db8"
+  },
+  "parasol-body": {
+    "url": "assets/sprites/v1/parasol-body.png",
+    "frames": [
+      [
+        0,
+        0,
+        64,
+        64
+      ],
+      [
+        64,
+        0,
+        64,
+        64
+      ]
+    ],
+    "clips": {
+      "idle": [
+        0
+      ],
+      "move_forward": [
+        0,
+        1
+      ],
+      "basic_resolve": [
+        0,
+        1
+      ],
+      "ultimate_entry": [
+        0,
+        1
+      ],
+      "move_back": [
+        0
+      ],
+      "basic_windup": [
+        0
+      ],
+      "skill_or_secondary": [
+        0,
+        1
+      ],
+      "hurt": [
+        0
+      ],
+      "knockout": [
+        0
+      ]
+    },
+    "fps": 10,
+    "clipFps": {
+      "idle": 4,
+      "basic_resolve": 14,
+      "skill_or_secondary": 12,
+      "ultimate_entry": 12
+    },
+    "loopClips": [
+      "idle",
+      "move_forward",
+      "move_back"
+    ],
+    "cell": [
+      64,
+      64
+    ],
+    "pivot": [
+      32.0,
+      18
+    ],
+    "labelHeight": 16,
+    "nativeHeight": 16,
+    "worldHeight": 24,
+    "facing": "left",
+    "sourceFiles": [
+      "assets/sprites/sources/faithful/ka-enemies.png"
+    ],
+    "sourcePage": "https://www.spriters-resource.com/nes/kirbyadv/asset/49202/",
+    "sourceGameId": "kirbys-adventure-1993",
+    "credit": "Drshnaps (Jermungandr) / HAL Laboratory",
+    "spriteGrade": "B",
+    "status": "native-sparse",
+    "renderMode": "native-sprite",
+    "frameMetadata": [
+      {
+        "sourceRect": [
+          114,
+          41,
+          134,
+          59
+        ],
+        "sourceFoot": [
+          9.0,
+          14
+        ],
+        "pixelScale": 1
+      },
+      {
+        "sourceRect": [
+          134,
+          41,
+          154,
+          59
+        ],
+        "sourceFoot": [
+          9.0,
+          14
+        ],
+        "pixelScale": 1
+      }
+    ],
+    "notes": "Native 1993 Parasol Waddle Dee body, separated from its own umbrella only for articulated playable attacks.",
+    "sha256": "6f0d9b0305ebbb006accb3bd7de9125c0e902ba529781074c4315bde07656ff6"
+  },
+  "ka-parasol": {
+    "url": "assets/sprites/v1/ka-parasol.png",
+    "frames": [
+      [
+        0,
+        0,
+        64,
+        64
+      ],
+      [
+        64,
+        0,
+        64,
+        64
+      ]
+    ],
+    "clips": {
+      "idle": [
+        0,
+        1
+      ],
+      "move_forward": [
+        0,
+        1
+      ],
+      "move_back": [
+        0,
+        1
+      ],
+      "basic_windup": [
+        0,
+        1
+      ],
+      "basic_resolve": [
+        0,
+        1
+      ],
+      "skill_or_secondary": [
+        0,
+        1
+      ],
+      "hurt": [
+        0,
+        1
+      ],
+      "knockout": [
+        0,
+        1
+      ],
+      "ultimate_entry": [
+        0,
+        1
+      ]
+    },
+    "fps": 10,
+    "clipFps": {
+      "idle": 4,
+      "basic_resolve": 14,
+      "skill_or_secondary": 12,
+      "ultimate_entry": 12
+    },
+    "loopClips": [
+      "idle",
+      "move_forward",
+      "move_back"
+    ],
+    "cell": [
+      64,
+      64
+    ],
+    "pivot": [
+      32.0,
+      22
+    ],
+    "labelHeight": 18,
+    "nativeHeight": 18,
+    "worldHeight": 27,
+    "facing": "right",
+    "sourceFiles": [
+      "assets/sprites/sources/faithful/ka-enemies.png"
+    ],
+    "sourcePage": "https://www.spriters-resource.com/nes/kirbyadv/asset/49202/",
+    "sourceGameId": "kirbys-adventure-1993",
+    "credit": "Drshnaps (Jermungandr) / HAL Laboratory",
+    "spriteGrade": "A",
+    "status": "reviewed-native",
+    "renderMode": "native-sprite",
+    "frameMetadata": [
+      {
+        "sourceRect": [
+          114,
+          23,
+          134,
+          41
+        ],
+        "sourceFoot": [
+          8.5,
+          18
+        ],
+        "pixelScale": 1
+      },
+      {
+        "sourceRect": [
+          134,
+          23,
+          154,
+          41
+        ],
+        "sourceFoot": [
+          9.0,
+          18
+        ],
+        "pixelScale": 1
+      }
+    ],
+    "notes": "Native 1993 umbrella cells from Parasol Waddle Dee. Handle pivot supports authored poke/spin motion without changing the source pixels.",
+    "sha256": "93c8643acbd6499b73d34694dbb1138d8f5a1de99c2167fa92d721c33ca7993f"
   }
 }

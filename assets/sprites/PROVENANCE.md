@@ -19,9 +19,12 @@ scale, comparison evidence, remaining quality work and the rarity proposal.
 | Dream Land Game Boy sheet | Sonikku, thejohnston7 / HAL Laboratory | Distinct original Game Boy Kirby |
 | Super Star SNES helper sheets | Drshnaps (Jermungandr) / HAL Laboratory | Knuckle Joe and Bio Spark, matching their 1996 records |
 | Expanded original-design SMB1 Bowser | Captain / FungiCaptain, Nintendo original sprite | Faithful classic body with walk, skid, jump, swimming, fire and defeat; selected over later-design NES-style candidates |
+| Expanded original-design SMB1 Hammer Bro | PixelatedPete (PlugItIn&Pete); original rip Superjustinbros / Nintendo | Original 24-pixel costume/body row, walk, throw, jump, skid and defeat. Compressed ROM-hack and later-game variants excluded. |
+| Expanded original-design SMB1 Buzzy Beetle | Side Steppa / Nintendo original character | Four walk and four roll poses in the exact original brown/peach palette; winged variants excluded. |
 | Complete Bandana Dee spear adaptation | gameboy09 / HAL Laboratory character | Super Star Ultra pixel style, faithfully supporting the Return to Dream Land spear kit |
 | Original Wii Bandana Dee model | John2k4; export/post Mighty Jetters; TSR uploader Garamonde | Comparison render only. This archive supplies no animation tracks. |
 | Source-game reveal illustrations | Nintendo / HAL Laboratory, via Mario Wiki and WiKirby | Original SMB, Dream Land, Adventure, Super Star and Return to Dream Land artwork |
+| Classic Koopa reveal illustration | Nintendo, via Mario Wiki | Official 2020 SMB35 redraw of the original walking-on-all-fours 1985 design; illustration date and depicted version recorded separately. |
 
 [sources/faithful/INTAKE.json](sources/faithful/INTAKE.json) records downloaded
 sheets/model archives, public source pages, credited contributors and SHA-256.
@@ -43,6 +46,10 @@ none of those dependencies.
 counts for every extracted frame. Native layered bosses are assembled
 explicitly and reviewed in the renderer captures. The contact sheet and pose
 boards show current output, not the earlier enhanced treatment.
+Parasol Dee's body and umbrella are extracted separately for authored poke/spin
+motion; its original whole-body idle is retained. No new frames are claimed as
+native rips. The combat review and browser frame sequences expose the resulting
+interactions for human review.
 
 ## Retained earlier intake
 

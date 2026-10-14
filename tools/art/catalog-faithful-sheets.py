@@ -8,6 +8,8 @@ from scipy import ndimage
 ROOT=Path(__file__).resolve().parents[2]
 SOURCE=ROOT/'assets/sprites/sources/faithful'
 BG={
+ 'smb-hammer-expanded':[(97,84,168),(24,16,64),(146,144,255)],
+ 'smb-buzzy-expanded':[],
  'smb-bowser-alt':[(50,97,168),(147,187,236)],
  'smb-bowser-180958':[(27,89,153),(147,187,236),(87,143,204)],
  'smb-mario-luigi':[(0,41,140),(0,0,168),(146,144,255)],

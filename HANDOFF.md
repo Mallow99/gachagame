@@ -13,6 +13,16 @@ pull art and passes actual Chromium flow/360 × 600 CSS checks. Read
 [the sprite review](docs/SPRITE_REVIEW.md). A native M2 pass remains required. No PR
 was opened. Run `npm test` and `npm run validate:v1 -- --seeds 50 --write`.
 
+The follow-up interaction pass aligns stomp/crash damage with landing, gives
+multi-pass charges physical routes, fixes Cape Counter's duplicate fallback
+damage and delays ranged finishers until projectile contact. Native throws
+repeat at releases without hit flashes hiding them. Hammer Bro/Buzzy gained
+faithful classic expansions; Parasol uses articulated native layers. Pull art
+covers 24 fighters. Actual Chromium motion review covers fourteen moves at
+`/docs/validation/sprite-review/combat.html`, with stationary target limits
+documented in its results. This is local review evidence, not human approval
+of final feel or a native macOS pass.
+
 The old prototype descriptions and PG-003 “next” tickets below are historical.
 Longer-term plans remain authoritative; the latest user instruction authorized
 the broader v1 implementation pass.

@@ -36,3 +36,16 @@ test('stomp skills, ranged ultimates and their landing follow the active ability
   assert.equal(actorAnimation(actor,1.5,manifest.bandana).state,'ultimate_entry');
   actor.action.ability={kind:'basic',behavior:'shot'};assert.equal(actorAnimation(actor,1.5,manifest.bandana).state,'basic_resolve');
 });
+test('Bowser uses the jump pose until his crash and breath pose after landing',()=>{
+ const actor={hp:100,hitAt:-100,state:'rise',action:{start:1,duration:2.2,marker:.6,hits:8,ability:{kind:'ultimate',behavior:'beam',effects:[{type:'entry-stomp'}]}}};
+ assert.equal(actorAnimation(actor,1.3,manifest.bowser).state,'jump');
+ actor.state='cast';assert.equal(actorAnimation(actor,1.7,manifest.bowser).state,'ultimate_entry');
+});
+test('repeated throws show a release pose at each projectile marker and remain visible under hit flashes',()=>{
+ const actor={hp:100,hitAt:1.46,state:'cast',action:{start:1,duration:2,marker:.3,hits:8,hitInterval:.16,ability:{kind:'ultimate',behavior:'shot'}}};
+ for(const time of [1.31,1.47,1.63]){
+   const animation=actorAnimation(actor,time,manifest.bandana);assert.equal(animation.state,'ultimate_entry');
+   assert.equal(spriteFrameIndex(manifest.bandana,animation),manifest.bandana.clips.ultimate_entry.at(-1));
+ }
+ actor.action=null;assert.equal(actorAnimation(actor,1.47,manifest.bandana).state,'hurt');
+});
