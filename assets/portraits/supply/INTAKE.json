@@ -1,0 +1,504 @@
+[
+  {
+    "id": "mini-mushroom",
+    "page": "https://www.mariowiki.com/Mini_Mushroom",
+    "url": "https://mario.wiki.gallery/images/0/06/NSMBMiniMushroom.png",
+    "path": "assets/portraits/supply/mini-mushroom.png",
+    "sourceGameId": "new-super-mario-bros-2006",
+    "sourceTitle": "New Super Mario Bros.",
+    "credit": "Nintendo",
+    "dimensions": [
+      11,
+      10
+    ],
+    "bytes": 183,
+    "sha256": "ba30dbaea5b10e60c79266a2e7949c1f6cc5f45d639749affd5a4acef0e4bb27",
+    "style": "portrait",
+    "active": false
+  },
+  {
+    "id": "fire-flower",
+    "page": "https://www.mariowiki.com/Fire_Flower",
+    "url": "https://mario.wiki.gallery/images/5/5c/SMB_FireFlower.jpg",
+    "path": "assets/portraits/supply/fire-flower.jpg",
+    "sourceGameId": "super-mario-bros-1985",
+    "sourceTitle": "Super Mario Bros.",
+    "credit": "Nintendo",
+    "dimensions": [
+      326,
+      377
+    ],
+    "bytes": 14964,
+    "sha256": "a9018542ae5272738a79f55697101b1a4ab0fd84ad319d34e0f151dbc94a8373",
+    "style": "print"
+  },
+  {
+    "id": "ice-flower",
+    "page": "https://www.mariowiki.com/Ice_Flower",
+    "url": "https://mario.wiki.gallery/images/d/d0/New_Super_Mario_Bros._U_Deluxe_Ice_Flower.png",
+    "path": "assets/portraits/supply/ice-flower.png",
+    "sourceGameId": "new-super-mario-bros-u-deluxe-2019",
+    "sourceTitle": "New Super Mario Bros. U Deluxe",
+    "credit": "Nintendo",
+    "dimensions": [
+      2205,
+      2258
+    ],
+    "bytes": 3397547,
+    "sha256": "55ff743c9ff657455926807342fc424d31207395b3fe0f911ca74d55ebbac485",
+    "style": "portrait"
+  },
+  {
+    "id": "super-leaf",
+    "page": "https://www.mariowiki.com/Super_Leaf",
+    "url": "https://mario.wiki.gallery/images/c/cd/Super_Leaf_Artwork_-_Super_Mario_3D_World.png",
+    "path": "assets/portraits/supply/super-leaf.png",
+    "sourceGameId": "super-mario-3d-world-2013",
+    "sourceTitle": "Super Mario 3D World",
+    "credit": "Nintendo",
+    "dimensions": [
+      1886,
+      2209
+    ],
+    "bytes": 3172116,
+    "sha256": "0f58490d1290f346678eeaaede35e6fd97b127470632cc254e84ae1eb4d66016",
+    "style": "portrait"
+  },
+  {
+    "id": "metal-cap",
+    "page": "https://www.mariowiki.com/Metal_Cap",
+    "url": "https://mario.wiki.gallery/images/6/6e/MetalCapSM64.png",
+    "path": "assets/portraits/supply/metal-cap.png",
+    "sourceGameId": "super-mario-64-1996",
+    "sourceTitle": "Super Mario 64",
+    "credit": "Nintendo",
+    "dimensions": [
+      112,
+      74
+    ],
+    "bytes": 12559,
+    "sha256": "2962c2832836b9d62f32bcf00bf277fecdcf1d2e9962d932797b9292fcc98e5b",
+    "style": "portrait",
+    "active": false
+  },
+  {
+    "id": "penguin-suit",
+    "page": "https://www.mariowiki.com/Penguin_Suit",
+    "url": "https://mario.wiki.gallery/images/2/2c/NSMBW_Asset_Model_Penguin_Suit.png",
+    "path": "assets/portraits/supply/penguin-suit.png",
+    "sourceGameId": "new-super-mario-bros-wii-2009",
+    "sourceTitle": "New Super Mario Bros. Wii",
+    "credit": "Nintendo",
+    "dimensions": [
+      538,
+      603
+    ],
+    "bytes": 126676,
+    "sha256": "b85fda41b3c90c6314079e6557ada831ad0ef5e20c1afb63096b0ee259803200",
+    "style": "portrait"
+  },
+  {
+    "id": "toadsworth-tea-service",
+    "page": "https://www.mariowiki.com/Toadsworth",
+    "url": "https://mario.wiki.gallery/images/5/5b/SMS_Toadsworth_Artwork.png",
+    "path": "assets/portraits/supply/toadsworth-tea-service.png",
+    "sourceGameId": "super-mario-sunshine-2002",
+    "sourceTitle": "Super Mario Sunshine",
+    "credit": "Nintendo",
+    "dimensions": [
+      1151,
+      1884
+    ],
+    "bytes": 1751476,
+    "sha256": "234d0f283979fe3e35754a29cd51443c4fb2db532ab1da30c4a973ce5f57d4ba",
+    "style": "portrait"
+  },
+  {
+    "id": "sprixie-wave-blessing",
+    "page": "https://www.mariowiki.com/Sprixie_Princess",
+    "url": "https://mario.wiki.gallery/images/6/6d/Fairy_Group_Artwork_-_Super_Mario_3D_World.png",
+    "path": "assets/portraits/supply/sprixie-wave-blessing.png",
+    "sourceGameId": "super-mario-3d-world-2013",
+    "sourceTitle": "Super Mario 3D World",
+    "credit": "Nintendo",
+    "dimensions": [
+      2397,
+      2500
+    ],
+    "bytes": 3872412,
+    "sha256": "72c103de1014930f560a1b8f3220b3aa59a8cd8e14239cab420094ffeee9c5d0",
+    "style": "portrait"
+  },
+  {
+    "id": "e-gadd-field-notes",
+    "page": "https://www.mariowiki.com/Professor_E._Gadd",
+    "url": "https://mario.wiki.gallery/images/f/fa/Professor_Elvin_Gadd_Artwork_-_Luigi%27s_Mansion_Dark_Moon.png",
+    "path": "assets/portraits/supply/e-gadd-field-notes.png",
+    "sourceGameId": "luigis-mansion-dark-moon-2013",
+    "sourceTitle": "Luigi's Mansion: Dark Moon",
+    "credit": "Nintendo",
+    "dimensions": [
+      2046,
+      2700
+    ],
+    "bytes": 4220747,
+    "sha256": "88a52ebf375a6e44585761fedd0563c22e9d05f3d1f39ce750b907f729ea9202",
+    "style": "portrait"
+  },
+  {
+    "id": "tiara-projectile-catch",
+    "page": "https://www.mariowiki.com/Tiara",
+    "url": "https://mario.wiki.gallery/images/3/31/SMO_Artwork_Tiara.png",
+    "path": "assets/portraits/supply/tiara-projectile-catch.png",
+    "sourceGameId": "super-mario-odyssey-2017",
+    "sourceTitle": "Super Mario Odyssey",
+    "credit": "Nintendo",
+    "dimensions": [
+      1664,
+      1488
+    ],
+    "bytes": 207187,
+    "sha256": "490f1d97f9474ebd9ed5aeacbd4a992f6d436577afc1cce25008a1caa80d4f4a",
+    "style": "portrait"
+  },
+  {
+    "id": "lubba-emergency-orbit",
+    "page": "https://www.mariowiki.com/Lubba",
+    "url": "https://mario.wiki.gallery/images/2/25/SMG2_Artwork_Lubba.png",
+    "path": "assets/portraits/supply/lubba-emergency-orbit.png",
+    "sourceGameId": "super-mario-galaxy-2-2010",
+    "sourceTitle": "Super Mario Galaxy 2",
+    "credit": "Nintendo",
+    "dimensions": [
+      2262,
+      2553
+    ],
+    "bytes": 4377984,
+    "sha256": "a21b9c37503aea40dc5b9fa7c95fe15d69b668d11cfcd799af72fb45d56756b3",
+    "style": "portrait"
+  },
+  {
+    "id": "toad-brigade",
+    "page": "https://www.mariowiki.com/Toad_Brigade",
+    "url": "https://mario.wiki.gallery/images/1/1d/Toad-brigade_model_CTTT.png",
+    "path": "assets/portraits/supply/toad-brigade.png",
+    "sourceGameId": "captain-toad-treasure-tracker-2014",
+    "sourceTitle": "Captain Toad: Treasure Tracker",
+    "credit": "Nintendo",
+    "dimensions": [
+      1468,
+      1146
+    ],
+    "bytes": 1246892,
+    "sha256": "713709d3f42dc2b99b19f1bed69e166ad48707d2edd0f627ad2b0072ffa07636",
+    "style": "portrait"
+  },
+  {
+    "id": "talkatoo",
+    "page": "https://www.mariowiki.com/Talkatoo",
+    "url": "https://mario.wiki.gallery/images/0/02/SMO_Artwork_Talkatoo.png",
+    "path": "assets/portraits/supply/talkatoo.png",
+    "sourceGameId": "super-mario-odyssey-2017",
+    "sourceTitle": "Super Mario Odyssey",
+    "credit": "Nintendo",
+    "dimensions": [
+      939,
+      1680
+    ],
+    "bytes": 146923,
+    "sha256": "6464e6ff6c5118be999babe92ebd229bc924dd6c640a0cd029a3cc5a1e868b78",
+    "style": "portrait"
+  },
+  {
+    "id": "plessie",
+    "page": "https://www.mariowiki.com/Plessie",
+    "url": "https://mario.wiki.gallery/images/e/ee/Plessie_Artwork_-_Super_Mario_3D_World.png",
+    "path": "assets/portraits/supply/plessie.png",
+    "sourceGameId": "super-mario-3d-world-2013",
+    "sourceTitle": "Super Mario 3D World",
+    "credit": "Nintendo",
+    "dimensions": [
+      3200,
+      2216
+    ],
+    "bytes": 5174491,
+    "sha256": "d385e1d0498b42e4e22fd702cdc6bc03bf9ab3791f6011c222e10affdf3493cd",
+    "style": "portrait"
+  },
+  {
+    "id": "maxim-tomato",
+    "page": "https://wikirby.com/wiki/Maxim_Tomato",
+    "url": "https://cdn.wikirby.com/a/ad/KTD_Maxim_Tomato_artwork.png",
+    "path": "assets/portraits/supply/maxim-tomato.png",
+    "sourceGameId": "kirby-triple-deluxe-2014",
+    "sourceTitle": "Kirby: Triple Deluxe",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      1448,
+      1325
+    ],
+    "bytes": 990911,
+    "sha256": "e4d5171d3fd6a233c39c11dde7b3348c715de528d9ca49dfa99b84d193726a3b",
+    "style": "portrait"
+  },
+  {
+    "id": "energy-drink",
+    "page": "https://wikirby.com/wiki/Energy_Drink",
+    "url": "https://cdn.wikirby.com/f/f8/KSqS_Energy_Drink_Artwork.png",
+    "path": "assets/portraits/supply/energy-drink.png",
+    "sourceGameId": "kirby-squeak-squad-2006",
+    "sourceTitle": "Kirby: Squeak Squad",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      76,
+      155
+    ],
+    "bytes": 16005,
+    "sha256": "98841ee24f0ed4077271aad97d545175e1a2a5a0f2005daad59181a1c1552fd0",
+    "style": "portrait"
+  },
+  {
+    "id": "dream-one-up",
+    "page": "https://wikirby.com/wiki/1-Up",
+    "url": "https://cdn.wikirby.com/8/89/KNiDL_1-Up_artwork.jpg",
+    "path": "assets/portraits/supply/dream-one-up.jpg",
+    "sourceGameId": "kirby-nightmare-in-dream-land-2002",
+    "sourceTitle": "Kirby: Nightmare in Dream Land",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      984,
+      978
+    ],
+    "bytes": 66210,
+    "sha256": "2583877c225ac7ccf97cf53374a63592e9608f4528539efb9b47c920cff36537",
+    "style": "print"
+  },
+  {
+    "id": "friend-heart",
+    "page": "https://wikirby.com/wiki/Friend_Heart",
+    "url": "https://cdn.wikirby.com/4/45/KSA_Friend_Heart_artwork.png",
+    "path": "assets/portraits/supply/friend-heart.png",
+    "sourceGameId": "kirby-star-allies-2018",
+    "sourceTitle": "Kirby Star Allies",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      369,
+      322
+    ],
+    "bytes": 28320,
+    "sha256": "49f080d424a461c16b7e8ff5e90a1b6641df93bce0bd45ce98f590491b0fb8c6",
+    "style": "portrait"
+  },
+  {
+    "id": "energy-sphere",
+    "page": "https://wikirby.com/wiki/Energy_Sphere",
+    "url": "https://cdn.wikirby.com/8/85/KRtDL_Energy_Sphere_artwork.png",
+    "path": "assets/portraits/supply/energy-sphere.png",
+    "sourceGameId": "kirbys-return-to-dream-land-2011",
+    "sourceTitle": "Kirby's Return to Dream Land",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      128,
+      128
+    ],
+    "bytes": 14183,
+    "sha256": "cf90de514c152236940b358b5b07019d611b6b632b7570f46e8ed751db8b697e",
+    "style": "portrait"
+  },
+  {
+    "id": "sun-stone",
+    "page": "https://wikirby.com/wiki/Sun_Stone",
+    "url": "https://cdn.wikirby.com/a/a2/KTD_Sun_Stone_artwork.png",
+    "path": "assets/portraits/supply/sun-stone.png",
+    "sourceGameId": "kirby-triple-deluxe-2014",
+    "sourceTitle": "Kirby: Triple Deluxe",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      128,
+      128
+    ],
+    "bytes": 15459,
+    "sha256": "65b99c4d8f0756fdf34f88d1c7c755069d67986b496612e92562735178900132",
+    "style": "portrait"
+  },
+  {
+    "id": "invincibility-candy",
+    "page": "https://wikirby.com/wiki/Invincible_Candy",
+    "url": "https://cdn.wikirby.com/f/f6/KRTDL_Invincible_Candy_model.png",
+    "path": "assets/portraits/supply/invincibility-candy.png",
+    "sourceGameId": "kirbys-return-to-dream-land-2011",
+    "sourceTitle": "Kirby's Return to Dream Land",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      193,
+      257
+    ],
+    "bytes": 42610,
+    "sha256": "e2bff712048d7271db5526b6b3e562c8aa5618b127f216f0d61f5fe1405a78f2",
+    "style": "portrait"
+  },
+  {
+    "id": "rare-stone",
+    "page": "https://wikirby.com/wiki/Rare_Stone",
+    "url": "https://cdn.wikirby.com/f/ff/KatFL_Play_Nintendo_Rare_Stone_artwork.jpg",
+    "path": "assets/portraits/supply/rare-stone.jpg",
+    "sourceGameId": "kirby-and-the-forgotten-land-2022",
+    "sourceTitle": "Kirby and the Forgotten Land",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      472,
+      472
+    ],
+    "bytes": 41748,
+    "sha256": "a51a1260c907ae9fa03d35fe03f390d7c4c7b37a0279cbd7950993054ef91075",
+    "style": "print"
+  },
+  {
+    "id": "tokkori",
+    "page": "https://wikirby.com/wiki/Tokkori",
+    "url": "https://cdn.wikirby.com/3/38/Tokkori_Artwork.png",
+    "path": "assets/portraits/supply/tokkori.png",
+    "sourceGameId": "kirby-right-back-at-ya-2001",
+    "sourceTitle": "Kirby: Right Back at Ya!",
+    "credit": "Warpstar / HAL Laboratory / Studio Comet",
+    "dimensions": [
+      422,
+      349
+    ],
+    "bytes": 32832,
+    "sha256": "0890a6781b33f909774159c6744a2a4cf658432cff2bb292ab6dd7658c89cc49",
+    "style": "portrait"
+  },
+  {
+    "id": "wise-waddle-dee",
+    "page": "https://wikirby.com/wiki/Wise_Waddle_Dee",
+    "url": "https://cdn.wikirby.com/6/6a/Wise_Waddle_Dee_stock_artwork.png",
+    "path": "assets/portraits/supply/wise-waddle-dee.png",
+    "sourceGameId": "kirby-and-the-forgotten-land-2022",
+    "sourceTitle": "Kirby and the Forgotten Land",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      305,
+      332
+    ],
+    "bytes": 53240,
+    "sha256": "a50d839dfed5c86afc11213dca926f9ce4aab9d6b370aecde72c0ebce85459ec",
+    "style": "portrait"
+  },
+  {
+    "id": "mr-star",
+    "page": "https://wikirby.com/wiki/Mr._Star",
+    "url": "https://cdn.wikirby.com/3/3c/KSSS_Mr._Star_artwork.jpg",
+    "path": "assets/portraits/supply/mr-star.jpg",
+    "sourceGameId": "kirby-super-star-stacker-1998",
+    "sourceTitle": "Kirby Super Star Stacker",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      1629,
+      1547
+    ],
+    "bytes": 387527,
+    "sha256": "26d5480552b7cbd03033e55c07cedb168f0a79a7e6d69a12abdf2156ad50892a",
+    "style": "print"
+  },
+  {
+    "id": "elline",
+    "page": "https://wikirby.com/wiki/Elline",
+    "url": "https://cdn.wikirby.com/e/ef/Elline_KatRC_artwork.png",
+    "path": "assets/portraits/supply/elline.png",
+    "sourceGameId": "kirby-and-the-rainbow-curse-2015",
+    "sourceTitle": "Kirby and the Rainbow Curse",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      1655,
+      2321
+    ],
+    "bytes": 3582105,
+    "sha256": "4f3e45b5bc2fa901fba21408fb8eef6d9e499d43b8f791eee29924386574c137",
+    "style": "portrait"
+  },
+  {
+    "id": "queen-ripple",
+    "page": "https://wikirby.com/wiki/Queen",
+    "url": "https://cdn.wikirby.com/4/4d/K64_Fairy_Queen_model.png",
+    "path": "assets/portraits/supply/queen-ripple.png",
+    "sourceGameId": "kirby-64-the-crystal-shards-2000",
+    "sourceTitle": "Kirby 64: The Crystal Shards",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      338,
+      352
+    ],
+    "bytes": 100038,
+    "sha256": "8ff53ab9eb42cb473070529f2083126e27336b4d3323e5b054de2dbfd1085b98",
+    "style": "portrait"
+  },
+  {
+    "id": "whispy-woods-page",
+    "page": "https://wikirby.com/wiki/Whispy_Woods",
+    "url": "https://cdn.wikirby.com/7/7e/KA_Whispy_Woods_artwork.png",
+    "path": "assets/portraits/supply/whispy-woods-page.png",
+    "sourceGameId": "kirbys-adventure-1993",
+    "sourceTitle": "Kirby's Adventure",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      537,
+      694
+    ],
+    "bytes": 40922,
+    "sha256": "b995b53d425a735b652a6ddebc02110826e2083d4410b556e636c37048ce2958",
+    "style": "print"
+  },
+  {
+    "id": "kracko-page",
+    "page": "https://wikirby.com/wiki/Kracko",
+    "url": "https://cdn.wikirby.com/4/41/KA_Kracko_artwork.png",
+    "path": "assets/portraits/supply/kracko-page.png",
+    "sourceGameId": "kirbys-adventure-1993",
+    "sourceTitle": "Kirby's Adventure",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      506,
+      423
+    ],
+    "bytes": 111002,
+    "sha256": "323a0dec582aad32ff84e3461c21173d8645603721bd5431e0d314b09a037b87",
+    "style": "portrait"
+  },
+  {
+    "id": "mini-mushroom",
+    "page": "https://www.mariowiki.com/Mini_Mushroom",
+    "url": "https://mario.wiki.gallery/images/a/a2/NSMBU_Mini_Mushroom_Artwork.png",
+    "path": "assets/portraits/supply/mini-mushroom-artwork.png",
+    "sourceGameId": "new-super-mario-bros-u-2012",
+    "sourceTitle": "New Super Mario Bros. U",
+    "credit": "Nintendo",
+    "dimensions": [
+      876,
+      870
+    ],
+    "bytes": 520075,
+    "sha256": "90358289d381dc0697e1eac09e90ed99c88bbd9b988c14da92496dd50a9f2112",
+    "style": "portrait",
+    "active": true
+  },
+  {
+    "id": "metal-cap",
+    "page": "https://models.spriters-resource.com/nintendo_64/supermario64/asset/522629/",
+    "path": "assets/portraits/supply/metal-cap-render.png",
+    "sourceGameId": "super-mario-64-1996",
+    "sourceTitle": "Super Mario 64",
+    "sourceType": "rendered-source-model",
+    "credit": "MrGameAndSketch, FluffaMario / Nintendo",
+    "creditLine": "Original SM64 cap model \u00b7 studio render",
+    "dimensions": [
+      896,
+      720
+    ],
+    "bytes": 389871,
+    "sha256": "614b003476cb2596dd5e638c8937ce5edb1a777b9a79fcd54eb8382f4bafc3ed",
+    "style": "portrait",
+    "active": true,
+    "notes": "Original plain cap faces; optional Wing Cap planes excluded. Approximate studio metal material, native environment texture tint and a neutral-metal rendering of the original cap emblem. This is an authored illustration from source geometry, not an official artwork rip."
+  }
+]

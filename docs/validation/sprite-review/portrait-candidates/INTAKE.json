@@ -1,0 +1,16 @@
+[
+  {
+    "id": "buzzy-classic",
+    "path": "docs/validation/sprite-review/portrait-candidates/buzzy-classic.png",
+    "url": "https://mario.wiki.gallery/images/e/e3/SMBTLL-Buzzle_Beetle_Art2.png",
+    "source": "Nintendo 2020 redraw of the 1986 Lost Levels classic Buzzy design",
+    "status": "comparison-only; not active fighter reveal art"
+  },
+  {
+    "id": "parasol-classic",
+    "path": "docs/validation/sprite-review/portrait-candidates/parasol-classic.png",
+    "url": "https://cdn.wikirby.com/9/99/KDL2_Parasol_Waddle_Dee_artwork.png",
+    "source": "Nintendo / HAL Laboratory, Kirby's Dream Land 2 (1995)",
+    "status": "comparison-only; canopy colors differ from the native 1993 sheet"
+  }
+]

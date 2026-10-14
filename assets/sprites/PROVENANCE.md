@@ -64,5 +64,26 @@ beneath classic featured artwork. [Demo sources](../../demos/mario-pull/SOURCES.
 retain artist links. Classic Mario's reveal now uses his source-game artwork;
 the approved **しかばね** demo and Smash Kirby portrait remain historical intake.
 
-Audio is still procedural prototype sound plus the retained Mario voice clip.
-It is not a finished character-quote or franchise-music library.
+The broader character-quote and franchise-music library remains unfinished;
+the sourced Mushroom reveal audio is described below.
+
+## Supply/summon follow-up
+
+[Supply intake](../portraits/supply/INTAKE.json) preserves twenty-nine active
+illustrations, their own depicted games, source pages/URLs, contributors,
+dimensions and hashes. Three simple R records retain native icons. Display
+copies preserve whole artwork at up to 896 pixels; thumbnails use at most 256.
+`python tools/art/prepare-supply-art.py` rebuilds them and their output hashes.
+
+Metal Cap is rendered from MrGameAndSketch's original SM64 cap geometry with
+FluffaMario's native metal environment texture as a slight tint. The original
+emblem uses a neutral metal rendering; studio shading is approximate. Optional
+Wing Cap planes are excluded. [Model intake](../models/metal-cap/INTAKE.json)
+retains both source archives and credits. Run
+`blender -b -t 2 --python tools/art/render-metal-cap.py` before preparing displays.
+This render is an authored source-model illustration, not an official artwork rip.
+
+Mushroom summons now play the retained approved demo's coin/power-up clips and
+original NES Starman theme, with the Mario voice retained. Exact retained source
+notes are in [the demo sources](../../demos/mario-pull/SOURCES.md). Wider voices,
+Kirby music and some combat effects remain procedural or unfinished.

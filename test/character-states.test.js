@@ -61,7 +61,7 @@ test('Cape Counter tells its exit and return, answers once, and replaces the fal
  b.startAction(hero,{...hero.definition.skill,kind:'skill'},enemy);const oldX=hero.x,oldHp=enemy.hp;
  b.advance(.2);b.damage(enemy,hero,.1,{behavior:'strike'});
  assert.equal(enemy.hp,oldHp);assert.equal(hero.x,oldX);assert.ok(hero.counterAnswer);assert.ok(b.events.some(e=>e.type==='counter-exit'));
- b.advance(.1);assert.equal(enemy.hp,oldHp);b.advance(.12);assert.ok(enemy.hp<oldHp);assert.ok(hero.x>enemy.x);assert.equal(hero.counterAnswer,undefined);
+ b.advance(.1);assert.equal(enemy.hp,oldHp);assert.ok(hero.vanishUntil>b.time);b.advance(.12);assert.ok(enemy.hp<oldHp);assert.ok(hero.x>enemy.x);assert.equal(hero.counterAnswer,undefined);
  b.advance(1);const hits=b.events.filter(e=>e.type==='damage'&&e.abilityId===hero.definition.skill.id);
  assert.equal(hits.length,1);assert.equal(hits[0].values.raw,hero.attack*1.45);assert.equal(b.events.filter(e=>e.type==='counter').length,1);
 });
@@ -79,4 +79,12 @@ test('Bandana barrage and its final spear deal damage only when their projectile
  const earlierHits=b.events.filter(e=>e.type==='damage'&&e.abilityId===action.ability.id);assert.ok(earlierHits.length<9);
  b.advance(1.2);const hits=b.events.filter(e=>e.type==='damage'&&e.abilityId===action.ability.id);assert.equal(hits.length,9);
  for(const hit of hits)assert.ok(b.events.some(e=>e.type==='animation-marker'&&e.values.marker==='projectileHit'&&e.atMs===hit.atMs&&e.targetId===hit.targetId));
+});
+test('a single charge reaches its locked destination at contact before moving into recovery',()=>{
+ const{b,hero,enemy}=setup('wheelie');hero.x=300;enemy.x=560;enemy.action=null;enemy.readyIn=100;enemy.moveSpeed=0;
+ b.startAction(hero,{...hero.definition.basic,kind:'basic'},enemy);const action=hero.action,before=enemy.hp;
+ b.advance(action.marker-.08);assert.equal(enemy.hp,before);assert.ok(hero.x<enemy.x);
+ while(action.nextHit===0)b.step();const marker=b.events.find(e=>e.type==='animation-marker'&&e.abilityId===action.ability.id);
+ assert.ok(Math.abs(marker.values.x-enemy.x)<6);assert.ok(enemy.hp<before);
+ b.advance(1);assert.equal(hero.action,null);assert.equal(hero.x,action.to);
 });

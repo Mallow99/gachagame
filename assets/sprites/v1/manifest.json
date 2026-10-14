@@ -5637,7 +5637,10 @@
     "loopClips": [
       "idle",
       "move_forward",
-      "move_back"
+      "move_back",
+      "basic_resolve",
+      "skill_or_secondary",
+      "ultimate_entry"
     ],
     "cell": [
       64,
@@ -6735,7 +6738,10 @@
     "loopClips": [
       "idle",
       "move_forward",
-      "move_back"
+      "move_back",
+      "basic_resolve",
+      "skill_or_secondary",
+      "ultimate_entry"
     ],
     "cell": [
       64,

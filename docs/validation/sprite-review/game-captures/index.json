@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-14T17:20:07.085Z",
+  "at": "2026-10-14T19:02:20.704Z",
   "method": "Actual Battle and BattleView in native canvas. These are renderer captures, not browser CSS or macOS window screenshots.",
   "captures": [
     {
@@ -42,7 +42,7 @@
       "name": "bowser-ultimate-strip",
       "file": "docs/validation/sprite-review/game-captures/bowser-ultimate-strip.png",
       "encounter": "smb1-15",
-      "seconds": 31.566666666667395,
+      "seconds": 32.000000000000746,
       "width": 1280,
       "height": 170,
       "transparent": true
@@ -60,6 +60,15 @@
       "name": "kabu-assist-entry",
       "file": "docs/validation/sprite-review/game-captures/kabu-assist-entry.png",
       "encounter": "ka-02",
+      "seconds": 2.533333333333334,
+      "width": 1000,
+      "height": 220,
+      "transparent": false
+    },
+    {
+      "name": "toadsworth-source-page",
+      "file": "docs/validation/sprite-review/game-captures/toadsworth-source-page.png",
+      "encounter": "smb1-02",
       "seconds": 2.533333333333334,
       "width": 1000,
       "height": 220,

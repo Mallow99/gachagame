@@ -1,0 +1,27 @@
+{
+  "at": "2026-10-14T19:20:03.782Z",
+  "method": "Actual Chromium: isolated funded ten-pull with forced pity, native MP3 playback, skip, scroll, nested fighter inspection, replay invariance and both Supply reveal kinds.",
+  "viewport": {
+    "width": 360,
+    "height": 600
+  },
+  "nativeAudio": [
+    {
+      "url": "powerup.mp3",
+      "volume": 0.35,
+      "readyState": 4,
+      "paused": false
+    },
+    {
+      "url": "mus-starman.mp3",
+      "volume": 0.25,
+      "readyState": 4,
+      "paused": false
+    }
+  ],
+  "errors": [],
+  "missing": [],
+  "limits": [
+    "Injected review funds/pity are not balance evidence. Headless playback state does not verify speaker quality or native macOS audio."
+  ]
+}

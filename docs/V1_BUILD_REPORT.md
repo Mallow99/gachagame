@@ -59,8 +59,8 @@ Rank, composition or hardware performance budget.
 with only Mario, 300 Coins and zero Starlight. The bot chooses owned legal
 parties, spends earned rewards, equips owned Supply, trains, claims earned
 Orders, farms measured Camps and retries after retreat. All 20 accounts cleared
-35/35 stages in 2.5–3.3 simulated active hours, with 109–157 Camp clears,
-81–86 Fighter pulls and three total retreats in the current interaction pass.
+35/35 stages in 2.6–3.2 simulated active hours, with 109–157 Camp clears,
+81–86 Fighter pulls and two total retreats in the current interaction pass.
 `validation/player-path.json`
 contains every stage and recovery path. Bot decisions are more systematic than
 a new player's decisions; this is progression evidence, not a human playtest.
@@ -87,6 +87,13 @@ observer bridge in that test is a local layout fixture; native M2 tray/shortcut,
 full-screen spaces, click-through, dragging, audio and performance still need
 an actual macOS pass.
 
+The real Electron application also passes on a Linux virtual display, using an
+isolated QA profile: primary clear, observer Training/pull/receipt completion
+over actual IPC, matching quit/save acknowledgment and persisted relaunch.
+`validation/desktop-review/results.json` and its screenshots record that check.
+It validates file-URL assets and desktop transport; native macOS behavior and
+M2 performance remain separate.
+
 The opening fighter sprites now match their declared games; Game Boy Kirby and
 Blade Knight have separate atlases. Bandana uses the complete gameboy09 spear
 adaptation, selected after comparison with a rendered original Wii model whose
@@ -94,6 +101,10 @@ archive has no animation tracks. Bowser uses Captain/FungiCaptain's expansion
 of the actual classic NES design. Bodies keep one source-pixel scale and a
 shared foot anchor across weapon poses. Finite clips hold their end frames;
 skills/ultimates and source projectile effects use the appropriate clips.
+Single charges reach their hit marker before recovery; lobs lock their impact
+zone and can miss a moving body or splash its edge. Ending combat clears flying
+objects, and Counter remains vanished until its answer. The fresh progression
+and reference reports now record a matching combat/content source hash.
 Illustrations cover 24 pulls, including every current SSR, with actual version
 years and readable reduced-motion reveal times. Koopa's official 2020 redraw
 depicts the original 1985 body and is credited as a redraw. Hammer Bro/Buzzy
@@ -103,13 +114,22 @@ articulate separately. The combat review at
 with playback/seek/speed controls. Chromium motion evidence and frame sequences
 are in `validation/sprite-review/motion/results.json`; source validation preserves
 443 frames across 65 extracted atlases. The full manifest has 74 atlases.
+Twenty-nine Supply records have source artwork or a rendered source model,
+covering every SR/SSR Supply reveal. The Metal Cap studio material is authored;
+its original cap mesh/emblem and source archives are retained. Whole originals
+stay intact while display/thumbnail copies limit game loading to about 1.72 MiB.
+The isolated gallery previews all sixty opening collectibles. Chromium checks
+all thirty-two rare reveals, identity bounds, image decode, unchanged gallery
+storage, native audio playback and ten-result scroll/inspect/replay behavior.
 See [the sprite review](SPRITE_REVIEW.md), current manifest and credited intake.
 
 Source fidelity is not final human approval of feel. Sparse SR pose sets,
 some authored signature effects, Whispy's assembled silhouette, remaining pull
 illustrations and non-sourced Assist symbols still need polish. Full voice
-quotes and music remain unfinished; audio uses procedural effects/stings and
-the retained Mario demo clip. Rarity/version changes were weighed and recorded,
+quotes and music remain unfinished; Mushroom pulls use the approved demo's
+native coin/power-up/voice clips and NES Starman theme, with separate volume
+channels and cancellation on skip/close. Other effects/themes remain procedural.
+Rarity/version changes were weighed and recorded,
 but ownership, rarity and banner balance were preserved in this pass.
 
 Regional Archives remain non-spendable until their exact 22-fighter rarity and

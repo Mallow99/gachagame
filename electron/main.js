@@ -2,6 +2,8 @@
 // bounded commands, so opening it cannot destroy a battle or race save writes.
 const {app,BrowserWindow,globalShortcut,ipcMain,Menu,nativeImage,screen,Tray}=require('electron');
 const path=require('path');
+// Optional isolated QA/development profile; normal launches keep their save.
+if(process.env.POCKET_GACHA_PROFILE_DIR){const profilePath=path.resolve(process.env.POCKET_GACHA_PROFILE_DIR);require('fs').mkdirSync(profilePath,{recursive:true});app.setPath('userData',profilePath);}
 const STRIP_HEIGHT=170,MANAGER_WIDTH=360,MANAGER_HEIGHT=600;
 const COMMANDS=new Set(['save','train','trainFive','toggleParty','replaceParty','setRow','equip','equipAssist','fighterPolicy','applyNote','pull','finishReveal','switchWorld','choosePreset','endlessPreset','start','pause','auto','claimOrder','exchange','setting','audio','importSave']);
 let strip,manager,tray,cachedState=null,interactiveRects=[],ignoringMouse=false,clickTimer,saveRequested=false,saveFinished=false,quitTimer,saveRequestId=0,bootVisibilityApplied=false;

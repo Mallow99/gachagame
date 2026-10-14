@@ -20,6 +20,7 @@ const cases=[
  {name:'bowser-ultimate-strip',id:'smb1-15',party:['classic-mario','koopa-troopa','hammer-bro','bowser'],rank:15,threat:15,ultimate:'bowser',width:1280,height:170,transparent:true},
  {name:'small-strip',id:'ka-03',party:['adventure-kirby','waddle-dee','poppy-bros-jr'],rank:18,threat:18,seconds:18,width:360,height:170,transparent:true},
  {name:'kabu-assist-entry',id:'ka-02',party:['adventure-kirby','poppy-bros-jr'],rank:17,threat:17,assist:'kabu',width:1000,height:220},
+ {name:'toadsworth-source-page',id:'smb1-02',party:['classic-mario','princess-peach'],rank:3,threat:2,assist:'toadsworth-tea-service',width:1000,height:220},
  {name:'bandana-spear-flight',id:'ka-03',party:['adventure-kirby','bandana-waddle-dee'],rank:20,threat:18,spear:true,width:1000,height:220},
 ];
 const captures=[];

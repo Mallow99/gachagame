@@ -73,6 +73,40 @@ the real Battle engine and BattleView without reading or writing saves.
 - Parasol Dee's original body and umbrella can move as separate native layers
   for pokes/spins. Those additional motions are authored, not claimed as ripped
   frames. The original whole-body idle and sparse body poses remain intact.
+- Single charges reach their locked destination at the hit marker. Native
+  Wheelie/Waddle/Buzzy charge poses loop during travel. Dedede's jump poses
+  reach the final frame at landing, and Bandana's exit follows actual recovery.
+- Hammers/bombs lock their landing circles on release and hit bodies in that
+  zone. Parcels retain their recipient tracking. Combat end clears outstanding
+  projectiles/shells, and Counter stays vanished until its return.
+
+## Supply artwork and summon review
+
+[The pull gallery](validation/summon-review/index.html) previews all sixty
+opening collectibles through the actual reveal, without reading or writing a
+save. Filter by Hub, kind and tier. Original illustrations now cover twenty-nine
+Supply records; the remaining three simple R records use native icons. Every
+SR/SSR Supply reveal has an illustration or source-model rendering. Their own
+depicted games/years and credits appear on the reveal and inspection card.
+
+Metal Cap uses the original Mario 64 cap geometry and emblem with an approximate
+studio metal material. Optional Wing Cap parts are excluded. This is an authored
+source-model illustration, not an official artwork rip; its source archives,
+texture and render script are retained. The gallery compares it with the small
+original reference. Adjacent-game Buzzy/Parasol illustrations remain comparison
+candidates, with their different origins stated; they are not active fighter art.
+
+Whole original downloads stay intact. Display copies cap at 896 pixels,
+thumbnails at 256. The twenty-nine Supply displays total about 1.34 MiB and
+thumbnails 0.38 MiB, instead of loading the 32 MiB originals into result grids.
+Assist pages use source portraits for their printed field entrances where no
+native animated body is available; this does not claim full character rigging.
+
+The Mushroom theater now uses the approved demo's coin/power-up sounds and its
+original NES Starman theme for rare arrivals. Music/voice/effects have separate
+volume controls. Skip/results/close cancel native clips and queued theater tones;
+battle tones continue independently. Kirby music and the wider voice library
+remain unfinished.
 
 ## Evidence and remaining quality work
 
@@ -90,6 +124,11 @@ the real Battle engine and BattleView without reading or writing saves.
   and a narrow review page with no errors or missing assets.
 - Source-pixel validation preserves 443 frames in 65 extracted atlases; three
   layered boss records are reviewed separately. The full manifest has 74 atlases.
+- [Summon browser review](validation/summon-review/results.json) checks native
+  MP3 playback, ten-result scroll/inspection, unchanged replay value and both
+  Supply kinds. [Rare gallery results](validation/summon-review/gallery-results.json)
+  decode all thirty-two SR/SSR collectibles at 360 × 600, check name/art bounds
+  and confirm gallery preview activity leaves local storage unchanged.
 
 Sparse NES pose sets still limit Lakitu and Parasol Dee; Hammer Bro, Buzzy and
 Bowser now have fuller faithful expansions.

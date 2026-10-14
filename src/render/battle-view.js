@@ -2,6 +2,7 @@ import { COPY_PROFILES } from '../content/opening-roster.js';
 import { SpriteBank, spriteDetails } from './sprite-bank.js';
 import { actorAnimation } from './actor-animation.js';
 import {isFieldBeam,insideBeam} from '../combat/attack-shape.js';
+import assistArtwork from '../../assets/portraits/supply/manifest.mjs';
 const colors={R:'#82b9ef',SR:'#ad82ed',SSR:'#edbf5b',UR:'#eb8ce1'};
 export class BattleView {
   constructor(canvas,{transparent=false,reducedMotion=()=>false,onEvent=()=>{},clock=()=>performance.now()/1000}={}){
@@ -21,10 +22,11 @@ export class BattleView {
     if(!this.transparent)this.background(ctx,w,h,scene,time);
     const ground=h-(this.transparent?15:30),viewWidth=w<650?600:1000,sx=w/viewWidth;
     const actors=battle?.actors||preview;this.hitRects=[];
+    if(battle?.assist&&!battle.assist.spriteKey&&assistArtwork[battle.assist.id])this.sceneImage(assistArtwork[battle.assist.id].thumbnailUrl);
     let center=500;if(w<650&&battle){const living=actors.filter(a=>a.hp>0&&a.hero);center=living.length?living.reduce((n,a)=>n+a.x,0)/living.length+110:500;center=Math.max(viewWidth/2,Math.min(1000-viewWidth/2,center));}
     const offset=center-viewWidth/2,xpos=x=>(x-offset)*sx;
     for(const event of battle?.events||[])if(event.sequence>this.lastSequence){this.consume(event,event.atMs/1000,actors);this.lastSequence=event.sequence;this.onEvent(event);}
-    for(const f of this.fx)if(f.type==='telegraph'&&f.until>time){ctx.strokeStyle='#e8673c';ctx.lineWidth=2;ctx.setLineDash([4,3]);ctx.beginPath();ctx.ellipse(xpos(f.x),ground-2,f.radius*sx,7,0,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#c94c31';ctx.font='bold 10px system-ui';ctx.textAlign='center';ctx.fillText('!',xpos(f.x),ground-15);}
+    for(const f of this.fx)if(f.type==='telegraph'&&f.until>time){ctx.strokeStyle=f.hero?'#e5ca86':'#e8673c';ctx.lineWidth=1.5;ctx.setLineDash([4,3]);ctx.beginPath();ctx.ellipse(xpos(f.x),ground-2,f.radius*sx,7,0,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);if(!f.hero){ctx.fillStyle='#c94c31';ctx.font='bold 10px system-ui';ctx.textAlign='center';ctx.fillText('!',xpos(f.x),ground-15);}}
     for(const a of [...actors].sort((a,b)=>Number(b.boss)-Number(a.boss)||a.x-b.x)){
       const x=xpos(a.x),base=ground,y=base-a.y*(this.transparent?0.82:1),age=time-(a.defeatedAt??time);
       if(a.hp<=0&&age>1.1&&!a.hero)continue;
@@ -59,7 +61,8 @@ export class BattleView {
       if(a.boss&&a.hp>0){const bar=Math.min(150,w*.45);ctx.fillStyle='#271f30';ctx.fillRect(x-bar/2,y-size-14,bar,5);ctx.fillStyle='#ba5647';ctx.fillRect(x-bar/2,y-size-14,bar*a.hp/a.maxHp,5);ctx.fillStyle='#e4c878';ctx.fillRect(x-bar/2,y-size-6,bar*(a.stagger||0)/100,2);ctx.fillStyle='#9fb8ad';ctx.fillRect(x-bar/2,y-size-3,bar*Math.max(0,Math.min(1,a.action?1:1-a.readyIn/a.maxReady)),2);}
       if(a.action){const elapsed=time-a.action.start,ability=a.action.ability;if(ability.behavior==='beam'&&elapsed>=a.action.marker&&elapsed<a.action.duration){
         const motif=a.copy||a.definition?.presentation?.effectMotif||a.spriteKey,field=isFieldBeam(a),flame=motif==='fire'||a.spriteKey==='hot-head'||a.spriteKey==='bowser',ice=motif==='ice'||a.spriteKey==='chilly';
-        if(field){this.bank.draw(ctx,'ka-spark-field',x,y+size*.15,size*1.5,{time:elapsed,direction:a.direction,alpha:.85});}
+        if(field){this.bank.draw(ctx,'ka-spark-field',x,y+size*.15,size*1.5,{time:elapsed,direction:a.direction,alpha:.85});
+          ctx.strokeStyle='#f3df99';ctx.lineWidth=1;ctx.globalAlpha=.25;ctx.beginPath();ctx.ellipse(x,ground-2,110*(ability.areaScale||1)*sx,6,0,0,Math.PI*2);ctx.stroke();ctx.globalAlpha=1;}
         else if((flame||ice)&&a.definition?.treatment!=='game-boy'){
           const secondary=actors.filter(other=>other.uid!==a.action.targetUid&&other.hero!==a.hero&&other.hp>0&&!other.hidden&&!(other.vanishUntil>time)&&insideBeam(a,other,ability)).slice(0,2);
           const reach=Math.max(Math.abs(a.action.to-a.x),...secondary.map(other=>Math.abs(other.x-a.x)));
@@ -119,7 +122,9 @@ export class BattleView {
     }else if(f.type==='ultimate'||f.type==='assist'||f.type==='boss-phase'){
       if(f.type==='assist'&&f.id){const fade=Math.max(0,Math.min(1,age/.15,(1.8-age)/.35)),entry=this.reducedMotion()?0:Math.max(0,1-age/.35)*65,ax=xpos(f.x)-entry;
         if(f.spriteKey)this.bank.draw(ctx,f.spriteKey,ax,ground-9,f.spriteKey==='whispy'?70:42,{state:'skill_or_secondary',time:age,direction:1,alpha:fade});
-        else {ctx.globalAlpha=fade;ctx.fillStyle='#ddcfb0';ctx.fillRect(ax-11,ground-45,22,29);ctx.strokeStyle='#6c8468';ctx.lineWidth=2;ctx.strokeRect(ax-11,ground-45,22,29);ctx.fillStyle='#6c8468';this.star(ctx,ax,ground-31,6);ctx.globalAlpha=1;}
+        else {const art=assistArtwork[f.id],im=art&&this.sceneImage(art.thumbnailUrl);ctx.save();ctx.globalAlpha=fade;ctx.fillStyle='#eee0bf';ctx.fillRect(ax-23,ground-66,46,57);ctx.strokeStyle='#6c8468';ctx.lineWidth=1.5;ctx.strokeRect(ax-23,ground-66,46,57);
+          if(im?.complete&&im.naturalWidth){const scale=Math.min(40/im.width,48/im.height),iw=im.width*scale,ih=im.height*scale;ctx.imageSmoothingEnabled=true;ctx.drawImage(im,ax-iw/2,ground-62+(48-ih)/2,iw,ih);}
+          else{ctx.fillStyle='#6c8468';this.star(ctx,ax,ground-39,7);}ctx.restore();}
       }
       ctx.globalAlpha=Math.max(0,1-age/2);ctx.fillStyle=f.type==='assist'?'#314a47':'#342838';const text=f.text;ctx.font='bold 13px system-ui';const len=Math.min(w-40,ctx.measureText(text).width);ctx.fillRect(w/2-len/2-14,34,len+28,26);ctx.fillStyle='#f2dfb3';ctx.textAlign='center';ctx.fillText(text,w/2,52,w-50);ctx.globalAlpha=1;
     }}

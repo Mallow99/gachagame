@@ -1,0 +1,814 @@
+{
+  "fire-flower": {
+    "url": "assets/portraits/supply/display/fire-flower.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/fire-flower.webp",
+    "style": "print",
+    "sourceGameId": "super-mario-bros-1985",
+    "sourceTitle": "Super Mario Bros.",
+    "credit": "Nintendo \u00b7 1985 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/fire-flower.webp",
+        "dimensions": [
+          326,
+          377
+        ],
+        "bytes": 12784,
+        "sha256": "f166c15433c6deee85fb1cd90222b9f7c0bad47617dfa22895deb5d1b6477977"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/fire-flower.webp",
+        "dimensions": [
+          221,
+          256
+        ],
+        "bytes": 8694,
+        "sha256": "0a8d5aa466480f7c0b73c64aa7f37fec5740fbe0a170d27f3cfa439e8cead8d7"
+      }
+    }
+  },
+  "ice-flower": {
+    "url": "assets/portraits/supply/display/ice-flower.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/ice-flower.webp",
+    "style": "portrait",
+    "sourceGameId": "new-super-mario-bros-u-deluxe-2019",
+    "sourceTitle": "New Super Mario Bros. U Deluxe",
+    "credit": "Nintendo \u00b7 2019 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/ice-flower.webp",
+        "dimensions": [
+          875,
+          896
+        ],
+        "bytes": 65650,
+        "sha256": "b2bb584126e5291cb9c8ae933bf2d2cab966a6a5152e3da4fd50abfae4ccdd09"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/ice-flower.webp",
+        "dimensions": [
+          250,
+          256
+        ],
+        "bytes": 16620,
+        "sha256": "164f302fdbb43051c72d0f5b9985f83409b54bb80654f968a25d1dfe74773e73"
+      }
+    }
+  },
+  "super-leaf": {
+    "url": "assets/portraits/supply/display/super-leaf.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/super-leaf.webp",
+    "style": "portrait",
+    "sourceGameId": "super-mario-3d-world-2013",
+    "sourceTitle": "Super Mario 3D World",
+    "credit": "Nintendo \u00b7 2013 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/super-leaf.webp",
+        "dimensions": [
+          765,
+          896
+        ],
+        "bytes": 48632,
+        "sha256": "29cce19b2c427f678fe5f1fe793d1d9dec1fbaa845c3cfa8e3b3a89caacce91c"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/super-leaf.webp",
+        "dimensions": [
+          219,
+          256
+        ],
+        "bytes": 11976,
+        "sha256": "4f3716c8b38176b3438ae1d1ec863a8b935e0b686f376058b318f5d1a00f3a89"
+      }
+    }
+  },
+  "penguin-suit": {
+    "url": "assets/portraits/supply/display/penguin-suit.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/penguin-suit.webp",
+    "style": "portrait",
+    "sourceGameId": "new-super-mario-bros-wii-2009",
+    "sourceTitle": "New Super Mario Bros. Wii",
+    "credit": "Nintendo \u00b7 2009 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/penguin-suit.webp",
+        "dimensions": [
+          538,
+          603
+        ],
+        "bytes": 31236,
+        "sha256": "5a25702a9441a9de24497db2c6ddd84b082b92b0dc9ee8357b153e370fa2bb29"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/penguin-suit.webp",
+        "dimensions": [
+          228,
+          256
+        ],
+        "bytes": 14124,
+        "sha256": "5c1e9aef30ee0332e646924b430a7067c819f9f837085454777fb3d51063098a"
+      }
+    }
+  },
+  "toadsworth-tea-service": {
+    "url": "assets/portraits/supply/display/toadsworth-tea-service.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/toadsworth-tea-service.webp",
+    "style": "portrait",
+    "sourceGameId": "super-mario-sunshine-2002",
+    "sourceTitle": "Super Mario Sunshine",
+    "credit": "Nintendo \u00b7 2002 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/toadsworth-tea-service.webp",
+        "dimensions": [
+          547,
+          896
+        ],
+        "bytes": 67444,
+        "sha256": "7c34010d89b9d1e5b7b5669771fcda45adb4da85680ee8e20255733df089586f"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/toadsworth-tea-service.webp",
+        "dimensions": [
+          156,
+          256
+        ],
+        "bytes": 15396,
+        "sha256": "a88ab400d019fa3156100165da4af86a94f8915facc19bb45f81d280dbad0797"
+      }
+    }
+  },
+  "sprixie-wave-blessing": {
+    "url": "assets/portraits/supply/display/sprixie-wave-blessing.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/sprixie-wave-blessing.webp",
+    "style": "portrait",
+    "sourceGameId": "super-mario-3d-world-2013",
+    "sourceTitle": "Super Mario 3D World",
+    "credit": "Nintendo \u00b7 2013 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/sprixie-wave-blessing.webp",
+        "dimensions": [
+          859,
+          896
+        ],
+        "bytes": 158050,
+        "sha256": "276c9e9c3f299dbe94251611bae5791736d0b74b79bfaaa5e62628c6a1f3e305"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/sprixie-wave-blessing.webp",
+        "dimensions": [
+          245,
+          256
+        ],
+        "bytes": 32944,
+        "sha256": "3114ac3a78465287a6b05d44f14a1e9aa259a458f141252b25c2f5a0bcbd13da"
+      }
+    }
+  },
+  "e-gadd-field-notes": {
+    "url": "assets/portraits/supply/display/e-gadd-field-notes.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/e-gadd-field-notes.webp",
+    "style": "portrait",
+    "sourceGameId": "luigis-mansion-dark-moon-2013",
+    "sourceTitle": "Luigi's Mansion: Dark Moon",
+    "credit": "Nintendo \u00b7 2013 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/e-gadd-field-notes.webp",
+        "dimensions": [
+          679,
+          896
+        ],
+        "bytes": 113204,
+        "sha256": "56258737507c1693e947b71783a05eb184472c51f2a281d67d8c9b7a905f9007"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/e-gadd-field-notes.webp",
+        "dimensions": [
+          194,
+          256
+        ],
+        "bytes": 23444,
+        "sha256": "511b59e46da6d2b93bbe4e59b2a0213f4f61999e15af8c49a1a502909e5b42f9"
+      }
+    }
+  },
+  "tiara-projectile-catch": {
+    "url": "assets/portraits/supply/display/tiara-projectile-catch.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/tiara-projectile-catch.webp",
+    "style": "portrait",
+    "sourceGameId": "super-mario-odyssey-2017",
+    "sourceTitle": "Super Mario Odyssey",
+    "credit": "Nintendo \u00b7 2017 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/tiara-projectile-catch.webp",
+        "dimensions": [
+          896,
+          801
+        ],
+        "bytes": 68790,
+        "sha256": "de0d0505ae98c21338dd68ac80eb4d537982a0ad8d474cc9619b544558c15d57"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/tiara-projectile-catch.webp",
+        "dimensions": [
+          256,
+          229
+        ],
+        "bytes": 14542,
+        "sha256": "99efd2c3bc82e62489c87c6c08cb0ef496742aa7caa0a122b8b28342b14cc7be"
+      }
+    }
+  },
+  "lubba-emergency-orbit": {
+    "url": "assets/portraits/supply/display/lubba-emergency-orbit.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/lubba-emergency-orbit.webp",
+    "style": "portrait",
+    "sourceGameId": "super-mario-galaxy-2-2010",
+    "sourceTitle": "Super Mario Galaxy 2",
+    "credit": "Nintendo \u00b7 2010 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/lubba-emergency-orbit.webp",
+        "dimensions": [
+          794,
+          896
+        ],
+        "bytes": 79398,
+        "sha256": "7783879ecfc221f6df56cf6f657d94c9815273cb6dd269587858bae301efbe52"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/lubba-emergency-orbit.webp",
+        "dimensions": [
+          227,
+          256
+        ],
+        "bytes": 15588,
+        "sha256": "1a968655e58fe421fc869648d8826f3f4e043ce55d311cf83a9fec9e942b5b97"
+      }
+    }
+  },
+  "toad-brigade": {
+    "url": "assets/portraits/supply/display/toad-brigade.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/toad-brigade.webp",
+    "style": "portrait",
+    "sourceGameId": "captain-toad-treasure-tracker-2014",
+    "sourceTitle": "Captain Toad: Treasure Tracker",
+    "credit": "Nintendo \u00b7 2014 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/toad-brigade.webp",
+        "dimensions": [
+          896,
+          699
+        ],
+        "bytes": 100100,
+        "sha256": "c651e9365eaaea4f72390b8fcba104b99ad3cd05f4d18c9ecdc14180ac04cd98"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/toad-brigade.webp",
+        "dimensions": [
+          256,
+          200
+        ],
+        "bytes": 18986,
+        "sha256": "715f53f43f93ccbccb47674ccdef6846d27682ee34a850c887c6150840512006"
+      }
+    }
+  },
+  "talkatoo": {
+    "url": "assets/portraits/supply/display/talkatoo.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/talkatoo.webp",
+    "style": "portrait",
+    "sourceGameId": "super-mario-odyssey-2017",
+    "sourceTitle": "Super Mario Odyssey",
+    "credit": "Nintendo \u00b7 2017 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/talkatoo.webp",
+        "dimensions": [
+          501,
+          896
+        ],
+        "bytes": 50630,
+        "sha256": "0b904ef804279bd7bf2327b5ec44fb533ef0231cee2ff43c34515b13cc6f2d10"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/talkatoo.webp",
+        "dimensions": [
+          143,
+          256
+        ],
+        "bytes": 11680,
+        "sha256": "8ddfd1d201aa95436b83f1004a75b80bd023cc5fcccf69a4215f551e76d82629"
+      }
+    }
+  },
+  "plessie": {
+    "url": "assets/portraits/supply/display/plessie.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/plessie.webp",
+    "style": "portrait",
+    "sourceGameId": "super-mario-3d-world-2013",
+    "sourceTitle": "Super Mario 3D World",
+    "credit": "Nintendo \u00b7 2013 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/plessie.webp",
+        "dimensions": [
+          896,
+          620
+        ],
+        "bytes": 88714,
+        "sha256": "9f303695b431429d88d3dddf5e9aac0bee89502a202237db2b182f053e934705"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/plessie.webp",
+        "dimensions": [
+          256,
+          177
+        ],
+        "bytes": 18616,
+        "sha256": "b3c91a53b622ae46f9c33748c216f11906be72881754f0bee3bd83bb8bdb49d5"
+      }
+    }
+  },
+  "maxim-tomato": {
+    "url": "assets/portraits/supply/display/maxim-tomato.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/maxim-tomato.webp",
+    "style": "portrait",
+    "sourceGameId": "kirby-triple-deluxe-2014",
+    "sourceTitle": "Kirby: Triple Deluxe",
+    "credit": "Nintendo / HAL Laboratory \u00b7 2014 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/maxim-tomato.webp",
+        "dimensions": [
+          896,
+          820
+        ],
+        "bytes": 58538,
+        "sha256": "ed1f14971d9170ab5382fe2a5d2ec1225c999134b2049d3ff958819311805135"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/maxim-tomato.webp",
+        "dimensions": [
+          256,
+          234
+        ],
+        "bytes": 14462,
+        "sha256": "5acf9003c3e0f3e69442f83e9a16680d6804903567296b79241e7434f2d1fd04"
+      }
+    }
+  },
+  "energy-drink": {
+    "url": "assets/portraits/supply/display/energy-drink.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/energy-drink.webp",
+    "style": "portrait",
+    "sourceGameId": "kirby-squeak-squad-2006",
+    "sourceTitle": "Kirby: Squeak Squad",
+    "credit": "Nintendo / HAL Laboratory \u00b7 2006 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/energy-drink.webp",
+        "dimensions": [
+          76,
+          155
+        ],
+        "bytes": 3360,
+        "sha256": "380829c5894e1d1716c645a70325381595c394e80e42d5043bc814a63e85197c"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/energy-drink.webp",
+        "dimensions": [
+          76,
+          155
+        ],
+        "bytes": 3360,
+        "sha256": "380829c5894e1d1716c645a70325381595c394e80e42d5043bc814a63e85197c"
+      }
+    }
+  },
+  "dream-one-up": {
+    "url": "assets/portraits/supply/display/dream-one-up.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/dream-one-up.webp",
+    "style": "print",
+    "sourceGameId": "kirby-nightmare-in-dream-land-2002",
+    "sourceTitle": "Kirby: Nightmare in Dream Land",
+    "credit": "Nintendo / HAL Laboratory \u00b7 2002 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/dream-one-up.webp",
+        "dimensions": [
+          896,
+          891
+        ],
+        "bytes": 50084,
+        "sha256": "493eddb86b6393233d3685451a330f5b81c18c0eca619dcdafa120778789bad5"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/dream-one-up.webp",
+        "dimensions": [
+          256,
+          254
+        ],
+        "bytes": 10306,
+        "sha256": "b1407c5bfe8a88141aeb1b9c83e9c187c183a29bbf8764d352a66c6f320c2d37"
+      }
+    }
+  },
+  "friend-heart": {
+    "url": "assets/portraits/supply/display/friend-heart.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/friend-heart.webp",
+    "style": "portrait",
+    "sourceGameId": "kirby-star-allies-2018",
+    "sourceTitle": "Kirby Star Allies",
+    "credit": "Nintendo / HAL Laboratory \u00b7 2018 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/friend-heart.webp",
+        "dimensions": [
+          369,
+          322
+        ],
+        "bytes": 13186,
+        "sha256": "fb52e68afdd3dd600bc47c20f3d2a15224d8c1b622f25cf363e9299cc1d92285"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/friend-heart.webp",
+        "dimensions": [
+          256,
+          223
+        ],
+        "bytes": 11884,
+        "sha256": "f32bec3428b1d85ec35e29a1147bb34b2aeefa2660abe1da588ee229996c7365"
+      }
+    }
+  },
+  "energy-sphere": {
+    "url": "assets/portraits/supply/display/energy-sphere.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/energy-sphere.webp",
+    "style": "portrait",
+    "sourceGameId": "kirbys-return-to-dream-land-2011",
+    "sourceTitle": "Kirby's Return to Dream Land",
+    "credit": "Nintendo / HAL Laboratory \u00b7 2011 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/energy-sphere.webp",
+        "dimensions": [
+          128,
+          128
+        ],
+        "bytes": 4474,
+        "sha256": "8b727ed1347a6d33f3bace6e8ceb3775f15f64f80ecdd1cdaabfff9c7bb91c66"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/energy-sphere.webp",
+        "dimensions": [
+          128,
+          128
+        ],
+        "bytes": 4474,
+        "sha256": "8b727ed1347a6d33f3bace6e8ceb3775f15f64f80ecdd1cdaabfff9c7bb91c66"
+      }
+    }
+  },
+  "sun-stone": {
+    "url": "assets/portraits/supply/display/sun-stone.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/sun-stone.webp",
+    "style": "portrait",
+    "sourceGameId": "kirby-triple-deluxe-2014",
+    "sourceTitle": "Kirby: Triple Deluxe",
+    "credit": "Nintendo / HAL Laboratory \u00b7 2014 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/sun-stone.webp",
+        "dimensions": [
+          128,
+          128
+        ],
+        "bytes": 4390,
+        "sha256": "8be28fb465885eed14987d571c1f6c5e6a07334f5871b44caec4ed67160bd445"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/sun-stone.webp",
+        "dimensions": [
+          128,
+          128
+        ],
+        "bytes": 4390,
+        "sha256": "8be28fb465885eed14987d571c1f6c5e6a07334f5871b44caec4ed67160bd445"
+      }
+    }
+  },
+  "invincibility-candy": {
+    "url": "assets/portraits/supply/display/invincibility-candy.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/invincibility-candy.webp",
+    "style": "portrait",
+    "sourceGameId": "kirbys-return-to-dream-land-2011",
+    "sourceTitle": "Kirby's Return to Dream Land",
+    "credit": "Nintendo / HAL Laboratory \u00b7 2011 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/invincibility-candy.webp",
+        "dimensions": [
+          193,
+          257
+        ],
+        "bytes": 8664,
+        "sha256": "d0703fd5a16a02c2ed92b7034917fb9a263b1bb1392f4ecc94de7e3d2e4fd806"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/invincibility-candy.webp",
+        "dimensions": [
+          192,
+          256
+        ],
+        "bytes": 10998,
+        "sha256": "1dcd69be675398297eb5eedbe5e318b62e1987043d31cef42039a7c44515ecfc"
+      }
+    }
+  },
+  "rare-stone": {
+    "url": "assets/portraits/supply/display/rare-stone.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/rare-stone.webp",
+    "style": "print",
+    "sourceGameId": "kirby-and-the-forgotten-land-2022",
+    "sourceTitle": "Kirby and the Forgotten Land",
+    "credit": "Nintendo / HAL Laboratory \u00b7 2022 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/rare-stone.webp",
+        "dimensions": [
+          472,
+          472
+        ],
+        "bytes": 43342,
+        "sha256": "de8063311cdcd199d77982191c0cd0637a8108839c3a9dd0991dc3af7f75af03"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/rare-stone.webp",
+        "dimensions": [
+          256,
+          256
+        ],
+        "bytes": 16880,
+        "sha256": "42b799e079e90e999809268a369e99e5d464baba757b2e18d713df21a7240f64"
+      }
+    }
+  },
+  "tokkori": {
+    "url": "assets/portraits/supply/display/tokkori.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/tokkori.webp",
+    "style": "portrait",
+    "sourceGameId": "kirby-right-back-at-ya-2001",
+    "sourceTitle": "Kirby: Right Back at Ya!",
+    "credit": "Warpstar / HAL Laboratory / Studio Comet \u00b7 2001 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/tokkori.webp",
+        "dimensions": [
+          422,
+          349
+        ],
+        "bytes": 23744,
+        "sha256": "538463ba04b55458a849b0bcac3c19ff81da7562a1dcf1ee71be7f9632daa244"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/tokkori.webp",
+        "dimensions": [
+          256,
+          212
+        ],
+        "bytes": 16886,
+        "sha256": "9357ba3fb2b774ac4be617f8ddbb83cbac3f474bfb7408e9fcc6314409576f9f"
+      }
+    }
+  },
+  "wise-waddle-dee": {
+    "url": "assets/portraits/supply/display/wise-waddle-dee.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/wise-waddle-dee.webp",
+    "style": "portrait",
+    "sourceGameId": "kirby-and-the-forgotten-land-2022",
+    "sourceTitle": "Kirby and the Forgotten Land",
+    "credit": "Nintendo / HAL Laboratory \u00b7 2022 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/wise-waddle-dee.webp",
+        "dimensions": [
+          305,
+          332
+        ],
+        "bytes": 20546,
+        "sha256": "4808c387d4e480bd05d61f51e164f893ce74cf1966d8c385cda2a16b8282de1b"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/wise-waddle-dee.webp",
+        "dimensions": [
+          235,
+          256
+        ],
+        "bytes": 16594,
+        "sha256": "1d1bb4223dd4b244eda072ab02cc1daeb18028dd9134b4ea53eba9345c766194"
+      }
+    }
+  },
+  "mr-star": {
+    "url": "assets/portraits/supply/display/mr-star.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/mr-star.webp",
+    "style": "print",
+    "sourceGameId": "kirby-super-star-stacker-1998",
+    "sourceTitle": "Kirby Super Star Stacker",
+    "credit": "Nintendo / HAL Laboratory \u00b7 1998 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/mr-star.webp",
+        "dimensions": [
+          896,
+          851
+        ],
+        "bytes": 88870,
+        "sha256": "41cfa7b77fc00c3d85691b1205d7348094ac4b134555367741bea2ab6b05550b"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/mr-star.webp",
+        "dimensions": [
+          256,
+          243
+        ],
+        "bytes": 9084,
+        "sha256": "db5232fe928eac5a1fd9c4b2e31ab6948386c3b82356f128af868b58442791a5"
+      }
+    }
+  },
+  "elline": {
+    "url": "assets/portraits/supply/display/elline.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/elline.webp",
+    "style": "portrait",
+    "sourceGameId": "kirby-and-the-rainbow-curse-2015",
+    "sourceTitle": "Kirby and the Rainbow Curse",
+    "credit": "Nintendo / HAL Laboratory \u00b7 2015 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/elline.webp",
+        "dimensions": [
+          639,
+          896
+        ],
+        "bytes": 69654,
+        "sha256": "ea97ad9f1174729757fafd979d7aaaf18aefda400ac2c9f5aa401b4c2a2b0495"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/elline.webp",
+        "dimensions": [
+          183,
+          256
+        ],
+        "bytes": 13772,
+        "sha256": "9261dd44822d23ade2556227c7f3177f838368f61f52944ba427c1e76bf200e7"
+      }
+    }
+  },
+  "queen-ripple": {
+    "url": "assets/portraits/supply/display/queen-ripple.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/queen-ripple.webp",
+    "style": "portrait",
+    "sourceGameId": "kirby-64-the-crystal-shards-2000",
+    "sourceTitle": "Kirby 64: The Crystal Shards",
+    "credit": "Nintendo / HAL Laboratory \u00b7 2000 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/queen-ripple.webp",
+        "dimensions": [
+          338,
+          352
+        ],
+        "bytes": 23550,
+        "sha256": "bfff19c916ca4e4ff73f82504df2a47bc9f19e5f14ca67beeb379683a94e6af0"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/queen-ripple.webp",
+        "dimensions": [
+          246,
+          256
+        ],
+        "bytes": 20558,
+        "sha256": "5b061909e8f0db5aae4d5288eb4257c51bcec9889b8be33504fbcc7d6263c20f"
+      }
+    }
+  },
+  "whispy-woods-page": {
+    "url": "assets/portraits/supply/display/whispy-woods-page.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/whispy-woods-page.webp",
+    "style": "print",
+    "sourceGameId": "kirbys-adventure-1993",
+    "sourceTitle": "Kirby's Adventure",
+    "credit": "Nintendo / HAL Laboratory \u00b7 1993 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/whispy-woods-page.webp",
+        "dimensions": [
+          537,
+          694
+        ],
+        "bytes": 26392,
+        "sha256": "98cf70a0baa960dc272ff213c02f386ce0841d8d1f55671ca16c088e23fb50d3"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/whispy-woods-page.webp",
+        "dimensions": [
+          198,
+          256
+        ],
+        "bytes": 9180,
+        "sha256": "163763c7ce543b1b1f9a5955b393f98d943549165c8443935d3a31069df77bc0"
+      }
+    }
+  },
+  "kracko-page": {
+    "url": "assets/portraits/supply/display/kracko-page.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/kracko-page.webp",
+    "style": "portrait",
+    "sourceGameId": "kirbys-adventure-1993",
+    "sourceTitle": "Kirby's Adventure",
+    "credit": "Nintendo / HAL Laboratory \u00b7 1993 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/kracko-page.webp",
+        "dimensions": [
+          506,
+          423
+        ],
+        "bytes": 37590,
+        "sha256": "d8f923127e40d1c214efdce04fb98b323b4b0f730d1163b24480126cae15ca26"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/kracko-page.webp",
+        "dimensions": [
+          256,
+          214
+        ],
+        "bytes": 18346,
+        "sha256": "63540f77d0ca80e3e7d30377bb40341ee80c1c38d03a8efd322992bc34e01862"
+      }
+    }
+  },
+  "mini-mushroom": {
+    "url": "assets/portraits/supply/display/mini-mushroom.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/mini-mushroom.webp",
+    "style": "portrait",
+    "sourceGameId": "new-super-mario-bros-u-2012",
+    "sourceTitle": "New Super Mario Bros. U",
+    "credit": "Nintendo \u00b7 2012 source art",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/mini-mushroom.webp",
+        "dimensions": [
+          876,
+          870
+        ],
+        "bytes": 31578,
+        "sha256": "ff3a3830a433c8c034566aaafa875d1958e4c327312807722e52b195153ab60d"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/mini-mushroom.webp",
+        "dimensions": [
+          256,
+          254
+        ],
+        "bytes": 11502,
+        "sha256": "0a75a63d01bc76be0675b8e33a9ad1482c3c9bca5c9a9d6a58a83d46c77e519f"
+      }
+    }
+  },
+  "metal-cap": {
+    "url": "assets/portraits/supply/display/metal-cap.webp",
+    "thumbnailUrl": "assets/portraits/supply/thumbnails/metal-cap.webp",
+    "style": "portrait",
+    "sourceGameId": "super-mario-64-1996",
+    "sourceTitle": "Super Mario 64",
+    "credit": "Original SM64 cap model \u00b7 studio render",
+    "output": {
+      "display": {
+        "url": "assets/portraits/supply/display/metal-cap.webp",
+        "dimensions": [
+          553,
+          360
+        ],
+        "bytes": 10538,
+        "sha256": "96f8c61fa5f1ded80c3c76b5bfd1c99902c3868b58dce047f1b50790d79f996d"
+      },
+      "thumbnails": {
+        "url": "assets/portraits/supply/thumbnails/metal-cap.webp",
+        "dimensions": [
+          256,
+          167
+        ],
+        "bytes": 7832,
+        "sha256": "ba52afbafe1258f76f9f51313bc14ff0c0e67dbb433cc1c6f9367323a6b0d0d4"
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "at": "2026-10-14T19:30:34.662Z",
+  "method": "Real Electron in an isolated profile: primary clear, observer Training/pull/receipt completion over actual IPC, matching quit/save acknowledgment and persisted relaunch.",
+  "runtime": {
+    "electron": "44.7.0",
+    "chrome": "152.0.7977.130",
+    "platform": "linux",
+    "headless": false
+  },
+  "saved": {
+    "rank": 2,
+    "party": [
+      "classic-mario",
+      "toad"
+    ],
+    "owned": [
+      "classic-mario",
+      "toad"
+    ],
+    "starlight": 0
+  },
+  "restored": {
+    "rank": 2,
+    "party": [
+      "classic-mario",
+      "toad"
+    ],
+    "owned": [
+      "classic-mario",
+      "toad"
+    ],
+    "starlight": 0
+  },
+  "errors": [],
+  "limits": [
+    "Linux Ozone evidence does not verify native macOS tray, spaces, click-through, speaker quality or M2 performance."
+  ]
+}

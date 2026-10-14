@@ -200,6 +200,7 @@ for key,(label,world)in profiles.items():
     export(key,'ka-enemies',KA,{'idle':f[:1],'move_forward':f[:2],'move_back':f[:2],'basic_windup':f[:1],
       'basic_resolve':f[1:]or f,'skill_or_secondary':f[1:]or f,'hurt':f[:1],'knockout':f[-1:],'ultimate_entry':f},
       body=16,world=world,facing='left',notes='Original Adventure body cells and sheet palette. Sword Knight and Blade Knight are separate sources, not a shared sprite.')
+    if key in ['wheelie','waddle-dee']:manifest[key]['loopClips']+=['basic_resolve','skill_or_secondary','ultimate_entry']
 # Keep the original whole-body idle; articulate the same native umbrella and
 # body pixels for the playable poke/spin instead of swapping in a later Dee.
 parasol_body=frames('ka-enemies',[[114,41,134,59],[134,41,154,59]])

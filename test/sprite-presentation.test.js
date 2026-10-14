@@ -49,3 +49,9 @@ test('repeated throws show a release pose at each projectile marker and remain v
  }
  actor.action=null;assert.equal(actorAnimation(actor,1.47,manifest.bandana).state,'hurt');
 });
+test('Dedede reaches his final jump pose at the physical landing, while spinning charges keep looping',()=>{
+ const actor={hp:100,hitAt:-100,state:'rebound',action:{start:1,duration:1.4,marker:.896,hits:1,ability:{kind:'ultimate',behavior:'stomp'}}};
+ const animation=actorAnimation(actor,1.9,manifest.dedede);assert.equal(spriteFrameIndex(manifest.dedede,animation),manifest.dedede.clips.ultimate_entry.at(-1));
+ actor.state='charge';actor.action.ability={kind:'basic',behavior:'charge'};
+ assert.equal(actorAnimation(actor,1.9,manifest.buzzy).progress,undefined);
+});

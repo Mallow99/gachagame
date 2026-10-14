@@ -1,0 +1,18 @@
+[
+  {
+    "path": "assets/models/metal-cap/source/cap.zip",
+    "page": "https://models.spriters-resource.com/nintendo_64/supermario64/asset/522629/",
+    "credit": "MrGameAndSketch / Nintendo",
+    "sourceGameId": "super-mario-64-1996",
+    "bytes": 16975,
+    "sha256": "6edbec97f10f285b1fe2502eb14ec46044003edb41235ab68176b8ea1afbeec8"
+  },
+  {
+    "path": "assets/models/metal-cap/source/mario.zip",
+    "page": "https://models.spriters-resource.com/nintendo_64/supermario64/asset/284432/",
+    "credit": "FluffaMario / Nintendo",
+    "sourceGameId": "super-mario-64-1996",
+    "bytes": 160472,
+    "sha256": "4833bedf5ad709d214a7c616f5572817cd77b26c19171c4f0db1655ad8585b5d"
+  }
+]

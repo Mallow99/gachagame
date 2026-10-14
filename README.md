@@ -85,6 +85,12 @@ The animated comparison runs at `/docs/validation/sprite-review/index.html`.
 Play, pause and scrub fourteen actual attacks at
 `/docs/validation/sprite-review/combat.html`; the review uses isolated encounters
 and does not change your save.
+Preview all opening pulls at `/docs/validation/summon-review/index.html`.
+Twenty-nine Supply records now have sourced illustrations; the Mushroom
+theater uses the approved demo's native sounds and Starman music.
+The real Electron IPC/save/relaunch check runs with an isolated QA profile;
+see [desktop evidence](docs/validation/desktop-review/results.json). Native Mac
+tray/Spaces/click-through and M2 performance still need a device check.
 
 | Path | Responsibility |
 | --- | --- |

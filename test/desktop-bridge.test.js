@@ -19,7 +19,7 @@ async function desktop(){
  class Tray extends EventEmitter{setToolTip(){}setContextMenu(){}}
  const electron={app,BrowserWindow,ipcMain,screen,Tray,Menu:{buildFromTemplate:x=>x},nativeImage:{createFromPath:()=>({setTemplateImage(){}})},globalShortcut:{register(){},unregisterAll(){}}};
  const script=fs.readFileSync(new URL('../electron/main.js',import.meta.url),'utf8');
- vm.runInNewContext(script,{require:name=>name==='electron'?electron:path,__dirname:fileURLToPath(new URL('../electron',import.meta.url)),Buffer,
+ vm.runInNewContext(script,{require:name=>name==='electron'?electron:path,process:{env:{}},__dirname:fileURLToPath(new URL('../electron',import.meta.url)),Buffer,
   setTimeout:fn=>{const id=++nextTimer;timers.set(id,fn);return id;},clearTimeout:id=>timers.delete(id),setInterval:()=>++nextTimer,clearInterval(){} });
  await Promise.resolve();
  const [strip,manager]=windows;

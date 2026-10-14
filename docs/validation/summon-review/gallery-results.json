@@ -1,0 +1,552 @@
+{
+  "at": "2026-10-14T19:20:37.965Z",
+  "method": "Actual Chromium: all 32 SR/SSR opening collectibles in the standalone 360×600 gallery; image decode and identity bounds, eight SSR Supply captures and unchanged local storage.",
+  "artChecks": [
+    {
+      "id": "hammer-bro",
+      "kind": "unit",
+      "rarity": "SR",
+      "nameBounds": {
+        "x": 61,
+        "y": 351.546875,
+        "width": 238,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 111.546875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "bowser",
+      "kind": "unit",
+      "rarity": "SSR",
+      "nameBounds": {
+        "x": 108,
+        "y": 351.546875,
+        "width": 144,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 111.546875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "buzzy-beetle",
+      "kind": "unit",
+      "rarity": "SR",
+      "nameBounds": {
+        "x": 57.5,
+        "y": 351.546875,
+        "width": 245,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 50.40625,
+        "y": 111.546875,
+        "width": 259.1875,
+        "height": 240
+      }
+    },
+    {
+      "id": "lakitu",
+      "kind": "unit",
+      "rarity": "SR",
+      "nameBounds": {
+        "x": 120,
+        "y": 351.546875,
+        "width": 120,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 111.546875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "parasol-waddle-dee",
+      "kind": "unit",
+      "rarity": "SR",
+      "nameBounds": {
+        "x": 36,
+        "y": 330.171875,
+        "width": 288,
+        "height": 219.640625
+      },
+      "artBounds": {
+        "x": 50.40625,
+        "y": 90.171875,
+        "width": 259.1875,
+        "height": 240
+      }
+    },
+    {
+      "id": "sir-kibble",
+      "kind": "unit",
+      "rarity": "SR",
+      "nameBounds": {
+        "x": 89,
+        "y": 351.546875,
+        "width": 182,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 111.546875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "hot-head",
+      "kind": "unit",
+      "rarity": "SR",
+      "nameBounds": {
+        "x": 92,
+        "y": 351.546875,
+        "width": 176,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 111.546875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "wheelie",
+      "kind": "unit",
+      "rarity": "SR",
+      "nameBounds": {
+        "x": 102,
+        "y": 351.546875,
+        "width": 156,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 111.546875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "sparky",
+      "kind": "unit",
+      "rarity": "SR",
+      "nameBounds": {
+        "x": 112,
+        "y": 351.546875,
+        "width": 136,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 111.546875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "rocky",
+      "kind": "unit",
+      "rarity": "SR",
+      "nameBounds": {
+        "x": 112.5,
+        "y": 351.546875,
+        "width": 135,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 111.546875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "bonkers",
+      "kind": "unit",
+      "rarity": "SR",
+      "nameBounds": {
+        "x": 101,
+        "y": 351.546875,
+        "width": 158,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 111.546875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "adventure-meta-knight",
+      "kind": "unit",
+      "rarity": "SR",
+      "nameBounds": {
+        "x": 60.5,
+        "y": 351.546875,
+        "width": 239,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 111.546875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "king-dedede",
+      "kind": "unit",
+      "rarity": "SSR",
+      "nameBounds": {
+        "x": 60,
+        "y": 351.546875,
+        "width": 240,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 111.546875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "bandana-waddle-dee",
+      "kind": "unit",
+      "rarity": "SSR",
+      "nameBounds": {
+        "x": 36,
+        "y": 330.171875,
+        "width": 288,
+        "height": 219.640625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 90.171875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "fire-flower",
+      "kind": "powerup",
+      "rarity": "SR",
+      "nameBounds": {
+        "x": 74.5,
+        "y": 351.546875,
+        "width": 211,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 111.546875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "ice-flower",
+      "kind": "powerup",
+      "rarity": "SR",
+      "nameBounds": {
+        "x": 80.796875,
+        "y": 351.546875,
+        "width": 198.40625,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 111.546875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "super-leaf",
+      "kind": "powerup",
+      "rarity": "SR",
+      "nameBounds": {
+        "x": 78.5,
+        "y": 351.546875,
+        "width": 203,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 111.546875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "penguin-suit",
+      "kind": "powerup",
+      "rarity": "SSR",
+      "nameBounds": {
+        "x": 59.5,
+        "y": 351.546875,
+        "width": 241,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 111.546875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "metal-cap",
+      "kind": "powerup",
+      "rarity": "SSR",
+      "nameBounds": {
+        "x": 82,
+        "y": 351.546875,
+        "width": 196,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 111.546875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "friend-heart",
+      "kind": "powerup",
+      "rarity": "SR",
+      "nameBounds": {
+        "x": 60.5,
+        "y": 351.546875,
+        "width": 239,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 111.546875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "energy-sphere",
+      "kind": "powerup",
+      "rarity": "SR",
+      "nameBounds": {
+        "x": 42,
+        "y": 351.546875,
+        "width": 276,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 111.546875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "sun-stone",
+      "kind": "powerup",
+      "rarity": "SR",
+      "nameBounds": {
+        "x": 84,
+        "y": 351.546875,
+        "width": 192,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 111.546875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "invincibility-candy",
+      "kind": "powerup",
+      "rarity": "SSR",
+      "nameBounds": {
+        "x": 36,
+        "y": 330.171875,
+        "width": 288,
+        "height": 219.640625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 90.171875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "rare-stone",
+      "kind": "powerup",
+      "rarity": "SSR",
+      "nameBounds": {
+        "x": 75.5,
+        "y": 351.546875,
+        "width": 209,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 111.546875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "e-gadd-field-notes",
+      "kind": "assist",
+      "rarity": "SR",
+      "nameBounds": {
+        "x": 36,
+        "y": 330.171875,
+        "width": 288,
+        "height": 219.640625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 90.171875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "tiara-projectile-catch",
+      "kind": "assist",
+      "rarity": "SR",
+      "nameBounds": {
+        "x": 115.375,
+        "y": 351.546875,
+        "width": 129.234375,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 111.546875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "lubba-emergency-orbit",
+      "kind": "assist",
+      "rarity": "SSR",
+      "nameBounds": {
+        "x": 114.984375,
+        "y": 351.546875,
+        "width": 130.03125,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 111.546875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "plessie",
+      "kind": "assist",
+      "rarity": "SSR",
+      "nameBounds": {
+        "x": 36,
+        "y": 342.046875,
+        "width": 288,
+        "height": 195.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 102.046875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "elline",
+      "kind": "assist",
+      "rarity": "SR",
+      "nameBounds": {
+        "x": 54,
+        "y": 351.546875,
+        "width": 252,
+        "height": 176.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 111.546875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "queen-ripple",
+      "kind": "assist",
+      "rarity": "SR",
+      "nameBounds": {
+        "x": 36,
+        "y": 342.046875,
+        "width": 288,
+        "height": 195.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 102.046875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "whispy-woods-page",
+      "kind": "assist",
+      "rarity": "SSR",
+      "nameBounds": {
+        "x": 36,
+        "y": 330.171875,
+        "width": 288,
+        "height": 219.640625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 90.171875,
+        "width": 224,
+        "height": 240
+      }
+    },
+    {
+      "id": "kracko-page",
+      "kind": "assist",
+      "rarity": "SSR",
+      "nameBounds": {
+        "x": 36,
+        "y": 342.046875,
+        "width": 288,
+        "height": 195.890625
+      },
+      "artBounds": {
+        "x": 68,
+        "y": 102.046875,
+        "width": 224,
+        "height": 240
+      }
+    }
+  ],
+  "errors": [],
+  "missing": []
+}

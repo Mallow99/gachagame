@@ -1,9 +1,12 @@
 import {spriteIcon} from '../render/sprite-bank.js';
+import illustrations from '../../assets/portraits/supply/manifest.mjs';
 const icons=new Set(['super-mushroom','life-mushroom','mini-mushroom','fire-flower','ice-flower']);
 const escape=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 // Original printed symbols for supply records without approved character art.
 // They identify the item/intervention rather than impersonating a fighter.
 export function supplyArt(item,kind,cls=''){
+ const art=illustrations[item.id];
+ if(art){const hero=cls==='hero-splash';return `<img class="${cls} ${hero?'source-art '+art.style:'supply-source'}" src="${hero?art.url:art.thumbnailUrl||art.url}" alt="${escape(item.name)}" draggable="false">${hero?`<small class="art-credit">${escape(art.credit)}</small>`:''}`;}
  if(kind==='assist'&&item.spriteKey)return `<img class="${cls}" src="${spriteIcon(item.spriteKey)}" alt="${escape(item.name)}" draggable="false">`;
  if(icons.has(item.id))return `<img class="${cls}" src="${spriteIcon(item.id)}" alt="${escape(item.name)}" draggable="false">`;
  const symbols={
@@ -27,3 +30,4 @@ export function supplyArt(item,kind,cls=''){
  body||=symbols['energy-sphere'];
  return `<svg class="supply-illustration ${cls} ${kind}" viewBox="0 0 64 64" role="img" aria-label="${escape(item.name)}"><g>${body}</g></svg>`;
 }
+export function supplyOrigin(item){return illustrations[item.id];}

@@ -69,3 +69,20 @@ test('breath hits only its forward lane while Spark surrounds its owner at close
  spark.startAction(s,{...s.definition.basic,kind:'basic'},a);spark.advance(.7);assert.ok(z.hp<z.maxHp);
  z.x=200;const outside=z.hp;spark.startAction(s,{...s.definition.basic,kind:'basic'},a);spark.advance(.7);assert.equal(z.hp,outside);
 });
+test('a lob locks its landing zone and hits the body there instead of chasing its old target',()=>{
+ const b=setup(['hammer-bro']),h=b.living(true)[0],[old,near]=b.living(false);h.x=200;old.x=600;near.x=630;
+ for(const e of [old,near]){e.action=null;e.readyIn=100;e.moveSpeed=0;}
+ b.projectile(h,old,h.definition.basic,.9);const p=b.projectiles.at(-1);old.x=820;b.advance(.2);assert.equal(p.to,600);
+ b.advance(1);assert.equal(old.hp,old.maxHp);assert.ok(near.hp<near.maxHp);assert.ok(b.events.some(e=>e.type==='telegraph'&&e.values.x===600&&e.values.hero));
+});
+test('ending combat clears flying objects and reserved interventions instead of leaving them frozen',()=>{
+ const b=setup(['hammer-bro']),h=b.living(true)[0],enemy=b.living(false)[0];b.projectile(h,enemy,h.definition.basic,.9);b.shells.push({x:500});b.assistPending.push({resolveAt:100});
+ b.end(true);assert.equal(b.projectiles.length,0);assert.equal(b.shells.length,0);assert.equal(b.assistPending.length,0);assert.equal(b.done,true);
+});
+test('a missed bomb can still splash a body at the edge of its locked blast radius',()=>{
+ const b=setup(['poppy-bros-jr']),h=b.living(true)[0],[old,edge]=b.living(false);h.x=200;old.x=600;edge.x=653;
+ for(const e of [old,edge]){e.action=null;e.readyIn=100;e.moveSpeed=0;}
+ b.projectile(h,old,h.definition.basic,.86);old.x=820;b.advance(1.2);
+ assert.equal(old.hp,old.maxHp);assert.ok(edge.hp<edge.maxHp);const hit=b.events.find(e=>e.type==='damage'&&e.targetId===edge.uid);
+ assert.equal(hit.values.raw,h.attack*.45);
+});

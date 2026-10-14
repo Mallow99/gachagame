@@ -220,7 +220,9 @@ export class Battle {
       a.y=act.movement==='cape'?12+Math.sin(travel*Math.PI)*16:act.movement==='puff'?Math.sin(travel*Math.PI)*38:has(a,'airborne')?28:0;
       a.state='charge';
     }else if(behavior==='charge') {
-      a.x=clamp(act.from+(act.to-act.from)*Math.sin(p*Math.PI/2),30,970);a.y=act.movement==='arc'?Math.sin(p*Math.PI)*52:has(a,'airborne')?28+Math.sin(p*Math.PI)*18:0;a.state='charge';
+      const travel=clamp(t/act.marker,0,1),recovery=clamp((t-act.marker)/Math.max(RULES.step,act.duration-act.marker),0,1);
+      a.x=clamp(act.from+(act.to-act.from)*Math.sin(travel*Math.PI/2)+a.direction*Math.sin(recovery*Math.PI)*24,30,970);
+      a.y=act.movement==='arc'?Math.sin(travel*Math.PI)*52:has(a,'airborne')?28+Math.sin(travel*Math.PI)*18:0;a.state='charge';
     }else if(behavior==='combo'||behavior==='strike') {
       this.approach(a,act.to-a.direction*(30+(a.partyIndex||0)*8),dt,1.3);a.state=p<0.25?'windup':'resolve';a.y=0;
     }else {a.state=p<0.35?'windup':'cast';a.y=['float','pulse-float'].includes(act.movement)?Math.sin(p*Math.PI)*34:act.movement==='puff'?Math.sin(p*Math.PI)*(a.mastery>=4?46:38):['perch-jump','band-hop','hop'].includes(act.movement)?Math.sin(p*Math.PI)*24:has(a,'airborne')?30:0;}
@@ -287,26 +289,39 @@ export class Battle {
       originHeight:a.y+(ability.projectileOrigin||25),endHeight:target.y+25,
       lob:ability.behavior==='lob',returning,done:false};
     this.projectiles.push(p);this.log('projectile-spawn',a,target,{id:p.id,from:p.from,to:p.to,duration:p.duration,kind:p.kind});
+    if(p.lob&&!ability.deliveryEffects)this.log('telegraph',a,target,{x:p.to,radius:42,until:this.time+p.duration,behavior:'lob',hero:a.hero});
   }
   updateProjectiles(dt) {
     for(const p of this.projectiles) {
       if(p.done)continue;
-      const a=this.actors.find(x=>x.uid===p.sourceUid)||this.secondarySources.get(p.sourceUid),target=this.actors.find(x=>x.uid===p.targetUid);
-      const t=clamp((this.time-p.start)/p.duration,0,1);if(target&&alive(target)){p.to=target.x;p.endHeight=target.y+25;}
+      const a=this.actors.find(x=>x.uid===p.sourceUid)||this.secondarySources.get(p.sourceUid);let target=this.actors.find(x=>x.uid===p.targetUid);
+      const t=clamp((this.time-p.start)/p.duration,0,1);if(target&&alive(target)&&(!p.lob||p.ability.deliveryEffects)){p.to=target.x;p.endHeight=target.y+25;}
       p.x=p.from+(p.to-p.from)*t;p.y=p.originHeight+(p.endHeight-p.originHeight)*t+(p.lob?Math.sin(t*Math.PI)*55:0);
       if(p.returning&&a)for(const victim of this.living(!a.hero))if(Math.abs(victim.x-p.x)<25&&!p.hitUids.includes(victim.uid)){p.hitUids.push(victim.uid);this.damage(a,victim,p.coefficient,p.ability);}
       const pierce=p.ability.effects?.find(e=>e.type==='piercing');
       if(pierce&&a){p.hitUids||=[];for(const victim of this.living(!a.hero))if(victim!==target&&Math.abs(victim.x-p.x)<22&&!p.hitUids.includes(victim.uid)){p.hitUids.push(victim.uid);this.damage(a,victim,pierce.coefficient,{...p.ability,effects:[]});}}
       if(t>=1){p.done=true;
         if(p.returning){if(a&&alive(a)&&!(a.statuses.stun?.until>this.time)){this.log('projectile-catch',a,null,{id:p.id});this.passive(a,'catch');}else this.log('projectile-miss',a,null,{id:p.id,reason:'catch-interrupted'});continue;}
+        if(p.lob&&!p.ability.deliveryEffects&&a){
+          // The landing circle locks on release. Hit bodies in that zone,
+          // rather than making a hammer/bomb follow its old target remotely.
+          target=this.living(!a.hero).filter(v=>Math.abs(v.x-p.x)<=42&&Math.abs(v.y+25-p.y)<=44).sort((x,y)=>Math.abs(x.x-p.x)-Math.abs(y.x-p.x))[0]||null;
+        }
         if(a&&target&&alive(target)&&!target.hidden){this.log('animation-marker',a,target,{marker:'projectileHit',id:p.id,x:p.x,abilityId:p.ability.id||null});
           if(p.ability.deliveryEffects){for(const e of p.ability.deliveryEffects)this.applyEffect(a,target,e);continue;}
           this.damage(a,target,p.coefficient,p.ability);
-          for(const e of p.ability.effects||[])if(e.type==='splash')for(const other of this.living(!a.hero).filter(x=>x!==target&&Math.abs(x.x-target.x)<(e.radius||60)*(p.ability.areaScale||1)))this.damage(a,other,e.coefficient,p.ability);
+          for(const e of p.ability.effects||[])if(e.type==='splash')for(const other of this.living(!a.hero).filter(x=>x!==target&&Math.abs(x.x-(p.lob?p.x:target.x))<(e.radius||60)*(p.ability.areaScale||1)))this.damage(a,other,e.coefficient,p.ability);
           const ret=p.ability.effects?.find(e=>e.type==='return-shot');
           if(ret&&!p.returning&&alive(a)){this.projectiles.push({...p,id:'return-'+this.counter++,from:p.to,to:a.x,x:p.to,start:this.time,
             duration:Math.max(0.25,Math.abs(a.x-p.to)/620),originHeight:p.y,endHeight:a.y+25,targetUid:a.uid,coefficient:ret.coefficient,returning:true,hitUids:[],done:false});this.log('projectile-return',a,target,{id:p.id});}
-        }else this.log('projectile-miss',a,target,{id:p.id});
+        }else {
+          this.log('projectile-miss',a,target,{id:p.id});
+          if(a&&p.lob)for(const effect of p.ability.effects||[])if(effect.type==='splash')
+            for(const other of this.living(!a.hero).filter(v=>Math.abs(v.x-p.x)<(effect.radius||60)*(p.ability.areaScale||1)&&Math.abs(v.y+25-p.y)<=60)){
+              this.log('animation-marker',a,other,{marker:'projectileHit',id:p.id,x:p.x,abilityId:p.ability.id||null});
+              this.damage(a,other,effect.coefficient,{...p.ability,effects:[]});
+            }
+        }
       }
     }
     this.projectiles=this.projectiles.filter(p=>!p.done);
@@ -367,7 +382,7 @@ export class Battle {
       const counter=target.statuses.counter;delete target.statuses.counter;
       if(target.action)target.action.counterTriggered=true;
       target.counterAnswer={sourceUid:source.uid,start:this.time,resolveAt:this.time+.18,coefficient:counter.value,abilityId:target.action?.ability.id};
-      target.vanishUntil=this.time+.12;
+      target.vanishUntil=target.counterAnswer.resolveAt;
       this.log('counter-exit',target,source,{x:target.x});
     }
     if(!alive(target))this.knockout(target,source,ability);
@@ -608,7 +623,8 @@ export class Battle {
   }
   end(win,reason='') {
     this.done=true;this.win=win;this.reason=reason;this.log('battle-end',null,null,{win,reason,seconds:this.time});
-    for(const a of this.actors){if(a.encounterLoan)this.log('encounter-loan-end',a,null,{id:a.encounterLoan});a.action=null;a.copy=null;a.encounterLoan=null;a.state=win?'victory':'knockout';a.y=0;}
+    this.projectiles=[];this.shells=[];this.assistPending=[];
+    for(const a of this.actors){if(a.encounterLoan)this.log('encounter-loan-end',a,null,{id:a.encounterLoan});a.action=null;a.copy=null;a.encounterLoan=null;a.counterAnswer=null;a.vanishUntil=0;a.state=win?'victory':'knockout';a.y=0;}
   }
   report() {return {runId:this.runId,encounterId:this.encounter.id,mode:this.mode,win:this.win,reason:this.reason,seconds:Math.round(this.time),
     rank:this.rank,threat:this.threat,waves:this.wavesCleared,kills:this.kills,stats:structuredClone(this.stats),seed:this.seed,

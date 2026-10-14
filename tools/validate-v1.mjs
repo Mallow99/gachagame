@@ -9,6 +9,8 @@ import {defaultSave,worldProgress,KIRBY_WORLD} from '../src/save/default-save.js
 import {bannerPool,bannerStatus,publishedRates,drawPulls} from '../src/gacha.js';
 import {createSeededRandom} from '../src/random.js';
 import manifest from '../assets/sprites/v1/manifest.mjs';
+import {combatSourceHash} from './combat-source.mjs';
+const sourceHash=combatSourceHash();
 const root=fileURLToPath(new URL('..',import.meta.url));
 const seedFlag=process.argv.indexOf('--seeds');
 const seeds=seedFlag>=0?Math.max(1,Number(process.argv[seedFlag+1])||5):5;
@@ -54,7 +56,8 @@ for(const e of content.encounters.values()){
  const record={id:e.id,rank:e.recommendedTrainingRank,party,wins:trials.filter(t=>t.win).length,trials:seeds,minSeconds:Math.min(...trials.map(t=>t.seconds)),maxSeconds:Math.max(...trials.map(t=>t.seconds)),meanHp:trials.reduce((n,t)=>n+t.remainingHp,0)/seeds};
  stages.push(record);console.log(`${e.id}: ${record.wins}/${seeds} clears · ${record.minSeconds}–${record.maxSeconds}s · ${(record.meanHp*100).toFixed(0)}% party HP`);
 }
-const result={build:'v1-playable',at:new Date().toISOString(),seconds:(Date.now()-started)/1000,seeds,content:{fighters:content.units.size,encounters:content.encounters.size,sprites:spriteChecks.length},banners,stages,
+assert.equal(combatSourceHash(),sourceHash,'Combat sources changed during validation; run it again after edits finish.');
+const result={build:'v1-playable',sourceHash,at:new Date().toISOString(),seconds:(Date.now()-started)/1000,seeds,content:{fighters:content.units.size,encounters:content.encounters.size,sprites:spriteChecks.length},banners,stages,
  limits:['Seeded combat evidence. Chromium CSS/reveal evidence is recorded separately in sprite-review/browser/results.json; native macOS remains unverified.','Source-game sprites are reviewed; sparse native pose sets, authored signature effects and some portraits remain production work.','Archives remain previews; source Spotlights are smaller playable pools.']};
 if(process.argv.includes('--write')){fs.mkdirSync(path.join(root,'docs/validation'),{recursive:true});fs.writeFileSync(path.join(root,'docs/validation/v1-latest.json'),JSON.stringify(result,null,2)+'\n');}
 console.log(`Validated ${stages.length} stages, ${banners.length} pages and ${spriteChecks.length} sprite atlases in ${result.seconds.toFixed(1)}s.`);

@@ -23,6 +23,19 @@ covers 24 fighters. Actual Chromium motion review covers fourteen moves at
 documented in its results. This is local review evidence, not human approval
 of final feel or a native macOS pass.
 
+The follow-up Supply/summon pass adds twenty-nine sourced illustrations and
+small display copies, a sixty-collectible isolated gallery, native approved
+Mario reveal audio with independent channels/cleanup, physical single-charge
+contact, locked lob impact zones and cleanup of flying objects at combat end.
+All thirty-two SR/SSR gallery reveals pass Chromium layout/image checks without
+changing local storage. Source portraits now identify printed Assist entrances.
+The fresh twenty-account progression run clears 35/35 in 2.6–3.2 hours with two
+retreats. The source hash matches the 175 reference-fight report. Real Electron
+testing uses `POCKET_GACHA_PROFILE_DIR` to isolate QA data from the normal save.
+The actual Electron check now passes Training/pull/save IPC and persisted
+relaunch on a Linux virtual display. Evidence is in
+`docs/validation/desktop-review/results.json`; this is not an M2 hardware pass.
+
 The old prototype descriptions and PG-003 “next” tickets below are historical.
 Longer-term plans remain authoritative; the latest user instruction authorized
 the broader v1 implementation pass.

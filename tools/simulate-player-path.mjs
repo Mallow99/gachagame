@@ -3,6 +3,8 @@ import {Game} from '../src/game.js';
 import {content} from '../src/content/index.js';
 import {trainingCost} from '../src/config/rules.js';
 import {FIRST_WORLD,KIRBY_WORLD} from '../src/save/default-save.js';
+import {combatSourceHash} from './combat-source.mjs';
+const sourceHash=combatSourceHash();
 const accountFlag=process.argv.indexOf('--accounts');
 const accounts=Math.max(1,Math.min(100,Number(accountFlag>=0?process.argv[accountFlag+1]:process.argv[2])||5));
 const records=[];
@@ -60,6 +62,7 @@ for(let seed=0;seed<accounts;seed++){
  console.log(`Account ${seed}: ${record.cleared}/35 stages · ${record.hours}h · ${camps} Camps · ${losses} retreats · Rank ${g.rank} · ${record.units} fighters / ${record.pulls} pulls`);
  if(warnings.length)console.log(warnings.join('\n'));
 }
-const report={at:new Date().toISOString(),method:'Fresh saves use real Game rewards, actual pulls, earned Training, best measured cleared Camp, legal party/equipment selection and real Battle results. No ownership, currency, Rank or clears are injected.',accounts,records};
+if(combatSourceHash()!==sourceHash)throw new Error('Combat sources changed during simulation; finish edits and run it again.');
+const report={at:new Date().toISOString(),sourceHash,method:'Fresh saves use real Game rewards, actual pulls, earned Training, best measured cleared Camp, legal party/equipment selection and real Battle results. No ownership, currency, Rank or clears are injected.',accounts,records};
 if(process.argv.includes('--write')){fs.mkdirSync(new URL('../docs/validation/',import.meta.url),{recursive:true});fs.writeFileSync(new URL('../docs/validation/player-path.json',import.meta.url),JSON.stringify(report,null,2)+'\n');}
 if(records.some(r=>r.cleared<35))process.exitCode=1;
