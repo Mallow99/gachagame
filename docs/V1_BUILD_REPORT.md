@@ -94,6 +94,14 @@ over actual IPC, matching quit/save acknowledgment and persisted relaunch.
 It validates file-URL assets and desktop transport; native macOS behavior and
 M2 performance remain separate.
 
+`validation/render-performance.json` profiles four fighters and twelve varied
+enemies in Chromium, including 1440 × 170 at 1×/2× DPI, a field and a narrow
+strip. Warm drawing p95 is 0.4–0.8 ms in this environment; simultaneous hit-flash
+p95 reaches 3.3 ms. These are canvas/JS timings, not M2 CPU/power measurements.
+The 74 atlases total 0.14 MiB compressed and about 9.69 MiB decoded RGBA. They
+now warm before the first automatic fight, preventing first-use Copy/enemy
+sprite gaps. Auto-next also waits while Pause or Hide is active.
+
 The opening fighter sprites now match their declared games; Game Boy Kirby and
 Blade Knight have separate atlases. Bandana uses the complete gameboy09 spear
 adaptation, selected after comparison with a rendered original Wii model whose

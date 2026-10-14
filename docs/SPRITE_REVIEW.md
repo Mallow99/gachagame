@@ -108,6 +108,14 @@ volume controls. Skip/results/close cancel native clips and queued theater tones
 battle tones continue independently. Kirby music and the wider voice library
 remain unfinished.
 
+Atlases now load before the first automatic fight; the bounded 74-image set is
+about 0.14 MiB compressed / 9.69 MiB decoded. This also warms Copy/enemy forms
+before their first use. [Rendering timings](validation/render-performance.json)
+measure a real sixteen-actor scene in Chromium: drawing p95 0.4–0.8 ms, with
+simultaneous hit-flash p95 up to 3.3 ms. These are cloud measurements, not M2
+CPU/power evidence. Auto-next respects Pause and Hide instead of restarting
+combat during a pause.
+
 ## Evidence and remaining quality work
 
 - `npm test` includes source-version identity, distinct Kirby/Knight records,

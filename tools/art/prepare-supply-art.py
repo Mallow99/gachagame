@@ -14,7 +14,10 @@ manifest={}
 for record in records:
     if record.get('active',True) is False:
         continue
-    original=Image.open(ROOT/record['path']).convert('RGBA')
+    source=ROOT/record['path']
+    if hashlib.sha256(source.read_bytes()).hexdigest()!=record['sha256']:
+        raise ValueError('Source hash differs from credited intake: '+record['id'])
+    original=Image.open(source).convert('RGBA')
     if record.get('sourceType')=='rendered-source-model':
         # The complete object stays intact; discard only empty render canvas.
         original=original.crop(original.getbbox())

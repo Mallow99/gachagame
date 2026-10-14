@@ -1,0 +1,107 @@
+{
+  "at": "2026-10-14T19:44:01.408Z",
+  "method": "Actual Chromium canvas. Four mixed-Hub fighters, twelve varied enemies, real fixed-step actions/projectiles, 300 timed frames after warm-up plus 100 simultaneous hit-flash frames.",
+  "records": [
+    {
+      "width": 1440,
+      "height": 170,
+      "dpr": 1,
+      "transparent": true,
+      "actors": 16,
+      "atlasReadyMs": 5.5,
+      "simulation": {
+        "meanMs": 0.3316666666852931,
+        "p95Ms": 0.40000000037252903,
+        "maxMs": 27.200000000186265
+      },
+      "drawing": {
+        "meanMs": 0.2753333333165695,
+        "p95Ms": 0.599999999627471,
+        "maxMs": 3.300000000745058
+      },
+      "allActorsHitFlash": {
+        "meanMs": 0.6259999999962748,
+        "p95Ms": 3.2999999998137355,
+        "maxMs": 8.200000000186265
+      },
+      "jsHeapMiB": 4.126681327819824
+    },
+    {
+      "width": 1440,
+      "height": 170,
+      "dpr": 2,
+      "transparent": true,
+      "actors": 16,
+      "atlasReadyMs": 0.20000000018626451,
+      "simulation": {
+        "meanMs": 0.19333333332712452,
+        "p95Ms": 0.40000000037252903,
+        "maxMs": 2.2999999998137355
+      },
+      "drawing": {
+        "meanMs": 0.40000000000310443,
+        "p95Ms": 0.7999999998137355,
+        "maxMs": 21.699999999254942
+      },
+      "allActorsHitFlash": {
+        "meanMs": 0.46799999999813735,
+        "p95Ms": 2.400000000372529,
+        "maxMs": 5.900000000372529
+      },
+      "jsHeapMiB": 4.3288984298706055
+    },
+    {
+      "width": 1000,
+      "height": 220,
+      "dpr": 1,
+      "transparent": false,
+      "actors": 16,
+      "atlasReadyMs": 0.20000000018626451,
+      "simulation": {
+        "meanMs": 0.12600000001490116,
+        "p95Ms": 0.20000000018626451,
+        "maxMs": 0.5
+      },
+      "drawing": {
+        "meanMs": 0.22899999998509885,
+        "p95Ms": 0.40000000037252903,
+        "maxMs": 2
+      },
+      "allActorsHitFlash": {
+        "meanMs": 0.2159999999962747,
+        "p95Ms": 0.30000000074505806,
+        "maxMs": 0.40000000037252903
+      },
+      "jsHeapMiB": 3.6242475509643555
+    },
+    {
+      "width": 360,
+      "height": 170,
+      "dpr": 2,
+      "transparent": true,
+      "actors": 16,
+      "atlasReadyMs": 0.19999999925494194,
+      "simulation": {
+        "meanMs": 0.15499999997516473,
+        "p95Ms": 0.2999999998137355,
+        "maxMs": 2.099999999627471
+      },
+      "drawing": {
+        "meanMs": 0.2626666666939855,
+        "p95Ms": 0.5,
+        "maxMs": 4.099999999627471
+      },
+      "allActorsHitFlash": {
+        "meanMs": 0.225,
+        "p95Ms": 0.40000000037252903,
+        "maxMs": 1.3999999994412065
+      },
+      "jsHeapMiB": 3.8134536743164062
+    }
+  ],
+  "limits": [
+    "Software/cloud rendering timings are not CPU percentage, GPU power or M2 hardware evidence.",
+    "JS heap excludes decoded image/GPU memory. Atlas decoded RGBA size is separately estimated at 9.69 MiB.",
+    "Timings are local development evidence and can vary with concurrent environment work."
+  ]
+}

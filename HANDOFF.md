@@ -35,6 +35,10 @@ testing uses `POCKET_GACHA_PROFILE_DIR` to isolate QA data from the normal save.
 The actual Electron check now passes Training/pull/save IPC and persisted
 relaunch on a Linux virtual display. Evidence is in
 `docs/validation/desktop-review/results.json`; this is not an M2 hardware pass.
+Sprite readiness now includes loading all 74 small atlases; the total decoded
+RGBA estimate is 9.69 MiB. This removes first-use Copy/enemy image gaps. Auto-next
+waits while Pause/Hide is active. The sixteen-actor Chromium profile is recorded
+in `docs/validation/render-performance.json`, without claiming M2 CPU/power.
 
 The old prototype descriptions and PG-003 “next” tickets below are historical.
 Longer-term plans remain authoritative; the latest user instruction authorized

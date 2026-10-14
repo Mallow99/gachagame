@@ -8,9 +8,21 @@ export function spriteFrameIndex(definition,options={}){
   return clip[loop?step%clip.length:Math.min(step,clip.length-1)];
 }
 export class SpriteBank {
-  constructor(){this.definitions={};this.images=new Map();this.ready=this.loadManifest();}
-  async loadManifest(){this.definitions=manifest;}
-  load(key){if(this.images.has(key))return this.images.get(key);const d=this.definitions[key];if(!d)return null;const im=new Image();im.src=d.url;this.images.set(key,im);return im;}
+  constructor(){this.definitions={};this.images=new Map();this.loading=new Map();this.ready=this.loadManifest();}
+  async loadManifest(){
+    this.definitions=manifest;
+    if(typeof Image==='undefined')return;
+    // All current atlases total ~0.14 MiB compressed / 10 MiB decoded. Warming
+    // this bounded set avoids an invisible first frame on Copy/enemy changes.
+    for(const key of Object.keys(manifest))this.load(key);
+    await Promise.all(this.loading.values());
+  }
+  load(key){
+    if(this.images.has(key))return this.images.get(key);const d=this.definitions[key];if(!d)return null;
+    const im=new Image();this.images.set(key,im);
+    this.loading.set(key,new Promise(resolve=>{im.onload=()=>resolve(true);im.onerror=()=>resolve(false);}));
+    im.src=d.url;return im;
+  }
   draw(ctx,key,x,y,height,options={}){
     const d=this.definitions[key],im=this.load(key);if(!d||!im?.complete||!im.naturalWidth)return false;
     const index=spriteFrameIndex(d,options);

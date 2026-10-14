@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import manifest from '../assets/sprites/v1/manifest.mjs';
 import {content} from '../src/content/index.js';
-import {spriteFrameIndex} from '../src/render/sprite-bank.js';
+import {spriteFrameIndex,SpriteBank} from '../src/render/sprite-bank.js';
 import {actorAnimation} from '../src/render/actor-animation.js';
 import {REVEAL_ART} from '../src/presentation/art.js';
 
@@ -54,4 +54,13 @@ test('Dedede reaches his final jump pose at the physical landing, while spinning
  const animation=actorAnimation(actor,1.9,manifest.dedede);assert.equal(spriteFrameIndex(manifest.dedede,animation),manifest.dedede.clips.ultimate_entry.at(-1));
  actor.state='charge';actor.action.ability={kind:'basic',behavior:'charge'};
  assert.equal(actorAnimation(actor,1.9,manifest.buzzy).progress,undefined);
+});
+test('sprite readiness waits for the initial atlas images and a failed image cannot leave it hanging',async()=>{
+ const previous=globalThis.Image,images=[];globalThis.Image=class{constructor(){images.push(this);}set src(value){this.url=value;}};
+ try{
+  const bank=new SpriteBank();let ready=false;bank.ready.then(()=>{ready=true;});await Promise.resolve();assert.equal(ready,false);
+  assert.equal(images.length,Object.keys(manifest).length);
+  for(const im of images.slice(0,-1)){im.complete=true;im.naturalWidth=64;im.onload();}await Promise.resolve();assert.equal(ready,false);
+  images.at(-1).onerror();await bank.ready;assert.equal(bank.load('kirby'),bank.images.get('kirby'));
+ }finally{if(previous===undefined)delete globalThis.Image;else globalThis.Image=previous;}
 });

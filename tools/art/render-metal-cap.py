@@ -7,7 +7,7 @@ material make the source shape readable; the native environment map supplies
 a slight tint. This does not reproduce the N64's renderer exactly.
 """
 from pathlib import Path
-import zipfile,tempfile
+import zipfile,tempfile,json,hashlib
 import bpy,bmesh
 from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[2]
@@ -49,4 +49,11 @@ for location,power,size in [((1,3,6),450,5),((-4,-1,4),250,4),((3,-4,2),180,3)]:
  bpy.ops.object.light_add(type='AREA',location=location);light=bpy.context.object;light.data.energy=power;light.data.shape='DISK';light.data.size=size;light.rotation_euler=(Vector((0,0,1))-light.location).to_track_quat('-Z','Y').to_euler()
 bpy.ops.object.camera_add(location=(5,-10,5));camera=bpy.context.object;camera.rotation_euler=(Vector((0,0,1.15))-camera.location).to_track_quat('-Z','Y').to_euler();camera.data.type='ORTHO';camera.data.ortho_scale=4.3;scene.camera=camera
 scene.render.filepath=str(ROOT/'assets/portraits/supply/metal-cap-render.png');bpy.ops.render.render(write_still=True)
+registry=ROOT/'assets/portraits/supply/INTAKE.json'
+if registry.exists():
+ records=json.loads(registry.read_text());render=Path(scene.render.filepath)
+ for record in records:
+  if record.get('sourceType')=='rendered-source-model'and record['id']=='metal-cap':
+   record['sha256']=hashlib.sha256(render.read_bytes()).hexdigest();record['bytes']=render.stat().st_size;record['dimensions']=[scene.render.resolution_x,scene.render.resolution_y]
+ registry.write_text(json.dumps(records,indent=2)+'\n')
 print('Rendered original cap geometry with studio metal shading and native texture tint.')

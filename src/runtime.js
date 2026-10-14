@@ -18,7 +18,7 @@ export function createRuntime(game,canvas,{transparent=false,onProgress=()=>{},o
     const delta=Math.min(0.25,(now-last)/1000);last=now;accumulator+=delta;
     while(accumulator>=RULES.step){game.tick(RULES.step);accumulator-=RULES.step;}
     if(game.battle?.done&&finishedRun!==game.battle.runId){finishedRun=game.battle.runId;if(game.state.session.auto&&game.battle.win&&!game.state.session.pendingBattleReward)restartAt=now+2500;}
-    if(restartAt&&now>=restartAt){restartAt=null;
+    if(restartAt&&now>=restartAt&&!game.paused&&!game.state.profile.stripHidden){restartAt=null;
       if(game.state.session.auto){const mode=game.state.session.mode,next=game.activeEncounter;
         const expected=next.localStage===1?1:next.localStage<4?2:3;
         if(mode==='story'&&game.party.length<expected){game.auto(false);game.toast('A new companion will help. Open Summon or build your party.');}
