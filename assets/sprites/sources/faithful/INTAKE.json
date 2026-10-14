@@ -1,0 +1,296 @@
+[
+  {
+    "name": "smb-mario-luigi",
+    "page": "https://www.spriters-resource.com/nes/supermariobros/asset/50365/",
+    "download": "https://www.spriters-resource.com/media/assets/47/50365.png?updated=1789504000",
+    "path": "assets/sprites/sources/faithful/smb-mario-luigi.png",
+    "bytes": 50775,
+    "sha256": "afc9847e1981792c1fdf951114b20c5761ac0bea2cad7165e2d2cbd7170b7da6",
+    "creditExcerpt": "Uploaded By Superjustinbros Size 49.58 KB (584x469) Format PNG (image/png) Hits 763,101 Tags (4): Character Luigi (Super Mario) Character Ma",
+    "dimensions": [
+      584,
+      469
+    ]
+  },
+  {
+    "name": "smb-enemies",
+    "page": "https://www.spriters-resource.com/nes/supermariobros/asset/52570/",
+    "download": "https://www.spriters-resource.com/media/assets/49/52570.png?updated=1763924206",
+    "path": "assets/sprites/sources/faithful/smb-enemies.png",
+    "bytes": 48324,
+    "sha256": "eadcf004d480da6607f8a26481b4e5f174563cc4716317315350b36dd88b78f6",
+    "creditExcerpt": "Uploaded By Superjustinbros Size 47.19 KB (436x530) Format PNG (image/png) Hits 479,479 Tags (17): arrow_right Character Bowser (Super Mario",
+    "dimensions": [
+      436,
+      530
+    ]
+  },
+  {
+    "name": "smb-npcs-items",
+    "page": "https://www.spriters-resource.com/nes/supermariobros/asset/52569/",
+    "download": "https://www.spriters-resource.com/media/assets/49/52569.png?updated=1764007432",
+    "path": "assets/sprites/sources/faithful/smb-npcs-items.png",
+    "bytes": 58051,
+    "sha256": "4d9376c623a1a1be0dbc09d1f695aec66c0e4f23548df23cbc180da246759bb8",
+    "creditExcerpt": "Uploaded By Superjustinbros Size 56.69 KB (592x572) Format PNG (image/png) Hits 292,481 Tags (14): arrow_right Character Princess Peach / To",
+    "dimensions": [
+      592,
+      572
+    ]
+  },
+  {
+    "name": "ka-kirby",
+    "page": "https://www.spriters-resource.com/nes/kirbyadv/asset/49192/",
+    "download": "https://www.spriters-resource.com/media/assets/46/49192.png?updated=1755472985",
+    "path": "assets/sprites/sources/faithful/ka-kirby.png",
+    "bytes": 112787,
+    "sha256": "2c293c5dbcd1f0a3d3f9fc52f4bc1b911d065ce23e4c6e9496e2defbf321a2e1",
+    "creditExcerpt": "Uploaded By Jermungandr Contributors QuadFactor , UltraHype97 Size 110.14 KB (500x3449) Format PNG (image/png) Hits 176,918 Tags (12): arrow",
+    "dimensions": [
+      500,
+      3449
+    ]
+  },
+  {
+    "name": "ka-enemies",
+    "page": "https://www.spriters-resource.com/nes/kirbyadv/asset/49202/",
+    "download": "https://www.spriters-resource.com/media/assets/46/49202.png?updated=1755472985",
+    "path": "assets/sprites/sources/faithful/ka-enemies.png",
+    "bytes": 45731,
+    "sha256": "319cf1bdde5424dd9f22b8f2b1f78d5f54e243068960022c3ac0d14cee507f65",
+    "creditExcerpt": "Uploaded By Jermungandr Size 44.66 KB (518x1251) Format PNG (image/png) Hits 84,962 Tags (11): arrow_right Species Broom Hatter (Kirby) Spec",
+    "dimensions": [
+      518,
+      1251
+    ]
+  },
+  {
+    "name": "ka-meta-knight",
+    "page": "https://www.spriters-resource.com/nes/kirbyadv/asset/2614/",
+    "download": "https://www.spriters-resource.com/media/assets/3/2614.png?updated=1755472409",
+    "path": "assets/sprites/sources/faithful/ka-meta-knight.png",
+    "bytes": 37313,
+    "sha256": "f1d8de14c1f93a1791c745cd2ff92dbc87b4a2fbc30597327241815b813b0eaa",
+    "creditExcerpt": "Uploaded By someguy Contributors Jermungandr Size 36.44 KB (504x896) Format PNG (image/png) Hits 50,790 Tags (5): Character Meta Knight (Kir",
+    "dimensions": [
+      504,
+      896
+    ]
+  },
+  {
+    "name": "ka-dedede",
+    "page": "https://www.spriters-resource.com/nes/kirbyadv/asset/49205/",
+    "download": "https://www.spriters-resource.com/media/assets/46/49205.png?updated=1755472985",
+    "path": "assets/sprites/sources/faithful/ka-dedede.png",
+    "bytes": 22276,
+    "sha256": "a52eec59be04aa664011879cc0fe55e4348ce9c9b55a20ae581956e33b5e13a8",
+    "creditExcerpt": "Uploaded By Jermungandr Size 21.75 KB (509x747) Format PNG (image/png) Hits 46,655 Tags (4): Character King Dedede (Kirby) Series Kirby Loca",
+    "dimensions": [
+      509,
+      747
+    ]
+  },
+  {
+    "name": "bandana-nes-custom",
+    "page": "https://www.spriters-resource.com/custom_edited/kirbycustoms/asset/278725/",
+    "download": "https://www.spriters-resource.com/media/assets/276/278725.png?updated=1755495739",
+    "path": "assets/sprites/sources/faithful/bandana-nes-custom.png",
+    "bytes": 3942,
+    "sha256": "397709b1b216a8aa329e16497d7ed097900ab32808914b32bb7f27de600ffaf6",
+    "creditExcerpt": "Uploaded By Wet-Dry Guy Size 3.85 KB (112x120) Format PNG (image/png) Hits 1,195 Tags (2): Character Bandana Waddle Dee (Kirby) Custom Style",
+    "dimensions": [
+      112,
+      120
+    ]
+  },
+  {
+    "name": "bandana-model",
+    "page": "https://models.spriters-resource.com/wii/kirbysreturntodreamland/asset/287336/",
+    "download": "https://models.spriters-resource.com/media/assets/284/287336.zip?updated=1755497215",
+    "path": "assets/sprites/sources/faithful/bandana-model.zip",
+    "bytes": 216927,
+    "sha256": "e939c527c64ecff04ededbbed49e86eadf49ccb78b15b670be157b57a2461789",
+    "creditExcerpt": "Uploaded By Garamonde Size 211.84 KB (28 items) arrow_right Credits.txt Goggles/DeeGoggles.png Goggles/DeeGogglesRef.png Goggles/Model.md5me"
+  },
+  {
+    "name": "gb-kirby",
+    "page": "https://www.spriters-resource.com/game_boy_gbc/kirbydl/asset/2796/",
+    "download": "https://www.spriters-resource.com/media/assets/3/2796.png?updated=1755472411",
+    "path": "assets/sprites/sources/faithful/gb-kirby.png",
+    "bytes": 27262,
+    "sha256": "f0241eebdeeef70e68ef1db1f65a1826be81337b986cb3bdd10b2653aaf3c356",
+    "creditExcerpt": "Uploaded By Sonikku Contributors thejohnston7 Size 26.62 KB (242x583) Format PNG (image/png) Hits 73,778 Tags (7): Character Kirby (Nintendo",
+    "dimensions": [
+      242,
+      583
+    ]
+  },
+  {
+    "name": "ka-whispy",
+    "page": "https://www.spriters-resource.com/nes/kirbyadv/asset/49193/",
+    "download": "https://www.spriters-resource.com/media/assets/46/49193.png?updated=1755472985",
+    "path": "assets/sprites/sources/faithful/ka-whispy.png",
+    "bytes": 10725,
+    "sha256": "85f3bb78a7c6e39b9a5830a4c4d67b8892a143936299a78715abee415b724fe7",
+    "creditExcerpt": "Uploaded By Jermungandr Size 10.47 KB (248x842) Format PNG (image/png) Hits 25,830 Tags (4): Character Whispy Woods (Kirby) Series Kirby Foo",
+    "dimensions": [
+      248,
+      842
+    ]
+  },
+  {
+    "name": "ka-kracko",
+    "page": "https://www.spriters-resource.com/nes/kirbyadv/asset/49200/",
+    "download": "https://www.spriters-resource.com/media/assets/46/49200.png?updated=1755472985",
+    "path": "assets/sprites/sources/faithful/ka-kracko.png",
+    "bytes": 65689,
+    "sha256": "0a91be60a3748d7d95120247f297486a00ffffdcdca51e6bacb5a6edf4f79404",
+    "creditExcerpt": "Uploaded By Jermungandr Size 64.15 KB (866x2303) Format PNG (image/png) Hits 24,190 Tags (5): Character Kracko (Kirby) Series Kirby Anatomy ",
+    "dimensions": [
+      866,
+      2303
+    ]
+  },
+  {
+    "name": "ka-midbosses",
+    "page": "https://www.spriters-resource.com/nes/kirbyadv/asset/49199/",
+    "download": "https://www.spriters-resource.com/media/assets/46/49199.png?updated=1755472985",
+    "path": "assets/sprites/sources/faithful/ka-midbosses.png",
+    "bytes": 114581,
+    "sha256": "3fbde848ab19ebf9ce7e63006d28a19d0b77edf9aa6344e8595a9664f9b460bf",
+    "creditExcerpt": "Uploaded By Jermungandr Size 111.90 KB (762x1423) Format PNG (image/png) Hits 45,643 Tags (14): arrow_right Character Bonkers (Kirby) Charac",
+    "dimensions": [
+      762,
+      1423
+    ]
+  },
+  {
+    "name": "ka-orb",
+    "page": "https://www.spriters-resource.com/nes/kirbyadv/asset/49198/",
+    "download": "https://www.spriters-resource.com/media/assets/46/49198.png?updated=1755472985",
+    "path": "assets/sprites/sources/faithful/ka-orb.png",
+    "bytes": 20196,
+    "sha256": "69c9ff6c4c7493424ee0d41fd6f97e3a300439ca4d7dd8456ea8de66d90b8e79",
+    "creditExcerpt": "Uploaded By Jermungandr Size 19.72 KB (452x1056) Format PNG (image/png) Hits 25,634 Tags (2): Character Nightmare (Kirby) Series Kirby Anima",
+    "dimensions": [
+      452,
+      1056
+    ]
+  },
+  {
+    "name": "ka-nightmare",
+    "page": "https://www.spriters-resource.com/nes/kirbyadv/asset/49197/",
+    "download": "https://www.spriters-resource.com/media/assets/46/49197.png?updated=1755472985",
+    "path": "assets/sprites/sources/faithful/ka-nightmare.png",
+    "bytes": 43988,
+    "sha256": "811fbfec9137d04c96340596318d37cec49f1f19e4e88e423a2da0c33880dfd2",
+    "creditExcerpt": "Uploaded By Jermungandr Size 42.96 KB (1107x790) Format PNG (image/png) Hits 40,063 Tags (3): Character Nightmare (Kirby) Series Kirby Occup",
+    "dimensions": [
+      1107,
+      790
+    ]
+  },
+  {
+    "name": "ka-soldiers",
+    "page": "https://www.spriters-resource.com/nes/kirbyadv/asset/49834/",
+    "download": "https://www.spriters-resource.com/media/assets/47/49834.png?updated=1755472992",
+    "path": "assets/sprites/sources/faithful/ka-soldiers.png",
+    "bytes": 18315,
+    "sha256": "d8d6a75e6b86c45589c2dc09753d363f862783a6449369f5bcfee467edfa13ea",
+    "creditExcerpt": "Uploaded By Jermungandr Size 17.89 KB (697x791) Format PNG (image/png) Hits 25,704 Animations (0) Comments (1) You must be logged in to post",
+    "dimensions": [
+      697,
+      791
+    ]
+  },
+  {
+    "name": "ss-knuckle-joe",
+    "page": "https://www.spriters-resource.com/snes/kirbysuperstar/asset/2885/",
+    "download": "https://www.spriters-resource.com/media/assets/3/2885.png?updated=1755472411",
+    "path": "assets/sprites/sources/faithful/ss-knuckle-joe.png",
+    "bytes": 113982,
+    "sha256": "ee03ab6888caebbce90bf18a15ac9692c6699dd2805927e7fde4236ca61ec2c5",
+    "creditExcerpt": "Uploaded By Jermungandr Size 111.31 KB (405x1118) Format PNG (image/png) Hits 13,206 Tags (3): Occupation Martial Artist / Monk Species Knuc"
+  },
+  {
+    "name": "ss-bio-spark",
+    "page": "https://www.spriters-resource.com/snes/kirbysuperstar/asset/2845/",
+    "download": "https://www.spriters-resource.com/media/assets/3/2845.png?updated=1755472411",
+    "path": "assets/sprites/sources/faithful/ss-bio-spark.png",
+    "bytes": 91760,
+    "sha256": "20eed469b59e9a65a4b56a81bca3d1bfd7d9055e729edfeace78567237342843",
+    "creditExcerpt": "Uploaded By Jermungandr Size 89.61 KB (776x719) Format PNG (image/png) Hits 13,407 Tags (4): Series Kirby Occupation Ninja / Kunoichi Specie"
+  },
+  {
+    "name": "bandana-adaptation",
+    "page": "https://www.spriters-resource.com/custom_edited/kirbycustoms/asset/49583/",
+    "download": "https://www.spriters-resource.com/media/assets/47/49583.png?updated=1755472989",
+    "path": "assets/sprites/sources/faithful/bandana-adaptation.png",
+    "bytes": 112234,
+    "sha256": "5f6b927e18e209aed24db3982ef04009a9d12d4ac109f38e31307ab2293395be",
+    "creditExcerpt": "Uploaded By gameboy09 Size 109.60 KB (884x742) Format PNG (image/png) Hits 47,913 Tags (3): Character Bandana Waddle Dee (Kirby) Custom Styl"
+  },
+  {
+    "name": "ka-paint-roller",
+    "page": "https://www.spriters-resource.com/nes/kirbyadv/asset/49196/",
+    "download": "https://www.spriters-resource.com/media/assets/46/49196.png?updated=1755472985",
+    "path": "assets/sprites/sources/faithful/ka-paint-roller.png",
+    "bytes": 12808,
+    "sha256": "2525f6188889365e2fedb202f93a1905851cd5196790c6a4f7d5c4bcc32c7117",
+    "creditExcerpt": "Jermungandr / HAL Laboratory"
+  },
+  {
+    "name": "smb-bowser-expanded",
+    "page": "https://www.spriters-resource.com/custom_edited/mariocustoms/asset/123993/",
+    "download": "https://www.spriters-resource.com/media/assets/121/123993.png?updated=1755479557",
+    "path": "assets/sprites/sources/faithful/smb-bowser-expanded.png",
+    "bytes": 1582,
+    "sha256": "ad9234d047dc304eebb981b8ebbe24f4b563e258bd017dd1f788a6db6fc8b0dd",
+    "creditExcerpt": "Uploaded By DracoZ Size 1.54 KB (179x69) Format PNG (image/png) Hits 15,146 Tags (3): Character Bowser (Super Mario) Cus"
+  },
+  {
+    "name": "smb-bowser-alt",
+    "page": "https://www.spriters-resource.com/custom_edited/mariocustoms/asset/269946/",
+    "download": "https://www.spriters-resource.com/media/assets/267/269946.png?updated=1757830785",
+    "path": "assets/sprites/sources/faithful/smb-bowser-alt.png",
+    "bytes": 5545,
+    "sha256": "6b3145d5b99a14ede8edeea5231f2bf6ecaeac2d37bd5299ecbb845280e3ae0d",
+    "creditExcerpt": "Uploaded By hansungkee Size 5.42 KB (576x440) Format PNG (image/png) Hits 4,891 Tags (6): Character Bowser (Super Mario)"
+  },
+  {
+    "name": "smb-bowser-2026",
+    "page": "https://www.spriters-resource.com/custom_edited/mariocustoms/asset/596129/",
+    "download": "https://www.spriters-resource.com/media/assets/574/596129.png?updated=1787664066",
+    "path": "assets/sprites/sources/faithful/smb-bowser-2026.png",
+    "bytes": 9571,
+    "sha256": "890d1d48ece7a87da2d2f0f2dccfa2dd6c7a7dc8e63d61763dedf5d258eb25ca",
+    "creditExcerpt": "Uploaded By Side Steppa Size 9.35 KB (233x274) Format PNG (image/png) Hits 1,270 Tags (2): Character Bowser (Super Mario"
+  },
+  {
+    "name": "smb-bowser-93763",
+    "page": "https://www.spriters-resource.com/custom_edited/mariocustoms/asset/93763/",
+    "download": "https://www.spriters-resource.com/media/assets/91/93763.png?updated=1755475917",
+    "path": "assets/sprites/sources/faithful/smb-bowser-93763.png",
+    "bytes": 6742,
+    "sha256": "7e7ef8693af353181a5875620518150ae720ecb6d5c0b218954ea551c442f366",
+    "creditExcerpt": "Uploaded By Ridge Troopa Size 6.58 KB (176x121) Format PNG (image/png) Hits 31,068 Tags (3): Charact"
+  },
+  {
+    "name": "smb-bowser-125550",
+    "page": "https://www.spriters-resource.com/custom_edited/mariocustoms/asset/125550/",
+    "download": "https://www.spriters-resource.com/media/assets/122/125550.png?updated=1755479678",
+    "path": "assets/sprites/sources/faithful/smb-bowser-125550.png",
+    "bytes": 5526,
+    "sha256": "b9977c7c3288b0001b55b37c29c18f418463a009b67d2ba8e9f0576119de3180",
+    "creditExcerpt": "Uploaded By Rakoon CD Size 5.40 KB (220x110) Format PNG (image/png) Hits 9,593 Tags (2): Character B"
+  },
+  {
+    "name": "smb-bowser-180958",
+    "page": "https://www.spriters-resource.com/custom_edited/mariocustoms/asset/180958/",
+    "download": "https://www.spriters-resource.com/media/assets/178/180958.png?updated=1755486969",
+    "path": "assets/sprites/sources/faithful/smb-bowser-180958.png",
+    "bytes": 2851,
+    "sha256": "65b5b44f6d9cfe4bf3dccf6db8e2979da9f5e50a7ac539b4ea73fcae3aed4ac3",
+    "creditExcerpt": "Uploaded By FungiCaptain Size 2.78 KB (562x51) Format PNG (image/png) Hits 13,037 Tags (2): Characte"
+  }
+]

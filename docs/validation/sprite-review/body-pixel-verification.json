@@ -1,0 +1,383 @@
+{
+  "method": "Actual source/atlas opaque-pixel counts for every extracted frame; palette swaps preserve alpha. Composite tree/cloud layers are separately reviewed.",
+  "atlases": [
+    {
+      "key": "mario",
+      "sourceGameId": "super-mario-bros-1985",
+      "frames": 6,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "luigi",
+      "sourceGameId": "super-mario-bros-1985",
+      "frames": 6,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "toad",
+      "sourceGameId": "super-mario-bros-1985",
+      "frames": 1,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "peach",
+      "sourceGameId": "super-mario-bros-1985",
+      "frames": 1,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "goomba",
+      "sourceGameId": "super-mario-bros-1985",
+      "frames": 3,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "koopa",
+      "sourceGameId": "super-mario-bros-1985",
+      "frames": 4,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "piranha",
+      "sourceGameId": "super-mario-bros-1985",
+      "frames": 2,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "hammer-bro",
+      "sourceGameId": "super-mario-bros-1985",
+      "frames": 4,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "bowser",
+      "sourceGameId": "super-mario-bros-1985",
+      "frames": 7,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "blooper",
+      "sourceGameId": "super-mario-bros-1985",
+      "frames": 2,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "buzzy",
+      "sourceGameId": "super-mario-bros-1985",
+      "frames": 2,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "cheep",
+      "sourceGameId": "super-mario-bros-1985",
+      "frames": 2,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "lakitu",
+      "sourceGameId": "super-mario-bros-1985",
+      "frames": 2,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "spiny",
+      "sourceGameId": "super-mario-bros-1985",
+      "frames": 2,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "bullet",
+      "sourceGameId": "super-mario-bros-1985",
+      "frames": 1,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "podoboo",
+      "sourceGameId": "super-mario-bros-1985",
+      "frames": 1,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "kirby",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 24,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "kirby-fire",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 18,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "kirby-cutter",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 9,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "kirby-sword",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 15,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "kirby-hammer",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 14,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "kirby-beam",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 11,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "kirby-spark",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 10,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "kirby-ice",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 10,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "waddle-dee",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 2,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "parasol",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 2,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "poppy",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 6,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "sir-kibble",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 3,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "chilly",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 3,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "bronto",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 2,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "sword-knight",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 5,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "waddle-doo",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 2,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "wheelie",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 3,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "scarfy",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 4,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "bonkers",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 11,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "dedede",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 16,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "nightmare-orb",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 4,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "nightmare",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 4,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "hot-head",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 3,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "sparky",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 4,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "rocky",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 3,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "laser-ball",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 2,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "paint-roller",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 9,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "knuckle-joe",
+      "sourceGameId": "kirby-super-star-1996",
+      "frames": 25,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "bio-spark",
+      "sourceGameId": "kirby-super-star-1996",
+      "frames": 23,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "bandana",
+      "sourceGameId": "kirbys-return-to-dream-land-2011",
+      "frames": 36,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "bandana-spear",
+      "sourceGameId": "kirbys-return-to-dream-land-2011",
+      "frames": 1,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "kabu",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 3,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "meta-knight",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 26,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "kirby-dream-land",
+      "sourceGameId": "kirbys-dream-land-1992",
+      "frames": 25,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "blade-knight",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 5,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "nes-hammer",
+      "sourceGameId": "super-mario-bros-1985",
+      "frames": 1,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "nes-flame",
+      "sourceGameId": "super-mario-bros-1985",
+      "frames": 1,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "nes-cutter",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 1,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "nes-star",
+      "sourceGameId": "kirbys-dream-land-1992",
+      "frames": 1,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "nes-bomb",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 1,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "nes-apple",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 1,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "nes-kunai",
+      "sourceGameId": "kirby-super-star-1996",
+      "frames": 1,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "kirby-star-rod",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 16,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "ka-flame",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 4,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "ka-spark-field",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 2,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "ka-ice-breath",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 6,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "ka-star",
+      "sourceGameId": "kirbys-adventure-1993",
+      "frames": 1,
+      "sourcePixelsPreserved": true
+    }
+  ]
+}

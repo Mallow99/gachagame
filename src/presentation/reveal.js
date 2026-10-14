@@ -9,7 +9,7 @@ const itemOf=r=>(r.kind==='unit'?content.units:r.kind==='powerup'?content.poweru
 const label=r=>r.isNew?'NEW':r.kind==='unit'?`★ ${r.stars} · +${r.echoes} Echoes`:`+${r.echoes} Echoes`;
 export function collectibleArt(item,kind='unit',cls=''){
   const art=kind==='unit'&&REVEAL_ART[item.id];
-  if(art&&cls==='hero-splash')return `<img class="${cls} source-art ${art.style} ${item.treatment==='game-boy'?'game-boy':''}" src="${art.url}" alt="${escape(item.name)}" draggable="false"><small class="art-credit">${escape(art.credit)}</small>`;
+  if(art&&cls==='hero-splash')return `<img class="${cls} source-art ${art.style}" src="${art.url}" alt="${escape(item.name)}" draggable="false"><small class="art-credit">${escape(art.credit)}</small>`;
   if(kind==='unit'&&item.spriteKey)return `<img class="${cls} ${item.treatment==='game-boy'?'game-boy':''}" src="${spriteIcon(item.spriteKey)}" alt="${escape(item.name)}" draggable="false">`;
   if(kind==='unit')return `<span class="collectible-glyph ${cls}">?</span>`;
   return supplyArt(item,kind,cls);
@@ -57,9 +57,11 @@ export async function showReceipt(game,receipt,act,onInspect=()=>{}){
       if(reduced)quote.textContent='“'+text+'”';else for(let i=0;i<=text.length;i++){if(!await wait(35))return;quote.textContent='“'+text.slice(0,i)+(i===text.length?'”':'');}
       if(!await wait(reduced?150:1000))return;
     }
-    stage.innerHTML=`<div class="hero-reveal ${r.rarity} ${receipt.sagaId} ${reduced?'reduced':''}"><div class="reveal-rays"></div><div class="reveal-emblem">${receipt.sagaId==='mario'?'1985':'1993'}</div>${collectibleArt(item,r.kind,'hero-splash')}<div class="rarity-letters">${[...r.rarity].map((letter,i)=>`<b style="--i:${i}">${letter}</b>`).join('')}</div><div class="reveal-name"><small>${escape(item.title||item.grantedTrait||'ASSIST PAGE')}</small><h2>${escape(item.name)}</h2><p>${escape(item.sourceGameId?content.worlds.get(item.sourceGameId)?.name||item.sourceGameId:destination)}</p><span class="reveal-stars">${'★'.repeat(rarityRank(r.rarity)+3)}</span><p class="reveal-new">${label(r)}</p></div></div>`;
+    stage.innerHTML=`<div class="hero-reveal ${r.rarity} ${receipt.sagaId} ${reduced?'reduced':''}"><div class="reveal-rays"></div><div class="reveal-emblem">${escape(item.sourceGameId?.match(/\d{4}$/)?.[0]||'')}</div>${collectibleArt(item,r.kind,'hero-splash')}<div class="rarity-letters">${[...r.rarity].map((letter,i)=>`<b style="--i:${i}">${letter}</b>`).join('')}</div><div class="reveal-name"><small>${escape(item.title||item.grantedTrait||'ASSIST PAGE')}</small><h2>${escape(item.name)}</h2><p>${escape(item.sourceGameId?content.worlds.get(item.sourceGameId)?.name||item.sourceGameId:destination)}</p><span class="reveal-stars">${'★'.repeat(rarityRank(r.rarity)+3)}</span><p class="reveal-new">${label(r)}</p></div></div>`;
     if(!rare)voice(game.state.profile,item.id);chime(game.state.profile,r.rarity);
-    if(!await wait(reduced?300:rare?3200:r.rarity==='SR'?1600:900))return;
+    // Reduced motion keeps the artwork and identity readable; it suppresses
+    // motion rather than turning a rare arrival into a brief flash.
+    if(!await wait(reduced?(rare?1800:r.rarity==='SR'?1200:900):rare?3200:r.rarity==='SR'?1600:900))return;
   }
   results();
 }

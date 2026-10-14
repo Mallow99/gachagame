@@ -1,12 +1,12 @@
 {
   "build": "v1-playable",
-  "at": "2026-10-14T13:18:59.791Z",
-  "seconds": 57.944,
-  "seeds": 50,
+  "at": "2026-10-14T16:22:14.574Z",
+  "seconds": 6.415,
+  "seeds": 5,
   "content": {
     "fighters": 28,
     "encounters": 35,
-    "sprites": 58
+    "sprites": 72
   },
   "banners": [
     {
@@ -97,11 +97,11 @@
       "party": [
         "classic-mario"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 102,
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 109,
       "maxSeconds": 115,
-      "meanHp": 0.2654545454545454
+      "meanHp": 0.3118181818181818
     },
     {
       "id": "smb1-02",
@@ -110,11 +110,11 @@
         "classic-mario",
         "classic-luigi"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 75,
-      "maxSeconds": 88,
-      "meanHp": 0.7329254829806807
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 79,
+      "maxSeconds": 84,
+      "meanHp": 0.735510579576817
     },
     {
       "id": "smb1-03",
@@ -123,11 +123,11 @@
         "classic-mario",
         "classic-luigi"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 80,
-      "maxSeconds": 106,
-      "meanHp": 0.5247203874944958
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 83,
+      "maxSeconds": 92,
+      "meanHp": 0.5919859092910612
     },
     {
       "id": "smb1-04",
@@ -138,11 +138,11 @@
         "toad",
         "princess-peach"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 102,
-      "maxSeconds": 119,
-      "meanHp": 0.999481332439079
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 109,
+      "maxSeconds": 117,
+      "meanHp": 1
     },
     {
       "id": "smb1-05",
@@ -153,11 +153,11 @@
         "toad",
         "princess-peach"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 226,
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 228,
       "maxSeconds": 248,
-      "meanHp": 0.9993940634595702
+      "meanHp": 1
     },
     {
       "id": "smb1-06",
@@ -168,11 +168,11 @@
         "toad",
         "princess-peach"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 107,
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 110,
       "maxSeconds": 120,
-      "meanHp": 0.9849785056294779
+      "meanHp": 0.9968065506653019
     },
     {
       "id": "smb1-07",
@@ -183,11 +183,11 @@
         "toad",
         "princess-peach"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 87,
-      "maxSeconds": 102,
-      "meanHp": 0.9538087774294669
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 89,
+      "maxSeconds": 98,
+      "meanHp": 0.961853448275862
     },
     {
       "id": "smb1-08",
@@ -198,11 +198,11 @@
         "toad",
         "princess-peach"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 92,
-      "maxSeconds": 116,
-      "meanHp": 0.9809222118088097
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 95,
+      "maxSeconds": 105,
+      "meanHp": 0.9886035613870666
     },
     {
       "id": "smb1-09",
@@ -213,11 +213,11 @@
         "toad",
         "princess-peach"
       ],
-      "wins": 50,
-      "trials": 50,
+      "wins": 5,
+      "trials": 5,
       "minSeconds": 113,
-      "maxSeconds": 144,
-      "meanHp": 0.9132322869955155
+      "maxSeconds": 139,
+      "meanHp": 0.8966457399103138
     },
     {
       "id": "smb1-10",
@@ -228,11 +228,11 @@
         "toad",
         "princess-peach"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 289,
-      "maxSeconds": 356,
-      "meanHp": 0.9038980257510729
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 313,
+      "maxSeconds": 333,
+      "meanHp": 0.9518798283261802
     },
     {
       "id": "smb1-11",
@@ -243,11 +243,11 @@
         "toad",
         "princess-peach"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 91,
-      "maxSeconds": 114,
-      "meanHp": 0.9825709592641261
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 98,
+      "maxSeconds": 109,
+      "meanHp": 0.9870466491458607
     },
     {
       "id": "smb1-12",
@@ -258,11 +258,11 @@
         "toad",
         "princess-peach"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 101,
-      "maxSeconds": 111,
-      "meanHp": 0.9993230624115705
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 103,
+      "maxSeconds": 108,
+      "meanHp": 1
     },
     {
       "id": "smb1-13",
@@ -273,11 +273,11 @@
         "toad",
         "princess-peach"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 101,
-      "maxSeconds": 112,
-      "meanHp": 0.9798155558898752
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 104,
+      "maxSeconds": 108,
+      "meanHp": 0.983727997592899
     },
     {
       "id": "smb1-14",
@@ -288,11 +288,11 @@
         "toad",
         "princess-peach"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 225,
-      "maxSeconds": 242,
-      "meanHp": 0.9989825824096732
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 231,
+      "maxSeconds": 237,
+      "meanHp": 0.9984396142219663
     },
     {
       "id": "smb1-15",
@@ -303,11 +303,11 @@
         "toad",
         "princess-peach"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 403,
-      "maxSeconds": 420,
-      "meanHp": 0.9153650137741048
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 410,
+      "maxSeconds": 418,
+      "meanHp": 0.9052561983471075
     },
     {
       "id": "ka-01",
@@ -315,11 +315,11 @@
       "party": [
         "adventure-kirby"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 90,
-      "maxSeconds": 102,
-      "meanHp": 0.39351685393258434
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 96,
+      "maxSeconds": 99,
+      "meanHp": 0.40786516853932586
     },
     {
       "id": "ka-02",
@@ -328,11 +328,11 @@
         "adventure-kirby",
         "parasol-waddle-dee"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 71,
-      "maxSeconds": 83,
-      "meanHp": 0.7944792939579092
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 75,
+      "maxSeconds": 78,
+      "meanHp": 0.7847748359357322
     },
     {
       "id": "ka-03",
@@ -341,11 +341,11 @@
         "adventure-kirby",
         "parasol-waddle-dee"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 83,
-      "maxSeconds": 90,
-      "meanHp": 0.8063617067359756
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 86,
+      "maxSeconds": 89,
+      "meanHp": 0.7881654754169373
     },
     {
       "id": "ka-04",
@@ -356,11 +356,11 @@
         "sir-kibble",
         "hot-head"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 66,
-      "maxSeconds": 81,
-      "meanHp": 0.9612485575291322
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 68,
+      "maxSeconds": 77,
+      "meanHp": 0.9573571671003507
     },
     {
       "id": "ka-05",
@@ -371,11 +371,11 @@
         "sir-kibble",
         "hot-head"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 191,
-      "maxSeconds": 216,
-      "meanHp": 0.9915385412349772
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 207,
+      "maxSeconds": 213,
+      "meanHp": 0.9861479486116866
     },
     {
       "id": "ka-06",
@@ -386,11 +386,11 @@
         "sir-kibble",
         "hot-head"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 63,
-      "maxSeconds": 76,
-      "meanHp": 0.943007666804807
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 66,
+      "maxSeconds": 71,
+      "meanHp": 0.9296208039784501
     },
     {
       "id": "ka-07",
@@ -401,11 +401,11 @@
         "sir-kibble",
         "hot-head"
       ],
-      "wins": 50,
-      "trials": 50,
+      "wins": 5,
+      "trials": 5,
       "minSeconds": 73,
-      "maxSeconds": 88,
-      "meanHp": 0.9506162387231091
+      "maxSeconds": 85,
+      "meanHp": 0.9544106275403985
     },
     {
       "id": "ka-08",
@@ -416,11 +416,11 @@
         "sir-kibble",
         "hot-head"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 53,
-      "maxSeconds": 62,
-      "meanHp": 0.9792347248576848
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 55,
+      "maxSeconds": 61,
+      "meanHp": 0.9759222011385198
     },
     {
       "id": "ka-09",
@@ -431,11 +431,11 @@
         "sir-kibble",
         "hot-head"
       ],
-      "wins": 50,
-      "trials": 50,
+      "wins": 5,
+      "trials": 5,
       "minSeconds": 61,
-      "maxSeconds": 66,
-      "meanHp": 0.9703562738333029
+      "maxSeconds": 65,
+      "meanHp": 0.9678027964408933
     },
     {
       "id": "ka-10",
@@ -446,11 +446,11 @@
         "sir-kibble",
         "hot-head"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 265,
-      "maxSeconds": 285,
-      "meanHp": 0.8422154648132056
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 268,
+      "maxSeconds": 275,
+      "meanHp": 0.8562641181581234
     },
     {
       "id": "ka-11",
@@ -461,11 +461,11 @@
         "sir-kibble",
         "hot-head"
       ],
-      "wins": 50,
-      "trials": 50,
+      "wins": 5,
+      "trials": 5,
       "minSeconds": 85,
-      "maxSeconds": 94,
-      "meanHp": 0.9712447622214833
+      "maxSeconds": 88,
+      "meanHp": 0.9786764216827404
     },
     {
       "id": "ka-12",
@@ -476,11 +476,11 @@
         "sir-kibble",
         "hot-head"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 64,
-      "maxSeconds": 68,
-      "meanHp": 0.8894621260343729
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 65,
+      "maxSeconds": 66,
+      "meanHp": 0.8852896244430299
     },
     {
       "id": "ka-13",
@@ -491,11 +491,11 @@
         "sir-kibble",
         "hot-head"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 71,
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 74,
       "maxSeconds": 81,
-      "meanHp": 0.920727272727273
+      "meanHp": 0.9198218364550023
     },
     {
       "id": "ka-14",
@@ -506,11 +506,11 @@
         "sir-kibble",
         "hot-head"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 71,
-      "maxSeconds": 79,
-      "meanHp": 0.9167635701275042
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 73,
+      "maxSeconds": 77,
+      "meanHp": 0.9157260473588342
     },
     {
       "id": "ka-15",
@@ -521,11 +521,11 @@
         "sir-kibble",
         "hot-head"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 358,
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 370,
       "maxSeconds": 397,
-      "meanHp": 0.6027720839433869
+      "meanHp": 0.6093146482604755
     },
     {
       "id": "ka-16",
@@ -536,11 +536,11 @@
         "sir-kibble",
         "hot-head"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 67,
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 69,
       "maxSeconds": 74,
-      "meanHp": 0.9016169446297532
+      "meanHp": 0.902837891927952
     },
     {
       "id": "ka-17",
@@ -551,11 +551,11 @@
         "sir-kibble",
         "hot-head"
       ],
-      "wins": 50,
-      "trials": 50,
+      "wins": 5,
+      "trials": 5,
       "minSeconds": 58,
-      "maxSeconds": 65,
-      "meanHp": 0.9289308605720125
+      "maxSeconds": 63,
+      "meanHp": 0.9302489785495404
     },
     {
       "id": "ka-18",
@@ -566,11 +566,11 @@
         "sir-kibble",
         "hot-head"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 76,
-      "maxSeconds": 82,
-      "meanHp": 0.8789888203311136
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 78,
+      "maxSeconds": 81,
+      "meanHp": 0.878880811289633
     },
     {
       "id": "ka-19",
@@ -581,11 +581,11 @@
         "sir-kibble",
         "hot-head"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 316,
-      "maxSeconds": 357,
-      "meanHp": 0.6315575562700964
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 319,
+      "maxSeconds": 345,
+      "meanHp": 0.6430026308097048
     },
     {
       "id": "ka-20",
@@ -596,16 +596,16 @@
         "sir-kibble",
         "hot-head"
       ],
-      "wins": 50,
-      "trials": 50,
-      "minSeconds": 317,
-      "maxSeconds": 328,
-      "meanHp": 0.8048114020364775
+      "wins": 5,
+      "trials": 5,
+      "minSeconds": 321,
+      "maxSeconds": 324,
+      "meanHp": 0.8188441311402034
     }
   ],
   "limits": [
-    "Seeded simulation and native canvas verification; browser CSS and macOS integration still require a real-device run.",
-    "All sprite treatments remain provisional; source credit and distribution review pending.",
+    "Seeded combat evidence. Chromium CSS/reveal evidence is recorded separately in sprite-review/browser/results.json; native macOS remains unverified.",
+    "Source-game sprites are reviewed; sparse native pose sets, authored signature effects and some portraits remain production work.",
     "Archives remain previews; source Spotlights are smaller playable pools."
   ]
 }

@@ -44,7 +44,9 @@ duplicates, Camps/Orders and the real Mushroom-to-Dream unlock path. Current
 command output is the authority on test counts, not historical handoff counts.
 
 `npm run validate:v1 -- --seeds 50 --write` runs the actual Battle engine for
-50 seeds per course. `validation/v1-latest.json` records the exact parties,
+50 seeds per course when requested. The current sprite pass rechecked five
+seeds per course (175 fights), all clear; the earlier build checked 50.
+`validation/v1-latest.json` records the current exact parties,
 ranks, durations and HP. Later Mushroom uses four classic R fighters; later
 Dream uses Kirby, Parasol Dee, Sir Kibble and Hot Head. This proves the recorded
 reference compositions without SSRs; it does not prove every pull outcome,
@@ -73,21 +75,31 @@ kit → Manual formulas. That does not prove CSS geometry. Native captures in
 
 ## Material limits and next production work
 
-This managed Linux sandbox refuses local socket operations: Chromium/Electron
-terminate during socket setup and the HTTP server cannot bind here. A real
-browser/M2 smoke pass remains required for the 360 × 600 CSS layout, keyboard
-dialogs, audio timing, tray/shortcut, full-screen spaces, click-through,
-dragging, pause/resume and save-on-quit. No browser/Mac screenshot or Mac
-performance pass is claimed.
+The network restrictions were removed during this sprite pass. Actual Chromium
+now passes the fresh playable flow, keyboard dialog dismissal, the 360 × 600
+observer CSS layout and three SSR source-art reveals. Evidence is in
+`validation/sprite-review/browser/results.json` and its screenshots. The
+observer bridge in that test is a local layout fixture; native M2 tray/shortcut,
+full-screen spaces, click-through, dragging, audio and performance still need
+an actual macOS pass.
 
-Source treatments remain provisional Grade B, including reused poses, palette
-reconstructions and enhanced boss/NPC sheets. Bandana now uses sourced walk,
-jab, jump and throw poses with separate held/thrown spear sources. Its copter
-and ultimate motion remain provisional. The 58-atlas source manifest
-records hashes/paths; original-game and artist authorship still need review.
-Supply symbols without approved art are original printed UI symbols. Full
-portraits, voice quotes and music are unfinished. Audio uses procedural
-effects/stings and the retained Mario demo clip.
+The opening fighter sprites now match their declared games; Game Boy Kirby and
+Blade Knight have separate atlases. Bandana uses the complete gameboy09 spear
+adaptation, selected after comparison with a rendered original Wii model whose
+archive has no animation tracks. Bowser uses Captain/FungiCaptain's expansion
+of the actual classic NES design. Bodies keep one source-pixel scale and a
+shared foot anchor across weapon poses. Finite clips hold their end frames;
+skills/ultimates and source projectile effects use the appropriate clips.
+Original source-game illustrations cover 22 pulls, including every current
+SSR, with actual version years and readable reduced-motion reveal times.
+See [the sprite review](SPRITE_REVIEW.md), current manifest and credited intake.
+
+Source fidelity is not final human approval of feel. Sparse SR pose sets,
+some authored signature effects, Whispy's assembled silhouette, remaining pull
+illustrations and non-sourced Assist symbols still need polish. Full voice
+quotes and music remain unfinished; audio uses procedural effects/stings and
+the retained Mario demo clip. Rarity/version changes were weighed and recorded,
+but ownership, rarity and banner balance were preserved in this pass.
 
 Regional Archives remain non-spendable until their exact 22-fighter rarity and
 quality gates and growth queues pass. Mythics, owned Star Rod Awakening,

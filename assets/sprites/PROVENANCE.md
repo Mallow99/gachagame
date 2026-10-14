@@ -1,41 +1,61 @@
 # Sprite and art intake for the private v1 build
 
-Every battle sprite is provisional. These assets are source sprites or declared
-derivatives; the project does not claim new ownership or clearance to distribute
-Nintendo characters, games, voices or fan art. The original files remain intact.
+The live fighter/enemy pipeline uses reviewed game-specific sheets, with
+faithful adaptations labeled explicitly. Source review is separate from final
+human approval of motion and interaction quality. Original source files and
+credits remain intact.
 
-`SOURCES.json` records each downloaded file's repository, path, Git blob SHA,
-SHA-256 and whether the build currently uses it. `v1/manifest.json` records the
-derived atlas hash, shared foot pivot, nine clips, treatment, grade and notes.
-Run `python tools/art/import-v1-sprites.py` to reproduce the atlases. Open
-`v1/contact-sheet.png` to review their identities.
+See [the sprite review](../../docs/SPRITE_REVIEW.md) for selection, animation,
+scale, comparison evidence, remaining quality work and the rarity proposal.
 
-| Intake | Source and credit | Treatment in this build |
+## Current sources
+
+| Source | Credit | Use |
 | --- | --- | --- |
-| SMB sprites and tiles | [meth-meth-method/super-mario](https://github.com/meth-meth-method/super-mario), Nintendo's *Super Mario Bros.* source graphics | Native NES Mario and enemies, nearest-neighbor atlas extraction |
-| Luigi, Toad, Peach, Podoboo | [SkyanUltra/Super-Mario-Bros.-Remastered-Public](https://github.com/SkyanUltra/Super-Mario-Bros.-Remastered-Public) | Declared remastered/classic reconstruction; unused green palette masks are retained as intake, never rendered as characters |
-| Kirby and Copy poses | [cstack/kirby-clone](https://github.com/cstack/kirby-clone) | Enhanced sheet with unverified original-game provenance; seven visible Copy treatments, with Spark and Ice palette reconstructions |
-| Kirby enemy palette sheet and Valley backgrounds | The same repository; sheet credits **Drshnaps**, HAL Laboratory / Nintendo, *Kirby's Adventure* (NES) | Native indexed enemy source, declared fire/stone/laser palette reconstructions; full scene strips extracted without the sheet labels |
-| Kirby enemies and bosses | [Happiiz/KirboMod](https://github.com/Happiiz/KirboMod) | Enhanced/custom treatment; source animation indexes inspected for Dedede, Bonkers and Whispy. Original/custom authorship still needs review |
-| Meta Knight, Paint Roller, Sparky, Knuckle Joe, Bio Spark | [Arisotura/Blargboard-extras](https://github.com/Arisotura/Blargboard-extras/tree/master/ranksets/kirby) animated Kirby rank set | Animated source poses plus marker-driven motion. Their source-game/artist provenance is unverified; enhanced treatment, no final NES claim |
-| Bandana Waddle Dee and spear | Happiiz/KirboMod, `Projectiles/BandanaDee/` | Source idle, six walk, three jab, jump and two throw poses; separately sourced held/thrown spears. Copter and ultimate motion remain provisional; original-game/artist review pending |
-| Star Rod | Happiiz/KirboMod, `Items/Weapons/StarRod.png` | Finale-only encounter prop. No Star Rod fighter or paid Mythic pool is shipped |
-| Kabu Assist | Happiiz/KirboMod, `NPCs/Kabu.png` | Four source turn poses; brief entrance/doorway effect, never a fifth fighter. Whispy and Kracko Assists also reuse their sourced body sheets at declared Assist scale |
+| Original SMB NES sheets on The Spriters Resource | Superjustinbros / Nintendo | Mario, Luigi, rescue NPCs, ordinary enemies and native weapons |
+| Original Adventure NES sheets on The Spriters Resource | Drshnaps (Jermungandr) / HAL Laboratory | Kirby, Copy poses, enemies, bosses, weapons and effects |
+| Adventure Kirby additions | QuadFactor, UltraHype97 | Additional source Kirby poses |
+| Adventure Meta Knight sheet | someguy, Jermungandr / HAL Laboratory | Walk, slash, guard and spin |
+| Dream Land Game Boy sheet | Sonikku, thejohnston7 / HAL Laboratory | Distinct original Game Boy Kirby |
+| Super Star SNES helper sheets | Drshnaps (Jermungandr) / HAL Laboratory | Knuckle Joe and Bio Spark, matching their 1996 records |
+| Expanded original-design SMB1 Bowser | Captain / FungiCaptain, Nintendo original sprite | Faithful classic body with walk, skid, jump, swimming, fire and defeat; selected over later-design NES-style candidates |
+| Complete Bandana Dee spear adaptation | gameboy09 / HAL Laboratory character | Super Star Ultra pixel style, faithfully supporting the Return to Dream Land spear kit |
+| Original Wii Bandana Dee model | John2k4; export/post Mighty Jetters; TSR uploader Garamonde | Comparison render only. This archive supplies no animation tracks. |
+| Source-game reveal illustrations | Nintendo / HAL Laboratory, via Mario Wiki and WiKirby | Original SMB, Dream Land, Adventure, Super Star and Return to Dream Land artwork |
 
-Grade **B** means the prototype declares reused poses and procedural motion.
-It does not mean final visual approval. The regional Archives stay locked until
-their roster and production gates pass. An earlier Meta Knight reconstruction
-and attack-only VFX intake were rejected; the live actor now uses the source
-wing poses. The rank-set `rocky.gif` was also rejected as the wrong treatment;
-the live Rocky uses the labeled NES sheet with a gray palette reconstruction.
+[sources/faithful/INTAKE.json](sources/faithful/INTAKE.json) records downloaded
+sheets/model archives, public source pages, credited contributors and SHA-256.
+[The palette checks](sources/faithful/PALETTES.json) retain independent native
+Adventure references. [Portrait intake](../portraits/source-era/INTAKE.json)
+records artwork URLs, game identity, dimensions and hashes. Some old game art
+is an opaque scan; it is displayed as a printed illustration without altering
+the original artwork. Featured banner and reveal art remain separate pieces.
 
-Summon art uses separate banner and reveal pieces. Classic Mario's reveal uses
-the already approved `demos/mario-pull/pull-block.webp` by **しかばね**; the
-Mushroom banner uses `pull-flower.webp` by **maribou**. Artist links and original
-intake notes remain in [the demo sources](../../demos/mario-pull/SOURCES.md).
-Kirby's enhanced reveal portrait is Nintendo / HAL Laboratory's Smash render,
-retained from [ConnorBryan/smashcombos](https://github.com/ConnorBryan/smashcombos/blob/master/static/img/kirby.png).
-It is presentation art, not a claim that the 1993 fighter has a Smash kit.
+`v1/manifest.json` records source game, source page, credits, original source
+rectangles, foot anchors, fixed pixel scale, clips, body height, world height
+and output hashes. `python tools/art/import-v1-sprites.py` rebuilds legacy
+items/scenes and then applies the reviewed game-specific imports. Directly
+rerun the current pass with `python tools/art/import-faithful-sprites.py`.
+Development dependencies are Pillow, numpy and scipy; the game runtime has
+none of those dependencies.
 
-Current audio is procedural prototype sound, plus the already retained Mario
-voice clip. It is not a finished library of character quotes or franchise music.
+`python tools/art/validate-faithful-sprites.py` verifies source/atlas pixel
+counts for every extracted frame. Native layered bosses are assembled
+explicitly and reviewed in the renderer captures. The contact sheet and pose
+boards show current output, not the earlier enhanced treatment.
+
+## Retained earlier intake
+
+`SOURCES.json` remains the registry for older GitHub downloads, including
+SkyanUltra remastered NPCs, cstack Kirby derivatives, Happiiz/KirboMod bosses,
+and Arisotura rank-set animations. Their `active` flags now reflect the actual
+runtime manifest plus retained scenes/props. Replaced fighter bodies are kept
+as historical candidates, not described as native live sprites.
+
+The Mario banner retains the approved `pull-flower.webp` by **maribou**, now
+beneath classic featured artwork. [Demo sources](../../demos/mario-pull/SOURCES.md)
+retain artist links. Classic Mario's reveal now uses his source-game artwork;
+the approved **しかばね** demo and Smash Kirby portrait remain historical intake.
+
+Audio is still procedural prototype sound plus the retained Mario voice clip.
+It is not a finished character-quote or franchise-music library.

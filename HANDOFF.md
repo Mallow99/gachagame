@@ -7,8 +7,10 @@ push (`ef450706`). Read [the build report](docs/V1_BUILD_REPORT.md) and
 [README](README.md) before the historical notes below. SaveV4, roaming combat,
 both complete first Worlds, 28 fighters, Source Spotlights/Supply, the Paper
 Manual and reveal theater are implemented. Archives remain previews; source
-art and some signatures/audio remain provisional. Browser/M2 checks are still
-required because this sandbox refuses Chromium/Electron socket setup. No PR
+art and some signatures/audio remain provisional. The current sprite pass
+replaces mismatched versions, fixes body scaling/clip playback, adds source-game
+pull art and passes actual Chromium flow/360 × 600 CSS checks. Read
+[the sprite review](docs/SPRITE_REVIEW.md). A native M2 pass remains required. No PR
 was opened. Run `npm test` and `npm run validate:v1 -- --seeds 50 --write`.
 
 The old prototype descriptions and PG-003 “next” tickets below are historical.

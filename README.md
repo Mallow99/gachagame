@@ -77,8 +77,11 @@ node tools/simulate-player-path.mjs --accounts 20 --write
 
 See [the build report](docs/V1_BUILD_REPORT.md), [balance evidence](docs/validation/v1-latest.json),
 [source credits](assets/sprites/PROVENANCE.md), and [sprite contact sheet](assets/sprites/v1/contact-sheet.png).
-Sprites, some signatures and audio remain provisional. Native captures use the
-actual BattleView; browser CSS and real M2 desktop verification remain required.
+Game-specific sprite replacements, source-game pull art and an animated
+[sprite review](docs/SPRITE_REVIEW.md) are now included. Native captures use the
+actual BattleView; Chromium checks cover the playable flow and 360 × 600 Manual.
+Sparse pose sets, some signatures/audio and a real M2 desktop pass remain work.
+The animated comparison runs at `/docs/validation/sprite-review/index.html`.
 
 | Path | Responsibility |
 | --- | --- |

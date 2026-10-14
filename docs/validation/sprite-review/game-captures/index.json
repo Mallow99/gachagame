@@ -1,0 +1,78 @@
+{
+  "at": "2026-10-14T16:22:08.105Z",
+  "method": "Actual Battle and BattleView in native canvas. These are renderer captures, not browser CSS or macOS window screenshots.",
+  "captures": [
+    {
+      "name": "mario-field",
+      "file": "docs/validation/sprite-review/game-captures/mario-field.png",
+      "encounter": "smb1-01",
+      "seconds": 20.000000000000153,
+      "width": 1000,
+      "height": 220,
+      "transparent": false
+    },
+    {
+      "name": "classic-party-strip",
+      "file": "docs/validation/sprite-review/game-captures/classic-party-strip.png",
+      "encounter": "smb1-04",
+      "seconds": 18.000000000000053,
+      "width": 1280,
+      "height": 170,
+      "transparent": true
+    },
+    {
+      "name": "dream-party-field",
+      "file": "docs/validation/sprite-review/game-captures/dream-party-field.png",
+      "encounter": "ka-02",
+      "seconds": 18.000000000000053,
+      "width": 1000,
+      "height": 220,
+      "transparent": false
+    },
+    {
+      "name": "whispy-field",
+      "file": "docs/validation/sprite-review/game-captures/whispy-field.png",
+      "encounter": "ka-05",
+      "seconds": 37.766666666667085,
+      "width": 1000,
+      "height": 220,
+      "transparent": false
+    },
+    {
+      "name": "bowser-ultimate-strip",
+      "file": "docs/validation/sprite-review/game-captures/bowser-ultimate-strip.png",
+      "encounter": "smb1-15",
+      "seconds": 29.300000000000615,
+      "width": 1280,
+      "height": 170,
+      "transparent": true
+    },
+    {
+      "name": "small-strip",
+      "file": "docs/validation/sprite-review/game-captures/small-strip.png",
+      "encounter": "ka-03",
+      "seconds": 18.000000000000053,
+      "width": 360,
+      "height": 170,
+      "transparent": true
+    },
+    {
+      "name": "kabu-assist-entry",
+      "file": "docs/validation/sprite-review/game-captures/kabu-assist-entry.png",
+      "encounter": "ka-02",
+      "seconds": 2.533333333333334,
+      "width": 1000,
+      "height": 220,
+      "transparent": false
+    },
+    {
+      "name": "bandana-spear-flight",
+      "file": "docs/validation/sprite-review/game-captures/bandana-spear-flight.png",
+      "encounter": "ka-03",
+      "seconds": 2.4666666666666677,
+      "width": 1000,
+      "height": 220,
+      "transparent": false
+    }
+  ]
+}

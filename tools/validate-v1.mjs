@@ -55,7 +55,7 @@ for(const e of content.encounters.values()){
  stages.push(record);console.log(`${e.id}: ${record.wins}/${seeds} clears · ${record.minSeconds}–${record.maxSeconds}s · ${(record.meanHp*100).toFixed(0)}% party HP`);
 }
 const result={build:'v1-playable',at:new Date().toISOString(),seconds:(Date.now()-started)/1000,seeds,content:{fighters:content.units.size,encounters:content.encounters.size,sprites:spriteChecks.length},banners,stages,
- limits:['Seeded simulation and native canvas verification; browser CSS and macOS integration still require a real-device run.','All sprite treatments remain provisional; source credit and distribution review pending.','Archives remain previews; source Spotlights are smaller playable pools.']};
+ limits:['Seeded combat evidence. Chromium CSS/reveal evidence is recorded separately in sprite-review/browser/results.json; native macOS remains unverified.','Source-game sprites are reviewed; sparse native pose sets, authored signature effects and some portraits remain production work.','Archives remain previews; source Spotlights are smaller playable pools.']};
 if(process.argv.includes('--write')){fs.mkdirSync(path.join(root,'docs/validation'),{recursive:true});fs.writeFileSync(path.join(root,'docs/validation/v1-latest.json'),JSON.stringify(result,null,2)+'\n');}
 console.log(`Validated ${stages.length} stages, ${banners.length} pages and ${spriteChecks.length} sprite atlases in ${result.seconds.toFixed(1)}s.`);
 if(stages.some(s=>s.wins===0)){console.error('Reference parties with no winning seed:',stages.filter(s=>!s.wins).map(s=>s.id).join(', '));process.exitCode=1;}

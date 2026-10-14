@@ -192,3 +192,9 @@ scenes=ROOT/'assets/scenes';scenes.mkdir(exist_ok=True)
 scene_sheet=load('kirby-background.png')
 for name,box in [('ka-valley',(0,0,1018,171)),('ka-tower',(0,171,1018,342)),('ka-water',(0,342,1018,511))]:scene_sheet.crop(box).save(scenes/(name+'.png'))
 print(f'Imported {len(definitions)} atlases. Manifest and contact sheet saved to {OUT}.')
+
+# The current game-specific fighter/enemy imports supersede the legacy source
+# treatments above. Keep this entry point reproducible for equipment and scenes.
+if (SRC/'faithful/INTAKE.json').exists():
+    import runpy
+    runpy.run_path(str(Path(__file__).with_name('import-faithful-sprites.py')),run_name='__main__')

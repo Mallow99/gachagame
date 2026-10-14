@@ -1,0 +1,266 @@
+[
+  {
+    "id": "adventure-kirby",
+    "url": "https://cdn.wikirby.com/b/bd/KA_Kirby_Walking_artwork.png",
+    "path": "assets/portraits/source-era/adventure-kirby.png",
+    "sourceGameId": "kirbys-adventure-1993",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      459,
+      339
+    ],
+    "sha256": "3f69924bf8b1fd8054a8a351b1129b453f68bc8f7a255b0cb8153a1460db041b"
+  },
+  {
+    "id": "dream-land-kirby",
+    "url": "https://cdn.wikirby.com/9/9f/KDL_Kirby_artwork.png",
+    "path": "assets/portraits/source-era/dream-land-kirby.png",
+    "sourceGameId": "kirbys-dream-land-1992",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      835,
+      775
+    ],
+    "sha256": "bdfedb80bb35881ed700d8086b7b374507b963902e5d12b8f0f39fc9fa91e859"
+  },
+  {
+    "id": "king-dedede",
+    "url": "https://cdn.wikirby.com/d/dc/KA_Dedede_artwork.png",
+    "path": "assets/portraits/source-era/king-dedede.png",
+    "sourceGameId": "kirbys-adventure-1993",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      899,
+      864
+    ],
+    "sha256": "5d21e7d42dfa42cc22ddf94dbfdab5eb5739539b2a230f2d7c64e6b1d8a7d2e3"
+  },
+  {
+    "id": "adventure-meta-knight",
+    "url": "https://cdn.wikirby.com/7/71/KA_Meta_Knight_artwork.png",
+    "path": "assets/portraits/source-era/adventure-meta-knight.png",
+    "sourceGameId": "kirbys-adventure-1993",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      494,
+      609
+    ],
+    "sha256": "10d87df1b70ea5b07341c02d681b23f14b88e2f2571297e3858b06e00bfcce60"
+  },
+  {
+    "id": "bandana-waddle-dee",
+    "url": "https://cdn.wikirby.com/e/e3/KRtDL_Bandana_Waddle_Dee_1.png",
+    "path": "assets/portraits/source-era/bandana-waddle-dee.png",
+    "sourceGameId": "kirbys-return-to-dream-land-2011",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      2088,
+      2886
+    ],
+    "sha256": "0274a6e7f350af5ac2b41ae281c07057db2f79f36cbefd3a3e7907d89f075de8"
+  },
+  {
+    "id": "knuckle-joe",
+    "url": "https://cdn.wikirby.com/9/97/KSS_Knuckle_Joe_Artwork.png",
+    "path": "assets/portraits/source-era/knuckle-joe.png",
+    "sourceGameId": "kirby-super-star-1996",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      247,
+      208
+    ],
+    "sha256": "dbdd4aa4f3adb8a51edd7591ba73df2443cee801323bff789c6565debeb42766"
+  },
+  {
+    "id": "bio-spark",
+    "url": "https://cdn.wikirby.com/9/93/KSS_Bio_Spark_helper_artwork.png",
+    "path": "assets/portraits/source-era/bio-spark.png",
+    "sourceGameId": "kirby-super-star-1996",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      336,
+      207
+    ],
+    "sha256": "f1af7003eb1de730ddc9beb3c94b1a257e33d6df227c24f573bf3ab90ff6ae70"
+  },
+  {
+    "id": "bowser",
+    "url": "https://mario.wiki.gallery/images/b/ba/BowserSMB1.png",
+    "path": "assets/portraits/source-era/bowser.png",
+    "sourceGameId": "super-mario-bros-1985",
+    "credit": "Nintendo",
+    "dimensions": [
+      280,
+      233
+    ],
+    "sha256": "cc8f3d381a6dd40de0acdeebfe5fd1b8f71f16a4cebb31409a4125d7d7e7e34a"
+  },
+  {
+    "id": "hot-head",
+    "url": "https://cdn.wikirby.com/f/f9/KA_Hot_Head_artwork.png",
+    "path": "assets/portraits/source-era/hot-head.png",
+    "sourceGameId": "kirbys-adventure-1993",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      230,
+      252
+    ],
+    "sha256": "e3cfe2b471c7c2a8a1a9632f5649e6c2cc6c83c26353050aa156d04b033a7b5b"
+  },
+  {
+    "id": "sparky",
+    "url": "https://cdn.wikirby.com/a/a8/KA_Sparky_artwork.png",
+    "path": "assets/portraits/source-era/sparky.png",
+    "sourceGameId": "kirbys-adventure-1993",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      179,
+      183
+    ],
+    "sha256": "9b25472602207e7b99cb98afef40706b7dedeef471d4abae2a0ef5fa8d94a3d0"
+  },
+  {
+    "id": "rocky",
+    "url": "https://cdn.wikirby.com/3/31/KA_Rocky_artwork.png",
+    "path": "assets/portraits/source-era/rocky.png",
+    "sourceGameId": "kirbys-adventure-1993",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      232,
+      189
+    ],
+    "sha256": "e3db697b907fb5303806058b2ee99b71f7ce13a2fbcdeb5bf8e26044a0bb0f12"
+  },
+  {
+    "id": "wheelie",
+    "url": "https://cdn.wikirby.com/e/e7/KA_Wheelie_artwork.png",
+    "path": "assets/portraits/source-era/wheelie.png",
+    "sourceGameId": "kirbys-adventure-1993",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      464,
+      402
+    ],
+    "sha256": "7c90219b6453b0f712bd03f954a0e943e15d840503d7caf28e0d6445fa1d5aae"
+  },
+  {
+    "id": "bonkers",
+    "url": "https://cdn.wikirby.com/d/de/KA_Bonkers_artwork.png",
+    "path": "assets/portraits/source-era/bonkers.png",
+    "sourceGameId": "kirbys-adventure-1993",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      402,
+      412
+    ],
+    "sha256": "69f3059ddeb4b74e294c345280d1c1c42d09cb6fb0c1632af615ec224e5d2c62"
+  },
+  {
+    "id": "chilly",
+    "url": "https://cdn.wikirby.com/8/86/KA_Chilly_artwork.png",
+    "path": "assets/portraits/source-era/chilly.png",
+    "sourceGameId": "kirbys-adventure-1993",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      201,
+      235
+    ],
+    "sha256": "2ae249da8d8067bf7531252a67702ea90ee2817a2fe0aa27b2deafc3d9dc4167"
+  },
+  {
+    "id": "sir-kibble",
+    "url": "https://cdn.wikirby.com/e/e2/KDL_Sir_Kibble_artwork.png",
+    "path": "assets/portraits/source-era/sir-kibble.png",
+    "sourceGameId": "kirbys-adventure-1993",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      222,
+      229
+    ],
+    "sha256": "0e840d7cdd6244345cc652427a9f00b9247fbd1a63ad234872a92f45ddecef2c"
+  },
+  {
+    "id": "waddle-dee",
+    "url": "https://cdn.wikirby.com/b/bc/KDL_Waddle_Dee_artwork.png",
+    "path": "assets/portraits/source-era/waddle-dee.png",
+    "sourceGameId": "kirbys-adventure-1993",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      305,
+      286
+    ],
+    "sha256": "1d7529b295c1e3d20cfc10006d3e063f5af3ad133fe63f53b9b579449640d144"
+  },
+  {
+    "id": "poppy-bros-jr",
+    "url": "https://cdn.wikirby.com/e/e5/KDL_Poppy_Bros_Jr_artwork.png",
+    "path": "assets/portraits/source-era/poppy-bros-jr.png",
+    "sourceGameId": "kirbys-adventure-1993",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      155,
+      254
+    ],
+    "sha256": "fdece6fd61fccbe2679b78750fe89a4ff80b9eabee93780a6a09d6189ece9287"
+  },
+  {
+    "id": "classic-mario",
+    "url": "https://mario.wiki.gallery/images/9/96/Mario_and_mushroom_SMB1_artwork.png",
+    "path": "assets/portraits/source-era/classic-mario.png",
+    "sourceGameId": "super-mario-bros-1985",
+    "credit": "Nintendo",
+    "dimensions": [
+      915,
+      1001
+    ],
+    "sha256": "7378c5bf972efa69a6e7227877d64c519c58fa29550ed0e831694d7a89240fc6"
+  },
+  {
+    "id": "princess-peach",
+    "url": "https://mario.wiki.gallery/images/4/4c/Classic_Princess_Peach.png",
+    "path": "assets/portraits/source-era/princess-peach.png",
+    "sourceGameId": "super-mario-bros-1985",
+    "credit": "Nintendo",
+    "dimensions": [
+      150,
+      246
+    ],
+    "sha256": "6bd584fb20ba4bdcb4f443d55a357242225fb983c416aa62f3202c2c6e7dfed0"
+  },
+  {
+    "id": "hammer-bro",
+    "url": "https://mario.wiki.gallery/images/9/9c/Hammer_Brother_SMB_artwork.jpg",
+    "path": "assets/portraits/source-era/hammer-bro.png",
+    "sourceGameId": "super-mario-bros-1985",
+    "credit": "Nintendo",
+    "dimensions": [
+      563,
+      781
+    ],
+    "sha256": "83637da4d31dc31dc6bb65f1504b15168596359158b75ee1023cf29bcbd6ed04"
+  },
+  {
+    "id": "lakitu",
+    "url": "https://mario.wiki.gallery/images/5/58/Lakitu_SMB_artwork.jpg",
+    "path": "assets/portraits/source-era/lakitu.png",
+    "sourceGameId": "super-mario-bros-1985",
+    "credit": "Nintendo",
+    "dimensions": [
+      236,
+      338
+    ],
+    "sha256": "cf4880cdd68de2b85aaf2078c0f07f57aa93868544293a8a91d160a9c94584fd"
+  },
+  {
+    "id": "blade-knight",
+    "url": "https://cdn.wikirby.com/e/e0/KA_Blade_Knight_artwork.png",
+    "path": "assets/portraits/source-era/blade-knight.png",
+    "sourceGameId": "kirbys-adventure-1993",
+    "credit": "Nintendo / HAL Laboratory",
+    "dimensions": [
+      233,
+      219
+    ],
+    "sha256": "eef6b1de19b25f7304bce19919d7334ac9008cad139b2ed22875dff60f3967cc"
+  }
+]
