@@ -2,11 +2,12 @@ import { ASSISTS } from './assists.js';
 import { BANNERS } from './banners.js';
 import { ENEMIES } from './enemies.js';
 import { SMB1_ENCOUNTERS } from './encounters/smb1.js';
+import { SMB1_LATER_ENCOUNTERS, KIRBY_ENCOUNTERS } from './encounters/world-tour.js';
 import { POWERUPS } from './powerups.js';
 import { UNITS } from './units.js';
 import { AREAS, SAGAS, WORLDS } from './worlds.js';
 
-export const CONTENT_VERSION = 2;
+export const CONTENT_VERSION = 3;
 
 const DEFAULT_RECORDS = {
   units: UNITS,
@@ -16,7 +17,7 @@ const DEFAULT_RECORDS = {
   sagas: SAGAS,
   areas: AREAS,
   worlds: WORLDS,
-  encounters: SMB1_ENCOUNTERS,
+  encounters: [...SMB1_ENCOUNTERS, ...SMB1_LATER_ENCOUNTERS, ...KIRBY_ENCOUNTERS],
   banners: BANNERS,
 };
 
@@ -248,7 +249,7 @@ export function validateContent(candidate = content) {
 
   function validateStats(stats, path) {
     for (const [key, value] of Object.entries(stats || {})) {
-      if (typeof value !== 'number' || value < 0) errors.push(`${path}.${key} must be a non-negative number`);
+      if (!Number.isFinite(value) || (key === 'haste' ? value < -0.5 : value < 0)) errors.push(`${path}.${key} must be a valid stat`);
     }
   }
 

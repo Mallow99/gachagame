@@ -44,7 +44,7 @@ export const SMB1_ENCOUNTERS = [
     wave('w2', spawn('goomba', 2, { spacing: 52 }), spawn('goomba', 1, { entry: 'left', delaySeconds: 2.2 })),
     wave('w3', spawn('goomba', 4, { spacing: 82 })),
     wave('w4', spawn('goomba', 2, { spacing: 56 }), spawn('goomba', 1, { variantId: 'veteran-goomba', delaySeconds: 1.2 })),
-  ], [{ type: 'starlight', amount: 100 }, { type: 'coins', amount: 40 }]),
+  ], [{ type: 'starlight', amount: 100 }, { type: 'coins', amount: 40 }], { enemyDamageScale: 0.4 }),
 
   encounter(2, 'Shell Lessons', 2, [
     wave('w1', spawn('goomba', 2), spawn('koopa-troopa', 1, { variantId: 'green' })),

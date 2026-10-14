@@ -1,97 +1,139 @@
-// The widget shell: top bar with currencies, three tabs, toasts, and the pull
-// reveal on top. Runs the same in Electron and in a plain browser.
 import { game } from './game.js';
-import { sfx } from './sfx.js';
-import { h, sleep } from './ui.js';
-import { SummonView } from './views/summon.js';
-import { HeroesView } from './views/heroes.js';
-import { AdventureView } from './views/adventure.js';
-import { MechanicsView } from './views/mechanics.js';
-import { Reveal } from './views/reveal.js';
-import { validateContent } from './content/index.js';
+import { content } from './content/index.js';
+import { RULES, PATTERNS, trainingCost, growth, fighterStats, techniqueAbility } from './config/rules.js';
+import { FIRST_WORLD, KIRBY_WORLD } from './save/default-save.js';
+import { bannerPool, ssrChance, publishedRates } from './gacha.js';
+import { createRuntime } from './runtime.js';
+import { showReceipt, collectibleArt } from './presentation/reveal.js';
+import { spriteIcon } from './render/sprite-bank.js';
+import { unlockAudio, syncAudio } from './audio.js';
+import { BANNER_ART } from './presentation/art.js';
 
-validateContent();
+const $=s=>document.querySelector(s),escape=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const num=x=>Math.round(x||0).toLocaleString(),percent=x=>(x*100).toFixed(x*100%1?1:0)+'%';
+let tab='atlas',summonKind='unit',selectedStage=null,filter='all',seenReceipt=null;
+const desktop=Boolean(window.desktop);document.body.classList.toggle('desktop-manager',desktop);
+function act(name,...args){unlockAudio();if(desktop)window.desktop.command({name,args});else return game[name]?.(...args);}
+function toast(text){const t=$('#toast');t.textContent=text;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),4200);}
+game.addEventListener('toast',e=>toast(e.detail));
+const chapter=(number,title,text='')=>`<div class="chapter-heading"><span>CHAPTER ${number}</span><h2>${title}</h2>${text?`<p>${text}</p>`:''}</div>`;
+const button=(text,action,args=[],cls='',disabled=false)=>`<button class="${cls}" data-action="${action}" data-args="${escape(JSON.stringify(args))}" ${disabled?'disabled':''}>${text}</button>`;
+const badge=(text,cls='')=>`<span class="stamp ${cls}">${text}</span>`;
 
-const desktop = window.desktop; // set by electron/preload.js
-document.documentElement.classList.toggle('desktop', !!desktop);
-
-const app = document.getElementById('app');
-const gems = h('span.gems');
-const gold = h('span.gold');
-const soundBtn = h('button.chip', { onclick: () => {
-  game.muted = !game.muted;
-  game.save();
-  refresh();
-  sfx.click();
-} });
-let collapsed = false;
-const collapseBtn = h('button.chip.square', { title: desktop ? 'Return to battle strip' : 'Collapse', onclick: toggleCollapse }, '–');
-const closeBtn = desktop && h('button.chip.square.close', { title: 'Save & quit', onclick: () => {
-  game.save();
-  desktop.quit();
-} }, '×');
-
-const body = h('main.body');
-const tabs = h('nav.tabs');
-const toast = h('div.toast');
-app.append(h('header.bar', h('div.drag', gems, gold), soundBtn, collapseBtn, closeBtn), body, tabs, toast);
-
-const reveal = new Reveal(app);
-const views = [
-  ['Pull', SummonView((results) => reveal.play(results))],
-  ['Team', HeroesView()],
-  ['Field', AdventureView()],
-  ['Rules', MechanicsView()],
-];
-views.forEach(([name, view], i) => {
-  body.append(view);
-  tabs.append(h('button', { onclick: () => showTab(i) }, name));
-});
-
-function showTab(i) {
-  views.forEach(([, view], k) => {
-    view.hidden = k !== i;
-    tabs.children[k].classList.toggle('active', k === i);
-  });
-  sfx.click();
+function render(){
+  syncAudio(game.state.profile);
+  const page=$('#page'),scroll=page.scrollTop;
+  $('#ledger').innerHTML=`<span><b>${num(game.inventory.coins)}</b> Coins</span><span><b>✦ ${num(game.inventory.starlight)}</b> Starlight</span><span><b>${num(game.inventory.supplyTickets)}</b> Tickets</span><span><b>${num(game.inventory.echoes)}</b> Echoes</span>`;
+  document.querySelectorAll('[data-tab]').forEach(b=>{const active=b.dataset.tab===tab;b.classList.toggle('active',active);b.setAttribute('aria-current',active?'page':'false');});
+  page.innerHTML=({atlas:atlasPage,party:partyPage,summon:summonPage,manual:manualPage}[tab])();page.scrollTop=scroll;bind(page);progress();
+  document.querySelectorAll('.detail-dialog[data-unit-id]').forEach(d=>{const id=d.dataset.unitId,s=game.party.includes(id)?game.stats(id):fighterStats(content.units.get(id),game.rank,game.owned[id]);const grid=d.querySelector('.stat-grid');if(grid)grid.innerHTML=statCells(s);});
+  if(game.state.banners.pendingReveal&&game.state.banners.pendingReveal.id!==seenReceipt){seenReceipt=game.state.banners.pendingReveal.id;showReceipt(game,game.state.banners.pendingReveal,act,inspect);}
 }
-
-function refresh() {
-  gems.textContent = `${game.gems} gems`;
-  gold.textContent = `${game.gold} gold`;
-  soundBtn.textContent = game.muted ? 'SFX off' : 'SFX on';
+function worldCard(id){const w=content.worlds.get(id),p=game.state.progression.worlds[id],active=game.world.id===id,state=p?.state||'locked';
+  return `<article class="world-card ${w.sagaId} ${active?'selected':''}"><span class="world-year">${w.releaseYear}</span><div class="world-mark">${w.sagaId==='mario'?'▣':'✦'}</div><small>${content.sagas.get(w.sagaId).name}</small><h3>${escape(w.name)}</h3><p>${w.length} stages · ${w.areaIds.length} Areas</p><div class="world-card-bottom">${badge(state==='complete'?'COMPLETE':active?'EXPEDITION':state==='available'?'AVAILABLE':'LOCKED',state==='complete'?'green':'')}${active?`<span>${p.highestStageCleared} / ${w.length}</span>`:button(state==='available'?'Enter · 1 Key':state==='unlocked'||state==='complete'?'Return':'Clear Mushroom finale','switchWorld',[id],'',state==='locked')}</div></article>`;}
+function atlasPage(){
+  const w=game.world,p=game.progress,encounters=w.implementedEncounterIds.map(id=>content.encounters.get(id));
+  const e=content.encounters.get(selectedStage)||game.activeEncounter||encounters[0];
+  const selected=e.worldId===w.id?e:game.activeEncounter;selectedStage=selected.id;
+  const cleared=p.firstClearEncounterIds.includes(selected.id),legal=selected.localStage<=p.highestStageCleared+1;
+  const expected=selected.localStage===1?1:selected.localStage<4?2:3;
+  const report=game.lastReport||game.state.telemetry.recentReports[0];
+  return chapter('01','Choose the next page.','Two familiar worlds. Every course brings something back.')+
+    `<div class="worlds">${worldCard(FIRST_WORLD)}${worldCard(KIRBY_WORLD)}</div><div class="atlas-ledger">Atlas Rank <b>${game.state.progression.atlas.rank}</b> · Keys <b>${game.state.progression.atlas.keys}</b></div>
+    <section class="deployment"><div class="section-label">EXPEDITION / ${escape(w.name)}</div><h3>${escape(selected.name)}</h3><p>Stage ${selected.localStage} · ${selected.waves.length} waves · ${selected.boss?'Boss encounter':'Roaming battle'}</p><div class="deployment-math"><span>Training <b>${game.rank}</b> / ${selected.recommendedTrainingRank} recommended</span><span>Bring <b>${expected}+ fighters</b> from ${escape(content.sagas.get(w.sagaId).name)}</span></div><div class="action-pair">${game.preset.mode==='endless'?button("Use this Hub’s story party",'choosePreset',[w.sagaId+'-story'],'primary'):button(cleared?'Replay course':'Deploy party','start',[selected.id,'story'],'primary',!legal)}${button('Camp here','start',[selected.id,'camp'],'',!cleared||game.preset.mode==='endless')}</div><label class="check-line"><input type="checkbox" id="auto-repeat" ${game.state.session.auto?'checked':''}> Continue automatically after a clear</label></section>
+    ${report?reportCard(report):''}<div class="course-list">${w.areaIds.map(areaId=>{const area=content.areas.get(areaId);return `<div class="area-divider"><span>${escape(area.name)}</span><small>AREA ${w.areaIds.indexOf(areaId)+1}</small></div>${area.encounterIds.map(id=>{const e=content.encounters.get(id),done=p.firstClearEncounterIds.includes(id);return `<button class="course ${selected.id===id?'selected':''}" data-stage="${id}" ${e.localStage>p.highestStageCleared+1?'disabled':''}><span class="course-number">${String(e.localStage).padStart(2,'0')}</span><span><strong>${escape(e.name)}</strong><small>${e.boss?'Boss · ':''}${e.waves.length} waves</small></span><span class="course-check">${done?'✓':e.localStage===p.highestStageCleared+1?'→':'·'}</span></button>`;}).join('')}`;}).join('')}</div>
+    ${fieldDesk()}<details class="book-divider"><summary>Endless · the crossover party</summary><p>Completed Hubs contribute their courses, fighters and Supply. Each clear rotates to another course and raises Threat; a retreat starts the next expedition at round one.</p><p>Round ${game.state.session.endlessRound+1} · personal best ${game.state.session.endlessBest} clears. Threat starts from Atlas Rank and stays independent of your party’s Training.</p>${button('Build crossover party','endlessPreset',[],'',!Object.values(game.state.progression.endlessUnlockedBySaga).some(Boolean))}${button('Start Endless','start',[selected.id,'endless'],'',game.preset.mode!=='endless')}</details>`;
 }
-
-function toggleCollapse() {
-  if (desktop?.openStrip) {
-    game.save();
-    desktop.openStrip();
-    return;
-  }
-  collapsed = !collapsed;
-  app.classList.toggle('collapsed', collapsed);
-  collapseBtn.textContent = collapsed ? '+' : '–';
-  desktop?.collapse(collapsed);
+function reportCard(r){const rewards=r.rewards?.map(x=>`${x.amount??1} ${x.type==='supply-ticket'?'Tickets':x.type==='patrol-mark'?'Patrol Mark':x.type==='powerup'?content.powerups.get(x.itemId)?.name||x.itemId:x.type}`).join(' · ')||'Regroup and try another approach.';
+  return `<article class="battle-report ${r.win?'clear':'retreat'}"><div>${badge(r.win?'CLEAR':'RETREAT',r.win?'green':'')}<span>${Math.floor(r.seconds/60)}:${String(r.seconds%60).padStart(2,'0')}</span></div><h4>${escape(content.encounters.get(r.encounterId)?.name||r.encounterId)}</h4><p>${r.win?escape(rewards):escape(r.reason)}</p>${button('Battle details','report',[r.runId],'text-button')}${r.firstClear&&content.encounters.get(r.encounterId).localStage===1?'<button class="text-button" data-open-tab="summon">Pull your first companion →</button>':''}</article>`;}
+function fieldDesk(){
+  if(game.progress.highestStageCleared<5)return `<details class="book-divider"><summary>Field Desk</summary><p>Open after the first Area boss. Earn rewards by completing three of five Orders.</p></details>`;
+  const titles={waves:'Clear 20 waves',kills:'Defeat 30 enemies',stages:'Clear three courses or Camps',boss:'Win a boss rematch',training:'Raise Training Rank once'};
+  return `<details class="book-divider"><summary>Field Desk · earned daily rewards</summary><p>Stamp any three Orders: 400 Starlight, 250 Coins and 2 Supply Tickets. Up to three folders wait for you.</p>${game.state.progression.orders.storedFolders.filter(f=>!f.claimed).map(f=>`<div class="order-folder"><small>FOLDER ${f.id} · ${f.claimedStamps.length} / 3 STAMPS</small>${f.missionIds.map(id=>`<div class="order-row"><span>${titles[id]}</span>${button(f.claimedStamps.includes(id)?'Stamped':f.stamps.includes(id)?'Claim':'In progress','claimOrder',[f.id,id],'',!f.stamps.includes(id)||f.claimedStamps.includes(id))}</div>`).join('')}</div>`).join('')||'<p>All folders stamped. Camp remains available for renewable pulls.</p>'}<p class="small-note">Patrol Marks: ${game.state.progression.orders.patrolMarks} / 10 → 100 Starlight.</p></details>`;
 }
-
-// Toasts play one after another.
-const toastQueue = [];
-let toastBusy = false;
-game.addEventListener('toast', async (e) => {
-  toastQueue.push(e.detail);
-  if (toastBusy) return;
-  toastBusy = true;
-  while (toastQueue.length) {
-    toast.textContent = toastQueue.shift();
-    toast.classList.add('show');
-    await sleep(2600);
-    toast.classList.remove('show');
-    await sleep(350);
-  }
-  toastBusy = false;
-});
-
-game.addEventListener('changed', refresh);
-showTab(0);
-refresh();
-game.welcome();
+function partyPage(){
+  const p=game.preset,legal=[...content.units.values()].filter(u=>p.mode==='endless'?game.state.progression.endlessUnlockedBySaga[u.sagaId]:u.sagaId===game.world.sagaId),units=legal.filter(u=>filter==='all'||u.rarity===filter);
+  return chapter('02','Build your traveling party.','New companions inherit your Training Rank immediately.')+
+    `<section class="training-panel"><div><small>ACCOUNT TRAINING</small><strong>Rank ${game.rank}</strong><span>HP & Attack ×${growth(game.rank).toFixed(2)}</span></div>${button(`Train everyone · ${num(trainingCost(game.rank))} Coins`,'train',[],'primary',game.inventory.coins<trainingCost(game.rank))}</section><p class="small-note">Training and loadout changes apply when you deploy again.</p>
+    <div class="party-slots">${Array.from({length:4},(_,i)=>{const id=p.unitIds[i],u=content.units.get(id);return u?`<button class="party-slot ${u.rarity}" data-inspect="${id}"><span class="slot-label">${i+1} / ${p.rows[i].toUpperCase()}</span><img src="${spriteIcon(u.spriteKey)}" alt="${escape(u.name)}"><strong>${escape(u.name)}</strong><small>${u.rarity} · ${u.basic.behavior}</small></button>`:`<div class="party-slot empty"><span class="slot-label">${i+1}</span><b>+</b><small>A companion belongs here</small></div>`;}).join('')}</div>
+    <div class="party-preset"><label>Party preset<select id="preset-select">${Object.entries(game.state.loadouts.presets).filter(([id,p])=>p.mode!=='legacy'&&(p.mode==='endless'||p.sagaId===game.world.sagaId)).map(([id,p])=>`<option value="${id}" ${id===game.state.loadouts.activePresetId?'selected':''}>${escape(p.name)}</option>`).join('')}</select></label><label>Party Assist<select id="assist-select"><option value="">No Assist Page</option>${Object.keys(game.state.collection.assists).map(id=>content.assists.get(id)).filter(a=>a&&(p.mode==='endless'||a.sagaId===game.world.sagaId)).map(a=>`<option value="${a.id}" ${p.assistId===a.id?'selected':''}>${escape(a.name)} · ${a.rarity}</option>`).join('')}</select></label></div><p class="small-note">Four Power-Up slots · one Assist Page · one fighter per family.</p>
+    <div class="section-label">COLLECTION / ${p.mode==='endless'?'CROSSOVER':escape(content.sagas.get(game.world.sagaId).name)}</div><div class="filter-row">${['all','R','SR','SSR'].map(r=>`<button data-filter="${r}" class="${filter===r?'selected':''}">${r==='all'?'All':r}</button>`).join('')}</div>
+    <div class="collection-grid">${units.map(u=>{const o=game.owned[u.id];return `<button class="collection-card ${u.rarity} ${o?'owned':'unowned'}" data-inspect="${u.id}"><span class="rarity">${u.rarity}</span><img src="${spriteIcon(u.spriteKey)}" alt="${escape(u.name)}" loading="lazy"><strong>${escape(u.name)}</strong><small>${escape(u.title)}</small><span class="collection-foot">${o?`${'★'.repeat(o.stars)||'★ 0'} · Mastery ${o.masteryRank}`:'UNDISCOVERED'}</span>${game.party.includes(u.id)?'<span class="deployed-label">DEPLOYED</span>':''}</button>`;}).join('')}</div>`;
+}
+function summonPage(){
+  const saga=game.world.sagaId,banners=[...content.banners.values()].filter(b=>b.sagaId===saga),banner=banners.find(b=>summonKind==='archive'?b.lifecycle==='archive':b.lifecycle!=='archive'&&b.poolKind===summonKind);
+  const status=game.bannerStatus(banner.id),pool=bannerPool(banner,game.state),channel=banner.channel,p=game.state.banners[channel],policy=RULES[channel];
+  const cost=channel==='fighter'?100:1,balance=channel==='fighter'?game.inventory.starlight:game.inventory.supplyTickets;
+  const rates=publishedRates(banner,game.state),nextRates=publishedRates(banner,game.state,{next:true}),art=summonKind==='unit'?BANNER_ART[saga]:null;
+  const faces=pool.filter(x=>x.itemType==='unit').slice(0,3).map(x=>content.units.get(x.itemId));
+  const featured=pool.filter(e=>banner.featured.some(f=>f.itemId===e.itemId)).map(e=>content.units.get(e.itemId));
+  const header=summonKind==='unit'?banner.name:summonKind==='archive'?banner.name:summonKind==='powerup'?'A little extra power.':'A helping hand.';
+  return chapter('03','An invitation to adventure.','Pick a page. Carry its next discovery into the field.')+
+    `<div class="summon-tabs">${[['unit','Fighters'],['powerup','Power-Ups'],['assist','Assists'],['archive','Archive']].map(([kind,name])=>`<button data-kind="${kind}" class="${summonKind===kind?'selected':''}">${name}</button>`).join('')}</div>
+    <article class="banner-poster ${saga} ${art?'has-art':''}">${art?`<img class="banner-source ${art.style}" src="${art.url}" alt="" aria-hidden="true"><div class="banner-scrim"></div>`:'<div class="banner-landscape"></div>'}<span class="poster-kicker">${summonKind==='unit'?'SOURCE SPOTLIGHT':summonKind==='archive'?'REGIONAL ARCHIVE':'SUPPLY PAGE'}</span><h2>${escape(header)}</h2><p>${escape(banner.description||'Portable Power-Ups and passing friends. A new way to build the party.')}</p><div class="banner-cast">${!art||saga==='kirby'?faces.length?faces.map(u=>`<img src="${spriteIcon(u.spriteKey)}" alt="${escape(u.name)}">`).join(''):`<span class="poster-symbol">${summonKind==='assist'?'▤':'✦'}</span>`:''}</div><div class="poster-bottom">${pool.length} live records <span>${channel==='fighter'?'Starlight':'Supply Tickets'}</span></div></article>
+    ${featured.map(u=>`<div class="featured-rail"><img src="${spriteIcon(u.spriteKey)}" alt="${escape(u.name)}"><div><small>FEATURED / ${u.rarity}</small><strong>${escape(u.name)}</strong><p>${escape(u.title)} · ${u.sagaId==='mario'?'the current SSR result':'50% of ordinary SSRs; guaranteed after a nonfeatured SSR'}</p></div></div>`).join('')}<section class="summon-ledger"><div class="rate-strip"><span>R <b>${channel==='fighter'?'80':'75'}%</b></span><span>SR <b>${channel==='fighter'?'17':'20'}%</b></span><span>SSR <b>${channel==='fighter'?'3':'5'}%</b></span></div><p class="small-note">Next SSR chance <b>${percent(ssrChance(channel,p))}</b> · SSR pity ${p.sinceSsr} / ${policy.hard}<br>SR or better within ${Math.max(1,10-p.sinceSr)} result${10-p.sinceSr===1?'':'s'}.</p><div class="action-pair">${button(channel==='fighter'?'Pull one · ✦ 100':'Pull one · 1 Ticket','pull',[banner.id,1],'primary',!status.ready||balance<cost)}${button(channel==='fighter'?'Pull ten · ✦ 1,000':'Pull ten · 10 Tickets','pull',[banner.id,10],'',!status.ready||balance<cost*10)}</div>${!status.ready?`<p class="unlock-note">${escape(status.reason)}</p>`:''}${channel==='fighter'?`<p class="small-note">Welcome sequence ${Math.min(10,game.state.progression.hubWelcome[saga].pulls)} / 10 · first result new; a new SR or better by result ten.</p>`:'<p class="small-note">Power-Up Cache and Assist Call share Supply pity. Results stay on the page you choose.</p>'}</section>
+    <details class="book-divider"><summary>Full pool, rates & duplicate value</summary><p>Complete at first acquisition. Fighter duplicates add stars; every duplicate returns Echoes.</p><table class="pool-table"><thead><tr><th>Result</th><th>Tier</th><th>Base</th><th>Next</th></tr></thead><tbody>${rates.map((e,i)=>{const m=e.itemType==='unit'?content.units:e.itemType==='powerup'?content.powerups:content.assists,item=m.get(e.itemId);return `<tr><td><button class="inline-link" data-inspect="${item.id}" data-item-kind="${e.itemType}">${escape(item.name)}</button></td><td>${e.rarity}</td><td>${(e.probability*100).toFixed(2)}%</td><td>${(nextRates[i].probability*100).toFixed(2)}%</td></tr>`;}).join('')}</tbody></table><p class="small-note">Next includes current pity and featured guarantee. Welcome safeguards can replace a result with a new fighter; natural SSRs stay intact. A nonfeatured SSR guarantees the featured SSR next time.</p><p class="small-note">Fighter Echoes per duplicate / after 5 stars: R 2 / 10 · SR 8 / 40 · SSR 30 / 150. Power-Up duplicates convert directly.</p></details>
+    <details class="book-divider"><summary>Summon history · replay a reveal</summary>${game.state.banners.history.slice(-12).reverse().map(r=>`<div class="history-row"><span>${r.results.length} results · ${new Date(r.at).toLocaleDateString()}</span><button data-replay="${r.id}">Replay</button></div>`).join('')||'<p>Your first companion will begin this ledger.</p>'}</details>
+    <details class="book-divider"><summary>Echo exchange</summary><div class="action-pair">${button(`1 Supply Ticket · ${RULES.exchange.ticket} Echoes`,'exchange',['ticket'],'',game.inventory.echoes<RULES.exchange.ticket)}${button(`Technique Note · ${RULES.exchange.note} Echoes`,'exchange',['note'],'',game.inventory.echoes<RULES.exchange.note)}</div><p class="small-note">Power-Up duplicates: R 10 / SR 40 / SSR 150 Echoes. Assist duplicates: R 2 / SR 8 / SSR 30 plus proficiency XP. Exchange prices are TRIAL.</p></details>`;
+}
+function manualPage(){const u=content.units.get(game.party[0]),s=game.stats(u.id);return chapter('04','Know what the party does.','Rules, live numbers, and the evidence from your last expedition.')+
+    `<section class="manual-spread"><div class="section-label">01 / EVERY ACTOR HAS ITS OWN CLOCK</div><div class="timing-diagram"><span>Acquire</span><b>→</b><span>Move</span><b>→</b><span>Wind up</span><b>→</b><span>Hit</span><b>→</b><span>Recover</span></div><p>All fighters act as their gauges fill. Skills start half charged; ultimates use 100 energy. Two ready actors can move in the same moment.</p><code>interval = base interval ÷ (1 + Haste)</code><p>${escape(u.name)}: ${u.basic.intervalSeconds.toFixed(2)} s ÷ (1 + ${s.haste.toFixed(2)}) = ${(u.basic.intervalSeconds/(1+s.haste)).toFixed(2)} s.</p>
+    <table><tbody>${Object.entries(PATTERNS).map(([id,p])=>`<tr><th>${p.label}</th><td>${p.interval.toFixed(2)} s</td><td>${p.range} px</td></tr>`).join('')}</tbody></table></section>
+    <section class="manual-spread"><div class="section-label">02 / DAMAGE & TRAINING</div><code>Growth(Rank) = 1.045 ^ (Rank − 1)<br>damage = Attack × coefficient × 100 / (100 + Guard)</code><p>Variance: 95–105%. Critical hit: ×1.5. Guard caps at 180. New fighters use the same account Rank; stars and Technique Mastery belong to the fighter.</p><p>Current ${escape(u.name)}: HP ${num(s.hp)}, Attack ${num(s.attack)}, Guard ${num(s.guard)}, Move ${num(s.moveSpeed)} px/s, Haste ${percent(s.haste)}, Crit ${percent(s.critChance)}.</p><p>Next five Training costs: ${Array.from({length:5},(_,i)=>num(trainingCost(game.rank+i))).join(' · ')} Coins.</p></section>
+    <section class="manual-spread"><div class="section-label">03 / COLLECTION & SUPPLY</div><p>One fighter per family. One Power-Up on each fighter. One Assist Page for the party. Story fighters and equipment belong to that Hub; clear its finale to use them in mixed-Hub Endless.</p><p>Kirby’s Copy comes from enemies. It changes his visible form, basic and skill, and ends with the encounter. Dream Land Kirby never copies. The finale loans the Star Rod separately.</p><p>Fighter pulls: 80% R / 17% SR / 3% SSR. Soft pity after 50, +3 points per result; SSR by 70. Supply: 75 / 20 / 5%, soft after 30, +5 points; SSR by 45. Pity persists across pages.</p></section>
+    <section class="manual-spread"><div class="section-label">04 / ALWAYS ANOTHER EXPEDITION</div><p>A cleared Camp earns Coins and one Patrol Mark. Ten Marks become 100 Starlight. First clears award the largest Starlight bundles. Field Orders offer four pulls per completed folder.</p><p>Away earnings use your cleared Camp’s measured pace: 60% Coins and 25% Starlight, capped at 12 hours. Story advances while fighting in the strip.</p><p class="small-note">Build v1 · SaveV4 · Content 3 · Balance numbers are TRIAL.</p></section><details class="book-divider"><summary>Assets & production status</summary><p>The current sprites combine native classics, declared enhanced treatments and some provisional reconstructions. Character cards identify their treatment; regional Archives remain previews until their 22-fighter gates pass.</p><a href="assets/sprites/v1/contact-sheet.png" target="_blank">View the sprite contact sheet</a><br><a href="assets/sprites/PROVENANCE.md" target="_blank">Asset sources & credits</a></details>${settingsSection()}`;}
+function settingsSection(){const p=game.state.profile;return `<details class="book-divider" id="settings-panel"><summary>Settings & save backups</summary><label class="check-line"><input type="checkbox" id="sound-setting" ${!p.muted?'checked':''}> Sound</label><label class="check-line"><input type="checkbox" id="motion-setting" ${p.reducedMotion?'checked':''}> Reduced motion</label><p class="small-note">System reduced-motion preferences are also respected.</p>${['music','voice','sfx'].map(kind=>`<label class="volume-line">${kind.toUpperCase()}<input type="range" min="0" max="1" step="0.05" value="${p.audio[kind]}" data-audio="${kind}"></label>`).join('')}<label>Strip rendering<select id="fps-setting"><option value="30" ${p.fps===30?'selected':''}>30 fps</option><option value="60" ${p.fps===60?'selected':''}>60 fps</option></select></label><div class="action-pair"><button id="export-save">Export save</button><label class="button-label">Import backup<input type="file" id="import-save" accept="application/json,.json" hidden></label></div>${button('Save now','save',[],'text-button')}${game.state.session.pendingBattleReward?'<p class="unlock-note">A completed expedition is waiting to be saved. Its rewards are retained in exported backups. Retry saving before deploying again.</p>':''}<p class="small-note">Imports retain your current save before replacing it. Prototype ownership is retained in the migration backup.</p>${game.notice?`<p>${escape(game.notice)}</p>`:''}${desktop?button('Quit & save','quitDesktop',[],'text-button'):''}</details>`;}
+function effectsText(effects=[]){return effects.map(e=>{const n=e.coefficient?`${e.coefficient}× ATK`:(e.amount??e.value??'');return `${e.type.replaceAll('-',' ')}${n?' · '+n:''}${e.durationSeconds?' · '+e.durationSeconds+' s':''}`;}).join('; ')||'No additional effect.';}
+function statCells(s){return [['HP',s.hp],['Attack',s.attack],['Guard',s.guard],['Move',s.moveSpeed],['Haste',percent(s.haste)],['Crit',percent(s.critChance)]].map(([name,value])=>`<div><small>${name}</small><b>${typeof value==='number'?num(value):value}</b></div>`).join('');}
+function kitView(ability,kind,mastery=1){const a=techniqueAbility(ability,mastery,kind);if(a.coefficient!==undefined)a.coefficient=Number(a.coefficient.toFixed(3));if(a.cooldownSeconds!==undefined)a.cooldownSeconds=Number(a.cooldownSeconds.toFixed(2));a.effects=a.effects.map(e=>Object.fromEntries(Object.entries(e).map(([k,v])=>[k,typeof v==='number'?Number(v.toFixed(3)):v])));return a;}
+function inspect(id,kind='unit'){
+  const map=kind==='unit'?content.units:kind==='powerup'?content.powerups:content.assists,item=map.get(id);if(!item)return;
+  const dialog=document.createElement('dialog');dialog.className='detail-dialog';
+  const owned=kind==='unit'?game.owned[id]:(kind==='powerup'?game.state.collection.powerups:game.state.collection.assists)[id];
+  let detail='';
+  if(kind==='unit'){dialog.dataset.unitId=id;const onParty=game.party.includes(id),s=onParty?game.stats(id):fighterStats(item,game.rank,owned),familyConflict=game.party.find(x=>x!==id&&content.units.get(x).familyId===item.familyId);
+    detail=`<p class="identity-line">${escape(content.worlds.get(item.sourceGameId)?.name||item.sourceGameId)} · ${item.role} · ${item.basic.behavior}</p><p>Already trained to Rank ${game.rank}. Family: ${escape(item.familyId)}.</p><div class="stat-grid">${[['HP',s.hp],['Attack',s.attack],['Guard',s.guard],['Move',s.moveSpeed],['Haste',percent(s.haste)],['Crit',percent(s.critChance)]].map(([name,value])=>`<div><small>${name}</small><b>${typeof value==='number'?num(value):value}</b></div>`).join('')}</div><div class="kit-list">${['basic','skill','passive','ultimate'].map(key=>{const a=kitView(item[key],key,owned?.masteryRank||1);return `<article><small>${key.toUpperCase()}</small><h4>${escape(a.name||a.id)}</h4><p>${a.coefficient!==undefined?`${a.coefficient}× ATK${a.hitCount>1?' × '+a.hitCount+' contacts':''} · ${a.behavior} · `:''}${a.cooldownSeconds?a.cooldownSeconds+' s cooldown':a.intervalSeconds?a.intervalSeconds+' s cycle':a.energyCost?'100 energy':a.trigger||''}</p><p class="small-note">${escape(effectsText(a.effects))}</p></article>`;}).join('')}</div>`;
+    if(owned){detail+=`<p>★ ${owned.stars} · Technique Mastery ${owned.masteryRank} / 5 · ${Math.floor(owned.masteryXp)} XP${owned.masteryRank<5?' / '+RULES.masteryThresholds[owned.masteryRank]+' to next rank':' · MASTERED'}</p><p class="small-note">Fielding earns 1 XP per 20 seconds, including retreats. A Note gives 60 XP. Rank 2: basic +8%. Rank 3: skill damage, healing and shields +12%, cooldown −5%. Rank 4: stronger passive quality. Rank 5: ultimate +25%.</p>${button(`Apply Note (${game.inventory.materials.techniqueNotes} owned)`,'applyNote',[id],'',game.inventory.materials.techniqueNotes<1||owned.masteryRank>=5)}<div class="action-pair">${button(onParty?'Remove from party':familyConflict?'Replace '+escape(content.units.get(familyConflict).name):'Add to party',familyConflict?'replaceParty':'toggleParty',familyConflict?[id,familyConflict]:[id],'primary',onParty&&game.party.length===1)}</div>`;
+      if(onParty){const index=game.party.indexOf(id);detail+=`<label>Formation<select data-row-unit="${id}"><option value="front" ${game.preset.rows[index]==='front'?'selected':''}>Front</option><option value="back" ${game.preset.rows[index]==='back'?'selected':''}>Back</option></select></label><label>Fighter Power-Up<select data-equip-unit="${id}"><option value="">No Power-Up</option>${Object.keys(game.state.collection.powerups).map(x=>content.powerups.get(x)).filter(p=>p&&(game.preset.mode==='endless'||p.sagaId===item.sagaId)).map(p=>`<option value="${p.id}" ${game.preset.powerupIds[index]===p.id?'selected':''}>${escape(p.name)} · ${p.rarity}</option>`).join('')}</select></label>`;}
+      if(item.copyLibrary)detail+=`<label>Copy policy<select data-copy-unit="${id}">${['recommended',...item.copyLibrary,'never-replace'].map(x=>`<option value="${x}" ${(owned.copyPolicy||'recommended')===x?'selected':''}>${x.replaceAll('-',' ')}</option>`).join('')}</select></label>`;
+      detail+=`<label>Ultimate policy<select data-ultimate-unit="${id}"><option value="auto" ${owned.ultimatePolicy!=='boss'?'selected':''}>Auto</option><option value="boss" ${owned.ultimatePolicy==='boss'?'selected':''}>Hold for boss</option></select></label>`;
+    }
+    detail+=`<p class="small-note">PROVISIONAL ART · ${item.spriteKey==='meta-knight'?'Source wing poses with provisional sword/counter motion.':item.spriteKey==='bandana'?'Source walking, thrust and throw poses with a separate spear.':item.sagaId==='kirby'?'Declared enhanced sprite treatment.':'Classic / declared enhanced sprite treatment.'}</p>`;
+  }else if(kind==='powerup'){const l=item.statLean;detail=`<p>Grants ${escape(item.grantedTrait)}. ${escape(l.stat)} ${l.multiplier?percent(l.multiplier-1):'+'+l.additive}.</p><p>${escape(effectsText(item.proc?.effects))}</p><p>Trigger: ${escape(item.proc?.trigger||'none')}.</p><p>One Power-Up slot. The fighter keeps its complete kit.</p>`;}
+  else detail=`<p>${escape(item.description||item.title)}</p><p>Trigger: ${escape(item.trigger.type.replaceAll('-',' '))}${item.trigger.cooldownSeconds?' · '+item.trigger.cooldownSeconds+' s cooldown':''}.</p><p>${escape(effectsText(item.effects))}</p>${owned?`<p>Proficiency ${owned.proficiencyRank} / 5 · ${Math.floor(owned.proficiencyXp)} XP. Effect strength +${((owned.proficiencyRank-1)*1.25).toFixed(2)}%.</p>${button('Equip Assist Page','equipAssist',[id],'primary')}`:''}<p class="small-note">The full intervention is available at first acquisition. Later ranks add up to 5% strength.</p>`;
+  dialog.innerHTML=`<button class="dialog-close" aria-label="Close fighter details">×</button><div class="detail-hero ${item.rarity}">${collectibleArt(item,kind)}<div><span class="rarity">${item.rarity}</span><h2>${escape(item.name)}</h2><p>${escape(item.title||item.grantedTrait||'Assist Page')}</p></div></div>${detail}`;document.body.append(dialog);dialog.showModal();dialog.querySelector('.dialog-close').onclick=()=>{dialog.close();dialog.remove();};dialog.addEventListener('close',()=>dialog.remove());bind(dialog);
+}
+function showReport(runId){const r=game.state.telemetry.recentReports.find(x=>x.runId===runId);if(!r)return;const d=document.createElement('dialog');d.className='detail-dialog';d.innerHTML=`<button class="dialog-close" aria-label="Close report">×</button>${chapter('REPORT',r.win?'Expedition complete.':'Time to regroup.')}${reportCard(r)}<div class="section-label">DAMAGE & SUPPORT</div><table>${r.party.filter(Boolean).map(p=>`<tr><th>${escape(content.units.get(p.id)?.name||p.id)}</th><td>${num(r.stats.damage?.[p.id])} damage</td><td>${num(r.stats.healing?.[p.id])} healing</td></tr>`).join('')}</table><p>Training ${r.rank} · Threat ${r.threat} · ${r.waves} waves · ${r.kills} enemies · ${r.stats.assists||0} Assist activations.</p><p>${r.stats.bossPhases.map(escape).join(' · ')}</p><details><summary>Combat event log</summary><div class="event-log">${r.events.filter(Boolean).slice(-40).map(e=>`<div>${(e.atMs/1000).toFixed(1)} s · ${escape(e.type)} ${escape(e.abilityId||'')} ${e.values?.final!==undefined?'· '+num(e.values.final):''}</div>`).join('')}</div></details>`;document.body.append(d);d.showModal();d.querySelector('.dialog-close').onclick=()=>d.close();d.onclose=()=>d.remove();}
+function bind(root){
+  root.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>{if(b.dataset.action==='report')showReport(...JSON.parse(b.dataset.args));else if(b.dataset.action==='quitDesktop')window.desktop?.quit();else act(b.dataset.action,...JSON.parse(b.dataset.args));if(root.tagName==='DIALOG'&&['toggleParty','replaceParty','applyNote','equipAssist'].includes(b.dataset.action))root.close();});
+  root.querySelectorAll('[data-stage]').forEach(b=>b.onclick=()=>{selectedStage=b.dataset.stage;render();});
+  root.querySelectorAll('[data-inspect]').forEach(b=>b.onclick=()=>inspect(b.dataset.inspect,b.dataset.itemKind||'unit'));
+  root.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;render();});
+  root.querySelectorAll('[data-kind]').forEach(b=>b.onclick=()=>{summonKind=b.dataset.kind;render();});
+  root.querySelectorAll('[data-open-tab]').forEach(b=>b.onclick=()=>{tab=b.dataset.openTab;render();});
+  root.querySelectorAll('[data-replay]').forEach(b=>b.onclick=()=>showReceipt(game,game.state.banners.history.find(r=>r.id===b.dataset.replay),act,inspect));
+  const select=(selector,handler)=>root.querySelector(selector)?.addEventListener('change',handler);
+  select('#auto-repeat',e=>act('auto',e.target.checked));select('#preset-select',e=>act('choosePreset',e.target.value));select('#assist-select',e=>act('equipAssist',e.target.value));
+  root.querySelectorAll('[data-equip-unit]').forEach(e=>e.onchange=()=>act('equip',e.dataset.equipUnit,e.value));
+  root.querySelectorAll('[data-row-unit]').forEach(e=>e.onchange=()=>act('setRow',e.dataset.rowUnit,e.value));
+  root.querySelectorAll('[data-copy-unit]').forEach(e=>e.onchange=()=>act('fighterPolicy',e.dataset.copyUnit,'copyPolicy',e.value));
+  root.querySelectorAll('[data-ultimate-unit]').forEach(e=>e.onchange=()=>act('fighterPolicy',e.dataset.ultimateUnit,'ultimatePolicy',e.value));
+  select('#sound-setting',e=>act('setting','muted',!e.target.checked));select('#motion-setting',e=>act('setting','reducedMotion',e.target.checked));select('#fps-setting',e=>act('setting','fps',Number(e.target.value)));
+  root.querySelectorAll('[data-audio]').forEach(e=>e.onchange=()=>act('audio',e.dataset.audio,e.value));
+  root.querySelector('#export-save')?.addEventListener('click',()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([game.exportSave()],{type:'application/json'}));a.download='pocket-gacha-save.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);});
+  select('#import-save',async e=>{const file=e.target.files[0];if(file)act('importSave',await file.text());});
+}
+function progress(){const b=game.battle,e=b?.encounter||game.activeEncounter;const status=b&&!b.done?`${game.paused?'Paused':'Fighting'} · wave ${Math.max(1,b.waveIndex+1)} / ${e.waves.length}`:b?.done?b.win?'Course clear':'Party retreated':'Ready to deploy';$('#footer').innerHTML=`<span>${escape(e.name)} · ${status}</span><b>RANK ${game.rank}</b>`;
+  const statusElement=$('#battle-status');if(statusElement)statusElement.textContent=`${game.world.name} · ${status}${b?' · '+Math.floor(b.time/60)+':'+String(Math.floor(b.time%60)).padStart(2,'0'):''}`;
+  $('#dock-pause').textContent=game.paused?'Resume':'Pause';}
+document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;$('#page').scrollTop=0;render();});
+$('#settings').onclick=()=>{tab='manual';render();$('#settings-panel').open=true;$('#settings-panel').scrollIntoView({block:'start'});};
+$('#open-strip').onclick=()=>{if(desktop)window.desktop.openStrip();else $('#battle-canvas').scrollIntoView({behavior:'smooth',block:'center'});};
+$('#dock-start').onclick=()=>act('start');$('#dock-pause').onclick=()=>act('pause');
+let latestReportId='';
+game.addEventListener('changed',()=>{const report=game.lastReport;if(report?.firstClear&&report.runId!==latestReportId){latestReportId=report.runId;selectedStage=game.state.session.encounterId;}render();});
+if(desktop){let fingerprint='';window.desktop.onInspect(id=>inspect(id));window.desktop.onState(payload=>{const previous=game.state.session.encounterId;game.state=payload.state;game.battle=payload.battle;game.paused=payload.paused;if(previous!==game.state.session.encounterId)selectedStage=game.state.session.encounterId;
+  const next=JSON.stringify([game.inventory,game.state.loadouts,game.state.collection,game.state.progression,game.state.banners,game.state.profile.audio,game.state.profile.muted,game.state.profile.reducedMotion,game.state.telemetry.recentReports.map(r=>r.runId)]);
+  if(next!==fingerprint){fingerprint=next;render();}else progress();});window.desktop.onToast(toast);window.desktop.requestState();}
+else createRuntime(game,$('#battle-canvas'),{onProgress:progress});
+render();if(game.notice)toast(game.notice);

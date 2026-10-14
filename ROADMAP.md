@@ -1,5 +1,12 @@
 # Pocket Gacha: roadmap
 
+**Current implementation:** the v1 pass is on local `codex/v1-playable` from
+the latest planning push. Both first Worlds, SaveV4, independent gauges, the
+Manual, 28 fighters and summon theater are implemented. Read
+[the build evidence and limits](docs/V1_BUILD_REPORT.md). Archives, final assets
+and an actual M2 desktop smoke pass remain production work. The “Where we are”
+and PG-003 “next” statements below are historical.
+
 Read this first. `HANDOFF.md` has the history and technical detail; this file
 says what we are building and in what order.
 

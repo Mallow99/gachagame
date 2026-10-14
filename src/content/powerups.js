@@ -2,6 +2,7 @@
 // and at most one bounded proc. Matching sprite frames are optional polish;
 // these records never replace a fighter's kit.
 
+import { EXTRA_POWERUPS } from './opening-supply.js';
 export const POWERUPS = [
   {
     id: 'super-mushroom', sagaId: 'mario', name: 'Super Mushroom', rarity: 'R',
@@ -63,3 +64,6 @@ export const POWERUPS = [
     duplicatePolicyId: 'powerup-echoes-v1', artId: 'super-star-item', productionStatus: 'planned',
   },
 ];
+POWERUPS.push(...EXTRA_POWERUPS);
+for (const item of POWERUPS) if (!['super-star','super-bell'].includes(item.id)) {item.productionStatus='provisional';item.usable=true;}
+POWERUPS.find(p=>p.id==='friend-heart').statLean={stat:'haste',additive:0.1};

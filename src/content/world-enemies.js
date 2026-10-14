@@ -1,0 +1,51 @@
+const SMB = 'super-mario-bros-1985', KA = 'kirbys-adventure-1993';
+const attack = (id, behavior, coefficient = 1, intervalSeconds = 2.8, extra = {}) => ({ id, name:id.replaceAll('-',' '), behavior, coefficient, intervalSeconds,
+  range: ['strike','combo'].includes(behavior) ? 50 : 300, targetRule:'nearest', effects:[], ...extra });
+function enemy(id,name,spriteKey,stats,behavior,options={}) {
+  const [hp,attackPower,guard,moveSpeed=95] = stats;
+  return { id,name,spriteKey,spriteId:spriteKey,sourceGameId:options.sagaId==='mario'?SMB:KA,
+    archetype:options.archetype||'skirmisher',size:options.size||'small',traits:options.traits||['grounded'],
+    baseStats:{hp,attack:attackPower,guard,moveSpeed,haste:0},movement:{mode:options.movement||'approach',preferredRange:behavior==='strike'?40:230},
+    attacks:[attack(id+'-attack',behavior,1,options.interval||2.8)],telegraphs:[],threatCost:25,rewardWeight:1,
+    productionStatus:'provisional',...options };
+}
+const boss = (id,name,spriteKey,stats,attacks,options={}) => enemy(id,name,spriteKey,stats,attacks[0].behavior,
+  {size:'boss',archetype:'boss',traits:['heavy'],attacks,boss:{staggerMax:100,staggerDurationSeconds:5,controlResistance:0.65,
+    phases:[{id:'opening',startsAtHpRatio:1},{id:'phase-two',startsAtHpRatio:0.5,hasteBonus:.12,attackMultiplier:1.08}]},...options});
+export const WORLD_ENEMIES = [
+  enemy('buzzy-beetle','Buzzy Beetle','buzzy',[1000,48,75,66],'charge',{sagaId:'mario',traits:['shell','armored'],resistProjectile:0.35}),
+  enemy('cheep-cheep','Cheep-cheep','cheep',[500,58,10,112],'charge',{sagaId:'mario',movement:'arc',traits:['aquatic','airborne']}),
+  enemy('blooper','Blooper','blooper',[680,50,20,88],'combo',{sagaId:'mario',movement:'float',traits:['aquatic'],attacks:[attack('tentacle-bump','combo',0.35,3,{hitCount:3}),attack('ink-cloud','beam',0.75,5,{effects:[{type:'slow'}]})]}),
+  enemy('paratroopa','Paratroopa','koopa',[600,55,18,110],'stomp',{sagaId:'mario',movement:'float',traits:['airborne','shell']}),
+  enemy('spiny','Spiny','spiny',[700,52,60,60],'strike',{sagaId:'mario',traits:['spiked','armored']}),
+  enemy('lakitu','Lakitu','lakitu',[700,52,22,96],'lob',{sagaId:'mario',movement:'hover',traits:['airborne'],attacks:[attack('spiny-rain','lob',0.9,3.4,{effects:[{type:'summon',enemyId:'spiny',limit:2}]})]}),
+  boss('lakitu-boss','Lakitu','lakitu',[7500,82,48,88],[attack('spiny-rain','lob',0.9,3.6,{effects:[{type:'summon',enemyId:'spiny',limit:2}]}),attack('cloud-dive','charge',1.25,6)],{sagaId:'mario',movement:'hover',traits:['airborne','heavy']}),
+  boss('impostor-bowser','Impostor Bowser','bowser',[4800,84,48,78],[attack('false-flame','beam',0.32,4,{hitCount:3}),attack('false-leap','stomp',1.3,5)],{sagaId:'mario',boss:{staggerMax:100,staggerDurationSeconds:7,phases:[{id:'disguise',startsAtHpRatio:1},{id:'axe-opening',startsAtHpRatio:0.5}]}}),
+  boss('bowser-boss','Bowser','bowser',[15000,108,60,78],[attack('furnace-breath','beam',0.35,4.8,{hitCount:4,effects:[{type:'burn'}]}),attack('bridge-leap','stomp',1.6,6),attack('hammer-fan','lob',0.55,5,{hitCount:3})],{sagaId:'mario',boss:{staggerMax:100,staggerDurationSeconds:7,controlResistance:0.65,phases:[{id:'king-of-the-castle',startsAtHpRatio:1},{id:'broken-bridge',startsAtHpRatio:0.6,attackCycle:[0,2,1,2],hasteBonus:.12},{id:'axe-opening',startsAtHpRatio:0.25,guardChange:-25,attackMultiplier:1.1}]}}),
+  enemy('bullet-bill','Bullet Bill','bullet',[230,70,12,170],'charge',{sagaId:'mario',traits:['projectile','airborne']}),
+  enemy('podoboo','Podoboo','podoboo',[300,65,5,90],'stomp',{sagaId:'mario',traits:['fire','airborne']}),
+  enemy('waddle-dee','Waddle Dee','waddle-dee',[380,35,5,78],'strike'),
+  enemy('bronto-burt','Bronto Burt','bronto',[360,40,6,120],'charge',{movement:'float',traits:['airborne']}),
+  enemy('hot-head','Hot Head','hot-head',[490,46,14,80],'beam',{copyAbilityId:'fire',attacks:[attack('fire-breath','beam',0.27,3.6,{hitCount:4,effects:[{type:'burn'}]})]}),
+  enemy('sir-kibble','Sir Kibble','sir-kibble',[520,49,26,86],'shot',{copyAbilityId:'cutter',attacks:[attack('returning-cutter','shot',0.9,3.2,{effects:[{type:'return-shot',coefficient:0.4}]})]}),
+  enemy('parasol-dee','Parasol Waddle Dee','parasol',[610,43,48,82],'strike',{movement:'float',traits:['airborne']}),
+  enemy('poppy-bros','Poppy Bros. Jr.','poppy',[470,55,12,95],'lob',{copyAbilityId:null}),
+  enemy('sparky','Sparky','sparky',[540,50,25,72],'beam',{copyAbilityId:'spark'}),
+  enemy('rocky','Rocky','rocky',[780,52,70,55],'stomp',{copyAbilityId:'stone',attacks:[attack('stone-drop','stomp',1.15,3.8,{effects:[{type:'stone',durationSeconds:1.5}]})]}),
+  enemy('wheelie','Wheelie','wheelie',[520,55,24,170],'charge',{copyAbilityId:'wheel',movement:'wheel'}),
+  enemy('waddle-doo','Waddle Doo','waddle-doo',[470,48,16,82],'beam',{copyAbilityId:'beam'}),
+  enemy('chilly','Chilly','chilly',[520,43,25,78],'beam',{copyAbilityId:'ice',attacks:[attack('frost-breath','beam',0.25,3.3,{hitCount:4,effects:[{type:'slow'}]})]}),
+  enemy('sword-knight','Sword Knight','sword-knight',[650,56,35,105],'combo',{copyAbilityId:'sword',attacks:[attack('sword-chain','combo',0.36,3,{hitCount:3})]}),
+  enemy('blade-knight','Blade Knight','sword-knight',[680,58,40,98],'strike',{copyAbilityId:'sword'}),
+  enemy('bonkers','Bonkers','bonkers',[1900,75,38,80],'strike',{size:'elite',copyAbilityId:'hammer',attacks:[attack('hammer-flip','strike',1.2,3.6),attack('coconut-bomb','lob',0.9,4.5)]}),
+  enemy('laser-ball','Laser Ball','laser-ball',[480,53,18,100],'shot',{movement:'float',traits:['airborne']}),
+  enemy('scarfy','Scarfy','scarfy',[520,64,14,125],'charge',{movement:'float',traits:['airborne']}),
+  enemy('paint-roller','Paint Roller','paint-roller',[1100,62,22,110],'lob',{size:'elite',attacks:[attack('painted-hazard','lob',1.1,3.6,{effects:[{type:'summon',enemyId:'waddle-dee',limit:2}]})]}),
+  enemy('kracko-jr','Kracko Jr.','kracko-jr',[1500,68,30,100],'beam',{size:'elite',movement:'hover',traits:['airborne']}),
+  boss('whispy-woods','Whispy Woods','whispy',[8500,74,38,0],[attack('apple-rain','lob',0.65,4,{hitCount:3,projectileOrigin:125,effects:[{type:'apple'}]}),attack('forest-gust','beam',0.9,5,{effects:[{type:'knockback',amount:70}]})],{movement:'fixed',traits:['heavy','fixed'],boss:{staggerMax:100,staggerDurationSeconds:5,phases:[{id:'gentle-breeze',startsAtHpRatio:1},{id:'falling-orchard',startsAtHpRatio:.5,attackCycle:[0,0,1],hasteBonus:.08,adds:[{enemyId:'waddle-dee',count:2}]}]}}),
+  boss('kracko','Kracko','kracko',[11000,90,40,100],[attack('lightning-lanes','beam',0.5,4.2,{hitCount:3}),attack('cloud-sweep','charge',1.1,6),attack('waddle-doo-drop','lob',0.8,6,{effects:[{type:'summon',enemyId:'waddle-doo',limit:2}]})],{movement:'hover',traits:['airborne','heavy']}),
+  boss('meta-knight-boss','Meta Knight','meta-knight',[11500,95,60,145],[attack('galaxia-duel','combo',0.4,2.9,{hitCount:3}),attack('cape-reposition','charge',1.2,5),attack('mach-tornado','beam',0.35,6,{hitCount:4})],{copyAbilityId:'sword',movement:'cape',traits:['heavy','guarded']}),
+  boss('dedede-boss','King Dedede','dedede',[10500,98,58,75],[attack('royal-hammer','strike',1.1,3.2),attack('king-inhale','beam',0.8,5,{effects:[{type:'inhale',pull:80,threshold:0}]}),attack('super-dedede-jump','stomp',1.6,6)]),
+  boss('nightmare-orb','Nightmare Orb','nightmare-orb',[6500,95,35,125],[attack('star-pursuit','shot',0.65,3,{hitCount:3}),attack('orb-rush','charge',1.25,5)],{movement:'hover',traits:['airborne','heavy']}),
+  boss('nightmare-wizard','Nightmare Wizard','nightmare',[14000,108,65,85],[attack('cloak-stars','shot',0.55,3.8,{hitCount:4}),attack('vulnerable-cloak','beam',0.9,5,{effects:[{type:'guard',amount:-25,durationSeconds:5}]}),attack('dream-warp','charge',1.4,6)],{movement:'hover',traits:['airborne','heavy'],boss:{staggerMax:100,staggerDurationSeconds:5,phases:[{id:'cloak-closed',startsAtHpRatio:1},{id:'cloak-opening',startsAtHpRatio:.5,guardChange:-20,hasteBonus:.1}]}}),
+];

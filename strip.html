@@ -1,33 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'">
-  <title>Pocket Gacha Battle Strip</title>
-  <link rel="stylesheet" href="strip.css">
-</head>
-<body>
-  <main id="strip" class="area-grassland">
-    <section id="world" aria-label="Automatic battle">
-      <canvas id="stage"></canvas>
-      <div id="turn-order"><small>NEXT</small><span>—</span></div>
-      <div id="announce"></div>
-    </section>
-    <div id="controls" data-interactive>
-      <button id="hud" type="button" title="Open collection and team management">
-        <span id="location">GRASSLAND</span>
-        <strong id="stage-label">STAGE 1</strong>
-        <span id="wave-label">1/3</span>
-        <span id="modifier-label">OPEN FIELD</span>
-        <span class="gem">◆ <b id="gems">0</b></span>
-        <span class="coin">● <b id="gold">0</b></span>
-        <span class="open">MENU</span>
-      </button>
-      <button id="hide-strip" type="button" title="Hide strip · restore with ⌘⇧G">×</button>
-    </div>
-  </main>
-  <script type="module" src="src/strip.js"></script>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pocket Gacha · Strip</title><link rel="stylesheet" href="strip.css"></head><body>
+<canvas id="strip-canvas" aria-label="Your roaming party"></canvas>
+<div id="actor-hotspots" aria-label="Inspect deployed fighters"></div>
+<div id="strip-hud"><button id="manual-button" title="Open the Field Manual"><span class="strip-star">✦</span><span id="strip-label">Pocket Gacha</span></button><span id="strip-progress">Preparing the expedition</span><button id="strip-deploy">Deploy</button><button id="strip-pause" aria-label="Pause combat">Ⅱ</button><button id="strip-hide" aria-label="Hide the strip">−</button></div>
+<div id="strip-toast" role="status" aria-live="polite"></div><script type="module" src="src/strip.js"></script></body></html>

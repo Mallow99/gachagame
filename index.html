@@ -1,15 +1,17 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'">
-  <title>Pocket Gacha</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>Pocket Gacha · Field Manual</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="src/presentation/art.css"></head>
 <body>
-  <div id="app"></div>
+  <div class="desk">
+    <section class="manual-book" id="app" aria-label="Pocket Field Manual">
+      <header class="book-header"><div><span class="edition">POCKET GACHA / FIRST EDITION</span><h1>Field Manual<span class="header-star">✦</span></h1></div><div class="window-actions"><button id="open-strip" title="Return to the battle strip" aria-label="Return to battle strip">↙</button><button id="settings" title="Settings" aria-label="Open settings">⚙</button></div></header>
+      <div id="ledger" class="ledger" aria-label="Currencies"></div>
+      <nav class="chapter-tabs" aria-label="Chapters"><button data-tab="atlas" class="active">Atlas</button><button data-tab="party">Party</button><button data-tab="summon">Summon</button><button data-tab="manual">Manual</button></nav>
+      <main id="page"></main>
+      <footer id="footer" class="book-footer"></footer>
+    </section>
+    <aside class="battle-dock" aria-label="Live expedition"><div class="dock-heading"><span class="edition">THE DESKTOP STRIP</span><h2>A little adventure.<br>A new companion.</h2><p>Your party moves, jumps and fights on its own. Bring back Starlight. Open the next page.</p></div><div class="battle-viewport"><canvas id="battle-canvas" aria-label="Live automatic battle"></canvas><div id="battle-status"></div></div><div class="dock-controls"><button id="dock-start" class="primary">Deploy party</button><button id="dock-pause">Pause</button></div><p class="desk-note">Four fighters. One family per party.<br>Every new pull is already trained.</p></aside>
+  </div>
+  <div id="toast" role="status" aria-live="polite"></div>
   <script type="module" src="src/main.js"></script>
-</body>
-</html>
+</body></html>

@@ -27,10 +27,11 @@ test('the first-slice content index validates and exposes stable lookups', () =>
 
 test('player-facing unit queries exclude every development fixture', () => {
   const playerIds = getPlayerUnits().map((unit) => unit.id);
-  assert.deepEqual(playerIds, ['classic-mario', 'classic-luigi', 'toad', 'princess-peach']);
+  assert.ok(playerIds.includes('adventure-kirby'));
+  assert.ok(playerIds.includes('bowser'));
   assert.deepEqual(
     getPlayerUnits().filter((unit) => unit.acquisition.type === 'hub-starter').map((unit) => unit.id),
-    ['classic-mario'],
+    ['classic-mario','adventure-kirby'],
   );
   assert.equal(getUnit('walter'), undefined);
   assert.equal(getUnit('sahur'), undefined);
@@ -57,7 +58,7 @@ test('Power-Ups and Assists are separate validated equipment namespaces', () => 
   assert.ok(getPlayerUnits().every((unit) => !Object.hasOwn(unit, 'powerupCompatibility')));
 
   const supplyPages = content.records.banners.filter((banner) => banner.channel === 'supply');
-  assert.deepEqual(supplyPages.map((banner) => banner.poolKind), ['powerup', 'assist']);
+  for(const sagaId of ['mario','kirby'])assert.deepEqual(supplyPages.filter(b=>b.sagaId===sagaId).map(b=>b.poolKind),['powerup','assist']);
   assert.ok(supplyPages.every((banner) => banner.pityPolicyId === 'supply-standard-v1'));
   assert.equal(content.banners.get('smb1-overworld-fighter').unlock.encounterId, 'smb1-01');
 });

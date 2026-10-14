@@ -1,0 +1,36 @@
+{
+  "at": "2026-10-14T07:16:39.956Z",
+  "method": "One million production rollRarity decisions per channel, with a fresh independent base-rate draw alongside each pity-chain draw. Welcome/ownership/receipts are tested separately.",
+  "results": {
+    "fighter": {
+      "decisions": 1000000,
+      "normal": {
+        "R": 799973,
+        "SR": 170064,
+        "SSR": 29963
+      },
+      "withPity": {
+        "R": 770487,
+        "SR": 192891,
+        "SSR": 36622
+      },
+      "largestSsrGap": 70,
+      "largestSrGap": 10
+    },
+    "supply": {
+      "decisions": 1000000,
+      "normal": {
+        "R": 750194,
+        "SR": 199494,
+        "SSR": 50312
+      },
+      "withPity": {
+        "R": 726745,
+        "SR": 213433,
+        "SSR": 59822
+      },
+      "largestSsrGap": 45,
+      "largestSrGap": 10
+    }
+  }
+}

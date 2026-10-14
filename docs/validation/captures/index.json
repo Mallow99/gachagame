@@ -1,0 +1,60 @@
+{
+  "at": "2026-10-14T12:48:17.935Z",
+  "method": "Actual Battle and BattleView in native canvas. These are renderer captures, not browser CSS or macOS window screenshots.",
+  "captures": [
+    {
+      "name": "mario-field",
+      "file": "docs/validation/captures/mario-field.png",
+      "encounter": "smb1-01",
+      "seconds": 20.000000000000153,
+      "width": 1000,
+      "height": 220,
+      "transparent": false
+    },
+    {
+      "name": "classic-party-strip",
+      "file": "docs/validation/captures/classic-party-strip.png",
+      "encounter": "smb1-04",
+      "seconds": 18.000000000000053,
+      "width": 1280,
+      "height": 170,
+      "transparent": true
+    },
+    {
+      "name": "dream-party-field",
+      "file": "docs/validation/captures/dream-party-field.png",
+      "encounter": "ka-02",
+      "seconds": 18.000000000000053,
+      "width": 1000,
+      "height": 220,
+      "transparent": false
+    },
+    {
+      "name": "whispy-field",
+      "file": "docs/validation/captures/whispy-field.png",
+      "encounter": "ka-05",
+      "seconds": 37.766666666667085,
+      "width": 1000,
+      "height": 220,
+      "transparent": false
+    },
+    {
+      "name": "bowser-ultimate-strip",
+      "file": "docs/validation/captures/bowser-ultimate-strip.png",
+      "encounter": "smb1-15",
+      "seconds": 29.300000000000615,
+      "width": 1280,
+      "height": 170,
+      "transparent": true
+    },
+    {
+      "name": "small-strip",
+      "file": "docs/validation/captures/small-strip.png",
+      "encounter": "ka-03",
+      "seconds": 18.000000000000053,
+      "width": 360,
+      "height": 170,
+      "transparent": true
+    }
+  ]
+}

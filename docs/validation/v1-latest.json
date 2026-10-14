@@ -1,0 +1,611 @@
+{
+  "build": "v1-playable",
+  "at": "2026-10-14T12:49:15.108Z",
+  "seconds": 57.759,
+  "seeds": 50,
+  "content": {
+    "fighters": 28,
+    "encounters": 35,
+    "sprites": 57
+  },
+  "banners": [
+    {
+      "id": "smb1-overworld-fighter",
+      "ready": true,
+      "pool": 10,
+      "byRarity": {
+        "R": 6,
+        "SR": 3,
+        "SSR": 1
+      }
+    },
+    {
+      "id": "smb1-overworld-powerup-cache",
+      "ready": true,
+      "pool": 8,
+      "byRarity": {
+        "R": 3,
+        "SR": 3,
+        "SSR": 2
+      }
+    },
+    {
+      "id": "smb1-overworld-assist-call",
+      "ready": true,
+      "pool": 8,
+      "byRarity": {
+        "R": 4,
+        "SR": 2,
+        "SSR": 2
+      }
+    },
+    {
+      "id": "ka-fighter",
+      "ready": true,
+      "pool": 18,
+      "byRarity": {
+        "R": 8,
+        "SR": 8,
+        "SSR": 2
+      }
+    },
+    {
+      "id": "ka-powerup-cache",
+      "ready": true,
+      "pool": 8,
+      "byRarity": {
+        "R": 3,
+        "SR": 3,
+        "SSR": 2
+      }
+    },
+    {
+      "id": "ka-assist-call",
+      "ready": true,
+      "pool": 8,
+      "byRarity": {
+        "R": 4,
+        "SR": 2,
+        "SSR": 2
+      }
+    },
+    {
+      "id": "mario-saga-fighter-archive",
+      "ready": false,
+      "pool": 10,
+      "byRarity": {
+        "R": 6,
+        "SR": 3,
+        "SSR": 1
+      }
+    },
+    {
+      "id": "kirby-saga-fighter-archive",
+      "ready": false,
+      "pool": 18,
+      "byRarity": {
+        "R": 8,
+        "SR": 8,
+        "SSR": 2
+      }
+    }
+  ],
+  "stages": [
+    {
+      "id": "smb1-01",
+      "rank": 1,
+      "party": [
+        "classic-mario"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 102,
+      "maxSeconds": 115,
+      "meanHp": 0.2654545454545454
+    },
+    {
+      "id": "smb1-02",
+      "rank": 2,
+      "party": [
+        "classic-mario",
+        "classic-luigi"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 75,
+      "maxSeconds": 88,
+      "meanHp": 0.7329254829806807
+    },
+    {
+      "id": "smb1-03",
+      "rank": 3,
+      "party": [
+        "classic-mario",
+        "classic-luigi"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 80,
+      "maxSeconds": 106,
+      "meanHp": 0.5247203874944958
+    },
+    {
+      "id": "smb1-04",
+      "rank": 4,
+      "party": [
+        "classic-mario",
+        "classic-luigi",
+        "toad",
+        "princess-peach"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 102,
+      "maxSeconds": 119,
+      "meanHp": 0.999481332439079
+    },
+    {
+      "id": "smb1-05",
+      "rank": 6,
+      "party": [
+        "classic-mario",
+        "classic-luigi",
+        "toad",
+        "princess-peach"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 226,
+      "maxSeconds": 248,
+      "meanHp": 0.9993940634595702
+    },
+    {
+      "id": "smb1-06",
+      "rank": 6,
+      "party": [
+        "classic-mario",
+        "classic-luigi",
+        "toad",
+        "princess-peach"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 107,
+      "maxSeconds": 120,
+      "meanHp": 0.9849785056294779
+    },
+    {
+      "id": "smb1-07",
+      "rank": 7,
+      "party": [
+        "classic-mario",
+        "classic-luigi",
+        "toad",
+        "princess-peach"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 87,
+      "maxSeconds": 102,
+      "meanHp": 0.9538087774294669
+    },
+    {
+      "id": "smb1-08",
+      "rank": 8,
+      "party": [
+        "classic-mario",
+        "classic-luigi",
+        "toad",
+        "princess-peach"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 92,
+      "maxSeconds": 116,
+      "meanHp": 0.9809222118088097
+    },
+    {
+      "id": "smb1-09",
+      "rank": 9,
+      "party": [
+        "classic-mario",
+        "classic-luigi",
+        "toad",
+        "princess-peach"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 113,
+      "maxSeconds": 144,
+      "meanHp": 0.9132322869955155
+    },
+    {
+      "id": "smb1-10",
+      "rank": 10,
+      "party": [
+        "classic-mario",
+        "classic-luigi",
+        "toad",
+        "princess-peach"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 289,
+      "maxSeconds": 356,
+      "meanHp": 0.9038980257510729
+    },
+    {
+      "id": "smb1-11",
+      "rank": 11,
+      "party": [
+        "classic-mario",
+        "classic-luigi",
+        "toad",
+        "princess-peach"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 91,
+      "maxSeconds": 114,
+      "meanHp": 0.9825709592641261
+    },
+    {
+      "id": "smb1-12",
+      "rank": 12,
+      "party": [
+        "classic-mario",
+        "classic-luigi",
+        "toad",
+        "princess-peach"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 101,
+      "maxSeconds": 111,
+      "meanHp": 0.9993230624115705
+    },
+    {
+      "id": "smb1-13",
+      "rank": 13,
+      "party": [
+        "classic-mario",
+        "classic-luigi",
+        "toad",
+        "princess-peach"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 101,
+      "maxSeconds": 112,
+      "meanHp": 0.9798155558898752
+    },
+    {
+      "id": "smb1-14",
+      "rank": 14,
+      "party": [
+        "classic-mario",
+        "classic-luigi",
+        "toad",
+        "princess-peach"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 225,
+      "maxSeconds": 242,
+      "meanHp": 0.9989825824096732
+    },
+    {
+      "id": "smb1-15",
+      "rank": 15,
+      "party": [
+        "classic-mario",
+        "classic-luigi",
+        "toad",
+        "princess-peach"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 403,
+      "maxSeconds": 420,
+      "meanHp": 0.9153650137741048
+    },
+    {
+      "id": "ka-01",
+      "rank": 16,
+      "party": [
+        "adventure-kirby"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 90,
+      "maxSeconds": 102,
+      "meanHp": 0.39351685393258434
+    },
+    {
+      "id": "ka-02",
+      "rank": 17,
+      "party": [
+        "adventure-kirby",
+        "parasol-waddle-dee"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 71,
+      "maxSeconds": 83,
+      "meanHp": 0.7944792939579092
+    },
+    {
+      "id": "ka-03",
+      "rank": 18,
+      "party": [
+        "adventure-kirby",
+        "parasol-waddle-dee"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 83,
+      "maxSeconds": 90,
+      "meanHp": 0.8063617067359756
+    },
+    {
+      "id": "ka-04",
+      "rank": 19,
+      "party": [
+        "adventure-kirby",
+        "parasol-waddle-dee",
+        "sir-kibble",
+        "hot-head"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 66,
+      "maxSeconds": 81,
+      "meanHp": 0.9612485575291322
+    },
+    {
+      "id": "ka-05",
+      "rank": 21,
+      "party": [
+        "adventure-kirby",
+        "parasol-waddle-dee",
+        "sir-kibble",
+        "hot-head"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 191,
+      "maxSeconds": 216,
+      "meanHp": 0.9915385412349772
+    },
+    {
+      "id": "ka-06",
+      "rank": 21,
+      "party": [
+        "adventure-kirby",
+        "parasol-waddle-dee",
+        "sir-kibble",
+        "hot-head"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 63,
+      "maxSeconds": 76,
+      "meanHp": 0.943007666804807
+    },
+    {
+      "id": "ka-07",
+      "rank": 22,
+      "party": [
+        "adventure-kirby",
+        "parasol-waddle-dee",
+        "sir-kibble",
+        "hot-head"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 73,
+      "maxSeconds": 88,
+      "meanHp": 0.9506162387231091
+    },
+    {
+      "id": "ka-08",
+      "rank": 23,
+      "party": [
+        "adventure-kirby",
+        "parasol-waddle-dee",
+        "sir-kibble",
+        "hot-head"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 53,
+      "maxSeconds": 62,
+      "meanHp": 0.9792347248576848
+    },
+    {
+      "id": "ka-09",
+      "rank": 24,
+      "party": [
+        "adventure-kirby",
+        "parasol-waddle-dee",
+        "sir-kibble",
+        "hot-head"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 61,
+      "maxSeconds": 66,
+      "meanHp": 0.9703562738333029
+    },
+    {
+      "id": "ka-10",
+      "rank": 25,
+      "party": [
+        "adventure-kirby",
+        "parasol-waddle-dee",
+        "sir-kibble",
+        "hot-head"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 265,
+      "maxSeconds": 285,
+      "meanHp": 0.8422154648132056
+    },
+    {
+      "id": "ka-11",
+      "rank": 26,
+      "party": [
+        "adventure-kirby",
+        "parasol-waddle-dee",
+        "sir-kibble",
+        "hot-head"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 85,
+      "maxSeconds": 94,
+      "meanHp": 0.9712447622214833
+    },
+    {
+      "id": "ka-12",
+      "rank": 27,
+      "party": [
+        "adventure-kirby",
+        "parasol-waddle-dee",
+        "sir-kibble",
+        "hot-head"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 64,
+      "maxSeconds": 68,
+      "meanHp": 0.8894621260343729
+    },
+    {
+      "id": "ka-13",
+      "rank": 28,
+      "party": [
+        "adventure-kirby",
+        "parasol-waddle-dee",
+        "sir-kibble",
+        "hot-head"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 71,
+      "maxSeconds": 81,
+      "meanHp": 0.920727272727273
+    },
+    {
+      "id": "ka-14",
+      "rank": 29,
+      "party": [
+        "adventure-kirby",
+        "parasol-waddle-dee",
+        "sir-kibble",
+        "hot-head"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 71,
+      "maxSeconds": 79,
+      "meanHp": 0.9167635701275042
+    },
+    {
+      "id": "ka-15",
+      "rank": 30,
+      "party": [
+        "adventure-kirby",
+        "parasol-waddle-dee",
+        "sir-kibble",
+        "hot-head"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 358,
+      "maxSeconds": 397,
+      "meanHp": 0.6027720839433869
+    },
+    {
+      "id": "ka-16",
+      "rank": 31,
+      "party": [
+        "adventure-kirby",
+        "parasol-waddle-dee",
+        "sir-kibble",
+        "hot-head"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 67,
+      "maxSeconds": 74,
+      "meanHp": 0.9016169446297532
+    },
+    {
+      "id": "ka-17",
+      "rank": 32,
+      "party": [
+        "adventure-kirby",
+        "parasol-waddle-dee",
+        "sir-kibble",
+        "hot-head"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 58,
+      "maxSeconds": 65,
+      "meanHp": 0.9289308605720125
+    },
+    {
+      "id": "ka-18",
+      "rank": 33,
+      "party": [
+        "adventure-kirby",
+        "parasol-waddle-dee",
+        "sir-kibble",
+        "hot-head"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 76,
+      "maxSeconds": 82,
+      "meanHp": 0.8789888203311136
+    },
+    {
+      "id": "ka-19",
+      "rank": 34,
+      "party": [
+        "adventure-kirby",
+        "parasol-waddle-dee",
+        "sir-kibble",
+        "hot-head"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 316,
+      "maxSeconds": 357,
+      "meanHp": 0.6315575562700964
+    },
+    {
+      "id": "ka-20",
+      "rank": 35,
+      "party": [
+        "adventure-kirby",
+        "parasol-waddle-dee",
+        "sir-kibble",
+        "hot-head"
+      ],
+      "wins": 50,
+      "trials": 50,
+      "minSeconds": 317,
+      "maxSeconds": 328,
+      "meanHp": 0.8048114020364775
+    }
+  ],
+  "limits": [
+    "Seeded simulation and native canvas verification; browser CSS and macOS integration still require a real-device run.",
+    "All sprite treatments remain provisional; source credit and distribution review pending.",
+    "Archives remain previews; source Spotlights are smaller playable pools."
+  ]
+}

@@ -1,6 +1,7 @@
 // First-slice production fighters. These records are not wired into the
 // playable prototype until the later save/combat tickets migrate consumers.
 
+import { OPENING_UNITS } from './opening-roster.js';
 export const UNITS = [
   {
     id: 'classic-mario', familyId: 'mario', sagaId: 'mario', sourceGameId: 'super-mario-bros-1985',
@@ -47,3 +48,12 @@ export const UNITS = [
     acquisition: { type: 'fighter-banner' }, artId: 'princess-peach-portrait', spriteId: 'princess-peach-battle', releaseId: 'smb1-prologue', productionStatus: 'provisional',
   },
 ];
+UNITS.push(...OPENING_UNITS);
+for (const unit of UNITS) {
+  unit.spriteKey ||= ({ 'classic-mario':'mario', 'classic-luigi':'luigi', toad:'toad', 'princess-peach':'peach' })[unit.id];
+  unit.presentation ||= { quote: { 'classic-mario':"Let's-a go!", 'classic-luigi':'Here we go!', toad:'Leave it to me!', 'princess-peach':'I can do this on my own.' }[unit.id], effectMotif:unit.basic.behavior, voiceAssetId:null, themeAssetId:null };
+  unit.animation ||= { movementSignature: { 'classic-mario':'jump', 'classic-luigi':'high-jump', toad:'courier', 'princess-peach':'float' }[unit.id] };
+  for (const key of ['basic','skill','passive','ultimate']) unit[key].name ||= unit[key].id.split('-').map(x=>x[0].toUpperCase()+x.slice(1)).join(' ');
+  if (unit.id === 'classic-luigi') unit.passive.effects = [{type:'guard',amount:8,durationSeconds:2}];
+  if (unit.id === 'adventure-meta-knight') unit.usable=true;
+}

@@ -1,3 +1,4 @@
+import { WORLD_ENEMIES } from './world-enemies.js';
 export const ENEMIES = [
   {
     id: 'goomba', sourceGameId: 'super-mario-bros-1985', name: 'Goomba', archetype: 'walker', size: 'small', traits: ['grounded'],
@@ -34,3 +35,8 @@ export const ENEMIES = [
     telegraphs: [{ id: 'falling-hammer-zones', durationSeconds: 0.9 }], threatCost: 75, rewardWeight: 2, spriteId: 'hammer-bro-battle', productionStatus: 'provisional',
   },
 ];
+ENEMIES.push(...WORLD_ENEMIES);
+for (const e of ENEMIES) {
+  e.spriteKey ||= ({'koopa-troopa':'koopa','piranha-plant':'piranha','hammer-bro':'hammer-bro',goomba:'goomba'})[e.id];
+  e.animation = { movementSignature:e.movement.mode, interactionSignature:e.traits.includes('shell')?'shell':'contact' };
+}

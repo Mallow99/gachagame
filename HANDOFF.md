@@ -1,5 +1,20 @@
 # Pocket Gacha: handoff
 
+## Current playable branch — 2026-10-14
+
+The v1 implementation is on local `codex/v1-playable` from the latest planning
+push (`ef450706`). Read [the build report](docs/V1_BUILD_REPORT.md) and
+[README](README.md) before the historical notes below. SaveV4, roaming combat,
+both complete first Worlds, 28 fighters, Source Spotlights/Supply, the Paper
+Manual and reveal theater are implemented. Archives remain previews; source
+art and some signatures/audio remain provisional. Browser/M2 checks are still
+required because this sandbox refuses Chromium/Electron socket setup. No PR
+was opened. Run `npm test` and `npm run validate:v1 -- --seeds 50 --write`.
+
+The old prototype descriptions and PG-003 “next” tickets below are historical.
+Longer-term plans remain authoritative; the latest user instruction authorized
+the broader v1 implementation pass.
+
 **Start with `ROADMAP.md`, then `docs/plan/README.md`**: the roadmap says what
 is next and the plan directory is the definitive design/balance/content source.
 This file is the history and technical detail behind them.
