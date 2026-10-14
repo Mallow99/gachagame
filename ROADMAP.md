@@ -24,7 +24,10 @@ production Worlds are the 15-stage *Super Mario Bros.* and the 20-stage
 [`docs/plan/07_TODAY_BUILD_TICKETS.md`](docs/plan/07_TODAY_BUILD_TICKETS.md)
 in order; the data/save shapes it references are in plan document `08`. The
 summon/Hub decisions, expanded rosters and the equipment/Copy audit are in
-documents `13`–`18`.
+documents `13`–`18`. Content-density rules, the implementation-ready
+Mushroom/Dream production packets, Zelda/Metroid/Terraria planners and the
+current coding handoff are documents `19`–`25`; start the next coding session
+with [`docs/plan/25_NEXT_BUILD_HANDOFF.md`](docs/plan/25_NEXT_BUILD_HANDOFF.md).
 
 ---
 

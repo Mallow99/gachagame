@@ -274,8 +274,12 @@ palette variation.
 | Planet Robobot | 20 | mechanized Popstar districts | Robobot Armor Power-Up/iteration, Susie, Haltmann |
 | Kirby and the Forgotten Land | 25 | plains; coast; carnival; winter; Lab Discovera | Bandana Dee, Mouthful effects, Clawroline, Fecto Elfilis |
 
-The opening/breadth Dream Land Archive, Hypernova Kirby and first two pullable
-Super Ability forms are detailed in `16_MARIO_KIRBY_ARCHIVE_EXPANSION.md`.
+The opening/breadth Dream Land Archive and Hypernova Kirby are detailed in
+`16_MARIO_KIRBY_ARCHIVE_EXPANSION.md`. Its five archived Super Ability blocks
+are reference motions for Return to Dream Land Kirby's single UR ultimate,
+not pullable fighters.
+Plan `21_DREAM_LAND_PRODUCTION_PACKET.md` supersedes this abbreviated six-World
+table with the complete 290-stage source spine and corrected opening manifest.
 
 ### Mega Man Saga
 
@@ -322,6 +326,9 @@ all in one banner.
 Base Link iterations share a family. Masks, rods and equipment are Supply unless
 they create an entire independent move set.
 
+This is the early routing shortlist. Plan `22_ZELDA_SAGA_PLANNER.md` owns the
+complete 300-stage candidate spine, 67-card curated museum, Relics and Assists.
+
 ### Metroid Saga
 
 | Source game | Length | Area spine | Boss/roster plan |
@@ -330,6 +337,9 @@ they create an entire independent move set.
 | Super Metroid | 25 | Crateria; Brinstar; Norfair; Wrecked Ship/Maridia; Tourian | signature Samus iteration, four major bosses |
 | Metroid Fusion | 20 | station sectors and restricted lab | Fusion Suit Samus, SA-X, Nightmare, X traits |
 | Metroid Dread | 25 | Artaria through Itorash grouped by route | custom/converted sprite need, E.M.M.I. hazards, Raven Beak |
+
+Plan `23_METROID_SAGA_PLANNER.md` expands this shortlist into the 190-stage core
+spine, 44-card curated museum, Suit Upgrades and Assist catalog.
 
 ### Castlevania Saga
 
@@ -470,6 +480,9 @@ For Bloons, many towers are better summons/Assist Pages than fighters. The
 official game itself distinguishes Monkey Towers, Heroes, Paragons, Powers and
 Insta Monkeys; the adaptation should preserve those categories instead of
 forcing everything to walk.
+
+Plan `24_TERRARIA_SAGA_PLANNER.md` owns Terraria's exact two-World progression,
+32-card candidate museum, Accessories and NPC Assist Pages.
 
 ## 8. Roster construction rules
 

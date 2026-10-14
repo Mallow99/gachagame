@@ -1,6 +1,6 @@
 # Pocket Gacha definitive plan
 
-Status: **planning baseline v5, 2026-10-13**
+Status: **planning baseline v6, 2026-10-14**
 
 Scope: the game to build over the next several weeks, not a promise to produce
 the entire crossover catalog immediately.
@@ -56,6 +56,23 @@ disagree with this directory, this directory wins.
     — the reconciled implementation contract for separate Power-Up and Assist
     slots, Kirby Copy/Super Abilities, one-starter pull progression, renewable
     anti-deadlock income, region lock/Endless and corrected opening pools.
+19. [`19_CONTENT_DENSITY_AND_PORTFOLIO.md`](19_CONTENT_DENSITY_AND_PORTFOLIO.md)
+    — roster-to-stage proportionality, quality states and capacity envelopes
+    for the complete franchise portfolio.
+20. [`20_MUSHROOM_KINGDOM_PRODUCTION_PACKET.md`](20_MUSHROOM_KINGDOM_PRODUCTION_PACKET.md)
+    — the exact 22-fighter implementation manifest, Supply shelves, primitive
+    order and long-term source-game homes for Mushroom Kingdom.
+21. [`21_DREAM_LAND_PRODUCTION_PACKET.md`](21_DREAM_LAND_PRODUCTION_PACKET.md)
+    — the corrected 22-fighter Dream Land manifest, three missing full cards,
+    Copy boundary, Supply shelves and complete World spine.
+22. [`22_ZELDA_SAGA_PLANNER.md`](22_ZELDA_SAGA_PLANNER.md) — candidate-only
+    Zelda World spine, curated fighter museum, Relics and Assist Pages.
+23. [`23_METROID_SAGA_PLANNER.md`](23_METROID_SAGA_PLANNER.md) — candidate-only
+    Metroid World spine, Samus/rival/boss museum, Suit Upgrades and Assists.
+24. [`24_TERRARIA_SAGA_PLANNER.md`](24_TERRARIA_SAGA_PLANNER.md) — candidate-only
+    pre-Hardmode/Hardmode Worlds, class fighters, bosses, Accessories and NPCs.
+25. [`25_NEXT_BUILD_HANDOFF.md`](25_NEXT_BUILD_HANDOFF.md) — the executable
+    next coding sequence and honest owner-visible target for the next build.
 
 ## The one-sentence game
 
@@ -147,7 +164,7 @@ for an eternal commitment.
     copies meet that floor; Technique Mastery and duplicates only improve an
     already complete move.
 21. **Early Archives need collection runway.** Their first real pull waits for
-    at least 22 production-ready Mushroom fighters or 20 Dream Land fighters.
+    at least 22 production-ready Mushroom fighters or 22 Dream Land fighters.
     A median account cannot already own over 75% after twenty pulls, and pool
     growth reaches 28/26 before regional pull 40.
 
