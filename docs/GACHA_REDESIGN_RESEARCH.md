@@ -1,12 +1,21 @@
 # Gacha presentation reset — 2026-10-14
 
+**Newer owner clarification:** read
+[animated pull art and Cubism](ANIMATED_PULL_ART_AND_CUBISM.md) first. The owner
+wants animated character presence, depth and signature effects, with Phantom
+Parade’s exact card examples as the motion reference. A well-rigged character
+in a coherent animated scene is valid. The earlier rejection was of a poor
+Mario rig/background, not the technique itself. Ensemble paintings are now
+better candidates for memories / party bonuses. The wide layout still applies;
+the single-complete-painting recommendation below records the earlier direction.
+
 The owner rejected the current 360 × 600 pull presentation. It squeezes the
 celebration into the Manual, substitutes isolated catalogue illustrations for
 full art, and makes SSRs feel like small mobile reward cards. Technical checks
 proved that the UI worked; they did not establish the requested visual quality.
 
 The approved [Mario demo](../demos/mario-pull/index.html) remains the primary
-reference. [Open the private browser comparison](https://pocket-gacha-reveal-review.berryowlet9.chatgpt.site)
+reference. [Open the earlier private browser comparison](https://pocket-gacha-reveal-review.berryowlet9.chatgpt.site/references/)
 with the owner's ChatGPT account. The [local comparison](validation/reveal-redesign/index.html)
 also works through `npm run web`. These are research pages and do not load a
 game account or spend currency.
@@ -22,7 +31,7 @@ checks for production use.
 
 The chat file viewer could not open the original linked HTML. A self-contained
 export also failed in that viewer despite working in Chromium. The owner-facing
-review now uses an owner-private Sites deployment, with eighteen local image
+initial review used an owner-private Sites deployment, with eighteen local image
 assets and no application scripts. Image comparison controls and the source
 gallery work without JavaScript. All twenty image elements decode in actual
 Chromium on both the project server and the standalone export; the export
@@ -32,7 +41,7 @@ with the chat's file viewer.
 The separate hosting checkout is `/workspace/sites/gacha-reveal-review`.
 Its Site identity is persisted in `.openai/hosting.json`; reuse that Site for
 review iterations and preserve owner-only access. Only review HTML and image
-assets were deployed, with credits and source links; game saves were excluded.
+assets were initially deployed, with credits and source links; game saves were excluded.
 [Deployment evidence](validation/reveal-redesign/hosted-preview.json) records
 the successful private publication. The game repository remains local.
 

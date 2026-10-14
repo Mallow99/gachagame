@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-14T22:20:02.720Z",
+  "project_id": "appgprj_6acff4c4416081918499004cc7f2fcb4",
+  "version_id": "appgprj_6acff4c4416081918499004cc7f2fcb4~appgver_5035cd441a7c8191859485531377c560",
+  "deployment_id": "appgdep_6acffe9dfe2c8191aa97c663c71d1ff1",
+  "status": "succeeded",
+  "url": "https://pocket-gacha-reveal-review.berryowlet9.chatgpt.site",
+  "source_commit_sha": "0d844e37d1ddc39708c44ff1cc1f59a781d540d8",
+  "audience": "owner-private",
+  "contents": "Seven owner-named Phantom Parade animated card references, earlier static comparison, and actual official-sample Cubism Core runtime verification.",
+  "productionGameChanged": false,
+  "customNintendoCubismRigComplete": false
+}

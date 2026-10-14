@@ -2,7 +2,18 @@
 
 ## Current playable branch — 2026-10-14
 
-**Presentation correction from the owner:** the current narrow summon theater
+**Latest visual direction:** the owner clarified that a properly rigged central
+character, coherent animated surroundings and active signature effects are
+valid and preferable to flat ensemble art for fighter pulls. Investigate Cubism
+for 2D. Read [the animated-art/Cubism brief](docs/ANIMATED_PULL_ART_AND_CUBISM.md)
+before interpreting the historical Mario rejection below. The exact seven
+Phantom Parade references and a real official-sample Cubism runtime test are
+on the private review site. A custom Nintendo Cubism rig is not complete; the
+supported Editor is Windows/macOS, not this Linux workspace. Ensemble paintings
+can serve memories/party bonuses. Continue in small visible iterations; do not
+extend an unapproved fighter treatment across the roster.
+
+**Earlier wide/static-art review:** the current narrow summon theater
 and isolated source-era illustrations were rejected. The approved Mario demos
 remain the target: a wide stage, one complete illustrated scene per result,
 deliberate camera/rarity timing and room to linger. Read
@@ -18,8 +29,9 @@ The owner wants small visible iterations for sign-off before more extensive
 reveal work. Rebuild one SSR proof before extending the treatment. Reuse the
 owner-private Site at `/workspace/sites/gacha-reveal-review`, whose identity is
 in `.openai/hosting.json`; the game repository has not been pushed. This hosted
-page is a reference/art-direction comparison, not the replacement production
-theater. Its source links/credits and exact-version caveats remain visible.
+page now includes the owner's seven animated Phantom Parade references and a
+real official-sample Cubism runtime test. It is not the replacement production
+theater. Its source links/credits and verification limits remain visible.
 
 The v1 implementation is on local `codex/v1-playable` from the latest planning
 push (`ef450706`). Read [the build report](docs/V1_BUILD_REPORT.md) and

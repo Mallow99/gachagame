@@ -1,0 +1,50 @@
+{
+  "at": "2026-10-14T22:07:45.027Z",
+  "method": "Actual Chromium: all seven owner-named animated card previews decode and play; source switching and posters work.",
+  "cards": [
+    {
+      "width": 1440,
+      "height": 720,
+      "duration": 6,
+      "playing": true
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "duration": 6,
+      "playing": true
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "duration": 6,
+      "playing": true
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "duration": 6,
+      "playing": true
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "duration": 6,
+      "playing": true
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "duration": 6,
+      "playing": true
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "duration": 6,
+      "playing": true
+    }
+  ],
+  "errors": [],
+  "missing": []
+}

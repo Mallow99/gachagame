@@ -1,0 +1,86 @@
+[
+  {
+    "full": "/assets/jp/cards/a-54510cac119d8dd203f5/full.webp",
+    "video": "/assets/videos/a-a4d03c5147072a306f31.webm",
+    "title": "Are You Really Okay With That?",
+    "character": "Aoi Todo",
+    "slug": "aoi-todo-1-4",
+    "videoSha256": "fc845316db69d369c6225c4e383dc90ffbf72276815c810982380587f9beeff3",
+    "videoBytes": 4667769,
+    "fullSha256": "1ad5cdc21743b1596074375745fb2ec9ab6caea3351ac6b1509046edf2538d65",
+    "fullBytes": 468810,
+    "page": "https://phantom-parade-database.vercel.app/characters/aoi-todo-1-4?lang=en&region=jp"
+  },
+  {
+    "full": "/assets/jp/cards/a-e642f8d8c7902abe53c6/full.webp",
+    "video": "/assets/videos/a-98e3fe8867811a6e3227.webm",
+    "title": "Unbridled Soul",
+    "character": "Mahito",
+    "slug": "mahito-1-2",
+    "videoSha256": "be4efdc5798426a2e10cc749a2b9f6291caf218d5c222fe595a144d22c8e318e",
+    "videoBytes": 402139,
+    "fullSha256": "4326b63805480fface1646a7a421ef120ccfbcf59862669f86f677a66a589117",
+    "fullBytes": 309336,
+    "page": "https://phantom-parade-database.vercel.app/characters/mahito-1-2?lang=en&region=jp"
+  },
+  {
+    "full": "/assets/jp/cards/a-5c1ae98f3e9756b26b9b/full.webp",
+    "video": "/assets/videos/a-d0dd9b18e2512a8821d6.webm",
+    "title": "Lend Me Your Power",
+    "character": "Yuta Okkotsu",
+    "slug": "yuta-okkotsu-1-1",
+    "videoSha256": "aad5f31fe97f754acd119d5cc261c7ae79ebac1901b02bd0970317f99db916c5",
+    "videoBytes": 2086902,
+    "fullSha256": "0603fc080f904a27925e447d48fa9cd504cf035d424e933c65b007f98d05e6ae",
+    "fullBytes": 465932,
+    "page": "https://phantom-parade-database.vercel.app/characters/yuta-okkotsu-1-1?lang=en&region=jp"
+  },
+  {
+    "full": "/assets/jp/cards/a-1e179b895327c07f8167/full.webp",
+    "video": "/assets/videos/a-b7475b15baa3e8073d98.webm",
+    "title": "An Entrusted Life",
+    "character": "Yuji Itadori",
+    "slug": "yuji-itadori-1-7",
+    "videoSha256": "a90de55a3bb90286465b1103b33855835cf311da628901d7d1203ad12529404e",
+    "videoBytes": 1298875,
+    "fullSha256": "ae7614611ed602f272063db14a472a060fbb6ade5f9cbc6f3d2db9b2f75f24c3",
+    "fullBytes": 479766,
+    "page": "https://phantom-parade-database.vercel.app/characters/yuji-itadori-1-7?lang=en&region=jp"
+  },
+  {
+    "full": "/assets/jp/cards/a-8931cb0ff7d204a9f9b0/full.webp",
+    "video": "/assets/videos/a-608e67945f4e73734f68.webm",
+    "title": "Incomplete Domain",
+    "character": "Megumi Fushiguro",
+    "slug": "megumi-fushiguro-1-3",
+    "videoSha256": "ba5332d47654421e4ae74b7c1c1b41bdfd22532c1c6de7e759887add893d7ae7",
+    "videoBytes": 1108137,
+    "fullSha256": "15e1df29be3364040634d839a87b3d6a846927f026beaa84c54fdff13d91a3ac",
+    "fullBytes": 480016,
+    "page": "https://phantom-parade-database.vercel.app/characters/megumi-fushiguro-1-3?lang=en&region=jp"
+  },
+  {
+    "full": "/assets/jp/cards/a-6fae70d97d02aaa7cb61/full.webp",
+    "video": "/assets/videos/a-514c592245c6e8ddada7.webm",
+    "title": "The Strongest Blue",
+    "character": "Satoru Gojo",
+    "slug": "satoru-gojo-1-3",
+    "videoSha256": "f12a6e397a1ec8a3cc0c1a4721177a6ac2573ed7c03794c90396540a8ad8f385",
+    "videoBytes": 972678,
+    "fullSha256": "5edbcb87f7c803d710273acde8ad8029215de999cd7309c8acf6de27f9437422",
+    "fullBytes": 397294,
+    "page": "https://phantom-parade-database.vercel.app/characters/satoru-gojo-1-3?lang=en&region=jp"
+  },
+  {
+    "full": "/assets/jp/cards/a-4fdd65f86e156175c966/full.webp",
+    "video": "/assets/videos/a-89cfb5ea8e6d1970558d.webm",
+    "title": "Domain Expansion of 0.2 Seconds",
+    "character": "Satoru Gojo",
+    "slug": "satoru-gojo-1-6",
+    "videoSha256": "94d9bf870c16e0f36560897545bd57a1ef3f19c272d3aa223bb469dfaf9b2f9a",
+    "videoBytes": 976750,
+    "fullSha256": "8c2a0bc4a12e5abf454072dde47640bb658b5c787a05ba4934d6c8b81dcd7b31",
+    "fullBytes": 560716,
+    "page": "https://phantom-parade-database.vercel.app/characters/satoru-gojo-1-6?lang=en&region=jp"
+  }
+]

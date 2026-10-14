@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-14T22:11:25.792Z",
+  "method": "Actual Chromium WebGL: official Cubism Core renders official compiled Haru rig through pixi-live2d-display; authored gesture, expressions, face-turn controls and pause work.",
+  "ready": true,
+  "core": 83951616,
+  "parameters": 42,
+  "drawables": 84,
+  "errors": [],
+  "missing": [],
+  "limits": "Technical sample only. Not a custom Nintendo Cubism rig, production integration, authoring test or native M2 verification."
+}
