@@ -134,9 +134,12 @@ See [the sprite review](SPRITE_REVIEW.md), current manifest and credited intake.
 Source fidelity is not final human approval of feel. Sparse SR pose sets,
 some authored signature effects, Whispy's assembled silhouette, remaining pull
 illustrations and non-sourced Assist symbols still need polish. Full voice
-quotes and music remain unfinished; Mushroom pulls use the approved demo's
+quotes and the wider music library remain unfinished; Mushroom pulls use the approved demo's
 native coin/power-up/voice clips and NES Starman theme, with separate volume
-channels and cancellation on skip/close. Other effects/themes remain procedural.
+channels and cancellation on skip/close. Dream Land SSR arrivals now play the
+original Adventure short fanfare, with the complete source recordings and
+composer credits retained. Reduced-motion mode preserves the full tune.
+Flight stings and ordinary Dream rarity chimes remain procedural.
 Rarity/version changes were weighed and recorded,
 but ownership, rarity and banner balance were preserved in this pass.
 

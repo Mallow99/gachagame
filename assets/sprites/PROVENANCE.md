@@ -65,7 +65,7 @@ retain artist links. Classic Mario's reveal now uses his source-game artwork;
 the approved **しかばね** demo and Smash Kirby portrait remain historical intake.
 
 The broader character-quote and franchise-music library remains unfinished;
-the sourced Mushroom reveal audio is described below.
+the sourced reveal audio is described below.
 
 ## Supply/summon follow-up
 
@@ -85,5 +85,10 @@ This render is an authored source-model illustration, not an official artwork ri
 
 Mushroom summons now play the retained approved demo's coin/power-up clips and
 original NES Starman theme, with the Mario voice retained. Exact retained source
-notes are in [the demo sources](../../demos/mario-pull/SOURCES.md). Wider voices,
-Kirby music and some combat effects remain procedural or unfinished.
+notes are in [the demo sources](../../demos/mario-pull/SOURCES.md). Dream Land
+SSR arrivals play the original Kirby's Adventure (1993) short fanfare by
+Hirokazu Ando / Jun Ishikawa, from Zophar's NSF recording. Complete source
+recordings, hashes and the silence-trimming/normalization recipe are retained
+in [audio sources](../audio/reveal/SOURCES.md). Wider voices, flight stings,
+ordinary Dream rarity chimes and some combat effects remain procedural or
+unfinished.

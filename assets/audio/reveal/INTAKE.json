@@ -1,0 +1,28 @@
+[
+  {
+    "id": "kirby-adventure-fanfare-short",
+    "path": "assets/audio/reveal/sources/kirby-adventure-fanfare-short.mp3",
+    "page": "https://www.zophar.net/music/nintendo-nes-nsf/kirbys-adventure",
+    "url": "https://fi.zophar.net/soundfiles/nintendo-nes-nsf/kirbys-adventure/38%20-%20Fanfare%20~Short~.mp3",
+    "sourceGameId": "kirbys-adventure-1993",
+    "credit": "Hirokazu Ando, Jun Ishikawa / HAL Laboratory / Nintendo; NSF recording hosted by Zophar",
+    "bytes": 51024,
+    "sha256": "1f2c5fa8e55821515b83b4385bcab35e76883df7ec46f8a88e3f44da2352ad2c",
+    "output": {
+      "path": "assets/audio/reveal/kirby-adventure-fanfare.mp3",
+      "bytes": 45291,
+      "sha256": "c092bc747cfcb848c1a437e16d2128c727ec2ad1fad78abf49ca22534e3c132a",
+      "processing": "Retain 2.85 seconds; remove trailing silence only, normalize to -18 LUFS / -1.5 dBTP, stereo 44.1 kHz MP3. No pitch or tempo change."
+    }
+  },
+  {
+    "id": "kirby-adventure-fanfare-long",
+    "path": "assets/audio/reveal/sources/kirby-adventure-fanfare-long.mp3",
+    "page": "https://www.zophar.net/music/nintendo-nes-nsf/kirbys-adventure",
+    "url": "https://fi.zophar.net/soundfiles/nintendo-nes-nsf/kirbys-adventure/39%20-%20Fanfare%20~Long~.mp3",
+    "sourceGameId": "kirbys-adventure-1993",
+    "credit": "Hirokazu Ando, Jun Ishikawa / HAL Laboratory / Nintendo; NSF recording hosted by Zophar",
+    "bytes": 98230,
+    "sha256": "a89b66697245752ef6996480af9a5ecf06ca5fba5d220812c77ce1f480b7f473"
+  }
+]

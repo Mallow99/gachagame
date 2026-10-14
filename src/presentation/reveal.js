@@ -56,15 +56,16 @@ export async function showReceipt(game,receipt,act,onInspect=()=>{}){
     if(rare){
       stage.innerHTML='<div class="quote-black"><p class="typed-quote"></p></div>';
       if(!await wait(reduced?100:600))return;
-      const text=item.presentation?.quote||'The next chapter is yours.',quote=stage.querySelector('p');voice(game.state.profile,item.id);revealTheme(game.state.profile,receipt.sagaId);
+      const text=item.presentation?.quote||'The next chapter is yours.',quote=stage.querySelector('p');voice(game.state.profile,item.id);if(receipt.sagaId==='mario')revealTheme(game.state.profile,receipt.sagaId);
       if(reduced)quote.textContent='“'+text+'”';else for(let i=0;i<=text.length;i++){if(!await wait(35))return;quote.textContent='“'+text.slice(0,i)+(i===text.length?'”':'');}
       if(!await wait(reduced?150:1000))return;
     }
     stage.innerHTML=`<div class="hero-reveal ${r.rarity} ${receipt.sagaId} ${reduced?'reduced':''}"><div class="reveal-rays"></div><div class="reveal-emblem">${escape(sourceId?.match(/\d{4}$/)?.[0]||'')}</div>${collectibleArt(item,r.kind,'hero-splash')}<div class="rarity-letters">${[...r.rarity].map((letter,i)=>`<b style="--i:${i}">${letter}</b>`).join('')}</div><div class="reveal-name"><small>${escape(item.title||item.grantedTrait||'ASSIST PAGE')}</small><h2>${escape(item.name)}</h2><p>${escape(origin?.sourceTitle||content.worlds.get(sourceId)?.name||sourceId||destination)}</p><span class="reveal-stars">${'★'.repeat(rarityRank(r.rarity)+3)}</span><p class="reveal-new">${label(r)}</p></div></div>`;
-    if(!rare)voice(game.state.profile,item.id);revealChime(game.state.profile,receipt.sagaId,r.rarity);
+    if(!rare)voice(game.state.profile,item.id);
+    if(rare&&receipt.sagaId==='kirby')revealTheme(game.state.profile,receipt.sagaId);else revealChime(game.state.profile,receipt.sagaId,r.rarity);
     // Reduced motion keeps the artwork and identity readable; it suppresses
     // motion rather than turning a rare arrival into a brief flash.
-    if(!await wait(reduced?(rare?1800:r.rarity==='SR'?1200:900):rare?3200:r.rarity==='SR'?1600:900))return;
+    if(!await wait(reduced?(rare?(receipt.sagaId==='kirby'?2800:1800):r.rarity==='SR'?1200:900):rare?3200:r.rarity==='SR'?1600:900))return;
     stopRevealAudio();
   }
   results();

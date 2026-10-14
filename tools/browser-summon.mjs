@@ -36,8 +36,13 @@ for(const [kind,id,rarity]of [['powerup','fire-flower','SR'],['assist','e-gadd-f
  await page.evaluate(result=>{void window.reviewSupply([result]);},{kind,id,rarity,isNew:true});await page.locator('.hero-reveal.SR').waitFor();
  await page.screenshot({path:out+'/'+kind+'-reveal-360.png'});await page.locator('.reveal-skip').click();await page.locator('.result-continue').click();
 }
+await page.evaluate(async()=>{const{showReceipt}=await import('/src/presentation/reveal.js');window.reviewKirbyAudio=()=>showReceipt(window.__pocketGame,{id:'kirby-audio-review',at:Date.now(),sagaId:'kirby',preview:true,results:[{kind:'unit',id:'king-dedede',rarity:'SSR',isNew:true}]},()=>{});});
+await page.evaluate(()=>{void window.reviewKirbyAudio();});await page.locator('.hero-reveal.SSR').waitFor();
+await page.waitForFunction(()=>window.reviewClips.some(c=>c.src.includes('kirby-adventure-fanfare')&&c.readyState>=2&&!c.paused));
+const kirbyAudio=await page.evaluate(()=>window.reviewClips.filter(c=>c.src.includes('kirby-adventure-fanfare')).map(c=>({url:c.src.split('/').at(-1),readyState:c.readyState,volume:c.volume,paused:c.paused})));
+await page.locator('.reveal-skip').click();assert.ok(await page.evaluate(()=>window.reviewClips.every(c=>c.paused)));await page.locator('.result-continue').click();
 assert.deepEqual(errors,[]);assert.deepEqual(missing,[]);
-fs.writeFileSync(out+'/results.json',JSON.stringify({at:new Date().toISOString(),method:'Actual Chromium: isolated funded ten-pull with forced pity, native MP3 playback, skip, scroll, nested fighter inspection, replay invariance and both Supply reveal kinds.',viewport:{width:360,height:600},nativeAudio,errors,missing,limits:['Injected review funds/pity are not balance evidence. Headless playback state does not verify speaker quality or native macOS audio.']},null,2)+'\n');
+fs.writeFileSync(out+'/results.json',JSON.stringify({at:new Date().toISOString(),method:'Actual Chromium: isolated funded ten-pull with forced pity, native Mushroom/Dream MP3 playback, skip, scroll, nested fighter inspection, replay invariance and both Supply reveal kinds.',viewport:{width:360,height:600},nativeAudio,kirbyAudio,errors,missing,limits:['Injected review funds/pity are not balance evidence. Headless playback state does not verify speaker quality or native macOS audio.']},null,2)+'\n');
 // The standalone gallery does not import Game or touch local storage.
 await page.goto('http://127.0.0.1:8080/docs/validation/summon-review/index.html',{waitUntil:'networkidle'});
 await page.waitForFunction(()=>window.reviewGallery);assert.equal(await page.locator('[data-preview]').count(),60);

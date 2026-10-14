@@ -39,6 +39,11 @@ Sprite readiness now includes loading all 74 small atlases; the total decoded
 RGBA estimate is 9.69 MiB. This removes first-use Copy/enemy image gaps. Auto-next
 waits while Pause/Hide is active. The sixteen-actor Chromium profile is recorded
 in `docs/validation/render-performance.json`, without claiming M2 CPU/power.
+Dream Land SSR artwork arrivals now play the original 1993 Adventure short
+fanfare; recordings, hashes, composer credits and processing are retained in
+`assets/audio/reveal/SOURCES.md`. The actual browser summon review verifies both
+Hub themes and stops them on skip. Wider voices and the procedural flight and
+ordinary Dream rarity chimes remain polish work.
 
 The old prototype descriptions and PG-003 “next” tickets below are historical.
 Longer-term plans remain authoritative; the latest user instruction authorized

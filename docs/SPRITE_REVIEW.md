@@ -105,8 +105,12 @@ native animated body is available; this does not claim full character rigging.
 The Mushroom theater now uses the approved demo's coin/power-up sounds and its
 original NES Starman theme for rare arrivals. Music/voice/effects have separate
 volume controls. Skip/results/close cancel native clips and queued theater tones;
-battle tones continue independently. Kirby music and the wider voice library
-remain unfinished.
+battle tones continue independently. Dream Land SSR artwork arrivals now use
+the original 1993 Adventure short fanfare, with its complete recordings,
+composer credits and processing retained in [audio sources](../assets/audio/reveal/SOURCES.md).
+Reduced-motion mode gives the complete tune time to finish. Flight stings and
+ordinary Dream rarity chimes remain procedural; the wider voice library is
+unfinished.
 
 Atlases now load before the first automatic fight; the bounded 74-image set is
 about 0.14 MiB compressed / 9.69 MiB decoded. This also warms Copy/enemy forms

@@ -16,6 +16,8 @@ test('native summon assets use separate volume channels and stop on skip or mute
   stopRevealAudio();assert.ok(created.every(c=>c.paused&&c.currentTime===0));
   revealTheme(p,'mario');assert.equal(created.filter(c=>c.url.includes('mus-starman')).length,1);
   syncAudio({...p,muted:true});assert.ok(created.every(c=>c.paused&&c.muted));
+  revealTheme(p,'kirby');const dream=created.find(c=>c.url.includes('kirby-adventure-fanfare'));assert.ok(dream&&!dream.paused);assert.equal(dream.volume,.2);
+  stopRevealAudio();assert.equal(dream.paused,true);
  }finally{stopRevealAudio();if(oldWindow===undefined)delete globalThis.window;else globalThis.window=oldWindow;if(oldAudio===undefined)delete globalThis.Audio;else globalThis.Audio=oldAudio;}
 });
 test('skipping a summon cancels scheduled reveal tones while retaining battle tones',()=>{

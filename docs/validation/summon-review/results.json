@@ -1,6 +1,6 @@
 {
-  "at": "2026-10-14T19:20:03.782Z",
-  "method": "Actual Chromium: isolated funded ten-pull with forced pity, native MP3 playback, skip, scroll, nested fighter inspection, replay invariance and both Supply reveal kinds.",
+  "at": "2026-10-14T20:07:24.700Z",
+  "method": "Actual Chromium: isolated funded ten-pull with forced pity, native Mushroom/Dream MP3 playback, skip, scroll, nested fighter inspection, replay invariance and both Supply reveal kinds.",
   "viewport": {
     "width": 360,
     "height": 600
@@ -16,6 +16,14 @@
       "url": "mus-starman.mp3",
       "volume": 0.25,
       "readyState": 4,
+      "paused": false
+    }
+  ],
+  "kirbyAudio": [
+    {
+      "url": "kirby-adventure-fanfare.mp3",
+      "readyState": 4,
+      "volume": 0.25,
       "paused": false
     }
   ],

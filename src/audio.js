@@ -38,7 +38,7 @@ export function revealChime(next,sagaId,rarity='R'){
 }
 export function revealTheme(next,sagaId){
   if(sagaId==='mario')playAsset(next,'demos/mario-pull/mus-starman.mp3','music');
-  else sting(next,sagaId);
+  else playAsset(next,'assets/audio/reveal/kirby-adventure-fanfare.mp3','music');
 }
 export function stopRevealAudio(){
   for(const {clip}of clips.values()){clip.pause();clip.currentTime=0;}
