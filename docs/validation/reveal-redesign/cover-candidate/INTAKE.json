@@ -1,0 +1,28 @@
+[
+  {
+    "id": "kirbys-adventure-cover",
+    "sourceGameId": "kirbys-adventure-1993",
+    "sourceTitle": "Kirby's Adventure",
+    "page": "https://wikirby.com/wiki/Kirby%27s_Adventure/gallery",
+    "url": "https://cdn.wikirby.com/6/69/KA_Box.jpg",
+    "path": "docs/validation/reveal-redesign/cover-candidate/kirbys-adventure-cover.jpg",
+    "credit": "Nintendo / HAL Laboratory \u00b7 original North American box illustration, 1993",
+    "sha256": "8472248d61ec27bb7d23f1dea7691ebfc0104a17bf87ccb4efb3a5e57baa32c8",
+    "bytes": 3689010,
+    "dimensions": [
+      1536,
+      2100
+    ],
+    "output": {
+      "url": "docs/validation/reveal-redesign/cover-candidate/kirbys-adventure-cover.webp",
+      "dimensions": [
+        878,
+        1200
+      ],
+      "bytes": 345422,
+      "sha256": "b6550de9e843012ba1969125ae632eb26692a4ae18f92a04cbd32b1349f2422b"
+    },
+    "processing": "Whole source preserved; whole-composition WebP at up to 1200 pixels, no recolor, no upscaling. The banner viewport shows the painted scene below the box title; no separate character cutouts.",
+    "status": "comparison-only; not used by the game. Retained reference while redesigning the rejected narrow/cutout presentation."
+  }
+]

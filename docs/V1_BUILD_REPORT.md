@@ -1,5 +1,10 @@
 # v1 playable build evidence
 
+The owner has rejected the current summon presentation's narrow layout and
+isolated-character artwork. Its functional checks remain technical evidence;
+the intended visual standard is the approved Mario full-art demo. The necessary
+presentation redesign is documented in [the research reset](GACHA_REDESIGN_RESEARCH.md).
+
 Base: the latest merged planning push, `codex/pg001-pg002`, commit
 `ef450706ee74c709c7630b6e4ab94d7fa93be362`, 2026-10-14. Work is on isolated
 local `codex/v1-playable`. The original planning corpus remains intact.

@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-14T20:58:23.189Z",
+  "method": "Real Electron, isolated QA profile: create a separate wide window, load the approved full-art Mario demo through a file URL, verify decoded artwork and 16:9 stage bounds.",
+  "previewOnly": true,
+  "windowBounds": {
+    "x": 100,
+    "y": 115,
+    "width": 1240,
+    "height": 698
+  },
+  "stageBounds": {
+    "x": 20.890625,
+    "y": 12,
+    "width": 1198.21875,
+    "height": 673.984375
+  },
+  "errors": [],
+  "limits": [
+    "Sizing proof only. The production receipt router and new character artwork are not implemented here. Linux virtual display is not a native Mac or M2 performance check."
+  ]
+}

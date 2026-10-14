@@ -2,6 +2,16 @@
 
 ## Current playable branch — 2026-10-14
 
+**Presentation correction from the owner:** the current narrow summon theater
+and isolated source-era illustrations were rejected. The approved Mario demos
+remain the target: a wide stage, one complete illustrated scene per result,
+deliberate camera/rarity timing and room to linger. Read
+[the gacha research reset](docs/GACHA_REDESIGN_RESEARCH.md) before further art or
+reveal work. The comparison and native sizing proof are at
+`/docs/validation/reveal-redesign/index.html`. Research candidates are not
+selected production art. Passing browser/layout checks does not establish this
+visual quality gate.
+
 The v1 implementation is on local `codex/v1-playable` from the latest planning
 push (`ef450706`). Read [the build report](docs/V1_BUILD_REPORT.md) and
 [README](README.md) before the historical notes below. SaveV4, roaming combat,

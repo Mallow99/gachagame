@@ -1,0 +1,41 @@
+[
+  {
+    "id": "magolor-battle",
+    "page": "https://www.zerochan.net/3780673",
+    "url": "https://static.zerochan.net/Kirby.Series.full.3780673.jpg",
+    "credit": "Suyasuyabi427 / \u3059\u3073\u304b\u304b; source attribution via Zerochan; Nintendo / HAL characters",
+    "status": "Composition research only. Magolor is the main focal point; this is not selected as Dedede artwork. It shows why a complete painted scene differs from a cutout.",
+    "path": "docs/validation/reveal-redesign/references/magolor-battle.jpg",
+    "sha256": "f016b0fc7ba40f5ab75efab35ffa69c46f801c0cec7418cc4a01d70772d4f3e8",
+    "bytes": 14347878,
+    "dimensions": [
+      2894,
+      4093
+    ],
+    "display": "docs/validation/reveal-redesign/references/magolor-battle-display.jpg"
+  },
+  {
+    "id": "rtdl-battle",
+    "page": "https://safebooru.org/index.php?id=4158456&page=post&s=view",
+    "originalArtistWork": "https://www.pixiv.net/artworks/101336861",
+    "url": "https://safebooru.org/images/3980/50c2281dd9321fbc3f20d234a98eca70feced5e6.jpg",
+    "credit": "Suyasuyabi / \u3059\u3073\u304b\u304b; Nintendo / HAL characters",
+    "status": "Composition research only. Return to Dream Land-tagged ensemble; Bandana is not the main focal point, so not selected as his SSR splash.",
+    "path": "docs/validation/reveal-redesign/references/rtdl-battle.jpg",
+    "sha256": "38ddc2e73df99a35888c07b475c5983807a620300455f48f30f32643df22dbd3",
+    "bytes": 8921088,
+    "dimensions": [
+      2802,
+      3963
+    ],
+    "display": "docs/validation/reveal-redesign/references/rtdl-battle-display.jpg"
+  },
+  {
+    "id": "genshin-jean",
+    "page": "https://www.hoyolab.com/article/10307975",
+    "url": "https://upload-os-bbs.hoyolab.com/upload/2022/10/01/77317904/36e8a73303f7a5034329e4b50e29b7ae_5107140756109610165.png",
+    "path": "docs/validation/reveal-redesign/references/genshin-jean.png",
+    "credit": "HoYoverse / COGNOSPHERE; community screenshot hosted on HoYoLAB",
+    "status": "Research reference only. Observed character-specific painted wind effects and landscape reveal composition, not imported into game assets."
+  }
+]

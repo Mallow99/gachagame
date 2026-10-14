@@ -80,6 +80,10 @@ See [the build report](docs/V1_BUILD_REPORT.md), [balance evidence](docs/validat
 Game-specific sprite replacements, source-game pull art and an animated
 [sprite review](docs/SPRITE_REVIEW.md) are now included. Native captures use the
 actual BattleView; Chromium checks cover the playable flow and 360 × 600 Manual.
+The owner rejected the narrow summon layout and isolated-character pull art;
+[the presentation research reset](docs/GACHA_REDESIGN_RESEARCH.md) now defines
+the next pass around the approved Mario full-art examples. Compare references
+and the native wide-window proof at `/docs/validation/reveal-redesign/index.html`.
 Sparse pose sets, some signatures/audio and a real M2 desktop pass remain work.
 The animated comparison runs at `/docs/validation/sprite-review/index.html`.
 Play, pause and scrub sixteen actual attacks at
