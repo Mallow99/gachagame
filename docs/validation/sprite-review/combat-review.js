@@ -16,6 +16,8 @@ const examples=[
  {id:'hammer-bro',fighter:'hammer-bro',kind:'ultimate',label:'Hammer Bro · Hammer Storm',description:'Faithful expansion of the original 1985 body. Repeated native-pixel throws and visible hammer flight, including the final impact.'},
  {id:'buzzy',fighter:'buzzy-beetle',kind:'ultimate',label:'Buzzy Beetle · Unbreakable Shell',description:'Faithful expansion in the exact original brown/peach palette. Rolling shell frames follow physical passes through the targets.'},
  {id:'parasol',fighter:'parasol-waddle-dee',kind:'ultimate',label:'Parasol Dee · Circus Toss',description:'Native 1993 Dee and umbrella pixels, articulated separately for an authored spin. The two original body poses remain sparse.'},
+ {id:'lakitu',fighter:'lakitu',kind:'ultimate',label:'Lakitu · Storm Cloud',description:'Expanded classic NES green-goggled rider and small cloud, assembled at a stable cloud anchor. Native 1985 Spiny eggs fly on the real lob paths; each throw reaches its release pose at the spawn marker.'},
+ {id:'lakitu-basic',fighter:'lakitu',kind:'basic',label:'Lakitu · Spiny Egg',description:'One native egg. The throw prepares before the projectile spawns and holds its release pose through recovery.'},
 ];
 const $=id=>document.getElementById(id),canvas=$('combat'),move=$('move'),play=$('play'),timeline=$('timeline');
 for(const example of examples){const option=document.createElement('option');option.value=example.id;option.textContent=example.label;move.append(option);}

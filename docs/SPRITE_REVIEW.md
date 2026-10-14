@@ -112,8 +112,8 @@ Reduced-motion mode gives the complete tune time to finish. Flight stings and
 ordinary Dream rarity chimes remain procedural; the wider voice library is
 unfinished.
 
-Atlases now load before the first automatic fight; the bounded 74-image set is
-about 0.14 MiB compressed / 9.69 MiB decoded. This also warms Copy/enemy forms
+Atlases now load before the first automatic fight; the bounded 75-image set is
+about 0.14 MiB compressed / 9.75 MiB decoded. This also warms Copy/enemy forms
 before their first use. [Rendering timings](validation/render-performance.json)
 measure a real sixteen-actor scene in Chromium: drawing p95 0.4–0.8 ms, with
 simultaneous hit-flash p95 up to 3.3 ms. These are cloud measurements, not M2
@@ -132,18 +132,29 @@ combat during a pause.
   pose boards use the current atlases. These are development evidence, not
   human approval of final production animation.
 - [Motion browser results](validation/sprite-review/motion/results.json) cover
-  fourteen completed moves, nine frame sequences, transparent/reduced modes
+  sixteen completed moves, eleven frame sequences, transparent/reduced modes
   and a narrow review page with no errors or missing assets.
-- Source-pixel validation preserves 443 frames in 65 extracted atlases; three
-  layered boss records are reviewed separately. The full manifest has 74 atlases.
+- Source-pixel validation preserves 447 frames in 66 extracted atlases; this
+  includes explicit Lakitu rider/cloud source layers. Three layered boss records
+  are reviewed separately. The full manifest has 75 atlases.
 - [Summon browser review](validation/summon-review/results.json) checks native
   MP3 playback, ten-result scroll/inspection, unchanged replay value and both
   Supply kinds. [Rare gallery results](validation/summon-review/gallery-results.json)
   decode all thirty-two SR/SSR collectibles at 360 × 600, check name/art bounds
   and confirm gallery preview activity leaves local storage unchanged.
 
-Sparse NES pose sets still limit Lakitu and Parasol Dee; Hammer Bro, Buzzy and
-Bowser now have fuller faithful expansions.
+Lakitu now uses yiey20's expanded classic green-goggled rider and small cloud,
+selected after comparing five sheets. Later orange/outlined costumes and big
+clouds are excluded. The original download stays intact; the classic green and
+orange map to the retained SMB1 rip's actual palette. Rider/cloud assembly is
+authored, with one fixed cloud anchor and four distinct composites. His native
+1985 Spiny eggs fly on the authoritative lob paths and have a small impact cue.
+Single ranged actions now reach their release pose at the actual spawn marker,
+as repeated throws already did. No collectible kit or damage balance changed.
+
+Sparse NES pose sets still limit Parasol Dee. Lakitu's classic face remains
+simple even with its authored cloud assembly; Hammer Bro, Buzzy and Bowser have
+fuller faithful expansions.
 Their source fidelity does not by itself prove final SR/SSR animation quality.
 Some simple effects, recoil/KO motion, Whispy's assembled tree silhouette and
 Assist entrances remain authored reconstructions. The high-tier presentation

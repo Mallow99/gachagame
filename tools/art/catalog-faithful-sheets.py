@@ -8,6 +8,7 @@ from scipy import ndimage
 ROOT=Path(__file__).resolve().parents[2]
 SOURCE=ROOT/'assets/sprites/sources/faithful'
 BG={
+ 'smb-lakitu-expanded':[(50,97,168),(147,187,236)],
  'smb-hammer-expanded':[(97,84,168),(24,16,64),(146,144,255)],
  'smb-buzzy-expanded':[],
  'smb-bowser-alt':[(50,97,168),(147,187,236)],
@@ -26,6 +27,11 @@ def clean(name):
  im=Image.open(SOURCE/(name+'.png')).convert('RGBA')
  backgrounds=BG.get(name,[(84,110,140),(116,154,212)])
  im.putdata([(r,g,b,0 if (r,g,b) in backgrounds else a)for r,g,b,a in im.get_flattened_data()])
+ if name=='smb-lakitu-expanded':
+  # Match the retained SMB1 rip's actual three-color classic palette. The
+  # original expanded download stays intact; later costume rows are unused.
+  palette={(33,173,16):(12,147,0),(255,170,71):(230,156,33)}
+  im.putdata([(*palette.get((r,g,b),(r,g,b)),a)for r,g,b,a in im.get_flattened_data()])
  return im
 def spans(name,box):
  im=clean(name).crop(box);mask=np.asarray(im)[:,:,3]>0;labels,n=ndimage.label(mask,structure=np.ones((3,3)));frames=[]

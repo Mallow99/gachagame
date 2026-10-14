@@ -49,6 +49,13 @@ test('repeated throws show a release pose at each projectile marker and remain v
  }
  actor.action=null;assert.equal(actorAnimation(actor,1.47,manifest.bandana).state,'hurt');
 });
+test('a single ranged action reaches and holds its release pose at the spawn marker',()=>{
+ const actor={hp:100,hitAt:-100,state:'windup',action:{start:1,duration:.9,marker:.3,hits:1,ability:{kind:'basic',behavior:'lob'}}};
+ const before=actorAnimation(actor,1.1,manifest.lakitu),contact=actorAnimation(actor,1.3,manifest.lakitu),recovery=actorAnimation(actor,1.7,manifest.lakitu);
+ assert.notEqual(spriteFrameIndex(manifest.lakitu,before),manifest.lakitu.clips.basic_resolve.at(-1));
+ assert.equal(spriteFrameIndex(manifest.lakitu,contact),manifest.lakitu.clips.basic_resolve.at(-1));
+ assert.equal(spriteFrameIndex(manifest.lakitu,recovery),manifest.lakitu.clips.basic_resolve.at(-1));
+});
 test('Dedede reaches his final jump pose at the physical landing, while spinning charges keep looping',()=>{
  const actor={hp:100,hitAt:-100,state:'rebound',action:{start:1,duration:1.4,marker:.896,hits:1,ability:{kind:'ultimate',behavior:'stomp'}}};
  const animation=actorAnimation(actor,1.9,manifest.dedede);assert.equal(spriteFrameIndex(manifest.dedede,animation),manifest.dedede.clips.ultimate_entry.at(-1));

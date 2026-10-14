@@ -1,6 +1,6 @@
 {
-  "at": "2026-10-14T19:15:40.507Z",
-  "method": "Actual Chromium renders the isolated Battle/BattleView fixtures, scrubs every listed move, captures nine key moves and checks transparent/reduced/narrow modes.",
+  "at": "2026-10-14T20:16:39.258Z",
+  "method": "Actual Chromium renders the isolated Battle/BattleView fixtures, scrubs every listed move, captures eleven key moves and checks transparent/reduced/narrow modes.",
   "records": [
     {
       "id": "bowser",
@@ -151,6 +151,28 @@
       "damage": 7,
       "hero": {
         "x": 490,
+        "y": 0,
+        "state": "recovery",
+        "action": false
+      }
+    },
+    {
+      "id": "lakitu",
+      "contacts": 12,
+      "damage": 6,
+      "hero": {
+        "x": 350,
+        "y": 0,
+        "state": "recovery",
+        "action": false
+      }
+    },
+    {
+      "id": "lakitu-basic",
+      "contacts": 2,
+      "damage": 1,
+      "hero": {
+        "x": 350,
         "y": 0,
         "state": "recovery",
         "action": false

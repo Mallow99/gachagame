@@ -82,7 +82,7 @@ export class BattleView {
       const sourceHeight=(spriteDetails(source?.spriteKey)?.worldHeight||30)*zoom,targetHeight=(spriteDetails(target?.spriteKey)?.worldHeight||30)*zoom;
       const travel=Math.max(0,Math.min(1,(time-p.start)/p.duration)),muzzle=(sourceHeight+(targetHeight-sourceHeight)*travel)*.55;
       const x=xpos(p.x),y=ground-(p.y-25)*(this.transparent?.82:1)-muzzle;
-      const projectileKey=p.kind.includes('spear')?'bandana-spear':p.kind.includes('hammer')?'nes-hammer':p.kind==='apple'?'nes-apple':p.kind.includes('cutter')?'nes-cutter':p.kind==='kunai'?'nes-kunai':p.kind.includes('bomb')||p.kind==='poppy'?'nes-bomb':p.kind.includes('star')||p.kind==='shot'||p.ability.id==='puff-star'?source?.definition?.treatment==='game-boy'?'nes-star':'ka-star':null;
+      const projectileKey=p.kind==='egg'||p.kind==='lakitu'?'nes-spiny-egg':p.kind.includes('spear')?'bandana-spear':p.kind.includes('hammer')?'nes-hammer':p.kind==='apple'?'nes-apple':p.kind.includes('cutter')?'nes-cutter':p.kind==='kunai'?'nes-kunai':p.kind.includes('bomb')||p.kind==='poppy'?'nes-bomb':p.kind.includes('star')||p.kind==='shot'||p.ability.id==='puff-star'?source?.definition?.treatment==='game-boy'?'nes-star':'ka-star':null;
       ctx.save();ctx.translate(x,y);ctx.rotate(p.kind.includes('spear')?p.to<p.from?Math.PI:0:time*(p.kind.includes('hammer')?9:3));
       if(projectileKey&&this.bank.draw(ctx,projectileKey,0,6,(p.kind.includes('spear')?8:12)*(p.ability.finisher?1.4:1),{time:time-p.start,direction:1})){ctx.restore();continue;}
       ctx.fillStyle=p.hero?'#eac97b':'#e89462';if(p.kind.includes('hammer')){ctx.fillRect(-3,-4,3,12);ctx.fillRect(-7,-8,12,6);}
@@ -103,6 +103,12 @@ export class BattleView {
       const enter=this.reducedMotion()?1:Math.min(1,age/.2),left=w*.5-130-(1-enter)*50;
       ctx.globalAlpha=Math.max(0,1-Math.max(0,age-1.5)*2);ctx.fillStyle='#2a2537';ctx.fillRect(left,30,260*enter,47);ctx.fillStyle='#e8be66';ctx.fillRect(left,30,3,47);
       this.bank.draw(ctx,f.spriteKey,left+28,77,54,{state:'ultimate_entry',time,direction:1});ctx.fillStyle='#e8be66';ctx.font='bold 10px system-ui';ctx.textAlign='left';ctx.fillText('SSR  /  ULTIMATE',left+57,47);ctx.fillStyle='#fff1d7';ctx.font='bold 12px system-ui';if(ctx.measureText(f.text).width>195)ctx.font='bold 10px system-ui';ctx.fillText(f.text,left+57,66,195);ctx.globalAlpha=1;
+    }else if(f.type==='egg-impact'){
+      const p=Math.min(1,age/f.life);ctx.globalAlpha=(1-p)*.8;
+      ctx.strokeStyle='#e69c21';ctx.lineWidth=1.5;
+      for(let i=0;i<6;i++){const angle=i*Math.PI/3,radius=5+p*11,xx=x+Math.cos(angle)*radius,yy=ground-f.y+Math.sin(angle)*radius;
+        ctx.beginPath();ctx.moveTo(xx,yy);ctx.lineTo(xx+Math.cos(angle)*4,yy+Math.sin(angle)*4);ctx.stroke();}
+      ctx.globalAlpha=1;
     }else if(f.type==='counter-tell'){
       const p=Math.min(1,age/f.life);ctx.globalAlpha=1-p;ctx.strokeStyle='#b3bfe3';ctx.lineWidth=1.5;
       ctx.beginPath();ctx.ellipse(x,ground-18,8+(this.reducedMotion()?0:p*12),20,0,0,Math.PI*2);ctx.stroke();ctx.globalAlpha=1;
@@ -130,6 +136,8 @@ export class BattleView {
     }}
   }
   consume(event,time,actors){const v=event.values,actor=actors.find(a=>a.uid===event.targetId);
+    if(event.type==='animation-marker'&&v.marker==='projectileHit'&&actors.find(a=>a.uid===event.sourceId)?.spriteKey==='lakitu')
+      this.fx.push({type:'egg-impact',start:time,life:.3,x:v.x,y:(actor?.y||0)+18});
     if(event.type==='counter-exit'||event.type==='counter')this.fx.push({type:'counter-tell',start:time,life:.24,x:v.x});
     if(event.type==='entry-impact'||event.type==='animation-marker'&&v.marker==='land'&&v.index===0){
       const source=actors.find(a=>a.uid===event.sourceId);

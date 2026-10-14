@@ -20,6 +20,12 @@ updated = []
 def frames(source, boxes):
     return [(clean(source).crop(tuple(box)), list(box)) for box in boxes]
 
+def layered(source, layers, canvas=(32,32)):
+    im=Image.new('RGBA',canvas)
+    for layer in layers:
+        im.alpha_composite(clean(source).crop(layer['rect']),tuple(layer['at']))
+    return (im,{'sourceCanvas':list(canvas),'sourceLayers':layers})
+
 def row(source, label, indices=None):
     boxes = sorted(spans(source, ROWS[source][label]), key=lambda b:b[0])
     return frames(source, boxes if indices is None else [boxes[i] for i in indices])
@@ -74,7 +80,7 @@ def export(key, source, game, clips, body=16, world=24, facing='right', feet=Non
         x=round(pivot[0]-p[0]);y=round(pivot[1]-p[1])
         if y<0 or x<0 or x+im.width>cw or y+im.height>ch:raise ValueError(f'Clipped frame: {key}/{i}')
         atlas.alpha_composite(im,(i%cols*cw+x,i//cols*ch+y))
-        coordinates.append([i%cols*cw,i//cols*ch,cw,ch]);metadata.append({'sourceRect':b,'sourceFoot':list(p),'pixelScale':1})
+        coordinates.append([i%cols*cw,i//cols*ch,cw,ch]);metadata.append({**(b if isinstance(b,dict) else {'sourceRect':b}),'sourceFoot':list(p),'pixelScale':1})
     path=OUT/(key+'.png');atlas.save(path)
     credits={'smb-mario-luigi':'Superjustinbros / Nintendo','smb-enemies':'Superjustinbros / Nintendo','smb-npcs-items':'Superjustinbros / Nintendo',
       'gb-kirby':'Sonikku, thejohnston7 / HAL Laboratory','ka-meta-knight':'someguy, Jermungandr / HAL Laboratory',
@@ -151,6 +157,23 @@ export('buzzy','smb-buzzy-expanded',SMB,{'idle':buzzy_walk[:1],'move_forward':bu
  notes='Side Steppa expansion of the original SMB1 black/brown body. Exact native brown/peach palette, four walking and four rolling frames. Winged later-game variants excluded.')
 manifest['buzzy']['credit']='Side Steppa / Nintendo original character'
 manifest['buzzy']['loopClips']+=['basic_resolve','ultimate_entry']
+
+# The classic row supplies the green goggles/round head, not the later orange
+# designs lower on this sheet. Cloud and rider retain one pixel scale. Assemble
+# in a fixed 32px cell; the cloud's base is the shared anatomical anchor.
+lakitu_source='smb-lakitu-expanded'
+head=[3,9,17,27];duck=[37,17,51,31];look=[54,9,68,27]
+panic=[79,10,94,27];recoil=[179,10,194,27]
+clouds=[[214,19,230,35],[297,19,313,35],[314,19,330,35],[331,19,347,35]]
+def cloud_rider(body,cloud=0,drop=0):
+    return layered(lakitu_source,[{'rect':body,'at':[9,drop]},{'rect':clouds[cloud],'at':[8,12]}])
+lakitu_idle=[cloud_rider(head),cloud_rider(head,1)]
+lakitu_throw=[cloud_rider(head),cloud_rider(duck,0,4),cloud_rider(duck,1,4),cloud_rider(look)]
+export('lakitu',lakitu_source,SMB,{'idle':lakitu_idle,'move_forward':lakitu_idle,'move_back':lakitu_idle,
+ 'basic_windup':lakitu_throw[:2],'basic_resolve':lakitu_throw,'skill_or_secondary':lakitu_throw,'ultimate_entry':lakitu_throw,
+ 'hurt':[cloud_rider(panic,2)],'knockout':[cloud_rider(recoil,3)]},body=28,world=38,facing='left',adaptation=True,
+ notes='yiey20 expansion of the original green-goggled SMB1 rider and small cloud. Classic row only, mapped to the retained NES rip palette; cloud/rider assembly is authored. Fixed cloud anchor, throw preparation/release and distinct recoil poses. Later costumes and large clouds excluded.')
+manifest['lakitu']['credit']='yiey20 / Nintendo original character'
 
 pinkfeet={(252,130,116)}
 idle=row('ka-kirby','idle',[0,1]);walk=row('ka-kirby','walk');inhale=row('ka-kirby','inhale',[0,1,2,3,4,5,6,7,8,9]);puff=row('ka-kirby','puff',[0,1,2,3,4,5,6,7])
@@ -312,6 +335,9 @@ for key,source,box,height,world in [
     export(key,source,RTDL if source=='bandana-adaptation'else SS if source.startswith('ss-')else SMB if source.startswith('smb-')else KA if source.startswith('ka-')else GB,
       {'idle':frames(source,[box])},body=height,world=world,adaptation=source=='bandana-adaptation',notes='Detached original source weapon/effect cell; not a fighter body.')
 
+export('nes-spiny-egg','smb-enemies',SMB,{'idle':frames('smb-enemies',[[36,352,52,368],[54,352,70,368]])},
+ body=16,world=12,notes='Both original 1985 Spiny egg cells, including the native brown/orange palette. Used for Lakitu flight, not a generic projectile dot.')
+
 for key,boxes,world in [
  ('ka-flame',[[46+i*20,857,62+i*20,873]for i in range(4)],16),
  ('ka-spark-field',[[268,820,292,836],[306,820,330,836]],30),
@@ -327,7 +353,7 @@ for i,key in enumerate(updated):
 contact.save(ROOT/'docs/validation/sprite-review/faithful-contact.png')
 contact.save(OUT/'contact-sheet.png')
 # Full-body review is more informative than isolated first-frame icons.
-for key in ['bandana','dedede','meta-knight','bowser','kirby','kirby-dream-land','kirby-sword','kirby-hammer','parasol','knuckle-joe','bio-spark']:
+for key in ['bandana','dedede','meta-knight','bowser','kirby','kirby-dream-land','kirby-sword','kirby-hammer','parasol','knuckle-joe','bio-spark','lakitu']:
     record=manifest[key];image=Image.open(ROOT/record['url']);labels=['idle','move_forward','basic_windup','basic_resolve','skill_or_secondary','ultimate_entry','hurt'];board=Image.new('RGB',(1440,len(labels)*132),'#ece2cc');pen=ImageDraw.Draw(board)
     for j,label in enumerate(labels):
         pen.text((4,j*132+3),key+' / '+label,fill='#332a23')

@@ -13,9 +13,10 @@ export function actorAnimation(actor,time,definition,{reducedMotion=false}={}){
     return{state:'jump',progress:elapsed/action.marker};
   if(action.finisherAt!==undefined&&definition?.clips.finisher)
     return{state:'finisher',progress:Math.min(1,(elapsed-action.finisherAt)/Math.max(.01,action.duration-action.finisherAt))};
-  if(['shot','lob'].includes(action.ability.behavior)&&action.hits>1){
+  if(['shot','lob'].includes(action.ability.behavior)){
     const state=kind==='ultimate'?'ultimate_entry':kind==='skill'?'skill_or_secondary':'basic_resolve';
     const interval=action.hitInterval||.16,since=elapsed-action.marker,last=action.marker+(action.hits-1)*interval;
+    // Reach the release pose at the real spawn marker, also for a single shot.
     // Repeat the source throw for each real release, holding the release pose
     // for a full simulation step. Hit flashes cannot replace the active pose.
     const progress=since<0?Math.min(.8,elapsed/action.marker):elapsed>=last?1:since%interval<1/30?1:(since%interval-1/30)/(interval-1/30);

@@ -318,5 +318,19 @@
       162,
       93
     ]
+  },
+  {
+    "name": "smb-lakitu-expanded",
+    "page": "https://www.spriters-resource.com/custom_edited/mariocustoms/asset/187203/",
+    "download": "https://www.spriters-resource.com/media/assets/184/187203.png?updated=1755487704",
+    "path": "assets/sprites/sources/faithful/smb-lakitu-expanded.png",
+    "bytes": 30533,
+    "sha256": "75cf8dea22528c8813053e8069bc8ba21d6bbd315ef352f3b17ee32362985a05",
+    "creditExcerpt": "yiey20, Spriters Resource; expanded Lakitu poses and separate cloud cells. Nintendo original character.",
+    "dimensions": [
+      858,
+      295
+    ],
+    "selection": "Only the classic first green-goggled SMB1 row and matching small clouds. Later designs/palettes and Big Cloud cells excluded. Classic colors mapped to the retained original SMB1 sheet palette. Layer assembly and added motion are authored."
   }
 ]

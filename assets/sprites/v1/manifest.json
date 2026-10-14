@@ -1979,41 +1979,60 @@
         0,
         64,
         64
+      ],
+      [
+        128,
+        0,
+        64,
+        64
+      ],
+      [
+        192,
+        0,
+        64,
+        64
       ]
     ],
     "clips": {
       "idle": [
         0,
-        1
+        0
       ],
       "move_forward": [
         0,
-        1
+        0
       ],
       "move_back": [
         0,
-        1
+        0
       ],
       "basic_windup": [
-        0
+        0,
+        1
       ],
       "basic_resolve": [
         0,
-        1
+        1,
+        1,
+        0
       ],
       "skill_or_secondary": [
         0,
-        1
-      ],
-      "hurt": [
+        1,
+        1,
         0
-      ],
-      "knockout": [
-        1
       ],
       "ultimate_entry": [
         0,
-        1
+        1,
+        1,
+        0
+      ],
+      "hurt": [
+        2
+      ],
+      "knockout": [
+        3
       ]
     },
     "fps": 10,
@@ -2034,51 +2053,173 @@
     ],
     "pivot": [
       32.0,
-      28
+      32
     ],
-    "labelHeight": 24,
-    "nativeHeight": 24,
+    "labelHeight": 28,
+    "nativeHeight": 28,
     "worldHeight": 38,
     "facing": "left",
     "sourceFiles": [
-      "assets/sprites/sources/faithful/smb-enemies.png"
+      "assets/sprites/sources/faithful/smb-lakitu-expanded.png"
     ],
-    "sourcePage": "https://www.spriters-resource.com/nes/supermariobros/asset/52570/",
+    "sourcePage": "https://www.spriters-resource.com/custom_edited/mariocustoms/asset/187203/",
     "sourceGameId": "super-mario-bros-1985",
-    "credit": "Superjustinbros / Nintendo",
-    "spriteGrade": "B",
-    "status": "native-sparse",
-    "renderMode": "native-sprite",
+    "credit": "yiey20 / Nintendo original character",
+    "spriteGrade": "A",
+    "status": "reviewed-adaptation",
+    "renderMode": "faithful-2d-adaptation",
     "frameMetadata": [
       {
-        "sourceRect": [
-          54,
-          138,
-          70,
-          162
+        "sourceCanvas": [
+          32,
+          32
+        ],
+        "sourceLayers": [
+          {
+            "rect": [
+              3,
+              9,
+              17,
+              27
+            ],
+            "at": [
+              9,
+              0
+            ]
+          },
+          {
+            "rect": [
+              214,
+              19,
+              230,
+              35
+            ],
+            "at": [
+              8,
+              12
+            ]
+          }
         ],
         "sourceFoot": [
-          8.0,
-          24
+          16.0,
+          28
         ],
         "pixelScale": 1
       },
       {
-        "sourceRect": [
-          72,
-          146,
-          88,
-          162
+        "sourceCanvas": [
+          32,
+          32
+        ],
+        "sourceLayers": [
+          {
+            "rect": [
+              37,
+              17,
+              51,
+              31
+            ],
+            "at": [
+              9,
+              4
+            ]
+          },
+          {
+            "rect": [
+              214,
+              19,
+              230,
+              35
+            ],
+            "at": [
+              8,
+              12
+            ]
+          }
         ],
         "sourceFoot": [
-          8.0,
-          16
+          16.0,
+          28
+        ],
+        "pixelScale": 1
+      },
+      {
+        "sourceCanvas": [
+          32,
+          32
+        ],
+        "sourceLayers": [
+          {
+            "rect": [
+              79,
+              10,
+              94,
+              27
+            ],
+            "at": [
+              9,
+              0
+            ]
+          },
+          {
+            "rect": [
+              314,
+              19,
+              330,
+              35
+            ],
+            "at": [
+              8,
+              12
+            ]
+          }
+        ],
+        "sourceFoot": [
+          16.0,
+          28
+        ],
+        "pixelScale": 1
+      },
+      {
+        "sourceCanvas": [
+          32,
+          32
+        ],
+        "sourceLayers": [
+          {
+            "rect": [
+              179,
+              10,
+              194,
+              27
+            ],
+            "at": [
+              9,
+              0
+            ]
+          },
+          {
+            "rect": [
+              331,
+              19,
+              347,
+              35
+            ],
+            "at": [
+              8,
+              12
+            ]
+          }
+        ],
+        "sourceFoot": [
+          16.0,
+          27
         ],
         "pixelScale": 1
       }
     ],
-    "notes": "Original 1985 enemy body and palette. Sparse native pose set; actions use simulation-timed movement and source projectiles.",
-    "sha256": "d544250021d51f592c10c7bc4f2f9f533cb988ca2abaae144889d57336892b8b"
+    "notes": "yiey20 expansion of the original green-goggled SMB1 rider and small cloud. Classic row only, mapped to the retained NES rip palette; cloud/rider assembly is authored. Fixed cloud anchor, throw preparation/release and distinct recoil poses. Later costumes and large clouds excluded.",
+    "sha256": "d934d8099e2887afd8e8794cd28a16def6c58ea5411b7d648f686ea788a7a538"
   },
   "spiny": {
     "url": "assets/sprites/v1/spiny.png",
@@ -14713,5 +14854,123 @@
     ],
     "notes": "Native 1993 umbrella cells from Parasol Waddle Dee. Handle pivot supports authored poke/spin motion without changing the source pixels.",
     "sha256": "93c8643acbd6499b73d34694dbb1138d8f5a1de99c2167fa92d721c33ca7993f"
+  },
+  "nes-spiny-egg": {
+    "url": "assets/sprites/v1/nes-spiny-egg.png",
+    "frames": [
+      [
+        0,
+        0,
+        64,
+        64
+      ],
+      [
+        64,
+        0,
+        64,
+        64
+      ]
+    ],
+    "clips": {
+      "idle": [
+        0,
+        1
+      ],
+      "move_forward": [
+        0,
+        1
+      ],
+      "move_back": [
+        0,
+        1
+      ],
+      "basic_windup": [
+        0,
+        1
+      ],
+      "basic_resolve": [
+        0,
+        1
+      ],
+      "skill_or_secondary": [
+        0,
+        1
+      ],
+      "hurt": [
+        0,
+        1
+      ],
+      "knockout": [
+        0,
+        1
+      ],
+      "ultimate_entry": [
+        0,
+        1
+      ]
+    },
+    "fps": 10,
+    "clipFps": {
+      "idle": 4,
+      "basic_resolve": 14,
+      "skill_or_secondary": 12,
+      "ultimate_entry": 12
+    },
+    "loopClips": [
+      "idle",
+      "move_forward",
+      "move_back"
+    ],
+    "cell": [
+      64,
+      64
+    ],
+    "pivot": [
+      32.0,
+      20
+    ],
+    "labelHeight": 16,
+    "nativeHeight": 16,
+    "worldHeight": 12,
+    "facing": "right",
+    "sourceFiles": [
+      "assets/sprites/sources/faithful/smb-enemies.png"
+    ],
+    "sourcePage": "https://www.spriters-resource.com/nes/supermariobros/asset/52570/",
+    "sourceGameId": "super-mario-bros-1985",
+    "credit": "Superjustinbros / Nintendo",
+    "spriteGrade": "A",
+    "status": "reviewed-native",
+    "renderMode": "native-sprite",
+    "frameMetadata": [
+      {
+        "sourceRect": [
+          36,
+          352,
+          52,
+          368
+        ],
+        "sourceFoot": [
+          8.0,
+          16
+        ],
+        "pixelScale": 1
+      },
+      {
+        "sourceRect": [
+          54,
+          352,
+          70,
+          368
+        ],
+        "sourceFoot": [
+          8.0,
+          16
+        ],
+        "pixelScale": 1
+      }
+    ],
+    "notes": "Both original 1985 Spiny egg cells, including the native brown/orange palette. Used for Lakitu flight, not a generic projectile dot.",
+    "sha256": "f63dae801a63a3d71ab3d0ca60de67f8c180d6077d1a363a069fe5cf612beb24"
   }
 }

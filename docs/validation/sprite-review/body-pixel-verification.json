@@ -76,7 +76,7 @@
     {
       "key": "lakitu",
       "sourceGameId": "super-mario-bros-1985",
-      "frames": 2,
+      "frames": 4,
       "sourcePixelsPreserved": true
     },
     {
@@ -388,6 +388,12 @@
     {
       "key": "ka-parasol",
       "sourceGameId": "kirbys-adventure-1993",
+      "frames": 2,
+      "sourcePixelsPreserved": true
+    },
+    {
+      "key": "nes-spiny-egg",
+      "sourceGameId": "super-mario-bros-1985",
       "frames": 2,
       "sourcePixelsPreserved": true
     }

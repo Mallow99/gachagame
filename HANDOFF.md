@@ -18,7 +18,7 @@ multi-pass charges physical routes, fixes Cape Counter's duplicate fallback
 damage and delays ranged finishers until projectile contact. Native throws
 repeat at releases without hit flashes hiding them. Hammer Bro/Buzzy gained
 faithful classic expansions; Parasol uses articulated native layers. Pull art
-covers 24 fighters. Actual Chromium motion review covers fourteen moves at
+covers 24 fighters. Actual Chromium motion review covers sixteen moves at
 `/docs/validation/sprite-review/combat.html`, with stationary target limits
 documented in its results. This is local review evidence, not human approval
 of final feel or a native macOS pass.
@@ -35,8 +35,8 @@ testing uses `POCKET_GACHA_PROFILE_DIR` to isolate QA data from the normal save.
 The actual Electron check now passes Training/pull/save IPC and persisted
 relaunch on a Linux virtual display. Evidence is in
 `docs/validation/desktop-review/results.json`; this is not an M2 hardware pass.
-Sprite readiness now includes loading all 74 small atlases; the total decoded
-RGBA estimate is 9.69 MiB. This removes first-use Copy/enemy image gaps. Auto-next
+Sprite readiness now includes loading all 75 small atlases; the total decoded
+RGBA estimate is 9.75 MiB. This removes first-use Copy/enemy image gaps. Auto-next
 waits while Pause/Hide is active. The sixteen-actor Chromium profile is recorded
 in `docs/validation/render-performance.json`, without claiming M2 CPU/power.
 Dream Land SSR artwork arrivals now play the original 1993 Adventure short
@@ -44,6 +44,13 @@ fanfare; recordings, hashes, composer credits and processing are retained in
 `assets/audio/reveal/SOURCES.md`. The actual browser summon review verifies both
 Hub themes and stops them on skip. Wider voices and the procedural flight and
 ordinary Dream rarity chimes remain polish work.
+
+Lakitu now uses a reviewed classic-row expansion by yiey20, with authored
+rider/cloud assembly and a palette mapping to the retained original NES rip.
+Later costumes and large clouds are excluded. Native Spiny eggs replace generic
+projectile dots. Single ranged throws, as well as repeated ones, reach their
+release pose at the real spawn marker. The added motion examples include both
+Storm Cloud and one Spiny Egg. No kit, rarity, ownership or balance changed.
 
 The old prototype descriptions and PG-003 “next” tickets below are historical.
 Longer-term plans remain authoritative; the latest user instruction authorized

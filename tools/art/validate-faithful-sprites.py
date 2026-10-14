@@ -15,7 +15,12 @@ for key,d in manifest.items():
     if not d.get('frameMetadata')or key in ['kracko','kracko-jr','whispy']:continue
     source=Path(d['sourceFiles'][0]).stem;atlas=Image.open(ROOT/d['url']).convert('RGBA')
     for index,meta in enumerate(d['frameMetadata']):
-        original=clean(source).crop(meta['sourceRect'])
+        if meta.get('sourceLayers'):
+            original=Image.new('RGBA',tuple(meta['sourceCanvas']))
+            for layer in meta['sourceLayers']:
+                original.alpha_composite(clean(source).crop(layer['rect']),tuple(layer['at']))
+        else:
+            original=clean(source).crop(meta['sourceRect'])
         if key=='nightmare':
             original.putdata([(r,g,b,0 if (r,g,b)in [(0,0,0),(4,2,4)]else a)for r,g,b,a in original.get_flattened_data()])
         x,y,w,h=d['frames'][index];frame=atlas.crop((x,y,x+w,y+h))

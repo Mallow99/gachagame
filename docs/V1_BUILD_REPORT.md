@@ -98,7 +98,7 @@ M2 performance remain separate.
 enemies in Chromium, including 1440 × 170 at 1×/2× DPI, a field and a narrow
 strip. Warm drawing p95 is 0.4–0.8 ms in this environment; simultaneous hit-flash
 p95 reaches 3.3 ms. These are canvas/JS timings, not M2 CPU/power measurements.
-The 74 atlases total 0.14 MiB compressed and about 9.69 MiB decoded RGBA. They
+The 75 atlases total 0.14 MiB compressed and about 9.75 MiB decoded RGBA. They
 now warm before the first automatic fight, preventing first-use Copy/enemy
 sprite gaps. Auto-next also waits while Pause or Hide is active.
 
@@ -118,10 +118,14 @@ years and readable reduced-motion reveal times. Koopa's official 2020 redraw
 depicts the original 1985 body and is credited as a redraw. Hammer Bro/Buzzy
 have fuller faithful expanded sheets; Parasol's native body and umbrella
 articulate separately. The combat review at
-`/docs/validation/sprite-review/combat.html` offers fourteen real-engine moves
+`/docs/validation/sprite-review/combat.html` offers sixteen real-engine moves
 with playback/seek/speed controls. Chromium motion evidence and frame sequences
 are in `validation/sprite-review/motion/results.json`; source validation preserves
-443 frames across 65 extracted atlases. The full manifest has 74 atlases.
+447 frames across 66 extracted atlases. The full manifest has 75 atlases.
+Lakitu uses yiey20's expanded classic row and small cloud cells, with explicit
+authored assembly and native SMB1 palette mapping. Native Spiny eggs replace
+generic projectile dots, and single ranged throws reach their release pose at
+the actual spawn marker. Combat coefficients and timing remain unchanged.
 Twenty-nine Supply records have source artwork or a rendered source model,
 covering every SR/SSR Supply reveal. The Metal Cap studio material is authored;
 its original cap mesh/emblem and source archives are retained. Whole originals

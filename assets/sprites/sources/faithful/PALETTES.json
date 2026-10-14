@@ -582,5 +582,55 @@
       25,
       18
     ]
+  },
+  {
+    "id": "lakitu-adaptation",
+    "url": "https://www.spriters-resource.com/custom_edited/mariocustoms/asset/187203/",
+    "path": "assets/sprites/sources/faithful/smb-lakitu-expanded.png",
+    "sourcePalette": "assets/sprites/sources/faithful/smb-enemies.png, original Lakitu cell [54,138,70,162]",
+    "colors": [
+      [
+        12,
+        147,
+        0
+      ],
+      [
+        230,
+        156,
+        33
+      ],
+      [
+        255,
+        255,
+        255
+      ]
+    ],
+    "mapping": [
+      {
+        "from": [
+          33,
+          173,
+          16
+        ],
+        "to": [
+          12,
+          147,
+          0
+        ]
+      },
+      {
+        "from": [
+          255,
+          170,
+          71
+        ],
+        "to": [
+          230,
+          156,
+          33
+        ]
+      }
+    ],
+    "notes": "Classic first row only. Whole source stays intact; output uses the retained original NES palette. Blue sheet/cell backgrounds removed. Later character rows unused."
   }
 ]

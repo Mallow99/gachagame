@@ -82,12 +82,14 @@ Game-specific sprite replacements, source-game pull art and an animated
 actual BattleView; Chromium checks cover the playable flow and 360 × 600 Manual.
 Sparse pose sets, some signatures/audio and a real M2 desktop pass remain work.
 The animated comparison runs at `/docs/validation/sprite-review/index.html`.
-Play, pause and scrub fourteen actual attacks at
+Play, pause and scrub sixteen actual attacks at
 `/docs/validation/sprite-review/combat.html`; the review uses isolated encounters
 and does not change your save.
 Preview all opening pulls at `/docs/validation/summon-review/index.html`.
 Twenty-nine Supply records now have sourced illustrations; the Mushroom
-theater uses the approved demo's native sounds and Starman music.
+theater uses the approved demo's native sounds and Starman music. Dream Land
+SSR arrivals use the original 1993 Adventure fanfare. Lakitu now throws native
+Spiny eggs from a faithful classic rider/cloud expansion.
 The real Electron IPC/save/relaunch check runs with an isolated QA profile;
 see [desktop evidence](docs/validation/desktop-review/results.json). Native Mac
 tray/Spaces/click-through and M2 performance still need a device check.

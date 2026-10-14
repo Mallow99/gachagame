@@ -21,6 +21,7 @@ scale, comparison evidence, remaining quality work and the rarity proposal.
 | Expanded original-design SMB1 Bowser | Captain / FungiCaptain, Nintendo original sprite | Faithful classic body with walk, skid, jump, swimming, fire and defeat; selected over later-design NES-style candidates |
 | Expanded original-design SMB1 Hammer Bro | PixelatedPete (PlugItIn&Pete); original rip Superjustinbros / Nintendo | Original 24-pixel costume/body row, walk, throw, jump, skid and defeat. Compressed ROM-hack and later-game variants excluded. |
 | Expanded original-design SMB1 Buzzy Beetle | Side Steppa / Nintendo original character | Four walk and four roll poses in the exact original brown/peach palette; winged variants excluded. |
+| Expanded original-design SMB1 Lakitu | yiey20 / Nintendo original character | Classic green-goggled first row and small clouds, assembled with a fixed cloud anchor; output maps to the retained native SMB1 palette. Later costumes/large clouds excluded. Native eggs come from Superjustinbros's SMB1 rip. |
 | Complete Bandana Dee spear adaptation | gameboy09 / HAL Laboratory character | Super Star Ultra pixel style, faithfully supporting the Return to Dream Land spear kit |
 | Original Wii Bandana Dee model | John2k4; export/post Mighty Jetters; TSR uploader Garamonde | Comparison render only. This archive supplies no animation tracks. |
 | Source-game reveal illustrations | Nintendo / HAL Laboratory, via Mario Wiki and WiKirby | Original SMB, Dream Land, Adventure, Super Star and Return to Dream Land artwork |
@@ -29,7 +30,7 @@ scale, comparison evidence, remaining quality work and the rarity proposal.
 [sources/faithful/INTAKE.json](sources/faithful/INTAKE.json) records downloaded
 sheets/model archives, public source pages, credited contributors and SHA-256.
 [The palette checks](sources/faithful/PALETTES.json) retain independent native
-Adventure references. [Portrait intake](../portraits/source-era/INTAKE.json)
+Adventure references and the explicit classic Lakitu palette mapping. [Portrait intake](../portraits/source-era/INTAKE.json)
 records artwork URLs, game identity, dimensions and hashes. Some old game art
 is an opaque scan; it is displayed as a printed illustration without altering
 the original artwork. Featured banner and reveal art remain separate pieces.
@@ -43,7 +44,8 @@ Development dependencies are Pillow, numpy and scipy; the game runtime has
 none of those dependencies.
 
 `python tools/art/validate-faithful-sprites.py` verifies source/atlas pixel
-counts for every extracted frame. Native layered bosses are assembled
+counts for every extracted frame, including declared Lakitu rider/cloud source
+layers. Native layered bosses are assembled
 explicitly and reviewed in the renderer captures. The contact sheet and pose
 boards show current output, not the earlier enhanced treatment.
 Parasol Dee's body and umbrella are extracted separately for authored poke/spin
