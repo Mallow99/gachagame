@@ -1,14 +1,17 @@
 // Copies the splash-kit demo, the game modules it imports, and the assets it
 // loads into one flat folder that can be hosted anywhere (or published as a
-// claude.ai artifact). Usage: node tools/splash-kit/export-artifact.mjs <out-dir>
+// embedded artifact). Usage: node tools/splash-kit/export-artifact.mjs <out-dir>
+// [--artifact-fragment]
 // Prints the published-path -> source-path map for the artifact `files` list.
 import { cpSync, mkdirSync, readFileSync, writeFileSync, readdirSync, statSync, rmSync } from 'node:fs';
 import { join, relative, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('../..', import.meta.url));
-const out = process.argv[2];
-if (!out) { console.error('Usage: node tools/splash-kit/export-artifact.mjs <out-dir>'); process.exit(1); }
+const args = process.argv.slice(2);
+const out = args.find(arg => !arg.startsWith('--'));
+const artifactFragment = args.includes('--artifact-fragment');
+if (!out) { console.error('Usage: node tools/splash-kit/export-artifact.mjs <out-dir> [--artifact-fragment]'); process.exit(1); }
 rmSync(out, { recursive: true, force: true });
 
 const copy = (from, to = from, filter = () => true) => cpSync(join(root, from), join(out, to), { recursive: true, filter: src => filter(src) });
@@ -18,11 +21,16 @@ for (const part of ['manifest.json', 'display', 'thumbnails']) copy(`assets/port
 mkdirSync(join(out, 'assets/audio/reveal'), { recursive: true });
 copy('assets/audio/reveal/kirby-adventure-fanfare.mp3');
 
-// The artifact host supplies the document skeleton, so keep only the page body content.
+// Ordinary hosting needs the complete document, especially its mobile viewport.
+// Older embedded-artifact hosts supply their own skeleton and can opt into the
+// fragment form explicitly.
 let html = readFileSync(join(out, 'index.html'), 'utf8')
-  .replace('<meta name="game-root" content="../../">', '<meta name="game-root" content="./">')
-  .replace(/<!doctype html>\s*|<\/?html[^>]*>\s*|<\/?head>\s*|<\/?body>\s*|<meta name="viewport"[^>]*>\s*/gi, '');
-html = html.replace(/(<title>[^<]*<\/title>)/, '$1\n<meta name="claude:viewport-fit-sides" content="cover">');
+  .replace('<meta name="game-root" content="../../">', '<meta name="game-root" content="./">');
+if (artifactFragment) {
+  html = html
+    .replace(/<!doctype html>\s*|<\/?html[^>]*>\s*|<\/?head>\s*|<\/?body>\s*|<meta name="viewport"[^>]*>\s*/gi, '')
+    .replace(/(<title>[^<]*<\/title>)/, '$1\n<meta name="claude:viewport-fit-sides" content="cover">');
+}
 writeFileSync(join(out, 'index.html'), html);
 
 const files = {};
