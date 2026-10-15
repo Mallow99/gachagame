@@ -1,5 +1,28 @@
 # Pull presentation blueprint 02
 
+## Latest direction: storyboard the new Nightmare UR first
+
+The owner is increasingly happy with cue 04, but requests a new banner / pull
+flow and an extra-special, genuinely rigged Nightmare UR. Their correction is
+explicit: no AI-generated background; return to storyboard iteration and refer
+back to this plan before deciding the next implementation step.
+
+For this NEW character payoff, revisit the sequence gate without restarting the
+accepted shared opening. Next proposed storyboard: banner / pull entry → shared
+cumulative UR omen → concealed sound → cloak takeover / hand action → slanted
+camera views → full pullback and lock → UR letters and name → held result / ten-
+pull resume. Written audio lanes should distinguish the area bed, silence,
+character sound, cloth / magic effects and Nightmare's own theme. These are
+proposals for review, not already approved timings or final animation.
+
+Use neutral geometry in the board and source actual game artwork for the final
+backdrop. Do not use the generated lunar image. Sequence approval precedes
+another polished audio animatic, layer/action proof and banner integration.
+Preserve no-cards, rainbow-only-UR, tenth-light signal, tap-through, R/SR skip,
+complete committed results and the camera-before-name contract below.
+
+The experiment was not published. Cue 04 stays the current visual baseline.
+
 ## Current pass: visual cue 04 — Dedede showcase
 
 The owner found the SSR payoff too quick and asked for Dedede-specific screen

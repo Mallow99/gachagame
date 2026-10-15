@@ -10,6 +10,12 @@ the pipeline: `SOURCES.json` → `tools/splash-kit/prepare_art.py` → `rigs/<id
 
 ## Owner rules learned so far
 
+- **Nightmare follow-up (2026-10-15):** no AI-generated background. Before
+  building out the new UR payoff/banner flow, return to storyboard iteration
+  and re-read `docs/PULL_PRESENTATION_BLUEPRINT.md`. Existing shared-cue progress
+  is not approval of a new character's action. Use neutral sequence placeholders
+  and sourced game background art; do not publish the rejected generated sky.
+
 - **Never visibly warp a flat render.** Bending a single image (robe waves, sway, stretch) was rejected twice. For
   real motion, cut the art into layers and paint in what each part hides. Otherwise keep the character almost still
   and let the effects carry the life.

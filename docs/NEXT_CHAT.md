@@ -1,5 +1,40 @@
 # Start the next chat here
 
+## Newest: return to Nightmare storyboard; no AI background (2026-10-15 UTC)
+
+Branch `codex/v1-playable`. Cue 04 remains live and unchanged at
+<https://dedede-v3-review.berryowlet9.chatgpt.site/cue.html>. Owner: “It's starting
+to get to a point that I'm happy with”, but characters still are not themselves
+animated. Requested a banner / pull flow, special SSR/UR surroundings and a
+genuinely rigged UR Nightmare: screen-covering cloak, moving hands, own music
+and background. Broader Kirby rarity ideas are notes, not a production migration.
+
+Latest correction: “id ratehr we didnt use an ai generated background”, and
+return to iterating storyboards, referring to the original plan first. Read
+`docs/PULL_PRESENTATION_BLUEPRINT.md` and the new FEEDBACK entry before acting.
+No AI-generated background in the next review. Use neutral storyboard geometry,
+then sourced game artwork with provenance, not the generated lunar scene.
+
+The unpublished Nightmare experiment is preserved in local Git stash
+`Unpublished Nightmare experiment parked for storyboard review; AI background
+rejected`. It contains an unverified six-part rig, timeline/renderer edits,
+music bake and assets. It is NOT deployed or pushed as implementation. Do not
+apply it wholesale: the background is rejected; no performance/art approval
+exists. Original generated files also remain in `/workspace/generated_images`.
+
+Next proposed gate: ONE Nightmare storyboard including the banner / single /
+ten-pull entry and his extra-special UR payoff. Preserve the approved shared
+opening; do not invent an entirely separate Nightmare summon system. Show the
+cloak crossing the screen, hands casting/opening it, slanted close-ups, full
+pullback and lock, then UR letters/name, plus written audio lanes and ten-pull
+resume. Seek a verdict on that before polishing animation or rigging further.
+
+Original sequence remains storyboard → audio animatic → completed layer sheet
+→ single-character comparison → multi-high-tier ten-pull → production integration
+→ broader game UI/code cleanup. Revisit the early gates for this NEW payoff;
+do not discard established area/rarity/camera/control decisions or claim the
+last generic storyboard already approves Nightmare's action.
+
 ## Newest: visual cue 04 Dedede showcase (2026-10-15 UTC)
 
 Branch `codex/v1-playable`. The owner said the SSR is still too quick and

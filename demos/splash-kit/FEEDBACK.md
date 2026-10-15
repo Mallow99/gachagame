@@ -4,6 +4,45 @@ One entry per reviewed iteration. Record what the owner liked, what they
 disliked, and what is still needed, in their words where possible. Read this
 before changing anything here.
 
+## Visual cue 04 / Nightmare proposal — reviewed 2026-10-15 UTC
+
+Verdict: cue 04 is approaching the desired result, not final approval. Return
+to storyboarding the new banner / Nightmare UR before further finished work.
+
+Liked:
+- “It's starting to get to a point that I'm happy with.”
+- “everything else is good, especially with the laughing”.
+
+Disliked:
+- “even King Dedede isn't animated himself”.
+- “id ratehr we didnt use an ai generated background”.
+
+Still needed:
+- “include a pulling and a banner mechanic to see what the actual gacha will look like”.
+- Special SSR/UR backgrounds and effects at the sides of the screen.
+- “let's try and do Nightmare, UR Nightmare” with moving hands, a rigged cloak
+  covering the screen, his own background and music; make UR extra special.
+- “it might be worth returning to iterating story boards so we can get what we want”.
+- “refer back to the original plan before saying what we have to do next.”
+
+The unfinished six-part Nightmare / music / generated-background experiment
+was NOT published. It is parked in a named local Git stash, not the active
+review. The AI background is rejected and must not be restored into a build.
+Generated character parts were not separately approved or rejected; do not
+mistake a layer sheet for approval of its art, rig or performance.
+
+Next proposed review is a bounded Nightmare storyboard, following
+`docs/PULL_PRESENTATION_BLUEPRINT.md`: banner entry, shared UR omen, concealed
+sound, cloak takeover / hand action, camera pullback and lock, then UR/name.
+Use neutral geometry for sequence review and source an actual game backdrop
+before final art integration. Preserve the established shared opening and the
+owner's camera/rarity/control corrections. No new production rates or pool.
+
+Later roster direction (exploratory, not implemented): starter Kirby R;
+ordinary enemies R–SR; Dedede, Meta Knight and appropriate Kirby variants SSR;
+final bosses UR, plus at least a UR Kirby. Resolve the exact per-game variants
+and odds later; this is not permission to rerate the current collection.
+
 ## Visual cue 03 — reviewed 2026-10-15 UTC
 
 Verdict: revise the King Dedede SSR pacing and showcase. This authorizes the
