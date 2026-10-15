@@ -1,4 +1,5 @@
-import { storyboardReceipt, makeStoryboard, sampleStoryboard } from './nightmare-board-model.js';
+import { storyboardReceipt, makeStoryboard, sampleStoryboard, sampleResultLights } from './nightmare-board-model.js';
+import { COLOURS, TIERS } from './cue-model.js';
 import { storyboardScene } from './nightmare-board-scene.js';
 
 const $ = id => document.getElementById(id);
@@ -34,6 +35,8 @@ function startReview(count) {
   current = 0; banner = false; railBeat = null; buildRail();
   $('boardHighOnly').disabled = count === 1;
   $('resultList').replaceChildren();
+  $('lightOrder').replaceChildren();
+  receipt.results.forEach(() => $('lightOrder').append(document.createElement('li')));
   receipt.results.forEach(result => { const li = document.createElement('li'); li.textContent = `${result.name}${result.name.includes('fighter') ? '' : ` · ${result.rarity}`}`; $('resultList').append(li); });
   render(); play(); $('boardStage').scrollIntoView({ block: 'start', behavior: 'instant' }); $('boardPlay').focus({ preventScroll: true });
 }
@@ -54,11 +57,17 @@ function render() {
   $('boardTransport').hidden = $('beatInspector').hidden = $('beatRail').hidden = $('tapAdvance').hidden = banner;
   $('boardResult').hidden = true;
   $('boardIdentity').hidden = $('concealedCall').hidden = true;
+  $('lightKey').hidden = true;
   if (banner) { $('boardStage').dataset.phase = 'banner'; $('sceneLabel').textContent = 'Banner composition · not final art'; draw(null, null, { banner: true }); return; }
   const state = sampleStoryboard(current, board, reduced.matches), b = state.beat;
   draw(state, board, { reduced: reduced.matches, guides: $('cameraGuides').checked });
   $('boardStage').dataset.phase = state.phase;
   $('boardStage').dataset.count = receipt.results.length;
+  $('lightKey').hidden = state.phase !== 'flight' || receipt.results.length === 1;
+  if (state.phase === 'flight') sampleResultLights(current, receipt.results, reduced.matches).forEach((light, i) => {
+    const item = $('lightOrder').children[i]; item.textContent = `${i + 1} ${TIERS[light.rank]}`;
+    item.style.setProperty('--light-colour', COLOURS[light.rank]); item.dataset.rank = light.rank;
+  });
   $('sceneLabel').textContent = `${b.group} · schematic blocking only`;
   $('beatGroup').textContent = `${b.group} · ${b.duration.toFixed(1)} s`;
   $('beatTitle').textContent = b.title; $('beatVisual').textContent = b.visual;
@@ -90,7 +99,7 @@ function render() {
 document.querySelectorAll('[data-pull]').forEach(button => button.addEventListener('click', () => {
   pendingCount = Number(button.dataset.pull);
   $('confirmTitle').textContent = pendingCount === 1 ? 'Review a single pull?' : 'Review a ten-pull?';
-  $('confirmDescription').textContent = pendingCount === 1 ? 'A fixed Nightmare UR shows the complete entrance, camera and identity sequence.' : 'A fixed ten-character lineup: Dedede SSR in slot six, Nightmare UR in slot eight. The tenth travelling light signals the set’s UR; it does not reorder results.';
+  $('confirmDescription').textContent = pendingCount === 1 ? 'A fixed Nightmare UR shows the complete entrance, camera and identity sequence.' : 'A fixed ten-character lineup: Dedede SSR in slot six, Nightmare UR in slot eight. Each travelling light upgrades to its own result’s rarity, without changing result order.';
   $('pullConfirm').returnValue = '';
   $('pullConfirm').showModal();
 }));

@@ -3,7 +3,7 @@ import { existsSync, mkdirSync } from 'node:fs';
 import assert from 'node:assert/strict';
 const require = createRequire(import.meta.url);
 const { chromium } = require(process.env.POCKET_PLAYWRIGHT_MODULE || 'playwright');
-const out = process.argv[2] || 'out/nightmare-board-01';
+const out = process.argv[2] || 'out/nightmare-board-02';
 const url = process.argv[3] || 'http://localhost:8080/demos/splash-kit/nightmare.html';
 mkdirSync(out, { recursive: true });
 const executablePath = ['/usr/bin/chromium', '/usr/bin/chromium-browser'].find(existsSync);
@@ -32,10 +32,15 @@ try {
   const phase = async (name, p = .5) => { const beat = (await state()).board.beats.find(b => b.phase === name); await seek(beat.start + beat.duration * p); };
   const goBeat = async id => { const beat = (await state()).board.beats.find(b => b.id === id); await seek(beat.start + beat.duration * .5); };
   await phase('call'); assert.equal(await page.locator('#boardIdentity').isVisible(), false); await shot('concealed-call');
-  for (const name of ['sweep', 'covered', 'hands', 'open', 'cast', 'face', 'pullback', 'lock', 'rarity', 'name']) {
+  for (const name of ['sweep', 'covered', 'hands', 'open', 'dark', 'emerge', 'face', 'pullback', 'lock', 'rarity', 'name']) {
     await phase(name); if (!['rarity', 'name'].includes(name)) assert.equal(await page.locator('#boardIdentity').isVisible(), false);
     if (name === 'rarity') assert.equal(await page.locator('#identityName').isVisible(), false);
-    if (['covered', 'hands', 'open', 'cast', 'face', 'name'].includes(name)) await shot(name);
+    if (['covered', 'hands', 'open', 'dark', 'emerge', 'face', 'pullback', 'name'].includes(name)) await shot(name);
+    if (['open', 'dark'].includes(name)) {
+      assert.equal((await state()).sample.nightmareVisible, false);
+      // The curtain gap is actual empty black, not a hidden/grid-backed figure.
+      assert.deepEqual(await page.locator('#boardScene').evaluate(c => Array.from(c.getContext('2d').getImageData(Math.floor(c.width / 2), Math.floor(c.height / 3), 1, 1).data)), [4, 3, 11, 255]);
+    }
   }
   await phase('pullback', .2); const zoom = (await state()).sample.zoom;
   await phase('pullback', .8); assert.ok((await state()).sample.zoom < zoom);
@@ -51,12 +56,14 @@ try {
   await begin(10); const receipt = JSON.stringify((await state()).receipt);
   await phase('ssr', .2); assert.equal(await page.locator('#identityName').isVisible(), false);
   await phase('ssr', .9); assert.equal(await page.locator('#identityName').textContent(), 'King Dedede'); await shot('ssr-baseline');
-  for (const [id, rank] of [['blue', 0], ['silver', 1], ['gold', 2], ['rainbow', 3]]) {
+  for (const [id, ceiling] of [['blue', 0], ['silver', 1], ['gold', 2], ['rainbow', 3]]) {
     await goBeat(id); const at = (await state()).time;
-    const lights = await page.evaluate(async at => { const { sampleLights } = await import('./cue-model.js'); return sampleLights(at, 'UR', 10); }, at);
-    assert.ok(lights.slice(0, 9).every(l => l.rank === 0)); assert.equal(lights.at(-1).rank, rank);
+    const lights = await page.evaluate(async at => { const { sampleResultLights } = await import('./nightmare-board-model.js'); return sampleResultLights(at, nightmareBoard.state.receipt.results); }, at);
+    const expected = (await state()).receipt.results.map(r => Math.min(ceiling, ['R', 'SR', 'SSR', 'UR'].indexOf(r.rarity)));
+    assert.deepEqual(lights.map(l => l.rank), expected);
+    assert.deepEqual(await page.locator('#lightOrder li').evaluateAll(items => items.map(li => Number(li.dataset.rank))), expected);
   }
-  await goBeat('rainbow'); await shot('ten-rainbow');
+  await goBeat('rainbow'); await page.screenshot({ path: `${out}/ten-rainbow-page.png`, fullPage: true });
   const originalTotal = (await state()).board.total;
   await phase('arrival');
   await page.locator('#boardHighOnly').check(); assert.ok((await state()).board.total < originalTotal);
@@ -70,7 +77,7 @@ try {
   await page.locator('#boardPlay').click(); await page.waitForFunction(() => nightmareBoard.state.playing && nightmareBoard.state.time < 2);
   await page.locator('#boardPlay').click(); assert.equal(JSON.stringify((await state()).receipt), receipt);
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  for (const name of ['sweep', 'hands', 'open', 'cast', 'face', 'pullback']) {
+  for (const name of ['sweep', 'hands', 'open', 'dark', 'emerge', 'face', 'pullback']) {
     await phase(name, .2); const before = await page.locator('#boardScene').evaluate(c => c.toDataURL());
     await phase(name, .8); assert.equal(await page.locator('#boardScene').evaluate(c => c.toDataURL()), before, `Reduced motion ${name}`);
     assert.equal((await state()).sample.zoom, 1); assert.equal((await state()).sample.roll, 0);
@@ -80,11 +87,13 @@ try {
     await page.setViewportSize({ width, height: 844 }); await page.locator('#backBanner').click();
     if (width === 390) await page.screenshot({ path: `${out}/mobile-banner-page.png`, fullPage: true });
     await begin(10); await phase('hands'); if (width === 390) await shot('mobile-hands');
+    await phase('open'); if (width === 390) await shot('mobile-open-void');
+    await phase('emerge'); if (width === 390) await shot('mobile-emergence');
     await phase('name'); if (width === 390) await page.screenshot({ path: `${out}/mobile-name-page.png`, fullPage: true });
     await page.locator('#boardSkip').click(); if (width === 390) await shot('mobile-lineup');
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width);
   }
   assert.equal(await page.evaluate(() => JSON.stringify({ ...localStorage })), saved);
   assert.deepEqual(errors, []); assert.deepEqual(missing, []);
-  console.log(JSON.stringify({ passed: true, errors, missing, singleDuration: one.total, tenDuration: originalTotal, screenshots: 15, checks: 'banner confirmation and cancel, single/ten, cumulative cues, concealment, cloak/hands/camera/identity order, step/scrub/pause/replay/skip, immutable fixture, high-only filter, UR resume, reduced motion, 390/420px no overflow, no storage writes' }));
+  console.log(JSON.stringify({ passed: true, errors, missing, singleDuration: one.total, tenDuration: originalTotal, screenshots: 19, checks: 'banner confirmation and cancel, single/ten, per-result cumulative cues, empty black curtain gap before emergence, looming cloak/face/pullback before identity, step/scrub/pause/replay/skip, immutable fixture, high-only filter, UR resume, reduced motion, 390/420px no overflow, no storage writes' }));
 } finally { await browser.close(); }

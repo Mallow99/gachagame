@@ -4,6 +4,50 @@ One entry per reviewed iteration. Record what the owner liked, what they
 disliked, and what is still needed, in their words where possible. Read this
 before changing anything here.
 
+## Nightmare storyboard 01 — reviewed 2026-10-15 America/Chicago
+
+Verdict: strongly positive on the curtain idea; revise light signalling and the
+order behind the curtains. Not final art/rig/audio approval.
+
+Liked:
+- “Im realling liking the idea of having him pull back the curtains on himself, thats honestly really good”.
+- “But, quite frankly, this is really good.”
+
+Disliked / requested correction:
+- “the colored star should be at the front, or they should all coorelate to what tier that specific one is”.
+- “it might be better if the hands open the curtains on darkness before he emerges and we get a close up of his face, before then it pulls back.”
+
+Still needed:
+- “I could even see his sprite being really big with the shadow of his cloak”.
+- “we are probably going to have to make storyboards for every ur, and potentially even ssrs”.
+- “Could we try something like that?”
+
+Storyboard 02 tries the per-result-light alternative: fixed results stay in
+order, each light upgrades cumulatively only to its own tier. In this fixture
+three/nine stop at silver, six gold, eight rainbow, ten blue. A numbered light
+key makes the mapping readable. The earlier tenth-only maximum cue is no longer
+the rule in this board; cue 04 remains the historical comparison.
+
+The curtains now open onto empty black, hold .75 s, then a looming cloak shadow
+and oversized face emerge. The casting cut is replaced by emergence, followed
+by the opposite face slant and continuous pullback. Lock still precedes letters
+and name. No AI art/background, playable audio, game pool or save changes.
+New proposed durations: single 31.4 s / ten 53.055 s.
+
+Record individual storyboards as the workflow for bespoke UR performances;
+review SSR-specific actions when needed. No roster-wide batch is requested now.
+**Storyboard 02 awaits owner verdict before audio animatic / layer proof.**
+
+Future workflow note in the owner's follow-up:
+- “make it easy for me to make story boards for specific characters so i could show you what exactly i want, atleast like a very rough storyboard”.
+- “then you can refine the story boards and build it from there”.
+- Concern: their ideal sequence “might be hard to recreate sprite wise”.
+- Narrow AI exception: “images that are on screen for 2 seconds”, e.g. “a back sprite of something for the animation”.
+
+Saved as `docs/STORYBOARD_AUTHORING_BACKLOG.md`: rough authoring, then explicit
+shot-by-shot asset/rig feasibility review. Do not expand this into background
+generation or start an editor inside the current bounded storyboard pass.
+
 ## Nightmare storyboard plan — approved to build 2026-10-15 UTC
 
 Liked:

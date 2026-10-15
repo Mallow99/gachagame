@@ -1,5 +1,42 @@
 # Start the next chat here
 
+## Newest: Nightmare storyboard 02 — darkness and per-result cues (2026-10-15 America/Chicago)
+
+Branch `codex/v1-playable`. Owner strongly liked “having him pull back the
+curtains on himself”; requested curtains onto darkness, then emergence / face
+close-up / pullback, possibly very large with a cloak shadow. Also asked for
+either a coloured leader OR each travelling light matching its own result.
+Review: <https://dedede-v3-review.berryowlet9.chatgpt.site/nightmare.html>.
+
+Additional future request while this pass was underway: make a rough storyboard
+authoring tool for the owner, followed by agent feasibility/refinement. Record:
+`docs/STORYBOARD_AUTHORING_BACKLOG.md`. Not built now. AI permission is narrow:
+brief 1–2 s inserts such as a missing back-view sprite; not backgrounds or
+persistent main art. No generated assets used in this pass.
+
+02 tries PER-RESULT colours, not a reordered UR leader. `sampleResultLights`
+in `nightmare-board-model.js` reuses the shared path/spacing and caps each light
+at its own rarity. Ledger and on-curve numbers show receipt order. Fixture is
+unchanged: SR three/nine, SSR six, UR eight, R ten. This supersedes tenth-only
+cue for the new board; the old cue 04 is deliberately unchanged for comparison.
+
+Curtains open onto actual empty black with no figure/grid/backdrop. A .75 s
+void hold precedes a 1.8 s looming emergence, opposite face slant, 2.6 s pullback,
+lock, UR letters/name. A large static cloak silhouette frames the smaller pose.
+Emergence lifts a black veil from opaque shapes, avoiding transparent part
+overlaps. Single 31.4 s / ten 53.055 s are still proposed timings. No final art,
+generated images, audio, real pulls, new rates or production/save changes.
+
+130 tests and source/export browser checks; desktop + 390/420px, 19 screenshots,
+void pixel checks, per-result ranks/order, reduced-motion still frames, replay /
+skip / filter / resume and no storage writes. Report:
+`docs/validation/nightmare-storyboard-02.md`.
+
+NEXT: owner's verdict on storyboard 02, then further sequence iteration OR
+audio animatic before a real layer/action proof. Bespoke URs should each have
+a storyboard; SSR-specific actions may need them too. Do not start a roster-
+wide batch or restore the rejected generated background from the stash.
+
 ## Newest: Nightmare storyboard 01 built for sequence review (2026-10-15 UTC)
 
 Branch `codex/v1-playable`. Owner approved the proposed storyboard-first plan:

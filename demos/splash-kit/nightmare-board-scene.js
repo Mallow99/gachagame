@@ -1,4 +1,5 @@
-import { sampleLights, COLOURS, ease } from './cue-model.js';
+import { COLOURS, ease } from './cue-model.js';
+import { sampleResultLights } from './nightmare-board-model.js';
 
 const spectrum = ['#8ce7ff', '#beb3ff', '#ffaedb', '#ffe5a0', '#a3efc2'];
 function star(c, x, y, r, fill, rotation = 0) {
@@ -61,6 +62,14 @@ function cloak(c, x, side) {
   c.strokeStyle = '#514b68'; c.beginPath(); c.moveTo(120, -10); c.bezierCurveTo(40, 160, 190, 380, 110, 610); c.stroke(); c.restore();
 }
 
+function cloakShadow(c, presence = 1) {
+  c.save(); c.globalAlpha = presence; c.fillStyle = '#12101e'; c.strokeStyle = '#332a43'; c.lineWidth = 2;
+  // One huge silhouette behind the smaller body, not a distorted character.
+  c.beginPath(); c.moveTo(390, 25); c.lineTo(405, -85); c.lineTo(470, 10); c.lineTo(630, 10); c.lineTo(705, -85); c.lineTo(685, 25);
+  c.bezierCurveTo(760, 30, 890, 95, 1080, 570); c.lineTo(1080, 650); c.lineTo(-80, 650);
+  c.bezierCurveTo(110, 200, 215, 50, 390, 25); c.closePath(); c.fill(); c.stroke(); c.restore();
+}
+
 export function storyboardScene(canvas) {
   const c = canvas.getContext('2d');
   return function render(state, board, { banner = false, reduced = false, guides = true } = {}) {
@@ -78,39 +87,45 @@ export function storyboardScene(canvas) {
       c.strokeStyle = '#a9a2bf44'; c.setLineDash([6, 9]); c.beginPath(); c.ellipse(500, 300, 350, 144, 0, 0, Math.PI * 2); c.stroke(); c.setLineDash([]);
       c.strokeStyle = '#b4c4dc'; c.fillStyle = '#252537'; c.lineWidth = 2;
       c.beginPath(); c.ellipse(500, 456, 85, 18, 0, 0, Math.PI * 2); c.fill(); c.stroke(); c.beginPath(); c.moveTo(415, 456); c.quadraticCurveTo(420, 513, 500, 510); c.quadraticCurveTo(580, 513, 585, 456); c.stroke(); c.strokeRect(480, 510, 40, 55);
-      const lights = sampleLights(state.time, 'UR', board.receipt.results.length, reduced);
+      const lights = sampleResultLights(state.time, board.receipt.results, reduced);
       for (const l of lights) {
         if (l.alpha <= .01) continue;
         c.save(); c.globalAlpha = l.alpha; c.strokeStyle = l.rank === 3 ? spectrum[0] : COLOURS[l.rank]; c.lineWidth = 2;
-        const x = l.x * 1000, y = l.y * 600, r = Math.min(240, (l.signal ? 12 : 5) * l.scale);
+        const x = l.x * 1000, y = l.y * 600, r = Math.min(240, (7 + l.rank * 3) * l.scale);
         if (l.rank >= 2) { if (l.rank === 3) for (let i = 0; i < 5; i++) { c.strokeStyle = spectrum[i]; star(c, x + Math.cos(i) * 3, y + Math.sin(i) * 3, r + 5, null); } c.strokeStyle = l.rank === 3 ? '#fff7df' : COLOURS[l.rank]; star(c, x, y, r, COLOURS[l.rank]); }
         else { c.fillStyle = COLOURS[l.rank]; c.beginPath(); c.arc(x, y, r, 0, Math.PI * 2); c.fill(); }
+        if (board.receipt.results.length > 1 && l.scale < 3) { c.font = '17px Barlow'; c.textAlign = 'center'; c.fillStyle = '#ddd7ea'; c.fillText(String(l.index + 1), x, y + r + 19); }
         c.restore();
       }
     } else if (['blackout', 'call', 'impact'].includes(phase)) {
       c.fillStyle = '#04030b'; c.fillRect(0, 0, 1000, 600);
       if (phase === 'impact') { c.strokeStyle = spectrum[0]; c.lineWidth = 2; star(c, 500, 290, reduced ? 130 : 40 + p * 250, null); }
       else if (phase === 'call') { c.strokeStyle = '#a79ab366'; c.beginPath(); c.moveTo(440, 330); c.lineTo(560, 330); c.stroke(); }
-    } else if (['sweep', 'covered', 'hands', 'open'].includes(phase)) {
-      const opened = phase === 'open' ? ease(reduced ? 1 : p) : 0;
-      if (opened) figure(c, { open: opened, gesture: .4, hands: false });
+    } else if (['sweep', 'covered', 'hands', 'open', 'dark'].includes(phase)) {
+      const opened = phase === 'dark' ? 1 : phase === 'open' ? ease(reduced ? 1 : p) : 0;
+      // The gap is genuinely empty. No figure, backdrop or grid under the cloth.
+      c.fillStyle = '#04030b'; c.fillRect(0, 0, 1000, 600);
       if (phase === 'sweep' && !reduced) { c.fillStyle = '#04030b'; c.fillRect(0, 0, 1000, 600); cloak(c, 1170 - ease(p) * 670, -1); }
       else { cloak(c, 270 - opened * 800, 1); cloak(c, 730 + opened * 800, -1); }
-      if (['hands', 'open'].includes(phase)) {
+      if (['hands', 'open', 'dark'].includes(phase)) {
         const lift = phase === 'hands' ? ease(reduced ? 1 : p) : 1;
-        // The foreground hands resolve into his pose, not a second pair.
-        hand(c, 415 + opened * 95, 405 - lift * 85 - opened * 21, 1.6 - opened * .726, -.3 - opened * .27);
-        hand(c, 590 + opened * 204, 400 - lift * 85 - opened * 60, 1.6 - opened * .749, .3 + opened * .012, opened > .8);
+        hand(c, 415 - opened * 340, 405 - lift * 85, 1.6, -.3 - opened * .5);
+        hand(c, 590 + opened * 335, 400 - lift * 85, 1.6, .3 + opened * .5);
       }
     } else if (state.nightmareVisible) {
-      const cinematic = ['cast', 'face', 'pullback'].includes(phase), zoom = state.zoom;
+      const cinematic = ['emerge', 'face', 'pullback'].includes(phase), zoom = state.zoom;
+      c.fillStyle = '#04030b'; c.fillRect(0, 0, 1000, 600);
+      cloakShadow(c, phase === 'emerge' ? .25 + state.emergence * .75 : 1);
       // Pullback changes the framing continuously; the full pose is only locked later.
-      c.save(); c.translate(650 - (zoom - 1) * 110, 280 + (zoom - 1) * 105);
+      c.save();
+      c.translate(650 - (zoom - 1) * 110, 280 + (zoom - 1) * 105);
       c.rotate(state.roll * Math.PI / 180); c.scale(zoom, zoom);
-      figure(c, { x: 0, y: 0, scale: .76, open: .9, gesture: phase === 'cast' ? ease(reduced ? 1 : p) : .8, head: phase === 'face' && !reduced ? -.08 + p * .12 : 0, joints: guides && cinematic }); c.restore();
+      figure(c, { x: 0, y: 0, scale: .76, open: .9, gesture: .8, hands: phase !== 'emerge', head: phase === 'face' && !reduced ? -.08 + p * .12 : 0, joints: guides && cinematic && phase !== 'emerge' }); c.restore();
+      // Lift a black veil from opaque shapes; per-piece alpha exposes hidden
+      // drawing surfaces and makes the character look like a transparent ghost.
+      if (phase === 'emerge') { c.fillStyle = `rgba(4,3,11,${(1 - state.emergence) * .96})`; c.fillRect(0, 0, 1000, 600); }
       c.strokeStyle = '#afa5d066'; c.lineWidth = 2;
       for (let i = 0; i < 8; i++) { const side = i % 2 ? 1 : -1, y = 70 + Math.floor(i / 2) * 140; c.beginPath(); c.moveTo(side < 0 ? 0 : 1000, y); c.lineTo(side < 0 ? 40 : 960, y + 35); c.lineTo(side < 0 ? 20 : 980, y + 65); c.stroke(); }
-      if (phase === 'cast') { c.strokeStyle = '#b4b0d3'; const d = reduced ? .8 : p; c.beginPath(); c.arc(800, 225, 10 + d * 35, 0, Math.PI * 2); c.stroke(); }
       if (guides && cinematic) { c.strokeStyle = '#65ccff99'; c.setLineDash([7, 7]); c.strokeRect(385, 115, 300, 245); c.setLineDash([]); }
     } else if (phase === 'ssr' || phase === 'arrival') {
       c.strokeStyle = phase === 'ssr' ? '#ffcf49' : COLOURS[beat.result.rarity === 'SR' ? 1 : 0]; c.lineWidth = 3; c.fillStyle = '#292639';
@@ -118,7 +133,7 @@ export function storyboardScene(canvas) {
       c.save(); c.translate(655, 335); c.scale(scale, scale); c.beginPath(); c.ellipse(0, 10, 100, 125, 0, 0, Math.PI * 2); c.fill(); c.stroke(); c.beginPath(); c.arc(0, -90, 65, 0, Math.PI * 2); c.fill(); c.stroke(); c.restore();
     }
     // Ten results remain small characters on a stage, not portraits in cards.
-    if (board.receipt.results.length === 10 && !['flight', 'blackout', 'impact', 'call', 'sweep', 'covered', 'hands', 'open'].includes(phase)) {
+    if (board.receipt.results.length === 10 && !['flight', 'blackout', 'impact', 'call', 'sweep', 'covered', 'hands', 'open', 'dark', 'emerge', 'face'].includes(phase)) {
       const complete = phase === 'lineup', top = complete ? 265 : 545;
       board.receipt.results.forEach((r, i) => {
         const col = complete && canvas.clientWidth < 600 ? i % 5 : i, row = complete && canvas.clientWidth < 600 ? Math.floor(i / 5) : 0;

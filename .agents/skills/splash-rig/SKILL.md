@@ -10,6 +10,21 @@ the pipeline: `SOURCES.json` → `tools/splash-kit/prepare_art.py` → `rigs/<id
 
 ## Owner rules learned so far
 
+- **Owner authoring / narrow AI exception (2026-10-15):** future rough-storyboard
+  tool should let the owner show the ideal, followed by an explicit sprite/rig
+  feasibility review before production. AI images may supply brief 1–2-second
+  transitional inserts such as a missing back view. This does not approve AI
+  backgrounds or persistent showcase art. See `docs/STORYBOARD_AUTHORING_BACKLOG.md`.
+
+- **Storyboard 02 correction (2026-10-15):** owner strongly likes Nightmare
+  pulling back curtains on himself. Open them onto empty darkness FIRST, then
+  looming cloak shadow / face emergence, close-up and pullback. For the ten-pull
+  they offered either a coloured leader or per-result light tiers; current board
+  tests per-result cues in original order. This supersedes the tenth-only rule
+  below for new work; old cue 04 is a historical comparison. Bespoke UR actions
+  need individual storyboards; SSR-specific actions may too. Do not roll this
+  into a roster-wide batch or final rig before the current board's verdict.
+
 - **Nightmare follow-up (2026-10-15):** no AI-generated background. Before
   building out the new UR payoff/banner flow, return to storyboard iteration
   and re-read `docs/PULL_PRESENTATION_BLUEPRINT.md`. Existing shared-cue progress

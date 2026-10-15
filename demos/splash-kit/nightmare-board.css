@@ -15,6 +15,12 @@ header nav { display:flex; gap:1.2rem; flex-wrap:wrap; }
 .banner-actions>div { display:flex; gap:.7rem; }
 .banner-actions button,.board-transport #boardPlay { background:var(--gold); color:var(--ink); border-color:var(--gold); }
 .banner-actions p { margin:0; color:var(--muted); font-size:.95rem; max-width:37ch; }
+.light-key { padding:.65rem 1rem .8rem; border-top:1px solid var(--line); }
+.light-key p { margin:0 0 .5rem; color:var(--muted); font-size:.85rem; }
+.light-key ol { margin:0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(10,minmax(0,1fr)); gap:.3rem; }
+.light-key li { color:var(--light-colour); font-size:.9rem; display:flex; align-items:center; gap:.4rem; }
+.light-key li::before { content:""; width:.5rem; height:.5rem; border-radius:50%; background:var(--light-colour); flex-shrink:0; }
+.light-key li[data-rank="3"]::before { background:linear-gradient(135deg,#8ce7ff,#beb3ff,#ffaedb,#ffe5a0,#a3efc2); }
 .board-transport { padding:1rem; border-top:1px solid var(--line); }
 .transport-buttons { display:flex; flex-wrap:wrap; gap:.5rem; }
 .scrub-row { display:flex; align-items:center; gap:1rem; margin-top:1rem; }
@@ -77,6 +83,7 @@ dialog form>div { display:flex; gap:.7rem; justify-content:flex-end; margin-top:
   .board-transport { padding:.75rem; }
   .transport-buttons button { font-size:.9rem; padding:.45rem .65rem; }
   .board-options span { margin-left:0; }
+  .light-key ol { grid-template-columns:repeat(5,minmax(0,1fr)); row-gap:.4rem; }
   .board-identity { top:32%; left:5%; max-width:40%; }
   .board-identity h2 { font-size:1.8rem; }
   .board-identity p { font-size:.65rem; max-width:16ch; }

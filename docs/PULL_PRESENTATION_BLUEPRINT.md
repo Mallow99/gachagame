@@ -1,5 +1,24 @@
 # Pull presentation blueprint 02
 
+## Current sequence review: Nightmare storyboard 02
+
+The owner strongly likes the self-curtain action. This revision changes the
+space behind it: hands open the cloth onto empty darkness, pause, then Nightmare
+emerges with a large cloak shadow and face close-up before the full pullback.
+The prior casting cut is replaced by emergence. Lock → letters → name remains.
+
+Ten-light language now tries the owner's per-result option: every light stays
+in receipt order and cumulatively upgrades only to its decided tier. R stays
+blue, SR stops silver, SSR gold, UR rainbow. This supersedes the tenth-only
+maximum signal for this storyboard; historical cue 04 is left for comparison.
+In the unchanged fixture the UR is light/result eight, not one or ten. A numbered
+key makes the mapping inspectable. Single 31.4 s / ten 53.055 s remain proposals.
+
+The private `/nightmare.html` review is still schematic and silent, with written
+audio/camera lanes. No generated backgrounds, live odds, transactions or saves.
+Await sequence feedback before audio animatic / layer proof. Individual bespoke
+UR performances need storyboards; SSR-specific actions may need them too.
+
 ## Current sequence review: Nightmare storyboard 01
 
 The owner approved building the proposed storyboard-first pass. Review at
