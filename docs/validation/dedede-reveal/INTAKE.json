@@ -38,8 +38,8 @@
     },
     {
       "path": "demos/dedede-reveal/reveal.css",
-      "bytes": 6523,
-      "sha256": "4d89d7a4e12c7e63b9a9efbec5475a338a97543ddac07797603fe4249cca5370"
+      "bytes": 6522,
+      "sha256": "fc065900863d701fc976f8c53ab6b91533eb98e1e2abfbb6ea52e2b18c8f457c"
     },
     {
       "path": "demos/dedede-reveal/review.js",

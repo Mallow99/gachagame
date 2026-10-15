@@ -16,8 +16,9 @@ to `/motion-references/index.html`, and `/cubism/index.html` is preserved.
 `tools/browser-dedede-reveal.mjs` passes the full browser lifecycle. Read its
 source/quality limits in the animated-art brief. This does not replace the
 unapproved production theater. The owner has now explicitly requested a GitHub
-checkpoint of the current game branch; commit and push `codex/v1-playable`,
-preserving the original planning branch and without opening a PR.
+checkpoint of the current game branch. The complete branch was committed and
+pushed to GitHub as `codex/v1-playable` at `b50db6b`; all 111 tests passed.
+The original planning branch is preserved, and no PR was opened.
 
 **Latest visual direction:** the owner clarified that a properly rigged central
 character, coherent animated surroundings and active signature effects are
