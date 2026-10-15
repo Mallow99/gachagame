@@ -1,0 +1,21 @@
+{
+  "king-dedede": {
+    "kind": "render",
+    "url": "https://cdn.wikirby.com/3/3c/KRtDLD_King_Dedede.png",
+    "page": "https://wikirby.com/wiki/File:KRtDLD_King_Dedede.png",
+    "sha256": "b6aedb14bb0eed4e8312678d39ab9a05c399c3188c448debfb060412d7318bb6",
+    "credit": "Kirby's Return to Dream Land Deluxe (2023) official render. Nintendo / HAL Laboratory.",
+    "output": "king-dedede/render.png",
+    "height": 900
+  },
+  "fountain-of-dreams": {
+    "kind": "background",
+    "url": "https://ssb.wiki.gallery/images/c/c3/SSBU-Fountain_of_Dreams.png",
+    "page": "https://www.ssbwiki.com/File:SSBU-Fountain_of_Dreams.png",
+    "sha256": "20bf066abd3c62c9510010f7875ced7c20036e2d4abfe3847aea126c4680068d",
+    "credit": "Super Smash Bros. Ultimate (2018) Fountain of Dreams stage. Nintendo / Bandai Namco / Sora.",
+    "output": "fountain-of-dreams/background.jpg",
+    "width": 1600,
+    "blur": 2.5
+  }
+}

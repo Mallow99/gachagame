@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dreams Take Flight</title>
+<!-- Where the game's src/ and assets/ live, relative to this page. The artifact export rewrites it. -->
+<meta name="game-root" content="../../">
+<link rel="stylesheet" href="kit.css">
+</head>
+<body>
+<main class="page">
+  <header class="masthead">
+    <p class="crumb"><b>Pocket Gacha</b> / Dream Land / Source Spotlight</p>
+    <p class="crumb">Splash kit · study 01</p>
+  </header>
+
+  <section class="stage" id="stage" data-state="loading" aria-label="Summon stage">
+    <canvas id="splash" class="layer"></canvas>
+    <canvas id="summon" class="layer summon-canvas" hidden></canvas>
+
+    <!-- Banner -->
+    <div class="banner-ui" id="bannerUi">
+      <div class="banner-copy">
+        <p class="eyebrow">Dream Land · Source Spotlight</p>
+        <h1 class="banner-title" id="bannerTitle">Dreams Take Flight</h1>
+        <p class="banner-desc" id="bannerDesc"></p>
+        <div class="featured">
+          <span class="chip chip-up">Rate up</span>
+          <span class="chip chip-ssr">SSR</span>
+          <p class="featured-name"><small>King</small>Dedede</p>
+          <p class="featured-note" id="featuredNote"></p>
+        </div>
+      </div>
+      <div class="banner-foot">
+        <button class="link-btn" id="ratesBtn" type="button">Rates &amp; pity</button>
+        <p class="pity" id="pityLine"></p>
+      </div>
+      <div class="pull-box">
+        <p class="wallet"><span class="star-glyph" aria-hidden="true">✦</span><span id="starlight">0</span> Starlight</p>
+        <div class="pull-row">
+          <button class="pull-btn" id="pull1" type="button"><span>Summon ×1</span><small>✦ 100</small></button>
+          <button class="pull-btn pull-btn-10" id="pull10" type="button"><span>Summon ×10</span><small>✦ 1,000</small></button>
+        </div>
+      </div>
+      <aside class="rates" id="rates" hidden>
+        <div class="rates-head"><h2>Rates</h2><button class="link-btn" id="ratesClose" type="button">Close</button></div>
+        <div id="ratesBody"></div>
+      </aside>
+    </div>
+
+    <!-- Splash reveal -->
+    <div class="splash-ui" id="splashUi" hidden>
+      <blockquote class="quote" id="quote"></blockquote>
+      <div class="plate" id="plate">
+        <p class="plate-rarity"><span class="chip chip-ssr" id="plateRarity">SSR</span><span class="plate-new" id="plateNew"></span></p>
+        <p class="plate-name"><small id="plateSmall">King</small><span id="plateBig">Dedede</span></p>
+        <p class="plate-meta"><span id="plateTitle"></span><span class="sep" aria-hidden="true">·</span><span id="plateSource"></span></p>
+      </div>
+      <p class="credit" id="credit"></p>
+      <p class="hint" id="splashHint">Click to continue</p>
+    </div>
+
+    <!-- Card reveal for fighters without a splash rig -->
+    <div class="card-ui" id="cardUi" hidden>
+      <div class="card" id="card">
+        <div class="card-art"><img id="cardImg" alt=""></div>
+        <div class="card-text">
+          <span class="chip" id="cardRarity">R</span>
+          <p class="card-name" id="cardName"></p>
+          <p class="card-title" id="cardTitle"></p>
+          <p class="card-new" id="cardNew"></p>
+        </div>
+      </div>
+      <p class="hint">Click to continue</p>
+    </div>
+
+    <!-- Ten-pull results -->
+    <div class="results-ui" id="resultsUi" hidden>
+      <h2 class="results-title">Results</h2>
+      <ol class="results-grid" id="resultsGrid"></ol>
+      <button class="pull-btn results-done" id="resultsDone" type="button"><span>Done</span></button>
+    </div>
+
+    <button class="skip-btn" id="skipBtn" type="button" hidden>Skip</button>
+    <p class="toast" id="toast" role="status" aria-live="polite"></p>
+    <p class="stage-msg" id="stageMsg">Loading the banner…</p>
+  </section>
+
+  <section class="review" aria-label="Review controls">
+    <div class="review-group">
+      <span class="review-label">Preview tier</span>
+      <button type="button" class="tool-btn" data-force="R">R</button>
+      <button type="button" class="tool-btn" data-force="SR">SR</button>
+      <button type="button" class="tool-btn" data-force="SSR">SSR Dedede</button>
+      <button type="button" class="tool-btn" data-force="UR">UR effect</button>
+    </div>
+    <div class="review-group">
+      <span class="review-label">Rig view</span>
+      <select id="rigView" class="tool-select" aria-label="Rig view"><option value="off">Off</option><option value="mesh">Mesh</option></select>
+      <button type="button" class="tool-btn" id="pauseBtn" aria-pressed="false">Pause</button>
+      <button type="button" class="tool-btn" id="soundBtn" aria-pressed="false">Sound off</button>
+      <button type="button" class="tool-btn" id="resetBtn">Reset Starlight</button>
+    </div>
+    <p class="review-note">Pulls run the game's own <code>drawPulls</code> on a demo save: real pool, rates, pity and 50/50. Tier previews use a copy of the save and change nothing.</p>
+  </section>
+</main>
+<script type="module" src="banner.js"></script>
+</body>
+</html>
