@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pull Blueprint 01</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="blueprint.css">
+</head>
+<body>
+<header class="topline">
+  <a href="index.html">Pocket Gacha</a>
+  <span>Pull blueprint 01</span>
+  <span>Approval gate: sequence</span>
+</header>
+
+<main>
+  <section class="brief" aria-labelledby="pageTitle">
+    <div>
+      <p class="status">Timing only. No final art. No final audio.</p>
+      <h1 id="pageTitle">The pull before the prize</h1>
+    </div>
+    <p>This storyboard defines what the player learns and feels before a result appears. Judge the warning language,
+      suspense, voice placement and ten-pull rhythm—not placeholder geometry.</p>
+  </section>
+
+  <section class="architecture" aria-label="Pull presentation architecture">
+    <div><b>Shared pull director</b><span>Committed receipt, timing, rarity promises, one/ten cadence, audio lanes, Skip and replay.</span></div>
+    <div><b>Dream Land profile</b><span>Fountain, blue mote, Warp Star, world palette, impacts and the matching sound family.</span></div>
+    <div><b>Dedede reveal</b><span>Approved layered art, voice-before-art entrance, nameplate and source label.</span></div>
+  </section>
+
+  <section class="lab" aria-labelledby="labTitle">
+    <div class="scenario-bar">
+      <h2 id="labTitle">Choose a Dream Land test receipt</h2>
+      <div class="scenario-buttons" id="scenarioButtons" role="group" aria-label="Storyboard scenario"></div>
+    </div>
+
+    <div class="stage-shell">
+      <div class="stage" id="stage" data-phase="commit" data-tier="R" aria-live="polite">
+        <p class="stage-scope" id="stageScope">Shared pull director</p>
+        <div class="sky-lines" aria-hidden="true"></div>
+        <div class="fountain" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="mote" aria-hidden="true"></div>
+        <div class="featured-omen" aria-hidden="true"><span></span></div>
+        <div class="impact" aria-hidden="true"></div>
+        <div class="blackout" aria-hidden="true"></div>
+        <div class="quote" id="quote"><span>Voice and written quote begin.</span><b>Dedede is still concealed.</b></div>
+        <div class="figure" aria-hidden="true">
+          <span class="figure-hammer"></span><span class="figure-body"></span>
+          <em>approved layered art enters</em>
+        </div>
+        <div class="seals" id="seals" aria-hidden="true"></div>
+        <div class="result-card" id="resultCard" aria-hidden="true"><span>SSR</span><b>KING<br>DEDEDE</b></div>
+        <div class="stage-copy">
+          <p class="stage-kicker" id="stageKicker">The transaction is committed</p>
+          <h3 id="stageTitle">Receipt locks before theater</h3>
+          <p id="stageVisual">The pull button answers immediately; presentation cannot reroll the result.</p>
+        </div>
+        <div class="sound-lane"><span>Sound</span><b id="soundCue">Dry confirmation hit · music ducks 2 dB</b></div>
+      </div>
+
+      <div class="transport">
+        <button id="playBtn" type="button">Play storyboard</button>
+        <label for="scrubber"><span id="clock">0.00</span><span id="duration">/ 5.80 s</span></label>
+        <input id="scrubber" type="range" min="0" max="5800" step="10" value="0" aria-label="Storyboard time">
+      </div>
+    </div>
+
+    <ol class="beat-rail" id="beatRail" aria-label="Storyboard beats"></ol>
+  </section>
+
+  <section class="language" aria-labelledby="languageTitle">
+    <div class="section-heading">
+      <h2 id="languageTitle">The warning must make a promise</h2>
+      <p>Higher tiers transform the same flight. They do not begin as unrelated movies.</p>
+    </div>
+    <div class="cue-table" role="table" aria-label="Rarity warning language">
+      <div class="cue-row cue-head" role="row"><span>Tier</span><span>Before impact</span><span>Promise</span></div>
+      <div class="cue-row cue-r" role="row"><b>R</b><span>Stable blue mote. No false danger.</span><span>Ordinary result.</span></div>
+      <div class="cue-row cue-sr" role="row"><b>SR</b><span>Cyan-violet current and one screen desync.</span><span>At least SR.</span></div>
+      <div class="cue-row cue-ssr" role="row"><b>SSR</b><span>Gold Warp Star, drained music, 180–240 ms blackout.</span><span>At least SSR; identity withheld.</span></div>
+      <div class="cue-row cue-featured" role="row"><b>Featured</b><span>SSR path plus a rare Fountain/hammer omen.</span><span>The featured character.</span></div>
+    </div>
+  </section>
+
+  <section class="review" aria-labelledby="reviewTitle">
+    <h2 id="reviewTitle">Gate 01 review</h2>
+    <p>Before audio production or character rigging, answer only these:</p>
+    <ol>
+      <li>Does the SSR warning create enough anticipation before the identity appears?</li>
+      <li>Does the voice begin early enough, with Dedede genuinely concealed?</li>
+      <li>Does the ten-pull pause for an SSR without becoming ten full single-pulls?</li>
+      <li>Which cue feels wrong, too long or too weak?</li>
+    </ol>
+    <p class="next-gate">Next gate after approval: an audio animatic with temporary geometry and a properly auditioned mix.</p>
+  </section>
+</main>
+
+<script type="module" src="blueprint.js"></script>
+</body>
+</html>

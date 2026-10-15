@@ -12,10 +12,10 @@ python3 tools/splash-kit/prepare_art.py      # re-download, verify and re-bake a
 node tools/splash-kit/export-artifact.mjs out/splash-kit   # self-contained copy for hosting
 ```
 
-Status: **Dedede reveal v3, awaiting owner review (2026-10-14 America/Chicago).** It preserves the v2 banner and
-Warp Star summon direction the owner liked, replaces the 2023 render with a credited illustrated classic-design
-Dedede, removes all character mesh deformation, and adds a sourced voice beat with matching caption. It is a
-bounded review candidate, not an approved production treatment. The prior verdict remains in
+Status: **Dedede reveal v3 rejected (2026-10-14 America/Chicago).** The illustration was acceptable, but the reveal
+regressed from v2: translucent shoes, generic shine and blink instead of meaningful motion, weak/overlapping audio,
+and no voice-led anticipation. The next approved step is plan-first, not v4 implementation. Review
+`blueprint.html` and [the full pull blueprint](../../docs/PULL_PRESENTATION_BLUEPRINT.md), then record the verdict in
 [FEEDBACK.md](FEEDBACK.md). Nothing here is wired into the production summon theater yet.
 
 ## Files
@@ -23,6 +23,7 @@ bounded review candidate, not an approved production treatment. The prior verdic
 | Path | What it is |
 | --- | --- |
 | `index.html`, `kit.css` | The stage and review controls. One 16:9 stage, sized in `cqw`, shared by every state. |
+| `blueprint.html`, `blueprint.css`, `blueprint.js` | Approval gate 01: timed single/ten-pull storyboard, general director boundaries and Dream Land presentation profile. |
 | `banner.js` | Flow: banner → summon → splash or card → ten-pull results → banner. Owns the demo save. |
 | `summon.js` | Canvas 2D summon. `summonRenderer(canvas, opts).render(t)` draws any moment; `playSummon` plays it. |
 | `splash/engine.js` | WebGL splash renderer: background grade, streaks, particles, character, smoke, flash. No per-fighter code. |

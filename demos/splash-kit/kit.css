@@ -23,6 +23,7 @@ body { font-family: var(--ui); font-weight: 500; font-size: 16px; line-height: 1
 .masthead { display: flex; justify-content: space-between; gap: 6px 16px; flex-wrap: wrap; }
 .crumb { margin: 0; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
 .crumb b { color: var(--gold); font-weight: 700; }
+.crumb a { color: var(--gold); text-underline-offset: .25em; }
 
 /* Stage */
 .stage { position: relative; width: 100%; max-width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 6px;

@@ -1,5 +1,22 @@
 # Start the next chat here
 
+## Newest: v3 rejected; pull blueprint approved to begin (2026-10-14 America/Chicago)
+
+The owner rejected Dedede reveal v3 as a regression from Claude's v2. The new
+illustration is acceptable, and the original source-era illustration was also
+fine; the failure was the implementation. Specific complaints: translucent
+shoes, generic shine plus blinking instead of meaningful character motion, a
+low-quality voice clip colliding with the music, no sound design elsewhere,
+and the voice/quote failing to lead Dedede's appearance. The exact Liked /
+Disliked / Still needed record is in `demos/splash-kit/FEEDBACK.md`.
+
+The owner approved starting a plan-first rebuild. Do not begin another final
+Dedede rig yet. First produce and review a timed pull blueprint covering single
+and ten-pulls, R/SR/SSR/featured warning language, the blackout/impact beat,
+voice-before-art ordering, result cadence and complete audio lanes. Claude's v2
+is the quality floor and must remain available for comparison. Only proceed to
+an audio animatic and layer test after the storyboard verdict.
+
 ## Newest: Dedede reveal v3 candidate (2026-10-14 America/Chicago)
 
 **Code:** branch `codex/v1-playable`, in `demos/splash-kit/`. V3 preserves the

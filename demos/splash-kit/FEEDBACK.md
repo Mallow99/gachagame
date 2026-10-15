@@ -46,3 +46,37 @@ Still needed:
   FX layers, as in the Todo card.
 - A real voice clip with matching subtitles. The current quote is invented and has no recording.
 - Wiring into the production summon theater, keeping committed receipts, Skip, replay and reduced motion.
+
+## Dedede reveal v3 — rigid illustrated treatment (rejected 2026-10-14)
+
+Verdict: **rejected; a regression from v2.** The owner said it was “no better
+than last attempt quality wise besides for the fact it has a voiceline” and
+“worse then Claude's version.” Technical correctness and a different image did
+not make it a better reveal.
+
+Liked / clarified:
+- The v3 illustration “would be a good image” and was “not horrid.”
+- The original source-era image was also fine. Its apparent flatness was mainly
+  an implementation failure, not an instruction to replace the art.
+- V3's image is an acceptable alternative, not an inherently superior fix.
+
+Disliked:
+- The voice and written quote do not precede Dedede's entrance; they fail to
+  create the requested anticipation before the character appears.
+- The voice recording is low quality and overlaps the music.
+- The rest of the sequence is missing sound design.
+- The character treatment looks bad: translucent shoes, a generic shine, and a
+  blink are not meaningful animation.
+- The pass failed to build on v2's stronger presentation despite having that
+  work available as a baseline.
+
+Still needed:
+- Plan the complete pull language before making another splash iteration.
+- Study Phantom Parade's one-pull and ten-pull structure: a Black Flash warns
+  of an SSR item, while a cursed-energy flash warns of SR.
+- Storyboard R/SR/SSR/featured anticipation, the ten-result cadence, voice and
+  quote order, and the reveal payoff before implementing final art.
+- Give every major visual beat intentional audio. Duck music beneath speech and
+  impacts rather than stacking everything at full volume.
+- If the character moves, separate real pieces and paint hidden surfaces. Do
+  not use translucency, global mesh warping, or a blink as the primary motion.
