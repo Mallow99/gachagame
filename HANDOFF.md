@@ -2,6 +2,23 @@
 
 ## Current playable branch — 2026-10-14
 
+**Latest production decision (2026-10-15):** the owner authorized a representative
+King Dedede SSR proof using bounded layered-animation shortcuts, and defers
+full Cubism production until after a palatable playable v1. See the top of
+`docs/ANIMATED_PULL_ART_AND_CUBISM.md`. Publish this one-character proof for
+feedback before applying it across the roster.
+
+**Dedede proof:** `demos/dedede-reveal/index.html` is now a separate working
+layered 2D SSR scene. It uses official 1993 art, prepared concealed surfaces,
+rigid hammer/arm motion, spring scenery, landing stars/water/light and the
+planned ceremony. The private Site root shows this proof; the JJK board moved
+to `/motion-references/index.html`, and `/cubism/index.html` is preserved.
+`tools/browser-dedede-reveal.mjs` passes the full browser lifecycle. Read its
+source/quality limits in the animated-art brief. This does not replace the
+unapproved production theater. The owner has now explicitly requested a GitHub
+checkpoint of the current game branch; commit and push `codex/v1-playable`,
+preserving the original planning branch and without opening a PR.
+
 **Latest visual direction:** the owner clarified that a properly rigged central
 character, coherent animated surroundings and active signature effects are
 valid and preferable to flat ensemble art for fighter pulls. Investigate Cubism

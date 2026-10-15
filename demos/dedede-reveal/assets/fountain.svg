@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+<defs>
+ <linearGradient id="sky" x2=".2" y2="1"><stop stop-color="#100f36"/><stop offset=".5" stop-color="#4a3677"/><stop offset="1" stop-color="#bc6d99"/></linearGradient>
+ <radialGradient id="aura"><stop stop-color="#e8b0df" stop-opacity=".55"/><stop offset="1" stop-color="#8b6da9" stop-opacity="0"/></radialGradient>
+ <linearGradient id="stone" x2="1" y2=".2"><stop stop-color="#4b527d"/><stop offset=".24" stop-color="#9fa2c6"/><stop offset=".5" stop-color="#bec1d7"/><stop offset=".64" stop-color="#797fbc"/><stop offset="1" stop-color="#33365f"/></linearGradient>
+ <linearGradient id="gold" x2=".8" y2="1"><stop stop-color="#ffeabc"/><stop offset=".33" stop-color="#d2ad65"/><stop offset=".65" stop-color="#ab754b"/><stop offset="1" stop-color="#59415b"/></linearGradient>
+ <linearGradient id="water" x2=".15" y2="1"><stop stop-color="#b2daf1"/><stop offset=".15" stop-color="#8d98cf"/><stop offset=".58" stop-color="#51558f"/><stop offset="1" stop-color="#252b56"/></linearGradient>
+ <linearGradient id="floor" x2="0" y2="1"><stop stop-color="#7473a7"/><stop offset=".32" stop-color="#45496f"/><stop offset="1" stop-color="#171b39"/></linearGradient>
+ <linearGradient id="cloud" x2="0" y2="1"><stop stop-color="#e9b5d1"/><stop offset="1" stop-color="#655c9b"/></linearGradient>
+ <linearGradient id="curtain" x2="1" y2="0"><stop stop-color="#180f33"/><stop offset=".4" stop-color="#443060"/><stop offset=".6" stop-color="#664069"/><stop offset="1" stop-color="#241a3d"/></linearGradient>
+ <g id="star"><path d="M0-24 7-8 24-6 11 6 15 24 0 15-15 24-11 6-24-6-7-8Z"/></g>
+ <g id="column"><path d="M-32 0H32L23 330H-23Z" fill="url(#stone)" stroke="#282949" stroke-width="4"/><path d="M-10 9-12 321M13 9 10 321" stroke="#d4cbe9" stroke-opacity=".4" stroke-width="4"/><path d="M-40-18H40V6H-40ZM-31 328H31L44 351H-44Z" fill="url(#gold)" stroke="#382d4f" stroke-width="4"/><path d="M-20-15-13-33 0-24 13-33 20-15" fill="none" stroke="#d8bb88" stroke-width="5"/></g>
+</defs>
+<path fill="url(#sky)" d="M0 0H1600V900H0Z"/>
+<ellipse cx="990" cy="320" rx="690" ry="480" fill="url(#aura)"/>
+<g fill="#eddcf0" opacity=".8"><circle cx="350" cy="80" r="1.7"/><circle cx="565" cy="115" r="2"/><circle cx="805" cy="61" r="2"/><circle cx="1200" cy="92" r="2.2"/><circle cx="1480" cy="240" r="2"/><circle cx="700" cy="177" r="1.5"/><circle cx="930" cy="120" r="1.5"/><circle cx="1320" cy="315" r="2"/><circle cx="1170" cy="211" r="1.5"/><circle cx="428" cy="264" r="1.5"/><circle cx="871" cy="288" r="1.5"/><circle cx="1420" cy="60" r="1.5"/><circle cx="590" cy="280" r="2"/><circle cx="250" cy="184" r="2"/></g>
+<path d="m380 136 135-49 78 87 107-25m565 2 57 69 104-29" fill="none" stroke="#beafd9" stroke-width="1" opacity=".17"/>
+<path d="M290 87A76 76 0 1 0 357 207A68 68 0 0 1 290 87" fill="#f7dfba" opacity=".8"/>
+<g fill="url(#cloud)" opacity=".37"><path d="M450 452q-30-48 30-63 3-72 75-57 27-70 94-33 42-27 62 26 60-25 80 45 64-4 56 63Z"/><path d="M1205 385q-38-34 6-64 15-67 76-45 35-46 79-4 54-2 53 42 74 1 67 57Z"/><path d="M-50 500q-30-50 49-68 20-79 81-40 33-65 91-26 63-8 85 51 90-17 99 58Z"/></g>
+<!-- The dream spring, framed by its soft arches. -->
+<g stroke="#3e335c" stroke-width="5">
+ <path d="M585 584V289Q585 86 811 81Q1037 86 1037 289V584H992V290Q992 138 811 137Q630 138 630 290V584Z" fill="url(#stone)"/>
+ <path d="M608 577V290Q608 109 811 109Q1014 109 1014 290V577" fill="none" stroke="#e0bd91" stroke-width="8"/>
+ <path d="m776 91 35-34 35 34-35 34Z" fill="url(#gold)"/>
+ <path d="M811 76v31m-11-16h22" stroke="#fff0b7" stroke-width="3"/>
+</g>
+<use href="#column" x="609" y="282"/><use href="#column" x="1014" y="282"/>
+<g opacity=".47" stroke="#b9abda" fill="#45426f" stroke-width="4"><path d="M1158 613V345Q1158 207 1335 207Q1512 207 1512 345V613H1473V350Q1473 249 1335 249Q1197 249 1197 350V613Z"/><path d="M1191 350v263m287-263v263" stroke="#e6cbad" stroke-width="5"/></g>
+<path d="M0 599Q790 510 1600 598V900H0Z" fill="url(#floor)"/>
+<path d="M0 631Q810 542 1600 631M0 764Q770 669 1600 764M112 900 628 577M1487 900 962 577M410 900 740 568M1170 900 861 568" fill="none" stroke="#c0b6d0" stroke-width="2" opacity=".2"/>
+<!-- Broad water basin; low spring at its back, not a generic magic circle. -->
+<ellipse cx="803" cy="594" rx="500" ry="98" fill="#202448" stroke="#bc977d" stroke-width="12"/>
+<ellipse cx="803" cy="584" rx="480" ry="89" fill="url(#water)" stroke="#dfc4b1" stroke-width="4"/>
+<path d="M320 590v42q10 107 483 108t486-108v-42q-38 101-486 101T320 590" fill="url(#stone)" stroke="#39324f" stroke-width="5"/>
+<path d="M321 620q55 103 482 103t486-103" fill="none" stroke="#c2a378" stroke-width="10"/>
+<path d="M330 646q130 103 473 96t478-96" fill="none" stroke="#2d2d52" stroke-width="5"/>
+<g fill="url(#gold)"><use href="#star" transform="translate(798 714) scale(.6)"/><use href="#star" transform="translate(503 686) scale(.45)"/><use href="#star" transform="translate(1100 687) scale(.45)"/></g>
+<g stroke="#655b85" stroke-width="4"><path d="M765 552 781 445H832L852 552Z" fill="url(#stone)"/><ellipse cx="808" cy="551" rx="77" ry="18" fill="url(#gold)"/><path d="M741 438q64 50 130 0l-13-14H754Z" fill="url(#gold)"/><path d="M800 425v-51h18v51" fill="#7b77a4"/></g>
+<g fill="none" stroke="#d2d5ed" opacity=".38"><ellipse cx="811" cy="574" rx="128" ry="19" stroke-width="2"/><ellipse cx="811" cy="581" rx="215" ry="32"/><ellipse cx="811" cy="587" rx="345" ry="51"/></g>
+<!-- Near architectural pieces give the foreground real depth. -->
+<path d="M0 0H143Q111 208 171 371L139 418Q75 280 79 170L62 406 0 443Z" fill="url(#curtain)" stroke="#30203e" stroke-width="6"/>
+<path d="M3 402Q81 445 157 394l-12 31Q70 472 0 428" fill="url(#gold)"/><path d="M0 445q68 12 147-17-33 202-29 366L0 829" fill="url(#curtain)"/>
+<path d="M1569 0H1600V824l-91-36 19-451Z" fill="url(#stone)" stroke="#302946" stroke-width="8"/><path d="M1518 343H1600V374h-87Z" fill="url(#gold)"/>
+<path d="M0 849Q830 740 1600 848v52H0Z" fill="#20223f" stroke="#857394" stroke-width="5"/>
+<path d="M0 864Q813 761 1600 865" fill="none" stroke="#b49576" stroke-width="5"/>
+<path d="M0 884Q813 781 1600 884" fill="none" stroke="#090f26" stroke-width="12"/>
+</svg>

@@ -1,0 +1,55 @@
+{
+  "source": "Official Kirby Adventure artwork plus newly coded scene/masks; full credits in demos/dedede-reveal/SOURCES.md.",
+  "files": [
+    {
+      "path": "demos/dedede-reveal/SOURCES.md",
+      "bytes": 2648,
+      "sha256": "ef3acbdfafc918b15bbeeaaf396c145fd4cc472f8507f9c7c45d818c4aea53f4"
+    },
+    {
+      "path": "demos/dedede-reveal/assets/adventure-fanfare.mp3",
+      "bytes": 45291,
+      "sha256": "c092bc747cfcb848c1a437e16d2128c727ec2ad1fad78abf49ca22534e3c132a"
+    },
+    {
+      "path": "demos/dedede-reveal/assets/dedede-adventure.png",
+      "bytes": 266125,
+      "sha256": "5d21e7d42dfa42cc22ddf94dbfdab5eb5739539b2a230f2d7c64e6b1d8a7d2e3"
+    },
+    {
+      "path": "demos/dedede-reveal/assets/display.woff2",
+      "bytes": 10672,
+      "sha256": "d2575d4fa3632580aafcbcdf6978b3b57e144b90cf5bd9c2c98194f28b869704"
+    },
+    {
+      "path": "demos/dedede-reveal/assets/fountain.svg",
+      "bytes": 6220,
+      "sha256": "85788413ba026df2aefe80f3ee498bd475a566054fd25a9f2c4ffb9cbef15064"
+    },
+    {
+      "path": "demos/dedede-reveal/assets/ui.woff2",
+      "bytes": 21424,
+      "sha256": "460f141ec8f6c9a1516bfd2bd9fe71656246d7a9d04a0955faf53158d8970c4c"
+    },
+    {
+      "path": "demos/dedede-reveal/index.html",
+      "bytes": 3168,
+      "sha256": "bbe0ed5bb13bdefd900548c57228d4af560554e0a601d7e1244070ba8c6facc7"
+    },
+    {
+      "path": "demos/dedede-reveal/reveal.css",
+      "bytes": 6523,
+      "sha256": "4d89d7a4e12c7e63b9a9efbec5475a338a97543ddac07797603fe4249cca5370"
+    },
+    {
+      "path": "demos/dedede-reveal/review.js",
+      "bytes": 5652,
+      "sha256": "8760d76c00e86bb6cb3d46901128fa814002fcaab1b960b67337579b75cb5a57"
+    },
+    {
+      "path": "demos/dedede-reveal/scene.js",
+      "bytes": 10980,
+      "sha256": "dfdb9707f1f8e4424d4176b563b343ceeb662b9798b394d8e3d14744814e1ab7"
+    }
+  ]
+}

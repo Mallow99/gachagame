@@ -1,5 +1,48 @@
 # Animated fighter art and Cubism — owner direction, 2026-10-14
 
+## Production decision — 2026-10-15
+
+The owner authorized finishing a palatable, playable v1 before returning to
+full Cubism art production. Build **King Dedede (Kirby's Adventure, 1993)** as
+one representative wide SSR reveal, then get visual feedback before expanding
+the treatment. Try bounded shortcuts toward animated-card presentation:
+prepared separate weapon/arm layers, small rigid rotations, an authored impact,
+coherent near/far scenery, moving atmosphere and character-specific light.
+Avoid large body warps, sliding facial features or a generic cutout sway.
+
+**Deferred follow-up:** revisit Cubism after the playable v1. Author one proper
+hero rig with concealed surfaces, expressions, local deformation and physics;
+compare it against the accepted v1 reveal before deciding on roster-wide work.
+The official Haru playback test proves runtime feasibility, not a custom rig.
+Preserve the layer/source files from the Dedede proof for that later work.
+
+### Dedede shortcut proof
+
+`demos/dedede-reveal/index.html` is the first reviewable implementation, exported
+to the [private review site](https://pocket-gacha-reveal-review.berryowlet9.chatgpt.site/?v=dedede-03).
+It uses the credited official Adventure illustration with runtime body,
+weapon-arm and foreground-head masks. Concealed robe and hammer material closes
+the overlaps during a bounded rigid rotation. The face keeps its source shape;
+an improvised eyelid pass was removed after its edges failed visual review.
+New coded spring scenery, water ripples, near/far star particles, moving light,
+landing shockwaves and a recurring hammer flourish supply independent motion.
+A richer illustration generation attempt failed; no generated illustration is
+included or misrepresented as official art.
+
+The full ceremony has Warp Star flight, the unnamed planned quote, a weighted
+landing, separately timed S/S/R, the Adventure fanfare (opt-in), and a held
+result. Replay, flourish, pause, Skip, reduced motion and letterboxed fullscreen
+work in actual Chromium. `tools/browser-dedede-reveal.mjs` also checks failed-art
+fallback, native audio cancellation, system motion preferences, a narrow
+viewport and unchanged local storage. Evidence is in
+`docs/validation/dedede-reveal/`. It does not establish visual approval, native
+M2 performance, or integration with committed game receipts. The original flat
+art remains a visible quality limit. Do not roll the treatment across the roster
+or replace the production theater before the owner's feedback.
+
+Earlier Phantom Parade clips remain at `/motion-references/index.html`; the
+official Haru test remains at `/cubism/index.html`.
+
 ## Current direction
 
 The owner clarified that the rejected rigged Mario was a poor execution of a
