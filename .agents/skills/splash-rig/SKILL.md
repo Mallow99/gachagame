@@ -31,3 +31,24 @@ the pipeline: `SOURCES.json` → `tools/splash-kit/prepare_art.py` → `rigs/<id
 - Every image gets a URL, SHA-256 and credit in `SOURCES.json`. Bake with the script, never by hand.
 - Before showing the owner, verify with the `pocket-gacha-verify` skill.
 - Publish one small labelled iteration, then record the verdict (see the `owner-review` skill).
+
+## Cutting flat art into riggable layers
+
+Treat automatic cutting as a preparation aid, not a finished rig:
+
+1. Confirm the exact character version and source art first. A perfect cut of the wrong costume is still wrong.
+2. Prefer a layered PSD or transparent source. Record URL, credit and SHA-256 in `assets/SOURCES.json` before processing.
+3. For a simple background, `tools/splash-kit/prepare_art.py` supports `removeBackground: "u2netp"`, `trimAlpha` and
+   `trimPadding`. The small U2Net model is the practical default here; the 1 GB BRIA model exceeded this workspace's
+   memory during the v3 study.
+4. Separate only parts with defensible boundaries. A moving part needs the surface hidden beneath it painted in.
+   If that surface does not exist, keep the character rigid and animate camera depth, blink, light and effects.
+5. Use rigid transforms for cut pieces first. Do not add mesh deformation merely because the runtime supports it.
+
+Online tooling checked during v3:
+
+- [`image2live2d`](https://github.com/Wzhang3912/image2live2d) can auto-rig an existing PSD/layer folder and export
+  nijilive or Live2D data. Its flat-image path uses See-through and an NVIDIA/CUDA service with substantial model
+  storage, so it is a future offline authoring option, not a game dependency or an M2 runtime feature.
+- [SAM 2](https://github.com/facebookresearch/sam2) can make prompted masks but does not reconstruct hidden surfaces.
+- [Inochi Creator](https://github.com/Inochi2D/inochi-creator) remains a viable open authoring GUI after layers exist.

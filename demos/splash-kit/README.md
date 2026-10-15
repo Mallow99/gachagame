@@ -1,4 +1,4 @@
-# Splash kit (Dedede reveal v2)
+# Splash kit (Dedede reveal v3)
 
 A Dream Land banner you can actually pull on, a rarity-escalating Warp Star
 summon, and an animated SSR splash for King Dedede. The pulls run the game's
@@ -12,8 +12,11 @@ python3 tools/splash-kit/prepare_art.py      # re-download, verify and re-bake a
 node tools/splash-kit/export-artifact.mjs out/splash-kit   # self-contained copy for hosting
 ```
 
-Status: **Dedede reveal v2, reviewed 2026-10-15.** The owner approved the banner and summon direction. The splash is not approved: wrong Dedede for this pull, and the warped render still looks weird. Owner feedback, inherited and new, is in [FEEDBACK.md](FEEDBACK.md); read it first. Nothing here is wired into
-the production summon theater yet.
+Status: **Dedede reveal v3, awaiting owner review (2026-10-14 America/Chicago).** It preserves the v2 banner and
+Warp Star summon direction the owner liked, replaces the 2023 render with a credited illustrated classic-design
+Dedede, removes all character mesh deformation, and adds a sourced voice beat with matching caption. It is a
+bounded review candidate, not an approved production treatment. The prior verdict remains in
+[FEEDBACK.md](FEEDBACK.md). Nothing here is wired into the production summon theater yet.
 
 ## Files
 
@@ -22,38 +25,41 @@ the production summon theater yet.
 | `index.html`, `kit.css` | The stage and review controls. One 16:9 stage, sized in `cqw`, shared by every state. |
 | `banner.js` | Flow: banner → summon → splash or card → ten-pull results → banner. Owns the demo save. |
 | `summon.js` | Canvas 2D summon. `summonRenderer(canvas, opts).render(t)` draws any moment; `playSummon` plays it. |
-| `splash/engine.js` | WebGL splash renderer: background grade, streaks, particles, rigged character, smoke, flash. No per-fighter code. |
-| `splash/deform.js` | The rig maths: mask weights and per-vertex deformers. Pure, tested in Node. |
-| `rigs/king-dedede.js` | Everything Dedede-specific: art, deformers, eyes, framing, palette. |
+| `splash/engine.js` | WebGL splash renderer: background grade, streaks, particles, character, smoke, flash. No per-fighter code. |
+| `splash/deform.js` | Optional rig maths retained for future genuinely layered art. v3 applies no character deformers. |
+| `rigs/king-dedede.js` | Everything Dedede-specific: art, blink, framing, palette, quote and voice. |
 | `assets/SOURCES.json` | Source URLs, SHA-256 and credits for every image. `prepare_art.py` bakes from it. |
 
-## How the splash works
+## How the v3 splash works
 
-One flat, high-quality render is laid on a grid mesh (46×52 cells) trimmed to
-its silhouette. Deformers move the mesh vertices every frame; the texture
-follows, so the art bends instead of splitting. This is the core idea of Live2D
-warp deformers, without layered art. Life comes mostly from what surrounds the
-character, as in the Phantom Parade cards: drifting stars, twinkles, embers,
-out-of-focus foreground shapes, speed streaks, rim light, smoke and a slow
-camera drift.
+The credited Dedede illustration is separated from its original flat background
+with the small U2Net model, trimmed, and laid on a static WebGL mesh. It does
+**not** bend, breathe, sway or stretch. A brief shader blink preserves the
+source drawing; drifting stars, twinkles, embers, foreground shapes, speed
+streaks, rim light, smoke, background parallax and the reveal camera provide
+the life. This follows the owner's accepted “nearly still character, active
+surroundings” option and the Phantom Parade Todo reference.
 
-The limit is deliberate: one flat image can only bend a little before it looks
-stretched. Keep amplitudes small. Large independent motion (hair, capes,
-an arm crossing the body) needs the art cut into layers first.
+Large independent motion still needs purpose-painted layers and completed
+hidden surfaces. The runtime retains its old deformer support for future layered
+art, but a flat render must opt into `art.motion: 'rigid'` and tests enforce that
+its vertices remain fixed.
 
 ## Adding a fighter splash
 
-1. **Pick the art.** It should be a clean official render with a transparent background, at least 1000 px tall, in a
-   strong pose. Add it to `assets/SOURCES.json` with its URL, SHA-256 and credit. Add a background the same way. A
-   detailed stage reads best because the engine blurs and grades it.
+1. **Pick the art.** It should be an approved version in a strong pose, preferably transparent or layered, at least
+   1000 px tall. Add it to `assets/SOURCES.json` with URL, SHA-256 and credit. A detailed stage reads best because
+   the engine blurs and grades it. For simple backgrounds, `removeBackground: "u2netp"`, `trimAlpha` and
+   `trimPadding` make a reproducible cutout.
 2. **Bake:** `python3 tools/splash-kit/prepare_art.py`.
 3. **Grid:** `python3 tools/splash-kit/prepare_art.py --grid <id>` writes `assets/<id>/rig-grid.jpg`. Read pivot and
    mask coordinates (UV, v down) off it.
 4. **Eyes:** `python3 tools/splash-kit/prepare_art.py --eyes <id> u0 v0 u1 v1` prints ellipses for the eye whites inside
    that box. Paste them into `eyes`. Set `blink.skinUV` to a pixel of eyelid-coloured skin. Set `blink.keep` to a colour
    box for anything that overlaps the eyes, such as a hat brim or beak.
-5. **Copy `rigs/king-dedede.js`** and change the art, deformers, eyes, framing and palette. Register the rig in `RIGS`
-   in `banner.js` and in `test/splash-kit.test.js`.
+5. **Copy `rigs/king-dedede.js`** and change the art, eyes, framing and palette. Keep `deformers: []` and
+   `art.motion: 'rigid'` for a flat illustration. Only add part motion after separate layers and their concealed
+   surfaces exist. Register the rig in `RIGS` in `banner.js` and in `test/splash-kit.test.js`.
 6. **Check it in the page:** use the Preview tier buttons, and set **Rig view** to each deformer to see its weight heat
    map (blue is 0, red is 1). A mask that bleeds onto a neighbouring part is the most common mistake.
 
@@ -82,7 +88,9 @@ exist; the UR button only previews the effect.
 
 ## Known gaps
 
-- No voice clip yet; the fanfare plays when sound is on.
+- The new voice clip is an anime performance, accurately captioned and credited; it is not presented as 1993 game audio.
+- The chosen classic-design fan illustration still needs the owner's visual approval and may not be the final art.
+- True limb/hammer motion remains deferred until the source art has separated pieces and painted hidden surfaces.
 - The R/SR card reveal and the results grid use the existing source-era
   portraits, which are flat 1993 manual art.
 - Each rig needs its own WebGL canvas; only Dedede exists, so `banner.js` uses one.

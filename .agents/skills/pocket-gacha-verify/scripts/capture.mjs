@@ -4,7 +4,7 @@
 // Playwright: POCKET_PLAYWRIGHT_MODULE, else a local or global `playwright` install.
 import { createRequire } from 'node:module';
 import { execSync } from 'node:child_process';
-import { mkdirSync } from 'node:fs';
+import { existsSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 const [url, out, ...rest] = process.argv.slice(2);
@@ -19,7 +19,12 @@ function loadPlaywright() {
   console.error('Playwright not found. npm i -g playwright, or set POCKET_PLAYWRIGHT_MODULE.'); process.exit(1);
 }
 const { chromium } = loadPlaywright();
-const browser = await chromium.launch({ args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
+const executablePath = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH
+  || ['/usr/bin/chromium', '/usr/bin/chromium-browser', '/usr/bin/google-chrome'].find(existsSync);
+const browser = await chromium.launch({
+  executablePath,
+  args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'],
+});
 const page = await browser.newPage({ viewport: { width: opt.width, height: opt.height } });
 const problems = [];
 page.on('pageerror', e => problems.push(`pageerror: ${e.message}`));

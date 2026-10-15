@@ -33,8 +33,8 @@ for (const rig of RIGS) {
     assert.ok(rig.eyes.length <= 2);
   });
 
-  test(`${rig.unitId} rig keeps its feet planted and stays within a small range`, () => {
-    const aspect = 786 / 900, uv = grid(40), out = new Float32Array(uv.length), rest = new Float32Array(uv.length);
+  test(`${rig.unitId} rig does not visibly bend a flat render`, () => {
+    const aspect = 1017 / 1000, uv = grid(40), out = new Float32Array(uv.length), rest = new Float32Array(uv.length);
     const weights = deformerWeights(rig, uv, aspect);
     const still = { ...rig, deformers: rig.deformers.map(d => ({ ...d, amount: 0, amplitude: [0, 0] })) };
     deformRig(still, weights, uv, rest, 0, aspect, [0, 0], 1);
@@ -48,7 +48,8 @@ for (const rig of RIGS) {
       }
     }
     assert.ok(feetMove < 0.002, `bottom edge drifted ${feetMove}`);
-    assert.ok(maxMove > 0.005 && maxMove < 0.06, `largest vertex travel ${maxMove} (render heights)`);
+    if (rig.art.motion === 'rigid') assert.ok(maxMove < 0.002, `rigid art warped by ${maxMove} render heights`);
+    else assert.ok(maxMove > 0.005 && maxMove < 0.06, `largest vertex travel ${maxMove} (render heights)`);
   });
 }
 

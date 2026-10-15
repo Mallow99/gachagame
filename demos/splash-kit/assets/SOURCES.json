@@ -8,6 +8,27 @@
     "output": "king-dedede/render.png",
     "height": 900
   },
+  "king-dedede-v3": {
+    "kind": "render",
+    "url": "https://safebooru.org/images/1119/0289fa4fc294692ecc271d8ac0d37eec88b4f9b3.jpg",
+    "page": "https://safebooru.org/index.php?page=post&s=view&id=1162696",
+    "artistPage": "http://widemouthink.tumblr.com/post/73187391604/",
+    "sha256": "ca7c7fb096dd2c52e586712b2dc9d161fea381e6840c18fbd4c2458c194d1408",
+    "credit": "King Dedede illustration by Wide Mouth Ink. Sourced through Safebooru post 1162696.",
+    "output": "king-dedede-v3/render.png",
+    "removeBackground": "u2netp",
+    "trimAlpha": 8,
+    "trimPadding": 28,
+    "height": 1000
+  },
+  "dedede-superstar-voice": {
+    "kind": "audio",
+    "url": "https://www.myinstants.com/media/sounds/i-am-a-superstar-warrior_8UrG5U5.mp3",
+    "page": "https://www.myinstants.com/en/instant/superstar-warrior-dedede-72405/",
+    "sha256": "6d247d98d99ba8f9fbab62ef4cc21e73029d12685720e6468389fa6b4a3aa6ac",
+    "credit": "King Dedede voice clip shared as “Superstar Warrior Dedede” on Myinstants; source performance is from Kirby: Right Back at Ya!",
+    "output": "audio/dedede-superstar.mp3"
+  },
   "fountain-of-dreams": {
     "kind": "background",
     "url": "https://ssb.wiki.gallery/images/c/c3/SSBU-Fountain_of_Dreams.png",

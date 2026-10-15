@@ -1,8 +1,9 @@
 # Animated splash art: current investigation
 
-**Preliminary research only, 2026-10-14 (America/Chicago).** The owner asked to
-move to a new chat before implementation. No alternative below was installed,
-benchmarked or used to produce a replacement Dedede splash.
+**Updated 2026-10-14 (America/Chicago).** Dedede reveal v3 now proves the bounded
+rigid-character route in `demos/splash-kit/`: sourced illustrated art, no mesh
+deformation, active surrounding layers and a real voice beat. It awaits owner
+review and is not production approval.
 
 The target is a short **animated illustration**, not necessarily a full
 interactive puppet or a complete gameplay model. A held pose can gain life from
@@ -17,6 +18,8 @@ character-specific effects. The old isolated hammer rotation failed that goal.
 | **Blender 2.5D image planes + shape keys + compositing** | [Documented free-software animated-photo workflow](https://patdavid.net/2014/02/25d-parallax-animated-photo-tutorial/), [Blender Studio animated illustration source](https://studio.blender.org/training/grease-pencil-fundamentals/5ea9befb6f97366013bd7c83/). | Can author a fixed short splash and export video, keeping the game player simple. Blender's 3D character rig is not required for layered image planes. Still needs suitable layers, clean revealed areas and authored movement; setup/export and output memory must be tested here. |
 | **Inochi Creator / Inochi2D** | [Official Linux/macOS/Windows downloads](https://inochi2d.com/download/), [Creator source](https://github.com/Inochi2D/inochi-creator), [SDK source](https://github.com/Inochi2D/inochi2d). | Open-source mesh/layer authoring on Linux avoids the Cubism Editor platform block. It is still a puppet workflow and may exceed the needs of one splash. Current SDK README describes WebAssembly support requiring its toolchain/patched runtime; do not assume drop-in JS integration. Not installed/tested. |
 | **DragonBones / newer LoongBones leads** | [DragonBones JS runtime](https://github.com/DragonBones/DragonBonesJS) is MIT; [official legacy download page](https://dragonbones.github.io/en/download.html); search also found [LoongBones documentation](https://www.dragonbones.cn/doc/en/). | Potential free skeletal/mesh route. Verify current editor availability, maintenance, export format and runtime compatibility before choosing it. The runtime being open source does not prove every editor is available/open source. Do not claim the whole project is discontinued: the search exposed newer activity that was not yet inspected. |
+| **image2live2d + See-through** | [`image2live2d`](https://github.com/Wzhang3912/image2live2d) accepts PSD/layer folders and exports nijilive plus optional Live2D files; its documented single-image path uses the Apache-2.0 [See-through](https://github.com/shitagaki-lab/see-through) decomposer. | The closest match found for automatic cutting plus rigging. Existing layers are practical; flat-image decomposition requires an NVIDIA/CUDA service and about 20 GiB model volume in its documented setup, so it is not a runtime dependency or a fit for the owner's M2-only workflow without another GPU authoring machine. |
+| **SAM 2 masks** | [Meta's Apache-2.0 SAM 2](https://github.com/facebookresearch/sam2) provides promptable image segmentation. | Useful for assisted masks, but it does not infer clean hidden body/cloth surfaces. It solves selection, not finished layer art. |
 
 Search also surfaced [Stretchy Studio](https://stretchy.studio/) and Blender
 image-plane add-ons. These are **unverified leads**, not acquired tools or a

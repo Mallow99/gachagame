@@ -1,5 +1,27 @@
 # Start the next chat here
 
+## Newest: Dedede reveal v3 candidate (2026-10-14 America/Chicago)
+
+**Code:** branch `codex/v1-playable`, in `demos/splash-kit/`. V3 preserves the
+owner-approved v2 banner and Warp Star summon, replaces the wrong 2023 render
+with a credited classic-design Dedede illustration by Wide Mouth Ink, removes
+all character mesh deformation, and adds the sourced/captioned “I am a
+superstar warrior!” voice beat before the Adventure fanfare. It is labelled v3
+in the page and awaits the owner's visual verdict; do not call it approved.
+
+The reproducible art path is in `demos/splash-kit/assets/SOURCES.json` and
+`tools/splash-kit/prepare_art.py`: lightweight `u2netp` background removal,
+alpha trim and recorded source hashes. The 1 GB BRIA remover exceeded the
+workspace memory and is not used. `.agents/skills/splash-rig/SKILL.md` now
+records the layer-cut rules and the online tool findings. `image2live2d` is the
+closest automatic layer/rig lead, but its flat-image See-through path requires
+an NVIDIA/CUDA authoring service and substantial model storage; SAM 2 only
+creates masks, and Inochi Creator still expects prepared layers.
+
+Next: show v3 to the owner, record their exact Liked / Disliked / Still needed
+verdict in `demos/splash-kit/FEEDBACK.md`, then adjust one bounded pass. Do not
+integrate into production or expand to the roster before that verdict.
+
 ## Newest: Dedede reveal v2 from a Claude session (2026-10-15)
 
 **Code:** branch **`codex/v1-playable`** (the v2 demo, its notes and the agent

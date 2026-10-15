@@ -24,6 +24,8 @@ let save, banner, engine, content, saveMod, gacha, RULES, portraits, summonBg;
 let busy = false, soundOn = false, onContinue = null, onSkip = null;
 const fanfare = new Audio(new URL('assets/audio/reveal/kirby-adventure-fanfare.mp3', gameRoot));
 fanfare.volume = 0.6;
+const voice = new Audio(new URL(FEATURED_RIG.voice, kitBase));
+voice.volume = 0.9;
 
 function toast(text) {
   const el = $('toast'); el.textContent = text; el.classList.add('on');
@@ -117,12 +119,11 @@ async function showSplash(result) {
   $('plateSource').textContent = sourceLabel(unit.sourceGameId);
   $('credit').textContent = rig.credit;
   quote.textContent = '';
-  const words = (unit.presentation?.quote || '').split(' ').map(w => { const s = document.createElement('span'); s.textContent = w + ' '; quote.append(s); return s; });
+  const words = (rig.quote || unit.presentation?.quote || '').split(' ').map(w => { const s = document.createElement('span'); s.textContent = w + ' '; quote.append(s); return s; });
 
   setState('splash'); ui.hidden = false;
   engine.setCharacterAlpha(1); engine.setMode('splash', { instant: true }); engine.setRunning(true);
   fadeOutSummon();
-  if (soundOn) { fanfare.currentTime = 0; fanfare.play().catch(() => {}); }
 
   const timers = [];
   const showAll = () => {
@@ -132,12 +133,17 @@ async function showSplash(result) {
   if (reduced) showAll();
   else {
     engine.playIntro(() => plate.classList.add('on'));
-    timers.push(setTimeout(() => quote.classList.add('on'), 1700));
-    words.forEach((w, i) => timers.push(setTimeout(() => w.classList.add('in'), 1900 + i * 110)));
-    timers.push(setTimeout(() => hint.classList.add('on'), 3300));
+    timers.push(setTimeout(() => quote.classList.add('on'), 1400));
+    words.forEach((w, i) => timers.push(setTimeout(() => w.classList.add('in'), 1580 + i * 125)));
+    if (soundOn) {
+      voice.currentTime = 0; fanfare.currentTime = 0;
+      timers.push(setTimeout(() => voice.play().catch(() => {}), 1350));
+      timers.push(setTimeout(() => fanfare.play().catch(() => {}), 3850));
+    }
+    timers.push(setTimeout(() => hint.classList.add('on'), 5200));
   }
   onSkip = () => onContinue?.();
-  await waitContinue(reduced ? 0 : 3300, showAll);
+  await waitContinue(reduced ? 0 : 5200, showAll);
   ui.hidden = true; onSkip = null;
 }
 

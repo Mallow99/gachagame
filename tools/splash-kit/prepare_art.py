@@ -25,7 +25,7 @@ CACHE = ROOT / '.cache' / 'splash-kit'
 SOURCES = json.loads((ASSETS / 'SOURCES.json').read_text())
 
 
-def fetch(asset_id):
+def fetch_path(asset_id):
     src = SOURCES[asset_id]
     CACHE.mkdir(parents=True, exist_ok=True)
     path = CACHE / (asset_id + Path(src['url']).suffix)
@@ -35,16 +35,34 @@ def fetch(asset_id):
     digest = hashlib.sha256(path.read_bytes()).hexdigest()
     if digest != src['sha256']:
         sys.exit(f'{asset_id}: SHA-256 mismatch ({digest}). The source changed; review it before updating SOURCES.json.')
-    return Image.open(path)
+    return path
 
 
 def bake(asset_id):
     src = SOURCES[asset_id]
-    img = fetch(asset_id)
+    cached = fetch_path(asset_id)
     out = ASSETS / src['output']
     out.parent.mkdir(parents=True, exist_ok=True)
+    if src['kind'] == 'audio':
+        out.write_bytes(cached.read_bytes())
+        print(f'{asset_id}: {out.relative_to(ROOT)} {out.stat().st_size} bytes')
+        return
+
+    img = Image.open(cached)
     if src['kind'] == 'render':
         img = img.convert('RGBA')
+        if src.get('removeBackground'):
+            from rembg import new_session, remove
+            img = remove(img, session=new_session(src['removeBackground']))
+        if src.get('trimAlpha') is not None:
+            threshold = src['trimAlpha']
+            box = img.getchannel('A').point(lambda a: 255 if a > threshold else 0).getbbox()
+            if not box:
+                sys.exit(f'{asset_id}: background removal produced no visible pixels.')
+            pad = src.get('trimPadding', 0)
+            box = (max(0, box[0] - pad), max(0, box[1] - pad),
+                   min(img.width, box[2] + pad), min(img.height, box[3] + pad))
+            img = img.crop(box)
         w = round(img.width * src['height'] / img.height)
         img.resize((w, src['height']), Image.LANCZOS).save(out, optimize=True)
     else:
