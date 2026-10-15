@@ -1,5 +1,26 @@
 # Pull presentation blueprint 02
 
+## Latest review: proceed to visual cue 01
+
+On 2026-10-15 (America/Chicago), the owner accepted this direction with changes:
+upgrades accumulate through silver/grey, yellow/gold and rainbow before the
+strike; ten-pulls form a trailing line and light ten carries the cue; pacing
+must slow down, especially quote-before-art, with a held SSR/UR close-up and
+pullback. The interactive visual pass is `demos/splash-kit/cue.html`.
+
+It supersedes the provisional times below. The current cue has upgrades at
+2.50 / 3.85 / 5.20 seconds, then approaches the screen at 6.20 seconds and
+strikes at 7.35 seconds. In ten-pulls the tenth light is delayed 0.855 seconds;
+it passes through those same stages while the first nine remain blue.
+SSR/UR quote windows last 4.0 / 4.8 seconds with all character art concealed.
+An entrance takes 1 second, a push-in 0.9 seconds, the close-up holds 1.7 / 2.1
+seconds, and the pullback takes 1.4 seconds. R and SR arrivals get 1.8 / 2.4
+seconds each. Controls offer pause, slower playback, beat jumps and Skip.
+
+The new proof uses existing illustrations and a timing-placeholder quote.
+Audio, layered character actions and production integration remain later work.
+The older timing proposal is retained below as the reviewed Blueprint 02 record.
+
 Status: **revised from Blueprint 01 feedback; awaiting owner review.**
 The interactive storyboard is `demos/splash-kit/blueprint.html`. It uses
 placeholder geometry and written audio cues. This is sequence review, before

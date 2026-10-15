@@ -9,22 +9,28 @@ pool, rates, pity and 50/50 are the game's own.
 npm run web                                  # then open http://localhost:8080/demos/splash-kit/index.html
 node --test test/splash-kit.test.js          # rig sanity checks
 node tools/browser-pull-blueprint.mjs out/pull-blueprint-02  # storyboard QA; server must be running
+node tools/browser-pull-cue.mjs out/pull-cue-01  # visual cue / camera QA; server must be running
 python3 tools/splash-kit/prepare_art.py      # re-download, verify and re-bake all art
+python3 tools/splash-kit/prepare-cue-art.py  # cue-only white-background cutouts from retained originals
 node tools/splash-kit/export-artifact.mjs out/splash-kit   # self-contained copy for hosting
 ```
 
 Status: **Dedede reveal v3 rejected (2026-10-14 America/Chicago).** The illustration was acceptable, but the reveal
 regressed from v2: translucent shoes, generic shine and blink instead of meaningful motion, weak/overlapping audio,
-and no voice-led anticipation. The next approved step is plan-first, not v4 implementation. Review
-`blueprint.html` and [the full pull blueprint](../../docs/PULL_PRESENTATION_BLUEPRINT.md), then record the verdict in
-[FEEDBACK.md](FEEDBACK.md). Nothing here is wired into the production summon theater yet.
+and no voice-led anticipation. Blueprint 02's direction was accepted with escalation and pacing changes.
+The current review is **`cue.html` · visual cue 01**: gradual blue/silver/gold/rainbow upgrades, a tenth-light
+signal, slower quote timing and held SSR/UR close-ups. It uses existing source-era art as a camera stand-in,
+with a labelled quote placeholder and no audio. Record the next verdict in [FEEDBACK.md](FEEDBACK.md).
+Nothing here is wired into the production summon theater yet.
 
 ## Files
 
 | Path | What it is |
 | --- | --- |
 | `index.html`, `kit.css` | The stage and review controls. One 16:9 stage, sized in `cqw`, shared by every state. |
-| `blueprint.html`, `blueprint.css`, `blueprint.js` | Blueprint 02: R/SR/SSR/UR character entrances, full orbit, ten-character cadence and switchable Dream Land / Mushroom Kingdom assets. Placeholder art and written audio cues; awaiting owner review. |
+| `blueprint.html`, `blueprint.css`, `blueprint.js` | Blueprint 02 review record; direction accepted with escalation and pacing changes carried into visual cue 01. |
+| `cue.html`, `cue.css`, `cue.js` | Visual cue 01 controls, source-era character framing and real disposable `drawPulls` preview receipts. |
+| `cue-model.js`, `cue-renderer.js` | Deterministic cumulative tier / tenth-light timing, Canvas area effects, and slower character camera timeline. |
 | `banner.js` | Flow: banner → summon → splash or card → ten-pull results → banner. Owns the demo save. |
 | `summon.js` | Canvas 2D summon. `summonRenderer(canvas, opts).render(t)` draws any moment; `playSummon` plays it. |
 | `splash/engine.js` | WebGL splash renderer: background grade, streaks, particles, character, smoke, flash. No per-fighter code. |

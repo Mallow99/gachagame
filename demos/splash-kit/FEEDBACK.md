@@ -4,6 +4,30 @@ One entry per reviewed iteration. Record what the owner liked, what they
 disliked, and what is still needed, in their words where possible. Read this
 before changing anything here.
 
+## Pull blueprint 02 — reviewed 2026-10-15 America/Chicago
+
+Verdict: **“Okay alot better”**; proceed to the visual cue with escalation and pacing changes.
+
+Liked:
+- “Other than that, looks good, move onto the visual cue in this next pass”.
+
+Disliked:
+- “oh yeah also its all too fast, maybe slow it down a bit, and definitely slow down the time between the qoute and the character.”
+
+Still needed:
+- “i want something alot more with it, maybe gradually escalating things, so like it would turn grey, then yellow, THEN rainbow, then it would smash into the screen.”
+- “And for 10 pull it would  be trailed out by smaller dots and have a 10 line, but the visual cue is on the 10th one.”
+- “plus on ssr and ur, zoom into the character aswell briefly before zooming out to them all, dont speedrun it.”
+
+Visual cue 01 interprets this as cumulative upgrades capped by the earned tier,
+a leader and nine trailing lights with the signal on the tenth/rearmost light,
+and a slower character sequence. The tenth signal describes the set's maximum;
+it does not reorder the receipt or guarantee that result slot ten is rare.
+SSR quotes get 4 s and UR framing 4.8 s before any art. Close-ups hold for
+1.7 / 2.1 s before a 1.4 s pullback. Existing source-era art is a framing stand-in;
+the quote is still a labelled timing placeholder and no audio plays in this pass.
+**Visual cue 01 awaits the owner's verdict.**
+
 ## Pull blueprint 01 — reviewed 2026-10-15
 
 Verdict: **revise before approval.** The owner supplied six corrections.

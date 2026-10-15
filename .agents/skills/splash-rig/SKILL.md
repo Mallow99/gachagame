@@ -18,8 +18,13 @@ the pipeline: `SOURCES.json` → `tools/splash-kit/prepare_art.py` → `rigs/<id
 - **Life comes from what surrounds the character**, as in the Phantom Parade Aoi Todo card
   (`docs/validation/animated-reveal-research/`): streaks, particles, rim light, smoke, a background grade, a camera
   push-in, then a flash.
-- **Approved direction:** the banner shows off the featured SSR, and the summon escalates from a blue mote to gold
-  at SR, a Warp Star at SSR, and a rainbow Warp Star at UR. Keep it unless the owner says otherwise.
+- **Current direction (2026-10-15):** cumulative blue → silver/grey at SR → gold area carrier at SSR → rainbow at UR,
+  then a screen strike. Higher tiers pass through earlier upgrades. Dream Land uses Fountain/Warp Star; Mushroom
+  Kingdom uses pipe/Question Block. A ten-pull has ten travelling lights, with the cue on the tenth; result order
+  stays committed. Every fighter gets a character arrival. Keep this unless the owner says otherwise.
+- **Let reveals breathe:** leave generous space for the quote and a pause before art, then a held character
+  close-up and gradual pullback to the full character / gathered lineup. The current proof reserves 4 s for SSR
+  and 4.8 s for UR; those are review timings, not fixed owner mandates. Do not speed through the payoff.
 - **Keep from earlier studies:** the Fountain of Dreams setting, a small KING above a large DEDEDE, and the visible
   source game and year.
 - **Quotes need a real recording.** The current Dedede quote was invented and has none. Never change rarity, units

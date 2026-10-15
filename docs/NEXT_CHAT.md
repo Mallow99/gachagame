@@ -1,5 +1,45 @@
 # Start the next chat here
 
+## Newest: visual cue 01 (2026-10-15 America/Chicago)
+
+Branch: `codex/v1-playable`. The owner called Blueprint 02 “alot better” and
+approved moving into a visual cue pass, adding cumulative grey → yellow → rainbow
+escalation, a ten-light trailing line with the cue on light ten, slower overall
+pacing, a longer quote-before-character gap, and an SSR/UR close-up before pulling
+back to the full character / lineup. Exact quotes are in `FEEDBACK.md`.
+
+The current proof is `demos/splash-kit/cue.html`, `.css`, `.js`, `cue-model.js`
+and `cue-renderer.js`. Review at
+<https://dedede-v3-review.berryowlet9.chatgpt.site/cue.html>.
+The shared timeline drives cumulative upgrades and a deterministic Canvas scene;
+area assets remain Fountain/Warp Star and pipe/Question Block. Ten-pulls use ten
+lights; only the last upgrades. SSR quotes get 4 s, UR framing 4.8 s before art;
+close-ups hold 1.7 / 2.1 s, then pull back over 1.4 s. Lower-tier fighters also
+get full character entrances. Final lineups hold indefinitely.
+
+Preview receipts come from real `drawPulls` with scripted RNG on disposable saves.
+The cue on light ten signals the maximum rarity without reordering results:
+the example SSR is still slot six, and slot ten is R. UR previews effects and
+framing using an actual SSR illustration; no unit/pool rarity changes occur.
+Existing credited source-era portraits provide the camera stand-ins. Eight
+opaque-white originals have cue-only cutouts baked by `prepare-cue-art.py`,
+with original provenance and output hashes in `assets/cue-fighters/manifest.json`.
+The game's portrait library and live pool are untouched. Character art is rigid, never bent or faded
+part by part. The quote remains a timing placeholder; this pass plays no audio.
+
+Owner review is the next action. Then refine the cue/pacing from that verdict,
+produce the auditioned audio mix, and author a real character layer proof.
+Final production integration and broad UI/code cleanup remain later work.
+
+Verification: 119 tests pass, including cumulative tier caps, tenth-only cues,
+separated orbit positions, quote concealment, held close-up / pullback and cutout
+source/output hashes. `tools/browser-pull-cue.mjs` checks both areas, every tier,
+receipt order, actual portrait loading, camera timing, Skip/replay/pause, still
+reduced motion, readable asset failure and 390px overflow. Screenshots were
+reviewed; phone final results use two rows of five. No native phone/M2 or final
+audio-quality claim is made. See `docs/validation/pull-cue-01.md`.
+
+
 ## Newest: pull blueprint 02 awaiting review (2026-10-15 UTC)
 
 Continue branch `codex/v1-playable`. The owner reviewed Blueprint 01 and asked

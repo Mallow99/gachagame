@@ -1,0 +1,139 @@
+{
+  "bio-spark": {
+    "url": "bio-spark.webp",
+    "sha256": "c9e7ac7f2e742dafdc6e8b52e3d46656658b2b82add5fa4e9cb57f8468ac9854",
+    "source": {
+      "id": "bio-spark",
+      "url": "https://cdn.wikirby.com/9/93/KSS_Bio_Spark_helper_artwork.png",
+      "path": "assets/portraits/source-era/bio-spark.png",
+      "sourceGameId": "kirby-super-star-1996",
+      "credit": "Nintendo / HAL Laboratory",
+      "dimensions": [
+        336,
+        207
+      ],
+      "sha256": "f1af7003eb1de730ddc9beb3c94b1a257e33d6df227c24f573bf3ab90ff6ae70"
+    },
+    "processing": "896px maximum; edge-connected neutral white >232 removed; alpha bounds trimmed"
+  },
+  "bowser": {
+    "url": "bowser.webp",
+    "sha256": "3a236d2fa51522dca74eac8ef751a299cee0220f104f9e84a382aa6a2845a552",
+    "source": {
+      "id": "bowser",
+      "url": "https://mario.wiki.gallery/images/b/ba/BowserSMB1.png",
+      "path": "assets/portraits/source-era/bowser.png",
+      "sourceGameId": "super-mario-bros-1985",
+      "credit": "Nintendo",
+      "dimensions": [
+        280,
+        233
+      ],
+      "sha256": "cc8f3d381a6dd40de0acdeebfe5fd1b8f71f16a4cebb31409a4125d7d7e7e34a"
+    },
+    "processing": "896px maximum; edge-connected neutral white >232 removed; alpha bounds trimmed"
+  },
+  "sir-kibble": {
+    "url": "sir-kibble.webp",
+    "sha256": "e3b9cf95808377078db5f8046f84dc9035f9d5d864b42bc4ab44d542a2f46ad2",
+    "source": {
+      "id": "sir-kibble",
+      "url": "https://cdn.wikirby.com/e/e2/KDL_Sir_Kibble_artwork.png",
+      "path": "assets/portraits/source-era/sir-kibble.png",
+      "sourceGameId": "kirbys-adventure-1993",
+      "credit": "Nintendo / HAL Laboratory",
+      "dimensions": [
+        222,
+        229
+      ],
+      "sha256": "0e840d7cdd6244345cc652427a9f00b9247fbd1a63ad234872a92f45ddecef2c"
+    },
+    "processing": "896px maximum; edge-connected neutral white >232 removed; alpha bounds trimmed"
+  },
+  "poppy-bros-jr": {
+    "url": "poppy-bros-jr.webp",
+    "sha256": "39e8a6e9f110bd7aa3c1e33f7f0a4afbb9506f1eff4a2f7e3ca651318d47c2ed",
+    "source": {
+      "id": "poppy-bros-jr",
+      "url": "https://cdn.wikirby.com/e/e5/KDL_Poppy_Bros_Jr_artwork.png",
+      "path": "assets/portraits/source-era/poppy-bros-jr.png",
+      "sourceGameId": "kirbys-adventure-1993",
+      "credit": "Nintendo / HAL Laboratory",
+      "dimensions": [
+        155,
+        254
+      ],
+      "sha256": "fdece6fd61fccbe2679b78750fe89a4ff80b9eabee93780a6a09d6189ece9287"
+    },
+    "processing": "896px maximum; edge-connected neutral white >232 removed; alpha bounds trimmed"
+  },
+  "princess-peach": {
+    "url": "princess-peach.webp",
+    "sha256": "b9a0da0fea2ece0f19bf16d37d2707cd9548b3d079319311efb745fab9028ccc",
+    "source": {
+      "id": "princess-peach",
+      "url": "https://mario.wiki.gallery/images/4/4c/Classic_Princess_Peach.png",
+      "path": "assets/portraits/source-era/princess-peach.png",
+      "sourceGameId": "super-mario-bros-1985",
+      "credit": "Nintendo",
+      "dimensions": [
+        150,
+        246
+      ],
+      "sha256": "6bd584fb20ba4bdcb4f443d55a357242225fb983c416aa62f3202c2c6e7dfed0"
+    },
+    "processing": "896px maximum; edge-connected neutral white >232 removed; alpha bounds trimmed"
+  },
+  "hammer-bro": {
+    "url": "hammer-bro.webp",
+    "sha256": "e5d90c3fd6c73bfbb58503d13bf7c866eeb1303f6925d793e67da14c84ea8fe6",
+    "source": {
+      "id": "hammer-bro",
+      "url": "https://mario.wiki.gallery/images/9/9c/Hammer_Brother_SMB_artwork.jpg",
+      "path": "assets/portraits/source-era/hammer-bro.png",
+      "sourceGameId": "super-mario-bros-1985",
+      "credit": "Nintendo",
+      "dimensions": [
+        563,
+        781
+      ],
+      "sha256": "83637da4d31dc31dc6bb65f1504b15168596359158b75ee1023cf29bcbd6ed04"
+    },
+    "processing": "896px maximum; edge-connected neutral white >232 removed; alpha bounds trimmed"
+  },
+  "lakitu": {
+    "url": "lakitu.webp",
+    "sha256": "fb4b6bbc1855a471f9904394e6a61d72821b1ee220c8744800a7dc43989209d9",
+    "source": {
+      "id": "lakitu",
+      "url": "https://mario.wiki.gallery/images/5/58/Lakitu_SMB_artwork.jpg",
+      "path": "assets/portraits/source-era/lakitu.png",
+      "sourceGameId": "super-mario-bros-1985",
+      "credit": "Nintendo",
+      "dimensions": [
+        236,
+        338
+      ],
+      "sha256": "cf4880cdd68de2b85aaf2078c0f07f57aa93868544293a8a91d160a9c94584fd"
+    },
+    "processing": "896px maximum; edge-connected neutral white >232 removed; alpha bounds trimmed"
+  },
+  "toad": {
+    "url": "toad.webp",
+    "sha256": "1ea601731332e84d59e27453e00b7ac1785732588e522d066fff7ae01c26a47e",
+    "source": {
+      "id": "toad",
+      "url": "https://mario.wiki.gallery/images/e/eb/SMB_Toad_Artwork.jpg",
+      "path": "assets/portraits/source-era/toad.jpg",
+      "sourceGameId": "super-mario-bros-1985",
+      "illustrationYear": 1985,
+      "credit": "Nintendo",
+      "dimensions": [
+        382,
+        517
+      ],
+      "sha256": "b3aab3d326b011891f5db16c6600781aa52f977fe313044b1cf52af53f447416"
+    },
+    "processing": "896px maximum; edge-connected neutral white >232 removed; alpha bounds trimmed"
+  }
+}

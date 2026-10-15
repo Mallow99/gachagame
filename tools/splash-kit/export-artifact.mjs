@@ -21,6 +21,11 @@ for (const part of ['manifest.json', 'display', 'thumbnails']) copy(`assets/port
 mkdirSync(join(out, 'assets/audio/reveal'), { recursive: true });
 copy('assets/audio/reveal/kirby-adventure-fanfare.mp3');
 
+// Each standalone review keeps its game-root marker relative to this export.
+for (const name of readdirSync(out).filter(name => name.endsWith('.html') && name !== 'index.html')) {
+  const file = join(out, name);
+  writeFileSync(file, readFileSync(file, 'utf8').replace('<meta name="game-root" content="../../">', '<meta name="game-root" content="./">'));
+}
 // Ordinary hosting needs the complete document, especially its mobile viewport.
 // Older embedded-artifact hosts supply their own skeleton and can opt into the
 // fragment form explicitly.
