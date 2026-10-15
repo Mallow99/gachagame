@@ -2,11 +2,11 @@
 
 ## Newest: Dedede reveal v2 from a Claude session (2026-10-15)
 
-**Code:** branch `codex/pg001-pg002`. It contains all of `codex/v1-playable`
-plus the v2 demo, so `v1-playable` can be fast-forwarded to it
-(`git merge --ff-only origin/codex/pg001-pg002`). Nothing outside
-`demos/splash-kit/`, `tools/splash-kit/`, `test/splash-kit.test.js` and
-`.gitignore` changed. 115/115 tests pass.
+**Code:** branch **`codex/v1-playable`** (the v2 demo, its notes and the agent
+skills are all on it; `codex/pg001-pg002` mirrors it). The v2 work lives in
+`demos/splash-kit/`, `tools/splash-kit/` and `test/splash-kit.test.js`. Repo
+guidance for Codex and Claude is in `AGENTS.md`, with shared skills in
+`.agents/skills/`. 115/115 tests pass.
 
 **Read first:** [demos/splash-kit/FEEDBACK.md](../demos/splash-kit/FEEDBACK.md)
 for the owner's verdict on v2: what they liked, what they disliked, and what is

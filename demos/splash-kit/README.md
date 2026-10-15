@@ -6,7 +6,7 @@ real transaction (`src/gacha.js` `drawPulls`) on an in-memory demo save, so the
 pool, rates, pity and 50/50 are the game's own.
 
 ```sh
-npm run web                                  # then open http://localhost:8080/demos/splash-kit/
+npm run web                                  # then open http://localhost:8080/demos/splash-kit/index.html
 node --test test/splash-kit.test.js          # rig sanity checks
 python3 tools/splash-kit/prepare_art.py      # re-download, verify and re-bake all art
 node tools/splash-kit/export-artifact.mjs out/splash-kit   # self-contained copy for hosting
