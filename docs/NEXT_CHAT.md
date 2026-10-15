@@ -18,6 +18,13 @@ approved. It uses the wrong Dedede for this pull, and the mesh-warped flat
 render looks weird to the owner. They had said so before v2, and v2 removed only
 part of the warping.
 
+**Published previews (owner-private claude.ai artifacts):**
+- v2 banner + summon + splash: <https://claude.ai/artifact/1Q4RbVYwVKFfucJGZ3GVuv>
+  (rebuild with `node tools/splash-kit/export-artifact.mjs <dir>`).
+- The first standalone splash, which the owner called "leagues better" before
+  the warping complaint: <https://claude.ai/artifact/GsJQUun3zuCzgb8cYHgzW2>.
+  Its source is kept in `demos/splash-kit/archive/first-splash/` for reference only.
+
 ### How v2 was built (keep these habits)
 
 1. **Run the real game logic.** The banner imports `src/gacha.js`,

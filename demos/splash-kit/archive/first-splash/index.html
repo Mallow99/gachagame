@@ -1,0 +1,450 @@
+<title>Dedede SSR Splash</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap">
+<style>
+/* Layout: one cinematic 16:9 pull stage, a slim control strip, then a short rig breakdown. Deliberately single dark look (game screen). */
+:root{
+  --void:#0e0810; --panel:#1b1119; --line:#3b2733; --ink:#f4ebde; --dim:#ab99a2; --gold:#f2b33d; --crimson:#d02a48;
+  --display:"Dela Gothic One","Hiragino Sans","Arial Black",sans-serif;
+  --body:"Zen Kaku Gothic New","Hiragino Sans","Segoe UI",system-ui,sans-serif;
+  color-scheme:dark;
+}
+html,body{background:var(--void);color:var(--ink)}
+body{font-family:var(--body);font-size:15px;line-height:1.55;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 40px}
+main{max-width:1200px;margin:0 auto;display:grid;gap:18px}
+header{display:flex;align-items:baseline;justify-content:space-between;gap:6px 16px;flex-wrap:wrap}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(22px,3.2vw,34px);letter-spacing:.02em;margin:0;text-wrap:balance}
+.tag{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.stage{position:relative;width:100%;max-width:100%;aspect-ratio:16/9;background:#000;overflow:hidden;border-radius:4px}
+canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.plate{position:absolute;left:4%;bottom:7%;display:grid;gap:6px;opacity:0;transform:translateX(-16px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.stage.revealed .plate{opacity:1;transform:none}
+.rar{font-family:var(--display);font-size:clamp(14px,2.4vw,28px);color:var(--void);background:var(--gold);padding:.02em .5em;justify-self:start;letter-spacing:.08em;transform:skewX(-12deg)}
+.name{font-family:var(--display);font-size:clamp(22px,4.6vw,56px);line-height:1;text-shadow:0 3px 0 #000,0 0 28px rgba(208,42,72,.75)}
+.epi{font-size:clamp(10px,1.3vw,14px);font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);text-shadow:0 1px 3px #000}
+.fail{position:absolute;inset:0;display:grid;place-items:center;padding:24px;text-align:center;color:var(--dim)}
+.controls{display:flex;gap:10px;flex-wrap:wrap}
+button{font:inherit;font-weight:700;font-size:14px;color:var(--ink);background:var(--panel);border:1px solid var(--line);padding:9px 18px;border-radius:999px;cursor:pointer}
+button:hover{border-color:var(--gold)}
+button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+button[aria-pressed="true"]{background:var(--gold);color:var(--void);border-color:var(--gold)}
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px 32px;color:var(--dim);font-size:14px;border-top:1px solid var(--line);padding-top:18px}
+.notes div{min-width:0}
+.notes h2{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin:0 0 6px;font-weight:700}
+.notes p{margin:0;max-width:65ch}
+.notes a{color:var(--gold)}
+</style>
+
+<main>
+  <header>
+    <h1>King Dedede · SSR pull</h1>
+    <span class="tag">Mesh-warp rig · WebGL · prototype</span>
+  </header>
+
+  <div class="stage" id="stage">
+    <canvas id="c" aria-label="Animated splash art of King Dedede with hammer, star particles and speed streaks"></canvas>
+    <div class="plate" aria-hidden="true">
+      <span class="rar">SSR</span>
+      <span class="name">King Dedede</span>
+      <span class="epi">Self-proclaimed King of Dream Land</span>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button id="replay" type="button">Replay pull</button>
+    <button id="pause" type="button" aria-pressed="false">Pause</button>
+    <button id="wire" type="button" aria-pressed="false">Show rig mesh</button>
+  </div>
+
+  <section class="notes">
+    <div>
+      <h2>The rig</h2>
+      <p>One flat official render, no layers. It sits on a 46×52 mesh trimmed to his silhouette, with eight warp deformers driving it: breathing, body sway, head tilt, hammer wind-up, fist pump, robe-hem flutter, a squash on the breath, and a blink drawn over the eyes.</p>
+    </div>
+    <div>
+      <h2>The splash</h2>
+      <p>Built after the Todo SSR loop: the character barely moves, and the life comes from layers around him. Streaks, drifting stars, sparkles, embers, foreground silhouettes, rim light, smoke and a slow camera drift, all on a graded Castle Dedede arena.</p>
+    </div>
+    <div>
+      <h2>Sources</h2>
+      <p>Render from <a href="https://wikirby.com/wiki/File:KRtDLD_King_Dedede.png">Kirby's Return to Dream Land Deluxe</a>. Arena from <a href="https://wikirby.com/wiki/File:KSA_Clash_at_Castle_Dedede_12.jpg">Kirby Star Allies</a>, blurred and recolored. Both via WiKirby.</p>
+    </div>
+  </section>
+</main>
+
+<script>
+(() => {
+const stage = document.getElementById('stage');
+const canvas = document.getElementById('c');
+const gl = canvas.getContext('webgl', { antialias: true, alpha: false, premultipliedAlpha: true });
+if (!gl) { stage.insertAdjacentHTML('beforeend', '<div class="fail">WebGL is unavailable in this browser, so the splash cannot render.</div>'); return; }
+
+const CAM = `
+uniform vec4 uCam; uniform float uAsp;
+vec2 toClip(vec2 w, float par){
+  float z = 1.0 + (uCam.z - 1.0) * par; float a = uCam.w * par;
+  vec2 p = w - uCam.xy * par; float s = sin(a), c = cos(a);
+  p = vec2(c*p.x - s*p.y, s*p.x + c*p.y) * z;
+  return p / vec2(uAsp * 0.5, 0.5);
+}
+vec2 fromScreen(vec2 sc, float par){
+  float z = 1.0 + (uCam.z - 1.0) * par; float a = -uCam.w * par;
+  vec2 p = sc / z; float s = sin(a), c = cos(a);
+  return vec2(c*p.x - s*p.y, s*p.x + c*p.y) + uCam.xy * par;
+}`;
+
+const QUAD_VS = `attribute vec2 aP; varying vec2 vC; void main(){ vC = aP; gl_Position = vec4(aP, 0.0, 1.0); }`;
+
+const BG_FS = `precision highp float;
+varying vec2 vC; uniform sampler2D uBg; uniform float uT, uIntro; uniform vec2 uChar;
+${CAM}
+float h1(float n){ return fract(sin(n * 127.1) * 43758.5453); }
+vec3 streaks(vec2 ws, float density, float thresh, float t){
+  vec2 d = normalize(vec2(1.0, -0.38)); vec2 pp = vec2(-d.y, d.x);
+  float v = dot(ws, pp) * density; float id = floor(v); float f = fract(v);
+  float h = h1(id), h2 = h1(id + 31.7);
+  float on = step(thresh, h);
+  float speed = (0.9 + h2 * 1.6) * (1.0 + 3.5 * (1.0 - uIntro));
+  float u = fract(dot(ws, d) * (0.8 + h * 1.2) - t * speed * 0.6 + h2 * 10.0);
+  float dash = smoothstep(0.0, 0.06, u) * (1.0 - smoothstep(0.2 + 0.3 * h, 0.55 + 0.35 * h, u));
+  float band = pow(max(0.0, 1.0 - abs(f - 0.5) * 2.0), 2.0 + h2 * 6.0);
+  vec3 col = h2 > 0.78 ? vec3(0.35, 0.55, 1.0) : mix(vec3(1.0, 0.72, 0.35), vec3(1.0, 0.95, 0.85), h2);
+  return col * on * dash * band;
+}
+void main(){
+  vec2 sc = vec2(vC.x * uAsp * 0.5, vC.y * 0.5);
+  vec2 w = fromScreen(sc, 0.35);
+  float bw = uAsp * 1.3, bh = bw / 2.032;
+  vec2 uv = vec2(w.x / bw + 0.56, 0.5 - (w.y + 0.02) / bh);
+  vec3 c = texture2D(uBg, uv).rgb;
+  float l = dot(c, vec3(0.3, 0.59, 0.11));
+  vec3 duo = mix(vec3(0.16, 0.0, 0.10), vec3(1.0, 0.45, 0.2), smoothstep(0.3, 0.95, l));
+  duo = mix(duo, vec3(1.0, 0.85, 0.6), smoothstep(0.85, 1.0, l));
+  c = mix(c, duo, 0.8) * 0.62;
+  c += vec3(1.0, 0.6, 0.25) * 0.35 * exp(-length((sc - vec2(-0.55, 0.38)) * vec2(0.9, 1.2)) * 2.2);
+  vec2 wc = fromScreen(sc, 1.0);
+  float gd = length((wc - uChar) * vec2(0.85, 1.0));
+  c += vec3(1.0, 0.42, 0.18) * 0.55 * exp(-gd * 2.6) * (0.85 + 0.15 * sin(uT * 2.1));
+  float boost = 0.6 + 1.2 * (1.0 - uIntro);
+  c += streaks(fromScreen(sc, 0.7), 70.0, 0.72, uT) * boost;
+  c += streaks(fromScreen(sc, 0.5), 16.0, 0.8, uT * 0.7) * 0.22 * boost;
+  gl_FragColor = vec4(c, 1.0);
+}`;
+
+const CHAR_VS = `precision highp float;
+attribute vec2 aUV; uniform float uT; uniform vec2 uCharPos; uniform float uCharScale;
+varying vec2 vUV;
+${CAM}
+const float A = 0.8733;
+vec2 L(vec2 u){ return vec2(u.x * A, 1.0 - u.y); }
+float blob(vec2 p, vec2 c, float r){ return 1.0 - smoothstep(0.45, 1.0, length(p - c) / r); }
+vec2 rot(vec2 p, vec2 c, float a){ p -= c; float s = sin(a), co = cos(a); return c + vec2(co*p.x - s*p.y, s*p.x + co*p.y); }
+float seg(vec2 p, vec2 a, vec2 b){ vec2 pa = p - a, ba = b - a; float h = clamp(dot(pa, ba) / dot(ba, ba), 0.0, 1.0); return length(pa - ba * h); }
+void main(){
+  vec2 uv = aUV; vec2 p0 = L(uv); vec2 p = p0; float t = uT;
+  float br = sin(t * 2.1);
+  // breathing: belly swells
+  vec2 bc = L(vec2(0.68, 0.58));
+  p = mix(p, bc + (p - bc) * (1.0 + 0.02 * br), blob(p0, bc, 0.34));
+  // robe hem flutter
+  float wr = smoothstep(0.6, 0.86, uv.y) * (1.0 - smoothstep(0.52, 0.68, uv.x));
+  p += wr * vec2(0.008 * sin(t * 3.0 + uv.y * 14.0 + uv.x * 6.0), 0.006 * sin(t * 2.6 + uv.x * 11.0));
+  // raised fist pumps from the elbow
+  float wf = blob(p0, L(vec2(0.2, 0.32)), 0.24);
+  p = rot(p, L(vec2(0.2, 0.52)), wf * 0.06 * sin(t * 2.1 + 0.6));
+  // hammer + gripping fist wind up around the grip
+  float wh = (1.0 - smoothstep(0.16, 0.25, uv.y)) * smoothstep(0.24, 0.34, uv.x);
+  wh = max(wh, 1.0 - smoothstep(0.05, 0.1, seg(p0, L(vec2(0.66, 0.28)), L(vec2(0.99, 0.45)))));
+  wh = max(wh, blob(p0, L(vec2(0.85, 0.36)), 0.2));
+  p = rot(p, L(vec2(0.84, 0.37)), wh * 0.05 * sin(t * 2.1 - 0.5));
+  // head tilt and nod
+  float wd = blob(p0, L(vec2(0.53, 0.31)), 0.3) * (1.0 - wh);
+  p = rot(p, L(vec2(0.56, 0.48)), wd * 0.025 * sin(t * 1.05));
+  p.y += wd * 0.005 * sin(t * 2.1 + 1.0);
+  // whole-body sway and squash, feet planted
+  float wg = 1.0 - smoothstep(0.62, 1.0, uv.y);
+  vec2 piv = L(vec2(0.62, 0.97));
+  p = rot(p, piv, wg * 0.014 * sin(t * 1.05));
+  p.y = piv.y + (p.y - piv.y) * (1.0 + 0.008 * br * wg);
+  vec2 w = uCharPos + (p - vec2(A * 0.5, 0.5)) * uCharScale;
+  vUV = uv;
+  gl_Position = vec4(toClip(w, 1.0), 0.0, 1.0);
+}`;
+
+const CHAR_FS = `precision highp float;
+varying vec2 vUV; uniform sampler2D uTex; uniform float uBlink, uWire;
+void lid(inout vec3 col, vec4 src, vec2 c, vec2 r, vec3 skin){
+  vec2 q = (vUV - c) / r;
+  if (length(q) > 1.0 || uBlink <= 0.0) return;
+  if (src.r > 0.55 && src.b < 0.42) return; // hat brim or beak in front of the eye
+  float line = mix(-1.15, 1.05, uBlink);
+  if (q.y < line) col = skin * (0.78 + 0.22 * clamp((q.y + 1.0) * 0.5, 0.0, 1.0));
+  col *= 1.0 - 0.55 * (1.0 - smoothstep(0.0, 0.16, abs(q.y - line)));
+}
+void main(){
+  if (uWire > 0.5) { gl_FragColor = vec4(1.0, 0.78, 0.32, 1.0) * 0.35; return; }
+  vec4 s = texture2D(uTex, vUV);
+  if (s.a < 0.004) discard;
+  vec3 col = s.rgb;
+  vec3 skin = texture2D(uTex, vec2(0.445, 0.345)).rgb;
+  lid(col, s, vec2(0.512, 0.332), vec2(0.05, 0.04), skin);
+  lid(col, s, vec2(0.58, 0.318), vec2(0.026, 0.028), skin);
+  float sh = smoothstep(0.25, 1.15, vUV.x * 0.6 + vUV.y * 0.8);
+  col *= mix(1.06, 0.66, sh);
+  col = mix(col, col * vec3(1.0, 0.72, 0.88), sh * 0.5);
+  float aL = texture2D(uTex, vUV + vec2(-0.008, -0.007)).a;
+  float aR = texture2D(uTex, vUV + vec2(0.009, 0.008)).a;
+  col += vec3(1.0, 0.82, 0.45) * s.a * (1.0 - aL) * 0.9;
+  col += vec3(1.0, 0.16, 0.36) * s.a * (1.0 - aR) * 0.8;
+  gl_FragColor = vec4(col * s.a, s.a);
+}`;
+
+const PT_VS = `precision highp float;
+attribute vec4 aS; attribute float aK;
+uniform float uT, uIntroT, uPx, uLayer; uniform vec2 uChar;
+varying float vK, vA, vRot; varying vec3 vCol;
+${CAM}
+void main(){
+  float k = aK; vec2 w; float par = 1.0, size = 0.0, a = 1.0, front = 0.0; vec3 col = vec3(1.0);
+  float X = uAsp * 0.5 * 1.35, Y = 0.5 * 1.35;
+  if (k < 0.5) {            // drifting gold stars
+    w = vec2((fract(aS.x + uT * 0.025 * (0.4 + aS.z)) - 0.5) * 2.0 * X, (fract(aS.y - uT * 0.01 * (0.4 + aS.z)) - 0.5) * 2.0 * Y);
+    par = 0.5 + aS.z * 0.9; size = 7.0 + aS.w * 20.0; col = vec3(1.0, 0.8, 0.3);
+    a = 0.55 + 0.45 * sin(uT * 3.0 + aS.x * 40.0); front = step(0.6, aS.z);
+  } else if (k < 1.5) {     // twinkling sparkles
+    w = vec2((aS.x - 0.5) * 2.0 * X, (aS.y - 0.5) * 2.0 * Y); par = 0.6 + aS.z * 0.6; size = 18.0 + aS.w * 34.0;
+    a = pow(max(0.0, sin(uT * (1.3 + aS.z * 1.7) + aS.w * 30.0)), 10.0);
+    col = mix(vec3(1.0, 0.95, 0.8), vec3(0.6, 0.75, 1.0), step(0.7, aS.w)); front = step(0.5, aS.z);
+  } else if (k < 2.5) {     // embers
+    w = vec2((fract(aS.x + uT * 0.06 * (0.5 + aS.z)) - 0.5) * 2.0 * X, (fract(aS.y - uT * 0.025 * (0.5 + aS.z) + 0.02 * sin(uT * 2.0 + aS.w * 20.0)) - 0.5) * 2.0 * Y);
+    par = 0.7 + aS.z * 0.6; size = 3.0 + aS.w * 6.0; col = vec3(1.0, 0.3, 0.25);
+    a = 0.6 + 0.4 * sin(uT * 9.0 + aS.x * 90.0); front = step(0.5, aS.z);
+  } else if (k < 3.5) {     // out-of-focus foreground stars
+    float band = aS.y < 0.55 ? -0.36 - aS.y * 0.3 : 0.42 + (aS.y - 0.55) * 0.3;
+    w = vec2((fract(aS.x + uT * 0.045 * (0.6 + aS.z)) - 0.5) * 2.0 * X * 1.2, band + 0.03 * sin(uT * 0.8 + aS.w * 9.0));
+    par = 1.7; size = 90.0 + aS.w * 130.0; col = vec3(0.07, 0.0, 0.03); a = 0.6; front = 1.0;
+  } else {                  // pull burst
+    float e = 1.0 - pow(1.0 - clamp(uIntroT / 1.3, 0.0, 1.0), 3.0);
+    float ang = aS.x * 6.2832; float dist = (0.35 + aS.y * 0.9) * e;
+    w = uChar + vec2(cos(ang), sin(ang)) * dist * vec2(1.2, 1.0); size = (14.0 + aS.w * 26.0) * (1.0 - 0.5 * e);
+    col = vec3(1.0, 0.85, 0.35); a = 1.0 - smoothstep(0.6, 1.6, uIntroT); front = 1.0;
+  }
+  if (abs(front - uLayer) > 0.5 || a <= 0.001) { gl_Position = vec4(2.0, 2.0, 2.0, 1.0); gl_PointSize = 0.0; return; }
+  gl_Position = vec4(toClip(w, par), 0.0, 1.0);
+  gl_PointSize = size * uPx * (1.0 + (uCam.z - 1.0) * par);
+  vK = k; vA = a; vCol = col; vRot = uT * (aS.z - 0.5) * 2.5 + aS.w * 6.0;
+}`;
+
+const PT_FS = `precision highp float;
+varying float vK, vA, vRot; varying vec3 vCol;
+float star5(vec2 p, float f){ float a = atan(p.y, p.x); float st = 0.21 + 0.27 * pow(abs(cos(2.5 * a)), 4.0); return 1.0 - smoothstep(st - f, st + f, length(p)); }
+void main(){
+  vec2 p = gl_PointCoord - 0.5; float s = sin(vRot), c = cos(vRot); p = vec2(c*p.x - s*p.y, s*p.x + c*p.y);
+  float r = length(p);
+  if (vK < 0.5 || vK > 3.5) { float m = star5(p, 0.025) + exp(-r * r * 18.0) * 0.5; gl_FragColor = vec4(vCol * m * vA, 0.0); }
+  else if (vK < 1.5) { float a = atan(p.y, p.x); float sp = 0.02 + 0.46 * pow(abs(cos(2.0 * a)), 30.0); float m = 1.0 - smoothstep(sp * 0.6, sp, r) + exp(-r * r * 120.0); gl_FragColor = vec4(vCol * m * vA, 0.0); }
+  else if (vK < 2.5) { gl_FragColor = vec4(vCol * exp(-r * r * 40.0) * vA * 1.4, 0.0); }
+  else { float m = star5(p, 0.12) * vA; gl_FragColor = vec4(vCol * m, m); }
+}`;
+
+const OV_FS = `precision highp float;
+varying vec2 vC; uniform float uT, uFlash, uAsp;
+float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
+float noise(vec2 p){ vec2 i = floor(p), f = fract(p); f = f * f * (3.0 - 2.0 * f);
+  return mix(mix(hash(i), hash(i + vec2(1, 0)), f.x), mix(hash(i + vec2(0, 1)), hash(i + vec2(1, 1)), f.x), f.y); }
+float fbm(vec2 p){ float v = 0.0, a = 0.5; for (int i = 0; i < 5; i++) { v += a * noise(p); p *= 2.03; a *= 0.5; } return v; }
+void main(){
+  vec2 sc = vec2(vC.x * uAsp * 0.5, vC.y * 0.5);
+  float vg = smoothstep(0.6, 1.35, length(vC * vec2(1.0, 0.9)));
+  float n = fbm(sc * 3.0 + vec2(uT * 0.12, -uT * 0.05));
+  float smokeL = smoothstep(-0.42, -0.9, sc.x + (n - 0.5) * 0.6);
+  float n2 = fbm(sc * 2.5 - vec2(uT * 0.08, uT * 0.04) + 7.0);
+  float smokeB = smoothstep(-0.28, -0.52, sc.y + (n2 - 0.5) * 0.35) * smoothstep(-0.3, 0.6, sc.x);
+  float dark = clamp(max(vg * 0.85, max(smokeL * 0.9, smokeB * 0.75)), 0.0, 1.0);
+  vec3 add = vec3(1.0, 0.97, 0.9) * uFlash;
+  add += vec3(1.0, 0.5, 0.2) * 0.1 * (0.5 + 0.5 * sin(uT * 0.7)) * exp(-length(sc - vec2(-0.9, 0.5)) * 2.0);
+  add += vec3(hash(gl_FragCoord.xy + fract(uT) * 91.0)) * 0.035;
+  gl_FragColor = vec4(vec3(0.06, 0.0, 0.03) * dark + add, dark);
+}`;
+
+function shader(type, src) {
+  const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+  if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s));
+  return s;
+}
+function program(vs, fs) {
+  const p = gl.createProgram();
+  gl.attachShader(p, shader(gl.VERTEX_SHADER, vs)); gl.attachShader(p, shader(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(p);
+  if (!gl.getProgramParameter(p, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(p));
+  const u = {};
+  const n = gl.getProgramParameter(p, gl.ACTIVE_UNIFORMS);
+  for (let i = 0; i < n; i++) { const name = gl.getActiveUniform(p, i).name; u[name] = gl.getUniformLocation(p, name); }
+  return { p, u };
+}
+function texture(img) {
+  const t = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, t);
+  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+  return t;
+}
+function load(src) { return new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = src; }); }
+
+let bgP, chP, ptP, ovP;
+try {
+  bgP = program(QUAD_VS, BG_FS); chP = program(CHAR_VS, CHAR_FS);
+  ptP = program(PT_VS, PT_FS); ovP = program(QUAD_VS, OV_FS);
+} catch (e) {
+  console.error(e);
+  stage.insertAdjacentHTML('beforeend', '<div class="fail">The splash shaders failed to compile on this device.</div>');
+  return;
+}
+
+const quad = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, quad);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+
+// Particles: [count, kind]
+const groups = [[46, 0], [26, 1], [40, 2], [5, 3], [44, 4]];
+const pData = [];
+let seed = 7;
+const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+for (const [count, kind] of groups) for (let i = 0; i < count; i++) pData.push(rnd(), rnd(), rnd(), rnd(), kind);
+const pCount = pData.length / 5;
+const pBuf = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, pBuf);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(pData), gl.STATIC_DRAW);
+
+let mesh = null, bgTex = null, chTex = null;
+
+function buildMesh(img) {
+  const GX = 46, GY = 52;
+  const off = document.createElement('canvas'); off.width = GX * 2; off.height = GY * 2;
+  const cx = off.getContext('2d'); cx.drawImage(img, 0, 0, off.width, off.height);
+  const alpha = cx.getImageData(0, 0, off.width, off.height).data;
+  const solid = (i, j) => {
+    for (let y = Math.max(0, j * 2 - 1); y <= Math.min(off.height - 1, j * 2 + 2); y++)
+      for (let x = Math.max(0, i * 2 - 1); x <= Math.min(off.width - 1, i * 2 + 2); x++)
+        if (alpha[(y * off.width + x) * 4 + 3] > 8) return true;
+    return false;
+  };
+  const verts = [];
+  for (let j = 0; j <= GY; j++) for (let i = 0; i <= GX; i++) verts.push(i / GX, j / GY);
+  const tris = [], lines = [];
+  const v = (i, j) => j * (GX + 1) + i;
+  for (let j = 0; j < GY; j++) for (let i = 0; i < GX; i++) {
+    if (!solid(i, j)) continue;
+    const a = v(i, j), b = v(i + 1, j), c = v(i, j + 1), d = v(i + 1, j + 1);
+    tris.push(a, b, c, b, d, c);
+    lines.push(a, b, a, c, b, c, b, d, c, d);
+  }
+  const vb = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, vb); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(verts), gl.STATIC_DRAW);
+  const tb = gl.createBuffer(); gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, tb); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(tris), gl.STATIC_DRAW);
+  const lb = gl.createBuffer(); gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, lb); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(lines), gl.STATIC_DRAW);
+  return { vb, tb, lb, nt: tris.length, nl: lines.length };
+}
+
+// Timeline
+const forceBlink = new URLSearchParams(location.search).get('blink');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let t0 = performance.now(), paused = false, pausedAt = 0, wire = false;
+const pauseBtn = document.getElementById('pause');
+const wireBtn = document.getElementById('wire');
+function setPaused(p) {
+  if (p === paused) return;
+  if (p) pausedAt = performance.now(); else t0 += performance.now() - pausedAt;
+  paused = p; pauseBtn.setAttribute('aria-pressed', String(p)); pauseBtn.textContent = p ? 'Play' : 'Pause';
+}
+document.getElementById('replay').addEventListener('click', () => {
+  t0 = performance.now(); pausedAt = t0; stage.classList.remove('revealed'); setPaused(false);
+});
+pauseBtn.addEventListener('click', () => setPaused(!paused));
+wireBtn.addEventListener('click', () => { wire = !wire; wireBtn.setAttribute('aria-pressed', String(wire)); });
+if (reduce) { t0 = performance.now() - 2600; setPaused(true); }
+
+const clamp01 = x => Math.min(1, Math.max(0, x));
+const easeOutExpo = x => x >= 1 ? 1 : 1 - Math.pow(2, -10 * x);
+
+function resize() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const w = Math.round(canvas.clientWidth * dpr), h = Math.round(canvas.clientHeight * dpr);
+  if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+}
+
+function setCam(u, cam, asp) { gl.uniform4f(u.uCam, cam[0], cam[1], cam[2], cam[3]); gl.uniform1f(u.uAsp, asp); }
+
+function frame() {
+  requestAnimationFrame(frame);
+  if (!mesh) return;
+  resize();
+  const t = ((paused ? pausedAt : performance.now()) - t0) / 1000;
+  const e = easeOutExpo(clamp01(t / 1.5));
+  if (t > 1.1) stage.classList.add('revealed');
+  const asp = canvas.width / canvas.height;
+  const cam = [0.015 * Math.sin(t * 0.5) + 0.07 * (1 - e), 0.01 * Math.sin(t * 0.37) - 0.03 * (1 - e),
+               1.0 + 0.012 * Math.sin(t * 0.3) + 0.45 * (1 - e), 0.004 * Math.sin(t * 0.4) - 0.09 * (1 - e)];
+  const charPos = [0.3, -0.07], charScale = 1.2, glow = [0.3, -0.02];
+  const ph = (t + 1.3) % 3.7;
+  let blink = ph < 0.18 ? Math.sin(ph / 0.18 * Math.PI) : (ph > 0.3 && ph < 0.46 && Math.floor((t + 1.3) / 3.7) % 3 === 1 ? Math.sin((ph - 0.3) / 0.16 * Math.PI) : 0);
+  if (forceBlink !== null) blink = +forceBlink;
+  const flash = Math.pow(clamp01(1 - t / 0.6), 2);
+
+  gl.viewport(0, 0, canvas.width, canvas.height);
+  gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+
+  const drawQuad = (pr) => {
+    gl.bindBuffer(gl.ARRAY_BUFFER, quad);
+    const loc = gl.getAttribLocation(pr.p, 'aP');
+    gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    gl.disableVertexAttribArray(loc);
+  };
+  const drawPoints = (layer) => {
+    gl.useProgram(ptP.p); setCam(ptP.u, cam, asp);
+    gl.uniform1f(ptP.u.uT, t); gl.uniform1f(ptP.u.uIntroT, t); gl.uniform1f(ptP.u.uPx, canvas.height / 720);
+    gl.uniform1f(ptP.u.uLayer, layer); gl.uniform2f(ptP.u.uChar, glow[0], glow[1]);
+    gl.bindBuffer(gl.ARRAY_BUFFER, pBuf);
+    const ls = gl.getAttribLocation(ptP.p, 'aS'), lk = gl.getAttribLocation(ptP.p, 'aK');
+    gl.enableVertexAttribArray(ls); gl.vertexAttribPointer(ls, 4, gl.FLOAT, false, 20, 0);
+    gl.enableVertexAttribArray(lk); gl.vertexAttribPointer(lk, 1, gl.FLOAT, false, 20, 16);
+    gl.drawArrays(gl.POINTS, 0, pCount);
+    gl.disableVertexAttribArray(ls); gl.disableVertexAttribArray(lk);
+  };
+
+  // 1. arena, streaks, glow
+  gl.useProgram(bgP.p); setCam(bgP.u, cam, asp);
+  gl.uniform1f(bgP.u.uT, t); gl.uniform1f(bgP.u.uIntro, e); gl.uniform2f(bgP.u.uChar, glow[0], glow[1]);
+  gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, bgTex); gl.uniform1i(bgP.u.uBg, 0);
+  drawQuad(bgP);
+  // 2. particles behind him
+  drawPoints(0);
+  // 3. Dedede
+  gl.useProgram(chP.p); setCam(chP.u, cam, asp);
+  gl.uniform1f(chP.u.uT, t); gl.uniform2f(chP.u.uCharPos, charPos[0], charPos[1]); gl.uniform1f(chP.u.uCharScale, charScale);
+  gl.uniform1f(chP.u.uBlink, blink); gl.uniform1f(chP.u.uWire, 0);
+  gl.bindTexture(gl.TEXTURE_2D, chTex); gl.uniform1i(chP.u.uTex, 0);
+  gl.bindBuffer(gl.ARRAY_BUFFER, mesh.vb);
+  const lu = gl.getAttribLocation(chP.p, 'aUV');
+  gl.enableVertexAttribArray(lu); gl.vertexAttribPointer(lu, 2, gl.FLOAT, false, 0, 0);
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, mesh.tb); gl.drawElements(gl.TRIANGLES, mesh.nt, gl.UNSIGNED_SHORT, 0);
+  if (wire) { gl.uniform1f(chP.u.uWire, 1); gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, mesh.lb); gl.drawElements(gl.LINES, mesh.nl, gl.UNSIGNED_SHORT, 0); }
+  gl.disableVertexAttribArray(lu);
+  // 4. particles in front
+  drawPoints(1);
+  // 5. smoke, vignette, flash, grain
+  gl.useProgram(ovP.p); gl.uniform1f(ovP.u.uT, t); gl.uniform1f(ovP.u.uFlash, flash); gl.uniform1f(ovP.u.uAsp, asp);
+  drawQuad(ovP);
+}
+
+Promise.all([load('arena.jpg'), load('dedede.png')]).then(([bg, ch]) => {
+  bgTex = texture(bg); chTex = texture(ch); mesh = buildMesh(ch);
+  if (!reduce) { t0 = performance.now(); }
+  requestAnimationFrame(frame);
+}).catch(() => stage.insertAdjacentHTML('beforeend', '<div class="fail">The artwork failed to load. Reload the page to try again.</div>'));
+})();
+</script>
