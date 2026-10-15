@@ -4,6 +4,36 @@ One entry per reviewed iteration. Record what the owner liked, what they
 disliked, and what is still needed, in their words where possible. Read this
 before changing anything here.
 
+## Visual cue 02 — reviewed 2026-10-15 UTC
+
+Verdict: “Other than that is looking pretty good”; refine the area music and
+orbit. Positive progress, not final character-animation/production approval.
+
+Liked:
+- “Changing to the noise is a lot better, considering there's so little voice lines”.
+- “Other than that is looking pretty good”.
+
+Disliked:
+- “make the spin better bc right now it's track is a bit too clunky, maybe smooth it out.”
+
+Still needed:
+- “I think we should make it so theres music based on the area”.
+- “what's the next stage?”
+
+Visual cue 03 uses actual area-game recordings: Adventure's Fountain of Dreams
+and SMB's Running About/Overworld, with fade windows clear of character sounds
+and the screen impact. Position, speed, acceleration and depth now match at
+launch/orbit/approach joins; the ten-light thread follows the curve instead of
+straight chords. Quote holds, camera order, click-through, receipt order and
+native calls are unchanged. Native sounds are the chosen current direction;
+do not treat finding scarce spoken dialogue as a mandatory blocker.
+
+Recommended next stage (not started/approved here): one classic Dedede SSR
+payoff with genuine separated art pieces and filled hidden surfaces, a short
+deliberate hammer/body action and effects timed to the camera/lock. Review it
+against v2 before roster expansion or production/UI integration.
+**Visual cue 03 awaits owner review.**
+
 ## Visual cue 01 — reviewed 2026-10-15 UTC
 
 Verdict: a good step in the right direction; continue with camera corrections,
@@ -34,7 +64,7 @@ Procedural music/effects and retained native Dedede/Bowser calls play from a
 single stoppable schedule, with music absent during the concealed call window.
 Nonverbal call captions are not a finished spoken quote. Art remains a rigid
 source-era framing stand-in, not an authored character layer animation.
-**Visual cue 02 awaits owner review.**
+**Visual cue 02 verdict is recorded above.**
 
 ## Pull blueprint 02 — reviewed 2026-10-15 America/Chicago
 

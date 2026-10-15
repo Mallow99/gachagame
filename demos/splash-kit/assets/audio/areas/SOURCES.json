@@ -1,0 +1,32 @@
+{
+  "dream": {
+    "url": "dream-theme.mp3",
+    "title": "Fountain of Dreams",
+    "game": "Kirby's Adventure",
+    "year": 1993,
+    "duration": 48.039184,
+    "sha256": "dda0ab1b7efe9a003cb516cba188a30ca6b98f522314f5135578e551b2312969",
+    "source": {
+      "url": "https://fi.zophar.net/soundfiles/nintendo-nes-nsf/kirbys-adventure/30%20-%20Fountain%20of%20Dreams.mp3",
+      "page": "https://www.zophar.net/music/nintendo-nes-nsf/kirbys-adventure",
+      "sha256": "73941a09ac0ed70deebac1267990bff065033ee98bf1a70980a13477b4a6d47b",
+      "credit": "Hirokazu Ando / Jun Ishikawa, HAL Laboratory / Nintendo; NSF recording hosted by Zophar\u2019s Domain."
+    },
+    "processing": "First 48 seconds, -20 LUFS / -2 dBTP, 40ms entry and 200ms exit fades, mono 44.1kHz MP3. No pitch or tempo change. Full downloads verified in rebuild cache, not bundled at runtime."
+  },
+  "mushroom": {
+    "url": "mushroom-theme.mp3",
+    "title": "Running About (Overworld)",
+    "game": "Super Mario Bros.",
+    "year": 1985,
+    "duration": 48.039184,
+    "sha256": "8bc5ab7e78e7fee38bb7a772bed1ab7a32776447b3e99c49d8c392f39c771a54",
+    "source": {
+      "url": "https://fi.zophar.net/soundfiles/nintendo-nes-nsf/super-mario-bros/1%20-%20Running%20About.mp3",
+      "page": "https://www.zophar.net/music/nintendo-nes-nsf/super-mario-bros",
+      "sha256": "1b5db03861ebe7eab6105454ffc49bb8e32fab93905e1bd17ef5947b4f6f60ab",
+      "credit": "Koji Kondo / Nintendo; NSF recording hosted by Zophar\u2019s Domain."
+    },
+    "processing": "First 48 seconds, -20 LUFS / -2 dBTP, 40ms entry and 200ms exit fades, mono 44.1kHz MP3. No pitch or tempo change. Full downloads verified in rebuild cache, not bundled at runtime."
+  }
+}

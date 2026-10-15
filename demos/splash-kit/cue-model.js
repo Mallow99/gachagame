@@ -13,18 +13,33 @@ export function upgradeAt(time, tier) {
   return { rank, blend: rank ? ease((time - beats[rank]) / .45) : 1, pulse: rank ? 1 - clamp((time - beats[rank]) / .8) : 0 };
 }
 
+// Match position, velocity AND acceleration at both ends of a bridge. The old
+// launch met the orbit at a right angle and its depth also jumped at the join.
+function bridge(t, seconds, [from, speedIn, accelIn], [to, speedOut, accelOut]) {
+  const v = speedIn * seconds, a = accelIn * seconds * seconds / 2;
+  const distance = to - from - v - a, speed = speedOut * seconds - v - 2 * a;
+  const accel = accelOut * seconds * seconds - 2 * a;
+  return from + v * t + a * t ** 2 + (10 * distance - 4 * speed + accel / 2) * t ** 3
+    + (-15 * distance + 7 * speed - accel) * t ** 4 + (6 * distance - 3 * speed + accel / 2) * t ** 5;
+}
+const orbitSpeed = Math.PI * 2 / (CUE.orbitEnd - CUE.orbit);
+const orbitX = [.15, 0, .35 * orbitSpeed ** 2];
+const orbitY = [.5, -.24 * orbitSpeed, -.035 * orbitSpeed ** 2];
+const orbitDepth = [1, -.22 * orbitSpeed, 0];
+
 export function flightPoint(time) {
   if (time < CUE.orbit) {
     const t = clamp((time - CUE.launch) / (CUE.orbit - CUE.launch));
-    return { x: .5 - .35 * t * t, y: .76 - .26 * Math.sin(t * Math.PI / 2), scale: 1, approach: 0 };
+    const seconds = CUE.orbit - CUE.launch;
+    return { x: bridge(t, seconds, [.5, 0, 0], orbitX), y: bridge(t, seconds, [.76, 0, 0], orbitY), scale: bridge(t, seconds, [1, 0, 0], orbitDepth), approach: 0 };
   }
   if (time < CUE.approach) {
-    const lap = clamp((time - CUE.orbit) / (CUE.orbitEnd - CUE.orbit));
-    const angle = (lap + .07 * Math.sin(lap * Math.PI * 2)) * Math.PI * 2;
-    return { x: .5 - .35 * Math.cos(angle), y: .5 - .24 * Math.sin(angle) - .035 * (1 - Math.cos(angle)), scale: .95 - .26 * Math.sin(angle), approach: 0 };
+    const angle = (time - CUE.orbit) * orbitSpeed;
+    return { x: .5 - .35 * Math.cos(angle), y: .5 - .24 * Math.sin(angle) - .035 * (1 - Math.cos(angle)), scale: 1 - .22 * Math.sin(angle), approach: 0 };
   }
   const t = clamp((time - CUE.approach) / (CUE.contact - CUE.approach));
-  return { x: .15 + .35 * ease(t), y: .5 - .02 * ease(t) - .18 * Math.sin(t * Math.PI), scale: 1 + 15 * t ** 3, approach: t };
+  const seconds = CUE.contact - CUE.approach;
+  return { x: bridge(t, seconds, orbitX, [.5, 0, 0]), y: bridge(t, seconds, orbitY, [.48, .3, 0]), scale: bridge(t, seconds, orbitDepth, [16, 50, 100]), approach: t };
 }
 
 export function sampleLights(time, tier, count, reduced = false) {

@@ -19,11 +19,14 @@ export function cueAudioEvents(timeline, tier) {
     events.push({ at: stampAt + .3, kind: 'name', rarity: s.result.rarity });
   }
   events.push({ at: timeline.lineup, kind: 'lineup' });
-  for (let at = .2, i = 0; at < timeline.total; at += .72, i++) {
-    const protectsVoice = timeline.segments.some(s => s.high && !s.skipped && at > s.start - .65 && at < s.start + s.quote + .05);
-    const protectsImpact = at > CUE.contact + timeline.delay - .7 && at < timeline.impact + .5;
-    if (!protectsVoice && !protectsImpact) events.push({ at, kind: 'music', note: i % 8 });
+  const silences = [[CUE.contact + timeline.delay - .35, timeline.impact + .3],
+    ...timeline.segments.filter(s => s.high && !s.skipped).map(s => [s.start - .18, s.start + s.quote + .08])].sort((a, b) => a[0] - b[0]);
+  let cursor = .12;
+  for (const [start, end] of silences) {
+    if (start > cursor) events.push({ at: cursor, end: start, kind: 'music' });
+    cursor = Math.max(cursor, end);
   }
+  if (cursor < timeline.total) events.push({ at: cursor, end: timeline.total, kind: 'music' });
   return events.sort((a, b) => a.at - b.at);
 }
 
@@ -69,6 +72,19 @@ function scheduleMix(ctx, buffers, timeline, { tier, area, time = 0, rate = 1, v
       const source = ctx.createBufferSource(), gain = ctx.createGain(); source.buffer = buffer; gain.gain.value = .9;
       source.connect(gain); gain.connect(master); track(source, [gain], when, buffer.duration - offset, offset); continue;
     }
+    if (event.kind === 'music') {
+      const buffer = buffers[area];
+      if (!buffer || event.end <= time) continue;
+      const at = Math.max(time, event.at), offset = at / rate;
+      const duration = Math.min((event.end - at) / rate, buffer.duration - offset);
+      if (duration <= 0) continue;
+      const begin = origin + (at - time) / rate;
+      const source = ctx.createBufferSource(), gain = ctx.createGain(); source.buffer = buffer;
+      const fade = Math.min(.12, duration / 3);
+      gain.gain.setValueAtTime(0, begin); gain.gain.linearRampToValueAtTime(.55, begin + fade);
+      gain.gain.setValueAtTime(.55, begin + duration - fade); gain.gain.linearRampToValueAtTime(0, begin + duration);
+      source.connect(gain); gain.connect(master); track(source, [gain], begin, duration, offset); continue;
+    }
     if (event.at < time - .015) continue;
     switch (event.kind) {
       case 'confirm': tone(when, 340, .12, .1, 'triangle', 160); break;
@@ -85,34 +101,31 @@ function scheduleMix(ctx, buffers, timeline, { tier, area, time = 0, rate = 1, v
       case 'badge': chord(when, event.rarity === 'SSR' ? [392, 493.88, 587.33] : [440, 660], .05, .3); break;
       case 'name': chord(when, area === 'dream' ? [587.33, 739.99, 880] : [523.25, 659.25, 783.99], event.rarity === 'SSR' ? .06 : .025, event.rarity === 'SSR' ? .7 : .3); break;
       case 'lineup': chord(when, [293.66, 440, 587.33], .04, .9); break;
-      case 'music': {
-        const scale = area === 'dream' ? [293.66, 369.99, 440, 587.33, 440, 369.99, 329.63, 440] : [261.63, 329.63, 392, 523.25, 392, 329.63, 293.66, 392];
-        tone(when, scale[event.note] / 2, .52, .018, 'sine'); tone(when, scale[event.note], .36, .008, 'triangle'); break;
-      }
     }
   }
   return { active, master, stop() { for (const source of [...active]) { try { source.stop(); } catch {} } active.clear(); master.disconnect(); limiter.disconnect(); } };
 }
 
-export function cueAudio(manifest, base) {
-  let ctx, buffers = {}, mix, generation = 0, enabled = false;
+export function cueAudio(manifest, base, music) {
+  let ctx, buffers = {}, mix, generation = 0, enabled = false, musicArea;
   return {
     async enable() {
       const AudioCtx = window.AudioContext || window.webkitAudioContext;
       if (!AudioCtx) throw Error('Audio is unavailable in this browser.');
       ctx ||= new AudioCtx(); await ctx.resume(); enabled = true;
-      if (!buffers.dedede) {
-        const entries = await Promise.all(Object.entries(manifest).map(async ([name, asset]) => {
-          const response = await fetch(new URL(asset.url, base)); if (!response.ok) throw Error('Character call could not load.');
+      if (!buffers.dedede || !buffers.dream) {
+        const entries = await Promise.all([...Object.entries(manifest).map(([name, asset]) => [name, asset, base]),
+          ...Object.entries(music.manifest).map(([name, asset]) => [name, asset, music.base])].map(async ([name, asset, assetBase]) => {
+          const response = await fetch(new URL(asset.url, assetBase)); if (!response.ok) throw Error('Audio asset could not load.');
           return [name, await ctx.decodeAudioData(await response.arrayBuffer())];
         }));
         buffers = Object.fromEntries(entries);
       }
     },
-    play(time, timeline, options) { this.stop(); if (enabled && ctx?.state === 'running') mix = scheduleMix(ctx, buffers, timeline, { ...options, time }, ctx.destination); },
+    play(time, timeline, options) { this.stop(); if (enabled && ctx?.state === 'running') { musicArea = options.area; mix = scheduleMix(ctx, buffers, timeline, { ...options, time }, ctx.destination); } },
     stop() { mix?.stop(); mix = null; generation++; },
     volume(value) { if (mix) mix.master.gain.setTargetAtTime(value, ctx.currentTime, .02); },
-    get state() { return { enabled, context: ctx?.state || 'not-started', active: mix?.active.size || 0, generation, loaded: Object.keys(buffers) }; },
+    get state() { return { enabled, context: ctx?.state || 'not-started', active: mix?.active.size || 0, generation, loaded: Object.keys(buffers), musicArea: mix ? musicArea : null }; },
     async audition(timeline, options) {
       const offline = new OfflineAudioContext(2, Math.ceil((timeline.total + 2) * 44100), 44100);
       scheduleMix(offline, buffers, timeline, options, offline.destination);

@@ -160,8 +160,13 @@ export function cueRenderer(canvas, background) {
         ctx.globalCompositeOperation = 'screen';
         glow(W * .5, H * .76, H * .25, '#6bbfff', .22 * (1 - clamp(time / 3)));
         if (count === 10 && !reduced) {
-          ctx.strokeStyle = '#8bbdff22'; ctx.lineWidth = S; ctx.beginPath();
-          lights.filter(l => l.alpha > .1).forEach((l, i) => i ? ctx.lineTo(l.x * W, l.y * H) : ctx.moveTo(l.x * W, l.y * H)); ctx.stroke();
+          const visible = lights.filter(l => l.alpha > .1);
+          ctx.strokeStyle = '#8bbdff22'; ctx.lineWidth = S; ctx.lineJoin = 'round'; ctx.beginPath();
+          if (visible.length) for (let i = 0; i <= 48; i++) {
+            const p = flightPoint(visible[0].local + (visible.at(-1).local - visible[0].local) * i / 48);
+            i ? ctx.lineTo(p.x * W, p.y * H) : ctx.moveTo(p.x * W, p.y * H);
+          }
+          ctx.stroke();
         }
         ctx.globalCompositeOperation = 'source-over';
         [...lights].sort((a, b) => a.y - b.y).forEach(light => carrier(light, area, count, time, reduced));

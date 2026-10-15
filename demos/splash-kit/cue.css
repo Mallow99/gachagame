@@ -55,6 +55,7 @@ canvas { display:block; width:100%; height:100%; }
 .mix-controls input { accent-color:var(--gold); }
 #volume { width:7rem; }
 #audioStatus { color:var(--muted); font-size:.9rem; }
+#musicTrack { flex-basis:100%; color:var(--muted); font-size:.9rem; }
 .transport { display:flex; flex-wrap:wrap; align-items:center; gap:.7rem 1rem; padding:1rem; background:#100a1b; }
 #play { background:var(--gold); color:var(--ink); border-color:var(--gold); }
 .transport output { margin-left:auto; font-variant-numeric:tabular-nums; color:var(--muted); }

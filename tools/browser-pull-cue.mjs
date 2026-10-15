@@ -3,13 +3,13 @@ import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
 const require = createRequire(import.meta.url);
 const { chromium } = require(process.env.POCKET_PLAYWRIGHT_MODULE || 'playwright');
-const out = process.argv[2] || 'out/pull-cue-02';
+const out = process.argv[2] || 'out/pull-cue-03';
 const url = process.argv[3] || 'http://localhost:8080/demos/splash-kit/cue.html';
 mkdirSync(out, { recursive: true });
 const executablePath = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH || ['/usr/bin/chromium', '/usr/bin/chromium-browser'].find(existsSync);
 const browser = await chromium.launch({ executablePath, args: ['--no-sandbox', '--disable-gpu'] });
 try {
-  const page = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
+  const page = await browser.newPage({ viewport: { width: 1280, height: 1300 } });
   const errors = [], missing = [];
   page.on('pageerror', e => errors.push(e.message));
   page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
@@ -23,7 +23,9 @@ try {
   const before = await page.evaluate(() => JSON.stringify({ ...localStorage }));
   const receipt = JSON.stringify((await state()).results);
   assert.equal((await state()).tier, 'SSR');
+  assert.match(await page.locator('#musicTrack').textContent(), /Fountain of Dreams.*Adventure/);
   await seek(.9); await shot('fountain-launch');
+  await seek(2.2); await shot('smooth-launch-join'); await seek(6.4); await shot('smooth-approach-join');
   await seek(6.6); assert.equal((await state()).lights[9].rank, 2); assert.equal(await page.locator('#urNotice').isVisible(), false); await shot('ssr-gold');
   await page.locator('[data-tier="UR"]').click(); await ready();
   assert.equal(await page.locator('#urNotice').isVisible(), true);
@@ -51,13 +53,16 @@ try {
   await page.locator('#cueStage').click();
   await page.waitForFunction(() => cueReview.state.playing && cueReview.state.phase === 'quote');
   assert.ok((await state()).audio.active > 0);
-  assert.deepEqual((await state()).audio.loaded.sort(), ['bowser', 'dedede']);
+  assert.deepEqual((await state()).audio.loaded.sort(), ['bowser', 'dedede', 'dream', 'mushroom']);
+  assert.equal((await state()).audio.musicArea, 'dream');
   await page.locator('#cueStage').press('Enter'); await page.waitForFunction(() => cueReview.state.phase.startsWith('angle'));
   assert.equal(await page.locator('#heroPlate').isVisible(), false);
+  const filteredHigh = filtered.segments.find(s => s.high);
+  await seek(filteredHigh.start + filteredHigh.quote + .1);
   await page.locator('#advance').click(); await page.waitForFunction(() => cueReview.state.playing);
-  const advanced = await state(), filteredHigh = filtered.segments.find(s => s.high);
-  // Scrolling the real button into view can outlast the short pullback on a
-  // software-rendered browser. Verify the jump, not a transient frame race.
+  const advanced = await state();
+  // Seek pauses the shot before the click, avoiding a race with the short
+  // automatic camera sequence on a software-rendered test browser.
   assert.ok(advanced.elapsed >= filteredHigh.start + filteredHigh.quote + filteredHigh.entrance + filteredHigh.close, JSON.stringify(advanced));
   assert.ok(advanced.elapsed < filteredHigh.end);
   await page.locator('#play').click(); assert.equal((await state()).audio.active, 0);
@@ -91,7 +96,18 @@ try {
   await seek(1); await page.locator('#play').click(); await page.waitForFunction(() => cueReview.state.playing); await page.locator('#sound').uncheck();
   assert.equal((await state()).audio.active, 0); await page.locator('#skip').click();
   await page.locator('#area').selectOption('mushroom'); await ready(); await seek(6); await shot('mushroom-carrier');
+  assert.match(await page.locator('#musicTrack').textContent(), /Running About.*Super Mario Bros/);
+  const mushroomMix = await page.evaluate(async () => {
+    const b = await cueReview.audition(); let peak = 0, square = 0;
+    for (const sample of b.getChannelData(0)) { peak = Math.max(peak, Math.abs(sample)); square += sample * sample; }
+    return { peak, rms: Math.sqrt(square / b.length) };
+  });
+  assert.ok(mushroomMix.peak > .05 && mushroomMix.peak < .95);
+  assert.notEqual(mushroomMix.rms.toFixed(5), audition.rms.toFixed(5));
+  await page.locator('#sound').check(); await seek(1); await page.locator('#play').click();
+  await page.waitForFunction(() => cueReview.state.playing && cueReview.state.audio.musicArea === 'mushroom');
   await page.locator('[data-count="10"]').click(); await ready();
+  assert.equal((await state()).audio.active, 0); assert.equal((await state()).audio.musicArea, null);
   await page.setViewportSize({ width: 390, height: 844 }); await page.locator('#area').selectOption('dream'); await ready();
   await seek(.9); await shot('mobile-fountain-launch'); await seek(6); await shot('mobile-gold'); await page.screenshot({ path: `${out}/mobile-page.png`, fullPage: true });
   const mobile = await page.evaluate(() => cueReview.timeline.segments.find(s => s.high)), mobileArt = mobile.start + mobile.quote;
@@ -101,5 +117,5 @@ try {
   assert.deepEqual(errors, []); assert.deepEqual(missing, []);
   const failure = await browser.newPage(); await failure.route('**/display/*.webp', route => route.abort()); await failure.goto(url);
   await failure.waitForFunction(() => document.querySelector('#loading').textContent.includes('Reload to retry')); assert.equal(await failure.locator('#play').isDisabled(), true); await failure.close();
-  console.log(JSON.stringify({ passed: true, errors, missing, storageUnchanged: true, quoteSeconds: high.quote, audition, checks: 'SSR default and UR-only rainbow, tenth cue, angled shots, hidden badge/name until lock, SSR-only filter preserves receipt, click/keyboard advance, audio decode/play/stop/mute, objective offline mix, reduced motion, both areas, 390px layout, asset failure' }));
+  console.log(JSON.stringify({ passed: true, errors, missing, storageUnchanged: true, quoteSeconds: high.quote, audition, mushroomMix, checks: 'Smooth joins, separate sourced area music, SSR default and UR-only rainbow, tenth cue, angled shots, hidden badge/name until lock, SSR-only filter preserves receipt, click/keyboard advance, audio decode/play/stop/mute, both offline mixes, reduced motion, both areas, 390px layout, asset failure' }));
 } finally { await browser.close(); }

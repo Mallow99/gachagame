@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { CUE, sampleLights, makeTimeline, sampleReveal, advanceTime } from '../demos/splash-kit/cue-model.js';
+import { CUE, flightPoint, sampleLights, makeTimeline, sampleReveal, advanceTime } from '../demos/splash-kit/cue-model.js';
 import { cueAudioEvents } from '../demos/splash-kit/cue-audio.js';
 
 test('rarity cues accumulate through silver and gold before rainbow, without false upgrades', () => {
@@ -27,6 +27,23 @@ test('only the tenth travelling light carries the set cue and receipt order stay
   assert.deepEqual(timeline.segments.map(s => s.result), results);
   assert.equal(timeline.segments[5].result.rarity, 'SSR');
   assert.equal(timeline.segments[9].result.rarity, 'R');
+});
+
+test('flight joins preserve position, speed, acceleration and depth without snapping', () => {
+  const h = .0001;
+  for (const at of [CUE.launch, CUE.orbit, CUE.approach]) for (const axis of ['x', 'y', 'scale']) {
+    const f = t => flightPoint(t)[axis], middle = f(at);
+    const speedIn = (middle - f(at - h)) / h, speedOut = (f(at + h) - middle) / h;
+    const accelIn = (middle - 2 * f(at - h) + f(at - 2 * h)) / h ** 2;
+    const accelOut = (f(at + 2 * h) - 2 * f(at + h) + middle) / h ** 2;
+    assert.ok(Math.abs(f(at - h) - f(at + h)) < .0002, `${at} ${axis} position`);
+    assert.ok(Math.abs(speedIn - speedOut) < .002, `${at} ${axis} speed`);
+    assert.ok(Math.abs(accelIn - accelOut) < .02, `${at} ${axis} acceleration`);
+  }
+  for (let time = 0; time < CUE.contact; time += 1 / 120) {
+    const p = flightPoint(time);
+    assert.ok(p.x >= 0 && p.x <= 1 && p.y >= 0 && p.y <= 1 && p.scale > 0);
+  }
 });
 
 test('SSR and UR preserve the quote, change slants, then lock before rarity and name', () => {
@@ -85,8 +102,11 @@ test('audio keeps music outside voice and blackout windows and reserves rainbow 
   assert.equal(events.filter(e => e.kind === 'voice').length, 1);
   assert.ok(!events.some(e => e.kind === 'rainbow'));
   assert.ok(cueAudioEvents(timeline, 'UR').some(e => e.kind === 'rainbow'));
-  assert.ok(!events.some(e => e.kind === 'music' && e.at > segment.start - .65 && e.at < segment.start + segment.quote));
-  assert.ok(!events.some(e => e.kind === 'music' && e.at > CUE.contact - .7 && e.at < CUE.impact + .5));
+  for (const music of events.filter(e => e.kind === 'music')) {
+    assert.ok(music.end > music.at);
+    assert.ok(music.end <= segment.start - .18 || music.at >= segment.start + segment.quote + .08);
+    assert.ok(music.end <= CUE.contact - .35 || music.at >= CUE.impact + .3);
+  }
 });
 
 test('cue cutouts retain verified source provenance and reproducible output hashes', () => {
@@ -114,5 +134,21 @@ test('native character calls retain credited originals and verified playback ass
     assert.ok(asset.source.url && asset.source.page && asset.source.credit && asset.source.archiveSha256);
     assert.ok(asset.duration > 1 && asset.duration < 2);
     assert.match(asset.caption, /^\[.+\]$/);
+  }
+});
+
+test('area music uses distinct, credited source-game recordings long enough for slower ten-pulls', () => {
+  const dir = new URL('../demos/splash-kit/assets/audio/areas/', import.meta.url);
+  const manifest = JSON.parse(readFileSync(new URL('SOURCES.json', dir)));
+  assert.deepEqual(Object.keys(manifest).sort(), ['dream', 'mushroom']);
+  assert.notEqual(manifest.dream.sha256, manifest.mushroom.sha256);
+  assert.equal(manifest.dream.game, "Kirby's Adventure");
+  assert.equal(manifest.mushroom.game, 'Super Mario Bros.');
+  const preview = makeTimeline(['R', 'R', 'SR', 'R', 'R', 'SSR', 'R', 'SR', 'R', 'R'].map(rarity => ({ rarity })), 'UR');
+  for (const asset of Object.values(manifest)) {
+    assert.equal(createHash('sha256').update(readFileSync(new URL(asset.url, dir))).digest('hex'), asset.sha256);
+    assert.ok(asset.duration > preview.total / .75 + 1);
+    assert.ok(asset.source.url && asset.source.page && asset.source.credit && /^[a-f0-9]{64}$/.test(asset.source.sha256));
+    assert.match(asset.processing, /No pitch or tempo change/);
   }
 });

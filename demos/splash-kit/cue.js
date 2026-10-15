@@ -6,7 +6,7 @@ const $ = id => document.getElementById(id);
 const gameRoot = new URL(document.querySelector('meta[name="game-root"]').content, location.href);
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 let tier = 'SSR', count = 10, elapsed = 0, playing = false, frame = 0, last = 0, ready = false, revision = 0, playAttempt = 0;
-let receipt, timeline, renderer, portraits, cutouts, content, gacha, saves, mix, voiceManifest, lastPhase = '', previewState, chapterList = [];
+let receipt, timeline, renderer, portraits, cutouts, content, gacha, saves, mix, voiceManifest, musicManifest, lastPhase = '', previewState, chapterList = [];
 
 function pause() { playing = false; playAttempt++; cancelAnimationFrame(frame); mix?.stop(); }
 function seek(time) { pause(); elapsed = Math.max(0, Math.min(timeline.total, time)); render(); }
@@ -88,6 +88,8 @@ async function rebuild() {
     receipt = next; timeline = makeTimeline(receipt.results, tier, { highOnly: $('highOnly').checked });
     $('highOnly').disabled = count === 1;
     $('urNotice').hidden = tier !== 'UR';
+    const song = musicManifest[$('area').value];
+    $('musicTrack').textContent = `Music: ${song.title} · ${song.game} (${song.year})`;
     lastPhase = '';
     $('seek').max = timeline.total;
     receipt.results.forEach(result => {
@@ -210,14 +212,15 @@ new ResizeObserver(() => render()).observe($('cueStage'));
 window.cueReview = { get state() { return { ...previewState, ready, playing, audio: mix?.state }; }, get timeline() { return timeline; }, get chapters() { return chapterList; }, seek, advance, async audition() { await mix.enable(); return mix.audition(timeline, audioOptions()); } };
 
 try {
-  const [contentModule, saveModule, gachaModule, manifest, prepared, calls, background] = await Promise.all([
+  const [contentModule, saveModule, gachaModule, manifest, prepared, calls, music, background] = await Promise.all([
     import(new URL('src/content/index.js', gameRoot)), import(new URL('src/save/default-save.js', gameRoot)), import(new URL('src/gacha.js', gameRoot)),
     fetch(new URL('assets/portraits/source-era/manifest.json', gameRoot)).then(r => { if (!r.ok) throw Error('Portrait manifest unavailable.'); return r.json(); }),
     fetch(new URL('assets/cue-fighters/manifest.json', import.meta.url)).then(r => { if (!r.ok) throw Error('Cue cutout manifest unavailable.'); return r.json(); }),
     fetch(new URL('assets/audio/cue02/SOURCES.json', import.meta.url)).then(r => { if (!r.ok) throw Error('Native call manifest unavailable.'); return r.json(); }),
+    fetch(new URL('assets/audio/areas/SOURCES.json', import.meta.url)).then(r => { if (!r.ok) throw Error('Area music manifest unavailable.'); return r.json(); }),
     loadImage(new URL('assets/fountain-of-dreams/background.jpg', import.meta.url)),
   ]);
-  content = contentModule.content; saves = saveModule; gacha = gachaModule; portraits = manifest; cutouts = prepared; voiceManifest = calls;
-  mix = cueAudio(calls, new URL('assets/audio/cue02/', import.meta.url));
+  content = contentModule.content; saves = saveModule; gacha = gachaModule; portraits = manifest; cutouts = prepared; voiceManifest = calls; musicManifest = music;
+  mix = cueAudio(calls, new URL('assets/audio/cue02/', import.meta.url), { manifest: music, base: new URL('assets/audio/areas/', import.meta.url) });
   renderer = cueRenderer($('cueCanvas'), background); await rebuild();
 } catch (error) { $('loading').textContent = `Could not prepare the stage. Reload to retry. ${error.message}`; }

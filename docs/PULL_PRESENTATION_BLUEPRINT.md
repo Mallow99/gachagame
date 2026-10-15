@@ -1,5 +1,15 @@
 # Pull presentation blueprint 02
 
+## Current pass: visual cue 03
+
+The owner liked cue 02 overall and preferred native character sounds to scarce
+spoken lines. Cue 03 adds sourced area-game music and smooth curve joins/thread
+rendering. It preserves the approved timing/camera/control direction below.
+Music is silent through the native-call window and impact, with short fades on
+either side. Spoken quote selection is optional, no longer a completion blocker.
+One genuine classic Dedede character/action proof is the proposed next gate,
+not production integration or broad roster/UI work. Cue 03 awaits owner review.
+
 ## Latest review: visual cue 02 camera and audio pass
 
 On 2026-10-15 (America/Chicago), the owner accepted this direction with changes:

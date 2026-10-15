@@ -1,5 +1,34 @@
 # Start the next chat here
 
+## Newest: visual cue 03 area music and smooth orbit (2026-10-15 UTC)
+
+Branch `codex/v1-playable`. The owner said cue 02 is “looking pretty good” and
+prefers native sounds given scarce voice lines. They asked for area-based music,
+a smoother spin/track, and the next stage. Exact verdict: `FEEDBACK.md`.
+
+Current private review remains <https://dedede-v3-review.berryowlet9.chatgpt.site/cue.html>.
+Cue 03 replaces the transposed procedural music figure with credited Adventure
+Fountain of Dreams / SMB Running About recordings. `prepare-cue-music.py`
+verifies full-download hashes then bakes 48-second normal-tempo beds. Outputs,
+URLs and processing are in `assets/audio/areas/SOURCES.json`; full downloads
+stay in the rebuild cache, not the runtime. Music windows fade clear of calls
+and screen impact. All music/call/effect sources share stop/seek/mute semantics.
+
+The motion model now matches position, velocity, acceleration AND depth across
+launch/orbit/approach; orbit angular speed is steady. The thread follows dense
+samples of the same curve, not straight links between dots. Quote holds stay
+4 s SSR / 4.8 s UR, camera and identity ordering unchanged, rainbow UR-only,
+all receipt results retained. Game content/economy and production saves unchanged.
+Verification: `docs/validation/pull-cue-03.md`.
+
+Next proposal, not implemented or approved yet: ONE classic Dedede SSR payoff
+with genuinely separated pieces, painted hidden surfaces, a short deliberate
+hammer/body action and surrounding FX timed to camera and lock. Compare to v2
+before expanding to the roster. Native sounds are the accepted current direction;
+do not block this on sourcing spoken quotes. After owner approval, generalize
+the payoff data and integrate the committed-receipt theater, then address game
+UI/code cleanup. Do not jump straight to broad production integration now.
+
 ## Newest: visual cue 02 camera and audio (2026-10-15 UTC)
 
 Branch: `codex/v1-playable`. The owner liked cue 01 as a step in the right

@@ -28,10 +28,14 @@ the pipeline: `SOURCES.json` → `tools/splash-kit/prepare_art.py` → `rigs/<id
 - **Let reveals breathe:** the owner explicitly corrected their timing complaint: the quote time was fine.
   Keep the current 4 s SSR / 4.8 s UR windows unless they request another change. Rainbow is UR only; default
   reviews should show gold SSR, with any SSR art used for UR clearly labelled as an effects stand-in.
+- **Area music and smooth travel:** each area should have its own game music, not the same synth figure
+  transposed. Keep music clear of calls/impact. Travel must join launch, lap and approach smoothly; the
+  ten-light thread follows the actual curve, not straight cornered chords.
 - **Keep from earlier studies:** the Fountain of Dreams setting, a small KING above a large DEDEDE, and the visible
   source game and year.
-- **Quotes need a real recording.** The current Dedede quote was invented and has none. Never change rarity, units
-  or banner data without the owner.
+- **Native character sounds are valid.** The owner prefers the current nonverbal calls given the scarcity of
+  voice lines. Keep captions honest; a spoken quote is optional, not a mandatory sourcing task. Never change
+  rarity, units or banner data without the owner.
 
 ## Working method
 
