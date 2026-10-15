@@ -1,5 +1,10 @@
 # King Dedede: one-character SSR proof
 
+**Review verdict: rejected by the owner.** This is a retained first experiment,
+not an approved SSR treatment. See `docs/NEXT_CHAT.md` for the exact art, motion,
+rarity buildup and missing-voice feedback. No revision was implemented before
+the requested fresh-chat checkpoint. Keep the liked fountain and title layout.
+
 Private review only. This prototype does not load or modify a game account,
 generate a result, spend currency, change rarity or change the character kit.
 

@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-15T01:13:39.439154+00:00",
+  "method": "Fresh empty-directory export using only game Git checkout sources; check local HTML/CSS image/font/script/link/poster paths using browser URL semantics.",
+  "entrypoints": [
+    "index.html",
+    "motion-references/index.html",
+    "cubism/index.html",
+    "references/index.html"
+  ],
+  "local_references": 36,
+  "reference_movies": 7,
+  "missing": [],
+  "publication_changed": false,
+  "limits": "Structural asset/source check, not a new browser visual acceptance test."
+}

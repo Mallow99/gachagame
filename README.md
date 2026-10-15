@@ -1,5 +1,12 @@
 # Pocket Gacha
 
+**Continuing in a new chat:** start with [docs/NEXT_CHAT.md](docs/NEXT_CHAT.md)
+and [the current checked plan/status queue](docs/plan/26_V1_STATUS_AND_CURRENT_QUEUE.md).
+Use GitHub branch **`codex/v1-playable`**. The functional game is implemented;
+presentation/feel and native M2 acceptance are unfinished. Dedede review 03 was
+rejected; the next investigation is simpler **animated splash art** workflows,
+with a better tiered summon and actual voice, before full Cubism production.
+
 A personal desktop gacha RPG. Four fighters roam and fight along the bottom of
 your screen while you work. The Paper Manual holds the Atlas, party, summon
 pages and live rules. No store and no real money.
@@ -80,9 +87,10 @@ See [the build report](docs/V1_BUILD_REPORT.md), [balance evidence](docs/validat
 Game-specific sprite replacements, source-game pull art and an animated
 [sprite review](docs/SPRITE_REVIEW.md) are now included. Native captures use the
 actual BattleView; Chromium checks cover the playable flow and 360 × 600 Manual.
-The owner rejected the narrow summon layout and isolated-character pull art;
-[the presentation research reset](docs/GACHA_REDESIGN_RESEARCH.md) now defines
-the next pass around the approved Mario full-art examples. Compare references
+The owner rejected the narrow summon layout, isolated-character pull art and
+the first Dedede animated study. [The latest feedback and next-chat handoff](docs/NEXT_CHAT.md)
+define the next pass; the earlier static-art-only interpretation is superseded.
+Compare the approved Mario layout/pacing references
 and the native wide-window proof at `/docs/validation/reveal-redesign/index.html`.
 Sparse pose sets, some signatures/audio and a real M2 desktop pass remain work.
 The animated comparison runs at `/docs/validation/sprite-review/index.html`.

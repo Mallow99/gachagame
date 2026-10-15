@@ -1,5 +1,12 @@
 # Next build handoff
 
+> **Current execution update (2026-10-14):** continue `codex/v1-playable` and read
+> [plan 26](26_V1_STATUS_AND_CURRENT_QUEUE.md) before this historical sequence.
+> SaveV4, the roaming loop, Manual, both first Worlds and live Source
+> Spotlights/Supply have been implemented. Final presentation, full Archive
+> pools, human feel and native M2 acceptance remain open. Do not restart PG-003.
+
+
 Status: **executable handoff v1, 2026-10-14**
 
 This is the short path from the current PG-001/PG-002 branch to a working,
@@ -27,7 +34,7 @@ That is a working game slice. Twenty-two Mushroom fighters, twenty-two Dream
 Land fighters and final summon art are subsequent production, not tomorrow's
 definition of success.
 
-## 2. Current repository state
+## 2. Historical repository snapshot before the v1 implementation
 
 - PG-001 and PG-002 are complete.
 - Tests cover the current content seams, seeded randomness and compatibility.
@@ -166,7 +173,7 @@ Head and Whispy Woods, followed by the seven Copy profiles.
 
 | Question | Authoritative file |
 | --- | --- |
-| what to code next | this file and `07_TODAY_BUILD_TICKETS.md` |
+| what to code next | `26_V1_STATUS_AND_CURRENT_QUEUE.md` and `../NEXT_CHAT.md`; the sequence above is historical |
 | combat math/ultimate floors | `02_SYSTEMS_AND_BALANCE.md` |
 | data and SaveV4 shape | `08_DATA_AND_SAVE_CONTRACTS.md` |
 | first 15 encounters/rewards | `12_FIRST_RELEASE_CONTENT.md` |

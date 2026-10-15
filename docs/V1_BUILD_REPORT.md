@@ -1,5 +1,14 @@
 # v1 playable build evidence
 
+Current handoff: [NEXT_CHAT.md](NEXT_CHAT.md) and the
+[checked plan/status queue](plan/26_V1_STATUS_AND_CURRENT_QUEUE.md).
+The game is pushed on GitHub branch `codex/v1-playable`. The separate wide
+Dedede iteration 03 was also **rejected** for its art/motion, weak rarity buildup
+and missing voiced quote; its browser/hosted checks remain technical evidence.
+The desired next treatment is an animated splash, with simpler/free workflows
+under investigation and full Cubism production deferred. No next iteration
+has been implemented after that review.
+
 The owner has rejected the current summon presentation's narrow layout and
 isolated-character artwork. Its functional checks remain technical evidence;
 the intended visual standard is the approved Mario full-art demo. The necessary
@@ -7,7 +16,7 @@ presentation redesign is documented in [the research reset](GACHA_REDESIGN_RESEA
 
 Base: the latest merged planning push, `codex/pg001-pg002`, commit
 `ef450706ee74c709c7630b6e4ab94d7fa93be362`, 2026-10-14. Work is on isolated
-local `codex/v1-playable`. The original planning corpus remains intact.
+`codex/v1-playable`, now pushed to GitHub. The original planning corpus remains intact.
 
 ## Implemented
 

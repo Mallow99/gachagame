@@ -1,5 +1,19 @@
 # Mushroom Kingdom production packet
 
+## Current implementation checkpoint — 2026-10-14
+
+- [x] 15 SMB courses implemented with reference-fight/progression evidence.
+- [x] Current v1 subset: **10 fighter records**, plus eight Power-Ups and
+  eight Assists for this Hub; live Source Spotlights/Supply are implemented.
+- [ ] This packet's **full 22-fighter opening Archive** and growth gates.
+- [ ] Final sprite/signature/pull-art quality acceptance for the complete packet.
+- [ ] Owner-approved summon presentation and native M2/human playtest.
+
+The regional Archive correctly remains a non-spendable preview. Read
+[plan 26](26_V1_STATUS_AND_CURRENT_QUEUE.md) for current status; the packet below
+is the complete longer-term target, not a shipped-roster claim.
+
+
 Status: **opening roster spec-ready; asset/code production packet v1, 2026-10-14**
 
 This file is the handoff for implementing Mushroom Kingdom without rereading

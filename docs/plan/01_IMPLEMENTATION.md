@@ -1,5 +1,12 @@
 # Implementation sequence
 
+> **Current execution update (2026-10-14):** continue `codex/v1-playable` and read
+> [plan 26](26_V1_STATUS_AND_CURRENT_QUEUE.md) before this historical sequence.
+> SaveV4, the roaming loop, Manual, both first Worlds and live Source
+> Spotlights/Supply have been implemented. Final presentation, full Archive
+> pools, human feel and native M2 acceptance remain open. Do not restart PG-003.
+
+
 This is the coding order. It protects the user's central request—build the
 game before producing a giant cast—while making the first real banners arrive
 soon enough to judge the complete loop.

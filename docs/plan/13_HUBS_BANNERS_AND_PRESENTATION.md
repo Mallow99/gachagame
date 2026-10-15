@@ -1,5 +1,28 @@
 # Hubs, banners and presentation addendum
 
+## Current presentation acceptance update — 2026-10-14
+
+The owner rejected the narrow theater and Dedede iteration 03. Read
+[`../NEXT_CHAT.md`](../NEXT_CHAT.md) and
+[plan 26](26_V1_STATUS_AND_CURRENT_QUEUE.md) before treating technical checks as
+presentation acceptance. The target is **animated splash art**: a strong central
+character with coordinated life, coherent surroundings and active effects.
+A full Cubism rig is not required; easier/free/open-source workflows are under
+investigation, and full Cubism production remains deferred until after v1.
+
+The next summon proof needs stronger visible/audible buildup and a real sourced
+voice matching the quote, with intentional transition into its music. The
+owner wants a lower-tier start (blue, or yellow as an alternative), progressive
+rarity changes, a **Warp Star formed for SSR** and a **rainbow Warp Star for UR**.
+Do not start every rarity as an already-complete Warp Star. R/SR should remain
+shorter than the full SSR/UR ceremony. Compare tier signals without changing
+existing fighter rarities or creating new UR content.
+
+Keep Dedede's liked fountain setting, smaller KING / larger DEDEDE and source
+game/year label. Its old flat image and isolated moving hammer are rejected.
+The requirement is the result, not a mandatory library or single static
+painting. No replacement has been implemented after this review.
+
 Status: **definitive addendum v1, 2026-10-13**
 
 This document resolves the apparent conflict between region-based exploration

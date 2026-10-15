@@ -1,11 +1,15 @@
 # Pocket Gacha: roadmap
 
-**Current implementation:** the v1 pass is on local `codex/v1-playable` from
-the latest planning push. Both first Worlds, SaveV4, independent gauges, the
-Manual, 28 fighters and summon theater are implemented. Read
-[the build evidence and limits](docs/V1_BUILD_REPORT.md). Archives, final assets
-and an actual M2 desktop smoke pass remain production work. The “Where we are”
-and PG-003 “next” statements below are historical.
+**Current checkpoint:** the playable game is committed and pushed on GitHub
+branch **`codex/v1-playable`**. Start the next chat with
+[the handoff](docs/NEXT_CHAT.md) and
+[the checked implementation/status queue](docs/plan/26_V1_STATUS_AND_CURRENT_QUEUE.md).
+SaveV4, roaming combat, both first Worlds (35 courses), 28 fighters, progression,
+Source Spotlights/Supply and the Manual work. Final regional Archives, human
+fun/visual acceptance and a native M2 pass remain open. **Dedede iteration 03
+was rejected**, despite passing technical checks. Animated splash art, a better
+tiered summon and real voiced quotes are the next presentation work. Cubism
+production remains deferred; simpler/free workflows are being investigated.
 
 Read this first. `HANDOFF.md` has the history and technical detail; this file
 says what we are building and in what order.
@@ -15,26 +19,13 @@ Keep infrastructure small, but do not simplify away the motion that makes a
 character recognizable. Polish pulls, signature combat behavior and SSR/UR
 presentation first. Personal use only.
 
-**Where we are:** build the playable game first. Character production and the
-art picker are paused until the strip loop works. PG-001/PG-002 plus the audited
-equipment/content contracts are complete on `codex/pg001-pg002`; the next code
-ticket is PG-003 SaveV4/migration, followed by the real-time gauge work in
-PG-004. The definitive modular plan begins at
-[`docs/plan/README.md`](docs/plan/README.md); it supersedes earlier planning
-where they conflict. The approved structure is a branching Atlas where a Saga
-is rendered as a franchise Hub, its Archive can contain production-ready
-iterations from several games, and each World normally adapts one specific
-game. Major Worlds can be 25 stages, smaller titles can be 5–20, and a Saga has
-no fixed cap. The first
-production Worlds are the 15-stage *Super Mario Bros.* and the 20-stage
-*Kirby's Adventure*. For the next coding session, execute
-[`docs/plan/07_TODAY_BUILD_TICKETS.md`](docs/plan/07_TODAY_BUILD_TICKETS.md)
-in order; the data/save shapes it references are in plan document `08`. The
-summon/Hub decisions, expanded rosters and the equipment/Copy audit are in
-documents `13`–`18`. Content-density rules, the implementation-ready
-Mushroom/Dream production packets, Zelda/Metroid/Terraria planners and the
-current coding handoff are documents `19`–`25`; start the next coding session
-with [`docs/plan/25_NEXT_BUILD_HANDOFF.md`](docs/plan/25_NEXT_BUILD_HANDOFF.md).
+**Where we are:** finish a palatable playable v1, with small visible
+presentation iterations. The full design corpus is in `docs/plan/`; its latest
+execution/status addendum is plan **26**. Plans 01/07/25 retain the original
+implementation sequence for reference, but their SaveV4/first-stage “next”
+instructions have been completed. The roadmap sections below describe the
+longer-term design and historical milestones, not a claim that every larger
+roster or acceptance gate has shipped. Consult plan 26 for actual checkboxes.
 
 ---
 
@@ -140,7 +131,7 @@ complete distinct fighter kit.
 
 Make adding a character mostly data entry.
 
-**Paused after its first tool:** the Pixiv picker produces a local,
+**Historical foundation/picker note (current systems are implemented; see plan 26):** the Pixiv picker produces a local,
 bookmark-ranked gallery (60 works by default), supports filtering and ordered
 favorites, remembers the selection, and exports `picks.json`. The generated
 page was visually checked at desktop and phone widths with the six approved
@@ -165,16 +156,10 @@ working.
 
 ## Roadmap 2: the strip (the playable core)
 
-**In progress:** Electron now starts as the real full-width bottom strip and
-switches to management when its HUD is clicked. Combat was rebuilt from the
-approved `demos/strip/` prototype: frontliners roam, ranged dev fixtures hold
-back and Mario-style stomp units jump onto targets. Visible action gauges
-already expose readiness; the redundant NEXT queue is scheduled for removal.
-Stages have three waves and five rotating encounter rules. The strip is
-transparent, click-through, hidden by `×`, menu bar or `Cmd+Shift+G`, and absent
-from full-screen spaces. The management window has an exact Field Manual for
-every current formula. Passives, ultimate meters/cut-ins, transformations,
-Assist Pages and reward drops are still pending.
+**Implemented at v1 scope:** the strip and observer Manual, independent
+gauges, roaming combat, 35 courses, passives/skills/ultimates, Assists and rewards
+are present. Linux Electron save/IPC/relaunch checks pass. Human feel approval
+and native M2 shell/performance checks remain open; see plan 26.
 
 - An Electron window that is transparent, always on top, sits along the
   bottom of the screen and passes clicks through.
@@ -277,7 +262,8 @@ Assist Pages and reward drops are still pending.
 - Better sprites once tools can make good ones on the first try.
 - Reddit and Bluesky as art sources (needs the owner's API keys; see
   `HANDOFF.md` §6).
-- Live2D-style animated splashes.
+- Full Cubism production after v1. A simpler animated splash is current v1
+  research/work, not merely a someday feature.
 
 ---
 

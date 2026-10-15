@@ -1,6 +1,6 @@
 # Pocket Gacha definitive plan
 
-Status: **planning baseline v6, 2026-10-14**
+Status: **planning baseline v6; v1 execution/status addendum updated 2026-10-14**
 
 Scope: the game to build over the next several weeks, not a promise to produce
 the entire crossover catalog immediately.
@@ -9,6 +9,16 @@ This directory is the source of truth for new work. `ROADMAP.md` remains the
 short task queue, `HANDOFF.md` remains the project history, and
 `docs/WORLD_TOUR_PLAN.md` remains the earlier design exploration. If they
 disagree with this directory, this directory wins.
+
+## Current checkpoint: read before the historical coding order
+
+Continue GitHub **`codex/v1-playable`**. Read
+[`26_V1_STATUS_AND_CURRENT_QUEUE.md`](26_V1_STATUS_AND_CURRENT_QUEUE.md) and
+[`../NEXT_CHAT.md`](../NEXT_CHAT.md) first. Plan 26 records completed functional
+milestones, open Archive/visual/M2 gates and the current animated-splash queue.
+The owner authorized a broader v1 pass after plans 07/25 were written. Their
+“PG-003 next” / “four provisional units” snapshots are historical. The latest
+Dedede proof was rejected; its technical tests are not visual acceptance.
 
 ## Read order
 
@@ -73,6 +83,9 @@ disagree with this directory, this directory wins.
     pre-Hardmode/Hardmode Worlds, class fighters, bosses, Accessories and NPCs.
 25. [`25_NEXT_BUILD_HANDOFF.md`](25_NEXT_BUILD_HANDOFF.md) — the executable
     next coding sequence and honest owner-visible target for the next build.
+
+26. [`26_V1_STATUS_AND_CURRENT_QUEUE.md`](26_V1_STATUS_AND_CURRENT_QUEUE.md) —
+    current implementation checkboxes, open gates and next-chat queue.
 
 ## The one-sentence game
 

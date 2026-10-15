@@ -1,7 +1,15 @@
 # Today's build tickets
 
-Status: **PG-001 and PG-002 complete; audited equipment/content extension
-complete; PG-003 is next.**
+> **Current execution update (2026-10-14):** continue `codex/v1-playable` and read
+> [plan 26](26_V1_STATUS_AND_CURRENT_QUEUE.md) before this historical sequence.
+> SaveV4, the roaming loop, Manual, both first Worlds and live Source
+> Spotlights/Supply have been implemented. Final presentation, full Archive
+> pools, human feel and native M2 acceptance remain open. Do not restart PG-003.
+
+
+Original ticket baseline: **PG-001/002 complete at writing.** Current status:
+**PG-003–015 functional work substantially implemented; PG-016/017 partial.**
+See plan 26 for acceptance limits and the actual next queue.
 
 This is the executable queue for the next coding session. It translates the
 larger plan into changes that fit the existing vanilla-JavaScript/Electron app.

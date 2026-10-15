@@ -1,6 +1,29 @@
 # Animated fighter art and Cubism — owner direction, 2026-10-14
 
-## Production decision — 2026-10-15
+## Latest owner review: animated splash, iteration 03 rejected
+
+Read [the fresh-chat handoff](NEXT_CHAT.md) and
+[the preliminary simpler-tool investigation](ANIMATED_SPLASH_OPTIONS.md) first.
+The owner clarified that the target is **animated splash art**, and asked to
+investigate easier/free/open-source routes rather than assuming a whole rig or
+Cubism is necessary. Full Cubism production stays deferred until after a
+palatable playable v1. No replacement workflow has been selected or proved.
+
+**Dedede iteration 03 failed visual acceptance:** poor image/isolated hammer
+swing, static remaining body, flat flight-to-quote transition, missing voice,
+awkward music entry and insufficient colour/rarity distinction. Keep the Warp
+Star idea, small KING / larger DEDEDE, source-game label and fountain setting.
+Next proof should start with a lower-tier signal, build through rarity colours,
+form a Warp Star for SSR and a rainbow Warp Star for UR. Find a real matching
+voice and improve coordinated character life. These are recorded requirements,
+not completed changes. No rarity reassignment is authorized.
+
+The prototype, seven JJK clips and Haru test remain preserved as evidence and
+references. Passing their browser checks did not make the rejected splash
+acceptable. Do not roll it across the roster. This latest review supersedes
+the older preferred-Cubism wording in the research history below.
+
+## Earlier production decision — 2026-10-14
 
 The owner authorized finishing a palatable, playable v1 before returning to
 full Cubism art production. Build **King Dedede (Kirby's Adventure, 1993)** as
@@ -16,7 +39,7 @@ compare it against the accepted v1 reveal before deciding on roster-wide work.
 The official Haru playback test proves runtime feasibility, not a custom rig.
 Preserve the layer/source files from the Dedede proof for that later work.
 
-### Dedede shortcut proof
+### Dedede shortcut proof — technically verified, visually rejected
 
 `demos/dedede-reveal/index.html` is the first reviewable implementation, exported
 to the [private review site](https://pocket-gacha-reveal-review.berryowlet9.chatgpt.site/?v=dedede-03).
@@ -70,7 +93,7 @@ The owner’s exact animation references are:
 | Satoru Gojo — Domain Expansion of 0.2 Seconds | Owner’s acceptable baseline, below the richer effects treatments. |
 
 All seven actual public card previews are playable in the
-[private review](https://pocket-gacha-reveal-review.berryowlet9.chatgpt.site/?v=motion-02).
+[private motion-reference board](https://pocket-gacha-reveal-review.berryowlet9.chatgpt.site/motion-references/index.html).
 Their source pages, original asset URLs, file sizes and SHA-256 hashes are in
 [cards.json](validation/animated-reveal-research/cards.json). Chromium verified
 that all seven decode and play. These clips are card-art loops, not evidence of

@@ -1,5 +1,32 @@
 # Pocket Gacha: handoff
 
+## Fresh-chat checkpoint — 2026-10-14, America/Chicago
+
+**Start with [docs/NEXT_CHAT.md](docs/NEXT_CHAT.md) and
+[plan 26's checked status/queue](docs/plan/26_V1_STATUS_AND_CURRENT_QUEUE.md).**
+The complete playable branch is pushed to GitHub as **`codex/v1-playable`**.
+The owner requested this final context/plan checkpoint before a new chat.
+
+**Dedede iteration 03 was rejected**, not approved: poor illustration and
+isolated hammer swing/static body, weak flight-to-quote buildup/noise, missing
+voice/awkward music timing, and no convincing colour/rarity progression. Keep
+the liked Warp Star idea, smaller KING / larger DEDEDE, game/year label and
+Fountain of Dreams setting. They want a lower-tier start that upgrades into
+an SSR Warp Star and a UR rainbow Warp Star. No unit rarity change is approved.
+
+The latest term/goal is **animated splash art**. Investigate simpler/free/open
+source layered/mesh/compositing workflows; Cubism is not a v1 prerequisite.
+The research only started before the pause. Read
+`docs/ANIMATED_SPLASH_OPTIONS.md` for verified links and unverified leads.
+No new art/voice/tool was acquired or implemented after that feedback.
+
+The current private Site still shows the rejected study. The game theater is
+also still unapproved. `tools/export-review-site.mjs` rebuilds all four hosted
+review pages from GitHub-retained sources; hosting identity and safe publishing
+instructions are in `docs/PRIVATE_REVIEW_HOSTING.md`. No cache, auth token or
+previous chat is required to run the current game or reconstruct that review.
+Older status paragraphs below are history; plan 26 is the actual next queue.
+
 ## Current playable branch — 2026-10-14
 
 **Latest production decision (2026-10-15):** the owner authorized a representative
@@ -46,10 +73,11 @@ The chat file viewer failed to open linked HTML even after embedding the images.
 The owner wants small visible iterations for sign-off before more extensive
 reveal work. Rebuild one SSR proof before extending the treatment. Reuse the
 owner-private Site at `/workspace/sites/gacha-reveal-review`, whose identity is
-in `.openai/hosting.json`; the game repository has not been pushed. This hosted
-page now includes the owner's seven animated Phantom Parade references and a
-real official-sample Cubism runtime test. It is not the replacement production
-theater. Its source links/credits and verification limits remain visible.
+in `.openai/hosting.json`; the game branch is now pushed to GitHub. The hosted
+root shows rejected Dedede iteration 03; the owner's seven animated Phantom
+Parade references are at `/motion-references/index.html` and the real official
+Cubism runtime test is at `/cubism/index.html`. It is not the replacement
+production theater. Its source links/credits and verification limits remain.
 
 The v1 implementation is on local `codex/v1-playable` from the latest planning
 push (`ef450706`). Read [the build report](docs/V1_BUILD_REPORT.md) and
