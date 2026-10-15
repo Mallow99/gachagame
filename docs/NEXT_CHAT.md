@@ -1,5 +1,36 @@
 # Start the next chat here
 
+## Newest: Nightmare storyboard 01 built for sequence review (2026-10-15 UTC)
+
+Branch `codex/v1-playable`. Owner approved the proposed storyboard-first plan:
+“Yes, all that seems well” / “please go ahead and continue with the plan.”
+Review: <https://dedede-v3-review.berryowlet9.chatgpt.site/nightmare.html>.
+Cue 04 remains at `/cue.html`, unchanged apart from a link to this new review.
+
+`nightmare.html` / `nightmare-board.css` / `nightmare-board.js` implement the
+clickable banner → confirmation → single/ten storyboard. Model and schematic
+Canvas drawings are separate `nightmare-board-model.js` / `-scene.js`. No images,
+generated background, final-art rig or audio are used. All sound/music/camera
+cues are written explicitly. The rejected experiment remains stashed and unused.
+
+Proposed single duration 30.35 s / ten 52.005 s; all beats can be stepped or
+scrubbed. Same shared timing/motion model as the current cue. Separate cloak,
+hands, cast/face angles, 2.6 s pullback, lock, letters, name, hold/resume. Ten
+fixture: SSR Dedede six, UR Nightmare eight, R last. Tenth signal never reorders.
+R/SR filtering skips entrances, not results. Fixtures are frozen, explicitly
+authored, free and not claimed as current-pool draws or published odds.
+
+Verified: 129 tests, no errors/missing responses in source/export browser QA,
+single/ten confirmation/cancel (including Escape after prior confirmation),
+camera/identity ordering, replay/skip/filter/resume, reduced-motion still frames,
+390/420px overflow and unchanged storage. Fifteen screenshots inspected. Report:
+`docs/validation/nightmare-storyboard-01.md`. No native phone/performance or
+subjective audio claim; no playable audio in this review.
+
+NEXT: owner's verdict on this storyboard. Iterate action/timing/banner if
+needed; then audio animatic, layer/action proof and only later production
+integration. This is not owner approval of the Nightmare art/performance.
+
 ## Newest: return to Nightmare storyboard; no AI background (2026-10-15 UTC)
 
 Branch `codex/v1-playable`. Cue 04 remains live and unchanged at

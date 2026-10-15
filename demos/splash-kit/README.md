@@ -1,5 +1,15 @@
 # Splash kit (Dedede reveal v3)
 
+Current sequence review: **[Nightmare storyboard 01](nightmare.html)**. Banner
+entry and free single/ten authored fixtures lead through the shared opening and
+explicit cloak / hands / camera / UR identity beats. Play, step or scrub;
+camera/music/sound lanes are written only. This is not a final rig, live banner
+or audio animatic. No generated images/backgrounds, rates or save changes.
+Dedede cue 04 remains the visual comparison. Await the owner's storyboard verdict.
+
+`node tools/browser-nightmare-board.mjs out/nightmare-board-01` verifies the
+sequence. `test/nightmare-board.test.js` covers timing/order/fixture contracts.
+
 A Dream Land banner you can actually pull on, a rarity-escalating Warp Star
 summon, and an animated SSR splash for King Dedede. The pulls run the game's
 real transaction (`src/gacha.js` `drawPulls`) on an in-memory demo save, so the

@@ -4,6 +4,35 @@ One entry per reviewed iteration. Record what the owner liked, what they
 disliked, and what is still needed, in their words where possible. Read this
 before changing anything here.
 
+## Nightmare storyboard plan — approved to build 2026-10-15 UTC
+
+Liked:
+- “Yes, all that seems well”.
+
+Disliked:
+- No new complaint in this message; the no-AI-background direction stands.
+
+Still needed:
+- “please go ahead and continue with the plan.”
+
+Built `nightmare.html` · Nightmare storyboard 01, not the finished rig/audio.
+One broad banner opens single/ten confirmation, then a deterministic sequence:
+shared cumulative UR opening; concealed character-sound window; screen-wide
+cloak; hands take its edges; cloak opens; casting / face slants; full pullback;
+lock; UR letters; name; hold and ten-pull resume. Camera/music/sound lanes are
+written beneath the stage. Placeholder vector shapes and grid only, no image
+background or generated assets. No actual audio plays in this review.
+
+The authored ten fixture puts Dedede SSR at six and Nightmare UR at eight;
+light ten still carries the maximum-rarity signal. Play/pause, beat stepping,
+scrubbing, Skip, replay, camera guides and R/SR filtering retain every result.
+No `drawPulls` call, production rates, pool edit, Starlight spending or save
+write is represented as real. The legacy playable transaction remains separate.
+
+Owner approval here was for the PLAN. **Storyboard 01 awaits visual verdict.**
+Next gate after that verdict: revise sequence as needed, then an audio animatic;
+only then resume the layer/action proof. Cue 04 remains available as baseline.
+
 ## Visual cue 04 / Nightmare proposal — reviewed 2026-10-15 UTC
 
 Verdict: cue 04 is approaching the desired result, not final approval. Return

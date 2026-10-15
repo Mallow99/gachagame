@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Nightmare storyboard 01 · Pocket Gacha</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="cue.css">
+<link rel="stylesheet" href="nightmare-board.css">
+</head>
+<body>
+<main>
+  <header><span>Nightmare storyboard 01</span><nav aria-label="Previous reviews"><a href="cue.html">Dedede cue 04</a><a href="blueprint.html">Original blueprint</a></nav></header>
+  <section class="intro"><h1>When the dream breaks.</h1><p>Review the banner, cloak action and camera order. Schematic drawings; written sound cues only.</p></section>
+  <section class="board-theater" aria-label="Banner and pull storyboard">
+    <div class="board-stage" id="boardStage" data-phase="banner">
+      <canvas id="boardScene" aria-label="Schematic pull sequence: fountain, travelling lights, cloak, hands and camera blocking"></canvas>
+      <div class="banner-copy" id="bannerCopy">
+        <p class="banner-source">Dream Land · Kirby’s Adventure (1993)</p>
+        <h2>Nightmare<br>at the fountain</h2>
+        <p class="banner-feature">UR Nightmare <span>SSR King Dedede</span></p>
+        <p class="banner-description">A proposed final-boss banner. Review its entrance and the pull that follows.</p>
+      </div>
+      <div class="board-identity" id="boardIdentity" hidden><span id="identityRarity"></span><h2 id="identityName" hidden>Nightmare</h2><p id="identitySource" hidden>Kirby’s Adventure · 1993</p></div>
+      <div id="concealedCall" class="concealed-call" hidden><p id="callLabel">A character sound in the dark</p><span>Character and identity stay concealed</span></div>
+      <p id="sceneLabel" class="scene-label">Banner composition · not final art</p>
+      <button id="tapAdvance" class="tap-advance" type="button" hidden>Next beat</button>
+    </div>
+    <div class="banner-actions" id="bannerActions">
+      <div><button data-pull="1" type="button">Review single pull</button><button data-pull="10" type="button">Review ten-pull</button></div>
+      <p>Free scripted storyboard. No Starlight spent, no drop rates implied.</p>
+    </div>
+    <div class="board-transport" id="boardTransport" hidden>
+      <div class="transport-buttons"><button id="previous" type="button">Previous beat</button><button id="boardPlay" type="button">Play storyboard</button><button id="next" type="button">Next beat</button><button id="boardSkip" type="button">Skip to results</button><button id="backBanner" type="button">Back to banner</button></div>
+      <div class="scrub-row"><output id="boardClock">0.0 / 0.0 s</output><input id="boardSeek" type="range" min="0" max="1" step="0.01" value="0" aria-label="Storyboard time"></div>
+      <div class="board-options"><label><input id="boardHighOnly" type="checkbox"> Skip R / SR entrances</label><label><input id="cameraGuides" type="checkbox" checked> Camera / joint guides</label><span>No playable audio in this sequence review.</span></div>
+    </div>
+  </section>
+  <section id="beatInspector" class="beat-inspector" hidden aria-labelledby="beatTitle">
+    <div class="beat-heading"><p id="beatGroup">Shared opening</p><h2 id="beatTitle">The pull locks</h2><p id="beatVisual"></p></div>
+    <dl class="direction-lanes"><div><dt>Camera</dt><dd id="cameraLane"></dd></div><div><dt>Music</dt><dd id="musicLane"></dd></div><div><dt>Sound</dt><dd id="soundLane"></dd></div></dl>
+  </section>
+  <nav id="beatRail" class="board-rail" aria-label="Jump to a storyboard beat" hidden></nav>
+  <section class="board-result" id="boardResult" hidden aria-labelledby="resultTitle"><h2 id="resultTitle">Same results. Same order.</h2><ol id="resultList"></ol><p>This list is an authored review fixture, not a paid or random draw. Production NEW / duplicate / Echo details will come from the committed receipt.</p></section>
+  <section class="board-notes">
+    <div><h2>What we’re deciding</h2><p>Does the cloak really take over the screen? Do the hands have a readable action? Does the camera give the UR room before its name appears?</p></div>
+    <div><h2>What stays</h2><p>Fountain / Warp Star opening, cumulative blue → silver → gold → rainbow, the tenth-light signal, characters instead of cards, and camera lock before identity.</p></div>
+    <div><h2>What comes after approval</h2><p>An audio animatic, then the separated layer / action proof. Final backgrounds will use sourced game artwork—not an AI-generated image. No production pools, currency or saves change here.</p></div>
+  </section>
+</main>
+<dialog id="pullConfirm" aria-labelledby="confirmTitle"><form method="dialog"><p>Storyboard only</p><h2 id="confirmTitle">Review a single pull?</h2><p id="confirmDescription"></p><p>No currency, random chance or production save changes.</p><div><button value="cancel" autofocus>Back</button><button id="confirmPull" value="play">Play storyboard</button></div></form></dialog>
+<script type="module" src="nightmare-board.js"></script>
+</body>
+</html>

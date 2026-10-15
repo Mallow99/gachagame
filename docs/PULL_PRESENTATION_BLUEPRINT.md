@@ -1,5 +1,24 @@
 # Pull presentation blueprint 02
 
+## Current sequence review: Nightmare storyboard 01
+
+The owner approved building the proposed storyboard-first pass. Review at
+`demos/splash-kit/nightmare.html` (private Site `/nightmare.html`). This contains
+a broad banner and free single/ten confirmation, not a live production banner
+or invented UR odds. Its frozen authored fixture has SSR Dedede in slot six and
+UR Nightmare in slot eight. No transactions, saves or rates change.
+
+The existing `CUE` / `sampleLights` models retain the shared buildup. Nightmare
+gets explicit concealed sound, sweep, cover, hands, open, cast, face, pullback,
+lock, letters, name, hold and ten-pull resume beats. Single 30.35 s / ten 52.005 s
+are proposed animatic timings, not a final mix. All beats are individually
+clickable; written music/sound/camera lanes explain intended transitions. No
+playable audio or final character rig yet. Only schematic vector drawings and
+a grid are used; the generated background/parts are not in the build.
+
+Plan approval is not sequence approval. Await the owner's visual verdict, then
+revise the board or proceed to the audio animatic before further rig work.
+
 ## Latest direction: storyboard the new Nightmare UR first
 
 The owner is increasingly happy with cue 04, but requests a new banner / pull
