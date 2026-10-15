@@ -4,6 +4,38 @@ One entry per reviewed iteration. Record what the owner liked, what they
 disliked, and what is still needed, in their words where possible. Read this
 before changing anything here.
 
+## Visual cue 01 — reviewed 2026-10-15 UTC
+
+Verdict: a good step in the right direction; continue with camera corrections,
+visual polish and audio, not final production approval.
+
+Liked:
+- “then yeah, you did a good job, im happy with it!”
+- “I do like how the mario kingdom has the warp pipe”.
+- Latest correction: “okay, i think i overstated it the qoute time is actually fine, that ones on me”.
+
+Disliked:
+- “i think you missunderstood the close up. I meant where the camera looks in at it at different angles/slants before zooming all the way back out and having everything click into place, THEN having the S S R and name appear. As it stands right now its kinda eh.”
+- “maybe make the visual with the orbs look a bit better, whether that means more effects or a bit more of a dynamic animation, i saw the story boards as the idea and assumed wed build off of it.”
+
+Still needed:
+- “aslong as you can click through this its fine”.
+- “THere should also be a way to skip the r and sr pulls and just see the ssr pulls.”
+- “rainbow is meant to be reserved for ur?”
+- “i wish the dreamland would have the fountain a bit lower so it looks like its coming out of the fountain.”
+- “Maybe fix this and do audio at the same time in the next pass?”
+
+Visual cue 02 keeps the quote windows at 4 s SSR / 4.8 s UR and changes the
+camera to three slants, pullback, lock, rarity letters, then name. Tap/keyboard
+advance and an R/SR-reveal filter preserve every committed result. The fountain
+rim now aligns with emission; longer trails, depth and sparks build the orb cue.
+The default is gold SSR; rainbow requires the explicit UR effects preview.
+Procedural music/effects and retained native Dedede/Bowser calls play from a
+single stoppable schedule, with music absent during the concealed call window.
+Nonverbal call captions are not a finished spoken quote. Art remains a rigid
+source-era framing stand-in, not an authored character layer animation.
+**Visual cue 02 awaits owner review.**
+
 ## Pull blueprint 02 — reviewed 2026-10-15 America/Chicago
 
 Verdict: **“Okay alot better”**; proceed to the visual cue with escalation and pacing changes.
@@ -26,7 +58,7 @@ it does not reorder the receipt or guarantee that result slot ten is rare.
 SSR quotes get 4 s and UR framing 4.8 s before any art. Close-ups hold for
 1.7 / 2.1 s before a 1.4 s pullback. Existing source-era art is a framing stand-in;
 the quote is still a labelled timing placeholder and no audio plays in this pass.
-**Visual cue 01 awaits the owner's verdict.**
+**Visual cue 01 verdict is recorded above.**
 
 ## Pull blueprint 01 — reviewed 2026-10-15
 

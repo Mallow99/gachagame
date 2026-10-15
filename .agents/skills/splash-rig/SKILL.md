@@ -22,9 +22,12 @@ the pipeline: `SOURCES.json` → `tools/splash-kit/prepare_art.py` → `rigs/<id
   then a screen strike. Higher tiers pass through earlier upgrades. Dream Land uses Fountain/Warp Star; Mushroom
   Kingdom uses pipe/Question Block. A ten-pull has ten travelling lights, with the cue on the tenth; result order
   stays committed. Every fighter gets a character arrival. Keep this unless the owner says otherwise.
-- **Let reveals breathe:** leave generous space for the quote and a pause before art, then a held character
-  close-up and gradual pullback to the full character / gathered lineup. The current proof reserves 4 s for SSR
-  and 4.8 s for UR; those are review timings, not fixed owner mandates. Do not speed through the payoff.
+- **Camera before identity:** after the concealed quote, frame SSR/UR from different angles/slants, pull fully
+  back, let the character/lineup click into place, THEN show rarity letters and the name. A static held zoom was
+  not what the owner meant. Keep tap-through and an option to skip R/SR entrances without removing results.
+- **Let reveals breathe:** the owner explicitly corrected their timing complaint: the quote time was fine.
+  Keep the current 4 s SSR / 4.8 s UR windows unless they request another change. Rainbow is UR only; default
+  reviews should show gold SSR, with any SSR art used for UR clearly labelled as an effects stand-in.
 - **Keep from earlier studies:** the Fountain of Dreams setting, a small KING above a large DEDEDE, and the visible
   source game and year.
 - **Quotes need a real recording.** The current Dedede quote was invented and has none. Never change rarity, units

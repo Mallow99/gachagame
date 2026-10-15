@@ -1,5 +1,34 @@
 # Start the next chat here
 
+## Newest: visual cue 02 camera and audio (2026-10-15 UTC)
+
+Branch: `codex/v1-playable`. The owner liked cue 01 as a step in the right
+direction, clarified the close-up as multiple angles/slants then full pullback,
+lock, rarity letters and name, and asked for tap-through, R/SR skipping, stronger
+orb effects, lower Fountain and audio. Their latest correction is explicit:
+the quote time is fine. Keep 4 s SSR / 4.8 s UR. Exact verdict: `FEEDBACK.md`.
+
+Current private review: <https://dedede-v3-review.berryowlet9.chatgpt.site/cue.html>.
+Visual cue 02 keeps rigid source-era art as camera stand-ins. Three low/high/
+centered slants precede a .75 s pullback and .22 s lock; rarity/name stay hidden
+until then. Advance via stage click, Enter/Space or the button. The R/SR filter
+retimes the same disposable `drawPulls` receipt and retains all ten results.
+Default SSR is gold; rainbow requires the explicitly labelled UR effects preview.
+No rarity, pool, ownership, currency or production-save rules changed.
+
+`cue-audio.js` schedules authored procedural music/effects and native Dedede/
+Bowser calls from retained, verified SSBU WAVs; `prepare-cue-audio.py` bakes them.
+Provenance: `assets/audio/cue02/SOURCES.json`. These are nonverbal calls with
+descriptive captions, NOT finished spoken quotes. Music leaves the whole quote
+window clear. Pause, Skip, advance, mute and area changes stop old audio sources.
+The Fountain lip is aligned with emission; light trails, depth and sparks improve
+the orbit. No flat-image bending or false character-rig claim.
+
+Verification and limits: `docs/validation/pull-cue-02.md`. Next: get the owner's
+cue 02 verdict and listening feedback, then refine one bounded pass. Final voice
+selection and genuine character layer/action proof remain open. Production
+integration and broad game UI/code cleanup are still later work.
+
 ## Newest: visual cue 01 (2026-10-15 America/Chicago)
 
 Branch: `codex/v1-playable`. The owner called Blueprint 02 “alot better” and

@@ -1,27 +1,35 @@
 # Pull presentation blueprint 02
 
-## Latest review: proceed to visual cue 01
+## Latest review: visual cue 02 camera and audio pass
 
 On 2026-10-15 (America/Chicago), the owner accepted this direction with changes:
 upgrades accumulate through silver/grey, yellow/gold and rainbow before the
 strike; ten-pulls form a trailing line and light ten carries the cue; pacing
-must slow down, especially quote-before-art, with a held SSR/UR close-up and
-pullback. The interactive visual pass is `demos/splash-kit/cue.html`.
+must slow down, especially quote-before-art. Visual cue 01 was liked as a step
+in the right direction. The owner then clarified: camera views from different
+slants, full pullback and lock, THEN rarity letters and name. They explicitly
+corrected the later timing complaint: the quote time was fine. The interactive
+visual pass is `demos/splash-kit/cue.html` (visual cue 02).
 
 It supersedes the provisional times below. The current cue has upgrades at
 2.50 / 3.85 / 5.20 seconds, then approaches the screen at 6.20 seconds and
 strikes at 7.35 seconds. In ten-pulls the tenth light is delayed 0.855 seconds;
 it passes through those same stages while the first nine remain blue.
 SSR/UR quote windows last 4.0 / 4.8 seconds with all character art concealed.
-An entrance takes 1 second, a push-in 0.9 seconds, the close-up holds 1.7 / 2.1
-seconds, and the pullback takes 1.4 seconds. R and SR arrivals get 1.8 / 2.4
-seconds each. Controls offer pause, slower playback, beat jumps and Skip.
+Three slanted camera shots share 1.5 / 1.75 seconds, followed by a .75-second
+pullback and .22-second lock before letters and name. Lower-tier entrances are
+shorter; controls offer tap/keyboard advance, pause, slower playback, beat jumps,
+Skip and an R/SR reveal filter. That filter never discards or rerolls results.
 
-The new proof uses existing illustrations and a timing-placeholder quote.
-Audio, layered character actions and production integration remain later work.
+The proof uses existing rigid illustrations, a more dynamic light orbit/trails,
+and a lower Fountain aligned to emission. Default SSR stays gold; rainbow only
+appears in the explicitly labelled UR effects preview. A procedural score and
+effects now accompany sourced native nonverbal Dedede/Bowser calls. Music is
+absent during the concealed call window; a finished spoken quote, authored
+character layers/actions and production integration remain later work.
 The older timing proposal is retained below as the reviewed Blueprint 02 record.
 
-Status: **revised from Blueprint 01 feedback; awaiting owner review.**
+Status: **Blueprint 02 direction accepted; visual cue 02 awaits owner review.**
 The interactive storyboard is `demos/splash-kit/blueprint.html`. It uses
 placeholder geometry and written audio cues. This is sequence review, before
 final audio, character layers or production integration.

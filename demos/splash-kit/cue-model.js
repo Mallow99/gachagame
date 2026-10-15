@@ -16,14 +16,15 @@ export function upgradeAt(time, tier) {
 export function flightPoint(time) {
   if (time < CUE.orbit) {
     const t = clamp((time - CUE.launch) / (CUE.orbit - CUE.launch));
-    return { x: .5 - .35 * t * t, y: .76 - .28 * Math.sin(t * Math.PI / 2), scale: 1, approach: 0 };
+    return { x: .5 - .35 * t * t, y: .76 - .26 * Math.sin(t * Math.PI / 2), scale: 1, approach: 0 };
   }
   if (time < CUE.approach) {
     const lap = clamp((time - CUE.orbit) / (CUE.orbitEnd - CUE.orbit));
-    return { x: .5 - .35 * Math.cos(lap * Math.PI * 2), y: .48 - .24 * Math.sin(lap * Math.PI * 2), scale: .85 + .25 * (1 - Math.cos(lap * Math.PI * 2)), approach: 0 };
+    const angle = (lap + .07 * Math.sin(lap * Math.PI * 2)) * Math.PI * 2;
+    return { x: .5 - .35 * Math.cos(angle), y: .5 - .24 * Math.sin(angle) - .035 * (1 - Math.cos(angle)), scale: .95 - .26 * Math.sin(angle), approach: 0 };
   }
   const t = clamp((time - CUE.approach) / (CUE.contact - CUE.approach));
-  return { x: .15 + .35 * ease(t), y: .48 - .18 * Math.sin(t * Math.PI), scale: 1 + 15 * t ** 3, approach: t };
+  return { x: .15 + .35 * ease(t), y: .5 - .02 * ease(t) - .18 * Math.sin(t * Math.PI), scale: 1 + 15 * t ** 3, approach: t };
 }
 
 export function sampleLights(time, tier, count, reduced = false) {
@@ -36,37 +37,67 @@ export function sampleLights(time, tier, count, reduced = false) {
   });
 }
 
-export function makeTimeline(results, cueTier) {
+export function makeTimeline(results, cueTier, { highOnly = false } = {}) {
   const delay = (results.length - 1) * CUE.spacing;
   let cursor = CUE.reveal + delay;
   const segments = results.map((result, index) => {
     const high = TIERS.indexOf(result.rarity) >= 2;
     const ur = high && cueTier === 'UR';
     const quote = high ? ur ? 4.8 : 4 : 0;
-    const entrance = high ? 1 : result.rarity === 'SR' ? .8 : .65;
-    const push = high ? .9 : 0;
-    const close = high ? ur ? 2.1 : 1.7 : 0;
-    const pull = high ? 1.4 : 0;
-    const settle = high ? ur ? 1.6 : 1.3 : result.rarity === 'SR' ? 1.6 : 1.15;
-    const segment = { index, result, high, start: cursor, quote, entrance, push, close, pull, settle, end: cursor + quote + entrance + push + close + pull + settle };
+    const entrance = high ? .5 : result.rarity === 'SR' ? .45 : .35;
+    const close = high ? ur ? 1.25 : 1 : 0;
+    const pull = high ? .75 : 0;
+    const settle = high ? .22 : 0;
+    const stamp = high ? .6 : .3;
+    const linger = high ? .8 : result.rarity === 'SR' ? .7 : .45;
+    const skipped = highOnly && results.length > 1 && !high;
+    const duration = skipped ? 0 : quote + entrance + close + pull + settle + stamp + linger;
+    const segment = { index, result, high, skipped, start: cursor, quote, entrance, close, pull, settle, stamp, linger, end: cursor + duration };
     cursor = segment.end;
     return segment;
   });
-  return { delay, impact: CUE.impact + delay, reveal: CUE.reveal + delay, segments, lineup: cursor, total: cursor + 1.5 };
+  return { delay, impact: CUE.impact + delay, reveal: CUE.reveal + delay, segments, resultCount: results.length, lineup: cursor, total: cursor + 1.5 };
 }
 
 export function sampleReveal(time, timeline, reduced = false) {
   const segment = timeline.segments.find(s => time >= s.start && time < s.end);
-  if (!segment) return { phase: time >= timeline.lineup ? 'lineup' : 'flight', revealed: time >= timeline.lineup ? timeline.segments.length : 0, zoom: 1, roster: time >= timeline.lineup ? 1 : 0 };
+  if (!segment) return { phase: time >= timeline.lineup ? 'lineup' : 'flight', revealed: time >= timeline.lineup ? timeline.resultCount : 0, zoom: 1, x: 0, y: 0, roll: 0, plate: time >= timeline.lineup ? 1 : 0, roster: time >= timeline.lineup ? 1 : 0 };
   const age = time - segment.start;
   if (age < segment.quote) return { phase: 'quote', segment, revealed: segment.index, zoom: 1, roster: 0 };
   const arrival = age - segment.quote;
-  const pushAt = segment.entrance;
-  const pullAt = pushAt + segment.push + segment.close;
+  const pullAt = segment.entrance + segment.close;
   const wideAt = pullAt + segment.pull;
-  let zoom = 1;
-  let phase = arrival < pushAt ? 'entrance' : 'wide';
-  if (segment.high && arrival >= pushAt && arrival < pullAt) { phase = 'closeup'; zoom = 1 + .55 * ease((arrival - pushAt) / segment.push); }
-  if (segment.high && arrival >= pullAt && arrival < wideAt) { phase = 'pullback'; zoom = 1.55 - .55 * ease((arrival - pullAt) / segment.pull); }
-  return { phase, segment, revealed: segment.index + 1, zoom: reduced ? 1 : zoom, entrance: reduced ? 1 : ease(arrival / .7), roster: segment.high ? ease((arrival - pullAt) / Math.max(.1, segment.pull)) : 1 };
+  const stampAt = wideAt + segment.settle;
+  let zoom = 1, x = 0, y = 0, roll = 0;
+  let phase = arrival < segment.entrance ? 'entrance' : 'wide';
+  if (segment.high && arrival < pullAt) {
+    const shot = clamp(arrival / pullAt);
+    phase = shot < .34 ? 'angle-low' : shot < .68 ? 'angle-high' : 'angle-center';
+    if (shot < .34) { zoom = 1.95 + shot * .2; x = -9; y = 16; roll = -8; }
+    else if (shot < .68) { zoom = 1.8 + (shot - .34) * .2; x = 7; y = -8; roll = 7; }
+    else { zoom = 1.62; x = -2; y = -3; roll = -3; }
+  }
+  if (segment.high && arrival >= pullAt && arrival < wideAt) {
+    phase = 'pullback'; const t = 1 - ease((arrival - pullAt) / segment.pull);
+    zoom = 1 + .62 * t; x = -2 * t; y = -3 * t; roll = -3 * t;
+  }
+  if (arrival >= wideAt && arrival < stampAt) phase = 'settle';
+  if (arrival >= stampAt && arrival < stampAt + segment.stamp) phase = 'stamp';
+  const plate = clamp((arrival - stampAt) / segment.stamp);
+  const name = clamp((arrival - stampAt - .25) / .25);
+  return { phase, segment, revealed: segment.index + 1, zoom: reduced ? 1 : zoom, x: reduced ? 0 : x, y: reduced ? 0 : y, roll: reduced ? 0 : roll, plate, name, entrance: reduced || segment.high ? 1 : ease(arrival / .35), roster: segment.high ? ease((arrival - pullAt) / Math.max(.1, segment.pull)) : 1 };
+}
+
+export function advanceTime(time, timeline) {
+  const state = sampleReveal(time, timeline);
+  const s = state.segment;
+  if (!s) return time < timeline.reveal ? timeline.reveal : timeline.total;
+  // Land just inside the next beat, not on a floating-point sum that can still
+  // sample as the preceding phase when the preview is paused or throttled.
+  const inside = .0001;
+  if (state.phase === 'quote') return s.start + s.quote + inside;
+  if (state.phase.startsWith('angle')) return s.start + s.quote + s.entrance + s.close + inside;
+  if (['pullback', 'settle'].includes(state.phase)) return s.start + s.quote + s.entrance + s.close + s.pull + s.settle + inside;
+  const next = timeline.segments.find(next => next.index > s.index && !next.skipped);
+  return next ? next.start : timeline.lineup;
 }

@@ -2,7 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { CUE, sampleLights, makeTimeline, sampleReveal } from '../demos/splash-kit/cue-model.js';
+import { CUE, sampleLights, makeTimeline, sampleReveal, advanceTime } from '../demos/splash-kit/cue-model.js';
+import { cueAudioEvents } from '../demos/splash-kit/cue-audio.js';
 
 test('rarity cues accumulate through silver and gold before rainbow, without false upgrades', () => {
   const ranks = [1.5, 3.1, 4.4, 5.8].map(t => sampleLights(t, 'UR', 1)[0].rank);
@@ -28,7 +29,7 @@ test('only the tenth travelling light carries the set cue and receipt order stay
   assert.equal(timeline.segments[9].result.rarity, 'R');
 });
 
-test('SSR and UR protect the quote, hold a close-up, then reveal the full lineup', () => {
+test('SSR and UR preserve the quote, change slants, then lock before rarity and name', () => {
   for (const tier of ['SSR', 'UR']) {
     const timeline = makeTimeline([{ id: 'fixture', rarity: 'SSR' }], tier);
     const s = timeline.segments[0];
@@ -37,17 +38,55 @@ test('SSR and UR protect the quote, hold a close-up, then reveal the full lineup
       const state = sampleReveal(s.start + age, timeline);
       assert.equal(state.phase, 'quote'); assert.equal(state.revealed, 0);
     }
-    const closeAt = s.start + s.quote + s.entrance + s.push;
-    assert.ok(s.close >= 1.7);
-    assert.equal(sampleReveal(closeAt + .1, timeline).zoom, 1.55);
-    assert.equal(sampleReveal(closeAt + s.close - .1, timeline).zoom, 1.55);
-    const pullAt = closeAt + s.close;
+    const artAt = s.start + s.quote, camera = s.entrance + s.close;
+    const low = sampleReveal(artAt + camera * .15, timeline);
+    const high = sampleReveal(artAt + camera * .5, timeline);
+    assert.ok(low.roll < 0 && high.roll > 0);
+    for (const fraction of [.15, .5, .83]) {
+      const shot = sampleReveal(artAt + camera * fraction, timeline);
+      assert.equal(shot.plate, 0); assert.equal(shot.name, 0);
+    }
+    const pullAt = artAt + camera;
     assert.ok(sampleReveal(pullAt + .2, timeline).zoom > sampleReveal(pullAt + s.pull - .2, timeline).zoom);
     assert.equal(sampleReveal(pullAt + .2, timeline, true).zoom, 1);
+    assert.equal(sampleReveal(pullAt + .2, timeline, true).roll, 0);
+    const lockAt = pullAt + s.pull;
+    assert.equal(sampleReveal(lockAt + .1, timeline).plate, 0);
+    const stamp = sampleReveal(lockAt + s.settle + .1, timeline);
+    assert.ok(stamp.plate > 0); assert.equal(stamp.name, 0);
     assert.equal(sampleReveal(timeline.total, timeline).phase, 'lineup');
     assert.equal(sampleReveal(timeline.total, timeline).revealed, 1);
   }
   assert.ok(sampleLights(3, 'UR', 10, true).every(l => l.scale === 1));
+});
+
+test('SSR-only filtering and click-through preserve all ten receipt results', () => {
+  const results = ['R', 'R', 'SR', 'R', 'R', 'SSR', 'R', 'SR', 'R', 'R'].map((rarity, id) => ({ id, rarity }));
+  const original = JSON.stringify(results);
+  const all = makeTimeline(results, 'SSR'), filtered = makeTimeline(results, 'SSR', { highOnly: true });
+  assert.ok(filtered.total < all.total);
+  assert.equal(filtered.segments.filter(s => !s.skipped).length, 1);
+  assert.equal(sampleReveal(filtered.reveal, filtered).segment.index, 5);
+  assert.equal(sampleReveal(filtered.total, filtered).revealed, 10);
+  const s = filtered.segments[5];
+  const art = advanceTime(s.start + .1, filtered);
+  assert.equal(sampleReveal(art, filtered).phase, 'angle-low');
+  assert.equal(sampleReveal(advanceTime(art, filtered), filtered).phase, 'pullback');
+  assert.equal(sampleReveal(advanceTime(advanceTime(art, filtered), filtered), filtered).phase, 'stamp');
+  assert.equal(JSON.stringify(results), original);
+  const ordinary = makeTimeline(results.filter(r => r.rarity !== 'SSR'), 'SR', { highOnly: true });
+  assert.equal(sampleReveal(advanceTime(0, ordinary), ordinary).phase, 'lineup');
+  assert.equal(sampleReveal(ordinary.total, ordinary).revealed, 9);
+});
+
+test('audio keeps music outside voice and blackout windows and reserves rainbow for UR', () => {
+  const timeline = makeTimeline([{ rarity: 'SSR' }], 'SSR');
+  const events = cueAudioEvents(timeline, 'SSR'), segment = timeline.segments[0];
+  assert.equal(events.filter(e => e.kind === 'voice').length, 1);
+  assert.ok(!events.some(e => e.kind === 'rainbow'));
+  assert.ok(cueAudioEvents(timeline, 'UR').some(e => e.kind === 'rainbow'));
+  assert.ok(!events.some(e => e.kind === 'music' && e.at > segment.start - .65 && e.at < segment.start + segment.quote));
+  assert.ok(!events.some(e => e.kind === 'music' && e.at > CUE.contact - .7 && e.at < CUE.impact + .5));
 });
 
 test('cue cutouts retain verified source provenance and reproducible output hashes', () => {
@@ -60,5 +99,20 @@ test('cue cutouts retain verified source provenance and reproducible output hash
     assert.equal(hash(new URL(asset.source.path, root)), asset.source.sha256);
     assert.equal(hash(new URL(asset.url, dir)), asset.sha256);
     assert.ok(asset.source.url && asset.source.credit);
+  }
+});
+
+test('native character calls retain credited originals and verified playback assets', () => {
+  const root = new URL('../', import.meta.url);
+  const dir = new URL('demos/splash-kit/assets/audio/cue02/', root);
+  const manifest = JSON.parse(readFileSync(new URL('SOURCES.json', dir)));
+  assert.deepEqual(Object.keys(manifest).sort(), ['bowser', 'dedede']);
+  for (const asset of Object.values(manifest)) {
+    const hash = file => createHash('sha256').update(readFileSync(file)).digest('hex');
+    assert.equal(hash(new URL(asset.source.path, root)), asset.source.sha256);
+    assert.equal(hash(new URL(asset.url, dir)), asset.sha256);
+    assert.ok(asset.source.url && asset.source.page && asset.source.credit && asset.source.archiveSha256);
+    assert.ok(asset.duration > 1 && asset.duration < 2);
+    assert.match(asset.caption, /^\[.+\]$/);
   }
 });

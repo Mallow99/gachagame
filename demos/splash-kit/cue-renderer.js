@@ -34,9 +34,21 @@ export function cueRenderer(canvas, background) {
     ctx.fillStyle = base; ctx.fillRect(0, 0, W, H);
     if (area === 'dream') {
       const k = Math.max(W / background.width, H / background.height) * (reduced ? 1.04 : 1.04 + Math.sin(time * .11) * .015);
-      ctx.globalAlpha = reveal ? .22 : .57;
-      ctx.drawImage(background, (W - background.width * k) / 2, (H - background.height * k) / 2, background.width * k, background.height * k);
+      ctx.globalAlpha = reveal ? .22 : .65;
+      // The central bowl's lip is at source y=.47. Anchor it at the launch
+      // point, rather than centering the whole image above the emitter.
+      const by = H * .76 - background.height * k * .47;
+      ctx.drawImage(background, (W - background.width * k) / 2, by, background.width * k, background.height * k);
       ctx.globalAlpha = 1;
+      const sky = ctx.createLinearGradient(0, Math.max(0, by), 0, by + H * .22);
+      sky.addColorStop(0, '#160d2b'); sky.addColorStop(1, '#160d2b00');
+      ctx.fillStyle = sky; ctx.fillRect(0, 0, W, by + H * .22);
+      glow(W * .5, H * .76, W * .11, '#71d6ff', reveal ? .05 : .18);
+      if (!reveal) {
+        ctx.strokeStyle = '#a5e9ff66'; ctx.lineWidth = S;
+        for (let i = 0; i < 3; i++) { const wave = reduced ? i / 3 : fract(time * .35 + i / 3); ctx.globalAlpha = (1 - wave) * .6; ctx.beginPath(); ctx.ellipse(W * .5, H * .76, W * (.03 + wave * .09), H * (.009 + wave * .025), 0, 0, Math.PI * 2); ctx.stroke(); }
+        ctx.globalAlpha = 1;
+      }
     } else {
       for (let i = 0; i < 8; i++) {
         const x = (i * .16 - .1) * W, y = H * (.51 + seed(i) * .15), bw = W * .12;
@@ -70,11 +82,11 @@ export function cueRenderer(canvas, background) {
     glow(x, y, r * 5.5, c, .34);
     glow(x, y, r * 2, '#f7faff', .55);
     // Short history samples form trails on the exact same orbit, including during scrubbing.
-    if (!reduced) for (let j = 18; j > 0; j--) {
-      const p = flightPoint(light.local - j * .018), p2 = flightPoint(light.local - (j - 1) * .018);
-      ctx.strokeStyle = light.rank === 3 ? `hsla(${j * 17 + time * 40},90%,75%,${(1 - j / 20) * .5})` : c;
-      ctx.globalAlpha = light.alpha * (1 - j / 20) * .45;
-      ctx.lineWidth = Math.max(S, r * .23 * (1 - j / 20));
+    if (!reduced) for (let j = 28; j > 0; j--) {
+      const p = flightPoint(light.local - j * .022), p2 = flightPoint(light.local - (j - 1) * .022);
+      ctx.strokeStyle = light.rank === 3 ? `hsl(${j * 17 + time * 40},90%,75%)` : c;
+      ctx.globalAlpha = light.alpha * (1 - j / 30) * .55;
+      ctx.lineWidth = Math.max(S, r * .35 * (1 - j / 30));
       ctx.beginPath(); ctx.moveTo(p.x * W, p.y * H); ctx.lineTo(p2.x * W, p2.y * H); ctx.stroke();
     }
     ctx.globalAlpha = light.alpha; ctx.globalCompositeOperation = 'source-over'; ctx.translate(x, y);
@@ -104,6 +116,19 @@ export function cueRenderer(canvas, background) {
       ctx.fillStyle = sphere; ctx.beginPath(); ctx.arc(0, 0, r, 0, Math.PI * 2); ctx.fill();
       if (light.rank === 1) { ctx.strokeStyle = '#f6faff'; ctx.lineWidth = 2 * S; ctx.beginPath(); ctx.ellipse(0, 0, r * 1.45, r * .55, -.5, 0, Math.PI * 2); ctx.stroke(); }
     }
+    if (light.signal) {
+      ctx.save(); ctx.globalCompositeOperation = 'screen';
+      const shine = ctx.createLinearGradient(-r * 9, 0, r * 9, 0);
+      shine.addColorStop(0, 'transparent'); shine.addColorStop(.5, c); shine.addColorStop(1, 'transparent');
+      ctx.globalAlpha *= light.rank >= 2 ? .6 : .25; ctx.fillStyle = shine; ctx.fillRect(-r * 9, -S, r * 18, S * 2);
+      if (!reduced && light.local > CUE.launch) for (let i = 0; i < 15; i++) {
+        const age = fract(time * .75 + seed(i)); const a = seed(i + 7) * Math.PI * 2;
+        const d = r * (2 + age * 6); ctx.globalAlpha = light.alpha * (1 - age) * .65;
+        ctx.fillStyle = light.rank === 3 ? `hsl(${i * 37},90%,75%)` : c;
+        ctx.fillRect(Math.cos(a) * d, Math.sin(a) * d, (1 + seed(i) * 2) * S, (1 + seed(i) * 3) * S);
+      }
+      ctx.restore();
+    }
     if (light.pulse > 0 && !reduced) {
       ctx.strokeStyle = c; ctx.globalAlpha *= light.pulse; ctx.lineWidth = (1 + 2 * light.pulse) * S;
       ctx.beginPath(); ctx.ellipse(0, 0, r * (2 + (1 - light.pulse) * 7), r * (1 + (1 - light.pulse) * 3), -.3, 0, Math.PI * 2); ctx.stroke();
@@ -123,14 +148,19 @@ export function cueRenderer(canvas, background) {
       if (canvas.width !== width || canvas.height !== height) { canvas.width = width; canvas.height = height; }
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
       const post = time >= timeline.reveal;
-      environment(time, area, reduced, post);
+      ctx.save();
+      if (post && !reduced && reveal.phase !== 'quote') {
+        ctx.translate(W * .5, H * .5); ctx.rotate((reveal.roll || 0) * Math.PI / 180 * .35);
+        const depth = 1 + (reveal.zoom - 1) * .18; ctx.scale(depth, depth); ctx.translate(-W * .5, -H * .5);
+      }
+      environment(time, area, reduced, post); ctx.restore();
       const lights = sampleLights(time, tier, count, reduced);
       const signal = lights.at(-1);
       if (time < timeline.impact) {
         ctx.globalCompositeOperation = 'screen';
         glow(W * .5, H * .76, H * .25, '#6bbfff', .22 * (1 - clamp(time / 3)));
         if (count === 10 && !reduced) {
-          ctx.strokeStyle = '#8bbdff40'; ctx.lineWidth = S; ctx.beginPath();
+          ctx.strokeStyle = '#8bbdff22'; ctx.lineWidth = S; ctx.beginPath();
           lights.filter(l => l.alpha > .1).forEach((l, i) => i ? ctx.lineTo(l.x * W, l.y * H) : ctx.moveTo(l.x * W, l.y * H)); ctx.stroke();
         }
         ctx.globalCompositeOperation = 'source-over';
