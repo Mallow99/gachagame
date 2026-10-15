@@ -12,7 +12,7 @@ python3 tools/splash-kit/prepare_art.py      # re-download, verify and re-bake a
 node tools/splash-kit/export-artifact.mjs out/splash-kit   # self-contained copy for hosting
 ```
 
-Study status: **iteration 01, awaiting owner review.** Nothing here is wired into
+Study status: **iteration 01, awaiting owner review.** Owner feedback, inherited and new, is in [FEEDBACK.md](FEEDBACK.md); read it first. Nothing here is wired into
 the production summon theater yet.
 
 ## Files
