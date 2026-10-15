@@ -1,253 +1,203 @@
+// Storyboard receipts only. This page never spends currency or creates fighters.
+const palette = { R: '#58cfff', SR: '#dbe5f0', SSR: '#ffd34f', UR: '#c2a7ff' };
+const areas = {
+  dream: { name: 'Dream Land', origin: 'Fountain', carrier: 'Warp Star', travel: 'Water reverse · glass flecks', fighter: 'KING\nDEDEDE' },
+  mushroom: { name: 'Mushroom Kingdom', origin: 'pipe', carrier: 'Question Block', travel: 'Pipe resonance · coin flecks', fighter: 'MARIO' },
+};
+
+function opening(tier) {
+  const omen = {
+    R: ['The blue stays steady', 'The mote completes its orbit in blue.', 'Stable travel tone'],
+    SR: ['Silver current wraps the mote', 'A silver edge and charged wake promise at least SR.', 'Metallic shimmer · charged snap'],
+    SSR: ['Gold becomes the area’s carrier', 'The mote becomes a gold {carrier}. The fighter is still unknown.', 'Transformation chime · engine flare'],
+    UR: ['The carrier splits the spectrum', 'A prismatic {carrier} and spectral trails promise UR.', 'Spectrum rise · deep resonance'],
+  }[tier];
+  return [
+    [0, 'commit', 'Committed result', 'The receipt locks first', 'The button answers immediately; the sequence follows the saved result.', 'Dry confirmation hit · music ducks 2 dB'],
+    [260, 'gather', 'Area origin', 'The {origin} wakes', 'Fragments gather into the same neutral blue mote.', '{travel} · low pulse'],
+    [760, 'launch', 'Rise from the origin', 'Rise out, then enter the orbit', 'The mote rises out of the {origin}, then bends left into the visible orbit.', 'Pitch climb · acceleration ticks'],
+    [1350, 'orbit', 'Around the area', 'Cross the far side, then circle back', 'The carrier travels around the scene. The drawn loop shows the complete route.', 'Travel wind · area ambience'],
+    [2150, 'omen', `${tier} warning`, ...omen],
+    [3000, 'approach', 'Turn toward the player', 'Curve out of the orbit into the screen', 'After one complete lap, the carrier turns inward and grows as it approaches the camera.', 'Approach rush · music drains'],
+  ];
+}
+
+function single(tier) {
+  const cinematic = ['SSR', 'UR'].includes(tier);
+  const ur = tier === 'UR';
+  const beats = opening(tier);
+  if (cinematic) {
+    const delay = ur ? 300 : 0;
+    beats.push(
+      [3400, 'blackout', `${tier} interruption`, 'The room goes silent', 'A true blackout separates approach from impact. No character or name.', `Music and ambience cut · ${ur ? 500 : 200} ms silence`],
+      [3600 + delay, 'impact', `${tier} contact`, ur ? 'Spectrum fractures across the screen' : 'The carrier strikes the screen', ur ? 'A white core splits into spectral edges, then collapses to darkness.' : 'A compact gold-white hit answers the approach.', ur ? 'Deep hit · crystalline fracture · delayed sub' : 'Sub hit · crack · area shock'],
+      [3830 + delay, 'afterimage', 'Make room for the voice', 'Let the impact decay', 'The screen darkens again; the fighter remains concealed.', 'Impact tail only'],
+      [4070 + delay, 'voice', 'Identity withheld', 'Voice and quote lead the entrance', 'Only the line appears. The character and name are still completely hidden.', 'Clean voice centered · music -9 dB · sparse ambience'],
+      [4900 + delay, 'hint', 'On the decisive word', 'A silhouette answers the line', 'The first character edge arrives on the chosen word.', 'One timed character whoosh'],
+      [5170 + delay, 'art', `${tier} character entrance`, ur ? 'The UR fighter takes the stage' : 'The fighter lands solidly', ur ? 'A longer entrance reserves space for an authored character action.' : 'The full character lands with a camera response and active surroundings.', ur ? 'Entrance hit · extended character sting' : 'Entrance hit · short character sting'],
+      [5600 + delay, 'plate', 'Identity confirmed', 'Name follows the character', 'Rarity, name, source and year arrive after the body.', 'Theme resolves after the voice'],
+      [ur ? 7100 : 6200, 'hold', 'Player control', 'The character stays with you', 'The player decides when to continue.', 'Low loop only'],
+    );
+  } else {
+    beats.push(
+      [3400, 'impact', `${tier} contact`, tier === 'SR' ? 'A silver impact opens the stage' : 'A light blue impact opens the stage', 'The impact leads straight into a solid character arrival.', tier === 'SR' ? 'Charged snap · medium hit' : 'Light blue pop'],
+      [3650, 'art', 'Every fighter appears', 'A character entrance at every rarity', tier === 'SR' ? 'Silver energy frames a stronger entrance and a short character action.' : 'The fighter enters quickly, settles and remains fully visible.', tier === 'SR' ? 'Character whoosh · silver two-note accent' : 'Quick entrance whoosh · footfall'],
+      [tier === 'SR' ? 4150 : 4000, 'plate', 'Identity confirmed', 'A name beside the fighter', 'A floating name and rarity identify the character on the stage.', 'Short name accent'],
+      [tier === 'SR' ? 4800 : 4450, 'hold', 'Player control', 'The fighter remains on stage', 'A shorter entrance still ends with a character you can look at.', 'Quiet area loop'],
+    );
+  }
+  return { label: `Single ${tier}`, tier, duration: ur ? 7500 : cinematic ? 6500 : tier === 'SR' ? 5000 : 4700, beats };
+}
+
 const scenarios = {
-  r: {
-    label: 'Single R', tier: 'R', duration: 4100,
-    beats: [
-      [0, 'commit', 'The transaction is committed', 'Receipt locks before theater', 'The button answers immediately; presentation cannot reroll the result.', 'Dry confirmation hit · music ducks 2 dB'],
-      [260, 'gather', 'Shared opening', 'The Fountain wakes', 'Water and star fragments gather into one neutral blue mote.', 'Water reverse · glass flecks · low pulse'],
-      [760, 'launch', 'Shared opening', 'The mote chooses a path', 'A hesitation gives the player time to look for an omen.', 'Pitch climb · two acceleration ticks'],
-      [1380, 'flight', 'Shared opening', 'Flight establishes the rhythm', 'The ordinary route stays clean and readable.', 'Travel wind · music returns underneath'],
-      [2150, 'omen', 'R warning', 'Nothing interrupts the blue', 'No false danger and no expensive-looking fakeout.', 'Stable travel tone · no rarity accent'],
-      [2850, 'impact', 'Contact', 'A small star answers', 'The ordinary result gets punctuation without pretending to be rare.', 'Light white-blue pop'],
-      [3220, 'card', 'Payoff', 'Reveal the result card', 'R appears immediately after the ordinary impact.', 'Card flip · short settle'],
-      [3900, 'hold', 'Player control', 'Result holds', 'Continue only when the player asks.', 'Quiet loop'],
-    ],
-  },
-  sr: {
-    label: 'Single SR', tier: 'SR', duration: 4550,
-    beats: [
-      [0, 'commit', 'The transaction is committed', 'Receipt locks before theater', 'The button answers immediately; presentation cannot reroll the result.', 'Dry confirmation hit · music ducks 2 dB'],
-      [260, 'gather', 'Shared opening', 'The Fountain wakes', 'The same blue mote keeps rarity language learnable.', 'Water reverse · glass flecks · low pulse'],
-      [760, 'launch', 'Shared opening', 'The mote chooses a path', 'The opening does not reveal the tier too early.', 'Pitch climb · acceleration ticks'],
-      [1380, 'flight', 'Shared opening', 'Flight establishes the rhythm', 'The player watches for a change to the known route.', 'Travel wind · music returns underneath'],
-      [2100, 'omen', 'SR warning', 'Cursed energy becomes Dream current', 'Cyan-violet current and one deliberate screen desync promise at least SR.', 'Charged crackle · one sync tear · music lifts'],
-      [2900, 'impact', 'Charged contact', 'Energy hits harder', 'Blue and gold flash sharply, without using the SSR blackout.', 'Layered snap · medium sub hit'],
-      [3380, 'card', 'Payoff', 'SR seal opens', 'The result holds long enough for the rarity upgrade to register.', 'Higher card flip · SR two-note badge'],
-      [4250, 'hold', 'Player control', 'Result holds', 'Continue only when the player asks.', 'Quiet loop'],
-    ],
-  },
-  ssr: {
-    label: 'Single SSR', tier: 'SSR', duration: 5800,
-    beats: [
-      [0, 'commit', 'The transaction is committed', 'Receipt locks before theater', 'The button answers immediately; presentation cannot reroll the result.', 'Dry confirmation hit · music ducks 2 dB'],
-      [260, 'gather', 'Shared opening', 'The Fountain wakes', 'The same neutral blue mote begins every pull.', 'Water reverse · glass flecks · low pulse'],
-      [760, 'launch', 'Shared opening', 'The mote chooses a path', 'The hesitation leaves room for anticipation.', 'Pitch climb · acceleration ticks'],
-      [1380, 'flight', 'Shared opening', 'Flight establishes the rhythm', 'The ordinary route gives the transformation meaning.', 'Travel wind · music returns underneath'],
-      [2100, 'omen', 'SSR warning', 'The mote becomes a Warp Star', 'Gold replaces blue before the identity is known.', 'Transformation chime · engine flare'],
-      [2850, 'blackout', 'SSR interruption', 'Everything is taken away', 'A short true blackout breaks the learned rhythm.', 'Music and ambience cut · 180–240 ms silence'],
-      [3050, 'impact', 'SSR contact', 'The star hits back', 'Near-black becomes a compact gold-white impact, not a long bloom.', 'Sub hit · crack · water shock'],
-      [3280, 'afterimage', 'Space after impact', 'Let the hit decay', 'Darkness returns so the voice does not fight the flash.', 'Impact tail only'],
-      [3520, 'voice', 'Identity withheld', 'The voice leads the reveal', 'Written words arrive while Dedede remains completely concealed.', 'Music -9 dB · clean voice centered · sparse sparks'],
-      [4350, 'hint', 'Final word', 'A silhouette answers the line', 'Only a hammer edge or robe shape crosses on the decisive word.', 'One cloth or hammer whoosh'],
-      [4620, 'art', 'Character entrance', 'Dedede enters solidly', 'Approved layered art lands; no translucent feet, global warp or cosmetic shine.', 'Entrance hit · short character sting'],
-      [5050, 'plate', 'Identity confirmed', 'KING / DEDEDE', 'Rarity, name, source and year appear after the character.', 'Theme resolves after the voice'],
-      [5480, 'hold', 'Player control', 'The splash breathes', 'Effects settle and the player decides when to continue.', 'Low loop only'],
-    ],
-  },
-  featured: {
-    label: 'Featured SSR', tier: 'FEATURED', duration: 6100,
-    beats: [
-      [0, 'commit', 'The transaction is committed', 'Receipt locks before theater', 'The strongest omen still describes a result already committed.', 'Dry confirmation hit · music ducks 2 dB'],
-      [260, 'gather', 'Shared opening', 'The Fountain wakes', 'The neutral start prevents the special cue from becoming background noise.', 'Water reverse · glass flecks · low pulse'],
-      [760, 'launch', 'Shared opening', 'The mote chooses a path', 'The player waits for the route to change.', 'Pitch climb · acceleration ticks'],
-      [1380, 'flight', 'Shared opening', 'Flight establishes the rhythm', 'The ordinary route remains recognizable.', 'Travel wind · music returns underneath'],
-      [1850, 'featured', 'Rare featured omen', 'The Fountain reflects a hammer', 'A brief character-family clue promises the featured result without showing Dedede.', 'Low crown tone · distant wooden knock'],
-      [2250, 'omen', 'SSR warning', 'The mote becomes a Warp Star', 'Gold transformation confirms the SSR floor.', 'Transformation chime · engine flare'],
-      [2920, 'blackout', 'Featured interruption', 'Everything is taken away', 'The strongest route earns a slightly longer breath before impact.', 'Music and ambience cut · 220 ms silence'],
-      [3150, 'impact', 'SSR contact', 'The star hits back', 'The same SSR grammar remains readable.', 'Sub hit · crack · delayed crown tone'],
-      [3400, 'afterimage', 'Space after impact', 'Let the hit decay', 'Voice space is protected.', 'Impact tail only'],
-      [3650, 'voice', 'Identity withheld', 'The voice leads the reveal', 'Written words appear, but no character art yet.', 'Music -9 dB · clean voice centered'],
-      [4510, 'hint', 'Final word', 'The hammer silhouette commits', 'The entrance begins only on the decisive word.', 'Hammer whoosh'],
-      [4770, 'art', 'Featured entrance', 'Dedede enters solidly', 'Layered art and one authored action, not global deformation.', 'Entrance hit · featured sting'],
-      [5230, 'plate', 'Identity confirmed', 'KING / DEDEDE', 'Name, rarity, source and year arrive after the body.', 'Theme resolves'],
-      [5700, 'hold', 'Player control', 'The splash breathes', 'The player owns the linger.', 'Low loop only'],
-    ],
-  },
+  r: single('R'), sr: single('SR'), ssr: single('SSR'), ur: single('UR'),
   ten: {
-    label: 'Ten-pull + SSR', tier: 'TEN', duration: 10200,
+    label: 'Ten-pull + SSR', tier: 'SSR', duration: 14300,
     rarities: ['R', 'R', 'SR', 'R', 'R', 'SSR', 'R', 'SR', 'R', 'R'],
     beats: [
-      [0, 'commit', 'Ten results commit together', 'One transaction, one opening', 'All ten outcomes are fixed before the first visual cue.', 'Dry confirmation hit · music ducks 2 dB', 0],
-      [300, 'gather', 'Shared opening', 'The Fountain gathers once', 'A ten-pull does not repeat ten full launches.', 'Water reverse · wider particle gather', 0],
-      [850, 'launch', 'Shared opening', 'One launch carries the set', 'The highest committed rarity controls the omen floor.', 'Pitch climb · three acceleration ticks', 0],
-      [1500, 'flight', 'Shared opening', 'The set crosses the sky', 'The travel duration stays familiar.', 'Travel wind · music returns', 0],
-      [2150, 'omen', 'Highest tier warning', 'A gold Warp Star promises SSR', 'The player knows the set contains at least one SSR, but not where.', 'Transformation chime · engine flare', 0],
-      [2850, 'impact', 'Set contact', 'The Warp Star breaks into ten seals', 'One impact starts the result cadence.', 'Heavy impact · ten glass pings', 0],
-      [3250, 'seals', 'Ten-pull board', 'Ten closed results take their places', 'Order is stable and unopened slots remain visible.', 'Seals land left to right', 0],
-      [3750, 'reveal', 'Fast cadence', 'Slot 1 · R', 'Ordinary results move briskly.', 'Short flip', 1],
-      [4070, 'reveal', 'Fast cadence', 'Slot 2 · R', 'The rhythm becomes learnable.', 'Short flip', 2],
-      [4420, 'reveal', 'Raised cadence', 'Slot 3 · SR', 'SR receives a stronger hit without stopping the set.', 'Charged flip · SR badge', 3],
-      [4920, 'reveal', 'Fast cadence', 'Slot 4 · R', 'Return to the established pace.', 'Short flip', 4],
-      [5240, 'reveal', 'Fast cadence', 'Slot 5 · R', 'The next interruption can now break a stable rhythm.', 'Short flip', 5],
-      [5650, 'blackout', 'SSR interruption', 'Slot 6 stops the board', 'Unopened seals dim; the character remains concealed.', 'Cadence cuts · 180 ms silence', 5],
-      [5850, 'impact', 'SSR contact', 'The sixth seal hits back', 'The first SSR earns the elevated interruption.', 'Sub hit · crack · water shock', 5],
-      [6120, 'voice', 'Identity withheld', 'Voice before character', 'The quote appears while the result board remains hidden.', 'Music -9 dB · clean voice centered', 5],
-      [6900, 'art', 'SSR entrance', 'Dedede enters', 'The approved character entrance pays off the interruption.', 'Entrance hit · short sting', 6],
-      [7420, 'plate', 'Identity confirmed', 'KING / DEDEDE', 'A condensed plate confirms the sixth result.', 'Theme resolves briefly', 6],
-      [7850, 'reveal', 'Cadence resumes', 'Slot 7 · R', 'The result board returns at the established ordinary pace.', 'Short flip', 7],
-      [8170, 'reveal', 'Raised cadence', 'Slot 8 · SR', 'The second SR still receives its readable accent.', 'Charged flip · SR badge', 8],
-      [8670, 'reveal', 'Fast cadence', 'Slot 9 · R', 'The set keeps moving after the elevated result.', 'Short flip', 9],
-      [8990, 'reveal', 'Fast cadence', 'Slot 10 · R', 'The last seal opens before the complete grid replaces it.', 'Short flip', 10],
-      [9650, 'results', 'Complete set', 'All ten results remain inspectable', 'NEW, duplicate and Echo information survive the theater.', 'Result-settle chord', 10],
+      ...opening('SSR'),
+      [3400, 'impact', 'One opening for the set', 'Ten lights leave the carrier', 'All ten committed results take their places in order.', 'Heavy impact · ten glass pings'],
+      [3750, 'seals', 'Roster stage', 'Ten closed lights wait', 'Each light opens into a character. Unopened positions stay visible.', 'Lights settle left to right'],
+      [4250, 'arrival', 'Slot 1 · R', 'First fighter enters', 'A quick character entrance leaves a small fighter on the roster stage.', 'Whoosh · footfall', 1],
+      [4950, 'arrival', 'Slot 2 · R', 'Second fighter enters', 'Every fighter gets the same basic entrance.', 'Whoosh · footfall', 2],
+      [5650, 'arrival', 'Slot 3 · SR', 'Silver frames the third fighter', 'A stronger entrance gets a little more time.', 'Silver accent · character landing', 3],
+      [6650, 'arrival', 'Slot 4 · R', 'Fourth fighter enters', 'Return to the quick character rhythm.', 'Whoosh · footfall', 4],
+      [7350, 'arrival', 'Slot 5 · R', 'Fifth fighter enters', 'The established rhythm gives the SSR interruption weight.', 'Whoosh · footfall', 5],
+      [8050, 'blackout', 'Slot 6 · SSR', 'The roster stage goes quiet', 'The sixth fighter is still concealed.', 'Cadence cuts · 200 ms silence', 5],
+      [8250, 'impact', 'SSR contact', 'The sixth light hits back', 'The elevated interruption earns a stronger impact.', 'Sub hit · crack · area shock', 5],
+      [8500, 'voice', 'Identity withheld', 'Voice before character', 'The quote leads while the roster and character remain hidden.', 'Clean voice centered · music -9 dB', 5],
+      [9300, 'art', 'Slot 6 · SSR entrance', 'The SSR fighter enters', 'The full character pays off the interruption.', 'Entrance hit · character sting', 6],
+      [9750, 'plate', 'Identity confirmed', 'Name follows the character', 'The sixth result settles before the roster resumes.', 'Theme resolves briefly', 6],
+      [10300, 'arrival', 'Slot 7 · R', 'Seventh fighter enters', 'The roster returns with the first six characters retained.', 'Whoosh · footfall', 7],
+      [11000, 'arrival', 'Slot 8 · SR', 'Another silver entrance', 'SR still receives its own stronger arrival.', 'Silver accent · character landing', 8],
+      [12000, 'arrival', 'Slot 9 · R', 'Ninth fighter enters', 'Every result becomes a character on the stage.', 'Whoosh · footfall', 9],
+      [12700, 'arrival', 'Slot 10 · R', 'The final fighter enters', 'Let the final arrival settle before the overview.', 'Whoosh · footfall', 10],
+      [13700, 'results', 'Complete roster', 'Ten characters stay inspectable', 'The final roster preserves NEW, duplicate and Echo details in the finished game.', 'Result-settle chord', 10],
     ],
   },
 };
 
 const $ = id => document.getElementById(id);
 const stage = $('stage');
-const buttons = $('scenarioButtons');
 const scrubber = $('scrubber');
-const playBtn = $('playBtn');
-const seals = $('seals');
-const resultCard = $('resultCard');
-let key = 'ssr';
-let current = 0;
-let playing = false;
-let startedAt = 0;
-let frame = 0;
-
-function beatObject(values) {
-  const [at, phase, kicker, title, visual, sound, revealed = 0] = values;
-  return { at, phase, kicker, title, visual, sound, revealed };
-}
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+let key = 'ssr', current = 0, playing = false, startedAt = 0, frame = 0;
 
 for (const [scenarioKey, scenario] of Object.entries(scenarios)) {
-  scenario.beats = scenario.beats.map(beatObject);
+  scenario.beats = scenario.beats.map(([at, phase, kicker, title, visual, sound, revealed = 0]) => ({ at, phase, kicker, title, visual, sound, revealed }));
   const button = document.createElement('button');
   button.type = 'button';
   button.textContent = scenario.label;
   button.dataset.scenario = scenarioKey;
   button.addEventListener('click', () => selectScenario(scenarioKey));
-  buttons.append(button);
+  $('scenarioButtons').append(button);
+}
+
+function textFor(value) {
+  const area = areas[$('areaSelect').value];
+  return value.replace(/\{(origin|carrier|travel)\}/g, (_, name) => area[name]);
+}
+
+function pause() {
+  playing = false;
+  cancelAnimationFrame(frame);
 }
 
 function selectScenario(next) {
-  key = next;
-  playing = false;
-  cancelAnimationFrame(frame);
-  current = 0;
+  pause(); key = next; current = 0;
   const scenario = scenarios[key];
   scrubber.max = scenario.duration;
-  scrubber.value = 0;
   $('duration').textContent = `/ ${(scenario.duration / 1000).toFixed(2)} s`;
-  buildRail();
-  buildSeals();
-  render();
-}
-
-function buildSeals() {
-  seals.textContent = '';
-  const scenario = scenarios[key];
-  if (!scenario.rarities) return;
-  scenario.rarities.forEach(rarity => {
+  $('seals').replaceChildren();
+  for (const rarity of scenario.rarities || []) {
     const seal = document.createElement('i');
     seal.dataset.rarity = rarity;
-    seals.append(seal);
-  });
+    seal.style.setProperty('--seal', palette[rarity]);
+    $('seals').append(seal);
+  }
+  buildRail(); render();
 }
 
 function buildRail() {
-  const rail = $('beatRail');
-  rail.textContent = '';
-  scenarios[key].beats.forEach((beat, index) => {
+  $('beatRail').replaceChildren();
+  scenarios[key].beats.forEach(beat => {
     const item = document.createElement('li');
     const button = document.createElement('button');
     button.type = 'button';
-    button.innerHTML = `<span>${(beat.at / 1000).toFixed(2)} s</span><b>${beat.title}</b>`;
-    button.addEventListener('click', () => {
-      playing = false;
-      current = beat.at;
-      scrubber.value = current;
-      render();
-    });
-    item.append(button);
-    item.dataset.index = index;
-    rail.append(item);
+    const time = document.createElement('span');
+    time.textContent = `${(beat.at / 1000).toFixed(2)} s`;
+    const title = document.createElement('b');
+    title.textContent = textFor(beat.title);
+    button.append(time, title);
+    button.addEventListener('click', () => { pause(); current = beat.at; render(); });
+    item.append(button); $('beatRail').append(item);
   });
-}
-
-function activeBeat() {
-  const beats = scenarios[key].beats;
-  let index = 0;
-  for (let i = 1; i < beats.length && beats[i].at <= current; i++) index = i;
-  return { beat: beats[index], index };
-}
-
-function scopeFor(phase, scenario) {
-  if (['commit', 'blackout', 'afterimage'].includes(phase)) return 'Shared pull director';
-  if (['seals', 'reveal', 'interrupt', 'results', 'card'].includes(phase)) return 'Shared result director';
-  if (phase === 'hold' && ['R', 'SR'].includes(scenario.tier)) return 'Shared result director';
-  if (['voice', 'hint', 'art', 'plate', 'hold'].includes(phase)) return 'Dedede reveal profile';
-  return 'Dream Land presentation profile';
 }
 
 function render() {
   const scenario = scenarios[key];
-  const { beat, index } = activeBeat();
+  const area = areas[$('areaSelect').value];
+  let index = 0;
+  while (index + 1 < scenario.beats.length && scenario.beats[index + 1].at <= current) index++;
+  const beat = scenario.beats[index];
+  const fighterTier = scenario.rarities && beat.revealed ? scenario.rarities[beat.revealed - 1] : scenario.tier;
   stage.dataset.phase = beat.phase;
   stage.dataset.tier = scenario.tier;
-  $('stageScope').textContent = scopeFor(beat.phase, scenario);
-  $('stageKicker').textContent = beat.kicker;
-  $('stageTitle').textContent = beat.title;
-  $('stageVisual').textContent = beat.visual;
-  $('soundCue').textContent = beat.sound;
+  stage.dataset.fighterTier = fighterTier;
+  stage.dataset.area = $('areaSelect').value;
+  stage.dataset.batch = String(Boolean(scenario.rarities));
+  stage.dataset.signal = String(current >= 2150);
+  stage.dataset.character = fighterTier === 'SSR' ? $('areaSelect').value : 'generic';
+  stage.style.setProperty('--fighter-tier', palette[fighterTier]);
+  $('stageScope').textContent = ['art', 'plate', 'hold', 'arrival'].includes(beat.phase) ? 'Fighter entrance' : current >= 3750 && scenario.rarities ? 'Shared result director' : `${area.name} · shared sequence`;
+  for (const [id, value] of [['stageKicker', beat.kicker], ['stageTitle', beat.title], ['stageVisual', beat.visual], ['soundCue', beat.sound]]) $(id).textContent = textFor(value);
   $('clock').textContent = (current / 1000).toFixed(2);
   scrubber.value = current;
-  playBtn.textContent = playing ? 'Pause storyboard' : current >= scenario.duration ? 'Replay storyboard' : 'Play storyboard';
+  $('playBtn').textContent = playing ? 'Pause storyboard' : current >= scenario.duration ? 'Replay storyboard' : 'Play storyboard';
   document.querySelectorAll('[data-scenario]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.scenario === key)));
-  document.querySelectorAll('#beatRail li').forEach((item, i) => item.classList.toggle('active', i === index));
-
-  const badge = resultCard.querySelector('span');
-  const name = resultCard.querySelector('b');
-  if (scenario.tier === 'R' || scenario.tier === 'SR') {
-    badge.textContent = scenario.tier;
-    name.innerHTML = 'RESULT<br>CARD';
-  } else {
-    badge.textContent = 'SSR';
-    name.innerHTML = 'KING<br>DEDEDE';
-  }
-
-  if (scenario.rarities) {
-    [...seals.children].forEach((seal, i) => {
-      const rarity = scenario.rarities[i];
-      seal.classList.toggle('revealed', i < beat.revealed);
-      seal.style.setProperty('--seal', rarity === 'SSR' ? '#ffd34f' : rarity === 'SR' ? '#58cfff' : '#8ed7ff');
-    });
-  }
+  [...$('beatRail').children].forEach((item, i) => item.classList.toggle('active', i === index));
+  $('nameplate').querySelector('span').textContent = fighterTier;
+  $('nameplate').querySelector('b').textContent = fighterTier === 'SSR' ? area.fighter : `${fighterTier}\nFIGHTER`;
+  $('figureLabel').textContent = ['SSR', 'UR'].includes(fighterTier) ? 'layered character art' : 'full character entrance';
+  const figure = stage.querySelector('.figure');
+  if (['art', 'arrival'].includes(beat.phase) && !reducedMotion.matches) {
+    const settle = 1 - Math.min(1, (current - beat.at) / 220);
+    figure.style.transform = `translate(${settle * 15}%, ${settle * 8}%)`;
+  } else figure.style.removeProperty('transform');
+  [...$('seals').children].forEach((seal, i) => {
+    seal.classList.toggle('revealed', i < beat.revealed);
+    seal.classList.toggle('current', i === beat.revealed - 1 && beat.phase === 'arrival');
+  });
+  // Rise out of the origin, complete a full lap, then curve toward the camera.
+  // Time-derived positions also work when scrubbing.
+  const launch = Math.max(0, Math.min(1, (current - 760) / 590));
+  const lap = Math.max(0, Math.min(1, (current - 1350) / 1650));
+  const approach = Math.max(0, Math.min(1, (current - 3000) / 400));
+  let x = 50 - 33 * Math.cos(lap * Math.PI * 2);
+  let y = 58 - 23 * Math.sin(lap * Math.PI * 2);
+  if (current < 1350) { x = 50 - 33 * launch ** 2; y = 81 - 23 * Math.sin(launch * Math.PI / 2); }
+  if (approach) { x = 17 + 33 * approach; y = 58 - 10 * approach - 7 * Math.sin(approach * Math.PI); }
+  if (reducedMotion.matches) { x = 50; y = 65; }
+  const mote = stage.querySelector('.mote');
+  mote.style.left = `${x}%`; mote.style.top = `${y}%`;
+  mote.style.transform = reducedMotion.matches ? 'translate(-50%, -50%)' : `translate(-50%, -50%) rotate(${lap * 360}deg) scale(${1 + approach * 8})`;
 }
 
 function tick(now) {
   if (!playing) return;
-  const scenario = scenarios[key];
-  current = Math.min(scenario.duration, now - startedAt);
+  current = Math.min(scenarios[key].duration, now - startedAt);
+  if (current >= scenarios[key].duration) pause();
   render();
-  if (current >= scenario.duration) {
-    playing = false;
-    render();
-    return;
-  }
-  frame = requestAnimationFrame(tick);
+  if (playing) frame = requestAnimationFrame(tick);
 }
 
-playBtn.addEventListener('click', () => {
-  const scenario = scenarios[key];
-  if (playing) {
-    playing = false;
-    cancelAnimationFrame(frame);
-    render();
-    return;
-  }
-  if (current >= scenario.duration) current = 0;
-  playing = true;
-  startedAt = performance.now() - current;
-  render();
+$('playBtn').addEventListener('click', () => {
+  if (playing) { pause(); render(); return; }
+  if (current >= scenarios[key].duration) current = 0;
+  playing = true; startedAt = performance.now() - current;
   frame = requestAnimationFrame(tick);
 });
-
-scrubber.addEventListener('input', event => {
-  playing = false;
-  cancelAnimationFrame(frame);
-  current = Number(event.target.value);
-  render();
-});
-
+$('skipBtn').addEventListener('click', () => { pause(); current = scenarios[key].duration; render(); });
+scrubber.addEventListener('input', () => { pause(); current = Number(scrubber.value); render(); });
+$('areaSelect').addEventListener('change', () => { pause(); buildRail(); render(); });
 selectScenario(key);

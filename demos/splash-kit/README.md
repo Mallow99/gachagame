@@ -8,6 +8,7 @@ pool, rates, pity and 50/50 are the game's own.
 ```sh
 npm run web                                  # then open http://localhost:8080/demos/splash-kit/index.html
 node --test test/splash-kit.test.js          # rig sanity checks
+node tools/browser-pull-blueprint.mjs out/pull-blueprint-02  # storyboard QA; server must be running
 python3 tools/splash-kit/prepare_art.py      # re-download, verify and re-bake all art
 node tools/splash-kit/export-artifact.mjs out/splash-kit   # self-contained copy for hosting
 ```
@@ -23,7 +24,7 @@ and no voice-led anticipation. The next approved step is plan-first, not v4 impl
 | Path | What it is |
 | --- | --- |
 | `index.html`, `kit.css` | The stage and review controls. One 16:9 stage, sized in `cqw`, shared by every state. |
-| `blueprint.html`, `blueprint.css`, `blueprint.js` | Approval gate 01: timed single/ten-pull storyboard, general director boundaries and Dream Land presentation profile. |
+| `blueprint.html`, `blueprint.css`, `blueprint.js` | Blueprint 02: R/SR/SSR/UR character entrances, full orbit, ten-character cadence and switchable Dream Land / Mushroom Kingdom assets. Placeholder art and written audio cues; awaiting owner review. |
 | `banner.js` | Flow: banner → summon → splash or card → ten-pull results → banner. Owns the demo save. |
 | `summon.js` | Canvas 2D summon. `summonRenderer(canvas, opts).render(t)` draws any moment; `playSummon` plays it. |
 | `splash/engine.js` | WebGL splash renderer: background grade, streaks, particles, character, smoke, flash. No per-fighter code. |

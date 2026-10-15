@@ -1,131 +1,141 @@
-# Pull presentation blueprint 01
+# Pull presentation blueprint 02
 
-Status: **timing and communication proposal, not implementation approval**  
-Owner gate: approve or revise the sequence before audio production, art cutting or v4 code.
+Status: **revised from Blueprint 01 feedback; awaiting owner review.**
+The interactive storyboard is `demos/splash-kit/blueprint.html`. It uses
+placeholder geometry and written audio cues. This is sequence review, before
+final audio, character layers or production integration.
 
-## Quality floor and constraints
+## Quality floor and owner corrections
 
-- Claude's Dedede reveal v2 is the comparison baseline. A new pass must be more
-  satisfying in direct A/B review, not merely different or more technically elaborate.
-- The existing banner, real `drawPulls` transaction and blue → gold → Warp Star
-  escalation remain the starting point. The result is committed before any omen plays.
-- The original source-era Dedede illustration remains valid. The v3 illustration is
-  an alternative, not an automatic upgrade.
-- Voice and written quote begin while the identity is concealed. Dedede enters on the
-  chosen word or musical impact; he must not already be sitting on screen.
-- No global warp, translucent body parts or cosmetic blink presented as meaningful
-  motion. Moving pieces require clean layers and painted concealed surfaces.
-- The JJK Phantom Parade references inform anticipation and audio grammar, not art
-  direction. Pocket Gacha keeps Fountain of Dreams, Warp Stars and Dream Land colour.
+Claude's v2 is the comparison baseline. V3 was rejected. The original source-era
+Dedede art remains valid; the implementation was the principal failure.
 
-## One director, many presentation profiles
+- Every fighter gets a character entrance at every rarity. Production effort
+  concentrates on SSR and UR. Fighters never collapse into cards.
+- R is blue, SR silver, SSR gold, UR prismatic. Featured is a banner property,
+  not a red rarity or a separate character-specific pull branch.
+- The carrier makes one full orbit around the area, then curves toward the
+  camera and strikes the screen. The storyboard draws that route explicitly.
+- Area assets vary: Dream Land uses the Fountain and Warp Star; Mushroom
+  Kingdom uses a pipe and Question Block. Both are selectable in the proof.
+- A rare featured-banner cameo can be added as an optional flourish, with the
+  same tier colour and core sequence. It must match the committed result.
+- Items can use an object reveal, seal, icon or turntable rather than the
+  fighter entrance treatment.
 
-The approved timing must become a general pull system rather than forcing every banner
-through Dream Land imagery.
+Voice and written quote must begin while the character and name are concealed.
+Music leaves space for speech. A moving character requires separated pieces
+and painted hidden surfaces; global bending, translucent shoes and cosmetic
+shine/blink do not meet the quality goal.
 
-1. **Pull director (shared):** reads the committed receipt and owns one-versus-ten
-   pacing, tier guarantees, interruption points, voice-before-art order, result order,
-   music ducking lanes, Skip, replay and reduced motion.
-2. **Banner presentation profile:** supplies the world-specific environment, travel
-   object, tier omen visuals, impact treatment, palette and audio family. Dream Land's
-   first profile uses the Fountain and a blue mote that becomes a Warp Star. A Mushroom
-   Kingdom profile can use its own environment and symbols without changing pull logic.
-   Supply banners can use a shorter item profile.
-3. **Character reveal profile:** supplies only the approved art/layers, entrance action,
-   clean voice or character sound, written line, nameplate and source label.
+## One director, area assets, fighter payoff
 
-The blueprint below uses Dream Land as the proving profile. Every reviewed beat must be
-identifiable as a shared director contract, a Dream Land presentation choice or a
-Dedede-specific payoff. No Fountain, Warp Star or Dedede detail belongs in the shared
-director.
+| Owner | Responsibility |
+| --- | --- |
+| Shared pull director | Committed receipt, one/ten timing, rarity promises, order, interruptions, voice-before-art, music ducking, Skip, replay, reduced motion |
+| Area presentation profile | Origin, carrier, route styling, palette, impact treatment, audio family; Fountain/Warp Star or pipe/Question Block |
+| Fighter payoff data | Approved character art/layers, entrance action, clean voice or character sound, quote, name and source label |
+| Item payoff data | Item object, icon or illustration and its reveal treatment |
 
-## Shared single-pull spine
+Fighter payoff data does not add a special summon branch for every character.
+The optional banner cameo belongs to banner presentation data and is independent
+of rarity. The storyboard only describes that future option; no cameo is authored
+in this iteration.
 
-The R, SR and SSR paths share a readable setup so that higher rarities feel like the
-ordinary sequence has transformed rather than like unrelated animations.
+The playable demo still uses the real `drawPulls` transaction. The blueprint is
+a presentation-only timeline and does not call transactions or change pools,
+rarities, ownership, pity or currency. UR uses a generic preview fighter; it
+does not promote Dedede or add a UR unit.
 
-| Time | Picture | Sound lane | Purpose |
-| ---: | --- | --- | --- |
-| 0.00–0.18 | Pull button compresses; stage shutters inward | Dry confirmation hit; music ducks 2 dB | Acknowledge the committed pull |
-| 0.18–0.65 | Fountain water and stars gather into one blue mote | Water reverse, glass flecks, low pulse | Begin from the same neutral promise |
-| 0.65–1.35 | Mote rises, hesitates, then launches | Rising air, pitch climb, two acceleration ticks | Make the player wait and read the omen |
-| 1.35–2.15 | Star tunnel crosses the Fountain sky | Music returns under travel layer | Establish a reusable flight rhythm |
-| 2.15–2.85 | Rarity omen modifies the flight | Tier-specific cue below | Communicate a floor before the result |
-| 2.85–3.20 | Contact / flash | Tier-specific impact; music ducks 6–9 dB | Punctuation, not decorative bloom |
-| 3.20+ | Card or character payoff | Card, voice and sting lanes below | Reveal only after the warning has landed |
+## Shared opening and spatial route
 
-## Rarity warning language
+| Time | Picture | Sound lane |
+| ---: | --- | --- |
+| 0.00–0.26 | Button answers; committed receipt is locked | Dry confirmation; music ducks 2 dB |
+| 0.26–0.76 | Area origin gathers fragments into a neutral blue mote | Water/glass or pipe/coin family; low pulse |
+| 0.76–1.35 | Mote rises out of origin, then bends left into the orbit | Pitch climb; acceleration ticks |
+| 1.35–2.15 | Start a full lap from the left; cross the far side toward the right | Travel wind and area ambience |
+| 2.15–3.00 | Tier cue transforms the carrier during the return side of the lap | Rarity accent |
+| 3.00–3.40 | Complete the lap; curve inward and grow toward the camera | Approach rush; music drains |
+| 3.40+ | Tier impact and character payoff | Impact, entrance and voice lanes below |
 
-| Tier | Omen before contact | Contact | Promise |
-| --- | --- | --- | --- |
-| R | Blue mote remains stable; no interruption | Small white-blue star pop | Ordinary result; never fake danger |
-| SR | Cyan-violet current crawls around the mote; one brief screen desync | Charged blue/gold energy flash | At least one SR; sharper but not cinematic |
-| SSR | Mote becomes a gold Warp Star; music and ambience drain to silence; 180–240 ms blackout | Near-black frame into a gold-white star impact with a sub hit | At least one SSR; the identity is still withheld |
-| Featured SSR | SSR path plus one rare Fountain reflection / hammer-shaped shadow before blackout | SSR impact with a second delayed crown tone | Featured character; used rarely and consistently |
-| UR preview | Rainbow Warp Star and prismatic afterimage | Multistage spectrum burst | Presentation preview only; no UR unit is added |
+Positions are derived from storyboard time, so scrubbing and playback follow
+the same full ellipse and final approach. The drawn orbit is explanatory
+geometry, not a requirement for a visible dashed line in final production.
 
-An SSR may still occur without the strongest optional featured omen, but an omen must
-never promise a tier the committed receipt does not contain.
+## Rarity language and character arrival
 
-## SSR character reveal — 5.8 seconds total
+| Tier | Omen | Character payoff |
+| --- | --- | --- |
+| R | Blue mote stays steady; small blue-white hit | Quick solid entrance, name and player-controlled hold |
+| SR | Silver current and metallic edge; charged silver hit | Stronger entrance, short character action and silver accent |
+| SSR | Gold area carrier; 200 ms blackout before impact | Voice first, silhouette on the chosen word, full entrance, then name |
+| UR | Prismatic carrier and spectral trails; 500 ms blackout | Longer voice-led entrance with space for an authored action and spectrum effects |
 
-| Time | Beat | Picture | Audio |
-| ---: | --- | --- | --- |
-| 0.00–2.85 | Shared flight | Gold Warp Star path | Build and acceleration |
-| 2.85–3.05 | Air removed | Full black; no name or character | Music cuts; 180–240 ms intentional silence |
-| 3.05–3.28 | Impact | Star-shaped white core, gold edge, short Fountain reflection | Sub hit, crack, water shock; music remains down |
-| 3.28–3.52 | Afterimage | Darkness returns with drifting sparks | Decay only; leave space |
-| 3.52–4.35 | Voice leads | Written quote appears phrase by phrase; no Dedede art | Clean voice centered; sparse low ambience |
-| 4.35–4.62 | Identity hint | Hammer silhouette or robe edge crosses frame | Cloth/hammer whoosh timed to the final word |
-| 4.62–5.05 | Character entrance | Dedede lands as a solid layered illustration; camera answers impact | Entrance hit and short character sting |
-| 5.05–5.45 | Nameplate | Small KING, large DEDEDE, rarity, source and year | Theme resolves after the voice, not over it |
-| 5.45+ | Player-controlled hold | Effects settle; art remains readable | Low loop only; click/Skip exits safely |
+The omen promises a minimum tier already present in the receipt. An SSR or UR
+does not require a special featured signal. A future featured cameo may promise
+the featured fighter only when the committed result contains that fighter.
 
-The voice asset is auditioned in isolation before integration. If no clip is clean
-enough, use a sourced nonverbal character sound and text rather than low-quality speech.
+## Cinematic single-pull timing
+
+| Beat | SSR | UR |
+| --- | ---: | ---: |
+| Blackout begins | 3.40 s | 3.40 s |
+| Impact | 3.60 s | 3.90 s |
+| Dark afterimage / impact decay | 3.83 s | 4.13 s |
+| Voice and written line; no fighter or name | 4.07 s | 4.37 s |
+| First silhouette on decisive word | 4.90 s | 5.20 s |
+| Solid character entrance | 5.17 s | 5.47 s |
+| Name, rarity, source and year | 5.60 s | 5.90 s |
+| Player-controlled hold | 6.20 s | 7.10 s |
+
+R enters at 3.65 s, shows its name at 4.00 s and holds from 4.45 s.
+SR enters at 3.65 s, shows its name at 4.15 s and holds from 4.80 s.
+Final timing will follow the auditioned voice phrase rather than forcing a
+recording into these provisional intervals.
 
 ## Ten-pull structure
 
-One ten-pull uses one anticipation sequence. It is not ten full single-pulls.
-
-1. Run the shared flight using the highest committed rarity as the omen floor.
-2. At contact, arrange ten closed star seals in result order.
-3. Reveal R at 0.28–0.34 seconds per slot and SR at 0.45–0.55 seconds per slot.
-4. Before an SSR slot, stop the cadence, dim the unopened seals and run the approved
-   voice-first SSR character sequence. Return to the remaining seals afterward.
-5. Multiple SSR slots each receive a character entrance, but only the first repeats the
-   long blackout buildup; later SSRs use a 1.5–2.0 second elevated variant.
-6. End on the complete ten-result grid with NEW, duplicate and Echo information intact.
-
-Proposed example timeline for one SSR in slot 6:
+One opening carries the set, using its highest committed tier for the omen.
+The contact creates ten closed lights in result order. Each light becomes a
+character and remains on the roster stage after its entrance.
 
 | Time | Beat |
 | ---: | --- |
-| 0.00–3.20 | Shared flight and SSR omen |
-| 3.20–3.75 | Ten closed seals arrive |
-| 3.75–5.65 | Slots 1–5 reveal (R, R, SR, R, R) |
-| 5.65–8.15 | Slot 6 interrupts into the condensed SSR entrance |
-| 8.15–9.65 | Slots 7–10 reveal |
-| 9.65+ | Full results grid and player-controlled exit |
+| 0.00–3.75 | Shared orbit, SSR warning, approach and set impact |
+| 3.75–4.25 | Ten closed lights settle |
+| 4.25–8.05 | Slots 1–5: R, R, SR, R, R; 0.70 s per R and 1.00 s for SR |
+| 8.05–10.30 | Slot 6: blackout, impact, voice, SSR entrance and name |
+| 10.30–13.70 | Slots 7–10: R, SR, R, R; each gets a character arrival |
+| 13.70+ | Complete ten-character roster and player-controlled exit |
 
-## Audio mix contract
+Later SSRs use a shorter cinematic entrance rather than repeating the long
+opening. UR retains its larger payoff. These multiple-high-tier variants still
+need an audio animatic; the current interactive example has one SSR.
 
-- Keep final peaks at or below -1 dBFS and judge the mix on a phone speaker as well
-  as headphones. Loudness numbers are a guardrail, not a substitute for listening.
-- Voice or signature character sound owns the center during 3.52–4.35. Music ducks
-  6–9 dB and competing high-frequency effects leave that space.
-- Every visible cause has one readable sound: gather, launch, tier omen, impact, seal,
-  flip, character entrance and result settle. Do not fill every frame with noise.
-- Silence before SSR impact is an authored cue and must survive sound mixing.
-- Sound-off, Skip and reduced-motion paths reach the identical committed result.
+The final result view must retain NEW, duplicate and Echo information. The
+storyboard silhouettes demonstrate character presence, not finished roster art.
 
-## Approval gates
+## Audio and control contracts
 
-1. **Blueprint 01:** approve sequence, tier grammar and voice-before-art order.
-2. **Audio animatic:** temporary geometry with final-quality timing and an auditioned mix.
-3. **Layer sheet:** approve art choice, separated pieces and painted hidden surfaces.
-4. **Single SSR proof:** compare directly against v2 on phone and desktop.
-5. **Ten-pull proof:** verify reveal cadence, multiple SSRs and results handoff.
-6. **Production integration:** preserve receipts, Skip, replay and reduced motion.
+- Audition the voice in isolation. If no clean clip exists, use a sourced
+  character sound and text rather than poor-quality speech.
+- Music ducks 6–9 dB beneath speech and major impacts. The theme resolves
+  after the voice. Sparse ambience leaves room for the line.
+- Give gather, launch, omen, approach, impact, entrance and result settle one
+  deliberate readable sound each. Preserve the pre-impact silence.
+- Check phone speakers and headphones; keep final peaks at or below -1 dBFS.
+- Sound-off, Skip, replay and reduced motion reach the same committed results.
+  The blueprint provides Skip/replay and suppresses travel/arrival movement
+  with reduced motion; it intentionally has no playable audio yet.
 
-At every gate record three owner answers: **Liked**, **Disliked**, **Still needed**.
+## Next review steps
+
+1. Owner reviews Blueprint 02 route, tier colours and character cadence.
+2. Audio animatic with temporary geometry and an auditioned mix.
+3. Character layer sheet with completed hidden surfaces.
+4. Single SSR proof compared directly with v2 on phone and desktop.
+5. Ten-pull proof including multiple SSRs and UR interruption.
+6. Production integration, then wider game UI/code work.
+
+Record each verdict as Liked, Disliked and Still needed in `FEEDBACK.md`.

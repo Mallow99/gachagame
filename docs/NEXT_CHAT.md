@@ -1,5 +1,37 @@
 # Start the next chat here
 
+## Newest: pull blueprint 02 awaiting review (2026-10-15 UTC)
+
+Continue branch `codex/v1-playable`. The owner reviewed Blueprint 01 and asked
+for every fighter to appear as a character, silver SR and a full UR path, a
+readable orbit around the area before the screen strike, area-specific origin /
+carrier assets, and featured-banner flourishes that do not create a separate red
+rarity. Exact feedback is in `demos/splash-kit/FEEDBACK.md`.
+
+Blueprint 02 (`demos/splash-kit/blueprint.html`, `.css`, `.js`) implements those
+sequence proposals with placeholder geometry and written sound cues. It has R,
+SR, SSR, UR and a ten-pull, plus a Dream Land / Mushroom Kingdom asset switch.
+All ten fighters get an entrance and remain as small character silhouettes;
+items may use their own object treatment. UR uses a generic preview fighter,
+never a promoted Dedede or new pool entry. The general director owns timing;
+area profiles supply Fountain/Warp Star or pipe/Question Block. Featured is an
+optional overlay described on the page, not another branch or colour.
+
+Review URL: <https://dedede-v3-review.berryowlet9.chatgpt.site/blueprint.html>.
+Site project: `appgprj_6ad03e8c319481919258b1bd0223fe7c`; source checkout:
+`/workspace/sites/dedede-v3-review`. Preserve owner-private access and this
+project identity. This is separate from the older review site described below.
+
+Verification: 115 tests pass. `tools/browser-pull-blueprint.mjs` checks all four
+rarities, both areas, vertical pipe exit, full orbit and approach, voice-before-art,
+ten character arrivals, Skip/replay/pause, reduced motion, unchanged local storage
+and desktop/390px overflow. Screenshots were reviewed in cloud Chromium; final
+audio quality and native phone/M2 performance are not claimed by this storyboard.
+
+Next: record the owner's Blueprint 02 verdict, revise if needed, then make the
+audio animatic and character layer proof in that order. Final Dedede animation,
+production integration and broad game UI/code cleanup are still later work.
+
 ## Newest: v3 rejected; pull blueprint approved to begin (2026-10-14 America/Chicago)
 
 The owner rejected Dedede reveal v3 as a regression from Claude's v2. The new

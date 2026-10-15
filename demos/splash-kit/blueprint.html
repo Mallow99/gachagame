@@ -3,100 +3,107 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Pull Blueprint 01</title>
+<title>Pull Blueprint 02</title>
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="blueprint.css">
 </head>
 <body>
 <header class="topline">
   <a href="index.html">Pocket Gacha</a>
-  <span>Pull blueprint 01</span>
-  <span>Approval gate: sequence</span>
+  <span>Pull blueprint 02</span>
+  <span>Review: sequence</span>
 </header>
-
 <main>
   <section class="brief" aria-labelledby="pageTitle">
     <div>
-      <p class="status">Timing only. No final art. No final audio.</p>
+      <p class="status">Revised from your feedback. Placeholder art; sound cues are written only.</p>
       <h1 id="pageTitle">The pull before the prize</h1>
     </div>
-    <p>This storyboard defines what the player learns and feels before a result appears. Judge the warning language,
-      suspense, voice placement and ten-pull rhythm—not placeholder geometry.</p>
+    <p>Every fighter gets a character entrance. Compare the orbit, rarity warnings, voice placement and ten-pull rhythm here before final art and audio.</p>
   </section>
-
   <section class="architecture" aria-label="Pull presentation architecture">
     <div><b>Shared pull director</b><span>Committed receipt, timing, rarity promises, one/ten cadence, audio lanes, Skip and replay.</span></div>
-    <div><b>Dream Land profile</b><span>Fountain, blue mote, Warp Star, world palette, impacts and the matching sound family.</span></div>
-    <div><b>Dedede reveal</b><span>Approved layered art, voice-before-art entrance, nameplate and source label.</span></div>
+    <div><b>Area presentation</b><span>Dream Land: Fountain → Warp Star. Mushroom Kingdom: pipe → Question Block. Each area supplies its origin, carrier, effects and sound family.</span></div>
+    <div><b>Every fighter appears</b><span>R gets a quick entrance; SR adds silver energy; SSR and UR get the cinematic payoff. Items get their own object reveal.</span></div>
   </section>
-
   <section class="lab" aria-labelledby="labTitle">
     <div class="scenario-bar">
-      <h2 id="labTitle">Choose a Dream Land test receipt</h2>
+      <h2 id="labTitle">Compare the pull paths</h2>
       <div class="scenario-buttons" id="scenarioButtons" role="group" aria-label="Storyboard scenario"></div>
     </div>
-
+    <div class="area-controls">
+      <label for="areaSelect">Area assets</label>
+      <select id="areaSelect"><option value="dream">Dream Land · Fountain / Warp Star</option><option value="mushroom">Mushroom Kingdom · pipe / Question Block</option></select>
+      <span>UR previews presentation only; unit rarities and pools stay as they are.</span>
+    </div>
     <div class="stage-shell">
-      <div class="stage" id="stage" data-phase="commit" data-tier="R" aria-live="polite">
+      <div class="stage" id="stage" data-phase="commit" data-tier="SSR" aria-live="polite">
         <p class="stage-scope" id="stageScope">Shared pull director</p>
         <div class="sky-lines" aria-hidden="true"></div>
+        <svg class="orbit-map" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <ellipse cx="50" cy="58" rx="33" ry="23" />
+          <path class="launch-line" d="M50 81 Q50 54 17 58" />
+          <path class="approach-line" d="M17 58 Q35 39 50 48" />
+          <path class="route-arrows" d="M17 60 L17 55 L20 58 M81 55 L83 60 L85 56" />
+        </svg>
+        <span class="route-label" aria-hidden="true">One lap around the area</span>
+        <span class="camera-target" aria-hidden="true">Camera / screen</span>
         <div class="fountain" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="pipe" aria-hidden="true"><i></i></div>
         <div class="mote" aria-hidden="true"></div>
-        <div class="featured-omen" aria-hidden="true"><span></span></div>
         <div class="impact" aria-hidden="true"></div>
         <div class="blackout" aria-hidden="true"></div>
-        <div class="quote" id="quote"><span>Voice and written quote begin.</span><b>Dedede is still concealed.</b></div>
+        <div class="quote" id="quote"><span>Voice and written quote begin.</span><b>Character and name are still concealed.</b></div>
         <div class="figure" aria-hidden="true">
           <span class="figure-hammer"></span><span class="figure-body"></span>
-          <em>approved layered art enters</em>
+          <em id="figureLabel">character art enters</em>
         </div>
         <div class="seals" id="seals" aria-hidden="true"></div>
-        <div class="result-card" id="resultCard" aria-hidden="true"><span>SSR</span><b>KING<br>DEDEDE</b></div>
+        <div class="nameplate" id="nameplate" aria-hidden="true"><span>SSR</span><b>KING<br>DEDEDE</b></div>
         <div class="stage-copy">
           <p class="stage-kicker" id="stageKicker">The transaction is committed</p>
           <h3 id="stageTitle">Receipt locks before theater</h3>
-          <p id="stageVisual">The pull button answers immediately; presentation cannot reroll the result.</p>
+          <p id="stageVisual">The sequence follows the saved result.</p>
         </div>
         <div class="sound-lane"><span>Sound</span><b id="soundCue">Dry confirmation hit · music ducks 2 dB</b></div>
       </div>
-
       <div class="transport">
         <button id="playBtn" type="button">Play storyboard</button>
-        <label for="scrubber"><span id="clock">0.00</span><span id="duration">/ 5.80 s</span></label>
-        <input id="scrubber" type="range" min="0" max="5800" step="10" value="0" aria-label="Storyboard time">
+        <button id="skipBtn" type="button">Skip to result</button>
+        <label for="scrubber"><span id="clock">0.00</span><span id="duration">/ 6.50 s</span></label>
+        <input id="scrubber" type="range" min="0" max="6500" step="10" value="0" aria-label="Storyboard time">
       </div>
     </div>
-
     <ol class="beat-rail" id="beatRail" aria-label="Storyboard beats"></ol>
   </section>
-
   <section class="language" aria-labelledby="languageTitle">
     <div class="section-heading">
       <h2 id="languageTitle">The warning must make a promise</h2>
-      <p>Higher tiers transform the same flight. They do not begin as unrelated movies.</p>
+      <p>Blue → silver → gold → prismatic. The area chooses the assets; rarity chooses the intensity.</p>
     </div>
     <div class="cue-table" role="table" aria-label="Rarity warning language">
-      <div class="cue-row cue-head" role="row"><span>Tier</span><span>Before impact</span><span>Promise</span></div>
-      <div class="cue-row cue-r" role="row"><b>R</b><span>Stable blue mote. No false danger.</span><span>Ordinary result.</span></div>
-      <div class="cue-row cue-sr" role="row"><b>SR</b><span>Cyan-violet current and one screen desync.</span><span>At least SR.</span></div>
-      <div class="cue-row cue-ssr" role="row"><b>SSR</b><span>Gold Warp Star, drained music, 180–240 ms blackout.</span><span>At least SSR; identity withheld.</span></div>
-      <div class="cue-row cue-featured" role="row"><b>Featured</b><span>SSR path plus a rare Fountain/hammer omen.</span><span>The featured character.</span></div>
+      <div class="cue-row cue-head" role="row"><span>Tier</span><span>Before impact</span><span>Payoff</span></div>
+      <div class="cue-row cue-r" role="row"><b>R</b><span>Stable blue mote and a light impact.</span><span>A quick, solid character arrival.</span></div>
+      <div class="cue-row cue-sr" role="row"><b>SR</b><span>Silver current, a bright metallic edge and a charged impact.</span><span>At least SR; enhanced character entrance.</span></div>
+      <div class="cue-row cue-ssr" role="row"><b>SSR</b><span>Gold area carrier, drained music, 200 ms blackout.</span><span>At least SSR; voice leads the cinematic entrance.</span></div>
+      <div class="cue-row cue-ur" role="row"><b>UR</b><span>Prismatic carrier, split spectrum trails and a deeper pause.</span><span>UR; extended voice-led entrance and authored action.</span></div>
     </div>
+    <p class="flourish-note">A rare banner cameo can add a special signal when the featured fighter is in the committed result. It keeps that result’s rarity colour and sequence. Featured is a banner property, not another tier.</p>
+    <p class="flourish-note">Ten-pulls give each fighter an entrance, then keep a small character on the roster stage. Items may use a seal, icon or object turntable instead.</p>
   </section>
-
   <section class="review" aria-labelledby="reviewTitle">
-    <h2 id="reviewTitle">Gate 01 review</h2>
-    <p>Before audio production or character rigging, answer only these:</p>
+    <h2 id="reviewTitle">Blueprint 02 review</h2>
+    <p>Before audio production or character rigging:</p>
     <ol>
-      <li>Does the SSR warning create enough anticipation before the identity appears?</li>
-      <li>Does the voice begin early enough, with Dedede genuinely concealed?</li>
-      <li>Does the ten-pull pause for an SSR without becoming ten full single-pulls?</li>
-      <li>Which cue feels wrong, too long or too weak?</li>
+      <li>Does the full orbit, turn toward the camera and screen impact read clearly?</li>
+      <li>Do blue R, silver SR, gold SSR and prismatic UR feel distinct?</li>
+      <li>Does every fighter feel present, including the quick R/SR entrances?</li>
+      <li>Does the voice begin early enough, with the character concealed?</li>
+      <li>Does the ten-pull give characters enough time while preserving its rhythm?</li>
     </ol>
-    <p class="next-gate">Next gate after approval: an audio animatic with temporary geometry and a properly auditioned mix.</p>
+    <p class="next-gate">After sequence approval: an audio animatic with an auditioned mix, followed by the character layer proof.</p>
   </section>
 </main>
-
 <script type="module" src="blueprint.js"></script>
 </body>
 </html>

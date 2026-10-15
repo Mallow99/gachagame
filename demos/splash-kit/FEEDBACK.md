@@ -4,6 +4,33 @@ One entry per reviewed iteration. Record what the owner liked, what they
 disliked, and what is still needed, in their words where possible. Read this
 before changing anything here.
 
+## Pull blueprint 01 — reviewed 2026-10-15
+
+Verdict: **revise before approval.** The owner supplied six corrections.
+
+Liked:
+- “I do like the warp star for being the signifier”.
+- On circling the area then returning toward the screen: “if it is, thats cool”.
+
+Disliked:
+- “id rather things didnt get folded into cards, id much prefer it if everyone had a character even if the quality really goes into the ssrs as thats what you want to see. Cards flattens things to such a big extent. Items can be a bit different.”
+- “I think we should change colors of things, either making sr silver, or adjusting for the idea that UR is a thing, hich also btw isnt included in this.”
+- “right now it just looks like it arbitrarily is going into the corner then slamming into the screen, which is kind of weird.”
+- “it is a bit odd that its a warp star everytime even in this”.
+- “we dont really need something seperate for the specific characters” and “the fact its red also makes it confusing for me”.
+
+Still needed:
+- “maybe instead just having a placeholder because like for mario maybe that would be a question block? infact, maybe we try and customize the assets depending on the area, like for mario we could have the effect come out of a pipe, here we can have it come out of the dream fountain, elsewhere we can do similar things.”
+- “if we want the extra flourish of having a special signal if its the banners character we can”, with the JJKPP Gojo animation as a possible reference.
+- “obvi add a ur thing”.
+
+Blueprint 02 addresses these with character arrivals for all fighter tiers, blue /
+silver / gold / prismatic cues, a drawn full orbit followed by a camera approach,
+switchable Fountain/Warp Star and pipe/Question Block profiles, an optional banner
+flourish described separately from rarity, and an interactive UR path. Placeholder
+geometry and written audio cues remain deliberate at this sequence-review stage.
+**Awaiting owner verdict; not approved for final production.**
+
 ## Inherited from ChatGPT's Dedede study 03 (rejected, `demos/dedede-reveal/`)
 
 Source: `docs/NEXT_CHAT.md` and `docs/ANIMATED_SPLASH_OPTIONS.md`.
