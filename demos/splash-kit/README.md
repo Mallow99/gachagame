@@ -9,11 +9,11 @@ pool, rates, pity and 50/50 are the game's own.
 npm run web                                  # then open http://localhost:8080/demos/splash-kit/index.html
 node --test test/splash-kit.test.js          # rig sanity checks
 node tools/browser-pull-blueprint.mjs out/pull-blueprint-02  # storyboard QA; server must be running
-node tools/browser-pull-cue.mjs out/pull-cue-03  # visual cue / audio / camera QA; server must be running
+node tools/browser-pull-cue.mjs out/pull-cue-04  # visual cue / audio / camera QA; server must be running
 python3 tools/splash-kit/prepare_art.py      # re-download, verify and re-bake all art
 python3 tools/splash-kit/prepare-cue-art.py  # cue-only white-background cutouts from retained originals
 python3 tools/splash-kit/prepare-cue-audio.py # verified native call extracts; requires ffmpeg
-python3 tools/splash-kit/prepare-cue-music.py # verified area-game music beds; requires ffmpeg
+python3 tools/splash-kit/prepare-cue-music.py # verified area/character music beds; requires ffmpeg
 node tools/splash-kit/export-artifact.mjs out/splash-kit   # self-contained copy for hosting
 ```
 
@@ -21,9 +21,11 @@ Status: **Dedede reveal v3 rejected (2026-10-14 America/Chicago).** The illustra
 regressed from v2: translucent shoes, generic shine and blink instead of meaningful motion, weak/overlapping audio,
 and no voice-led anticipation. Blueprint 02's direction was accepted with escalation and pacing changes.
 The owner liked visual cue 01's direction and clarified the close-up. The current review is
-**`cue.html` · visual cue 03**: smooth launch/lap/approach joins, a curved ten-light thread, and separate
-area-game music (Fountain of Dreams / Running About). It preserves cue 02's slanted shots, full lock before
-rarity/name, tap-through, R/SR filter and lower Fountain. Quote holds remain 4 s SSR / 4.8 s UR.
+**`cue.html` · visual cue 04**: Dedede gets a gold-edged star opening onto his face, a 2.15 s pullback,
+slower rarity/name timing and his own showcase theme. The post-call sequence is 8.5 s, with a 1 s name
+arrival after the letters. Other characters keep their existing cadence. The smooth orbit, ten-light
+thread, area music, tap-through and R/SR filter remain. Quote holds stay 4 s SSR / 4.8 s UR.
+King Dedede's Theme is the related Super Star (1996) recording; his artwork remains Adventure (1993).
 Music fades fully clear of native Dedede/Bowser calls and the screen impact. The owner prefers these
 nonverbal sounds; spoken dialogue is optional rather than a remaining requirement. Existing
 source-era art remains a rigid camera stand-in. Record the next verdict in [FEEDBACK.md](FEEDBACK.md).
@@ -35,9 +37,9 @@ Nothing here is wired into the production summon theater yet.
 | --- | --- |
 | `index.html`, `kit.css` | The stage and review controls. One 16:9 stage, sized in `cqw`, shared by every state. |
 | `blueprint.html`, `blueprint.css`, `blueprint.js` | Blueprint 02 review record; direction accepted with escalation and pacing changes carried into visual cue 01. |
-| `cue.html`, `cue.css`, `cue.js` | Visual cue 03 controls, source-era character framing and real disposable `drawPulls` preview receipts. |
+| `cue.html`, `cue.css`, `cue.js` | Visual cue 04 controls, source-era character framing and real disposable `drawPulls` preview receipts. |
 | `cue-model.js`, `cue-renderer.js` | Deterministic cumulative tier / tenth-light timing, Canvas area effects, and slower character camera timeline. |
-| `cue-audio.js`, `assets/audio/cue02/SOURCES.json`, `assets/audio/areas/SOURCES.json` | Stoppable area music/effects/native-call mix and verified source provenance. Music stays at normal tempo, including slower visual playback; its timeline offset survives seeks. |
+| `cue-audio.js`, `assets/audio/cue02/SOURCES.json`, `assets/audio/areas/SOURCES.json` | Stoppable area/showcase music, effects, native calls and verified provenance. Character music starts from its own entrance offset and returns to area music on leaving that character. Music stays at normal tempo with slower visual playback. |
 | `banner.js` | Flow: banner → summon → splash or card → ten-pull results → banner. Owns the demo save. |
 | `summon.js` | Canvas 2D summon. `summonRenderer(canvas, opts).render(t)` draws any moment; `playSummon` plays it. |
 | `splash/engine.js` | WebGL splash renderer: background grade, streaks, particles, character, smoke, flash. No per-fighter code. |

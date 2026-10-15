@@ -11,22 +11,28 @@ export function cueAudioEvents(timeline, tier) {
   for (const s of timeline.segments.filter(s => !s.skipped)) {
     if (s.high) {
       events.push({ at: s.start, kind: 'voice', segment: s });
-      for (const fraction of [0, .34, .68]) events.push({ at: s.start + s.quote + (s.entrance + s.close) * fraction, kind: 'camera', pan: fraction === .34 ? .3 : -.3 });
-      events.push({ at: s.start + s.quote + s.entrance + s.close + s.pull, kind: 'lock' });
+      if (s.screen) events.push({ at: s.start + s.quote, kind: 'curtain' });
+      const fractions = s.payoff ? [0, .25, .5] : [0, .34, .68];
+      fractions.forEach((fraction, i) => events.push({ at: s.start + s.quote + s.screen + (s.entrance + s.close) * fraction, kind: 'camera', pan: i === 1 ? .3 : -.3 }));
+      events.push({ at: s.start + s.quote + s.screen + s.entrance + s.close + s.pull, kind: 'lock' });
     } else events.push({ at: s.start, kind: 'arrival', rarity: s.result.rarity });
-    const stampAt = s.start + s.quote + s.entrance + s.close + s.pull + s.settle;
-    events.push({ at: stampAt, kind: 'badge', rarity: s.result.rarity });
-    events.push({ at: stampAt + .3, kind: 'name', rarity: s.result.rarity });
+    const stampAt = s.start + s.quote + s.screen + s.entrance + s.close + s.pull + s.settle;
+    if (s.payoff) for (let i = 0; i < 3; i++) events.push({ at: stampAt + i * .26, kind: 'letter', letter: i });
+    else events.push({ at: stampAt, kind: 'badge', rarity: s.result.rarity });
+    events.push({ at: stampAt + (s.payoff ? s.nameDelay : .3), kind: 'name', rarity: s.result.rarity });
   }
   events.push({ at: timeline.lineup, kind: 'lineup' });
+  const showcases = timeline.segments.filter(s => s.music && !s.skipped);
+  const showcaseEnd = s => timeline.resultCount === 1 ? timeline.total : s.end;
   const silences = [[CUE.contact + timeline.delay - .35, timeline.impact + .3],
-    ...timeline.segments.filter(s => s.high && !s.skipped).map(s => [s.start - .18, s.start + s.quote + .08])].sort((a, b) => a[0] - b[0]);
+    ...timeline.segments.filter(s => s.high && !s.skipped).map(s => [s.start - .18, s.music ? showcaseEnd(s) : s.start + s.quote + .08])].sort((a, b) => a[0] - b[0]);
   let cursor = .12;
   for (const [start, end] of silences) {
     if (start > cursor) events.push({ at: cursor, end: start, kind: 'music' });
     cursor = Math.max(cursor, end);
   }
   if (cursor < timeline.total) events.push({ at: cursor, end: timeline.total, kind: 'music' });
+  for (const s of showcases) events.push({ at: s.start + s.quote + .08, end: showcaseEnd(s), anchor: s.start + s.quote, track: s.music, kind: 'music' });
   return events.sort((a, b) => a.at - b.at);
 }
 
@@ -73,9 +79,9 @@ function scheduleMix(ctx, buffers, timeline, { tier, area, time = 0, rate = 1, v
       source.connect(gain); gain.connect(master); track(source, [gain], when, buffer.duration - offset, offset); continue;
     }
     if (event.kind === 'music') {
-      const buffer = buffers[area];
+      const buffer = buffers[event.track || area];
       if (!buffer || event.end <= time) continue;
-      const at = Math.max(time, event.at), offset = at / rate;
+      const at = Math.max(time, event.at), offset = (at - (event.anchor || 0)) / rate;
       const duration = Math.min((event.end - at) / rate, buffer.duration - offset);
       if (duration <= 0) continue;
       const begin = origin + (at - time) / rate;
@@ -96,6 +102,8 @@ function scheduleMix(ctx, buffers, timeline, { tier, area, time = 0, rate = 1, v
       case 'approach': noise(when, .82 / rate, .2, 700, 6500); tone(when, 85, .75 / rate, .08, 'sine', 250); break;
       case 'impact': tone(when, 95, .55, .3, 'sine', 32); noise(when, .2, .28, 7000, 700); noise(when + .06, .55, .11, 1800, 300); break;
       case 'camera': noise(when, .19, .11, 1800, 5200, event.pan); tone(when, 160, .15, .05, 'triangle', 80); break;
+      case 'curtain': noise(when, .45, .14, 650, 3800); tone(when, 145, .35, .08, 'sine', 65); break;
+      case 'letter': tone(when, [392, 493.88, 587.33][event.letter], .24, .055, 'triangle'); tone(when, 72, .1, .07, 'sine', 42); break;
       case 'lock': tone(when, 82, .25, .15, 'sine', 42); noise(when, .07, .1, 1800, 600); break;
       case 'arrival': noise(when, .2, .07, 800, 2800); tone(when + .1, 130, .17, .1, 'sine', 65); break;
       case 'badge': chord(when, event.rarity === 'SSR' ? [392, 493.88, 587.33] : [440, 660], .05, .3); break;
@@ -103,7 +111,7 @@ function scheduleMix(ctx, buffers, timeline, { tier, area, time = 0, rate = 1, v
       case 'lineup': chord(when, [293.66, 440, 587.33], .04, .9); break;
     }
   }
-  return { active, master, stop() { for (const source of [...active]) { try { source.stop(); } catch {} } active.clear(); master.disconnect(); limiter.disconnect(); } };
+  return { active, master, get musicTrack() { const at = time + Math.max(0, ctx.currentTime - origin) * rate; const event = events.find(e => e.kind === 'music' && e.at <= at && e.end > at); return event ? event.track || area : null; }, stop() { for (const source of [...active]) { try { source.stop(); } catch {} } active.clear(); master.disconnect(); limiter.disconnect(); } };
 }
 
 export function cueAudio(manifest, base, music) {
@@ -113,7 +121,7 @@ export function cueAudio(manifest, base, music) {
       const AudioCtx = window.AudioContext || window.webkitAudioContext;
       if (!AudioCtx) throw Error('Audio is unavailable in this browser.');
       ctx ||= new AudioCtx(); await ctx.resume(); enabled = true;
-      if (!buffers.dedede || !buffers.dream) {
+      if (!buffers.dedede || !buffers.dream || !buffers['dedede-theme']) {
         const entries = await Promise.all([...Object.entries(manifest).map(([name, asset]) => [name, asset, base]),
           ...Object.entries(music.manifest).map(([name, asset]) => [name, asset, music.base])].map(async ([name, asset, assetBase]) => {
           const response = await fetch(new URL(asset.url, assetBase)); if (!response.ok) throw Error('Audio asset could not load.');
@@ -125,7 +133,7 @@ export function cueAudio(manifest, base, music) {
     play(time, timeline, options) { this.stop(); if (enabled && ctx?.state === 'running') { musicArea = options.area; mix = scheduleMix(ctx, buffers, timeline, { ...options, time }, ctx.destination); } },
     stop() { mix?.stop(); mix = null; generation++; },
     volume(value) { if (mix) mix.master.gain.setTargetAtTime(value, ctx.currentTime, .02); },
-    get state() { return { enabled, context: ctx?.state || 'not-started', active: mix?.active.size || 0, generation, loaded: Object.keys(buffers), musicArea: mix ? musicArea : null }; },
+    get state() { return { enabled, context: ctx?.state || 'not-started', active: mix?.active.size || 0, generation, loaded: Object.keys(buffers), musicArea: mix ? musicArea : null, musicTrack: mix?.musicTrack || null }; },
     async audition(timeline, options) {
       const offline = new OfflineAudioContext(2, Math.ceil((timeline.total + 2) * 44100), 44100);
       scheduleMix(offline, buffers, timeline, options, offline.destination);

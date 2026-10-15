@@ -25,6 +25,9 @@ the pipeline: `SOURCES.json` → `tools/splash-kit/prepare_art.py` → `rigs/<id
 - **Camera before identity:** after the concealed quote, frame SSR/UR from different angles/slants, pull fully
   back, let the character/lineup click into place, THEN show rarity letters and the name. A static held zoom was
   not what the owner meant. Keep tap-through and an option to skip R/SR entrances without removing results.
+- **Dedede showcase (cue 04 request):** the SSR payoff was still too quick. Use a screen-effect entrance,
+  centered face close-up and slower pullback, then slower name timing. Switch to related character music
+  while Dedede is displayed, keeping his native call clear. This request does not itself authorize a new rig.
 - **Let reveals breathe:** the owner explicitly corrected their timing complaint: the quote time was fine.
   Keep the current 4 s SSR / 4.8 s UR windows unless they request another change. Rainbow is UR only; default
   reviews should show gold SSR, with any SSR art used for UR clearly labelled as an effects stand-in.

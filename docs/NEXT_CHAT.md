@@ -1,5 +1,35 @@
 # Start the next chat here
 
+## Newest: visual cue 04 Dedede showcase (2026-10-15 UTC)
+
+Branch `codex/v1-playable`. The owner said the SSR is still too quick and
+explicitly requested King Dedede screen FX, a pullback from his face, a slower
+name and related music during his character screen. This supersedes the prior
+next-action suggestion to begin a character layer/rig proof. Do this bounded
+presentation review first; no new rig or art replacement was requested.
+
+Review remains <https://dedede-v3-review.berryowlet9.chatgpt.site/cue.html>.
+Cue 04 leaves the native-call hold at 4 s SSR / 4.8 s UR. Dedede's post-call
+showcase now lasts 8.5 s: .6 s gold-edged star iris, 1.6 s centered face/slants,
+2.15 s pullback, .45 s lock, 1.2 s letters and 2.5 s linger. Name begins .8 s
+after the letters start and takes 1 s. Full identity remains after camera lock.
+Bowser and lower-tier cadence, orbit, receipt order and rarity rules unchanged.
+
+`cue-model.js` holds the Dedede-only timings/identity/music key; `cue-renderer.js`
+uses a transparent foreground Canvas for the star iris, frame rays and edge
+shade. Correct Adventure artwork is rigid and unchanged. This is camera/FX,
+not a genuine character animation rig. Reduced motion removes iris/zoom/roll.
+`prepare-cue-music.py` now verifies a third source: King Dedede's Theme from
+Kirby Super Star (1996), credited as related music, not Adventure audio. The
+theme begins after his concealed call and replaces area music for his segment;
+area music returns for later ten-pull results. In singles the theme covers the
+final character hold. All track sources stop on pause, Skip, seek and rebuild.
+
+Evidence/limits: `docs/validation/pull-cue-04.md`. Next: owner's verdict on this
+Dedede pacing/screen/music pass. Then decide whether another refinement or the
+genuine layer/action proof is appropriate. Do not broaden to roster/production
+integration or UI cleanup before the payoff direction satisfies the owner.
+
 ## Newest: visual cue 03 area music and smooth orbit (2026-10-15 UTC)
 
 Branch `codex/v1-playable`. The owner said cue 02 is “looking pretty good” and

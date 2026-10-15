@@ -1,5 +1,15 @@
 # Pull presentation blueprint 02
 
+## Current pass: visual cue 04 — Dedede showcase
+
+The owner found the SSR payoff too quick and asked for Dedede-specific screen
+FX, a face pullback, slower name and related character music. The 4 s call is
+unchanged; the post-call sequence now spans 8.5 s. A gold-edged star iris leads
+into face framing and a 2.15 s pullback, followed by lock, letters and a 1 s name
+arrival. His Super Star theme replaces area music during the showcase. This is
+a bounded camera/FX/music pass; body/hammer layer animation is not implemented.
+Cue 04 awaits owner review and supersedes the next-action proposal below.
+
 ## Current pass: visual cue 03
 
 The owner liked cue 02 overall and preferred native character sounds to scarce

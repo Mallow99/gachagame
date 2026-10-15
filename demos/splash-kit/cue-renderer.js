@@ -17,8 +17,9 @@ function star(ctx, r) {
   ctx.closePath();
 }
 
-export function cueRenderer(canvas, background) {
+export function cueRenderer(canvas, background, foreground) {
   const ctx = canvas.getContext('2d');
+  const fx = foreground.getContext('2d');
   let W = 1280, H = 720, S = 1;
   function glow(x, y, radius, c, alpha = 1) {
     if (radius <= 0 || alpha <= 0) return;
@@ -26,6 +27,32 @@ export function cueRenderer(canvas, background) {
     const g = ctx.createRadialGradient(x, y, 0, x, y, radius);
     g.addColorStop(0, c); g.addColorStop(.15, c); g.addColorStop(1, 'transparent');
     ctx.fillStyle = g; ctx.fillRect(x - radius, y - radius, radius * 2, radius * 2); ctx.restore();
+  }
+
+  function dededeScreen(time, reveal, reduced) {
+    if (reveal.segment?.payoff !== 'dedede' || reveal.phase === 'quote') return;
+    const age = time - reveal.segment.start - reveal.segment.quote;
+    fx.save();
+    const shade = fx.createRadialGradient(W * .5, H * .46, H * .15, W * .5, H * .46, W * .68);
+    shade.addColorStop(0, 'transparent'); shade.addColorStop(.65, '#09020e10'); shade.addColorStop(1, '#05020eb3');
+    fx.fillStyle = shade; fx.fillRect(0, 0, W, H);
+    // Fine gold rays live around the frame, leaving the face and name clear.
+    fx.translate(W * .5, H * .46);
+    for (let i = 0; i < 20; i++) {
+      const a = i * Math.PI / 10 + (reduced ? 0 : age * .018);
+      const inner = H * (.46 + seed(i) * .2), outer = inner + H * (.1 + seed(i + 4) * .18);
+      fx.strokeStyle = '#ffcf49'; fx.globalAlpha = .08 + seed(i + 8) * .1; fx.lineWidth = S;
+      fx.beginPath(); fx.moveTo(Math.cos(a) * inner, Math.sin(a) * inner); fx.lineTo(Math.cos(a) * outer, Math.sin(a) * outer); fx.stroke();
+    }
+    fx.restore();
+    if (!reduced && reveal.phase === 'screen') {
+      const open = reveal.screen, radius = Math.hypot(W, H) * 2.3 * (open * open * (3 - 2 * open));
+      fx.save(); fx.fillStyle = '#05020e'; fx.fillRect(0, 0, W, H);
+      fx.translate(W * .5, H * .46); fx.globalCompositeOperation = 'destination-out';
+      star(fx, radius); fx.fill();
+      fx.globalCompositeOperation = 'source-over'; fx.globalAlpha = (1 - open) * .9;
+      fx.strokeStyle = '#ffe5a0'; fx.lineWidth = 3 * S; star(fx, radius); fx.stroke(); fx.restore();
+    }
   }
 
   function environment(time, area, reduced, reveal) {
@@ -146,6 +173,8 @@ export function cueRenderer(canvas, background) {
       W = canvas.clientWidth; H = canvas.clientHeight; S = Math.max(.45, Math.min(W / 1280, H / 720));
       const width = Math.round(W * dpr), height = Math.round(H * dpr);
       if (canvas.width !== width || canvas.height !== height) { canvas.width = width; canvas.height = height; }
+      if (foreground.width !== width || foreground.height !== height) { foreground.width = width; foreground.height = height; }
+      fx.setTransform(dpr, 0, 0, dpr, 0, 0); fx.clearRect(0, 0, W, H);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
       const post = time >= timeline.reveal;
       ctx.save();
@@ -200,6 +229,7 @@ export function cueRenderer(canvas, background) {
         }
         ctx.restore();
       }
+      dededeScreen(time, reveal, reduced);
       return { lights, rank: signal.rank };
     },
   };

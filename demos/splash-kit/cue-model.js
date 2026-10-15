@@ -57,17 +57,20 @@ export function makeTimeline(results, cueTier, { highOnly = false } = {}) {
   let cursor = CUE.reveal + delay;
   const segments = results.map((result, index) => {
     const high = TIERS.indexOf(result.rarity) >= 2;
+    const dedede = high && result.id === 'king-dedede';
     const ur = high && cueTier === 'UR';
     const quote = high ? ur ? 4.8 : 4 : 0;
-    const entrance = high ? .5 : result.rarity === 'SR' ? .45 : .35;
-    const close = high ? ur ? 1.25 : 1 : 0;
-    const pull = high ? .75 : 0;
-    const settle = high ? .22 : 0;
-    const stamp = high ? .6 : .3;
-    const linger = high ? .8 : result.rarity === 'SR' ? .7 : .45;
+    const screen = dedede ? .6 : 0;
+    const entrance = dedede ? .45 : high ? .5 : result.rarity === 'SR' ? .45 : .35;
+    const close = dedede ? 1.15 : high ? ur ? 1.25 : 1 : 0;
+    const pull = dedede ? 2.15 : high ? .75 : 0;
+    const settle = dedede ? .45 : high ? .22 : 0;
+    const stamp = dedede ? 1.2 : high ? .6 : .3;
+    const nameDelay = dedede ? .8 : .25, nameDuration = dedede ? 1 : .25;
+    const linger = dedede ? 2.5 : high ? .8 : result.rarity === 'SR' ? .7 : .45;
     const skipped = highOnly && results.length > 1 && !high;
-    const duration = skipped ? 0 : quote + entrance + close + pull + settle + stamp + linger;
-    const segment = { index, result, high, skipped, start: cursor, quote, entrance, close, pull, settle, stamp, linger, end: cursor + duration };
+    const duration = skipped ? 0 : quote + screen + entrance + close + pull + settle + stamp + linger;
+    const segment = { index, result, high, skipped, payoff: dedede ? 'dedede' : null, music: dedede ? 'dedede-theme' : null, start: cursor, quote, screen, entrance, close, pull, settle, stamp, nameDelay, nameDuration, linger, end: cursor + duration };
     cursor = segment.end;
     return segment;
   });
@@ -80,27 +83,37 @@ export function sampleReveal(time, timeline, reduced = false) {
   const age = time - segment.start;
   if (age < segment.quote) return { phase: 'quote', segment, revealed: segment.index, zoom: 1, roster: 0 };
   const arrival = age - segment.quote;
-  const pullAt = segment.entrance + segment.close;
+  const cameraAge = arrival - segment.screen;
+  const camera = segment.entrance + segment.close;
+  const pullAt = segment.screen + camera;
   const wideAt = pullAt + segment.pull;
   const stampAt = wideAt + segment.settle;
   let zoom = 1, x = 0, y = 0, roll = 0;
   let phase = arrival < segment.entrance ? 'entrance' : 'wide';
   if (segment.high && arrival < pullAt) {
-    const shot = clamp(arrival / pullAt);
+    const shot = clamp(cameraAge / camera);
     phase = shot < .34 ? 'angle-low' : shot < .68 ? 'angle-high' : 'angle-center';
-    if (shot < .34) { zoom = 1.95 + shot * .2; x = -9; y = 16; roll = -8; }
+    if (segment.payoff === 'dedede') {
+      zoom = 2.15; x = -29; y = -4;
+      roll = shot < .25 ? -5 * (1 - ease(shot / .25)) : shot < .5 ? 4 * Math.sin((shot - .25) * Math.PI * 4) ** 2 : 0;
+      phase = shot < .25 ? 'angle-low' : shot < .5 ? 'angle-high' : 'angle-center';
+    }
+    else if (shot < .34) { zoom = 1.95 + shot * .2; x = -9; y = 16; roll = -8; }
     else if (shot < .68) { zoom = 1.8 + (shot - .34) * .2; x = 7; y = -8; roll = 7; }
     else { zoom = 1.62; x = -2; y = -3; roll = -3; }
   }
   if (segment.high && arrival >= pullAt && arrival < wideAt) {
     phase = 'pullback'; const t = 1 - ease((arrival - pullAt) / segment.pull);
-    zoom = 1 + .62 * t; x = -2 * t; y = -3 * t; roll = -3 * t;
+    const dedede = segment.payoff === 'dedede';
+    zoom = 1 + (dedede ? 1.15 : .62) * t; x = (dedede ? -29 : -2) * t; y = (dedede ? -4 : -3) * t; roll = dedede ? 0 : -3 * t;
   }
+  if (arrival < segment.screen) phase = 'screen';
   if (arrival >= wideAt && arrival < stampAt) phase = 'settle';
   if (arrival >= stampAt && arrival < stampAt + segment.stamp) phase = 'stamp';
   const plate = clamp((arrival - stampAt) / segment.stamp);
-  const name = clamp((arrival - stampAt - .25) / .25);
-  return { phase, segment, revealed: segment.index + 1, zoom: reduced ? 1 : zoom, x: reduced ? 0 : x, y: reduced ? 0 : y, roll: reduced ? 0 : roll, plate, name, entrance: reduced || segment.high ? 1 : ease(arrival / .35), roster: segment.high ? ease((arrival - pullAt) / Math.max(.1, segment.pull)) : 1 };
+  const nameProgress = (arrival - stampAt - segment.nameDelay) / segment.nameDuration;
+  const name = segment.payoff ? ease(nameProgress) : clamp(nameProgress);
+  return { phase, segment, revealed: segment.index + 1, zoom: reduced ? 1 : zoom, x: reduced ? 0 : x, y: reduced ? 0 : y, roll: reduced ? 0 : roll, plate, name, screen: reduced || !segment.screen ? 1 : clamp(arrival / segment.screen), entrance: reduced || segment.high ? 1 : ease(arrival / .35), roster: segment.high ? ease((arrival - pullAt) / Math.max(.1, segment.pull)) : 1 };
 }
 
 export function advanceTime(time, timeline) {
@@ -111,8 +124,10 @@ export function advanceTime(time, timeline) {
   // sample as the preceding phase when the preview is paused or throttled.
   const inside = .0001;
   if (state.phase === 'quote') return s.start + s.quote + inside;
-  if (state.phase.startsWith('angle')) return s.start + s.quote + s.entrance + s.close + inside;
-  if (['pullback', 'settle'].includes(state.phase)) return s.start + s.quote + s.entrance + s.close + s.pull + s.settle + inside;
+  if (state.phase === 'screen') return s.start + s.quote + s.screen + inside;
+  if (state.phase.startsWith('angle')) return s.start + s.quote + s.screen + s.entrance + s.close + inside;
+  if (['pullback', 'settle'].includes(state.phase)) return s.start + s.quote + s.screen + s.entrance + s.close + s.pull + s.settle + inside;
+  if (s.payoff && ['stamp', 'wide'].includes(state.phase) && state.name < 1) return s.start + s.quote + s.screen + s.entrance + s.close + s.pull + s.settle + s.nameDelay + s.nameDuration + inside;
   const next = timeline.segments.find(next => next.index > s.index && !next.skipped);
   return next ? next.start : timeline.lineup;
 }

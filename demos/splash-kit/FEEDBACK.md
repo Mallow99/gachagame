@@ -4,6 +4,35 @@ One entry per reviewed iteration. Record what the owner liked, what they
 disliked, and what is still needed, in their words where possible. Read this
 before changing anything here.
 
+## Visual cue 03 — reviewed 2026-10-15 UTC
+
+Verdict: revise the King Dedede SSR pacing and showcase. This authorizes the
+screen/camera/name/music pass, not a new rig, art replacement or roster rollout.
+
+Liked:
+- No new positive verdict in this message; the prior native-sound direction remains.
+
+Disliked:
+- “The ssr is a bit rough on how overall it's quick”.
+
+Still needed:
+- “maybe a screen effect and a zoom out from its face, mixed with slower name and a different related music for while we are on that specific character would fix it.”
+- “Go ahead and work on those things for kingdedede”.
+
+Visual cue 04 gives Dedede a .6 s gold-edged star opening, centered face framing,
+a 2.15 s pullback, .45 s lock, 1.2 s rarity build and a slower 1 s name arrival
+starting .8 s after the letters. The post-call showcase is 8.5 s (formerly
+3.87 s at SSR); the 4 s call hold is unchanged. King Dedede's Theme from Kirby
+Super Star (1996) replaces area music only during his showcase. In a ten-pull,
+area music returns for the next result; in a single, his theme covers the final
+character hold. No theme plays over his concealed call.
+
+The correct Adventure (1993) artwork stays rigid and unchanged. This is screen
+FX and camera/name/music refinement, not a claim of authored body/hammer motion.
+Bowser/lower tiers, summon orbit, rarity promises and all committed results stay
+unchanged. Tap-through, Skip and reduced motion remain supported.
+**Visual cue 04 awaits owner review.**
+
 ## Visual cue 02 — reviewed 2026-10-15 UTC
 
 Verdict: “Other than that is looking pretty good”; refine the area music and
@@ -32,7 +61,7 @@ Recommended next stage (not started/approved here): one classic Dedede SSR
 payoff with genuine separated art pieces and filled hidden surfaces, a short
 deliberate hammer/body action and effects timed to the camera/lock. Review it
 against v2 before roster expansion or production/UI integration.
-**Visual cue 03 awaits owner review.**
+**Visual cue 03 verdict is recorded above.**
 
 ## Visual cue 01 — reviewed 2026-10-15 UTC
 

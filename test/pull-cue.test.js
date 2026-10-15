@@ -96,6 +96,37 @@ test('SSR-only filtering and click-through preserve all ten receipt results', ()
   assert.equal(sampleReveal(ordinary.total, ordinary).revealed, 9);
 });
 
+test('Dedede gets a screen opening, face pullback and a slower name without changing Bowser', () => {
+  const timeline = makeTimeline([{ id: 'king-dedede', rarity: 'SSR' }], 'SSR'), s = timeline.segments[0];
+  const bowser = makeTimeline([{ id: 'bowser', rarity: 'SSR' }], 'SSR').segments[0];
+  assert.equal(s.quote, 4); assert.equal(bowser.screen, 0); assert.equal(bowser.pull, .75);
+  assert.equal(s.music, 'dedede-theme'); assert.equal(s.screen, .6); assert.equal(s.pull, 2.15);
+  assert.ok(s.end - s.start - s.quote >= 8.5 - .0001);
+  const screen = s.start + s.quote, face = screen + s.screen;
+  assert.equal(sampleReveal(screen + .2, timeline).phase, 'screen');
+  assert.equal(sampleReveal(advanceTime(screen + .2, timeline), timeline).phase, 'angle-low');
+  const close = sampleReveal(face + (s.entrance + s.close) * .8, timeline);
+  assert.equal(close.zoom, 2.15); assert.equal(close.x, -29); assert.equal(close.roll, 0);
+  const pullAt = face + s.entrance + s.close, wideAt = pullAt + s.pull, stampAt = wideAt + s.settle;
+  assert.equal(sampleReveal(wideAt + .1, timeline).name, 0);
+  assert.equal(sampleReveal(stampAt + s.nameDelay - .01, timeline).name, 0);
+  const halfName = sampleReveal(stampAt + s.nameDelay + s.nameDuration / 2, timeline);
+  assert.ok(halfName.name > .49 && halfName.name < .51); assert.equal(halfName.zoom, 1);
+  assert.equal(sampleReveal(advanceTime(stampAt + s.nameDelay + s.nameDuration / 2, timeline), timeline).name, 1);
+  assert.equal(sampleReveal(stampAt + s.nameDelay + s.nameDuration + .1, timeline).name, 1);
+  const still = sampleReveal(screen + .2, timeline, true);
+  assert.equal(still.screen, 1); assert.equal(still.zoom, 1); assert.equal(still.roll, 0);
+  const music = cueAudioEvents(timeline, 'SSR').filter(e => e.kind === 'music');
+  const theme = music.find(e => e.track === 'dedede-theme');
+  assert.equal(theme.anchor, screen); assert.equal(theme.end, timeline.total);
+  assert.ok(theme.at >= screen);
+  assert.ok(music.filter(e => !e.track).every(e => e.end <= s.start - .18));
+  const ten = makeTimeline([{ id: 'king-dedede', rarity: 'SSR' }, { id: 'other', rarity: 'R' }], 'SSR');
+  const tracks = cueAudioEvents(ten, 'SSR').filter(e => e.kind === 'music');
+  assert.equal(tracks.find(e => e.track).end, ten.segments[0].end);
+  assert.ok(tracks.some(e => !e.track && e.at >= ten.segments[0].end));
+});
+
 test('audio keeps music outside voice and blackout windows and reserves rainbow for UR', () => {
   const timeline = makeTimeline([{ rarity: 'SSR' }], 'SSR');
   const events = cueAudioEvents(timeline, 'SSR'), segment = timeline.segments[0];
@@ -140,11 +171,13 @@ test('native character calls retain credited originals and verified playback ass
 test('area music uses distinct, credited source-game recordings long enough for slower ten-pulls', () => {
   const dir = new URL('../demos/splash-kit/assets/audio/areas/', import.meta.url);
   const manifest = JSON.parse(readFileSync(new URL('SOURCES.json', dir)));
-  assert.deepEqual(Object.keys(manifest).sort(), ['dream', 'mushroom']);
+  assert.deepEqual(Object.keys(manifest).sort(), ['dedede-theme', 'dream', 'mushroom']);
   assert.notEqual(manifest.dream.sha256, manifest.mushroom.sha256);
   assert.equal(manifest.dream.game, "Kirby's Adventure");
   assert.equal(manifest.mushroom.game, 'Super Mario Bros.');
-  const preview = makeTimeline(['R', 'R', 'SR', 'R', 'R', 'SSR', 'R', 'SR', 'R', 'R'].map(rarity => ({ rarity })), 'UR');
+  assert.match(manifest['dedede-theme'].title, /King Dedede/);
+  assert.equal(manifest['dedede-theme'].game, 'Kirby Super Star');
+  const preview = makeTimeline(['R', 'R', 'SR', 'R', 'R', 'SSR', 'R', 'SR', 'R', 'R'].map((rarity, i) => ({ id: i === 5 ? 'king-dedede' : `other-${i}`, rarity })), 'UR');
   for (const asset of Object.values(manifest)) {
     assert.equal(createHash('sha256').update(readFileSync(new URL(asset.url, dir))).digest('hex'), asset.sha256);
     assert.ok(asset.duration > preview.total / .75 + 1);

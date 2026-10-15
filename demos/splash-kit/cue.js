@@ -114,8 +114,10 @@ function buildChapters() {
   chapterList.push(['Screen strike', timeline.impact + .05]);
   const high = timeline.segments.find(s => s.high);
   if (high) {
-    const artAt = high.start + high.quote, camera = high.entrance + high.close;
-    chapterList.push(['Quote / call', high.start + .3], ['Low slant', artAt + camera * .15], ['High slant', artAt + camera * .5], ['Centered shot', artAt + camera * .83], ['Pullback', artAt + camera + high.pull * .5], ['SSR / name', artAt + camera + high.pull + high.settle + .5]);
+    const artAt = high.start + high.quote + high.screen, camera = high.entrance + high.close;
+    chapterList.push(['Quote / call', high.start + .3]);
+    if (high.screen) chapterList.push(['Star-cut entrance', artAt - high.screen * .7]);
+    chapterList.push(['Low slant', artAt + camera * .15], ['High slant', artAt + camera * (high.payoff ? .38 : .5)], ['Face close-up', artAt + camera * .83], ['Pullback', artAt + camera + high.pull * .5], ['Rarity letters', artAt + camera + high.pull + high.settle + .4], ['Name builds', artAt + camera + high.pull + high.settle + high.nameDelay + high.nameDuration * .5]);
   }
   chapterList.push(['Full lineup', timeline.lineup + .2]);
   $('chapters').replaceChildren();
@@ -132,12 +134,16 @@ function render() {
   const phase = reveal.phase;
   const segment = reveal.segment || timeline.segments.at(-1);
   const character = content.units.get(segment.result.id);
+  const songKey = segment.music && (reveal.segment && !['flight', 'quote'].includes(phase) || phase === 'lineup' && count === 1) ? segment.music : $('area').value;
+  const song = musicManifest[songKey];
+  $('musicTrack').textContent = `Music: ${song.title} · ${song.game} (${song.year})`;
   $('cueStage').dataset.phase = phase;
   $('cueQuote').hidden = phase !== 'quote';
   $('quoteText').textContent = voiceManifest[$('area').value === 'dream' ? 'dedede' : 'bowser'].caption;
   $('quoteNote').textContent = 'A character call from the dark.';
   const showHero = !['flight', 'quote'].includes(phase) && !(phase === 'lineup' && count === 10);
   $('hero').hidden = !showHero;
+  $('hero').dataset.payoff = segment.payoff || '';
   if (showHero) {
     const src = portraitUrl(character.id);
     if ($('heroArt').getAttribute('src') !== src) $('heroArt').src = src;
@@ -178,7 +184,7 @@ function render() {
   const key = `${phase}-${result.rank}-${segment.index}`;
   if (key !== lastPhase) {
     lastPhase = key;
-    $('caption').textContent = phase === 'flight' ? `${TIERS[result.rank]} cue${count === 10 ? ' on light ten; the other nine stay blue' : ''}. Rainbow appears only in the UR effects preview.` : phase === 'quote' ? 'The character call leads; all art and names stay concealed. Tap to advance.' : phase.startsWith('angle') ? 'Camera slants change the framing. Rarity and name stay hidden.' : phase === 'pullback' ? 'Pull back and align the character with the lineup before showing any name.' : phase === 'settle' ? 'Everything clicks into place.' : phase === 'stamp' ? 'The rarity letters land, then the name follows.' : phase === 'lineup' ? 'All results are retained, including any skipped R/SR entrances.' : `${character.name} settles on the stage.`;
+    $('caption').textContent = phase === 'flight' ? `${TIERS[result.rank]} cue${count === 10 ? ' on light ten; the other nine stay blue' : ''}. Rainbow appears only in the UR effects preview.` : phase === 'quote' ? 'The character call leads; all art and names stay concealed. Tap to advance.' : phase === 'screen' ? 'A gold-edged star opens onto the king. His showcase theme begins.' : phase.startsWith('angle') ? 'A closer look before the pullback. Rarity and name stay hidden.' : phase === 'pullback' ? 'Pull back and align the character with the lineup before showing any name.' : phase === 'settle' ? 'Everything clicks into place.' : phase === 'stamp' ? 'The rarity letters land, then the name builds.' : phase === 'lineup' ? 'All results are retained, including any skipped R/SR entrances.' : `${character.name} settles on the stage.`;
   }
   previewState = { tier, count, area: $('area').value, elapsed, phase, zoom: reveal.zoom, roll: reveal.roll || 0, plate: reveal.plate || 0, name: reveal.name || 0, revealed: reveal.revealed, highOnly: $('highOnly').checked, lights: result.lights.map(l => ({ index: l.index + 1, rank: l.rank, signal: l.signal, x: l.x, y: l.y })), results: receipt.results };
 }
@@ -222,5 +228,5 @@ try {
   ]);
   content = contentModule.content; saves = saveModule; gacha = gachaModule; portraits = manifest; cutouts = prepared; voiceManifest = calls; musicManifest = music;
   mix = cueAudio(calls, new URL('assets/audio/cue02/', import.meta.url), { manifest: music, base: new URL('assets/audio/areas/', import.meta.url) });
-  renderer = cueRenderer($('cueCanvas'), background); await rebuild();
+  renderer = cueRenderer($('cueCanvas'), background, $('payoffCanvas')); await rebuild();
 } catch (error) { $('loading').textContent = `Could not prepare the stage. Reload to retry. ${error.message}`; }

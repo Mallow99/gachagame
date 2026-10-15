@@ -28,5 +28,20 @@
       "credit": "Koji Kondo / Nintendo; NSF recording hosted by Zophar\u2019s Domain."
     },
     "processing": "First 48 seconds, -20 LUFS / -2 dBTP, 40ms entry and 200ms exit fades, mono 44.1kHz MP3. No pitch or tempo change. Full downloads verified in rebuild cache, not bundled at runtime."
+  },
+  "dedede-theme": {
+    "url": "dedede-theme.mp3",
+    "title": "King Dedede's Theme",
+    "game": "Kirby Super Star",
+    "year": 1996,
+    "duration": 48.039184,
+    "sha256": "b718d0fd8fcf5bdc190317253991cb218a2ce88ef2fcc155ff84994dc4465011",
+    "source": {
+      "url": "https://fi.zophar.net/soundfiles/nintendo-snes-spc/kirby-super-star-%5Bkirbys-fun-pak%5D/11%20King%20Dedede%27s%20Theme.mp3",
+      "page": "https://www.zophar.net/music/nintendo-snes-spc/kirby-super-star-%5Bkirbys-fun-pak%5D",
+      "sha256": "4170e838704418fe22bdc707a093a3583ed6518197972fac3eb488359206e04d",
+      "credit": "Jun Ishikawa / HAL Laboratory / Nintendo; SPC recording hosted by Zophar\u2019s Domain. Related character music; not claimed to originate in Adventure (1993)."
+    },
+    "processing": "First 48 seconds, -20 LUFS / -2 dBTP, 40ms entry and 200ms exit fades, mono 44.1kHz MP3. No pitch or tempo change. Full downloads verified in rebuild cache, not bundled at runtime."
   }
 }
