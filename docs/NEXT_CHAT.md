@@ -1,5 +1,63 @@
 # Start the next chat here
 
+## Newest: Dedede reveal v2 from a Claude session (2026-10-15)
+
+**Code:** branch `codex/pg001-pg002`. It contains all of `codex/v1-playable`
+plus the v2 demo, so `v1-playable` can be fast-forwarded to it
+(`git merge --ff-only origin/codex/pg001-pg002`). Nothing outside
+`demos/splash-kit/`, `tools/splash-kit/`, `test/splash-kit.test.js` and
+`.gitignore` changed. 115/115 tests pass.
+
+**Read first:** [demos/splash-kit/FEEDBACK.md](../demos/splash-kit/FEEDBACK.md)
+for the owner's verdict on v2: what they liked, what they disliked, and what is
+still needed. Then read [demos/splash-kit/README.md](../demos/splash-kit/README.md)
+for how it works and how to reproduce it.
+
+**Verdict:** the banner and summon are the approved direction. The splash is not
+approved. It uses the wrong Dedede for this pull, and the mesh-warped flat
+render looks weird to the owner. They had said so before v2, and v2 removed only
+part of the warping.
+
+### How v2 was built (keep these habits)
+
+1. **Run the real game logic.** The banner imports `src/gacha.js`,
+   `src/content/` and `src/save/default-save.js`, and pulls with `drawPulls`
+   on an in-memory demo save. Rates, pity, the 50/50 and duplicates are
+   therefore the game's own. Forced tier previews use `drawPulls` with a scripted
+   `random()` on a cloned save.
+2. **Make every asset reproducible.** `demos/splash-kit/assets/SOURCES.json`
+   lists URL, SHA-256 and credit for each image.
+   `python3 tools/splash-kit/prepare_art.py` downloads, verifies and bakes them.
+   `--grid` and `--eyes` produce rigging aids.
+3. **Keep character-specific work in data.** The WebGL engine
+   (`splash/engine.js`) has no fighter code. A rig file holds art, framing,
+   palette, eyes and motion. Tests check rig integrity.
+4. **Get the quality from the layers around the character.** Look at the
+   reference first (the Todo loop in `docs/validation/animated-reveal-research/`).
+   Most of the energy is streaks, particles, rim light, smoke, a background
+   grade and a camera push-in, not character motion.
+5. **Check visually before showing the owner.** Drive the page headless with
+   Playwright and Chromium's software GL (`--use-angle=swiftshader`), and save
+   frames at fixed times. `summonRenderer(canvas, opts).render(t)` can draw
+   any moment of the summon deterministically. Two real bugs were caught this
+   way before review.
+6. **Publish small, labelled iterations.** Record each verdict in `FEEDBACK.md`.
+
+### What to focus on next
+
+1. Ask the owner which Dedede they want for this unit, and which art, before
+   searching. They rejected the modern render for this pull.
+2. Replace mesh warping of a flat render. Either cut the chosen art into layers
+   and paint in the hidden areas so parts move without bending, or keep him
+   nearly still and let the FX carry the life. Do not reintroduce visible
+   stretching.
+3. Find a real voice clip and caption it; the current quote has no recording.
+4. Keep the banner and summon as they are unless the owner says otherwise, then
+   move them into the production theater with its committed-receipt, Skip and
+   replay contracts.
+
+## Previous checkpoint
+
 Checkpoint: **2026-10-14, America/Chicago**. The owner explicitly requested this
 handoff before starting a new chat. Pause presentation implementation here.
 

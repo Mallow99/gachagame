@@ -21,9 +21,28 @@ Source: `docs/NEXT_CHAT.md` and `docs/ANIMATED_SPLASH_OPTIONS.md`.
 | Liked: Fountain of Dreams setting | Kept, using the Smash Ultimate stage art. |
 | Open question: classic Dedede may not deserve SSR | Set aside by the owner. Not changed. |
 
-## Splash kit 01 — first study (2026-10-15)
+## Dedede reveal v2 — Claude's splash kit (reviewed 2026-10-15)
 
-- Liked (earlier standalone splash): the image, the blink, the overall look ("leagues better").
-- Disliked: Dedede "waving in the wind". The robe-hem wave and whole-body sway were removed for 01.
-- Awaiting review: banner, summon tiers, splash timing, card and results screens.
-- Decisions pending: the modern render against the "Kirby's Adventure · 1993" label, and the invented quote.
+Verdict: **right direction, not complete.** "A MUCH better direction as a
+banner": it shows off the featured SSR right away, and the summoning is "a lot
+better". As a demo it is accepted; the splash itself is not approved.
+
+Liked:
+- The banner treatment: the featured SSR is the banner, with live rates, pity and pull buttons.
+- The summon: the blue → gold → Warp Star → rainbow escalation and the tier preview buttons.
+- From the earlier standalone splash: the image quality, the blink, and how much better it looks than study 03.
+
+Disliked:
+- **Wrong Dedede for this pull.** The Return to Dream Land Deluxe render is not the Dedede the owner wants for
+  this unit. Confirm which version and which art before sourcing. Do not assume.
+- **The warped render still looks weird.** The owner had already said the warping looked wrong ("waves in the
+  wind"). Claude removed only the robe flutter and body sway and kept the rest of the mesh warp. That was too narrow
+  a reading. Treat any visible bending of a flat render as rejected.
+
+Still needed:
+- The right Dedede art for this unit, chosen with the owner.
+- Character life that does not come from warping one flat image. Options: art cut into layers with the hidden areas
+  painted in, so parts move without bending; or a character that stays almost still, with the life carried by the
+  FX layers, as in the Todo card.
+- A real voice clip with matching subtitles. The current quote is invented and has no recording.
+- Wiring into the production summon theater, keeping committed receipts, Skip, replay and reduced motion.

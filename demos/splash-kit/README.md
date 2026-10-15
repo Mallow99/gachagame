@@ -1,4 +1,4 @@
-# Splash kit
+# Splash kit (Dedede reveal v2)
 
 A Dream Land banner you can actually pull on, a rarity-escalating Warp Star
 summon, and an animated SSR splash for King Dedede. The pulls run the game's
@@ -12,7 +12,7 @@ python3 tools/splash-kit/prepare_art.py      # re-download, verify and re-bake a
 node tools/splash-kit/export-artifact.mjs out/splash-kit   # self-contained copy for hosting
 ```
 
-Study status: **iteration 01, awaiting owner review.** Owner feedback, inherited and new, is in [FEEDBACK.md](FEEDBACK.md); read it first. Nothing here is wired into
+Status: **Dedede reveal v2, reviewed 2026-10-15.** The owner approved the banner and summon direction. The splash is not approved: wrong Dedede for this pull, and the warped render still looks weird. Owner feedback, inherited and new, is in [FEEDBACK.md](FEEDBACK.md); read it first. Nothing here is wired into
 the production summon theater yet.
 
 ## Files
