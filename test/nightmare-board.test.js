@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { storyboardReceipt, makeStoryboard, sampleStoryboard, sampleResultLights } from '../demos/splash-kit/nightmare-board-model.js';
+import { storyboardReceipt, makeStoryboard, sampleStoryboard, sampleResultLights, sampleDededeRain } from '../demos/splash-kit/nightmare-board-model.js';
+import { storyboardAudioEvents } from '../demos/splash-kit/nightmare-board-audio.js';
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { CUE } from '../demos/splash-kit/cue-model.js';
 
 test('Nightmare storyboard explicitly uses immutable authored fixtures, not transactions or odds', () => {
@@ -71,7 +74,8 @@ test('R/SR filtering and skips preserve SSR/UR windows and the complete ten-pull
   const all = makeStoryboard(receipt), filtered = makeStoryboard(receipt, { highOnly: true });
   assert.ok(filtered.total < all.total);
   assert.equal(filtered.beats.filter(b => b.phase === 'arrival').length, 0);
-  assert.equal(filtered.beats.find(b => b.phase === 'ssr').duration, 8.5);
+  assert.equal(filtered.beats.find(b => b.phase === 'ssr-pullback').duration, 1.5);
+  assert.equal(filtered.beats.filter(b => b.phase.startsWith('ssr-')).length, 8);
   assert.equal(filtered.beats.filter(b => b.phase === 'call').length, 2);
   for (const board of [all, filtered]) {
     assert.equal(sampleStoryboard(board.total, board).phase, 'lineup');
@@ -80,4 +84,47 @@ test('R/SR filtering and skips preserve SSR/UR windows and the complete ten-pull
     assert.equal(next.result?.slot ?? 9, 9);
   }
   assert.equal(JSON.stringify(receipt), original);
+});
+
+test('Dedede action is separately storyboarded, deterministic and settles before identity', () => {
+  const board = makeStoryboard(storyboardReceipt(10));
+  const phases = board.beats.filter(b => b.result?.rarity === 'SSR').map(b => b.phase);
+  assert.deepEqual(phases, ['call', 'ssr-screen', 'ssr-face', 'ssr-shower', 'ssr-pullback', 'ssr-lock', 'ssr-rarity', 'ssr-name', 'ssr-hold']);
+  assert.deepEqual(sampleDededeRain(.9), sampleDededeRain(.9));
+  assert.ok(sampleDededeRain(.9).filter(d => d.visible).length > 5);
+  assert.ok(sampleDededeRain(4).every(d => !d.visible));
+  assert.deepEqual(sampleDededeRain(.2, true), sampleDededeRain(1.5, true));
+  const sprite = JSON.parse(readFileSync(new URL('../demos/splash-kit/assets/board/SOURCES.json', import.meta.url)))['waddle-dee'];
+  assert.equal(createHash('sha256').update(readFileSync(new URL('../demos/splash-kit/assets/board/waddle-dee.png', import.meta.url))).digest('hex'), sprite.sha256);
+  assert.ok(sprite.sourcePage && sprite.credit && sprite.sourceFiles.length);
+});
+
+test('two-sided closure matches the covered pose; wrap and face share the same camera endpoint', () => {
+  const board = makeStoryboard(storyboardReceipt(1));
+  const at = (phase, p) => { const b = board.beats.find(b => b.phase === phase); return sampleStoryboard(b.start + b.duration * p, board); };
+  assert.ok(at('sweep', .1).curtainSpread > at('sweep', .9).curtainSpread);
+  assert.ok(at('sweep', .99999).curtainSpread < 1e-8);
+  assert.equal(at('covered', 0).curtainSpread, 0);
+  const end = at('wrap', .99999), start = at('face', 0);
+  assert.ok(Math.abs(end.zoom - start.zoom) < 1e-8); assert.equal(end.roll, start.roll);
+  assert.ok(end.wrap > .99999); assert.equal(end.faceY, start.faceY);
+});
+
+test('audio follows individual light tiers and real beat times; no theme overlaps concealed calls', () => {
+  for (const count of [1, 10]) {
+    const board = makeStoryboard(storyboardReceipt(count)), events = storyboardAudioEvents(board), beds = events.filter(e => e.kind === 'music');
+    const calls = board.beats.filter(b => b.phase === 'call');
+    for (const call of calls) {
+      assert.ok(beds.every(m => m.end <= call.start || m.at >= call.end));
+      assert.equal(events.find(e => e.at === call.start)?.kind, call.result.rarity === 'SSR' ? 'voice' : undefined);
+    }
+    assert.equal(events.filter(e => e.kind === 'voice').length, count === 10 ? 1 : 0);
+    assert.ok(events.some(e => e.kind === 'omen'));
+    assert.ok(beds.some(e => e.track === 'nightmare-theme'));
+    const rankCounts = { silver: count === 10 ? 4 : 1, gold: count === 10 ? 2 : 1, rainbow: 1 };
+    for (const [kind, n] of Object.entries(rankCounts)) assert.equal(events.filter(e => e.kind === kind).length, n);
+    assert.ok(events.every(e => e.at >= 0 && e.at < board.total && (!e.end || e.end > e.at)));
+    const impact = board.beats.find(b => b.phase === 'impact');
+    assert.ok(beds.every(m => m.end < impact.start || m.at > impact.start + .3));
+  }
 });

@@ -3,8 +3,9 @@ import { existsSync, mkdirSync } from 'node:fs';
 import assert from 'node:assert/strict';
 const require = createRequire(import.meta.url);
 const { chromium } = require(process.env.POCKET_PLAYWRIGHT_MODULE || 'playwright');
-const out = process.argv[2] || 'out/nightmare-board-03';
+const out = process.argv[2] || 'out/nightmare-board-04';
 const url = process.argv[3] || 'http://localhost:8080/demos/splash-kit/nightmare.html';
+const screenshots = !process.argv.includes('--no-screenshots');
 mkdirSync(out, { recursive: true });
 const executablePath = ['/usr/bin/chromium', '/usr/bin/chromium-browser'].find(existsSync);
 const browser = await chromium.launch({ executablePath, args: ['--no-sandbox', '--disable-gpu'] });
@@ -17,9 +18,11 @@ try {
   await page.goto(url); await page.waitForFunction(() => window.nightmareBoard); await page.evaluate(() => document.fonts.ready);
   const state = () => page.evaluate(() => nightmareBoard.state);
   const seek = t => page.evaluate(t => nightmareBoard.seek(t), t);
-  const shot = name => page.locator('#boardStage').screenshot({ path: `${out}/${name}.png` });
+  const shot = name => screenshots && page.locator('#boardStage').screenshot({ path: `${out}/${name}.png` });
+  const fullShot = name => screenshots && page.screenshot({ path: `${out}/${name}.png`, fullPage: true });
   const saved = await page.evaluate(() => JSON.stringify({ ...localStorage }));
-  await page.screenshot({ path: `${out}/desktop-banner-page.png`, fullPage: true });
+  await page.locator('#boardSound').click(); await page.waitForFunction(() => nightmareBoard.state.audio.loaded.length === 6);
+  await fullShot('desktop-banner-page');
   assert.equal(await page.locator('#boardTransport').isVisible(), false);
   await page.locator('[data-pull="1"]').click(); assert.equal(await page.locator('#pullConfirm').isVisible(), true);
   await page.locator('#pullConfirm button[value="cancel"]').click(); assert.equal((await state()).banner, true);
@@ -65,8 +68,53 @@ try {
   // A previous successful dialog must not make an Escape cancellation replay.
   await page.locator('[data-pull="1"]').click(); await page.keyboard.press('Escape'); assert.equal((await state()).banner, true);
   await begin(10); const receipt = JSON.stringify((await state()).receipt);
-  await phase('ssr', .2); assert.equal(await page.locator('#identityName').isVisible(), false);
-  await phase('ssr', .9); assert.equal(await page.locator('#identityName').textContent(), 'King Dedede'); await shot('ssr-baseline');
+  for (const name of ['ssr-face', 'ssr-shower', 'ssr-pullback', 'ssr-lock', 'ssr-rarity', 'ssr-name']) {
+    await phase(name, name === 'ssr-shower' ? .65 : .5);
+    assert.equal(await page.locator('#identityName').isVisible(), name === 'ssr-name');
+    if (['ssr-face', 'ssr-shower', 'ssr-name'].includes(name)) await shot(name);
+  }
+  assert.equal(await page.locator('#identityName').textContent(), 'King Dedede');
+  // Symmetric incoming cloth, and identical panel endpoints at the covered cut.
+  const pixel = (x, y) => page.locator('#boardScene').evaluate((c, [x, y]) => Array.from(c.getContext('2d').getImageData(Math.floor(c.width * x), Math.floor(c.height * y), 1, 1).data), [x, y]);
+  await phase('sweep', .5); await shot('two-sided-close');
+  assert.notDeepEqual(await pixel(.05, .5), [4, 3, 11, 255]); assert.notDeepEqual(await pixel(.95, .5), [4, 3, 11, 255]);
+  await page.locator('#cameraGuides').uncheck();
+  const rememberPixels = () => page.locator('#boardScene').evaluate(c => { window.comparisonPixels = c.getContext('2d').getImageData(0, 0, c.width, c.height).data; });
+  const difference = (region = false) => page.locator('#boardScene').evaluate((c, region) => {
+    const actual = c.getContext('2d').getImageData(0, 0, c.width, c.height).data; let sum = 0, count = 0;
+    for (let y = 0; y < c.height; y++) for (let x = 0; x < c.width; x++) {
+      if (region && (x < c.width * .35 || x > c.width * .65 || y < c.height * .2 || y > c.height * .75)) continue;
+      for (let channel = 0; channel < 4; channel++) { const i = (y * c.width + x) * 4 + channel; sum += Math.abs(actual[i] - comparisonPixels[i]); count++; }
+    }
+    return sum / count;
+  }, region);
+  await phase('sweep', .9999); await rememberPixels();
+  await phase('covered', 0); assert.ok(await difference() < .01, 'Continuous closure endpoint');
+  await phase('wrap', .45); await shot('hands-return-mid');
+  await phase('wrap', .9999); await shot('hands-return-end');
+  await rememberPixels();
+  await phase('face', 0);
+  assert.ok(await difference(true) < .02, 'No figure/head replacement at wrap to face');
+  await page.locator('#cameraGuides').check();
+  // Each music lane and every future scheduled sound stop with the transport.
+  for (const [name, expected] of [['ssr-shower', 'dedede-theme'], ['wrap', 'nightmare-theme'], ['lineup', 'dream']]) {
+    await phase(name, .5); await page.locator('#boardPlay').click();
+    await page.waitForFunction(expected => nightmareBoard.state.audio.musicTrack === expected, expected);
+    assert.ok((await state()).audio.active > 0);
+    await page.locator('#boardPlay').click(); assert.equal((await state()).audio.active, 0);
+  }
+  await phase('open'); await page.locator('#boardPlay').click(); await page.locator('#boardSound').click();
+  assert.equal((await state()).audio.active, 0); await page.locator('#boardPlay').click();
+  await page.locator('#boardSound').click(); await page.waitForFunction(() => nightmareBoard.state.sound);
+  const audition = await page.evaluate(async () => {
+    const buffer = await nightmareBoard.audition(), data = buffer.getChannelData(0);
+    let peak = 0, square = 0, silence = 0;
+    for (const v of data) { peak = Math.max(peak, Math.abs(v)); square += v * v; }
+    const call = nightmareBoard.state.board.beats.find(b => b.phase === 'call' && b.result.rarity === 'SSR');
+    for (let i = Math.floor((call.start + 2) * buffer.sampleRate); i < Math.floor((call.end - .1) * buffer.sampleRate); i++) silence = Math.max(silence, Math.abs(data[i]));
+    return { peak, rms: Math.sqrt(square / data.length), silence, duration: buffer.duration };
+  });
+  assert.ok(audition.peak > .05 && audition.peak < .95); assert.ok(audition.rms > .003); assert.ok(audition.silence < .00001);
   for (const [id, ceiling] of [['blue', 0], ['silver', 1], ['gold', 2], ['rainbow', 3]]) {
     await goBeat(id); const at = (await state()).time;
     const lights = await page.evaluate(async at => { const { sampleResultLights } = await import('./nightmare-board-model.js'); return sampleResultLights(at, nightmareBoard.state.receipt.results); }, at);
@@ -74,7 +122,7 @@ try {
     assert.deepEqual(lights.map(l => l.rank), expected);
     assert.deepEqual(await page.locator('#lightOrder li').evaluateAll(items => items.map(li => Number(li.dataset.rank))), expected);
   }
-  await goBeat('rainbow'); await page.screenshot({ path: `${out}/ten-rainbow-page.png`, fullPage: true });
+  await goBeat('rainbow'); await fullShot('ten-rainbow-page');
   const originalTotal = (await state()).board.total;
   await phase('arrival');
   await page.locator('#boardHighOnly').check(); assert.ok((await state()).board.total < originalTotal);
@@ -88,7 +136,7 @@ try {
   await page.locator('#boardPlay').click(); await page.waitForFunction(() => nightmareBoard.state.playing && nightmareBoard.state.time < 2);
   await page.locator('#boardPlay').click(); assert.equal(JSON.stringify((await state()).receipt), receipt);
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  for (const name of ['sweep', 'hands', 'open', 'dark', 'emerge', 'wrap', 'face', 'pullback', 'adjust']) {
+  for (const name of ['sweep', 'hands', 'open', 'dark', 'emerge', 'wrap', 'face', 'pullback', 'adjust', 'ssr-shower', 'ssr-pullback']) {
     await phase(name, .2); const before = await page.locator('#boardScene').evaluate(c => c.toDataURL());
     await phase(name, .8); assert.equal(await page.locator('#boardScene').evaluate(c => c.toDataURL()), before, `Reduced motion ${name}`);
     assert.equal((await state()).sample.zoom, 1); assert.equal((await state()).sample.roll, 0);
@@ -96,16 +144,28 @@ try {
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   for (const width of [390, 420]) {
     await page.setViewportSize({ width, height: 844 }); await page.locator('#backBanner').click();
-    if (width === 390) await page.screenshot({ path: `${out}/mobile-banner-page.png`, fullPage: true });
+    if (width === 390) await fullShot('mobile-banner-page');
     await begin(10); await phase('hands'); if (width === 390) await shot('mobile-hands');
+    await phase('ssr-shower', .65); if (width === 390) await shot('mobile-ssr-shower');
     await phase('open'); if (width === 390) await shot('mobile-open-void');
     await phase('emerge', .8); if (width === 390) await shot('mobile-emergence');
     await phase('wrap', .9); if (width === 390) await shot('mobile-wrap');
-    await phase('name'); if (width === 390) await page.screenshot({ path: `${out}/mobile-name-page.png`, fullPage: true });
+    await phase('name'); if (width === 390) await fullShot('mobile-name-page');
     await page.locator('#boardSkip').click(); if (width === 390) await shot('mobile-lineup');
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width);
   }
   assert.equal(await page.evaluate(() => JSON.stringify({ ...localStorage })), saved);
   assert.deepEqual(errors, []); assert.deepEqual(missing, []);
-  console.log(JSON.stringify({ passed: true, errors, missing, singleDuration: one.total, tenDuration: originalTotal, screenshots: 24, visorRise: { low, high }, checks: 'banner confirmation/cancel, single/ten, unchanged per-result cues, empty black before physical face-only rise, cloak wrap before close-up, upward adjustment before identity, step/scrub/pause/replay/skip, immutable fixture, R/SR filter, UR resume, reduced motion, 390/420px no overflow, no storage writes' }));
+  const failure = await browser.newPage(), failureErrors = [];
+  failure.on('pageerror', e => failureErrors.push(e.message));
+  await failure.route('**/assets/board/waddle-dee.png', route => route.abort());
+  await failure.route('**/assets/audio/**/SOURCES.json', route => route.abort());
+  await failure.goto(url); await failure.waitForFunction(() => window.nightmareBoard);
+  await failure.locator('[data-pull="10"]').click(); await failure.locator('#confirmPull').click();
+  await failure.waitForFunction(() => nightmareBoard.state.playing);
+  await failure.evaluate(() => { const b = nightmareBoard.state.board.beats.find(b => b.phase === 'ssr-shower'); nightmareBoard.seek(b.start + .8); });
+  assert.match(await failure.locator('#sceneLabel').textContent(), /sprite fallback/);
+  await failure.locator('#boardSound').click(); assert.match(await failure.locator('#audioStatus').textContent(), /silent storyboard still works/);
+  assert.deepEqual(failureErrors, []); await failure.close();
+  console.log(JSON.stringify({ passed: true, errors, missing, singleDuration: one.total, tenDuration: originalTotal, screenshots: screenshots ? 30 : 0, audition, visorRise: { low, high }, checks: 'banner confirmation/cancel, single/ten, unchanged per-result cues, symmetric closure with matching endpoint, hands/figure continuity, physical face-only rise, Dedede shower and shorter pullback, identity after lock, all six audio buffers decoded, distinct themes, pause/mute/seek stop all sources, offline peak and silence checks, replay/skip/filter/resume, reduced motion, 390/420px no overflow, no storage writes' }));
 } finally { await browser.close(); }

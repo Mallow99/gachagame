@@ -171,7 +171,7 @@ test('native character calls retain credited originals and verified playback ass
 test('area music uses distinct, credited source-game recordings long enough for slower ten-pulls', () => {
   const dir = new URL('../demos/splash-kit/assets/audio/areas/', import.meta.url);
   const manifest = JSON.parse(readFileSync(new URL('SOURCES.json', dir)));
-  assert.deepEqual(Object.keys(manifest).sort(), ['dedede-theme', 'dream', 'mushroom']);
+  assert.deepEqual(Object.keys(manifest).sort(), ['dedede-theme', 'dream', 'mushroom', 'nightmare-theme']);
   assert.notEqual(manifest.dream.sha256, manifest.mushroom.sha256);
   assert.equal(manifest.dream.game, "Kirby's Adventure");
   assert.equal(manifest.mushroom.game, 'Super Mario Bros.');

@@ -1,0 +1,118 @@
+{
+  "waddle-dee": {
+    "url": "waddle-dee.png",
+    "frames": [
+      [
+        0,
+        0,
+        64,
+        64
+      ],
+      [
+        64,
+        0,
+        64,
+        64
+      ]
+    ],
+    "clips": {
+      "idle": [
+        0
+      ],
+      "move_forward": [
+        0,
+        1
+      ],
+      "move_back": [
+        0,
+        1
+      ],
+      "basic_windup": [
+        0
+      ],
+      "basic_resolve": [
+        1
+      ],
+      "skill_or_secondary": [
+        1
+      ],
+      "hurt": [
+        0
+      ],
+      "knockout": [
+        1
+      ],
+      "ultimate_entry": [
+        0,
+        1
+      ]
+    },
+    "fps": 10,
+    "clipFps": {
+      "idle": 4,
+      "basic_resolve": 14,
+      "skill_or_secondary": 12,
+      "ultimate_entry": 12
+    },
+    "loopClips": [
+      "idle",
+      "move_forward",
+      "move_back",
+      "basic_resolve",
+      "skill_or_secondary",
+      "ultimate_entry"
+    ],
+    "cell": [
+      64,
+      64
+    ],
+    "pivot": [
+      32,
+      20
+    ],
+    "labelHeight": 16,
+    "nativeHeight": 16,
+    "worldHeight": 24,
+    "facing": "left",
+    "sourceFiles": [
+      "assets/sprites/sources/faithful/ka-enemies.png"
+    ],
+    "sourcePage": "https://www.spriters-resource.com/nes/kirbyadv/asset/49202/",
+    "sourceGameId": "kirbys-adventure-1993",
+    "credit": "Drshnaps (Jermungandr) / HAL Laboratory",
+    "spriteGrade": "A",
+    "status": "reviewed-native",
+    "renderMode": "native-sprite",
+    "frameMetadata": [
+      {
+        "sourceRect": [
+          95,
+          660,
+          110,
+          675
+        ],
+        "sourceFoot": [
+          8,
+          15
+        ],
+        "pixelScale": 1
+      },
+      {
+        "sourceRect": [
+          115,
+          659,
+          131,
+          675
+        ],
+        "sourceFoot": [
+          8,
+          16
+        ],
+        "pixelScale": 1
+      }
+    ],
+    "notes": "Original Adventure body cells and sheet palette. Sword Knight and Blade Knight are separate sources, not a shared sprite.",
+    "sha256": "d5ddb9e51e15315afedcef3d79eacca5c7850a6ee4ce172f9bf37f1658c6b64e",
+    "processing": "Unchanged verified runtime atlas. Rebuild original with tools/art/import-faithful-sprites.py; this script copies it for the standalone storyboard."
+  }
+}

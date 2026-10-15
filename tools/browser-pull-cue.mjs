@@ -5,6 +5,7 @@ const require = createRequire(import.meta.url);
 const { chromium } = require(process.env.POCKET_PLAYWRIGHT_MODULE || 'playwright');
 const out = process.argv[2] || 'out/pull-cue-04';
 const url = process.argv[3] || 'http://localhost:8080/demos/splash-kit/cue.html';
+const screenshots = !process.argv.includes('--no-screenshots');
 mkdirSync(out, { recursive: true });
 const executablePath = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH || ['/usr/bin/chromium', '/usr/bin/chromium-browser'].find(existsSync);
 const browser = await chromium.launch({ executablePath, args: ['--no-sandbox', '--disable-gpu'] });
@@ -19,7 +20,7 @@ try {
   await ready();
   const state = () => page.evaluate(() => cueReview.state);
   const seek = time => page.evaluate(time => cueReview.seek(time), time);
-  const shot = name => page.locator('#cueStage').screenshot({ path: `${out}/${name}.png` });
+  const shot = name => screenshots && page.locator('#cueStage').screenshot({ path: `${out}/${name}.png` });
   const before = await page.evaluate(() => JSON.stringify({ ...localStorage }));
   const receipt = JSON.stringify((await state()).results);
   assert.equal((await state()).tier, 'SSR');
@@ -57,7 +58,7 @@ try {
   await page.locator('#cueStage').click();
   await page.waitForFunction(() => cueReview.state.playing && cueReview.state.phase === 'quote');
   assert.ok((await state()).audio.active > 0);
-  assert.deepEqual((await state()).audio.loaded.sort(), ['bowser', 'dedede', 'dedede-theme', 'dream', 'mushroom']);
+  assert.deepEqual((await state()).audio.loaded.sort(), ['bowser', 'dedede', 'dedede-theme', 'dream', 'mushroom', 'nightmare-theme']);
   assert.equal((await state()).audio.musicArea, 'dream');
   await page.locator('#cueStage').press('Enter'); await page.waitForFunction(() => cueReview.state.phase.startsWith('angle'));
   assert.equal(await page.locator('#heroPlate').isVisible(), false);
@@ -116,7 +117,7 @@ try {
   await page.locator('[data-count="10"]').click(); await ready();
   assert.equal((await state()).audio.active, 0); assert.equal((await state()).audio.musicArea, null);
   await page.setViewportSize({ width: 390, height: 844 }); await page.locator('#area').selectOption('dream'); await ready();
-  await seek(.9); await shot('mobile-fountain-launch'); await seek(6); await shot('mobile-gold'); await page.screenshot({ path: `${out}/mobile-page.png`, fullPage: true });
+  await seek(.9); await shot('mobile-fountain-launch'); await seek(6); await shot('mobile-gold'); if (screenshots) await page.screenshot({ path: `${out}/mobile-page.png`, fullPage: true });
   const mobile = await page.evaluate(() => cueReview.timeline.segments.find(s => s.high)), mobileArt = mobile.start + mobile.quote + mobile.screen;
   await seek(mobileArt - mobile.screen * .6); await shot('mobile-star-cut');
   await seek(mobileArt + .2); await shot('mobile-low-slant'); await seek(mobileArt + (mobile.entrance + mobile.close) * .8); await shot('mobile-face-closeup');

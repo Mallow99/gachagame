@@ -3,16 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Nightmare storyboard 03 · Pocket Gacha</title>
+<title>Nightmare storyboard 04 · Pocket Gacha</title>
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="cue.css">
 <link rel="stylesheet" href="nightmare-board.css">
 </head>
 <body>
 <main>
-  <header><span>Nightmare storyboard 03</span><nav aria-label="Previous reviews"><a href="cue.html">Dedede cue 04</a><a href="blueprint.html">Original blueprint</a></nav></header>
-  <section class="intro"><h1>When the dream breaks.</h1><p>Review the banner, cloak action and camera order. Schematic drawings; written sound cues only.</p></section>
+  <header><span>Nightmare storyboard 04 · audio animatic</span><nav aria-label="Previous reviews"><a href="cue.html">Dedede cue 04</a><a href="blueprint.html">Original blueprint</a></nav></header>
+  <section class="intro"><h1>When the dream breaks.</h1><p>Two-sided curtains, returning hands, and a royal Waddle Dee shower. Schematic action with playable music and sound—not a finished rig.</p></section>
   <section class="board-theater" aria-label="Banner and pull storyboard">
+    <div class="board-audio"><button id="boardSound" type="button" aria-pressed="false">Enable sound</button><label>Volume <input id="boardVolume" type="range" min="0" max="1" step=".05" value=".65"></label><p id="audioStatus" role="status">Sound is off until enabled. Step or scrub silently; Resume plays from that beat.</p></div>
     <div class="board-stage" id="boardStage" data-phase="banner">
       <canvas id="boardScene" aria-label="Schematic pull sequence: fountain, travelling lights, cloak, hands and camera blocking"></canvas>
       <div class="banner-copy" id="bannerCopy">
@@ -34,7 +35,7 @@
     <div class="board-transport" id="boardTransport" hidden>
       <div class="transport-buttons"><button id="previous" type="button">Previous beat</button><button id="boardPlay" type="button">Play storyboard</button><button id="next" type="button">Next beat</button><button id="boardSkip" type="button">Skip to results</button><button id="backBanner" type="button">Back to banner</button></div>
       <div class="scrub-row"><output id="boardClock">0.0 / 0.0 s</output><input id="boardSeek" type="range" min="0" max="1" step="0.01" value="0" aria-label="Storyboard time"></div>
-      <div class="board-options"><label><input id="boardHighOnly" type="checkbox"> Skip R / SR entrances</label><label><input id="cameraGuides" type="checkbox" checked> Camera / joint guides</label><span>No playable audio in this sequence review.</span></div>
+      <div class="board-options"><label><input id="boardHighOnly" type="checkbox"> Skip R / SR entrances</label><label><input id="cameraGuides" type="checkbox" checked> Camera / joint guides</label><span>Tap any beat, then Resume to hear it.</span></div>
     </div>
   </section>
   <section id="beatInspector" class="beat-inspector" hidden aria-labelledby="beatTitle">
@@ -44,10 +45,11 @@
   <nav id="beatRail" class="board-rail" aria-label="Jump to a storyboard beat" hidden></nav>
   <section class="board-result" id="boardResult" hidden aria-labelledby="resultTitle"><h2 id="resultTitle">Same results. Same order.</h2><ol id="resultList"></ol><p>This list is an authored review fixture, not a paid or random draw. Production NEW / duplicate / Echo details will come from the committed receipt.</p></section>
   <section class="board-notes">
-    <div><h2>What we’re deciding</h2><p>Only his face rises out of the cloak-darkness. The cloth returns around him, then we get the close-up, pullback and small upward adjustment before UR and name.</p></div>
+    <div><h2>What we’re deciding</h2><p>Nightmare’s cloak closes from both sides. His face rises alone; hands return with the cloth and continue into the close-up. In the ten-pull, Dedede gets a hammer beat and falling Waddle Dees, then a shorter pullback.</p></div>
     <div><h2>Each light is one result</h2><p>Same Fountain / Warp Star route, but every light now upgrades to its own fixed result’s tier: R blue, SR silver, SSR gold, UR rainbow. No sorting or rerolling.</p></div>
-    <div><h2>What comes after approval</h2><p>An audio animatic, then the separated layer / action proof. Final backgrounds will use sourced game artwork—not an AI-generated image. No production pools, currency or saves change here.</p></div>
+    <div><h2>What comes after approval</h2><p>A separated layer / action proof for Nightmare. This pass adds Adventure area and Nightmare music, Dedede’s native laugh and related Super Star theme, plus authored effects. No AI-generated background, production pools, currency or saves change.</p></div>
   </section>
+  <details class="audio-credits"><summary>Audio and sprite credits</summary><p>Adventure (1993): Fountain of Dreams and Nightmare, Hirokazu Ando / Jun Ishikawa, HAL Laboratory / Nintendo. Dedede theme: Super Star (1996), Jun Ishikawa / HAL Laboratory / Nintendo. Recordings: Zophar’s Domain. Dedede laugh: Super Smash Bros. Ultimate, Nintendo / HAL Laboratory, Sounds Resource. Waddle Dee sprites: Adventure, Drshnaps (Jermungandr) / HAL Laboratory, Spriters Resource. Nightmare’s omen and cloth / magic sounds are authored effects, not a voice clip.</p><p><a href="assets/audio/areas/SOURCES.json">Music sources and hashes</a> · <a href="assets/audio/cue02/SOURCES.json">Native call provenance</a> · <a href="assets/board/SOURCES.json">Sprite provenance</a></p></details>
 </main>
 <dialog id="pullConfirm" aria-labelledby="confirmTitle"><form method="dialog"><p>Storyboard only</p><h2 id="confirmTitle">Review a single pull?</h2><p id="confirmDescription"></p><p>No currency, random chance or production save changes.</p><div><button value="cancel" autofocus>Back</button><button id="confirmPull" value="play">Play storyboard</button></div></form></dialog>
 <script type="module" src="nightmare-board.js"></script>

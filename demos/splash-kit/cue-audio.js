@@ -36,13 +36,12 @@ export function cueAudioEvents(timeline, tier) {
   return events.sort((a, b) => a.at - b.at);
 }
 
-function scheduleMix(ctx, buffers, timeline, { tier, area, time = 0, rate = 1, volume = .65 }, destination) {
+function scheduleMix(ctx, buffers, timeline, { tier, area, time = 0, rate = 1, volume = .65, events = cueAudioEvents(timeline, tier) }, destination) {
   const active = new Set();
   const master = ctx.createGain(), limiter = ctx.createDynamicsCompressor();
   master.gain.value = volume; limiter.threshold.value = -9; limiter.knee.value = 8; limiter.ratio.value = 5; limiter.attack.value = .003; limiter.release.value = .15;
   master.connect(limiter); limiter.connect(destination);
   const origin = ctx.currentTime + .025;
-  const events = cueAudioEvents(timeline, tier);
   const noiseBuffer = ctx.createBuffer(1, ctx.sampleRate * 2, ctx.sampleRate);
   const samples = noiseBuffer.getChannelData(0);
   let seed = 214013;
@@ -72,7 +71,7 @@ function scheduleMix(ctx, buffers, timeline, { tier, area, time = 0, rate = 1, v
   for (const event of events) {
     const when = origin + Math.max(0, (event.at - time) / rate);
     if (event.kind === 'voice') {
-      const buffer = buffers[area === 'dream' ? 'dedede' : 'bowser'];
+      const buffer = buffers[event.track || (area === 'dream' ? 'dedede' : 'bowser')];
       const offset = Math.max(0, time - event.at);
       if (!buffer || offset >= buffer.duration || time > event.at + event.segment.quote) continue;
       const source = ctx.createBufferSource(), gain = ctx.createGain(); source.buffer = buffer; gain.gain.value = .9;
@@ -87,8 +86,9 @@ function scheduleMix(ctx, buffers, timeline, { tier, area, time = 0, rate = 1, v
       const begin = origin + (at - time) / rate;
       const source = ctx.createBufferSource(), gain = ctx.createGain(); source.buffer = buffer;
       const fade = Math.min(.12, duration / 3);
-      gain.gain.setValueAtTime(0, begin); gain.gain.linearRampToValueAtTime(.55, begin + fade);
-      gain.gain.setValueAtTime(.55, begin + duration - fade); gain.gain.linearRampToValueAtTime(0, begin + duration);
+      const level = event.level ?? .55;
+      gain.gain.setValueAtTime(0, begin); gain.gain.linearRampToValueAtTime(level, begin + fade);
+      gain.gain.setValueAtTime(level, begin + duration - fade); gain.gain.linearRampToValueAtTime(0, begin + duration);
       source.connect(gain); gain.connect(master); track(source, [gain], begin, duration, offset); continue;
     }
     if (event.at < time - .015) continue;
@@ -103,6 +103,11 @@ function scheduleMix(ctx, buffers, timeline, { tier, area, time = 0, rate = 1, v
       case 'impact': tone(when, 95, .55, .3, 'sine', 32); noise(when, .2, .28, 7000, 700); noise(when + .06, .55, .11, 1800, 300); break;
       case 'camera': noise(when, .19, .11, 1800, 5200, event.pan); tone(when, 160, .15, .05, 'triangle', 80); break;
       case 'curtain': noise(when, .45, .14, 650, 3800); tone(when, 145, .35, .08, 'sine', 65); break;
+      case 'cloth': noise(when, event.duration || .9, .16, 450, 1800, event.pan || 0); break;
+      case 'grab': noise(when, .12, .08, 1000, 250, event.pan); break;
+      case 'omen': tone(when, 58, 2.1, .1, 'sine', 42); noise(when + .2, 1.5, .07, 280, 650); break;
+      case 'visor': chord(when, [554.37, 830.61], .025, .9); break;
+      case 'fall': tone(when, 720 + event.pitch * 35, .45, .025, 'sine', 180); break;
       case 'letter': tone(when, [392, 493.88, 587.33][event.letter], .24, .055, 'triangle'); tone(when, 72, .1, .07, 'sine', 42); break;
       case 'lock': tone(when, 82, .25, .15, 'sine', 42); noise(when, .07, .1, 1800, 600); break;
       case 'arrival': noise(when, .2, .07, 800, 2800); tone(when + .1, 130, .17, .1, 'sine', 65); break;
@@ -114,7 +119,7 @@ function scheduleMix(ctx, buffers, timeline, { tier, area, time = 0, rate = 1, v
   return { active, master, get musicTrack() { const at = time + Math.max(0, ctx.currentTime - origin) * rate; const event = events.find(e => e.kind === 'music' && e.at <= at && e.end > at); return event ? event.track || area : null; }, stop() { for (const source of [...active]) { try { source.stop(); } catch {} } active.clear(); master.disconnect(); limiter.disconnect(); } };
 }
 
-export function cueAudio(manifest, base, music) {
+export function cueAudio(manifest, base, music, eventsFor = cueAudioEvents) {
   let ctx, buffers = {}, mix, generation = 0, enabled = false, musicArea;
   return {
     async enable() {
@@ -130,13 +135,13 @@ export function cueAudio(manifest, base, music) {
         buffers = Object.fromEntries(entries);
       }
     },
-    play(time, timeline, options) { this.stop(); if (enabled && ctx?.state === 'running') { musicArea = options.area; mix = scheduleMix(ctx, buffers, timeline, { ...options, time }, ctx.destination); } },
+    play(time, timeline, options) { this.stop(); if (enabled && ctx?.state === 'running') { musicArea = options.area; mix = scheduleMix(ctx, buffers, timeline, { ...options, time, events: eventsFor(timeline, options.tier) }, ctx.destination); } },
     stop() { mix?.stop(); mix = null; generation++; },
     volume(value) { if (mix) mix.master.gain.setTargetAtTime(value, ctx.currentTime, .02); },
     get state() { return { enabled, context: ctx?.state || 'not-started', active: mix?.active.size || 0, generation, loaded: Object.keys(buffers), musicArea: mix ? musicArea : null, musicTrack: mix?.musicTrack || null }; },
     async audition(timeline, options) {
       const offline = new OfflineAudioContext(2, Math.ceil((timeline.total + 2) * 44100), 44100);
-      scheduleMix(offline, buffers, timeline, options, offline.destination);
+      scheduleMix(offline, buffers, timeline, { ...options, events: eventsFor(timeline, options.tier) }, offline.destination);
       return offline.startRendering();
     },
   };

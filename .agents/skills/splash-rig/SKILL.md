@@ -10,6 +10,13 @@ the pipeline: `SOURCES.json` → `tools/splash-kit/prepare_art.py` → `rigs/<id
 
 ## Owner rules learned so far
 
+- **Storyboard 04 annotations (2026-10-15):** Nightmare's lens-covering cloth
+  must close from BOTH sides. Returning cloak/hands must gather back up into
+  the SAME close-up figure, not cut to a replacement sprite. Dedede needs
+  explicit action beats (try falling native Waddle Dee sprites), not one slow
+  zoom over his entire showcase. Owner authorizes audio in this pass; keep
+  music clear of calls. Nightmare ball form is optional for later sprite work.
+
 - **Latest Nightmare correction (2026-10-15):** ten-pull per-result cues are
   liked; preserve them. Only the face slowly rises UP from cloak-darkness, then
   cloak returns/wraps him, close-up, pullback/upward pose adjustment, lock and UR

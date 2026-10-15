@@ -1,17 +1,21 @@
 # Splash kit (Dedede reveal v3)
 
-Current sequence review: **[Nightmare storyboard 03](nightmare.html)**. Banner
+Current sequence review: **[Nightmare storyboard 04 + audio](nightmare.html)**. Banner
 entry and free single/ten authored fixtures lead through the shared opening and
 explicit cloak / hands / camera / UR identity beats. Play, step or scrub;
-camera/music/sound lanes are written only. This is not a final rig, live banner
-or audio animatic. No generated images/backgrounds, rates or save changes.
+camera/music/sound lanes describe the playable mix. Enable sound, then play or
+Resume at a beat. This is not a final rig or live banner. No generated
+images/backgrounds, rates or save changes.
 Dedede cue 04 remains the visual comparison. Await the owner's storyboard verdict.
 
-03 preserves the liked per-result ten-light behavior. Only the face rises from
-cloak-darkness, the cloth returns around him, then close-up / pullback / upward
-adjustment before lock and identity. No body fade or extra generated assets.
+04 preserves the liked per-result ten-light behavior. Both cloak sides close;
+only the face rises; hands return upward with the cloth into the same close-up
+pose, then pullback / lift / lock / identity. Dedede now has separately authored
+hammer/shower beats, native Waddle Dee sprites and a shorter 1.5 s pullback.
+Sourced area / boss / Dedede music, native laugh and procedural effects use the
+same stoppable mixer as cue 04; the concealed windows remain clear of music.
 
-`node tools/browser-nightmare-board.mjs out/nightmare-board-03` verifies the
+`node tools/browser-nightmare-board.mjs out/nightmare-board-04` verifies the
 sequence. `test/nightmare-board.test.js` covers timing/order/fixture contracts.
 
 A Dream Land banner you can actually pull on, a rarity-escalating Warp Star
@@ -28,6 +32,7 @@ python3 tools/splash-kit/prepare_art.py      # re-download, verify and re-bake a
 python3 tools/splash-kit/prepare-cue-art.py  # cue-only white-background cutouts from retained originals
 python3 tools/splash-kit/prepare-cue-audio.py # verified native call extracts; requires ffmpeg
 python3 tools/splash-kit/prepare-cue-music.py # verified area/character music beds; requires ffmpeg
+node tools/splash-kit/prepare-board-art.mjs  # verified existing Waddle Dee atlas for the standalone board
 node tools/splash-kit/export-artifact.mjs out/splash-kit   # self-contained copy for hosting
 ```
 

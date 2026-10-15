@@ -1,5 +1,21 @@
 # Pull presentation blueprint 02
 
+## Current review: Nightmare storyboard 04 / audio animatic
+
+Owner likes the sequence overall and authorizes sound with the annotation fixes.
+Both cloak panels close into the same covered shot. After the face-only rise,
+hands and cloak return to the SAME figure used for close-up/pullback, with no
+replacement-body cut. Wrap 2.1 s; UR pullback still 2.6 s. Dedede has explicit
+hammer / native Waddle Dee shower beats and a 1.5 s pullback, with lock before
+letters and name. Single 35.25 s / ten 56.805 s are review timings.
+
+Playable sourced Dream Land / Nightmare / related Dedede music, native laugh
+and authored effects; no Nightmare voice claim or generated backdrop. Sound
+starts with an explicit gesture and stops on pause, seek, filter, Skip, mute or
+return. Shared per-result cues / fixtures / order / quote holds stay unchanged.
+Next gate: owner action/audio verdict, then separated layer/action proof. Not
+other URs, the editor or economy work yet; optional ball form remains later.
+
 ## Current sequence review: Nightmare storyboard 03
 
 The owner likes the per-result ten-pull, which stays unchanged. Refine only the

@@ -1,5 +1,43 @@
 # Start the next chat here
 
+## Newest: Nightmare storyboard 04 + audio animatic (2026-10-15 UTC)
+
+Branch `codex/v1-playable`. Owner: “mostly, this fits together great!” Requested
+Dedede-specific falling Waddle Dee sprites and less sluggish pullback, BOTH
+cloak sides closing, and hands returning upward with the wrapping cloth instead
+of a cut. Authorizes music/noise in this pass. Ball form optional for later.
+Review: <https://dedede-v3-review.berryowlet9.chatgpt.site/nightmare>.
+
+04 remains schematic, not final art/rig. Dedede has eight explicit action /
+camera / identity beats, native Adventure sprite shower and 1.5 s pullback,
+replacing one 8.5 s placeholder zoom. Nightmare has a matching two-sided cover;
+the 2.1 s wrap moves the SAME cloak/head/hands into the close-up pose. Physical
+face-only rise and 2.6 s UR pullback / lift / lock / letters / name stay intact.
+Single 35.25 s / ten 56.805 s. Per-result light cues, fixed order, R/SR skip and
+4 / 4.8 s concealed windows unchanged. No AI-generated assets/background.
+
+`nightmare-board-audio.js` builds beat-timed events for the existing shared
+`cue-audio.js` mixer (optional event-builder argument; legacy defaults retained).
+Sourced area / Dedede / Nightmare music, native Dedede laugh, authored omen /
+cloth / magic / falling effects. No Nightmare voice clip is claimed. Music
+clears calls/impact; low Nightmare pickup opens up at the face shot. Sound is
+off until Enable sound; transport/seek/filter/mute/Skip/back stop all sources.
+Step/scrub are silent; Resume plays from the selected beat. Volume available.
+Native Waddle Dee atlas copied reproducibly; music bake verifies source hashes.
+
+133 tests pass. Source/export browser checks include continuous cloth/figure
+pixels, reduced-motion still frames, 390/420px overflow, unchanged fixture /
+storage, six decoded audio buffers and clean call windows. Thirty screenshots
+inspected. Offline mix peak .59075 / RMS .04512 / silence 0 after the laugh.
+Controlled asset failures keep the silent board usable. Report:
+`docs/validation/nightmare-storyboard-04.md`. No subjective/native-phone audio
+or final-rig acceptance claimed.
+
+NEXT: owner's action/audio verdict on 04. Revise if needed; if accepted, make
+Nightmare’s separated layer/action feasibility proof before polished production
+integration. Keep course correction bounded: other URs, editor, ball form and
+economy remain in their backlogs. Do not restore the rejected generated sky.
+
 ## Newest: Nightmare storyboard 03 — face rise and returning cloak (2026-10-15 America/Chicago)
 
 Branch `codex/v1-playable`. Owner likes the per-result ten-pull and says the UR

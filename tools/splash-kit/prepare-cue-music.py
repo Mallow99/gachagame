@@ -18,6 +18,9 @@ SOURCES = [
     ('dedede-theme', "King Dedede's Theme", 'Kirby Super Star', 1996, 'nintendo-snes-spc', 'kirby-super-star-%5Bkirbys-fun-pak%5D',
      '11%20King%20Dedede%27s%20Theme.mp3', '4170e838704418fe22bdc707a093a3583ed6518197972fac3eb488359206e04d',
      'Jun Ishikawa / HAL Laboratory / Nintendo; SPC recording hosted by Zophar’s Domain. Related character music; not claimed to originate in Adventure (1993).'),
+    ('nightmare-theme', 'Nightmare (Final Boss)', "Kirby's Adventure", 1993, 'nintendo-nes-nsf', 'kirbys-adventure',
+     '34%20-%20Nightmare.mp3', 'bc0c8c6e58a231e02bff0b65654ce4ddc382146f428bd0d3ea1f5ba13954f5e1',
+     'Hirokazu Ando / Jun Ishikawa, HAL Laboratory / Nintendo; NSF recording hosted by Zophar’s Domain.'),
 ]
 CACHE.mkdir(parents=True, exist_ok=True)
 OUT.mkdir(parents=True, exist_ok=True)

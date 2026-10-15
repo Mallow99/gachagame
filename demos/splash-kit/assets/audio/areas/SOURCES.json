@@ -43,5 +43,20 @@
       "credit": "Jun Ishikawa / HAL Laboratory / Nintendo; SPC recording hosted by Zophar\u2019s Domain. Related character music; not claimed to originate in Adventure (1993)."
     },
     "processing": "First 48 seconds, -20 LUFS / -2 dBTP, 40ms entry and 200ms exit fades, mono 44.1kHz MP3. No pitch or tempo change. Full downloads verified in rebuild cache, not bundled at runtime."
+  },
+  "nightmare-theme": {
+    "url": "nightmare-theme.mp3",
+    "title": "Nightmare (Final Boss)",
+    "game": "Kirby's Adventure",
+    "year": 1993,
+    "duration": 48.039184,
+    "sha256": "537e772219a0ee0640f7ea137b28a3d671b061cbae7053443fcd1f2e829c7b8d",
+    "source": {
+      "url": "https://fi.zophar.net/soundfiles/nintendo-nes-nsf/kirbys-adventure/34%20-%20Nightmare.mp3",
+      "page": "https://www.zophar.net/music/nintendo-nes-nsf/kirbys-adventure",
+      "sha256": "bc0c8c6e58a231e02bff0b65654ce4ddc382146f428bd0d3ea1f5ba13954f5e1",
+      "credit": "Hirokazu Ando / Jun Ishikawa, HAL Laboratory / Nintendo; NSF recording hosted by Zophar\u2019s Domain."
+    },
+    "processing": "First 48 seconds, -20 LUFS / -2 dBTP, 40ms entry and 200ms exit fades, mono 44.1kHz MP3. No pitch or tempo change. Full downloads verified in rebuild cache, not bundled at runtime."
   }
 }

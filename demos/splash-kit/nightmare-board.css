@@ -1,6 +1,12 @@
 header nav { display:flex; gap:1.2rem; flex-wrap:wrap; }
 .intro h1 { max-width:12ch; }
 .board-theater { border:1px solid var(--line); background:#0c0b19; }
+.board-audio { padding:.75rem 1rem; display:flex; flex-wrap:wrap; align-items:center; gap:.6rem 1rem; border-bottom:1px solid var(--line); }
+.board-audio label { display:flex; align-items:center; gap:.5rem; color:var(--muted); }
+.board-audio input { width:6rem; accent-color:var(--gold); }
+.board-audio p { flex:1 1 20rem; font-size:.85rem; color:var(--muted); margin:0; }
+.audio-credits { margin-top:2rem; color:var(--muted); max-width:75ch; font-size:.9rem; }
+.audio-credits summary { cursor:pointer; }
 .board-stage { position:relative; overflow:hidden; isolation:isolate; aspect-ratio:16/9; container-type:inline-size; }
 #boardScene { position:absolute; inset:0; }
 .banner-copy { position:absolute; left:6%; top:11%; max-width:46%; }

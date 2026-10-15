@@ -4,6 +4,45 @@ One entry per reviewed iteration. Record what the owner liked, what they
 disliked, and what is still needed, in their words where possible. Read this
 before changing anything here.
 
+## Nightmare storyboard 03 — reviewed 2026-10-15 UTC
+
+Verdict: “mostly, this fits together great!” Correct the annotated actions;
+owner authorizes music and noise in the same pass. Not final sprite/rig approval.
+
+Liked:
+- “honestly alot of what i said was nitpicks.”
+- “mostly, this fits together great!”
+
+Disliked / requested correction:
+- Dedede: “we should do more here, maybe particles based on what he does?”
+- “sprite waddlee dees falling down from the sky, to give him some more character.”
+- “why dedede is soo slow to zoom back here” / “might be worth it to storyboard that too?”
+- Cloak: “instead of having it close in from both sides? Can we fix that?”
+- Wrap: “having the hands pull back up to him too instead of just a quick cut”.
+
+Still needed:
+- “if we could fix those that would be good, then we can do music and noise.”
+- “If you want to do both in this pass, thats fine”.
+- Ball form is optional: “thats not necessary, that can be in his sprites.”
+
+04 is an audio animatic, still schematic. Separate Dedede entrance / face /
+hammer-shower / 1.5 s pullback / lock / letters / name / hold beats replace the
+single 8.5 s placeholder zoom. A recognizable king/hammer proxy replaces the
+anonymous ovals; actual verified Adventure Waddle Dee sprites fall around him.
+Nightmare closes from both sides; the wrap uses the SAME cloak/head/hands as
+the close-up, with hands returning upward from the edges. Face position and
+scale match across the boundary. No new final character art or generated image.
+
+Playable area and character music, native Dedede laugh, and authored cloth /
+omen / magic effects. Nightmare has no falsely attributed voice clip. Music
+clears both concealed windows and the strike, stays low under the curtain
+action, then opens up with the face/pullback. Pause/seek/mute/filter/back/Skip
+stop the shared mix. Sound requires the visible Enable sound gesture.
+
+**04 awaits owner verdict.** Review action and sound together, then proceed to
+Nightmare's separated layer/action feasibility proof if accepted. Ball form,
+other URs, editor and economy remain later, not silently added to this pass.
+
 ## Nightmare storyboard 02 — reviewed 2026-10-15 America/Chicago
 
 Verdict: getting closer; ten-pull behavior is liked. Refine Nightmare before

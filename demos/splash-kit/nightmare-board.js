@@ -1,13 +1,24 @@
 import { storyboardReceipt, makeStoryboard, sampleStoryboard, sampleResultLights } from './nightmare-board-model.js';
 import { COLOURS, TIERS } from './cue-model.js';
 import { storyboardScene } from './nightmare-board-scene.js';
+import { cueAudio } from './cue-audio.js';
+import { storyboardAudioEvents } from './nightmare-board-audio.js';
 
 const $ = id => document.getElementById(id);
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-const draw = storyboardScene($('boardScene'));
+const waddleDee = new Image(); waddleDee.src = new URL('assets/board/waddle-dee.png', import.meta.url);
+const spriteReady = await waddleDee.decode().then(() => true).catch(() => false);
+const draw = storyboardScene($('boardScene'), waddleDee);
+const audioBase = new URL('assets/audio/cue02/', import.meta.url), musicBase = new URL('assets/audio/areas/', import.meta.url);
+const [calls, music] = await Promise.all([audioBase, musicBase].map(async base => {
+  try { const r = await fetch(new URL('SOURCES.json', base)); if (!r.ok) return {}; return await r.json(); } catch { return {}; }
+}));
+const audio = cueAudio(calls, audioBase, { manifest: music, base: musicBase }, storyboardAudioEvents);
+let sound = false;
 let receipt, board, current = 0, playing = false, frame = 0, previousFrame = 0, pendingCount = 1, banner = true, railBeat;
 
-function pause() { playing = false; cancelAnimationFrame(frame); }
+function pause() { playing = false; cancelAnimationFrame(frame); audio.stop(); }
+function startAudio() { if (sound && playing) audio.play(current, board, { area: 'dream', volume: Number($('boardVolume').value) }); }
 function seek(time) { if (!board || banner) return; pause(); current = Math.max(0, Math.min(board.total, time)); render(); }
 function goNext() {
   if (!board || banner) return;
@@ -44,7 +55,7 @@ function play() {
   if (banner || !board) return;
   if (playing) { pause(); render(); return; }
   if (current >= board.total) current = 0;
-  playing = true; previousFrame = performance.now(); render(); frame = requestAnimationFrame(tick);
+  playing = true; previousFrame = performance.now(); startAudio(); render(); frame = requestAnimationFrame(tick);
 }
 function tick(now) {
   if (!playing) return;
@@ -68,20 +79,18 @@ function render() {
     const item = $('lightOrder').children[i]; item.textContent = `${i + 1} ${TIERS[light.rank]}`;
     item.style.setProperty('--light-colour', COLOURS[light.rank]); item.dataset.rank = light.rank;
   });
-  $('sceneLabel').textContent = `${b.group} · schematic blocking only`;
+  $('sceneLabel').textContent = `${b.group} · schematic blocking only${state.dededeVisible && !spriteReady ? ' · sprite fallback' : ''}`;
   $('beatGroup').textContent = `${b.group} · ${b.duration.toFixed(1)} s`;
   $('beatTitle').textContent = b.title; $('beatVisual').textContent = b.visual;
   $('cameraLane').textContent = b.camera; $('musicLane').textContent = b.music; $('soundLane').textContent = b.sound;
   $('concealedCall').hidden = state.phase !== 'call';
-  $('callLabel').textContent = b.result?.rarity === 'SSR' ? 'A familiar laugh in the dark' : 'A character sound in the dark';
-  // SSR timing is already reviewed in cue 04. The board keeps identity after
-  // its compressed camera drawing; the new UR has separate explicit beats.
-  const ssrIdentity = state.phase === 'ssr' && state.progress > .7;
+  $('callLabel').textContent = b.result?.rarity === 'SSR' ? 'A familiar laugh in the dark' : 'Something stirs in the dark';
+  const ssrIdentity = ['ssr-rarity', 'ssr-name', 'ssr-hold'].includes(state.phase);
   const showIdentity = (state.nightmareVisible && state.rarity) || ssrIdentity;
   $('boardIdentity').hidden = !showIdentity;
   $('boardIdentity').dataset.rarity = ssrIdentity ? 'SSR' : 'UR';
-  $('identityRarity').textContent = ssrIdentity ? 'S S R' : state.phase === 'rarity' && state.progress < .5 ? 'U' : 'U R';
-  const showName = ssrIdentity || state.identity;
+  $('identityRarity').textContent = ssrIdentity ? state.phase === 'ssr-rarity' ? ['S', 'S S', 'S S R'][Math.min(2, Math.floor(state.progress * 3))] : 'S S R' : state.phase === 'rarity' && state.progress < .5 ? 'U' : 'U R';
+  const showName = ['ssr-name', 'ssr-hold'].includes(state.phase) || state.identity;
   $('identityName').hidden = $('identitySource').hidden = !showName;
   $('identityName').textContent = ssrIdentity ? 'King Dedede' : 'Nightmare';
   $('boardClock').textContent = `${current.toFixed(1)} / ${board.total.toFixed(1)} s`; $('boardSeek').value = current;
@@ -110,6 +119,17 @@ $('boardScene').addEventListener('click', () => { if (!banner) goNext(); });
 $('boardSkip').addEventListener('click', () => seek(board.total));
 $('boardSeek').addEventListener('input', () => seek(Number($('boardSeek').value)));
 $('cameraGuides').addEventListener('change', render);
+$('boardSound').addEventListener('click', async () => {
+  if (sound) { sound = false; audio.stop(); $('boardSound').textContent = 'Enable sound'; $('boardSound').setAttribute('aria-pressed', 'false'); return; }
+  $('boardSound').disabled = true; $('audioStatus').textContent = 'Loading verified game recordings…';
+  try {
+    if (!calls.dedede || !music.dream || !music['nightmare-theme']) throw Error('Audio manifest unavailable');
+    await audio.enable(); sound = true; $('boardSound').textContent = 'Mute sound'; $('boardSound').setAttribute('aria-pressed', 'true'); $('audioStatus').textContent = 'Area / character music + effects. Pausing or stepping silences playback.'; startAudio();
+  }
+  catch { $('audioStatus').textContent = 'Audio could not load. The silent storyboard still works; reload the page to retry.'; }
+  finally { $('boardSound').disabled = false; }
+});
+$('boardVolume').addEventListener('input', () => audio.volume(Number($('boardVolume').value)));
 $('boardHighOnly').addEventListener('change', () => {
   const old = sampleStoryboard(current, board).beat; pause();
   board = makeStoryboard(receipt, { highOnly: $('boardHighOnly').checked }); buildRail();
@@ -123,5 +143,6 @@ document.addEventListener('keydown', event => {
 });
 document.addEventListener('visibilitychange', () => { if (document.hidden) { pause(); render(); } });
 reduced.addEventListener('change', render); new ResizeObserver(render).observe($('boardStage'));
-window.nightmareBoard = { get state() { return { banner, playing, time: current, count: receipt?.results.length, receipt, board, reduced: reduced.matches, sample: board && sampleStoryboard(current, board, reduced.matches) }; }, seek, next: goNext };
+window.nightmareBoard = { get state() { return { banner, playing, time: current, count: receipt?.results.length, receipt, board, sound, audio: audio.state, reduced: reduced.matches, sample: board && sampleStoryboard(current, board, reduced.matches) }; }, seek, next: goNext,
+  audition: () => audio.audition(board, { area: 'dream', volume: Number($('boardVolume').value) }) };
 render();
