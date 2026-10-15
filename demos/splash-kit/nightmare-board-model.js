@@ -55,9 +55,11 @@ export function makeStoryboard(receipt, { highOnly = false } = {}) {
     add('hands', 'hands', 'Hands find the edges', 1.2, 'Two separate hands rise into frame and take the cloak’s edges. The independent gesture must be visible.', 'Nightmare’s theme begins to resolve.', 'Two soft grabs, left then right.', 'Close frontal view; hands are the subject.');
     add('open', 'open', 'The curtains open onto nothing', 1.8, 'His hands separate the cloak panels, revealing only black. No face, body, backdrop or name is behind them yet.', 'The theme pickup stays suspended.', 'Cloth release, then the rush dies.', 'Hold the lens at the curtain; do not expose the fighter.');
     add('dark', 'dark', 'Wait in the darkness', .75, 'The opening is empty black. The hands and cloth remain at the edges, leaving the middle completely empty.', 'One sparse low note; no triumphant reveal yet.', 'A short empty-room hush.', 'Still frontal void; give the absence a beat.');
-    add('emerge', 'emerge', 'He emerges from his own shadow', 1.8, 'A huge cloak silhouette fills the frame. The horned face and visor emerge from the darkness; keep the body indistinct.', 'Nightmare’s own theme resolves with his emergence.', 'Low pressure rises; a small visor / face accent.', 'Low slant into an oversized face, framed by the cloak shadow.');
-    add('face', 'face', 'A slanted look at the face', 1.35, 'The face becomes clear against the looming cloak shadow. A slight head turn answers the opposite camera slant.', 'Theme gets space; no new call over it.', 'A brief camera / cloth accent.', 'High opposite slant. No UR letters or name.');
+    add('emerge', 'emerge', 'Only his face rises', 2.8, 'The horned face slowly travels UP out of the cloak-darkness. No body, pauldrons, necklace or hands appear with it.', 'Nightmare’s theme begins to resolve, held low.', 'Low pressure rises beneath a sparse visor accent.', 'Steady frontal face framing. The head moves upward; this is not a body fade.');
+    add('wrap', 'wrap', 'The cloak returns to him', 1.7, 'The cloth returns from both screen edges and gathers around him below the face. It becomes his cloak, not a second set of curtains revealing another body.', 'The character theme gathers with the cloth.', 'Two returning cloth sweeps and a soft wrap.', 'Stay on the face while the cloak moves around its lower edge.');
+    add('face', 'face', 'Close-up after the wrap', 1.35, 'Now framed by his own cloak, Nightmare gives the face close-up and slight head turn. No rarity or name yet.', 'Theme gets space; no new call over it.', 'A brief camera / cloth accent.', 'High opposite slant. Keep his wrapped shoulders near the frame.');
     add('pullback', 'pullback', 'Pull all the way back', 2.6, 'Reveal the full cloak and both hands. The huge shadow remains behind him while the character settles into the roster.', 'Character theme opens up.', 'Long receding rush, not another impact.', 'Continuous 2.6 s pullback from face to full figure.');
+    add('adjust', 'adjust', 'Lift into the final pose', .75, 'He adjusts upward slightly and squares his cloak into the final full-character UR composition. The camera is already wide.', 'Theme reaches its resolved phrase.', 'Small cloth adjustment; no new impact.', 'Level wide shot. The figure lifts, not the entire camera.');
     add('lock', 'lock', 'Everything clicks into place', .6, 'The full figure and roster align. Let the composition settle before any identity text.', 'Theme sustains.', 'One grounded lock accent.', 'Wide, level; camera has stopped.');
     add('rarity', 'rarity', 'U, then R', 1.25, 'Prismatic rarity letters arrive after the camera lock. The name is still absent.', 'Character theme continues.', 'Two deliberate letter accents.', 'Hold the full character.');
     add('name', 'name', 'Nightmare', 1.25, 'The name builds beside the character, with Kirby’s Adventure and 1993. No red featured tier.', 'Character theme continues.', 'Name accent follows the letters.', 'Wide; do not cover the face or hands.');
@@ -76,13 +78,15 @@ export function sampleStoryboard(time, board, reduced = false) {
   const p = clamp((t - beat.start) / beat.duration), phase = beat.phase;
   const previous = board.receipt.results.filter((_, i) => i < (beat.index ?? (phase === 'lineup' ? board.receipt.results.length : 0)));
   let zoom = 1, roll = 0;
-  if (phase === 'emerge') { zoom = 2.15; roll = -7 * (1 - ease(p) * .4); }
   if (phase === 'face') { zoom = 2.15; roll = 7 - ease(p) * 3; }
   if (phase === 'pullback') { zoom = 1 + 1.15 * (1 - ease(p)); roll = 4 * (1 - ease(p)); }
-  const nightmareVisible = ['emerge', 'face', 'pullback', 'lock', 'rarity', 'name', 'hold', 'resume'].includes(phase) || phase === 'lineup' && board.receipt.results.length === 1;
+  const nightmareVisible = ['emerge', 'wrap', 'face', 'pullback', 'adjust', 'lock', 'rarity', 'name', 'hold', 'resume'].includes(phase) || phase === 'lineup' && board.receipt.results.length === 1;
   const identity = ['name', 'hold', 'resume', 'lineup'].includes(phase);
+  const rise = phase === 'emerge' ? reduced ? 1 : ease(p) : nightmareVisible ? 1 : 0;
+  const lift = phase === 'adjust' ? reduced ? 1 : ease(p) : ['lock', 'rarity', 'name', 'hold', 'resume', 'lineup'].includes(phase) ? 1 : 0;
   return { beat, phase, progress: p, time: t, zoom: reduced ? 1 : zoom, roll: reduced ? 0 : roll,
-    nightmareVisible, emergence: phase === 'emerge' ? reduced ? 1 : ease(p) : nightmareVisible ? 1 : 0,
+    nightmareVisible, faceOnly: phase === 'emerge', faceY: 700 - rise * 375,
+    wrap: phase === 'wrap' ? reduced ? 1 : ease(p) : 0, poseY: -18 * lift,
     identity, rarity: identity || phase === 'rarity', previous,
     results: phase === 'lineup' ? board.receipt.results : previous };
 }

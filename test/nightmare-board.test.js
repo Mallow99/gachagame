@@ -21,7 +21,7 @@ test('Nightmare board retains shared flight times and gives the new UR explicit 
     assert.equal(board.beats.find(b => b.id === 'rainbow').start, CUE.rainbow + board.delay);
     assert.equal(board.beats.find(b => b.id === 'impact').start, CUE.impact + board.delay);
     const ur = board.beats.filter(b => b.result?.rarity === 'UR');
-    assert.deepEqual(ur.map(b => b.phase), ['call', 'sweep', 'covered', 'hands', 'open', 'dark', 'emerge', 'face', 'pullback', 'lock', 'rarity', 'name', 'hold', ...(count === 10 ? ['resume'] : [])]);
+    assert.deepEqual(ur.map(b => b.phase), ['call', 'sweep', 'covered', 'hands', 'open', 'dark', 'emerge', 'wrap', 'face', 'pullback', 'adjust', 'lock', 'rarity', 'name', 'hold', ...(count === 10 ? ['resume'] : [])]);
     assert.equal(ur[0].duration, 4.8); assert.equal(ur.find(b => b.phase === 'pullback').duration, 2.6);
     board.beats.forEach((beat, i) => {
       assert.ok(beat.duration > 0); assert.equal(beat.start, i ? board.beats[i - 1].end : 0);
@@ -33,12 +33,17 @@ test('Nightmare board retains shared flight times and gives the new UR explicit 
 test('curtains expose only darkness before emergence, then face/pullback precede identity', () => {
   const board = makeStoryboard(storyboardReceipt(1));
   const sample = phase => { const b = board.beats.find(b => b.phase === phase); return sampleStoryboard(b.start + b.duration * .5, board); };
-  for (const phase of ['call', 'sweep', 'covered', 'hands', 'open', 'dark']) { assert.equal(sample(phase).nightmareVisible, false); assert.equal(sample(phase).emergence, 0); }
-  for (const phase of ['open', 'dark', 'emerge', 'face', 'pullback', 'lock']) { assert.equal(sample(phase).identity, false); assert.equal(sample(phase).rarity, false); }
+  for (const phase of ['call', 'sweep', 'covered', 'hands', 'open', 'dark']) assert.equal(sample(phase).nightmareVisible, false);
+  for (const phase of ['open', 'dark', 'emerge', 'wrap', 'face', 'pullback', 'adjust', 'lock']) { assert.equal(sample(phase).identity, false); assert.equal(sample(phase).rarity, false); }
   assert.equal(sample('rarity').rarity, true); assert.equal(sample('rarity').identity, false);
-  assert.equal(sample('name').identity, true); assert.ok(sample('emerge').roll < 0 && sample('face').roll > 0);
+  assert.equal(sample('name').identity, true); assert.ok(sample('face').roll > 0);
   const emergence = board.beats.find(b => b.phase === 'emerge');
-  assert.ok(sampleStoryboard(emergence.start + .1, board).emergence < sampleStoryboard(emergence.end - .1, board).emergence);
+  assert.ok(sampleStoryboard(emergence.start + .1, board).faceY > sampleStoryboard(emergence.end - .1, board).faceY);
+  assert.equal(sample('emerge').faceOnly, true); assert.equal(sample('emerge').zoom, 1);
+  assert.ok(sample('wrap').wrap > 0 && sample('wrap').wrap < 1);
+  const adjust = board.beats.find(b => b.phase === 'adjust');
+  assert.ok(sampleStoryboard(adjust.start + .1, board).poseY > sampleStoryboard(adjust.end - .1, board).poseY);
+  assert.equal(sample('lock').poseY, -18); assert.equal(sample('name').poseY, -18);
   const pull = board.beats.find(b => b.phase === 'pullback');
   assert.ok(sampleStoryboard(pull.start + .1, board).zoom > sampleStoryboard(pull.end - .1, board).zoom);
   for (const phase of ['emerge', 'face', 'pullback']) { const b = board.beats.find(b => b.phase === phase); const s = sampleStoryboard(b.start + .1, board, true); assert.equal(s.zoom, 1); assert.equal(s.roll, 0); }

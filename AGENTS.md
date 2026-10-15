@@ -39,6 +39,13 @@ node tools/splash-kit/export-artifact.mjs <dir>  # self-contained copy of the sp
 - Do not leave Skip, replay, reduced motion or committed receipts broken.
 - Before saying something works, verify it, including looking at screenshots. Report what you could not check.
 
+## Owner workflow preference
+
+The owner explicitly asks for gentle course correction when ideas branch:
+recommend one bounded next review gate, save side ideas to the backlog, and
+distinguish exploratory options from approved changes. Do not implement every
+alternative at once. Follow a new explicit direction when the owner chooses it.
+
 ## Skills
 
 Shared skills live in `.agents/skills/` (Codex reads them there; Claude Code through `.claude/skills`):

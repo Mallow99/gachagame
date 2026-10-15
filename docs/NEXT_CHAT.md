@@ -1,5 +1,38 @@
 # Start the next chat here
 
+## Newest: Nightmare storyboard 03 — face rise and returning cloak (2026-10-15 America/Chicago)
+
+Branch `codex/v1-playable`. Owner likes the per-result ten-pull and says the UR
+is getting much closer, but wants only the face to rise UP from cloak-darkness,
+then cloak returns/wraps, close-up, upward adjustment and the final UR pose.
+Review: <https://dedede-v3-review.berryowlet9.chatgpt.site/nightmare.html>.
+
+03 uses an independently drawn schematic head: no body, shoulders, necklace or
+hands in the 2.8 s rise. It moves vertically through a darkness mask, not a body
+fade. Two curved cloak panels return around the face in a 1.7 s wrap. Face
+close-up, 2.6 s pullback, .75 s upward figure adjustment, lock, UR letters/name.
+Single 34.85 s / ten 56.505 s are still proposed timings. Per-result light
+mapping, original fixture/order, R/SR filter and 4 / 4.8 s call holds unchanged.
+No images, generated art, audio, production rig, rates, currency or save changes.
+
+130 tests pass; source/export browser QA checks actual visor pixels move UP,
+empty void/body region in the face-only shot, wrap/adjust before identity,
+unchanged per-result cues, Skip/replay/filter/resume, reduced motion and
+390/420px overflow. Twenty-four screenshots inspected. Report:
+`docs/validation/nightmare-storyboard-03.md`.
+
+Owner explicitly requests gentle course correction when options proliferate;
+recorded in `AGENTS.md`. Chosen next gate: finish this Nightmare sequence, THEN
+audio animatic and layer/action proof. Other URs/editor stay later unless the
+owner explicitly reprioritizes. This is not sequence acceptance yet.
+
+Economy brainstorm saved, not implemented: `docs/GACHA_ECONOMY_BACKLOG.md`.
+Potential character-only premium/rarer-currency banner; mixed character/items
+accepting both currencies (payment rules undecided); easier-currency item-only
+banner with rare featured items. Ten-pull incentive requested. Existing fighter
+and supply both guarantee SR+ within ten draws including singles; no batch-only
+rate increase/discount. Do not silently implement alternatives or advertise odds.
+
 ## Newest: Nightmare storyboard 02 — darkness and per-result cues (2026-10-15 America/Chicago)
 
 Branch `codex/v1-playable`. Owner strongly liked “having him pull back the

@@ -3,7 +3,7 @@ import { existsSync, mkdirSync } from 'node:fs';
 import assert from 'node:assert/strict';
 const require = createRequire(import.meta.url);
 const { chromium } = require(process.env.POCKET_PLAYWRIGHT_MODULE || 'playwright');
-const out = process.argv[2] || 'out/nightmare-board-02';
+const out = process.argv[2] || 'out/nightmare-board-03';
 const url = process.argv[3] || 'http://localhost:8080/demos/splash-kit/nightmare.html';
 mkdirSync(out, { recursive: true });
 const executablePath = ['/usr/bin/chromium', '/usr/bin/chromium-browser'].find(existsSync);
@@ -32,19 +32,30 @@ try {
   const phase = async (name, p = .5) => { const beat = (await state()).board.beats.find(b => b.phase === name); await seek(beat.start + beat.duration * p); };
   const goBeat = async id => { const beat = (await state()).board.beats.find(b => b.id === id); await seek(beat.start + beat.duration * .5); };
   await phase('call'); assert.equal(await page.locator('#boardIdentity').isVisible(), false); await shot('concealed-call');
-  for (const name of ['sweep', 'covered', 'hands', 'open', 'dark', 'emerge', 'face', 'pullback', 'lock', 'rarity', 'name']) {
-    await phase(name); if (!['rarity', 'name'].includes(name)) assert.equal(await page.locator('#boardIdentity').isVisible(), false);
+  for (const name of ['sweep', 'covered', 'hands', 'open', 'dark', 'emerge', 'wrap', 'face', 'pullback', 'adjust', 'lock', 'rarity', 'name']) {
+    await phase(name, name === 'emerge' ? .7 : name === 'wrap' ? .9 : .5); if (!['rarity', 'name'].includes(name)) assert.equal(await page.locator('#boardIdentity').isVisible(), false);
     if (name === 'rarity') assert.equal(await page.locator('#identityName').isVisible(), false);
-    if (['covered', 'hands', 'open', 'dark', 'emerge', 'face', 'pullback', 'name'].includes(name)) await shot(name);
+    if (['covered', 'hands', 'open', 'dark', 'emerge', 'wrap', 'face', 'pullback', 'adjust', 'name'].includes(name)) await shot(name);
     if (['open', 'dark'].includes(name)) {
       assert.equal((await state()).sample.nightmareVisible, false);
       // The curtain gap is actual empty black, not a hidden/grid-backed figure.
       assert.deepEqual(await page.locator('#boardScene').evaluate(c => Array.from(c.getContext('2d').getImageData(Math.floor(c.width / 2), Math.floor(c.height / 3), 1, 1).data)), [4, 3, 11, 255]);
     }
   }
+  // Measure the visor itself moving upwards, not merely a fade or camera zoom.
+  const visor = () => page.locator('#boardScene').evaluate(c => {
+    const pixels = c.getContext('2d').getImageData(0, 0, c.width, c.height).data; let count = 0, sum = 0;
+    for (let i = 0; i < pixels.length; i += 4) if (pixels[i] < 150 && pixels[i + 1] > 110 && pixels[i + 2] > 160) { count++; sum += Math.floor(i / 4 / c.width); }
+    return { count, y: sum / count };
+  });
+  await phase('emerge', .62); const low = await visor(); await shot('face-rise-low');
+  await phase('emerge', .92); const high = await visor(); await shot('face-rise-high');
+  assert.ok(low.count > 0 && high.count > 0 && high.y < low.y - 30);
+  assert.equal((await state()).sample.faceOnly, true); assert.equal((await state()).sample.zoom, 1);
+  assert.deepEqual(await page.locator('#boardScene').evaluate(c => Array.from(c.getContext('2d').getImageData(Math.floor(c.width * .65), Math.floor(c.height * .8), 1, 1).data)), [4, 3, 11, 255]);
   await phase('pullback', .2); const zoom = (await state()).sample.zoom;
   await phase('pullback', .8); assert.ok((await state()).sample.zoom < zoom);
-  await page.locator('#next').click(); assert.equal((await state()).sample.phase, 'lock');
+  await page.locator('#next').click(); assert.equal((await state()).sample.phase, 'adjust');
   await page.locator('#previous').click(); assert.equal((await state()).sample.phase, 'pullback');
   await page.locator('#boardPlay').click(); await page.waitForFunction(() => nightmareBoard.state.playing);
   await page.locator('#boardPlay').click(); const paused = (await state()).time; await page.waitForTimeout(100); assert.equal((await state()).time, paused);
@@ -77,7 +88,7 @@ try {
   await page.locator('#boardPlay').click(); await page.waitForFunction(() => nightmareBoard.state.playing && nightmareBoard.state.time < 2);
   await page.locator('#boardPlay').click(); assert.equal(JSON.stringify((await state()).receipt), receipt);
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  for (const name of ['sweep', 'hands', 'open', 'dark', 'emerge', 'face', 'pullback']) {
+  for (const name of ['sweep', 'hands', 'open', 'dark', 'emerge', 'wrap', 'face', 'pullback', 'adjust']) {
     await phase(name, .2); const before = await page.locator('#boardScene').evaluate(c => c.toDataURL());
     await phase(name, .8); assert.equal(await page.locator('#boardScene').evaluate(c => c.toDataURL()), before, `Reduced motion ${name}`);
     assert.equal((await state()).sample.zoom, 1); assert.equal((await state()).sample.roll, 0);
@@ -88,12 +99,13 @@ try {
     if (width === 390) await page.screenshot({ path: `${out}/mobile-banner-page.png`, fullPage: true });
     await begin(10); await phase('hands'); if (width === 390) await shot('mobile-hands');
     await phase('open'); if (width === 390) await shot('mobile-open-void');
-    await phase('emerge'); if (width === 390) await shot('mobile-emergence');
+    await phase('emerge', .8); if (width === 390) await shot('mobile-emergence');
+    await phase('wrap', .9); if (width === 390) await shot('mobile-wrap');
     await phase('name'); if (width === 390) await page.screenshot({ path: `${out}/mobile-name-page.png`, fullPage: true });
     await page.locator('#boardSkip').click(); if (width === 390) await shot('mobile-lineup');
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth), width);
   }
   assert.equal(await page.evaluate(() => JSON.stringify({ ...localStorage })), saved);
   assert.deepEqual(errors, []); assert.deepEqual(missing, []);
-  console.log(JSON.stringify({ passed: true, errors, missing, singleDuration: one.total, tenDuration: originalTotal, screenshots: 19, checks: 'banner confirmation and cancel, single/ten, per-result cumulative cues, empty black curtain gap before emergence, looming cloak/face/pullback before identity, step/scrub/pause/replay/skip, immutable fixture, high-only filter, UR resume, reduced motion, 390/420px no overflow, no storage writes' }));
+  console.log(JSON.stringify({ passed: true, errors, missing, singleDuration: one.total, tenDuration: originalTotal, screenshots: 24, visorRise: { low, high }, checks: 'banner confirmation/cancel, single/ten, unchanged per-result cues, empty black before physical face-only rise, cloak wrap before close-up, upward adjustment before identity, step/scrub/pause/replay/skip, immutable fixture, R/SR filter, UR resume, reduced motion, 390/420px no overflow, no storage writes' }));
 } finally { await browser.close(); }

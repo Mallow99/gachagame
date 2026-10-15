@@ -1,5 +1,20 @@
 # Pull presentation blueprint 02
 
+## Current sequence review: Nightmare storyboard 03
+
+The owner likes the per-result ten-pull, which stays unchanged. Refine only the
+UR choreography: curtains / empty dark → slow FACE-ONLY upward rise (2.8 s) →
+cloak returns and wraps him (1.7 s) → close-up → full pullback (2.6 s) → upward
+figure adjustment (.75 s) → lock → UR / name. Head motion is physical vertical
+travel through a darkness mask; no body is drawn in that shot. Single 34.85 s /
+ten 56.505 s remain review timings. Same schematic, silent, private review.
+
+Owner invited course correction: finish this review gate before other URs or
+the storyboard editor, then audio animatic before real layer/action production.
+Economy/currency/banner alternatives are saved in `GACHA_ECONOMY_BACKLOG.md`,
+not implemented. Current SR-within-ten protection includes singles; it is not
+a batch-exclusive rate bonus. No pricing/odds or production-save changes here.
+
 ## Current sequence review: Nightmare storyboard 02
 
 The owner strongly likes the self-curtain action. This revision changes the

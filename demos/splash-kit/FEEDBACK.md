@@ -4,6 +4,40 @@ One entry per reviewed iteration. Record what the owner liked, what they
 disliked, and what is still needed, in their words where possible. Read this
 before changing anything here.
 
+## Nightmare storyboard 02 — reviewed 2026-10-15 America/Chicago
+
+Verdict: getting closer; ten-pull behavior is liked. Refine Nightmare before
+moving to other URs, the editor or the audio animatic.
+
+Liked:
+- “I like the 10 pull behavior now”.
+- “We are getting alot closer to a really good version of ur here”.
+
+Disliked / requested correction:
+- “he slowly rose from the darkness upwards, just his face from the darkness of the cloak”.
+- “before the cloak came back, wrapped around him, and we had a close up before he adjusted up and we had the ur of him.”
+
+Still needed:
+- Try this new ordering; keep the approved per-result light cues and results.
+- Other UR variations / rough storyboard editor remain possible later steps.
+- “feel free to course correct me in the future (write that down)”.
+
+Storyboard 03 makes emergence a 2.8 s physical face-only rise, adds a 1.7 s
+returning cloak wrap, retains close-up / 2.6 s pullback, then adds a .75 s upward
+figure adjustment before lock / letters / name. No body/pauldrons/necklace/hands
+are drawn in the face-rise shot. Same schematic head primitive is reused; no
+new generated assets or production rig. Quote holds and ten-pull logic unchanged.
+
+Saved the course-correction preference in `AGENTS.md`: recommend one current
+review gate, keep side ideas in a backlog, and separate brainstorming from
+approved changes. Economy ideas are in `docs/GACHA_ECONOMY_BACKLOG.md`: possible
+character-only / mixed / item-only banners and distinct currencies, not chosen
+prices/rates/pools. Existing fighter/supply SR-within-ten protection was checked;
+it applies equally to singles and is not a batch-exclusive bonus.
+
+**Storyboard 03 awaits owner verdict.** Then revise if needed, or make the
+audio animatic before a real layer/action proof. No wider roster/editor rollout.
+
 ## Nightmare storyboard 01 — reviewed 2026-10-15 America/Chicago
 
 Verdict: strongly positive on the curtain idea; revise light signalling and the

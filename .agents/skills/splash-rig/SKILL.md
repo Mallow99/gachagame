@@ -10,6 +10,14 @@ the pipeline: `SOURCES.json` → `tools/splash-kit/prepare_art.py` → `rigs/<id
 
 ## Owner rules learned so far
 
+- **Latest Nightmare correction (2026-10-15):** ten-pull per-result cues are
+  liked; preserve them. Only the face slowly rises UP from cloak-darkness, then
+  cloak returns/wraps him, close-up, pullback/upward pose adjustment, lock and UR
+  identity. No body drawn during face-rise; no transparent-body substitute.
+  Owner invited gentle course correction (`AGENTS.md`): finish this bounded
+  review gate before parallel character/editor/economy branches. Banner/currency
+  brainstorm is saved in `docs/GACHA_ECONOMY_BACKLOG.md`, not approved rules.
+
 - **Owner authoring / narrow AI exception (2026-10-15):** future rough-storyboard
   tool should let the owner show the ideal, followed by an explicit sprite/rig
   feasibility review before production. AI images may supply brief 1–2-second

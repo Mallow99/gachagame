@@ -21,7 +21,16 @@ function hand(c, x, y, scale, angle, pointed = false) {
   c.restore();
 }
 
-function figure(c, { x = 650, y = 285, scale = .76, open = .8, gesture = 0, head = 0, joints = false, hands = true } = {}) {
+function face(c, { x = 0, y = -90, scale = 1, angle = 0 } = {}) {
+  c.save(); c.translate(x, y); c.scale(scale, scale); c.rotate(angle); c.strokeStyle = '#c3bfdc'; c.lineWidth = 2;
+  c.fillStyle = '#aaa3ba'; c.beginPath(); c.moveTo(-48, -67); c.lineTo(54, -66); c.lineTo(67, -2); c.lineTo(19, 68); c.lineTo(-9, 76); c.lineTo(-14, 31); c.lineTo(-46, 4); c.lineTo(-63, -19); c.closePath(); c.fill(); c.stroke();
+  c.fillStyle = '#353044'; c.beginPath(); c.moveTo(-68, -66); c.lineTo(62, -78); c.lineTo(50, -115); c.lineTo(8, -128); c.lineTo(-31, -111); c.closePath(); c.fill(); c.stroke();
+  for (const side of [-1, 1]) { c.beginPath(); c.moveTo(side * 44, -86); c.quadraticCurveTo(side * 93, -95, side * 84, -160); c.lineTo(side * 64, -121); c.lineTo(side * 57, -80); c.closePath(); c.fill(); c.stroke(); }
+  c.fillStyle = '#65ccff'; c.beginPath(); c.moveTo(-65, -65); c.lineTo(61, -77); c.lineTo(51, -42); c.lineTo(-58, -27); c.closePath(); c.fill(); c.stroke();
+  c.strokeStyle = '#302b41'; c.lineWidth = 3; c.beginPath(); c.moveTo(-12, 5); c.quadraticCurveTo(18, 27, 46, -7); c.stroke(); c.restore();
+}
+
+function figure(c, { x = 650, y = 285, scale = .76, open = .8, gesture = 0, head = 0, joints = false } = {}) {
   c.save(); c.translate(x, y); c.scale(scale, scale); c.strokeStyle = '#c3bfdc'; c.lineWidth = 2;
   // Two separate, complete cape panels pivot from the shoulder anchors.
   for (const side of [-1, 1]) {
@@ -37,16 +46,9 @@ function figure(c, { x = 650, y = 285, scale = .76, open = .8, gesture = 0, head
   }
   c.strokeStyle = '#b9b1cc'; c.beginPath(); c.arc(0, -39, 65, 0, Math.PI); c.stroke();
   c.fillStyle = '#50445e'; c.beginPath(); c.arc(0, 22, 20, 0, Math.PI * 2); c.fill(); c.stroke();
-  c.save(); c.translate(0, -90); c.rotate(head);
-  c.fillStyle = '#aaa3ba'; c.beginPath(); c.moveTo(-48, -67); c.lineTo(54, -66); c.lineTo(67, -2); c.lineTo(19, 68); c.lineTo(-9, 76); c.lineTo(-14, 31); c.lineTo(-46, 4); c.lineTo(-63, -19); c.closePath(); c.fill(); c.stroke();
-  c.fillStyle = '#353044'; c.beginPath(); c.moveTo(-68, -66); c.lineTo(62, -78); c.lineTo(50, -115); c.lineTo(8, -128); c.lineTo(-31, -111); c.closePath(); c.fill(); c.stroke();
-  for (const side of [-1, 1]) { c.beginPath(); c.moveTo(side * 44, -86); c.quadraticCurveTo(side * 93, -95, side * 84, -160); c.lineTo(side * 64, -121); c.lineTo(side * 57, -80); c.closePath(); c.fill(); c.stroke(); }
-  c.fillStyle = '#65ccff'; c.beginPath(); c.moveTo(-65, -65); c.lineTo(61, -77); c.lineTo(51, -42); c.lineTo(-58, -27); c.closePath(); c.fill(); c.stroke();
-  c.strokeStyle = '#302b41'; c.lineWidth = 3; c.beginPath(); c.moveTo(-12, 5); c.quadraticCurveTo(18, 27, 46, -7); c.stroke(); c.restore();
-  if (hands) {
-    hand(c, -126 - open * 58, 39 - gesture * 52, 1.15, -.45 - gesture * .3);
-    hand(c, 130 + open * 58, -18 - gesture * 50, 1.12, .4 - gesture * .22, true);
-  }
+  face(c, { angle: head });
+  hand(c, -126 - open * 58, 39 - gesture * 52, 1.15, -.45 - gesture * .3);
+  hand(c, 130 + open * 58, -18 - gesture * 50, 1.12, .4 - gesture * .22, true);
   if (joints) {
     c.fillStyle = '#65ccff'; c.strokeStyle = '#65ccff77';
     for (const [px, py] of [[0, -90], [-76, -30], [76, -30], [-126 - open * 58, 39 - gesture * 52], [130 + open * 58, -18 - gesture * 50]]) { c.beginPath(); c.arc(px, py, 4, 0, Math.PI * 2); c.fill(); }
@@ -68,6 +70,21 @@ function cloakShadow(c, presence = 1) {
   c.beginPath(); c.moveTo(390, 25); c.lineTo(405, -85); c.lineTo(470, 10); c.lineTo(630, 10); c.lineTo(705, -85); c.lineTo(685, 25);
   c.bezierCurveTo(760, 30, 890, 95, 1080, 570); c.lineTo(1080, 650); c.lineTo(-80, 650);
   c.bezierCurveTo(110, 200, 215, 50, 390, 25); c.closePath(); c.fill(); c.stroke(); c.restore();
+}
+
+function returningCloak(c, progress) {
+  for (const side of [-1, 1]) {
+    c.save(); c.translate(500 + side * (1 - progress) * 650, 380 + (1 - progress) * 30);
+    c.rotate(side * (1 - progress) * .65); c.scale(side, 1);
+    c.fillStyle = '#211f38'; c.strokeStyle = '#a29bbd'; c.lineWidth = 2;
+    // Curved neckline and shoulder, so cloth gathers around the face instead
+    // of reading as a rectangular curtain simply closing across the screen.
+    c.beginPath(); c.moveTo(-18, 5); c.quadraticCurveTo(45, -20, 105, 45);
+    c.bezierCurveTo(180, 120, 280, 100, 370, 240); c.quadraticCurveTo(150, 320, -20, 255);
+    c.quadraticCurveTo(20, 120, -18, 5); c.closePath(); c.fill(); c.stroke();
+    c.strokeStyle = '#706987'; star(c, 100, 150, 21, null); star(c, 220, 220, 25, null);
+    c.beginPath(); c.moveTo(40, 42); c.quadraticCurveTo(90, 140, 65, 250); c.stroke(); c.restore();
+  }
 }
 
 export function storyboardScene(canvas) {
@@ -112,18 +129,28 @@ export function storyboardScene(canvas) {
         hand(c, 415 - opened * 340, 405 - lift * 85, 1.6, -.3 - opened * .5);
         hand(c, 590 + opened * 335, 400 - lift * 85, 1.6, .3 + opened * .5);
       }
-    } else if (state.nightmareVisible) {
-      const cinematic = ['emerge', 'face', 'pullback'].includes(phase), zoom = state.zoom;
+    } else if (['emerge', 'wrap'].includes(phase)) {
       c.fillStyle = '#04030b'; c.fillRect(0, 0, 1000, 600);
-      cloakShadow(c, phase === 'emerge' ? .25 + state.emergence * .75 : 1);
+      cloakShadow(c, .35);
+      c.save(); c.beginPath(); c.rect(0, 0, 1000, 440); c.clip();
+      face(c, { x: 500, y: state.faceY, scale: 1.35 }); c.restore();
+      // Only a rigid head rises. Darkness hides the lower edge, not alpha on
+      // individual pieces; no body is ever drawn in this shot.
+      const dark = c.createLinearGradient(0, 355, 0, 445);
+      dark.addColorStop(0, '#04030b00'); dark.addColorStop(1, '#04030b');
+      c.fillStyle = dark; c.fillRect(0, 355, 1000, 245);
+      if (phase === 'wrap') {
+        returningCloak(c, state.wrap);
+      }
+    } else if (state.nightmareVisible) {
+      const cinematic = ['face', 'pullback'].includes(phase), zoom = state.zoom;
+      c.fillStyle = '#04030b'; c.fillRect(0, 0, 1000, 600);
+      cloakShadow(c);
       // Pullback changes the framing continuously; the full pose is only locked later.
       c.save();
-      c.translate(650 - (zoom - 1) * 110, 280 + (zoom - 1) * 105);
+      c.translate(650 - (zoom - 1) * 110, 280 + (zoom - 1) * 105 + state.poseY);
       c.rotate(state.roll * Math.PI / 180); c.scale(zoom, zoom);
-      figure(c, { x: 0, y: 0, scale: .76, open: .9, gesture: .8, hands: phase !== 'emerge', head: phase === 'face' && !reduced ? -.08 + p * .12 : 0, joints: guides && cinematic && phase !== 'emerge' }); c.restore();
-      // Lift a black veil from opaque shapes; per-piece alpha exposes hidden
-      // drawing surfaces and makes the character look like a transparent ghost.
-      if (phase === 'emerge') { c.fillStyle = `rgba(4,3,11,${(1 - state.emergence) * .96})`; c.fillRect(0, 0, 1000, 600); }
+      figure(c, { x: 0, y: 0, scale: .76, open: .9, gesture: .8, head: phase === 'face' && !reduced ? -.08 + p * .12 : 0, joints: guides && cinematic }); c.restore();
       c.strokeStyle = '#afa5d066'; c.lineWidth = 2;
       for (let i = 0; i < 8; i++) { const side = i % 2 ? 1 : -1, y = 70 + Math.floor(i / 2) * 140; c.beginPath(); c.moveTo(side < 0 ? 0 : 1000, y); c.lineTo(side < 0 ? 40 : 960, y + 35); c.lineTo(side < 0 ? 20 : 980, y + 65); c.stroke(); }
       if (guides && cinematic) { c.strokeStyle = '#65ccff99'; c.setLineDash([7, 7]); c.strokeRect(385, 115, 300, 245); c.setLineDash([]); }
@@ -133,7 +160,7 @@ export function storyboardScene(canvas) {
       c.save(); c.translate(655, 335); c.scale(scale, scale); c.beginPath(); c.ellipse(0, 10, 100, 125, 0, 0, Math.PI * 2); c.fill(); c.stroke(); c.beginPath(); c.arc(0, -90, 65, 0, Math.PI * 2); c.fill(); c.stroke(); c.restore();
     }
     // Ten results remain small characters on a stage, not portraits in cards.
-    if (board.receipt.results.length === 10 && !['flight', 'blackout', 'impact', 'call', 'sweep', 'covered', 'hands', 'open', 'dark', 'emerge', 'face'].includes(phase)) {
+    if (board.receipt.results.length === 10 && !['flight', 'blackout', 'impact', 'call', 'sweep', 'covered', 'hands', 'open', 'dark', 'emerge', 'wrap', 'face'].includes(phase)) {
       const complete = phase === 'lineup', top = complete ? 265 : 545;
       board.receipt.results.forEach((r, i) => {
         const col = complete && canvas.clientWidth < 600 ? i % 5 : i, row = complete && canvas.clientWidth < 600 ? Math.floor(i / 5) : 0;
