@@ -4,6 +4,12 @@ Replaces rejected native-layer proof 01. Owner asked “Retry this time” after
 rejecting mismatched parts, schematic curtains and unconvincing hand contact.
 This is a new review iteration, not an owner-approved final art style.
 
+Published owner-private at
+<https://dedede-v3-review.berryowlet9.chatgpt.site/nightmare>.
+Site source commit `2e86f00fec0b0b739a70605c0540c1f3d09f0257`;
+deployment `appgdep_6ad2183496108191a235322c14a12e2c` succeeded.
+Game implementation commit `0f9888a` on `codex/v1-playable`.
+
 ## Artwork
 
 - Complete raised-hand Adventure pose is the assembly reference: 82×76.
