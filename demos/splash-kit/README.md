@@ -1,12 +1,28 @@
 # Splash kit (Dedede reveal v3)
 
-Current sequence review: **[Nightmare storyboard 04 + audio](nightmare.html)**. Banner
+Current next-stage review: **[Nightmare native-layer proof 01](nightmare.html?art=native)**.
+Storyboard 04's action/audio direction is accepted. The main page retains its
+schematic by default; native preview is optional and clearly not final art.
+Inspect separate head/hands/torso and the explicitly reconstructed opaque cloth.
+No generated art or background, production pools, currency or save changes.
+
+Banner music is Adventure's title theme; pulls use Fountain of Dreams. Dedede
+uses that game's actual Boss! track; Nightmare uses his own final-boss track.
+Longer music fades, a continuous Nightmare source across the close-up, and a
+bounded banner/pull crossfade address the transition note. Calls stay clear.
+
+`python3 tools/splash-kit/prepare-nightmare-layers.py` rebuilds the verified
+source parts. `tools/browser-nightmare-native.mjs` checks the new layer/audio
+proof; the existing board and legacy cue browser checks remain regression gates.
+
+Accepted sequence review: **Nightmare storyboard 04 + audio**. Banner
 entry and free single/ten authored fixtures lead through the shared opening and
 explicit cloak / hands / camera / UR identity beats. Play, step or scrub;
 camera/music/sound lanes describe the playable mix. Enable sound, then play or
 Resume at a beat. This is not a final rig or live banner. No generated
 images/backgrounds, rates or save changes.
-Dedede cue 04 remains the visual comparison. Await the owner's storyboard verdict.
+Dedede cue 04 remains the historical visual comparison. The action direction is
+accepted; the native art route still awaits the owner's verdict.
 
 04 preserves the liked per-result ten-light behavior. Both cloak sides close;
 only the face rises; hands return upward with the cloth into the same close-up

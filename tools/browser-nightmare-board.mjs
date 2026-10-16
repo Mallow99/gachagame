@@ -21,7 +21,9 @@ try {
   const shot = name => screenshots && page.locator('#boardStage').screenshot({ path: `${out}/${name}.png` });
   const fullShot = name => screenshots && page.screenshot({ path: `${out}/${name}.png`, fullPage: true });
   const saved = await page.evaluate(() => JSON.stringify({ ...localStorage }));
-  await page.locator('#boardSound').click(); await page.waitForFunction(() => nightmareBoard.state.audio.loaded.length === 6);
+  await page.locator('#boardNative').uncheck();
+  await page.locator('#boardSound').click(); await page.waitForFunction(() => nightmareBoard.state.audio.loaded.length === 8);
+  assert.equal((await state()).audio.musicTrack, 'dream-banner');
   await fullShot('desktop-banner-page');
   assert.equal(await page.locator('#boardTransport').isVisible(), false);
   await page.locator('[data-pull="1"]').click(); assert.equal(await page.locator('#pullConfirm').isVisible(), true);
@@ -97,7 +99,7 @@ try {
   assert.ok(await difference(true) < .02, 'No figure/head replacement at wrap to face');
   await page.locator('#cameraGuides').check();
   // Each music lane and every future scheduled sound stop with the transport.
-  for (const [name, expected] of [['ssr-shower', 'dedede-theme'], ['wrap', 'nightmare-theme'], ['lineup', 'dream']]) {
+  for (const [name, expected] of [['ssr-shower', 'dedede-adventure-theme'], ['wrap', 'nightmare-theme'], ['lineup', 'dream']]) {
     await phase(name, .5); await page.locator('#boardPlay').click();
     await page.waitForFunction(expected => nightmareBoard.state.audio.musicTrack === expected, expected);
     assert.ok((await state()).audio.active > 0);
@@ -167,5 +169,5 @@ try {
   assert.match(await failure.locator('#sceneLabel').textContent(), /sprite fallback/);
   await failure.locator('#boardSound').click(); assert.match(await failure.locator('#audioStatus').textContent(), /silent storyboard still works/);
   assert.deepEqual(failureErrors, []); await failure.close();
-  console.log(JSON.stringify({ passed: true, errors, missing, singleDuration: one.total, tenDuration: originalTotal, screenshots: screenshots ? 30 : 0, audition, visorRise: { low, high }, checks: 'banner confirmation/cancel, single/ten, unchanged per-result cues, symmetric closure with matching endpoint, hands/figure continuity, physical face-only rise, Dedede shower and shorter pullback, identity after lock, all six audio buffers decoded, distinct themes, pause/mute/seek stop all sources, offline peak and silence checks, replay/skip/filter/resume, reduced motion, 390/420px no overflow, no storage writes' }));
+  console.log(JSON.stringify({ passed: true, errors, missing, singleDuration: one.total, tenDuration: originalTotal, screenshots: screenshots ? 30 : 0, audition, visorRise: { low, high }, checks: 'banner confirmation/cancel, single/ten, unchanged per-result cues, symmetric closure with matching endpoint, hands/figure continuity, physical face-only rise, Dedede shower and shorter pullback, identity after lock, eight audio buffers decoded, distinct themes, pause/mute/seek stop all sources, offline peak and silence checks, replay/skip/filter/resume, reduced motion, 390/420px no overflow, no storage writes' }));
 } finally { await browser.close(); }

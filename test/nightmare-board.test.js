@@ -4,6 +4,7 @@ import { storyboardReceipt, makeStoryboard, sampleStoryboard, sampleResultLights
 import { storyboardAudioEvents } from '../demos/splash-kit/nightmare-board-audio.js';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
+import { musicLevelAt } from '../demos/splash-kit/cue-audio.js';
 import { CUE } from '../demos/splash-kit/cue-model.js';
 
 test('Nightmare storyboard explicitly uses immutable authored fixtures, not transactions or odds', () => {
@@ -127,4 +128,28 @@ test('audio follows individual light tiers and real beat times; no theme overlap
     const impact = board.beats.find(b => b.phase === 'impact');
     assert.ok(beds.every(m => m.end < impact.start || m.at > impact.start + .3));
   }
+});
+
+test('Nightmare uses one continuous music window and source-era themes', () => {
+  const board = makeStoryboard(storyboardReceipt(10)), events = storyboardAudioEvents(board);
+  const nightmare = events.filter(e => e.kind === 'music' && e.track === 'nightmare-theme');
+  assert.equal(nightmare.length, 1);
+  const event = nightmare[0], face = board.beats.find(b => b.phase === 'face');
+  assert.equal(musicLevelAt(event, face.start - 1), .24);
+  assert.ok(musicLevelAt(event, face.start) > .24 && musicLevelAt(event, face.start) < .55);
+  assert.equal(musicLevelAt(event, face.end), .55);
+  assert.ok(event.fadeIn >= .6 && event.fadeOut >= .6);
+  assert.ok(events.some(e => e.track === 'dedede-adventure-theme'));
+  assert.ok(!events.some(e => e.track === 'dedede-theme' || e.track === 'dream-banner'));
+  const music = JSON.parse(readFileSync(new URL('../demos/splash-kit/assets/audio/areas/SOURCES.json', import.meta.url)));
+  for (const key of ['dream-banner', 'dream', 'dedede-adventure-theme', 'nightmare-theme']) assert.equal(music[key].game, "Kirby's Adventure");
+});
+
+test('native layer assets retain exact source rectangles, provenance and verified hashes', () => {
+  const base = new URL('../demos/splash-kit/assets/nightmare-native/', import.meta.url);
+  const manifest = JSON.parse(readFileSync(new URL('SOURCES.json', base)));
+  assert.equal(manifest.source.sha256, createHash('sha256').update(readFileSync(new URL('../' + manifest.source.path, import.meta.url))).digest('hex'));
+  assert.ok(manifest.source.page && manifest.credit);
+  assert.deepEqual(Object.keys(manifest.parts).sort(), ['battlefield', 'face', 'hand-left', 'hand-right', 'torso']);
+  for (const part of Object.values(manifest.parts)) assert.equal(createHash('sha256').update(readFileSync(new URL(part.url, base))).digest('hex'), part.sha256);
 });

@@ -1,4 +1,34 @@
 {
+  "dream-banner": {
+    "url": "dream-banner-theme.mp3",
+    "title": "Kirby's Adventure (Title)",
+    "game": "Kirby's Adventure",
+    "year": 1993,
+    "duration": 48.039184,
+    "sha256": "ef65141e1ff175e9055153a4283044bc4f9429f1bffb3a054781cac4cf2a5e95",
+    "source": {
+      "url": "https://fi.zophar.net/soundfiles/nintendo-nes-nsf/kirbys-adventure/2%20-%20Kirby%27s%20Adventure.mp3",
+      "page": "https://www.zophar.net/music/nintendo-nes-nsf/kirbys-adventure",
+      "sha256": "183a0c1f173c397bf9bae3108ca91c21d1077de36f321b7594e9d8b004a849bc",
+      "credit": "Hirokazu Ando / Jun Ishikawa, HAL Laboratory / Nintendo; title-screen recording hosted by Zophar\u2019s Domain. Banner/menu only, not a character theme."
+    },
+    "processing": "First 48 seconds, -20 LUFS / -2 dBTP, 40ms entry and 200ms exit fades, mono 44.1kHz MP3. No pitch or tempo change. Full downloads verified in rebuild cache, not bundled at runtime."
+  },
+  "dedede-adventure-theme": {
+    "url": "dedede-adventure-theme.mp3",
+    "title": "Boss!",
+    "game": "Kirby's Adventure",
+    "year": 1993,
+    "duration": 48.039184,
+    "sha256": "66044e195e1755899ced7e379450c211c4ae83775b1476962f0c5aef85652a93",
+    "source": {
+      "url": "https://fi.zophar.net/soundfiles/nintendo-nes-nsf/kirbys-adventure/29%20-%20Boss%21.mp3",
+      "page": "https://www.zophar.net/music/nintendo-nes-nsf/kirbys-adventure",
+      "sha256": "43eff6687376f9b07d36383de674b048c76fa0f45763cd70402ecb6a49019327",
+      "credit": "Hirokazu Ando / Jun Ishikawa, HAL Laboratory / Nintendo; Adventure boss battle music used for King Dedede, not his later Super Star theme. NSF recording hosted by Zophar\u2019s Domain."
+    },
+    "processing": "First 48 seconds, -20 LUFS / -2 dBTP, 40ms entry and 200ms exit fades, mono 44.1kHz MP3. No pitch or tempo change. Full downloads verified in rebuild cache, not bundled at runtime."
+  },
   "dream": {
     "url": "dream-theme.mp3",
     "title": "Fountain of Dreams",

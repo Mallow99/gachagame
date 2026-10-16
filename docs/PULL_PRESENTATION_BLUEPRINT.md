@@ -1,5 +1,19 @@
 # Pull presentation blueprint 02
 
+## Next gate: Nightmare native-layer feasibility proof 01
+
+Owner accepts storyboard 04's action/audio direction and says ready to move on.
+Keep the sequence and prove separated native head/hands/torso plus complete,
+explicitly reconstructed cloth before polished art/production integration.
+Native preview is optional; the schematic is the default comparison. Source
+pieces, exploded inspection, provenance and missing-surface limits stay visible.
+No AI images/background or full-image warp. No economy/roster/editor expansion.
+
+Banner/title music differs from pull/Fountain music. Dedede now uses Adventure's
+standard Boss! track; Nightmare retains his own final-boss music. Smooth fades
+and a continuous Nightmare music source eliminate the close-up seam. The native
+pixel art route itself still needs the owner's verdict, not inferred approval.
+
 ## Current review: Nightmare storyboard 04 / audio animatic
 
 Owner likes the sequence overall and authorizes sound with the annotation fixes.

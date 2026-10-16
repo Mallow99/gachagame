@@ -11,7 +11,7 @@ export function storyboardAudioEvents(board) {
     }
   }
   let musicStart = .12;
-  function areaUntil(end) { if (end > musicStart) events.push({ at: musicStart, end, anchor: musicStart, kind: 'music', track: 'dream' }); }
+  function areaUntil(end) { if (end > musicStart) events.push({ at: musicStart, end, anchor: musicStart, kind: 'music', track: 'dream', fadeIn: .65, fadeOut: .65 }); }
   areaUntil(CUE.contact + board.delay - .35);
   musicStart = board.reveal + .1;
   for (const b of board.beats) {
@@ -25,11 +25,10 @@ export function storyboardAudioEvents(board) {
       musicStart = end;
       if (b.result.rarity === 'SSR') add('voice', 0, { track: 'dedede', segment: { quote: b.duration } });
       else add('omen', .25);
-      const theme = { anchor: b.end, track: b.result.rarity === 'SSR' ? 'dedede-theme' : 'nightmare-theme', kind: 'music' };
+      const theme = { anchor: b.end, track: b.result.rarity === 'SSR' ? 'dedede-adventure-theme' : 'nightmare-theme', kind: 'music', fadeIn: .65, fadeOut: .65 };
       if (b.result.rarity === 'UR') {
         const face = board.beats.find(beat => beat.result === b.result && beat.phase === 'face');
-        events.push({ ...theme, at: b.end + .08, end: face.start, level: .24 });
-        events.push({ ...theme, at: face.start, end });
+        events.push({ ...theme, at: b.end + .08, end, levels: [{ at: b.end, level: .24 }, { at: face.start - .4, level: .24 }, { at: face.start + .8, level: .55 }] });
       } else events.push({ ...theme, at: b.end + .08, end });
     }
     if (['sweep', 'open', 'wrap'].includes(b.phase)) {

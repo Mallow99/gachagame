@@ -36,8 +36,18 @@ export function cueAudioEvents(timeline, tier) {
   return events.sort((a, b) => a.at - b.at);
 }
 
+export function musicLevelAt(event, time) {
+  const points = event.levels || [{ at: event.at, level: event.level ?? .55 }];
+  const right = points.findIndex(p => p.at > time);
+  if (right < 0) return points.at(-1).level;
+  if (right === 0) return points[0].level;
+  const a = points[right - 1], b = points[right], p = (time - a.at) / (b.at - a.at);
+  return a.level + (b.level - a.level) * p;
+}
+
 function scheduleMix(ctx, buffers, timeline, { tier, area, time = 0, rate = 1, volume = .65, events = cueAudioEvents(timeline, tier) }, destination) {
   const active = new Set();
+  let retired;
   const master = ctx.createGain(), limiter = ctx.createDynamicsCompressor();
   master.gain.value = volume; limiter.threshold.value = -9; limiter.knee.value = 8; limiter.ratio.value = 5; limiter.attack.value = .003; limiter.release.value = .15;
   master.connect(limiter); limiter.connect(destination);
@@ -48,7 +58,7 @@ function scheduleMix(ctx, buffers, timeline, { tier, area, time = 0, rate = 1, v
   for (let i = 0; i < samples.length; i++) { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; samples[i] = seed / 2147483648 - 1; }
   function track(source, nodes, when, duration, offset) {
     active.add(source);
-    source.onended = () => { active.delete(source); source.disconnect(); nodes.forEach(n => n.disconnect()); };
+    source.onended = () => { active.delete(source); source.disconnect(); nodes.forEach(n => n.disconnect()); if (!active.size && retired) { master.disconnect(); limiter.disconnect(); retired(); } };
     if (offset !== undefined) source.start(when, offset, duration); else { source.start(when); source.stop(when + duration + .015); }
   }
   function envelope(when, duration, amplitude) {
@@ -80,15 +90,16 @@ function scheduleMix(ctx, buffers, timeline, { tier, area, time = 0, rate = 1, v
     if (event.kind === 'music') {
       const buffer = buffers[event.track || area];
       if (!buffer || event.end <= time) continue;
-      const at = Math.max(time, event.at), offset = (at - (event.anchor || 0)) / rate;
-      const duration = Math.min((event.end - at) / rate, buffer.duration - offset);
+      const at = Math.max(time, event.at), elapsed = (at - (event.anchor || 0)) / rate;
+      const offset = event.loop ? elapsed % buffer.duration : elapsed;
+      const duration = event.loop ? (event.end - at) / rate : Math.min((event.end - at) / rate, buffer.duration - offset);
       if (duration <= 0) continue;
       const begin = origin + (at - time) / rate;
-      const source = ctx.createBufferSource(), gain = ctx.createGain(); source.buffer = buffer;
-      const fade = Math.min(.12, duration / 3);
-      const level = event.level ?? .55;
-      gain.gain.setValueAtTime(0, begin); gain.gain.linearRampToValueAtTime(level, begin + fade);
-      gain.gain.setValueAtTime(level, begin + duration - fade); gain.gain.linearRampToValueAtTime(0, begin + duration);
+      const source = ctx.createBufferSource(), gain = ctx.createGain(); source.buffer = buffer; source.loop = !!event.loop;
+      const fadeIn = Math.min(event.fadeIn ?? .12, duration / 3), fadeOut = Math.min(event.fadeOut ?? .12, duration / 3);
+      gain.gain.setValueAtTime(0, begin); gain.gain.linearRampToValueAtTime(musicLevelAt(event, at + fadeIn * rate), begin + fadeIn);
+      for (const point of event.levels || []) if (point.at > at + fadeIn * rate && point.at < at + (duration - fadeOut) * rate) gain.gain.linearRampToValueAtTime(point.level, begin + (point.at - at) / rate);
+      gain.gain.linearRampToValueAtTime(musicLevelAt(event, at + (duration - fadeOut) * rate), begin + duration - fadeOut); gain.gain.linearRampToValueAtTime(0, begin + duration);
       source.connect(gain); gain.connect(master); track(source, [gain], begin, duration, offset); continue;
     }
     if (event.at < time - .015) continue;
@@ -116,11 +127,22 @@ function scheduleMix(ctx, buffers, timeline, { tier, area, time = 0, rate = 1, v
       case 'lineup': chord(when, [293.66, 440, 587.33], .04, .9); break;
     }
   }
-  return { active, master, get musicTrack() { const at = time + Math.max(0, ctx.currentTime - origin) * rate; const event = events.find(e => e.kind === 'music' && e.at <= at && e.end > at); return event ? event.track || area : null; }, stop() { for (const source of [...active]) { try { source.stop(); } catch {} } active.clear(); master.disconnect(); limiter.disconnect(); } };
+  return { active, master, get musicTrack() { const at = time + Math.max(0, ctx.currentTime - origin) * rate; const event = events.find(e => e.kind === 'music' && e.at <= at && e.end > at); return event ? event.track || area : null; },
+    fadeOut(duration, done) { if (!active.size) { master.disconnect(); limiter.disconnect(); done(); return; } retired = done; const now = ctx.currentTime; master.gain.cancelScheduledValues(now); master.gain.setValueAtTime(master.gain.value, now); master.gain.linearRampToValueAtTime(0, now + duration); for (const source of active) { try { source.stop(now + duration); } catch {} } },
+    stop() { retired = null; for (const source of [...active]) { try { source.stop(); } catch {} } active.clear(); master.disconnect(); limiter.disconnect(); } };
 }
 
 export function cueAudio(manifest, base, music, eventsFor = cueAudioEvents) {
   let ctx, buffers = {}, mix, generation = 0, enabled = false, musicArea;
+  const retiring = new Set();
+  function replace(timeline, options) {
+    for (const old of retiring) old.stop(); retiring.clear();
+    const previous = mix; mix = null;
+    if (previous && options.transition) { retiring.add(previous); previous.fadeOut(options.transition, () => retiring.delete(previous)); }
+    else previous?.stop();
+    generation++;
+    if (enabled && ctx?.state === 'running') { musicArea = options.area; mix = scheduleMix(ctx, buffers, timeline, options, ctx.destination); }
+  }
   return {
     async enable() {
       const AudioCtx = window.AudioContext || window.webkitAudioContext;
@@ -135,10 +157,11 @@ export function cueAudio(manifest, base, music, eventsFor = cueAudioEvents) {
         buffers = Object.fromEntries(entries);
       }
     },
-    play(time, timeline, options) { this.stop(); if (enabled && ctx?.state === 'running') { musicArea = options.area; mix = scheduleMix(ctx, buffers, timeline, { ...options, time, events: eventsFor(timeline, options.tier) }, ctx.destination); } },
-    stop() { mix?.stop(); mix = null; generation++; },
-    volume(value) { if (mix) mix.master.gain.setTargetAtTime(value, ctx.currentTime, .02); },
-    get state() { return { enabled, context: ctx?.state || 'not-started', active: mix?.active.size || 0, generation, loaded: Object.keys(buffers), musicArea: mix ? musicArea : null, musicTrack: mix?.musicTrack || null }; },
+    play(time, timeline, options) { replace(timeline, { ...options, time, events: eventsFor(timeline, options.tier) }); },
+    banner(options) { replace({ total: 3600 }, { ...options, time: 0, events: [{ at: 0, end: 3600, kind: 'music', track: options.track, loop: true, level: .45, fadeIn: .7, fadeOut: .7 }] }); },
+    stop() { mix?.stop(); mix = null; for (const old of retiring) old.stop(); retiring.clear(); generation++; },
+    volume(value) { if (value === 0) { for (const old of retiring) old.stop(); retiring.clear(); } if (mix) mix.master.gain.setTargetAtTime(value, ctx.currentTime, .02); },
+    get state() { return { enabled, context: ctx?.state || 'not-started', active: (mix?.active.size || 0) + [...retiring].reduce((n, m) => n + m.active.size, 0), retiring: retiring.size, generation, loaded: Object.keys(buffers), musicArea: mix ? musicArea : null, musicTrack: mix?.musicTrack || null }; },
     async audition(timeline, options) {
       const offline = new OfflineAudioContext(2, Math.ceil((timeline.total + 2) * 44100), 44100);
       scheduleMix(offline, buffers, timeline, { ...options, events: eventsFor(timeline, options.tier) }, offline.destination);

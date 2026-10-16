@@ -46,7 +46,7 @@ export function makeStoryboard(receipt, { highOnly = false } = {}) {
     }
     if (result.rarity === 'SSR') {
       add('call', 'call', 'Dedede: concealed laugh', 4, 'The roster dims. Dedede and his name remain hidden for the existing call window.', 'Music clears the native sound.', 'Native Dedede laugh, without music beneath it.', 'Dark, no character art.');
-      const ssr = (id, title, duration, visual, sound, camera) => add(id, `ssr-${id}`, title, duration, visual, 'Dedede’s related Super Star theme replaces the area bed.', sound, camera);
+      const ssr = (id, title, duration, visual, sound, camera) => add(id, `ssr-${id}`, title, duration, visual, 'Adventure’s Boss! track—the music used for this Dedede fight—replaces the area bed.', sound, camera);
       ssr('screen', 'Dedede: gold screen opening', .55, 'A gold star opens onto his face; no identity yet.', 'Gold screen rush.', 'Short entrance into the close framing.');
       ssr('face', 'The king sizes you up', .65, 'His beak, cap and raised hammer establish the king, not an anonymous silhouette.', 'A small camera accent.', 'Close face view with a slight slant.');
       ssr('shower', 'A royal shower of Waddle Dees', 1.5, 'Dedede brings the hammer down. Native Adventure Waddle Dee sprites tumble in a staggered shower around him; gold star chips mark the hit.', 'Hammer thump, then little falling whistles.', 'A brief wider action view; the shower carries through the pullback.');

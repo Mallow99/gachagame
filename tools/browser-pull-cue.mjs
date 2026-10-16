@@ -58,7 +58,7 @@ try {
   await page.locator('#cueStage').click();
   await page.waitForFunction(() => cueReview.state.playing && cueReview.state.phase === 'quote');
   assert.ok((await state()).audio.active > 0);
-  assert.deepEqual((await state()).audio.loaded.sort(), ['bowser', 'dedede', 'dedede-theme', 'dream', 'mushroom', 'nightmare-theme']);
+  assert.deepEqual((await state()).audio.loaded.sort(), ['bowser', 'dedede', 'dedede-adventure-theme', 'dedede-theme', 'dream', 'dream-banner', 'mushroom', 'nightmare-theme']);
   assert.equal((await state()).audio.musicArea, 'dream');
   await page.locator('#cueStage').press('Enter'); await page.waitForFunction(() => cueReview.state.phase.startsWith('angle'));
   assert.equal(await page.locator('#heroPlate').isVisible(), false);

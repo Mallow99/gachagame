@@ -1,5 +1,50 @@
 # Start the next chat here
 
+## Newest: 04 direction accepted; native-layer proof 01 (2026-10-15 America/Chicago)
+
+Branch `codex/v1-playable`. Owner: “ur is ALOT better”, “the music is good”,
+“i think we are ready to move on.” Accepted action/audio DIRECTION, not final
+art/rig. Remaining notes: rough music transitions, separate banner/pull music,
+and music consistent with the actual character. Full verdict in FEEDBACK.
+
+Review <https://dedede-v3-review.berryowlet9.chatgpt.site/nightmare?art=native>.
+Plain `/nightmare` keeps the approved schematic by default; checkbox compares
+the optional native proof. Source-piece gallery and separated-pose inspection
+show independent native head / hands / torso. `nightmare-native.js` draws rigid
+parts and complete geometric cloak panels; `prepare-nightmare-layers.py` bakes
+reviewed rectangles from the verified Adventure rip. Black is actually RGB
+(4,2,4), explicitly removed, along with the sheet separator. Head mask excludes
+blue shoulder/arm edges. No generated images or whole-image warp.
+
+IMPORTANT LIMIT: opaque cloak interior is reconstructed in the renderer,
+clearly labeled—not recovered artist layers or a finished painted rig. Native
+pixels + geometric cloth are a feasibility comparison that needs the owner's
+verdict, not a quietly accepted final style. Source Adventure battlefield crop
+is used only in native preview, after the empty-dark / face rise; no AI sky.
+The approved action/receipt/light tiers/call holds and production game stay put.
+
+Music: Adventure title on banner, Fountain of Dreams for pull/area, standard
+Adventure Boss! for Dedede, Nightmare final-boss track for Nightmare. Dedede's
+Super Star track remains only in the historical cue 04 comparison. `musicNow`
+shows current recording/game/year. Sources, credits, hashes and bake retained.
+Nightmare uses ONE continuous buffer source with a volume ramp across the face
+shot, removing the old stop/restart fade dip. .65 s fades plus a .7 s bounded
+banner/pull crossfade; at most one retiring mix, all stopped on pause/mute/seek.
+Banner loops only after Enable sound and pauses when the document is hidden.
+
+135 tests pass. Native/source/export + accepted-board + historical cue browser
+checks cover asset decode / transparency / failure fallback, original receipt,
+darkness / face-only / wrap continuity, independent pieces, reduced motion,
+390/420px overflow, music roles, crossfade retirement and immediate cleanup.
+Thirteen native screenshots inspected. Board offline peak .59075 / RMS .04345,
+post-laugh hold exactly silent. Report: `docs/validation/nightmare-layer-proof-01.md`.
+No native-device or subjective-mix acceptance claimed.
+
+NEXT: owner verdict on this asset route and music changes. If useful, refine
+the actual cloth/parts into cohesive larger artwork, then production integration
+after visual acceptance. Do not batch other URs, build the editor or change the
+economy. The rejected generated background / parked stash remain unused.
+
 ## Newest: Nightmare storyboard 04 + audio animatic (2026-10-15 UTC)
 
 Branch `codex/v1-playable`. Owner: “mostly, this fits together great!” Requested

@@ -1,0 +1,93 @@
+{
+  "source": {
+    "name": "ka-nightmare",
+    "page": "https://www.spriters-resource.com/nes/kirbyadv/asset/49197/",
+    "download": "https://www.spriters-resource.com/media/assets/46/49197.png?updated=1755472985",
+    "path": "assets/sprites/sources/faithful/ka-nightmare.png",
+    "bytes": 43988,
+    "sha256": "811fbfec9137d04c96340596318d37cec49f1f19e4e88e423a2da0c33880dfd2",
+    "creditExcerpt": "Uploaded By Jermungandr Size 42.96 KB (1107x790) Format PNG (image/png) Hits 40,063 Tags (3): Character Nightmare (Kirby) Series Kirby Occup",
+    "dimensions": [
+      1107,
+      790
+    ]
+  },
+  "credit": "Drshnaps (Jermungandr) / HAL Laboratory / Nintendo; Kirby\u2019s Adventure (1993).",
+  "parts": {
+    "face": {
+      "url": "face.png",
+      "rect": [
+        5,
+        4,
+        41,
+        32
+      ],
+      "dimensions": [
+        36,
+        28
+      ],
+      "sha256": "b911c8ece270aa5f39af606f7659f132c8e6e76abbb04708322caef5dce53e05",
+      "processing": "Native rectangular part; documented near-black (4,2,4) and sheet backdrop removed. Torso excludes head/arm regions. No generated pixels."
+    },
+    "torso": {
+      "url": "torso.png",
+      "rect": [
+        5,
+        27,
+        41,
+        78
+      ],
+      "dimensions": [
+        36,
+        51
+      ],
+      "sha256": "2bf88c7fbd9a7238f46978cc8fd47760d2d923d23a33ed8c7dc8df081fbbeb84",
+      "processing": "Native rectangular part; documented near-black (4,2,4) and sheet backdrop removed. Torso excludes head/arm regions. No generated pixels."
+    },
+    "hand-left": {
+      "url": "hand-left.png",
+      "rect": [
+        60,
+        4,
+        72,
+        26
+      ],
+      "dimensions": [
+        12,
+        22
+      ],
+      "sha256": "8f46463167889feeb7dc7e495f5ba53c6ad9139d4ecd4214263a881901eadfc2",
+      "processing": "Native rectangular part; documented near-black (4,2,4) and sheet backdrop removed. Torso excludes head/arm regions. No generated pixels."
+    },
+    "hand-right": {
+      "url": "hand-right.png",
+      "rect": [
+        102,
+        4,
+        116,
+        26
+      ],
+      "dimensions": [
+        14,
+        22
+      ],
+      "sha256": "435e928641e220296aedb6676a822302ddd4603b6d93bb54c27d32599445e73d",
+      "processing": "Native rectangular part; documented near-black (4,2,4) and sheet backdrop removed. Torso excludes head/arm regions. No generated pixels."
+    },
+    "battlefield": {
+      "url": "battlefield.png",
+      "rect": [
+        810,
+        510,
+        1066,
+        686
+      ],
+      "dimensions": [
+        256,
+        176
+      ],
+      "sha256": "ae1a1b2eb3f28a6eb95cb602be5cb67867d3e72ef8beae9500100891595537f0",
+      "processing": "Unchanged native battlefield crop from the credited sprite sheet."
+    }
+  }
+}

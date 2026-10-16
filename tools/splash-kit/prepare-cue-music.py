@@ -9,6 +9,12 @@ ROOT = Path(__file__).resolve().parents[2]
 CACHE = ROOT / '.cache/cue03-music'
 OUT = ROOT / 'demos/splash-kit/assets/audio/areas'
 SOURCES = [
+    ('dream-banner', "Kirby's Adventure (Title)", "Kirby's Adventure", 1993, 'nintendo-nes-nsf', 'kirbys-adventure',
+     '2%20-%20Kirby%27s%20Adventure.mp3', '183a0c1f173c397bf9bae3108ca91c21d1077de36f321b7594e9d8b004a849bc',
+     'Hirokazu Ando / Jun Ishikawa, HAL Laboratory / Nintendo; title-screen recording hosted by Zophar’s Domain. Banner/menu only, not a character theme.'),
+    ('dedede-adventure-theme', 'Boss!', "Kirby's Adventure", 1993, 'nintendo-nes-nsf', 'kirbys-adventure',
+     '29%20-%20Boss%21.mp3', '43eff6687376f9b07d36383de674b048c76fa0f45763cd70402ecb6a49019327',
+     'Hirokazu Ando / Jun Ishikawa, HAL Laboratory / Nintendo; Adventure boss battle music used for King Dedede, not his later Super Star theme. NSF recording hosted by Zophar’s Domain.'),
     ('dream', 'Fountain of Dreams', "Kirby's Adventure", 1993, 'nintendo-nes-nsf', 'kirbys-adventure',
      '30%20-%20Fountain%20of%20Dreams.mp3', '73941a09ac0ed70deebac1267990bff065033ee98bf1a70980a13477b4a6d47b',
      'Hirokazu Ando / Jun Ishikawa, HAL Laboratory / Nintendo; NSF recording hosted by Zophar’s Domain.'),

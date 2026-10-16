@@ -10,6 +10,12 @@ the pipeline: `SOURCES.json` → `tools/splash-kit/prepare_art.py` → `rigs/<id
 
 ## Owner rules learned so far
 
+- **04 accepted direction (2026-10-15 America/Chicago):** owner says UR is
+  “ALOT better”, music is good, and ready to move on to layer/action proof.
+  Smooth music changes, separate banner/menu music from pull music, and match
+  music to the actual character/game variant. Adventure Dedede uses the game's
+  standard Boss! music, not his Super Star theme. Final art/rig is not approved.
+
 - **Storyboard 04 annotations (2026-10-15):** Nightmare's lens-covering cloth
   must close from BOTH sides. Returning cloak/hands must gather back up into
   the SAME close-up figure, not cut to a replacement sprite. Dedede needs

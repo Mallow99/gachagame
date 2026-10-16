@@ -4,6 +4,40 @@ One entry per reviewed iteration. Record what the owner liked, what they
 disliked, and what is still needed, in their words where possible. Read this
 before changing anything here.
 
+## Nightmare storyboard 04 + audio — reviewed 2026-10-15 America/Chicago
+
+Verdict: direction accepted to move on to the separated-layer/action proof.
+Not acceptance of final character art, a production rig or game integration.
+
+Liked:
+- “ur is ALOT better”.
+- “Yeah the music is good”.
+- “other than that, great job! i think we are ready to move on.”
+
+Disliked / correction:
+- “the music transistion is a bit rough”.
+
+Still needed:
+- “different music on the banner screen page and then the actual pull”.
+- “make sure the song is consistent with the actual character shown.”
+
+Next proof retains the accepted action and offers an OPTIONAL native-parts
+preview beside the unchanged schematic. Original Adventure head, hands and
+torso are separated reproducibly; complete opaque cloth is explicitly authored
+for the proof because the original sprite's black regions are transparent.
+No AI art/background or flat-image warp. Source pieces and separated-pose
+inspection make the feasibility limit visible; this is not final art approval.
+
+Music correction: Adventure title theme on the banner; Fountain of Dreams
+during the pull. Dedede uses Adventure’s standard Boss! track (the actual music
+for that game’s fight), not the related Super Star theme retained in cue 04.
+Nightmare retains his own Adventure final-boss track. A single continuous source
+and level ramp replace the close-up stop/restart dip; longer fades and a bounded
+banner/pull crossfade replace abrupt scene changes. Calls/impact stay clear.
+
+Await owner verdict on whether the native-pixel + reconstructed-cloth route is
+useful before higher-resolution art production. No wider roster/editor/economy.
+
 ## Nightmare storyboard 03 — reviewed 2026-10-15 UTC
 
 Verdict: “mostly, this fits together great!” Correct the annotated actions;

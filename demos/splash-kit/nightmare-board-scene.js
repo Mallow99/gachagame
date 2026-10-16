@@ -60,11 +60,11 @@ function figure(c, { x = 650, y = 285, scale = .76, open = .8, gesture = 0, head
   c.restore();
 }
 
-function cloak(c, x, side) {
+function cloak(c, x, side, native = false) {
   c.save(); c.translate(x, 0); c.scale(side, 1);
-  c.fillStyle = '#211f38'; c.strokeStyle = '#a29bbd'; c.lineWidth = 3;
+  c.fillStyle = native ? '#050a21' : '#211f38'; c.strokeStyle = native ? '#2362db' : '#a29bbd'; c.lineWidth = 3;
   c.beginPath(); c.moveTo(-620, -40); c.lineTo(250, -40); c.bezierCurveTo(170, 125, 280, 355, 195, 650); c.lineTo(-620, 650); c.closePath(); c.fill(); c.stroke();
-  c.strokeStyle = '#706987'; for (const [sx, sy, r] of [[-90, 100, 38], [100, 275, 47], [-220, 420, 60], [-380, 160, 35], [50, 520, 30]]) star(c, sx, sy, r, null);
+  c.strokeStyle = native ? '#91bcff' : '#706987'; for (const [sx, sy, r] of [[-90, 100, 38], [100, 275, 47], [-220, 420, 60], [-380, 160, 35], [50, 520, 30]]) star(c, sx, sy, r, null);
   c.strokeStyle = '#514b68'; c.beginPath(); c.moveTo(120, -10); c.bezierCurveTo(40, 160, 190, 380, 110, 610); c.stroke(); c.restore();
 }
 
@@ -97,9 +97,10 @@ function dedede(c, scale, strike) {
   c.restore();
 }
 
-export function storyboardScene(canvas, waddleDee) {
+export function storyboardScene(canvas, waddleDee, nativeRig) {
   const c = canvas.getContext('2d');
-  return function render(state, board, { banner = false, reduced = false, guides = true } = {}) {
+  return function render(state, board, { banner = false, reduced = false, guides = true, native = false, explode = false } = {}) {
+    const art = native && nativeRig ? nativeRig : { face, hand, figure };
     const dpr = Math.min(devicePixelRatio || 1, 2), w = Math.round(canvas.clientWidth * dpr), h = Math.round(canvas.clientHeight * dpr);
     if (!w || !h) return;
     if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
@@ -108,7 +109,7 @@ export function storyboardScene(canvas, waddleDee) {
     c.lineWidth = 1; c.strokeStyle = '#b3acc611';
     for (let x = 0; x <= 1000; x += 50) { c.beginPath(); c.moveTo(x, 0); c.lineTo(x, 600); c.stroke(); }
     for (let y = 0; y <= 600; y += 50) { c.beginPath(); c.moveTo(0, y); c.lineTo(1000, y); c.stroke(); }
-    if (banner) { figure(c, { x: 720, y: 280, scale: .95, open: .75 }); return; }
+    if (banner) { if (native && nativeRig) nativeRig.background(c); art.figure(c, { x: 720, y: 280, scale: .95, open: .75, explode }); return; }
     const { phase, progress: p, beat } = state;
     if (phase === 'flight') {
       c.strokeStyle = '#a9a2bf44'; c.setLineDash([6, 9]); c.beginPath(); c.ellipse(500, 300, 350, 144, 0, 0, Math.PI * 2); c.stroke(); c.setLineDash([]);
@@ -132,30 +133,31 @@ export function storyboardScene(canvas, waddleDee) {
       const opened = state.curtainSpread;
       // The gap is genuinely empty. No figure, backdrop or grid under the cloth.
       c.fillStyle = '#04030b'; c.fillRect(0, 0, 1000, 600);
-      cloak(c, 310 - opened * 800, 1); cloak(c, 690 + opened * 800, -1);
+      cloak(c, 310 - opened * 800, 1, native); cloak(c, 690 + opened * 800, -1, native);
       if (['hands', 'open', 'dark'].includes(phase)) {
         const lift = phase === 'hands' ? ease(reduced ? 1 : p) : 1;
-        hand(c, 415 - opened * 340, 405 - lift * 85, 1.6, -.3 - opened * .5);
-        hand(c, 590 + opened * 335, 400 - lift * 85, 1.6, .3 + opened * .5);
+        art.hand(c, 415 - opened * 340, 405 - lift * 85, 1.6, -.3 - opened * .5);
+        art.hand(c, 590 + opened * 335, 400 - lift * 85, 1.6, .3 + opened * .5);
       }
     } else if (phase === 'emerge') {
       c.fillStyle = '#04030b'; c.fillRect(0, 0, 1000, 600);
       cloakShadow(c, .35);
       c.save(); c.beginPath(); c.rect(0, 0, 1000, 440); c.clip();
-      face(c, { x: 500, y: state.faceY, scale: 1.35 }); c.restore();
+      art.face(c, { x: 500, y: state.faceY, scale: 1.35 }); c.restore();
       // Only a rigid head rises. Darkness hides the lower edge, not alpha on
       // individual pieces; no body is ever drawn in this shot.
       faceDarkness(c);
     } else if (state.nightmareVisible) {
       const cinematic = ['face', 'pullback'].includes(phase), zoom = state.zoom;
       c.fillStyle = '#04030b'; c.fillRect(0, 0, 1000, 600);
+      if (native && nativeRig) { c.save(); c.globalAlpha = phase === 'wrap' ? Math.max(0, (state.wrap - .8) / .2) : 1; nativeRig.background(c); c.restore(); }
       cloakShadow(c, phase === 'wrap' ? .35 + state.wrap * .65 : 1);
       // Pullback changes the framing continuously; the full pose is only locked later.
       c.save();
       const close = (zoom - 1) / (1.35 / .76 - 1);
       c.translate(650 - close * 150, 211.6 + close * 113.4 + state.poseY);
       c.rotate(state.roll * Math.PI / 180); c.scale(zoom, zoom);
-      figure(c, { x: 0, y: 68.4, scale: .76, open: .9, gesture: .8, head: phase === 'face' && !reduced ? Math.sin(p * Math.PI) * .045 : 0, wrap: phase === 'wrap' ? state.wrap : 1, joints: guides && cinematic }); c.restore();
+      art.figure(c, { x: 0, y: 68.4, scale: .76, open: .9, gesture: .8 + (native && !reduced && phase === 'hold' ? Math.sin(p * Math.PI * 2) * .1 : 0), head: phase === 'face' && !reduced ? Math.sin(p * Math.PI) * .045 : 0, wrap: phase === 'wrap' ? state.wrap : 1, joints: guides && cinematic, explode }); c.restore();
       if (phase === 'wrap') faceDarkness(c, Math.min(1, state.wrap / .35) * 300);
       c.strokeStyle = '#afa5d066'; c.lineWidth = 2;
       if (phase !== 'wrap') for (let i = 0; i < 8; i++) { const side = i % 2 ? 1 : -1, y = 70 + Math.floor(i / 2) * 140; c.beginPath(); c.moveTo(side < 0 ? 0 : 1000, y); c.lineTo(side < 0 ? 40 : 960, y + 35); c.lineTo(side < 0 ? 20 : 980, y + 65); c.stroke(); }
