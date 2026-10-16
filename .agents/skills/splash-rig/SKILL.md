@@ -10,6 +10,14 @@ the pipeline: `SOURCES.json` → `tools/splash-kit/prepare_art.py` → `rigs/<id
 
 ## Owner rules learned so far
 
+- **Native proof 01 REJECTED:** storyboard is a launching point, not finished
+  art to preserve under sprite crops. Owner expects coherent base-game sprite
+  assembly, sprited curtains and a clear grip/pull/release action. Reconstruct
+  intact matched native poses at one pixel scale first; author missing cloth /
+  contact frames in that palette. Fingers and cloth edge share an anchor until
+  release. Do not ship geometric storyboard panels behind independently scaled
+  parts or use “proof” / passing continuity tests to excuse that visual failure.
+
 - **04 accepted direction (2026-10-15 America/Chicago):** owner says UR is
   “ALOT better”, music is good, and ready to move on to layer/action proof.
   Smooth music changes, separate banner/menu music from pull music, and match

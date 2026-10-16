@@ -1,0 +1,399 @@
+{
+  "source": {
+    "name": "ka-nightmare",
+    "page": "https://www.spriters-resource.com/nes/kirbyadv/asset/49197/",
+    "download": "https://www.spriters-resource.com/media/assets/46/49197.png?updated=1755472985",
+    "path": "assets/sprites/sources/faithful/ka-nightmare.png",
+    "bytes": 43988,
+    "sha256": "811fbfec9137d04c96340596318d37cec49f1f19e4e88e423a2da0c33880dfd2",
+    "creditExcerpt": "Uploaded By Jermungandr Size 42.96 KB (1107x790) Format PNG (image/png) Hits 40,063 Tags (3): Character Nightmare (Kirby) Series Kirby Occup",
+    "dimensions": [
+      1107,
+      790
+    ]
+  },
+  "credit": "Drshnaps (Jermungandr) / HAL Laboratory / Nintendo; Kirby\u2019s Adventure (1993).",
+  "paletteMapping": {
+    "236,106,252": [
+      116,
+      42,
+      252
+    ],
+    "reason": "The sheet labels pink as a replaceable colour; use the native violet ramp."
+  },
+  "palette": [
+    [
+      4,
+      2,
+      4
+    ],
+    [
+      4,
+      42,
+      140
+    ],
+    [
+      28,
+      94,
+      212
+    ],
+    [
+      116,
+      42,
+      252
+    ],
+    [
+      252,
+      254,
+      252
+    ]
+  ],
+  "assets": {
+    "pose-0": {
+      "url": "pose-0.png",
+      "dimensions": [
+        82,
+        76
+      ],
+      "sha256": "13e52554d6f4f83b824dc519b59e8766b43cf2161290693168d2b6498c0f40f7",
+      "origin": "native",
+      "detail": {
+        "sourceRect": [
+          48,
+          3,
+          130,
+          79
+        ]
+      }
+    },
+    "head": {
+      "url": "head.png",
+      "dimensions": [
+        82,
+        76
+      ],
+      "sha256": "57b305e38dda0f62d16b712c9847f5f0f0959c6c7090e99bd5313df834764705",
+      "origin": "native",
+      "detail": {
+        "sourceRect": [
+          48,
+          3,
+          130,
+          79
+        ],
+        "maskRect": [
+          32,
+          9,
+          49,
+          26
+        ],
+        "canvasRetained": true
+      }
+    },
+    "left": {
+      "url": "left.png",
+      "dimensions": [
+        82,
+        76
+      ],
+      "sha256": "6db6cd9001088f02b69ab73ef5a445127c425dce0bde9c9c3a2d9aafd4369d13",
+      "origin": "native",
+      "detail": {
+        "sourceRect": [
+          48,
+          3,
+          130,
+          79
+        ],
+        "maskRect": [
+          12,
+          0,
+          22,
+          19
+        ],
+        "canvasRetained": true
+      }
+    },
+    "right": {
+      "url": "right.png",
+      "dimensions": [
+        82,
+        76
+      ],
+      "sha256": "4c817fed388087d8af258346c4fa6f30db68d78257e7a0163c777e47549a5797",
+      "origin": "native",
+      "detail": {
+        "sourceRect": [
+          48,
+          3,
+          130,
+          79
+        ],
+        "maskRect": [
+          58,
+          0,
+          68,
+          19
+        ],
+        "canvasRetained": true
+      }
+    },
+    "body": {
+      "url": "body.png",
+      "dimensions": [
+        82,
+        76
+      ],
+      "sha256": "8e60e086620a331080d4261f8eb6fc1947412582a78322a49fe4c54dadeca870",
+      "origin": "native",
+      "detail": {
+        "sourceRect": [
+          48,
+          3,
+          130,
+          79
+        ],
+        "removed": [
+          [
+            32,
+            9,
+            49,
+            26
+          ],
+          [
+            12,
+            0,
+            22,
+            19
+          ],
+          [
+            58,
+            0,
+            68,
+            19
+          ]
+        ]
+      }
+    },
+    "pose-1": {
+      "url": "pose-1.png",
+      "dimensions": [
+        82,
+        76
+      ],
+      "sha256": "5252e19968a70fe38ab13c437c4ba983aa03aef8b0cbdf0f57b13539ab903ab4",
+      "origin": "native",
+      "detail": {
+        "sourceRect": [
+          132,
+          3,
+          213,
+          79
+        ]
+      }
+    },
+    "pose-2": {
+      "url": "pose-2.png",
+      "dimensions": [
+        82,
+        76
+      ],
+      "sha256": "0c7eb06982a3f8fa58ce23082ce1d51c30b4497ceaaab713792d860a52ced0e2",
+      "origin": "native",
+      "detail": {
+        "sourceRect": [
+          215,
+          3,
+          296,
+          79
+        ]
+      }
+    },
+    "hand-left-open": {
+      "url": "hand-left-open.png",
+      "dimensions": [
+        10,
+        19
+      ],
+      "sha256": "9235b4dc5953e58a3d2463502ee53b141cc7567646480a52175413179d8f0861",
+      "origin": "native",
+      "detail": {
+        "sourceRect": [
+          48,
+          3,
+          130,
+          79
+        ],
+        "poseRect": [
+          12,
+          0,
+          22,
+          19
+        ]
+      }
+    },
+    "hand-left-back": {
+      "url": "hand-left-back.png",
+      "dimensions": [
+        10,
+        19
+      ],
+      "sha256": "711cb85a3e06c8f43c481d9ec0bfefd7493cd2fe0e82ab49cc7f1f75f8e3e3d2",
+      "origin": "authored",
+      "detail": "Native wrist plus explicit palette-indexed gripping palm. Draw behind cloth."
+    },
+    "hand-left-front": {
+      "url": "hand-left-front.png",
+      "dimensions": [
+        10,
+        19
+      ],
+      "sha256": "e8167073b2fb08167bddfd58728bc612a99edac01a9d0f1c71bb23df7167bace",
+      "origin": "authored",
+      "detail": "Curled finger sprite. Draw over cloth, at the same grip anchor."
+    },
+    "hand-right-open": {
+      "url": "hand-right-open.png",
+      "dimensions": [
+        10,
+        19
+      ],
+      "sha256": "6adfe2fe32b7bec088e55c9327482687a418927e61df137decbbd1e9bce1180d",
+      "origin": "native",
+      "detail": {
+        "sourceRect": [
+          48,
+          3,
+          130,
+          79
+        ],
+        "poseRect": [
+          58,
+          0,
+          68,
+          19
+        ]
+      }
+    },
+    "hand-right-back": {
+      "url": "hand-right-back.png",
+      "dimensions": [
+        10,
+        19
+      ],
+      "sha256": "e150256d1bd77f294e8d7199e217df274bb7381e2fce2797d0553ac00f277444",
+      "origin": "authored",
+      "detail": "Native wrist plus explicit palette-indexed gripping palm. Draw behind cloth."
+    },
+    "hand-right-front": {
+      "url": "hand-right-front.png",
+      "dimensions": [
+        10,
+        19
+      ],
+      "sha256": "cf28ba42f36cc30f2a5b52d634b86f678f72e5f4360a5ca6151a7ac46d9b69a3",
+      "origin": "authored",
+      "detail": "Curled finger sprite. Draw over cloth, at the same grip anchor."
+    },
+    "curtain": {
+      "url": "curtain.png",
+      "dimensions": [
+        672,
+        160
+      ],
+      "sha256": "f9d5dd7b6cda0844ef6813e7ac356f0302cc362e27c7cd6df3c582cca488b26a",
+      "origin": "authored",
+      "detail": "Eight palette-indexed cloth frames, opaque fill, stepped hem and folds gathering at local (82,64). Wrap folds tuck upward into the source pose."
+    },
+    "wrap": {
+      "url": "wrap.png",
+      "dimensions": [
+        672,
+        160
+      ],
+      "sha256": "c3826accd5caa253248416514907152082df3c32d8261a4b5da34c88194215a3",
+      "origin": "authored",
+      "detail": "Eight palette-indexed cloth frames, opaque fill, stepped hem and folds gathering at local (82,64). Wrap folds tuck upward into the source pose."
+    },
+    "battlefield": {
+      "url": "battlefield.png",
+      "dimensions": [
+        256,
+        176
+      ],
+      "sha256": "ae1a1b2eb3f28a6eb95cb602be5cb67867d3e72ef8beae9500100891595537f0",
+      "origin": "native",
+      "detail": {
+        "sourceRect": [
+          810,
+          510,
+          1066,
+          686
+        ]
+      }
+    },
+    "shadow": {
+      "url": "shadow.png",
+      "dimensions": [
+        39,
+        76
+      ],
+      "sha256": "ed4c1070d28b84955c78978ba820c87daae94e22c69fb4fcd998d675c42bc64d",
+      "origin": "derived-native",
+      "detail": {
+        "sourceRect": [
+          4,
+          3,
+          43,
+          79
+        ],
+        "processing": "Opaque silhouette filled between native row extrema; no distortion."
+      }
+    }
+  },
+  "poseSize": [
+    82,
+    76
+  ],
+  "headPivot": [
+    39,
+    18
+  ],
+  "hands": {
+    "left": {
+      "rect": [
+        12,
+        0,
+        22,
+        19
+      ],
+      "grip": [
+        2,
+        9
+      ]
+    },
+    "right": {
+      "rect": [
+        58,
+        0,
+        68,
+        19
+      ],
+      "grip": [
+        7,
+        9
+      ]
+    }
+  },
+  "curtain": {
+    "size": [
+      84,
+      160
+    ],
+    "grip": [
+      82,
+      64
+    ],
+    "frames": 8
+  }
+}

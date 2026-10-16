@@ -3,22 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Nightmare layer proof 01 · Pocket Gacha</title>
+<title>Nightmare sprite pass 02 · Pocket Gacha</title>
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="cue.css">
 <link rel="stylesheet" href="nightmare-board.css">
 </head>
 <body>
 <main>
-  <header><span>Nightmare layer proof 01</span><nav aria-label="Previous reviews"><a href="cue.html">Dedede cue 04</a><a href="blueprint.html">Original blueprint</a></nav></header>
-  <section class="intro"><h1>The pieces behind the nightmare.</h1><p>The approved action, now testing independent native-sprite parts. Enable the native preview to compare it with the schematic. This is a feasibility proof, not final art.</p></section>
-  <section class="layer-review" aria-label="Layer proof controls"><label><input id="boardNative" type="checkbox"> Native-layer preview</label><label><input id="boardExplode" type="checkbox"> Separate pieces for inspection</label><p id="layerStatus">Adventure head, hands and torso; opaque cloth interior reconstructed in the renderer. No generated images or flat-image warping.</p></section>
-  <details id="nativePieces"><summary>Inspect source pieces and limitations</summary><div class="native-pieces"><figure><img src="assets/nightmare-native/face.png" alt="Separate original Nightmare head"><figcaption>Head</figcaption></figure><figure><img src="assets/nightmare-native/hand-left.png" alt="Separate original left hand"><figcaption>Left hand</figcaption></figure><figure><img src="assets/nightmare-native/hand-right.png" alt="Separate original right hand"><figcaption>Right hand</figcaption></figure><figure><img src="assets/nightmare-native/torso.png" alt="Original torso without head or hand regions"><figcaption>Torso</figcaption></figure></div><p>The source sprite makes black transparent. Full opaque cloth panels are reconstructed for this motion test, not claimed as original game pixels. Larger painted layers would be a separate art pass. <a href="assets/nightmare-native/SOURCES.json">Source rectangles, credit and hashes</a>.</p></details>
+  <header><span>Nightmare sprite pass 02</span><nav aria-label="Previous reviews"><a href="cue.html">Dedede cue 04</a><a href="blueprint.html">Original blueprint</a></nav></header>
+  <section class="intro"><h1>Behind the starry cloak.</h1><p>Matched Adventure sprites, pixel-art curtains and a continuous grip, pull and return. The accepted choreography and character music remain.</p></section>
+  <section class="layer-review" aria-label="Art comparison controls"><label><input id="boardNative" type="checkbox" checked> Sprite artwork</label><label><input id="boardExplode" type="checkbox"> Show grip anchors</label><p id="layerStatus">One native pose and pixel scale. Newly authored cloth and curled fingers use the source palette; no AI artwork.</p></section>
+  <details id="nativePieces"><summary>Artwork and source credit</summary><div class="native-pieces"><figure><img src="assets/nightmare-sprites/pose-0.png" alt="Complete original Nightmare pose at native proportions"><figcaption>Matched native pose</figcaption></figure><figure><img src="assets/nightmare-sprites/hand-left-back.png" alt="Pixel-art gripping palm"><figcaption>Palm behind cloth</figcaption></figure><figure><img src="assets/nightmare-sprites/hand-left-front.png" alt="Pixel-art curled fingers"><figcaption>Fingers over cloth</figcaption></figure></div><p>The full native pose retains its original body, hands and vortex. The sheet’s replaceable pink is mapped to its violet ramp. Curtains, cloth folds and contact frames are newly authored pixel work, not original game assets. <a href="assets/nightmare-sprites/SOURCES.json">Source rectangles, credit and hashes</a>.</p></details>
   <section class="board-theater" aria-label="Banner and pull storyboard">
     <div class="board-audio"><button id="boardSound" type="button" aria-pressed="false">Enable sound</button><label>Volume <input id="boardVolume" type="range" min="0" max="1" step=".05" value=".65"></label><p id="audioStatus" role="status">Sound is off until enabled. Step or scrub silently; Resume plays from that beat.</p></div>
     <p id="musicNow" class="music-now" role="status">Sound off</p>
     <div class="board-stage" id="boardStage" data-phase="banner">
-      <canvas id="boardScene" aria-label="Schematic pull sequence: fountain, travelling lights, cloak, hands and camera blocking"></canvas>
+      <canvas id="boardScene" aria-label="Pull sequence: fountain, travelling lights, pixel-art cloak and Nightmare reveal"></canvas>
       <div class="banner-copy" id="bannerCopy">
         <p class="banner-source">Dream Land · Kirby’s Adventure (1993)</p>
         <h2>Nightmare<br>at the fountain</h2>
@@ -38,7 +38,7 @@
     <div class="board-transport" id="boardTransport" hidden>
       <div class="transport-buttons"><button id="previous" type="button">Previous beat</button><button id="boardPlay" type="button">Play storyboard</button><button id="next" type="button">Next beat</button><button id="boardSkip" type="button">Skip to results</button><button id="backBanner" type="button">Back to banner</button></div>
       <div class="scrub-row"><output id="boardClock">0.0 / 0.0 s</output><input id="boardSeek" type="range" min="0" max="1" step="0.01" value="0" aria-label="Storyboard time"></div>
-      <div class="board-options"><label><input id="boardHighOnly" type="checkbox"> Skip R / SR entrances</label><label><input id="cameraGuides" type="checkbox" checked> Camera / joint guides</label><span>Tap any beat, then Resume to hear it.</span></div>
+      <div class="board-options"><label><input id="boardHighOnly" type="checkbox"> Skip R / SR entrances</label><label><input id="cameraGuides" type="checkbox"> Camera / joint guides</label><span>Tap any beat, then Resume to hear it.</span></div>
     </div>
   </section>
   <section id="beatInspector" class="beat-inspector" hidden aria-labelledby="beatTitle">
@@ -50,7 +50,7 @@
   <section class="board-notes">
     <div><h2>What we’re deciding</h2><p>Nightmare’s cloak closes from both sides. His face rises alone; hands return with the cloth and continue into the close-up. In the ten-pull, Dedede gets a hammer beat and falling Waddle Dees, then a shorter pullback.</p></div>
     <div><h2>Each light is one result</h2><p>Same Fountain / Warp Star route, but every light now upgrades to its own fixed result’s tier: R blue, SR silver, SSR gold, UR rainbow. No sorting or rerolling.</p></div>
-    <div><h2>What comes after this proof</h2><p>Review whether native pixels plus reconstructed cloth are the right art route, then refine the actual layers before production integration. Banner title music differs from the pull theme; Dedede and Nightmare use Adventure boss tracks. No production pools, currency or saves change.</p></div>
+    <div><h2>This pass</h2><p>Nightmare’s sprite artwork replaces the schematic, rather than covering it with unrelated cutouts. The shared opening and other fighters remain storyboard material. Banner and pull music differ; each boss uses its Adventure track. Production pools, currency and saves are untouched.</p></div>
   </section>
   <details class="audio-credits"><summary>Audio and sprite credits</summary><p>Adventure (1993): title theme, Fountain of Dreams, Boss! (Dedede) and Nightmare, Hirokazu Ando / Jun Ishikawa, HAL Laboratory / Nintendo. Recordings: Zophar’s Domain. Dedede laugh: Super Smash Bros. Ultimate, Nintendo / HAL Laboratory, Sounds Resource. Waddle Dee and Nightmare sprites: Adventure, Drshnaps (Jermungandr) / HAL Laboratory, Spriters Resource. Nightmare’s omen and cloth / magic sounds are authored effects, not a voice clip.</p><p><a href="assets/audio/areas/SOURCES.json">Music sources and hashes</a> · <a href="assets/audio/cue02/SOURCES.json">Native call provenance</a> · <a href="assets/board/SOURCES.json">Sprite provenance</a></p></details>
 </main>

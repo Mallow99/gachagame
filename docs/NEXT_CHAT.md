@@ -1,5 +1,55 @@
 # Start the next chat here
 
+## Newest: Nightmare sprite pass 02 — retry built (2026-10-16 UTC)
+
+Branch `codex/v1-playable`. Owner said “Retry this time” after rejecting native
+proof 01. New `/nightmare` defaults to rebuilt sprite artwork, not the old hybrid.
+Uncheck Sprite artwork for the historical storyboard comparison.
+
+`prepare-nightmare-sprites.py` bakes matched 82×76 source poses, same-canvas body /
+head / hands, palette-corrected vortex, authored pixel cloth/grip sprites and
+source battlefield. The native renderer replaces the whole Nightmare shot on a
+160px pixel stage; no underlying storyboard hands/curtains. One camera transform
+preserves proportions. Shared hand/cloth contacts, gathered/tucking frames and
+open-hand release connect continuously into the original source pose. Face mask
+excludes shoulders/pendant; brief close-up push/slant precedes accepted pullback.
+Final hold animates whole native frames. No AI art or production data changes.
+
+139 tests, full board and historical cue regressions pass. Native browser checks
+pass, 11 screenshots inspected, 390/420px checked, exact pose assembly and zero
+wrap/close-up difference. See `docs/validation/nightmare-sprite-pass-02.md`.
+Other fighters/shared opening remain labelled storyboard work. Accepted music /
+durations / committed review results unchanged. NEXT: get owner's verdict on
+actual new art/action; do not infer final acceptance or batch more characters.
+
+## Newest: native-layer proof 01 rejected — rebuild visual foundation
+
+Owner rejects the incoherent sprite assembly and leftover storyboard geometry:
+“i dont like how the sprites look together”; expects the game's base sprites to
+fit properly, actual sprited curtains, and hands clearly gripping/pulling them.
+“the story boards was the launching point”, not finished art. Full verdict at
+the top of `demos/splash-kit/FEEDBACK.md`. Prior sequence/music approval is NOT
+approval of this native-pixel/vector hybrid. Do not defend it as merely a proof.
+
+Diagnosis: head/torso/hand crops use independently chosen scales. Native mode
+reuses geometric storyboard curtains, with independently animated hands and
+cloth: ~340 vs 800 scene-unit travel, so contact cannot persist. It switches
+hand renderers rather than drawing two hand sets, but the hybrid complaint is
+valid. Pixel continuity/transport tests did not prove coherent art or contact.
+
+Recommended correction: intact matched native pose as the assembly reference,
+one pixel grid/proportion system, purpose-made sprite cloth and grip/release
+extensions in the source palette. Preserve source silhouette; hands and fabric
+edge share contact anchors, with real fold/bunching frames until release. Source
+sheet has usable frontal/raised-hand poses, not a finished full-screen curtain.
+Do not just resize the old parts or recolour vector panels again.
+
+This turn only inspected and recorded feedback locally. No new runtime build,
+deployment, art generation or production-data change. The live native proof
+remains the rejected version; do not treat it as the baseline for polishing.
+Next implementation needs a cohesive sprite-based grip/opening shot and native
+assembly, not another complete playback of unfinished storyboard substitutions.
+
 ## Newest: 04 direction accepted; native-layer proof 01 (2026-10-15 America/Chicago)
 
 Branch `codex/v1-playable`. Owner: “ur is ALOT better”, “the music is good”,

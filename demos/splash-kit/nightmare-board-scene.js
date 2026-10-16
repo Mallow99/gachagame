@@ -100,16 +100,17 @@ function dedede(c, scale, strike) {
 export function storyboardScene(canvas, waddleDee, nativeRig) {
   const c = canvas.getContext('2d');
   return function render(state, board, { banner = false, reduced = false, guides = true, native = false, explode = false } = {}) {
-    const art = native && nativeRig ? nativeRig : { face, hand, figure };
+    const art = { face, hand, figure };
     const dpr = Math.min(devicePixelRatio || 1, 2), w = Math.round(canvas.clientWidth * dpr), h = Math.round(canvas.clientHeight * dpr);
     if (!w || !h) return;
     if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+    if (native && nativeRig?.render(state, board, { banner, reduced, guides: guides || explode }, canvas, c)) return;
     c.setTransform(w / 1000, 0, 0, h / 600, 0, 0); c.clearRect(0, 0, 1000, 600);
     c.fillStyle = '#0c0b19'; c.fillRect(0, 0, 1000, 600);
     c.lineWidth = 1; c.strokeStyle = '#b3acc611';
     for (let x = 0; x <= 1000; x += 50) { c.beginPath(); c.moveTo(x, 0); c.lineTo(x, 600); c.stroke(); }
     for (let y = 0; y <= 600; y += 50) { c.beginPath(); c.moveTo(0, y); c.lineTo(1000, y); c.stroke(); }
-    if (banner) { if (native && nativeRig) nativeRig.background(c); art.figure(c, { x: 720, y: 280, scale: .95, open: .75, explode }); return; }
+    if (banner) { art.figure(c, { x: 720, y: 280, scale: .95, open: .75 }); return; }
     const { phase, progress: p, beat } = state;
     if (phase === 'flight') {
       c.strokeStyle = '#a9a2bf44'; c.setLineDash([6, 9]); c.beginPath(); c.ellipse(500, 300, 350, 144, 0, 0, Math.PI * 2); c.stroke(); c.setLineDash([]);
@@ -150,7 +151,6 @@ export function storyboardScene(canvas, waddleDee, nativeRig) {
     } else if (state.nightmareVisible) {
       const cinematic = ['face', 'pullback'].includes(phase), zoom = state.zoom;
       c.fillStyle = '#04030b'; c.fillRect(0, 0, 1000, 600);
-      if (native && nativeRig) { c.save(); c.globalAlpha = phase === 'wrap' ? Math.max(0, (state.wrap - .8) / .2) : 1; nativeRig.background(c); c.restore(); }
       cloakShadow(c, phase === 'wrap' ? .35 + state.wrap * .65 : 1);
       // Pullback changes the framing continuously; the full pose is only locked later.
       c.save();

@@ -1,5 +1,15 @@
 # Pull presentation blueprint 02
 
+## Latest verdict: native-layer proof 01 rejected
+
+The owner expected intentional sprite production from the accepted storyboard,
+not native crops pasted over its shapes. Character assembly is incoherent;
+curtains need actual pixel-art assets and hands must visibly grip/pull them.
+Keep the accepted action/music direction, but rebuild art from matched intact
+native poses at consistent pixel scale. Author needed curtain/fold/grip frames
+in the same palette; hand and cloth edge must share contact anchors. Do not
+polish the existing hybrid or treat a proof label/tests as aesthetic validation.
+
 ## Next gate: Nightmare native-layer feasibility proof 01
 
 Owner accepts storyboard 04's action/audio direction and says ready to move on.

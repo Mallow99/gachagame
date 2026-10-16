@@ -85,7 +85,7 @@ function render() {
   $('boardResult').hidden = true;
   $('boardIdentity').hidden = $('concealedCall').hidden = true;
   $('lightKey').hidden = true;
-  if (banner) { $('boardStage').dataset.phase = 'banner'; $('sceneLabel').textContent = native ? 'Native-layer feasibility proof · not final art' : 'Approved schematic · not final art'; draw(null, null, { banner: true, native, explode }); return; }
+  if (banner) { $('boardStage').dataset.phase = 'banner'; $('sceneLabel').textContent = native ? 'Adventure · sprite pass 02' : 'Storyboard comparison'; draw(null, null, { banner: true, native, explode }); return; }
   const state = sampleStoryboard(current, board, reduced.matches), b = state.beat;
   draw(state, board, { reduced: reduced.matches, guides: $('cameraGuides').checked, native, explode });
   $('boardStage').dataset.phase = state.phase;
@@ -95,7 +95,7 @@ function render() {
     const item = $('lightOrder').children[i]; item.textContent = `${i + 1} ${TIERS[light.rank]}`;
     item.style.setProperty('--light-colour', COLOURS[light.rank]); item.dataset.rank = light.rank;
   });
-  $('sceneLabel').textContent = `${b.group} · ${native && (state.nightmareVisible || ['hands', 'open', 'dark'].includes(state.phase)) ? 'native-layer proof' : 'schematic blocking'}${state.dededeVisible && !spriteReady ? ' · sprite fallback' : ''}`;
+  $('sceneLabel').textContent = `${b.group} · ${native && (state.nightmareVisible || ['sweep', 'covered', 'hands', 'open', 'dark'].includes(state.phase)) ? 'sprite pass 02' : 'storyboard'}${state.dededeVisible && !spriteReady ? ' · sprite fallback' : ''}`;
   $('beatGroup').textContent = `${b.group} · ${b.duration.toFixed(1)} s`;
   $('beatTitle').textContent = b.title; $('beatVisual').textContent = b.visual;
   $('cameraLane').textContent = b.camera; $('musicLane').textContent = b.music; $('soundLane').textContent = b.sound;

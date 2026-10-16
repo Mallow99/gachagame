@@ -4,6 +4,58 @@ One entry per reviewed iteration. Record what the owner liked, what they
 disliked, and what is still needed, in their words where possible. Read this
 before changing anything here.
 
+## Nightmare sprite pass 02 — retry requested, awaiting review (2026-10-16 UTC)
+
+Owner: “Retry this time”. This authorizes the bounded visual rebuild below,
+not approval of its finished look. The rejected proof 01 verdict remains valid.
+
+Matched complete Adventure poses now define body/head/hand proportions. New
+pixel-art cloth and curled fingers share contact anchors, replace the entire
+schematic shot and return continuously into the source pose. Face-only cut,
+native frame idle and source battlefield retained; no AI art. Sprite mode is
+default. Accepted timings, music roles, results/order and production data stay
+put. See `docs/validation/nightmare-sprite-pass-02.md` for visual/tests evidence.
+
+Still needed: owner's judgment of the new assembly, fabric and gripping action.
+
+## Nightmare native-layer proof 01 — REJECTED (2026-10-15 America/Chicago)
+
+Verdict: the native assembly and hybrid sprite/vector presentation are rejected.
+Calling it a proof does not excuse an incoherent character or unconvincing action.
+Storyboard 04 was the launching point, not artwork to retain in the final reveal.
+
+Liked:
+- No new positive art verdict. Prior sequence/music direction remains separate.
+
+Disliked:
+- “as a finished product, its kinda shit”.
+- “i dont like how the sprites look together”.
+- “there has to be a way they fit together properly using the games base sprites and this just isnt it.”
+- “The hands are also literally laid over the ones from the storry board”.
+
+Still needed:
+- “i assumed wed be getting sprited curtains and the hands would more clearly grab them and pull them away.”
+- “the story boards was the launching point, but i assumed youd have more intentional creation in a finished product.”
+
+Inspection confirms head/torso/hand crops have separately chosen scales and
+geometric cloth replaces real sprite assets. Native mode switches the hand
+renderer (not two literal hand sets), but retains the storyboard curtain shapes
+and independent paths. Hands travel ~340 scene units while curtains travel 800;
+there is no shared grip anchor, finger-close pose or gathered fabric contact.
+The code/continuity tests never established character proportions or cloth contact.
+
+Corrective direction: use intact matched native poses as the assembly reference;
+retain one pixel grid and source proportions. Author necessary pixel-art cloth
+extensions and grip/release frames in that palette; do not substitute geometric
+panels for those assets. Hands and cloth edge need one contact anchor until
+release, with folds/bunching making the action legible. The source has useful
+frontal/raised-hand poses, but no ready-made full-screen curtain sequence.
+
+Do not present another pasted-crop hybrid as progress toward a finished rig.
+No runtime edits or new deployment in this feedback/diagnosis turn. Keep the
+accepted choreography, music roles, no-AI-background constraint and production
+receipt contracts. Rebuild the visual foundation before further reveal polish.
+
 ## Nightmare storyboard 04 + audio — reviewed 2026-10-15 America/Chicago
 
 Verdict: direction accepted to move on to the separated-layer/action proof.
